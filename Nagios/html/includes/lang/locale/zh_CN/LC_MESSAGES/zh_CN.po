@@ -51,7 +51,7 @@ msgstr "IP地址与服务器日志查询您想监控相关的主机或FQDN. "
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:67
 #, fuzzy
 msgid "Log Server Information"
-msgstr "邮件服务器信息"
+msgstr "日志服务器信息"
 
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:68
 #, fuzzy
@@ -103,7 +103,7 @@ msgstr "使用认证令牌访问日志服务器API. "
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:99
 #, fuzzy
 msgid "No host address specified."
-msgstr "从指定的地址. "
+msgstr "没有指定的主机地址. "
 
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:102
 #, fuzzy
@@ -118,7 +118,7 @@ msgstr "没有API密钥指定. "
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:116
 #, fuzzy
 msgid "Unable to contact server at "
-msgstr "无法联系服务器在"
+msgstr "无法连接服务器在"
 
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:120
 #, fuzzy
@@ -195,7 +195,7 @@ msgstr "服务器未返回预期的输出.  (这是一个Nagios的日志服务�
 #: html/config/configobject.php:1167
 #, fuzzy
 msgid "Host Name"
-msgstr "Host Name(主机名)"
+msgstr "主机名"
 
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:219
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:164
@@ -203,7 +203,7 @@ msgstr "Host Name(主机名)"
 #: xiwizards/Production/windowseventlog/windowseventlog.inc.php:141
 #, fuzzy
 msgid "The name you'd like to have associated with this host."
-msgstr "您想与这台主机的名称. "
+msgstr "您想定义这台主机的名称. "
 
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:224
 #, fuzzy
@@ -343,7 +343,7 @@ msgstr "范围"
 #: html/reports/availability.php:1977
 #, fuzzy
 msgid "Critical"
-msgstr "批评"
+msgstr "临界"
 
 #: xiwizards/Development/nagioslogserver/nagioslogserver.inc.php:265
 #, fuzzy
@@ -4852,20 +4852,20 @@ msgstr "您必须选择至少一组. "
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:21
 #, fuzzy
 msgid "Monitor a remote Nagios XI server."
-msgstr "监控Nagios的XI服务器远程. "
+msgstr "监控Nagios XI服务器远程. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:22
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:112
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:269
 #, fuzzy
 msgid "Nagios XI Server"
-msgstr "Nagios的XI服务器"
+msgstr "Nagios XI服务器"
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:115
 #, fuzzy
 msgid ""
 "Specify the details for the remote Nagios XI server you want to monitor."
-msgstr "指定的远程Nagios的XI您要监视的服务器的详细信息. "
+msgstr "指定的远程Nagios XI您要监视的服务器的详细信息. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:115
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:401
@@ -4878,7 +4878,7 @@ msgstr "注: "
 msgid ""
 "This wizard requires that the remote Nagios XI server be running 2009R1.2B "
 "or later."
-msgstr "此向导要求的远程Nagios的XI服务器运行2009R1.2B或更高版本. "
+msgstr "此向导要求的远程Nagios XI服务器运行2009R1.2B或更高版本. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:122
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:276
@@ -4895,14 +4895,14 @@ msgstr "地址: "
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:126
 #, fuzzy
 msgid "The IP address or FQDNS name of the remote Nagios XI server."
-msgstr "Nagios的XI的远程服务器的IP地址或FQDN名称. "
+msgstr "Nagios XI的远程服务器的IP地址或FQDN名称. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:136
 #, fuzzy
 msgid ""
 "The full URL used to the remote Nagios XI server's web interface.  Make sure"
 " you include the full path."
-msgstr "完整的URL, 用于远程Nagios的XI服务器的Web接口. 确保您包括完整的路径. "
+msgstr "完整的URL, 用于远程Nagios XI服务器的Web接口. 确保您包括完整的路径. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:136
 #, fuzzy
@@ -4925,7 +4925,7 @@ msgstr "指定应使用到Nagios XI服务器进行身份验证的凭据. 您必�
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:156
 #, fuzzy
 msgid "The username used to authenticate to the remote Nagios XI server."
-msgstr "用户名用于到Nagios的XI到远程服务器进行身份验证. "
+msgstr "用户名用于到Nagios XI到远程服务器进行身份验证. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:162
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:313
@@ -4943,7 +4943,7 @@ msgstr "密码: "
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:166
 #, fuzzy
 msgid "The password used to authenticate to the remote Nagios XI server."
-msgstr "所输入的密码, 进行身份验证的远程Nagios的XI服务器. "
+msgstr "所输入的密码, 进行身份验证的远程Nagios XI服务器. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:192
 #: xiwizards/Production/oracle_query/oracle_query.inc.php:163
@@ -4983,7 +4983,7 @@ msgstr "未指定密码. "
 msgid ""
 "Unable to authenticate to remote Nagios XI server - Check your credentials "
 "and the remote XI server version."
-msgstr "无法进行身份验证的远程Nagios的XI服务器 - 检查您的凭证和远程XI​​服务器版. "
+msgstr "无法进行身份验证的远程Nagios XI服务器 - 检查您的凭证和远程XI​​服务器版. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:289
 #, fuzzy
@@ -4993,7 +4993,7 @@ msgstr "这Nagios服务器, 您想有关联的名称. "
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:322
 #, fuzzy
 msgid "Nagios XI Server Metrics"
-msgstr "Nagios的XI服务器统计"
+msgstr "Nagios XI服务器统计"
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:324
 #, fuzzy
@@ -5010,13 +5010,13 @@ msgstr "检查服务器与一个ICMP的ping. 用于监控Nagios服务器的网�
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:344
 #, fuzzy
 msgid "Nagios XI Web Interface"
-msgstr "Nagios的XI Web界面"
+msgstr "Nagios XI Web界面"
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:345
 #, fuzzy
 msgid ""
 "Checks the availability of the remote Nagios XI server's web interface."
-msgstr "检查远程Nagios的XI服务器的Web接口的可用性. "
+msgstr "检查远程Nagios XI服务器的Web接口的可用性. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:354
 #, fuzzy
@@ -6458,7 +6458,7 @@ msgid ""
 "detected that you have not yet completed the necessary installation steps.  "
 "Follow the steps below to install the required components before proceeding"
 msgstr ""
-"此配置向导需要一些额外的软件要安装的组件, 然后才可以使用Nagios的XI系统. 该向导检测到您尚未完成必要的安装步骤. 按照下面的步骤来安装所需的组件, 然后再继续"
+"此配置向导需要一些额外的软件要安装的组件, 然后才可以使用Nagios XI系统. 该向导检测到您尚未完成必要的安装步骤. 按照下面的步骤来安装所需的组件, 然后再继续"
 
 #: xiwizards/Production/ssh-expect/ssh-expect.inc.php:255
 #, fuzzy
@@ -6840,7 +6840,7 @@ msgid ""
 " your Nagios XI server.  You must have these components properly installed "
 "on your system before using this wizard."
 msgstr ""
-"它看起来好像您还没有安装Nagios的XI服务器上的VMware SDK或ESX插件. 使用此向导之前, 您必须拥有这些组件正确安装在您的系统上. "
+"它看起来好像您还没有安装Nagios XI服务器上的VMware SDK或ESX插件. 使用此向导之前, 您必须拥有这些组件正确安装在您的系统上. "
 
 #: xiwizards/Production/vmware/vmware.inc.php:294
 #, fuzzy
@@ -10780,7 +10780,7 @@ msgstr "启用Active Directory身份验证"
 #: xicomponents/Production/active_directory/active_directory.inc.php:203
 #, fuzzy
 msgid "Enables test authentication for Nagios XI"
-msgstr "启用Nagios的XI的测试认证"
+msgstr "启用Nagios XI的测试认证"
 
 #: xicomponents/Development/active_directory/active_directory.inc.php:209
 #: xicomponents/Production/active_directory/active_directory.inc.php:209
@@ -12001,7 +12001,7 @@ msgstr "启用集成"
 #: xicomponents/Custom/mmsms/mmsms.inc.php:422
 #, fuzzy
 msgid "Enables integration between Nagios XI and a MessageMedia."
-msgstr "启用Nagios的XI和响应之间的整合"
+msgstr "启用Nagios XI和响应之间的整合"
 
 #: xicomponents/Custom/mmsms/mmsms.inc.php:428
 #: xicomponents/Production/isms/isms.inc.php:401
@@ -12243,13 +12243,13 @@ msgstr "错误: 没有BPI集团指定的编辑. "
 #: xicomponents/Protected/nagiosbpi/functions/bpi_page_router.php:110
 #, fuzzy
 msgid "Hostgroup syncing is only available for Nagios XI Enterprise Edition"
-msgstr "主机组同步仅适用于Nagios的XI企业版"
+msgstr "主机组同步仅适用于Nagios XI企业版"
 
 #: xicomponents/Protected/nagiosbpi/functions/bpi_page_router.php:120
 #, fuzzy
 msgid ""
 "Servicegroup syncing is only available for Nagios XI Enterprise Edition"
-msgstr "Servicegroup同步仅适用于Nagios的XI企业版"
+msgstr "Servicegroup同步仅适用于Nagios XI企业版"
 
 #: xicomponents/Protected/nagiosbpi/functions/bpi_page_router.php:149
 #, fuzzy
@@ -12459,7 +12459,7 @@ msgstr "同步主机群"
 #, fuzzy
 msgid ""
 "BPI hostgroups feature is only available for Nagios XI Enterprise Edition"
-msgstr "BPI hostgroups功能仅适用于Nagios的XI企业版"
+msgstr "BPI hostgroups功能仅适用于Nagios XI企业版"
 
 #: xicomponents/Protected/nagiosbpi/functions/servicegroups.inc.php:143
 #, fuzzy
@@ -12470,7 +12470,7 @@ msgstr "同步Servicegroups"
 #, fuzzy
 msgid ""
 "BPI servicegroups feature is only available for Nagios XI Enterprise Edition"
-msgstr "BPI servicegroups功能仅适用于Nagios的XI企业版"
+msgstr "BPI servicegroups功能仅适用于Nagios XI企业版"
 
 #: xicomponents/Protected/nagiosbpi/functions/add_group.inc.php:72
 #, fuzzy
@@ -12954,7 +12954,7 @@ msgstr "保存/发送"
 #: xicomponents/Protected/scheduledreporting/scheduledreporting.inc.php:39
 #, fuzzy
 msgid "Adds scheduled reporting capability to Nagios XI."
-msgstr "Nagios的XI报告功能, 增加了计划. "
+msgstr "Nagios XI报告功能, 增加了计划. "
 
 #: xicomponents/Protected/scheduledreporting/scheduledreporting.inc.php:115
 #: xicomponents/Protected/scheduledreporting/scheduledreporting.inc.php:138
@@ -13903,7 +13903,7 @@ msgid ""
 "\tThis component will only update notification settings for contacts that are created by Nagios XI, or contacts created according\n"
 "\tto the following documentation"
 msgstr ""
-"此页面允许通知信息和设置被保存并部署到选定的第十一Nagios的用户或联系人组列表. \t这部分将只更新通知设置所建立的Nagios的XI或联系人的联系人创建\n"
+"此页面允许通知信息和设置被保存并部署到选定的第十一Nagios的用户或联系人组列表. \t这部分将只更新通知设置所建立的Nagios XI或联系人的联系人创建\n"
 "\tTO下列文件"
 
 #: xicomponents/Protected/deploynotification/deploynotification.php:352
@@ -14067,7 +14067,7 @@ msgstr "选中此复选框, 如果您要部署的通知下面的时间段. "
 #: xicomponents/Protected/deploynotification/deploynotification.php:603
 #, fuzzy
 msgid "Nagios XI Users"
-msgstr "Nagios的XI用户"
+msgstr "Nagios XI用户"
 
 #: xicomponents/Protected/deploynotification/deploynotification.php:923
 #, fuzzy
@@ -14494,7 +14494,7 @@ msgstr "通过接收的波段短信提醒"
 #: xicomponents/Production/isms/isms.inc.php:393
 #, fuzzy
 msgid "Enables integration between Nagios XI and a Multi-Tech iSMS GSM modem."
-msgstr "启用Nagios的XI和多技术的爱短信GSM调制解调器之间的整合. "
+msgstr "启用Nagios XI和多技术的爱短信GSM调制解调器之间的整合. "
 
 #: xicomponents/Production/isms/isms.inc.php:394
 #, fuzzy
@@ -14871,7 +14871,7 @@ msgstr "该组件允许管理员管理的批量重命名的主机和服务. "
 msgid ""
 "Error: This component requires Nagios XI 2012R1.0 or later with Enterprise "
 "Features enabled."
-msgstr "错误: 该组件需要: Nagios的XI 2012R1.0或更高版本启用具有企业特点的. "
+msgstr "错误: 该组件需要: Nagios XI 2012R1.0或更高版本启用具有企业特点的. "
 
 #: xicomponents/Production/rename/rename.inc.php:78
 #: xicomponents/Production/rename/rename.inc.php:89
@@ -14967,7 +14967,7 @@ msgstr "更新选定对象名称“"
 #: xicomponents/Production/rename/rename.php:258
 #, fuzzy
 msgid "This feature requires a Nagios XI Enterprise Edition license."
-msgstr "此功能需要一个Nagios的XI企业版的许可证. "
+msgstr "此功能需要一个Nagios XI企业版的许可证. "
 
 #: xicomponents/Production/rename/rename.php:265
 #, fuzzy
@@ -15508,7 +15508,7 @@ msgstr "没有任何数据显示"
 #, fuzzy
 msgid ""
 "Provides information on the URLs used to access the Nagios XI backend API."
-msgstr "提供信息的URL使用访问Nagios的XI后端的API. "
+msgstr "提供信息的URL使用访问Nagios XI后端的API. "
 
 #: xicomponents/Production/backendapiurl/backendapiurl.inc.php:79
 #, fuzzy
@@ -15776,7 +15776,7 @@ msgstr "查看所有可用的报告"
 #: xicomponents/Production/bandwidthreport/index.php:508
 #, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, fuzzy
 msgid "Report generated by an enhanced version of MRTS for Nagios XI."
-msgstr "该报告所产生的增强版本, MRTS Nagios的XI. "
+msgstr "该报告所产生的增强版本, MRTS Nagios XI. "
 
 #: xicomponents/Production/bandwidthreport/bandwidthreport.inc.php:38
 #, fuzzy
@@ -15809,7 +15809,7 @@ msgstr "您必须以root用户身份登录到该服务器, 并运行以下命令
 msgid ""
 "Allows Nagios XI to send SNMP traps to other network management systems when"
 " host and service alerts occur.  "
-msgstr "让Nagios的XI其他网络管理系统的主机和服务警报发生时发送SNMP陷阱. "
+msgstr "让Nagios XI其他网络管理系统的主机和服务警报发生时发送SNMP陷阱. "
 
 #: xicomponents/Production/snmptrapsender/snmptrapsender.inc.php:134
 #, fuzzy
@@ -15932,7 +15932,7 @@ msgid ""
 "Define commands to be locally executed on this Nagios XI server when host "
 "and service state changes or notifications occur.  Recommended only for "
 "advanced users."
-msgstr "定义命令在本地执行, 在此Nagios的XI服务器的主机和服务状态的变化或发生通知. 建议仅适用于高级用户. "
+msgstr "定义命令在本地执行, 在此Nagios XI服务器的主机和服务状态的变化或发生通知. 建议仅适用于高级用户. "
 
 #: xicomponents/Production/globaleventhandler/globaleventhandler.inc.php:162
 #, fuzzy
@@ -16060,7 +16060,7 @@ msgstr "触式快速"
 #: xicomponents/Production/ldapauth/ldapauth.inc.php:39
 #, fuzzy
 msgid "Provides LDAP authentication for Nagios XI. "
-msgstr "Nagios的XI提供了LDAP身份验证. "
+msgstr "Nagios XI提供了LDAP身份验证. "
 
 #: xicomponents/Production/ldapauth/ldapauth.inc.php:112
 #, fuzzy
@@ -17406,7 +17406,7 @@ msgstr "未处理的主机向下"
 #: xicomponents/Production/opscreen/merlin.php:92
 #, fuzzy
 msgid "Tactical overview"
-msgstr "战术概要"
+msgstr "策略概要"
 
 #: xicomponents/Production/opscreen/merlin.php:98
 #, fuzzy
@@ -17559,7 +17559,7 @@ msgid ""
 "permissions."
 msgstr ""
 "Nagios的IM中的每个用户独特的API密钥. 这可从管理“ - "
-">”编辑用户“页面中的事件管理器界面. 建议在事件管理器中创建一个Nagios的XI“用户的权限的最佳实践. "
+">”编辑用户“页面中的事件管理器界面. 建议在事件管理器中创建一个Nagios XI“用户的权限的最佳实践. "
 
 #: xicomponents/Production/nagiosim/nagiosim.inc.php:206
 #, fuzzy
@@ -17704,7 +17704,7 @@ msgstr "如果hostgroups"
 msgid ""
 "servicegroups are selected, Nagios XI will only forward events for selected "
 "groups."
-msgstr "Nagios的XI servicegroups被选中, 将只转发所选组的事件. "
+msgstr "Nagios XI servicegroups被选中, 将只转发所选组的事件. "
 
 #: xicomponents/Production/nagiosim/nagiosim.inc.php:276
 #, fuzzy
@@ -18171,7 +18171,7 @@ msgstr "发展博客"
 #: html/includes/lang/en.inc.php:1154 html/includes/lang/en.inc.php:1155
 #, fuzzy
 msgid "Tactical Overview"
-msgstr "战术概述"
+msgstr "策略概述"
 
 #: html/includes/utils-users.inc.php:665
 #: html/includes/components/nagioscore/ui/index.php:125
@@ -18670,19 +18670,19 @@ msgstr "服务组网格"
 #: html/includes/utils-menu.inc.php:1825
 #, fuzzy
 msgid "Host Graphs"
-msgstr "主机图"
+msgstr "主机视图"
 
 #: html/includes/utils-menu.inc.php:1844
 #: html/includes/components/nagioscore/ui/index.php:238
 #, fuzzy
 msgid "Maps"
-msgstr "地图"
+msgstr "拓扑"
 
 #: html/includes/utils-menu.inc.php:1856 html/includes/lang/en.inc.php:1052
 #: html/includes/lang/en.inc.php:1053
 #, fuzzy
 msgid "Network Status Map"
-msgstr "网络状态图"
+msgstr "网络状态拓扑"
 
 #: html/includes/utils-menu.inc.php:1876
 #: html/includes/components/nagioscore/ui/index.php:261
@@ -19254,7 +19254,7 @@ msgstr "为响应身份验证使用的密码"
 #: html/includes/components/response/response-unfinished.inc.php:148
 #, fuzzy
 msgid "Enables integration between Nagios XI and Response"
-msgstr "启用Nagios的XI和响应之间的整合"
+msgstr "启用Nagios XI和响应之间的整合"
 
 #: html/includes/components/response/response-unfinished.inc.php:154
 #, fuzzy
@@ -19271,12 +19271,12 @@ msgstr "在Nagios发现问题时, 自动创建新的问题响应"
 #: html/includes/components/xicore/xicore.inc.php:39
 #, fuzzy
 msgid "Nagios XI Core Functions"
-msgstr "Nagios的XI核心功能"
+msgstr "Nagios XI核心功能"
 
 #: html/includes/components/xicore/xicore.inc.php:41
 #, fuzzy
 msgid "Provides core functions and interface functionality for Nagios XI."
-msgstr "提供Nagios的XI的核心功能和接口功能. "
+msgstr "提供Nagios XI的核心功能和接口功能. "
 
 #: html/includes/components/xicore/xicore.inc.php:42
 #, fuzzy
@@ -19585,12 +19585,12 @@ msgstr "困扰"
 #: html/includes/components/xicore/dashlets.inc.php:40
 #, fuzzy
 msgid "Nagios XI News"
-msgstr "Nagios的XI新闻"
+msgstr "Nagios XI新闻"
 
 #: html/includes/components/xicore/dashlets.inc.php:42
 #, fuzzy
 msgid "Shows the latest tutorials, howtos, videos, and news on Nagios XI."
-msgstr "显示教程, HOWTO文档, 视频, 和Nagios的XI新闻. "
+msgstr "显示教程, HOWTO文档, 视频, 和Nagios XI新闻. "
 
 #: html/includes/components/xicore/dashlets.inc.php:52
 #: html/includes/components/xicore/ajaxhelpers-tasks.inc.php:144
@@ -19813,7 +19813,7 @@ msgstr "可用更新"
 #, fuzzy
 msgid ""
 "Displays the status of available updates for your Nagios XI installation."
-msgstr "Nagios的XI安装可用的更新显示状态. "
+msgstr "Nagios XI安装可用的更新显示状态. "
 
 #: html/includes/components/xicore/dashlets.inc.php:293
 #, fuzzy
@@ -20080,7 +20080,7 @@ msgstr "添加新的用户帐户"
 #: html/includes/components/xicore/ajaxhelpers-tasks.inc.php:116
 #, fuzzy
 msgid "Setup new users with access to Nagios XI."
-msgstr "设置新用户访问Nagios的XI的. "
+msgstr "设置新用户访问Nagios XI的. "
 
 #: html/includes/components/xicore/ajaxhelpers-tasks.inc.php:160
 #, fuzzy
@@ -21073,7 +21073,7 @@ msgstr "没有检测到的问题. "
 msgid ""
 "A new version of Nagios XI is available.  The new version may have important"
 " security or bug fixes that should be applied to this server."
-msgstr "Nagios的XI的新版本是可用的. 新的版本可能有重要的安全性或缺陷修复的, 应该应用于该服务器. "
+msgstr "Nagios XI的新版本是可用的. 新的版本可能有重要的安全性或缺陷修复的, 应该应用于该服务器. "
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:201
 #, fuzzy
@@ -21096,7 +21096,7 @@ msgid ""
 "The last update check failed.  Make sure your Nagios XI server can access the Internet and check for program updates.\n"
 "\tStaying updated with the latest release of Nagios XI is important to preventing security breaches."
 msgstr ""
-"最后更新检查失败. 请确保您的Nagios的XI服务器可以访问互联网和检查程序更新.  \n"
+"最后更新检查失败. 请确保您的Nagios XI服务器可以访问互联网和检查程序更新.  \n"
 "\tStaying更新, 最新版本的Nagios XI是很重要的, 以防止安全漏洞. "
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:211
@@ -21200,7 +21200,7 @@ msgstr "获取最新的更新"
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:652
 #, fuzzy
 msgid "Your Nagios XI installation is up to date."
-msgstr "Nagios的XI安装的是最新的. "
+msgstr "Nagios XI安装的是最新的. "
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:666
 #, fuzzy
@@ -22434,7 +22434,7 @@ msgstr "核心配置管理器"
 msgid ""
 "Configure monitored elements using an advanced web interface for modifying "
 "your Nagios XI monitoring configuration.  Recommended for experienced users."
-msgstr "配置监视的元素, 采用先进的web界面修改Nagios的XI监控组态. 推荐有经验的用户. "
+msgstr "配置监视的元素, 采用先进的web界面修改Nagios XI监控组态. 推荐有经验的用户. "
 
 #: html/includes/components/ccm/ccm.inc.php:625
 #, fuzzy
@@ -23558,7 +23558,7 @@ msgstr "首页"
 #: html/includes/lang/en.inc.php:482
 #, fuzzy
 msgid "Views"
-msgstr "浏览次数"
+msgstr "查看"
 
 #: html/includes/header.inc.php:112 html/includes/header.inc.php:190
 #: html/includes/lang/en.inc.php:484
@@ -24472,17 +24472,17 @@ msgstr "发生错误. 请稍后再试一次. "
 #: html/includes/lang/en.inc.php:271
 #, fuzzy
 msgid "Nagios XI Password Reset"
-msgstr "Nagios的XI密码重设"
+msgstr "Nagios XI密码重设"
 
 #: html/includes/lang/en.inc.php:272
 #, fuzzy
 msgid "Nagios XI Password Changed"
-msgstr "Nagios的XI更改密码"
+msgstr "Nagios XI更改密码"
 
 #: html/includes/lang/en.inc.php:273
 #, fuzzy
 msgid "Nagios XI Account Created"
-msgstr "Nagios的XI创建的帐户"
+msgstr "Nagios XI创建的帐户"
 
 #: html/includes/lang/en.inc.php:275
 #, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, php-format, fuzzy
@@ -24496,11 +24496,11 @@ msgid ""
 "%s\n"
 "\n"
 msgstr ""
-"您的Nagios的XI帐户密码已重置为: \n"
+"您的Nagios XI帐户密码已重置为: \n"
 "\n"
 "%s \n"
 "\n"
-"您可以登录到Nagios的XI在下面的网址: \n"
+"您可以登录到Nagios XI在下面的网址: \n"
 "\n"
 "%s \n"
 "\n"
@@ -24515,7 +24515,7 @@ msgid ""
 "URL: %s\n"
 "\n"
 msgstr ""
-"Nagios的XI帐户的密码已更改管理员. 您可以登录以下信息: \n"
+"Nagios XI帐户的密码已更改管理员. 您可以登录以下信息: \n"
 "\n"
 "用户名: %s \n"
 "密码: %s \n"
@@ -25269,7 +25269,7 @@ msgstr "提供主机和服务的通知已发送到联系人的历史记录. "
 msgid ""
 "Nagios XI includes several proven, enterprise-grade Open Source addons.  You"
 " may access these addons directly using the links below."
-msgstr "Nagios的XI包括一些成熟的企业级开源插件. 您可以直接使用下面的链接访问这些插件. "
+msgstr "Nagios XI包括一些成熟的企业级开源插件. 您可以直接使用下面的链接访问这些插件. "
 
 #: html/includes/lang/en.inc.php:619
 #, fuzzy
@@ -25324,7 +25324,7 @@ msgstr "提交命令"
 #: html/includes/lang/en.inc.php:640 html/includes/lang/en.inc.php:641
 #, fuzzy
 msgid "Help for Nagios XI"
-msgstr "Nagios的XI帮助"
+msgstr "Nagios XI帮助"
 
 #: html/includes/lang/en.inc.php:642
 #, fuzzy
@@ -25675,7 +25675,7 @@ msgstr ", 然后再继续使用本软件, 您必须同意在Nagios软件许可�
 #: html/includes/lang/en.inc.php:790 html/includes/lang/en.inc.php:791
 #, fuzzy
 msgid "Nagios XI Installer"
-msgstr "Nagios的XI安装"
+msgstr "Nagios XI安装"
 
 #: html/includes/lang/en.inc.php:792
 #, fuzzy
@@ -25692,7 +25692,7 @@ msgstr "安装完成"
 #: html/includes/lang/en.inc.php:796
 #, fuzzy
 msgid "Congratulations! You have successfully installed Nagios XI."
-msgstr "恭喜！您已经成功安装Nagios的XI. "
+msgstr "恭喜！您已经成功安装Nagios XI. "
 
 #: html/includes/lang/en.inc.php:799 html/includes/lang/en.inc.php:800
 #, fuzzy
@@ -26140,7 +26140,7 @@ msgid ""
 "href='http://www.nagios.com/contact/' target='_blank'>Contact us</a> for "
 "pricing information."
 msgstr ""
-"管理在此系统上已安装的组件. 需要创建一个自定义组件扩展Nagios的XI的功能<a "
+"管理在此系统上已安装的组件. 需要创建一个自定义组件扩展Nagios XI的功能<a "
 "href='http://www.nagios.com/contact/' target='_blank'>联系我们</a>的定价信息. "
 
 #: html/includes/lang/en.inc.php:957
@@ -26232,7 +26232,7 @@ msgid ""
 "and informational messages.<br><b>Note:</b> Mail messages may fail to be "
 "delivered if your XI server does not have a valid DNS name."
 msgstr ""
-"修改设置, 使用Nagios的XI系统发送电子邮件警报和信息性消息.  <br> "
+"修改设置, 使用Nagios XI系统发送电子邮件警报和信息性消息.  <br> "
 "<b>注: Mail</b>邮件可能无法交付您的XI服务器, 如果没有一个有效的DNS名称. "
 
 #: html/includes/lang/en.inc.php:992
@@ -26510,7 +26510,7 @@ msgid ""
 "href='http://www.nagios.com/products/nagiosxi/' "
 "target='_blank'>www.nagios.com</a> to get the latest versions of Nagios XI."
 msgstr ""
-"确保您的IT基础设施进行监控, 有效地保持了Nagios的XI的最新更新. 请访问<a "
+"确保您的IT基础设施进行监控, 有效地保持了Nagios XI的最新更新. 请访问<a "
 "href='http://www.nagios.com/products/nagiosxi/' "
 "target='_blank'>www.nagios.com</a>的Nagios XI获得最新的版本. "
 
@@ -26562,7 +26562,7 @@ msgstr "完成升级"
 msgid ""
 "Your Nagios XI instance requires some modifications to complete the upgrade "
 "process.  Don't worry - its easy."
-msgstr "您的的Nagios的XI实例需要一些修改, 以完成升级过程. 不要担心 - 它很容易. "
+msgstr "您的的Nagios XI实例需要一些修改, 以完成升级过程. 不要担心 - 它很容易. "
 
 #: html/includes/lang/en.inc.php:1140 html/includes/lang/en.inc.php:1141
 #, fuzzy
@@ -26572,7 +26572,7 @@ msgstr "升级完成"
 #: html/includes/lang/en.inc.php:1142
 #, fuzzy
 msgid "Congratulations!  Your Nagios XI upgrade has completed successfully."
-msgstr "恭喜！您的Nagios的XI升级已成功完成. "
+msgstr "恭喜！您的Nagios XI升级已成功完成. "
 
 #: html/includes/lang/en.inc.php:1144 html/includes/lang/en.inc.php:1145
 #, fuzzy
@@ -26620,7 +26620,7 @@ msgstr "检查数据传输"
 msgid ""
 "Configure settings for transferring host and service check results to and "
 "from this Nagios XI server."
-msgstr "传输的主机和服务检查的结果, 从这个Nagios的XI服务器配置设置. "
+msgstr "传输的主机和服务检查的结果, 从这个Nagios XI服务器配置设置. "
 
 #: html/includes/lang/en.inc.php:1166 html/includes/lang/en.inc.php:1167
 #, fuzzy
@@ -26665,7 +26665,7 @@ msgid ""
 "href='http://www.nagios.com/activate/' "
 "target='_blank'>http://www.nagios.com/activate</a></p>"
 msgstr ""
-"<p>您必须激活您的许可证密钥访问Nagios的XI的某些功能. 您可以获取激活码<a "
+"<p>您必须激活您的许可证密钥访问Nagios XI的某些功能. 您可以获取激活码<a "
 "href='http://www.nagios.com/activate/' "
 "target='_blank'>http://www.nagios.com/activate</a> </p>"
 
@@ -26869,7 +26869,7 @@ msgstr "时区"
 #: html/install.php:322
 #, fuzzy
 msgid "You may now login to Nagios XI using the following credentials"
-msgstr "现在, 您可以使用下面的凭据登录到Nagios的XI"
+msgstr "现在, 您可以使用下面的凭据登录到Nagios XI"
 
 #: html/rr.php:32
 #, fuzzy
@@ -26974,7 +26974,7 @@ msgstr "提高转速"
 #: html/help/main.php:61
 #, fuzzy
 msgid "Get help for Nagios XI online."
-msgstr "获得Nagios的XI在线帮助. "
+msgstr "获得Nagios XI在线帮助. "
 
 #: html/help/main.php:65
 #, fuzzy
@@ -27220,7 +27220,7 @@ msgstr "您的用户代理不支持框架, 或被配置为不显示框架. "
 msgid ""
 "Tools are utilities that you can quickly access from Nagios using your web "
 "browser."
-msgstr "这些工具是实用工具, 您可以快速访问来自Nagios使用您的Web浏览器. "
+msgstr "这些工具是实用工具, 您可以使用您的Web浏览器通过Nagios快速访问. "
 
 #: html/tools/main.php:53
 #, fuzzy
@@ -27246,7 +27246,7 @@ msgstr "添加一个新的工具"
 #: html/tools/commontools.php:76
 #, fuzzy
 msgid "Access common tools that have been defined by the administrator."
-msgstr "已经由管理员定义的访问常用的工具. "
+msgstr "已经由管理员定义的常用工具. "
 
 #: html/tools/commontools.php:85 html/tools/commontools.php:214
 #: html/tools/mytools.php:73 html/tools/mytools.php:184
@@ -27262,7 +27262,7 @@ msgstr "您还没有定义任何工具. "
 #: html/tools/commontools.php:111
 #, fuzzy
 msgid "No common tools have been defined yet."
-msgstr "没有共同的工具, 已被定义. "
+msgstr "没有定义常用的工具. "
 
 #: html/tools/commontools.php:134 html/tools/mytools.php:116
 #, fuzzy
@@ -27273,23 +27273,23 @@ msgstr "无效的工具. 请从下面的列表中选择一个工具. "
 #: html/tools/mytools.php:261
 #, fuzzy
 msgid "New Tool"
-msgstr "新工具"
+msgstr "新建工具"
 
 #: html/tools/commontools.php:201
 #, fuzzy
 msgid ""
 "Use this form to define a new tool that can be quickly accessed from Nagios."
-msgstr "使用此表来定义一个新工具, 可以快速访问来自Nagios. "
+msgstr "使用该表来定义一个新工具, 可以在Nagios中快速访问. "
 
 #: html/tools/commontools.php:219
 #, fuzzy
 msgid "The name you want to use for this tool."
-msgstr "您要使用这个工具的名称. "
+msgstr "您要使用的工具名称. "
 
 #: html/tools/commontools.php:230
 #, fuzzy
 msgid "The URL used to access this tool."
-msgstr "使用的URL来访问此工具. "
+msgstr "使用的URL来访问该工具. "
 
 #: html/tools/commontools.php:282 html/tools/mytools.php:242
 #, fuzzy
@@ -27299,7 +27299,7 @@ msgstr "无效的工具. "
 #: html/tools/commontools.php:291 html/tools/mytools.php:251
 #, fuzzy
 msgid "Tool deleted."
-msgstr "工具删除. "
+msgstr "工具已删除. "
 
 #: html/tools/commontools.php:326 html/tools/mytools.php:280
 #, fuzzy
@@ -27309,93 +27309,93 @@ msgstr "无效的工具URL. "
 #: html/tools/commontools.php:328 html/tools/mytools.php:282
 #, fuzzy
 msgid "No tool name specified."
-msgstr "没有指定的工具名称. "
+msgstr "没有指定工具的名称. "
 
 #: html/tools/commontools.php:338 html/tools/mytools.php:292
 #, fuzzy
 msgid "Tool saved."
-msgstr "工具保存. "
+msgstr "工具已保存. "
 
 #: html/tools/mytools.php:64
 #, fuzzy
 msgid "Your personal tools that you have defined are available only to you."
-msgstr "您已经定义了您的个人工具, 只提供给您. "
+msgstr "您已经定义了一个仅供您个人使用的工具, . "
 
 #: html/tools/mytools.php:178
 #, fuzzy
 msgid ""
 "Use this form to define a new tool that you can quickly access from Nagios."
-msgstr "使用此表来定义一个新工具, 可以快速访问来自Nagios. "
+msgstr "使用该表来定义一个新工具, 可以在Nagios中快速访问. "
 
 #: html/tools/mytools.php:189
 #, fuzzy
 msgid "The name you want to use for this tool"
-msgstr "您要使用这个工具的名称"
+msgstr "您要使用的工具名称"
 
 #: html/tools/mytools.php:199
 #, fuzzy
 msgid "The URL used to access this tool"
-msgstr "使用的URL来访问此工具"
+msgstr "使用的URL来访问该工具"
 
 #: html/perfgraphs/index.php:108
 #, fuzzy
 msgid "Graph Selection"
-msgstr "走势图选择"
+msgstr "视图选择"
 
 #: html/perfgraphs/index.php:122
 #, fuzzy
 msgid "All Host Graphs"
-msgstr "所有的主机图"
+msgstr "所有主机视图"
 
 #: html/perfgraphs/index.php:149 html/perfgraphs/index.php:295
 #, fuzzy
 msgid "4 Hour View"
-msgstr "4小时查看"
+msgstr "查看最近4小时"
 
 #: html/perfgraphs/index.php:152 html/perfgraphs/index.php:300
 #, fuzzy
 msgid "24 Hour View"
-msgstr "24小时查看"
+msgstr "查看最近24小时"
 
 #: html/perfgraphs/index.php:155
 #, fuzzy
 msgid "Week View"
-msgstr "按周查看"
+msgstr "查看最近一周"
 
 #: html/perfgraphs/index.php:158
 #, fuzzy
 msgid "Month View"
-msgstr "月视图"
+msgstr "查看最近一月"
 
 #: html/perfgraphs/index.php:161
 #, fuzzy
 msgid "Year View"
-msgstr "按年查看"
+msgstr "查看最近一年"
 
 #: html/perfgraphs/index.php:167 html/perfgraphs/index.php:320
 #, fuzzy
 msgid "Custom Period"
-msgstr "自定义期"
+msgstr "自定义时间周期"
 
 #: html/perfgraphs/index.php:277
 #, fuzzy
 msgid "Host Performance Graphs"
-msgstr "主机的性能图"
+msgstr "主机的性能视图"
 
 #: html/perfgraphs/index.php:305
 #, fuzzy
 msgid "1 Week View"
-msgstr "1周查看"
+msgstr "查看最近一周"
 
 #: html/perfgraphs/index.php:310
 #, fuzzy
 msgid "1 Month View"
-msgstr "1月视图"
+msgstr "查看最近一月"
 
 #: html/perfgraphs/index.php:315
 #, fuzzy
 msgid "1 Year View"
-msgstr "1年查看"
+msgstr "查看最近一年"
 
 #: html/perfgraphs/index.php:658
 #, fuzzy
@@ -27405,7 +27405,7 @@ msgstr "主机性能曲线图"
 #: html/ajaxhelper.php:713
 #, fuzzy
 msgid "NO TITLE"
-msgstr "NO TITLE"
+msgstr "无标题"
 
 #: html/login.php:106
 #, fuzzy
@@ -27420,22 +27420,22 @@ msgstr "选择语言: "
 #: html/login.php:341
 #, fuzzy
 msgid "Username/password match Nagios XI database information."
-msgstr "用户名/密码匹配的Nagios的十一数据库信息. "
+msgstr "用户名/密码匹配 Nagios XI 的数据库信息. "
 
 #: html/login.php:343
 #, fuzzy
 msgid "User authenticated against Nagios XI credentials"
-msgstr "用户身份验证对Nagios的XI凭证的"
+msgstr "用户身份验证 Nagios XI 的凭证"
 
 #: html/login.php:346
 #, fuzzy
 msgid "Username/password do not match data stored in Nagios XI database."
-msgstr "用户名/密码不匹配, 在Nagios XI数据库中存储的数据. "
+msgstr "用户名/密码不匹配在Nagios XI数据库中存储的数据. "
 
 #: html/login.php:349
 #, fuzzy
 msgid "Error running SQL query against Nagios XI database."
-msgstr "对Nagios的XI数据库运行SQL查询时出现错误. "
+msgstr "Nagios XI 数据库运行SQL查询时出现错误. "
 
 #: html/login.php:379
 #, fuzzy
@@ -27452,7 +27452,7 @@ msgstr "指定的用户帐户已被禁用或不存在. "
 msgid ""
 "The specified user account has not been setup in this application - contact "
 "your Nagios XI administrator."
-msgstr "指定的用户帐户一直没有在此应用程序设置 - 请联系您的Nagios XI管理员. "
+msgstr "指定的用户帐户一直没有在该应用程序设置 - 请联系您的Nagios XI管理员. "
 
 #: html/login.php:509
 #, fuzzy
@@ -27468,7 +27468,7 @@ msgstr "用户登入"
 #: html/login.php:567
 #, fuzzy
 msgid "Error: You cannot logout when using HTTP Basic Authentication."
-msgstr "错误: 您可以不注销时使用HTTP基本身份验证. "
+msgstr "错误: 使用HTTP基本身份验证时, 您无法注销. "
 
 #: html/login.php:576
 #, fuzzy
@@ -27485,7 +27485,7 @@ msgstr "输入您的用户名有关于如何重置密码的方向发送了一封
 #: html/login.php:702
 #, fuzzy
 msgid "Nagios XI Password Reset Request"
-msgstr "Nagios的XI密码重设"
+msgstr "Nagios XI密码重设"
 
 #: html/login.php:708
 #, fuzzy
@@ -27569,7 +27569,7 @@ msgstr "无效的或不指定的命令. 尝试"
 #: html/admin/components.php:100
 #, fuzzy
 msgid "You can find additional components for Nagios XI at"
-msgstr "您可以找到更多的组件在Nagios的XI"
+msgstr "您可以找到更多的组件在Nagios XI"
 
 #: html/admin/components.php:117
 #, fuzzy
@@ -27650,7 +27650,7 @@ msgstr "取得Dashlets"
 #: html/admin/dashlets.php:105
 #, fuzzy
 msgid "You can find additional dashlets for Nagios XI at"
-msgstr "您可以找到更多的dashlets Nagios的XI"
+msgstr "您可以找到更多的dashlets Nagios XI"
 
 #: html/admin/credentials.php:145
 #, fuzzy
@@ -27672,7 +27672,7 @@ msgstr "用户更新系统的安全认证"
 msgid ""
 "Your Nagios XI license is currently activated (or does not require "
 "activation)"
-msgstr "您的Nagios的XI许可证是当前激活的(或不需要激活)"
+msgstr "您的Nagios XI许可证是当前激活的(或不需要激活)"
 
 #: html/admin/activate.php:111
 #, fuzzy
@@ -27851,7 +27851,7 @@ msgid ""
 "monitoring environments, and in environments where external applications and"
 " services send data to Nagios."
 msgstr ""
-"这些设置会影响了Nagios的XI接受和处理被动的主机和服务检查的结果, 从外部应用程序, 服务和远程Nagios的服务器的能力. 启用入站检查是非常重要的, 在分布式监控环境, 以及外部应用程序和服务的环境中, 将数据发送到Nagios的. "
+"这些设置会影响了Nagios XI接受和处理被动的主机和服务检查的结果, 从外部应用程序, 服务和远程Nagios的服务器的能力. 启用入站检查是非常重要的, 在分布式监控环境, 以及外部应用程序和服务的环境中, 将数据发送到Nagios的. "
 
 #: html/admin/dtinbound.php:105
 #, fuzzy
@@ -28248,7 +28248,7 @@ msgid ""
 "These settings affect Nagios XI's ability to send host and service checks "
 "results to remote Nagios servers.  Enabling outbound checks is important in "
 "distributed monitoring environments."
-msgstr "这些设置会影响了Nagios的XI能够发送到远程的Nagios服务器的主机和服务检查的结果. 在分布式监控环境中, 启用出站检查是很重要的. "
+msgstr "这些设置会影响了Nagios XI能够发送到远程的Nagios服务器的主机和服务检查的结果. 在分布式监控环境中, 启用出站检查是很重要的. "
 
 #: html/admin/dtoutbound.php:114
 #, fuzzy
@@ -28362,7 +28362,7 @@ msgid ""
 "(HTTPS) in order to access the NRDP API. You may have to open firewall ports"
 " to allow access"
 msgstr ""
-"每个目标主机必须安装有NRDP, 并配置了相应的记号上面指定的. 此外, 该Nagios的XI服务器必须能够与每个远程主机上的80端口的TCP(HTTP)或443"
+"每个目标主机必须安装有NRDP, 并配置了相应的记号上面指定的. 此外, 该Nagios XI服务器必须能够与每个远程主机上的80端口的TCP(HTTP)或443"
 " TCP(HTTPS)为了访问NRDP的API. 您可能必须打开防火墙端口以允许访问"
 
 #: html/admin/dtoutbound.php:275
@@ -28393,7 +28393,7 @@ msgid ""
 "Nagios XI server must be able to contact each remote host on port 5667 TCP "
 "in order to access NSCA. You may have to open firewall ports to allow access"
 msgstr ""
-"每一个目标主机必须运行NSCA和配置上面指定的相同的密码和加密方法. 此外, 该Nagios的XI服务器必须能够与每个远程主机上的端口5667 "
+"每一个目标主机必须运行NSCA和配置上面指定的相同的密码和加密方法. 此外, 该Nagios XI服务器必须能够与每个远程主机上的端口5667 "
 "TCP才能访问NSCA. 您可能必须打开防火墙端口以允许访问"
 
 #: html/admin/dtoutbound.php:406
@@ -28517,7 +28517,7 @@ msgstr "获取插件"
 msgid ""
 "Find hundreds of community-developed plugins to extend Nagios XI's "
 "capabilities at"
-msgstr "社区开发的插件扩展Nagios的XI的功能, 可以找到数百篇"
+msgstr "社区开发的插件扩展Nagios XI的功能, 可以找到数百篇"
 
 #: html/admin/monitoringplugins.php:242
 #, fuzzy
@@ -28558,7 +28558,7 @@ msgstr "要解决此问题, 请按照下列步骤操作"
 
 #: html/admin/configpermscheck.php:173
 msgid "Login to your Nagios XI server via SSH as the"
-msgstr "登录到您的Nagios的XI通过SSH服务器"
+msgstr "登录到您的Nagios XI通过SSH服务器"
 
 #: html/admin/configpermscheck.php:174
 msgid "Execute the following commands"
@@ -28590,7 +28590,7 @@ msgstr ""
 #: html/admin/configpermscheck.php:207
 #, fuzzy
 msgid "Login to your Nagios XI server via SSH as the <i>root</i> user"
-msgstr "登录到您的Nagios的XI <i>作为</i> root用户通过SSH服务器"
+msgstr "登录到您的Nagios XI <i>作为</i> root用户通过SSH服务器"
 
 #: html/admin/configpermscheck.php:208
 #, fuzzy
@@ -28740,7 +28740,7 @@ msgstr "页面设置"
 #: html/admin/performance.php:228
 #, fuzzy
 msgid "Use Unified Tactical Overview"
-msgstr "使用统一的战术概述"
+msgstr "使用统一的策略概述"
 
 #: html/admin/performance.php:241
 #, fuzzy
@@ -28755,7 +28755,7 @@ msgstr "使用统一的服务组屏幕"
 #: html/admin/performance.php:270
 #, fuzzy
 msgid "Global Dashlet Settings"
-msgstr "全球Dashlet设置"
+msgstr "全局Dashlet设置"
 
 #: html/admin/performance.php:283
 #, fuzzy
@@ -28788,7 +28788,7 @@ msgstr "这些选项允许您指定数据保留, 优化和修复的Nagios XI使�
 #: html/admin/performance.php:337
 #, fuzzy
 msgid "Nagios XI Database"
-msgstr "Nagios的XI数据库"
+msgstr "Nagios XI数据库"
 
 #: html/admin/performance.php:343
 #, fuzzy
@@ -29027,7 +29027,7 @@ msgid ""
 "Recommended for Firefox or Chrome. Internet Explorer requires Compatibility "
 "Mode to be enabled in order to use the SSH Terminal."
 msgstr ""
-"终端为您提供了一个方便的, 基于Web的Nagios的XI服务器的终端会话. 您可以登录到您的Nagios的XI服务器使用这个接口进行升级, 运行诊断程序, 多. 推荐使用Firefox或Chrome. "
+"终端为您提供了一个方便的, 基于Web的Nagios XI服务器的终端会话. 您可以登录到您的Nagios XI服务器使用这个接口进行升级, 运行诊断程序, 多. 推荐使用Firefox或Chrome. "
 " Internet Explorer需要启用兼容模式, 以便使用SSH终端. "
 
 #: html/admin/ajaxterm.php:129
@@ -29071,7 +29071,7 @@ msgstr "发生错误发送测试电子邮件！"
 #: html/admin/configwizards.php:90 html/config/monitoringwizard.php:132
 #, fuzzy
 msgid "You can find additional configuration wizards for Nagios XI at"
-msgstr "您可以找到更多的配置向导, 在Nagios的XI"
+msgstr "您可以找到更多的配置向导, 在Nagios XI"
 
 #: html/admin/configwizards.php:106
 #, fuzzy
@@ -29861,7 +29861,7 @@ msgstr "更改您的手机设置"
 #: html/account/testnotification.php:173
 #, fuzzy
 msgid "Nagios XI Email Test"
-msgstr "Nagios的XI电子邮件测试"
+msgstr "Nagios XI电子邮件测试"
 
 #: html/account/testnotification.php:174
 #, fuzzy
@@ -30750,7 +30750,7 @@ msgstr "显示服务的性能曲线图"
 #~ "It appears as though the VMware SDK has not yet been installed on your "
 #~ "Nagios XI server.  You must install the SDK before you are able to use this "
 #~ "wizard."
-#~ msgstr "虽然在VMware SDK尚未被安装在您的Nagios的XI服务器. 您必须安装SDK之前, 您可以使用此向导. "
+#~ msgstr "虽然在VMware SDK尚未被安装在您的Nagios XI服务器. 您必须安装SDK之前, 您可以使用此向导. "
 
 #~ msgid "Monitors the physical (real) memory usage on the machine"
 #~ msgstr "监控物理(真正的)机器上的内存使用情况"
