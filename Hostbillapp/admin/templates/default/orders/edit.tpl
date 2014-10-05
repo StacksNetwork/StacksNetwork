@@ -24,7 +24,7 @@
                         </tr>
                         <tr>
                             <td >{$lang.Client}</td>
-                            <td ><a href="?cmd=clients&action=show&id={$details.client_id}">{$details.firstname} {$details.lastname}</a> </td>
+                            <td ><a href="?cmd=clients&action=show&id={$details.client_id}">{$details.lastname} {$details.firstname}</a> </td>
                             <td >{$lang.Amount}</td>
                             <td >{$details.total|price:$details.currency_id}</td>
                         </tr>
@@ -69,7 +69,7 @@
                                 <td>
                                     <span>
                                     {if $details.staff_member_id}
-                                        <a href="?cmd=editadmins&action=administrator&id={$details.staff_member_id}">{$details.admin_firstname} {$details.admin_lastname}</a>
+                                        <a href="?cmd=editadmins&action=administrator&id={$details.staff_member_id}">{$details.admin_lastname} {$details.admin_firstname}</a>
                                     {else}
                                         {$lang.none}
                                     {/if}
@@ -81,7 +81,7 @@
                                         <select name="staff_member_id" class="inp" >
                                             <option value="0" >{$lang.none}</option>
                                             {foreach from=$staff item=adm}
-                                                <option value="{$adm.id}" {if $details.staff_member_id==$adm.id}selected="selected"{/if} >{$adm.firstname} {$adm.lastname}</option>
+                                                <option value="{$adm.id}" {if $details.staff_member_id==$adm.id}selected="selected"{/if} >{$adm.lastname} {$adm.firstname}</option>
                                             {/foreach}
                                         </select>
                                         <input type="submit" name="changeownership" value="{$lang.Save}"/>
@@ -91,12 +91,12 @@
                                 <td>{$lang.referral}</td>
                                 <td>
                                     {if $referral}
-                                        <a href="?cmd=affiliates&action=affiliate&id={$referral.id}">{$referral.firstname} {$referral.lastname}</a>
+                                        <a href="?cmd=affiliates&action=affiliate&id={$referral.id}">{$referral.lastname} {$referral.firstname}</a>
                                     {elseif $referrals}
                                         <select name="referral" onchange="if($(this).val()!='0')$('#refer').css('visibility','visible');else $('#refer').css('visibility','hidden');">
                                             <option selected="selected" value="0">{$lang.none}</option>
                                                                 {foreach from=$referrals item=ref}
-                                            <option value="{$ref.id}">#{$ref.id} {$ref.firstname} {$ref.lastname}</option>
+                                            <option value="{$ref.id}">#{$ref.id} {$ref.lastname} {$ref.firstname}</option>
                                                                 {/foreach}
                                         </select>
                                         <input type="submit" name="refered" value="{$lang.Assign}" style="visibility: hidden" id="refer"/>

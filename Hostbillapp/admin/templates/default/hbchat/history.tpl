@@ -95,9 +95,9 @@
         <tbody>
             <tr>
                 <th width="60"><a href="?cmd=hbchat&action=history&orderby=id|ASC"  class="sortorder">聊天ID</a></th>
-                <th  width="160"><a href="?cmd=hbchat&action=history&orderby=date_start|ASC"  class="sortorder">{$lang.Date}</a></th>
+                <th  width="160"><a href="?cmd=hbchat&action=history&orderby=date_start|ASC"  class="sortorder">{$lang.date}</a></th>
                 <th width="160"><a href="?cmd=hbchat&action=history&orderby=visitor_name|ASC"  class="sortorder">用户名</a></th>
-                <th><a href="?cmd=hbchat&action=history&orderby=subject|ASC"  class="sortorder">Subject</a></th>
+                <th><a href="?cmd=hbchat&action=history&orderby=subject|ASC"  class="sortorder">主题</a></th>
                 <th width="20">&nbsp;</th>
                 <th width="20">&nbsp;</th>
             </tr>

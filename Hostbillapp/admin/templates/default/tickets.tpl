@@ -43,7 +43,7 @@
                     {if $dept.name == 'total' && $dept.id == 0}
                         {if $currentdept=='all' && !$assigned}{assign var=opendept value=true}{/if}
                         {assign var=id_parm value="all"}
-                        {assign var=name_parm value="All Tickets"}
+                        {assign var=name_parm value="所有工单"}
                         {assign var=count_parm value=$mytickets.total}
                     {elseif $dept.name == 'assigned' && $dept.id == 0}
                         {if $currentdept=='all' && $assigned}{assign var=opendept value=true}{/if}
@@ -102,10 +102,10 @@
 
                 <a href="?cmd=ticketbans"  class="tstyled {if $cmd=='ticketbans'}selected{/if}">{$lang.ticketfilters|capitalize}</a>
                 <a href="?cmd=ticketshare"  class="tstyled {if $cmd=='ticketshare'}selected{/if}">{$lang.ticketshare|capitalize}</a>
-                <a href="?cmd=supportrating"  class="tstyled {if $cmd=='supportrating'}selected{/if}">Ticket Ratings</a>
-                <a href="?cmd=ticketviews"  class="tstyled {if $cmd=='ticketviews' && !$tview}selected{/if}">Ticket Views</a>
+                <a href="?cmd=supportrating"  class="tstyled {if $cmd=='supportrating'}selected{/if}">工单评分</a>
+                <a href="?cmd=ticketviews"  class="tstyled {if $cmd=='ticketviews' && !$tview}selected{/if}">工单视图</a>
                 {if $enableFeatures.supportext}
-                    <a href="?cmd=tickettimetracking"  class="tstyled {if $cmd=='tickettimetracking'}selected{/if}">Support Rates</a>
+                    <a href="?cmd=tickettimetracking"  class="tstyled {if $cmd=='tickettimetracking'}selected{/if}">人工服务费率</a>
                 {/if}
             {/if}
             <br />

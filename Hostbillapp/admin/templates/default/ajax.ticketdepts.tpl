@@ -8,9 +8,9 @@
                 <td>{if $dept.visible=='1'}{$lang.No}{else}{$lang.Yes}{/if}</td>
                 <td>
                     <input type="hidden" name="sort[]" value="{$dept.id}" />
-                {if !$smarty.foreach.cat.first}<a href="javascript:void(0);" onclick="sortit(this, 'up')"  class="upsorter">Up</a>{/if}</td>
-            <td>{if !$smarty.foreach.cat.last}<a href="javascript:void(0);" onclick="sortit(this, 'down')"  class="downsorter">Down</a>{/if}</td>
-            <td><a href="?cmd=ticketdepts&make=delete&id={$dept.id}&security_token={$security_token}" class="delbtn" onclick="return confirm('{$lang.deletedeptconfirm}');">Delete</a></td>
+                {if !$smarty.foreach.cat.first}<a href="javascript:void(0);" onclick="sortit(this, 'up')"  class="upsorter">上班</a>{/if}</td>
+            <td>{if !$smarty.foreach.cat.last}<a href="javascript:void(0);" onclick="sortit(this, 'down')"  class="downsorter">下班</a>{/if}</td>
+            <td><a href="?cmd=ticketdepts&make=delete&id={$dept.id}&security_token={$security_token}" class="delbtn" onclick="return confirm('{$lang.deletedeptconfirm}');">删除</a></td>
         </tr>
     {/foreach}
     <script type="text/javascript">bindTicketEvents();</script>
@@ -116,8 +116,8 @@
                 </tr>
                 <tr>
                     <td align="right">
-                        <strong>Staff auto-assignment</strong>
-                        <a href="#" title="New tickets will be automatically distributed by and assigned to selected staff members." class="vtip_description" ></a>
+                        <strong>自动分配员工</strong>
+                        <a href="#" title="新的工单将自动分配给已选定的工作人员." class="vtip_description" ></a>
                     </td>
                     <td class="staff-assign-list">
                         {foreach from=$admins item=adm}
@@ -133,17 +133,17 @@
                 </tr>
                 <tr>
                     <td align="right" valign="top">
-                        <strong>Aassignment Options</strong>
+                        <strong>分配选项</strong>
                     <td>
                     <input id="replyassignment" type="checkbox" 
                             {if $submit.replyassignment==1}checked="checked"{/if}
-                            name="replyassignment" value="1" /> <b>Auto-assign first admin to reply</b> 
-                    <a href="#" title="Ticket will be assigned to staff members as soon as they reply to a ticket." class="vtip_description" ></a>
+                            name="replyassignment" value="1" /> <b>自动分配给首位回复的管理员</b> 
+                    <a href="#" title="工单将在员工回复后第一时间分配到该员工名下." class="vtip_description" ></a>
                     <br/>
                     <input type="checkbox" 
                             {if $submit.replyreassign==1}checked="checked"{/if}
-                            name="replyreassign" value="1" /> <b>Re-assign ticket after staff reply</b> 
-                    <a href="#" title="Assigment will be changed to staff member that added last reply. Only for auto-assignment enabled staff members" class="vtip_description" ></a>
+                            name="replyreassign" value="1" /> <b>员工回复后重新分配</b> 
+                    <a href="#" title="工单将会重新分配给最后一名回复的员工. 仅支持开启了自动分配功能后" class="vtip_description" ></a>
                 
                 <script type="text/javascript">
                     {literal}
@@ -184,8 +184,8 @@
                 <td>{$mail.email}</td>
                 <td>{if $mail.method=='POP'}{$lang.popmethod}{else}{$lang.pipemethod}{/if}</td>
                 <td>
-                    <a href="#" class="editbtn" onclick="editImportMail(this); return false">Edit</a>
-                    {if $key>0}<a href="#" class="editbtn" onclick="removeImportMail(this); return false">Delete</a>{/if}
+                    <a href="#" class="editbtn" onclick="editImportMail(this); return false">编辑</a>
+                    {if $key>0}<a href="#" class="editbtn" onclick="removeImportMail(this); return false">删除</a>{/if}
                 </td>
             </tr>
         {/if}
@@ -203,7 +203,7 @@
                     <span class="wizard">{$lang.test_configuration}</span>
                 </a>
             </td>
-            <td>{if $key>0}<a href="#" class="editbtn" onclick="removeImportMail(this); return false">Delete</a>{/if}</td>
+            <td>{if $key>0}<a href="#" class="editbtn" onclick="removeImportMail(this); return false">删除</a>{/if}</td>
         </tr>
         <tr id="popform"  {if $mail.email || $mail.method!='POP' || !$mail.method}style="display:none"{/if}>
             <td colspan="3">
@@ -235,18 +235,18 @@
         <tr>
             <td colspan="1">
                 <a href="#" class="editbtn" onclick="addNewImportMail(this);
-                return false">Add another import email</a>
+                return false">添加另一个导入的邮件</a>
             </td>
             <td colspan="2">
                 <div id="pipeIportLine" {if !$pipeImportOn}style="display: none"{/if}>
-                    <label class="pipe-label" for="pipeIportInput" >For PIPE import you will need to setup your email forwarder using given command</label>
+                    <label class="pipe-label" for="pipeIportInput" >For PIPE 导入您需要设置您的邮件代理支持使用命令</label>
                     <input id="pipeIportInput" readonly="readonly" value=" | php -q {$path}"  style="width:50%" class="inp"/>
                     <div style="display:none" id="pipe_testing">
-                        <h2>PIPE Import Test</h2>
+                        <h2>PIPE 导入测试</h2>
                         <div id="pipe_testing_result">
                             <ul>
-                            <li {if $action!='edit'}style="color:red"{/if}>Save this department settings before performing import test</li>
-                            <li>Make sure that Email forwarder is added in your control panel</li>
+                            <li {if $action!='edit'}style="color:red"{/if}>执行导入测试前先保存该部门的设置</li>
+                            <li>确保电子邮件代理已经在您的控制面板被添加</li>
                         </ul>
                     </div>
                 </div>
@@ -301,7 +301,7 @@
                 <div class="labels lighterblue" >
                     <label for="smtp_host">{$lang.Hostname}</label> 
                     <label for="smtp_port">{$lang.Port|capitalize} 
-                        <a class="vtip_description" title="Default ports:<br>&nbsp; 25 - SMTP<br>&nbsp; 465 - SMTP SSL<br>&nbsp; 587 - SMTP TLS"></a></label> 
+                        <a class="vtip_description" title="默认端口:<br>&nbsp; 25 - SMTP<br>&nbsp; 465 - SMTP SSL<br>&nbsp; 587 - SMTP TLS"></a></label> 
                     <label for="smtp_login">{$lang.loginname}</label> 
                     <label for="smtp_pass">{$lang.Password}</label>
                     {*<label>{$lang.connection}</label>*}
@@ -322,7 +322,7 @@
                 $('#smtpmail_ad').show();
                 return false;"><span class="wizard">{$lang.sendtestmail}</span></a>
                     <div id="smtpmail_ad" style="display:none">
-                        Enter email address: <input type="text" name="testmail" id="testmailaddresssmtp" /> <a class="new_control" href="#"   onclick="testConfiguration('SMTP');
+                        输入邮箱地址: <input type="text" name="testmail" id="testmailaddresssmtp" /> <a class="new_control" href="#"   onclick="testConfiguration('SMTP');
                 return false;"><span ><b>{$lang.Send}</b></span></a>
                         <span  id="testing_result"></span>
                     </div>
@@ -394,7 +394,7 @@
             </td>
         </tr>
         <tr {if $hidesla}style="display:none"{/if}>
-            <td align="right"><strong>Ask to close tickets that are in answered state</strong></td>
+            <td align="right"><strong>要求关闭正在已回答状态的工单</strong></td>
             <td ><span style="width:190px;display:inline-block" >
                     <span>
                         <input type="checkbox" onclick="check_i(this)" {if $submit.sla_level_zero}checked="checked"{/if} value="1" />
@@ -426,25 +426,25 @@
             <td align="right"><strong>{$lang.ticketnotifies}</strong></td>
             <td >
                 <input type="radio" name="ticketnotifies" value="1" {if $submit.sendmail=='1' || !$submit}checked="checked"{/if}/> 
-                <strong>{$lang.Yes}</strong>, Send notification to client and all staff members in this department 
-                <a href="#" class="vtip_description" title="Notifications for assigned tickets will be sent only to related support staff, notifications for unassigned tickets will be sent to all staff members"></a> 
+                <strong>{$lang.Yes}</strong>, 发送通知客户和本部门的所有员工 
+                <a href="#" class="vtip_description" title="指定工单的通知将只发送给相关人员, 未分配的工单通知将发送给所有员工"></a> 
                 <br />
                 <input type="radio" name="ticketnotifies" value="2" {if $submit.sendmail=='1' && $submit.ownernotifyonly=='1'}checked="checked"{/if}/> 
-                <strong>{$lang.Yes}</strong>, Send notification to client and only to staff member subscribed to related ticket 
-                <a href="#" class="vtip_description" title="Emails to staff members won't be sent if ticket is not assigned"></a>
+                <strong>{$lang.Yes}</strong>, 发送通知给客户和只有订阅了相关工单的工作人员 
+                <a href="#" class="vtip_description" title="不会发送没有分配过工单的工作人员"></a>
                 <br />
                 <input type="radio" name="ticketnotifies" value="0" {if $submit.sendmail=='0'}checked="checked"{/if}/> <strong>{$lang.No}</strong>,  {$lang.nosendnotifyaboutticket}
             </td>
         </tr>
         <tr class="bordme">
-            <td align="right"><strong>Auto-subscribe</strong></td>
+            <td align="right"><strong>自动订阅</strong></td>
             <td >
                 <input type="radio" name="autosubscribe"  value="1" {if $submit.autosubscribe=='1' && $submit.autosubscribeempty!='1'}checked="checked"{/if}/>
-                <strong>{$lang.Yes}</strong>, Subscribe staff members after they respond to a ticket<br />
+                <strong>{$lang.Yes}</strong>, 订阅工作人员自己回复的工单<br />
                 <input type="radio" name="autosubscribe"  value="2" {if $submit.autosubscribe=='1' && $submit.autosubscribeempty=='1'}checked="checked"{/if}/>
-                <strong>{$lang.Yes}</strong>, Subscribe after response but only if no one is already subscribed<br />
+                <strong>{$lang.Yes}</strong>, 订阅已响应但没有任何一个订阅的工单<br />
                 <input type="radio" name="autosubscribe"  value="0" {if $submit.autosubscribe=='0' || !$submit.autosubscribe || !$submit }checked="checked"{/if}/>
-                <strong>{$lang.No}</strong>, Do not subscribe after response
+                <strong>{$lang.No}</strong>, 不订阅已被响应的工单
             </td>
         </tr>
         <tr class="bordme">
@@ -452,7 +452,7 @@
             <td >
                 <input type="radio" name="allowedsub"  value="0" {if $submit.clientsonly=='0' && $submit.staffonly=='0' || !$submit}checked="checked"{/if}/> {$lang.allowedsuball}<br />
                 <input type="radio" name="allowedsub"  value="1" {if $submit.clientsonly=='1'}checked="checked"{/if}/> {$lang.deptonlyforregistered}<br />
-                <input type="radio" name="allowedsub"  value="2" {if $submit.staffonly=='1'}checked="checked"{/if}/> Only staff members can open new trouble tickets in this department
+                <input type="radio" name="allowedsub"  value="2" {if $submit.staffonly=='1'}checked="checked"{/if}/> 在该部门仅允许工作人员开启故障工单
             </td>
         </tr>
         <tr class="bordme">
@@ -512,7 +512,7 @@
             <td align="right"><strong>{$lang.newticketemail}</strong> </td>
             <td>
                 <select class="inp" name="newticketemail"/>
-                <option value="0" {if $submit.id && !$submit.newticketemail} selected="selected"{/if}>None, do not send initial notification</option>
+                <option value="0" {if $submit.id && !$submit.newticketemail} selected="selected"{/if}>无, 不要发送初始通知</option>
                 {foreach from=$templates item=temp}
         <option {if (!$submit.id && !$submit.newticketemail && $temp.tplname == 'Ticket:New') || $submit.newticketemail == $temp.id}selected="selected"{/if} value="{$temp.id}">{$temp.tplname}</option>
     {/foreach}
@@ -546,7 +546,7 @@
             {foreach from=$admins item=adm}
             {if $dept.assigned_admins[$adm.id]}{$adm.username}<br />{/if}
         {/foreach}
-    {if !$dept.assigned_admins} <b>No staff member assigned</b>{/if}
+    {if !$dept.assigned_admins} <b>没有工作人员已分配</b>{/if}
 </div>
 <div class="controls">&nbsp;&nbsp;&nbsp;<a href="#" class="editbtn" onclick="$(this).parents('div.admins_list').hide().next().show();
                 return false;">{$lang.Edit}</a></div>
@@ -580,13 +580,13 @@
                                     <td width="30%" valign="top"><a href="?cmd=ticketdepts&action=edit&id={$dept.id}">{$dept.description}</a></td>
                                     <td width="30%" valign="top">{foreach from=$dept.importmails item=mail}{$mail.email}<br />{foreachelse}{$dept.email}{/foreach}</td>
                                     <td width="10%" valign="top">{if $dept.visible=='1'}{$lang.No}{else}{$lang.Yes}{/if}</td>
-                                    <td  width="20" valign="top"><a href="?cmd=ticketdepts&make=delete&id={$dept.id}&security_token={$security_token}" class="delbtn" onclick="return confirm('{$lang.deletedeptconfirm}');">Delete</a></td>
+                                    <td  width="20" valign="top"><a href="?cmd=ticketdepts&make=delete&id={$dept.id}&security_token={$security_token}" class="delbtn" onclick="return confirm('{$lang.deletedeptconfirm}');">删除</a></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td colspan="5" class="fs11">
                             {foreach from=$admins item=adm name=adminloop}{if $dept.assigned_admins[$adm.id]}{if !$smarty.foreach.adminloop.first}, {/if}{$adm.username}{/if}{/foreach}
-                        {if !$dept.assigned_admins}<b>No staff member assigned</b>{/if}
+                        {if !$dept.assigned_admins}<b>没有工作人员已分配</b>{/if}
                     </td>
                 </tr>
 

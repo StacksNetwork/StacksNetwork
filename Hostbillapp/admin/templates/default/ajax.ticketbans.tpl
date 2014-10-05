@@ -165,7 +165,7 @@
                     </tr>
                     <tr>
                          <td colspan="12">
-                            <strong> When matched:</strong>
+                            <strong> 匹配时:</strong>
                             {if $pre}
                                 <strong>{$lang.rejectmsg}</strong>
                             {else}
@@ -303,12 +303,12 @@
                                 <div class="actions">
                                     <input type="hidden" name="order[{$filter.id}]" value="{$filter.sort_order}" class="sort-order"/>
                                     <a href="#" onclick="return false" class="sorter-handler menuitm menuf">{*
-                                        *}<span class="movesth" title="move">&nbsp;</span>{*
+                                        *}<span class="movesth" title="移动">&nbsp;</span>{*
                                     *}</a>{*
                                     *}<a title="edit" href="?cmd={$cmd}&action=edit&id={$filter.id}" class="menuitm menuc">{*
                                         *}<span class="editsth"></span>{*
                                     *}</a>{*
-                                    *}<a onclick="return confirm('Are you sure you wish to remove this item?');" href="?cmd={$cmd}&action={$action}&make=delete&id={$filter.id}&security_token={$security_token}" title="delete" class="menuitm menul">{*
+                                    *}<a onclick="return confirm('您确定需要删除该内容吗?');" href="?cmd={$cmd}&action={$action}&make=delete&id={$filter.id}&security_token={$security_token}" title="删除" class="menuitm menul">{*
                                         *}<span class="delsth"></span>{*
                                     *}</a>    
                                 </div>
@@ -341,12 +341,12 @@
                     <div class="actions">
                         <input type="hidden" name="order[{$filter.id}]" value="{$filter.sort_order}" class="sort-order"/>
                         <a href="#" onclick="return false" class="sorter-handler menuitm menuf">{*
-                            *}<span class="movesth" title="move">&nbsp;</span>{*
+                            *}<span class="movesth" title="移动">&nbsp;</span>{*
                         *}</a>{*
                         *}<a title="edit" href="?cmd={$cmd}&action=edit&id={$filter.id}" class="menuitm menuc">{*
                             *}<span class="editsth"></span>{*
                         *}</a>{*
-                        *}<a onclick="return confirm('{$lang.removeruleconfirm}');" href="?cmd={$cmd}&action={$action}&tab=1&make=delete&id={$filter.id}&security_token={$security_token}" title="delete" class="menuitm menul">{*
+                        *}<a onclick="return confirm('{$lang.removeruleconfirm}');" href="?cmd={$cmd}&action={$action}&tab=1&make=delete&id={$filter.id}&security_token={$security_token}" title="删除" class="menuitm menul">{*
                             *}<span class="delsth"></span>{*
                         *}</a>    
                     </div>

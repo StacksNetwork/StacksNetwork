@@ -39,7 +39,7 @@
                         <select name="filter[staff_member_id]">
                             <option value="">{$lang.Any}</option>
                             {foreach from=$staff item=adm}
-                                <option value="{$adm.id}"  {if $currentfilter.staff_member_id==$adm.id}selected="selected"{/if}>{$adm.firstname} {$adm.lastname}</option>
+                                <option value="{$adm.id}"  {if $currentfilter.staff_member_id==$adm.id}selected="selected"{/if}>{$adm.lastname} {$adm.firstname}</option>
                             {/foreach}
                         </select>
                     </td>
@@ -219,7 +219,7 @@
             <tr>
                 <td><input type="checkbox" class="check" value="{$order.id}" name="selected[]"/></td>
                 <td><a href="?cmd=orders&action=createdraft&id={$order.id}">{$order.id}</a></td>
-                <td>{if $order.client_id}<a href="?cmd=clients&action=show&id={$order.client_id}">{$order.firstname} {$order.lastname}</a>{else} -{/if}</td>
+                <td>{if $order.client_id}<a href="?cmd=clients&action=show&id={$order.client_id}">{$order.lastname} {$order.firstname}</a>{else} -{/if}</td>
                 <td>{$order.date_created|dateformat:$date_format}</td>
                 <td>{if $order.currency_id}{$order.total|price:$order.currency_id}{else}{$order.total|price:$currency}{/if}</td>
                 <td>{if $order.module}{$order.module}{else}-{/if}</td>
@@ -239,7 +239,7 @@
           <td><input type="checkbox" class="check" value="{$order.id}" name="selected[]"/></td>
           <td><a href="?cmd=orders&action=edit&id={$order.id}&list={$currentlist}">{$order.id}</a></td>
               <td><a href="?cmd=orders&action=edit&id={$order.id}&list={$currentlist}">{$order.number}</a></td>
-          <td><a href="?cmd=clients&action=show&id={$order.client_id}">{$order.firstname} {$order.lastname}</a></td>
+          <td><a href="?cmd=clients&action=show&id={$order.client_id}">{$order.lastname} {$order.firstname}</a></td>
           <td>{$order.date_created|dateformat:$date_format}</td>
           <td>{$order.total|price:$order.currency_id}</td>
           <td>{if $order.total<0}{$lang.amountcredited}{else}{if $order.module}{$order.module}{else}-{/if}{/if}</td>

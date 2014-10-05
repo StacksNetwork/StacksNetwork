@@ -75,16 +75,16 @@
                 <td><input type="checkbox" class="check" value="{$invoice.id}" name="selected[]"/></td>
                 {if $currentlist!='recurring'}
                 <td><a href="?cmd=invoices&action=edit&id={$invoice.id}&list={$currentlist}" class="tload2"  rel="{$invoice.id}">{if $proforma && ($invoice.status=='Paid' || $invoice.status=='Refunded') && $invoice.paid_id!=''}{$invoice.paid_id}{else}{$invoice.date|invprefix:$prefix}{$invoice.id}{/if}</a></td>
-                <td>{if $invoice.client_id}<a href="?cmd=clients&action=show&id={$invoice.client_id}">{$invoice.firstname} {$invoice.lastname}</a>{else}<span style="font-style: italic">{$lang.no_clients_attached}</span>{/if}</td>
+                <td>{if $invoice.client_id}<a href="?cmd=clients&action=show&id={$invoice.client_id}">{$invoice.lastname} {$invoice.firstname}</a>{else}<span style="font-style: italic">{$lang.no_clients_attached}</span>{/if}</td>
                 <td>{$invoice.date|dateformat:$date_format}</td>
                 <td>{$invoice.duedate|dateformat:$date_format}</td>
                 <td>{$invoice.subtotal2|price:$invoice.currency_id}</td>
                 <td>{if $invoice.credit==$invoice.subtotal2}{$lang.paidbybalance}{else}{$invoice.module} {if $invoice.credit>0}<span class="fs11">+ {$lang.paidbybalance}</span>{/if}{/if}</td>
                 <td><span class="{$invoice.status}">{$lang[$invoice.status]}</span></td>
-                <td>{if $invoice.locked}<a href="?cmd=invoices&action=menubutton&make=unlock&id={$invoice.id}" title="This invoice is currently hidden in client area, click to unlock" class="invoiceUnlock padlock"></a>{/if}</td>
+                <td>{if $invoice.locked}<a href="?cmd=invoices&action=menubutton&make=unlock&id={$invoice.id}" title="这份账单目前隐藏在客户控制台, 点击解锁" class="invoiceUnlock padlock"></a>{/if}</td>
                 {else}
                 <td><a href="?cmd=invoices&action=edit&id={$invoice.id}&list={$currentlist}" class="tload2"  rel="{$invoice.id}">{$invoice.recurring_id}</a></td>
-                <td><a href="?cmd=clients&action=show&id={$invoice.client_id}">{$invoice.firstname} {$invoice.lastname}</a></td>
+                <td><a href="?cmd=clients&action=show&id={$invoice.client_id}">{$invoice.lastname} {$invoice.firstname}</a></td>
                 <td>{$invoice.total|price:$invoice.currency_id}</td>
                 <td>{$invoice.start_from|dateformat:$date_format}</td>
                 <td>{if $invoice.recstatus!='Stopped' &&  $invoice.next_invoice!='' && $invoice.next_invoice!='0000-00-00' && ($invoice.invoices_left || !$invoice.occurrences)}{$invoice.next_invoice|dateformat:$date_format} ({if $invoice.invoices_left && $invoice.occurrences}{$invoice.invoices_left}{else}&#8734;{/if} {$lang.remaining}){else}-{/if}</td>
@@ -151,7 +151,7 @@
 <strong class="clientmsg">{$lang.Client}:</strong><select name="invoice[client_id]" onchange="$('#client_id').val($(this).val());" >
     <option value="0">{$lang.selectcustomer}</option>
 		{foreach from=$clients item=cl}
-    <option value="{$cl.id}">#{$cl.id} {if $cl.companyname!=''}{$lang.Company}: {$cl.companyname}{else}{$cl.firstname} {$cl.lastname}{/if}</option>
+    <option value="{$cl.id}">#{$cl.id} {if $cl.companyname!=''}{$lang.Company}: {$cl.companyname}{else}{$cl.lastname} {$cl.firstname}{/if}</option>
 		{/foreach}
 </select>
 
@@ -207,7 +207,7 @@
             <td><span class="{$invoice.status}">{$lang[$invoice.status]}</span></td>
             {else}
             <td><a href="?cmd=invoices&action=edit&id={$invoice.id}&list={$currentlist}" class="tload2"  rel="{$invoice.id}">{$invoice.recurring_id}</a></td>
-            <td><a href="?cmd=clients&action=show&id={$invoice.client_id}">{$invoice.firstname} {$invoice.lastname}</a></td>
+            <td><a href="?cmd=clients&action=show&id={$invoice.client_id}">{$invoice.lastname} {$invoice.firstname}</a></td>
             <td>{$invoice.total|price:$invoice.currency_id}</td>
             <td>{$invoice.start_from|dateformat:$date_format}</td>
             <td>{if $invoice.recstatus!='Stopped' &&  $invoice.next_invoice!='' && $invoice.next_invoice!='0000-00-00' && ($invoice.invoices_left || !$invoice.occurrences)}{$invoice.next_invoice|dateformat:$date_format} ({if $invoice.invoices_left && $invoice.occurrences}{$invoice.invoices_left}{else}&#8734;{/if} {$lang.remaining}){else}-{/if}</td>

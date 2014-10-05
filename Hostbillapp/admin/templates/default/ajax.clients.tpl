@@ -304,7 +304,7 @@
           </tr>
 
           <tr>
-            <td>Account type</td>
+            <td>账户类型</td>
             <td>
                 <select name="filter[company]">
                     <option value="" {if $currentfilter.company==''}selected="selected"{/if}>{$lang.All}</option>
@@ -313,10 +313,10 @@
                 </select>
             </td>
 
-            <td>Login IP</td>
+            <td>登录IP</td>
             <td><input type="text" value="{$currentfilter.ip}" size="30" name="filter[ip]"/></td>
 
-            <td>Group</td>
+            <td>用户组</td>
             <td>
                 <select name="filter[group_id]">
                     <option value="">-</option>
@@ -327,7 +327,7 @@
             </td>
           </tr>
           <tr>
-            <td>Overdue Notices</td>
+            <td>过期通知</td>
             <td>
                 <select name="filter[overideduenotices]">
                     <option value="" {if $currentfilter.overideduenotices==''}selected="selected"{/if}>-</option>
@@ -345,7 +345,7 @@
                 </select>
             </td>
 
-            <td>Late fees</td>
+            <td>滞纳金</td>
             <td>
                 <select name="filter[latefeeoveride]">
                     <option value="" {if $currentfilter.latefeeoveride==''}selected="selected"{/if}>-</option>

@@ -8,7 +8,7 @@
         <td class="leftNav">
             <a href="?cmd=hbchat"  class="tstyled {if !$action || $action=='default'}selected{/if}">LiveChat</a>
             <a href="?cmd=hbchat&action=settings"  class="tstyled {if $action=='settings' || $action=='departments' || $action=='widgets' || $action=='geoip'}selected{/if}">聊天设置</a>
-            <a href="?cmd=hbchat&action=canned"  class="tstyled {if $action=='canned'}selected{/if}">录制回复</a>
+            <a href="?cmd=hbchat&action=canned"  class="tstyled {if $action=='canned'}selected{/if}">录制响应</a>
             <a href="?cmd=hbchat&action=history"  class="tstyled {if $action=='history' || $action=='viewtranscript'}selected{/if}">聊天记录</a>
 
         </td>

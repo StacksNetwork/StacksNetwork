@@ -85,10 +85,10 @@ function addNewConfigItemValue() {
     if(!v)
         return false;
     $('input[name=new_value_name]').val("");	
-    ajax_update('index.php?cmd=configfields&action=additem&make=addnewitem',{
-        name:v,
-        category_id:$('#field_category_id').val()
-        },'#subitems_editor');	
+    var data = $('input, select, textarea','#config-new-value').serializeObject();
+    data.name = v;
+    data.category_id = $('#field_category_id').val();
+    ajax_update('index.php?cmd=configfields&action=additem&make=addnewitem', data, '#subitems_editor');	
     refreshConfigView($('#saveform').find('input[name=product_id]').val());	
 
     return false;

@@ -24,7 +24,7 @@
                     <tr style="display:none" id="fvar_{$k}">
                         <td></td>
                         <td colspan="2">
-                            <label class="nodescr">Value passed to App:</label> <input type="text" value="{$item.variable_id}" style="margin:0px 0px 0px 10px;width:80px;" name="items[{$k}][variable_id]">
+                            <label class="nodescr">Value passed to App:</label> <input type="text" value="{$item.variable_id|escape}" style="margin:0px 0px 0px 10px;width:80px;" name="items[{$k}][variable_id]">
                         </td>
                     </tr>
                     {if $field.type.info.pricing}<tr style="display:none" id="fpricing_{$k}">
@@ -50,9 +50,10 @@
 
 </ul>
 <script type="text/javascript">latebindme();if(typeof updatePricingForms == 'function')  updatePricingForms();</script>
-<div style="border:solid 1px #ddd;border-top:none;background:#F5F9FF;width:365px" class="left">
+<div id="config-new-value" style="border:solid 1px #ddd;border-top:none;background:#F5F9FF;width:365px" class="left">
     <table width="100%" cellspacing="0" cellpadding="5" border="0">
-        <tbody><tr>
+        <tbody>
+            <tr>
                 <td width="20" valign="top"><div style="padding:5px 0px;">{$lang.New}:</div></td>
                 <td valign="top"><input name="new_value_name" type="text" class="w250" style="margin:0px" value="" /></td>
                 <td align="right" valign="top">

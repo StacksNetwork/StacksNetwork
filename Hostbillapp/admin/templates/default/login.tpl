@@ -179,7 +179,7 @@ html, body {
 		</div>
 		
 	</div>
-	<div style="text-align:right;"><small>Powered by <a href="http://hostbillapp.com" target="_blank" >HostBill</a></small></div>
+	<div style="text-align:right;"><small>Powered by <a href="https://www.stacksnet.com/" target="_blank" >STACKS® NETWORK</a></small></div>
 </div>
 </div>
 

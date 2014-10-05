@@ -33,7 +33,7 @@
     <body class="hbpopup">
 
         <div id="hb_chat_tabs_container">
-            <div class="chat_tab chat_tab_active" onclick="HBOperator.switch_tab('visitors', this);"><span class="tab_txt">Live traffic</span><span id="visitors_count" class="tab_counter">0</span></div>
+            <div class="chat_tab chat_tab_active" onclick="HBOperator.switch_tab('visitors', this);"><span class="tab_txt">实时访客</span><span id="visitors_count" class="tab_counter">0</span></div>
           
             <div class="clear" id="clearer"></div>
 
@@ -55,12 +55,12 @@
         <div id="hb_chat_status_bar" style="position:fixed;bottom:29px; right:15px; width: 368px;">
             <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
-                    <td>Status: 
+                    <td>状态: 
                         <input type="radio" name="current_status" value="Active" checked="checked" id="status_active" onclick="return HBOperator.change_status('Active');" />在线
                         <input type="radio" name="current_status" value="Away" id="status_away"  onclick="return HBOperator.change_status('Away');" />离开
                         <input type="radio" name="current_status" value="Offline" id="status_offline"  onclick="return HBOperator.change_status('Offline');" />离线
                     </td>
-                    <td width="90">今天的聊天: <br/> <span class="fs10"><span id="chats_today_cnt">0</span> 接受</span></td>
+                    <td width="90">今天的聊天: <br/> 共有 <span class="fs10"><span id="chats_today_cnt">0</span> 次被接受</span></td>
                 </tr>
             </table>
         </div>
@@ -241,7 +241,7 @@
                                         <table border="0" cellspacing="0" cellpadding="0" width="100%" class="display" style="table-layout: fixed;">
                                             <thead>
                                                 <tr>
-                                                    <th class="fs11">页</th>
+                                                    <th class="fs11">页面</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -293,7 +293,7 @@
                 {if $canned_fav}
                    {foreach from=$canned_fav item=r} <span class="tag" onclick="HBOperator.useCanned(this)" content="{$r.body|escape:'dquotes'}">{$r.title}</span>{/foreach}
                                            {else}
-          没有创建响应录制 &amp; 设置为我的最爱
+          没有创建响应录像 &amp; 设置为我的最爱
             {/if}
              {literal}
                
@@ -315,7 +315,7 @@
                                     <li class="break"></li>
                                     <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'transcripts', this);"><span>记录</span><span class="tab_counter">{{chatsTotal}}</span></li>
                                     <li class="break"></li>
-                                    <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'geolocation', this);"><span>GeoLocation</span></li>
+                                    <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'geolocation', this);"><span>地理位置</span></li>
                                     <li class="break"></li>
                                     <li onclick="HBOperator.open_tab('visitor', '{{id}}', false, true, true); " class="refresh"><span class="refresh"></span></li>
                                     <li class="break"></li>
