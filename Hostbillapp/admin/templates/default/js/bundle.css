@@ -1,0 +1,102 @@
+.bundle-items{
+    border: solid 1px #CCC;
+    margin: 10px 0;
+    position: relative;
+    background: white;
+}
+.bundle-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    min-height: 24px;
+    position: relative;
+    z-index: 1;
+}
+.bundle-list li{
+    border-bottom: 1px solid #DDDDDD;
+    color: #333333;
+    font-size: 13px;
+    line-height: 23px;
+    width: 100%;
+    background: white;
+}
+.bundle-list li.template, .timecontrol{
+    display: none;
+}
+.bundle-list li span{
+    margin: 4px 5px 0
+}
+.bundle-list.short li{
+    width: 39%;
+}
+.bundled-item .grab-sorter,
+.bundled-item .edit,
+.bundled-item .remove,
+.bundled-item .config{
+    opacity: 0.4;
+}
+.bundled-item:hover .grab-sorter,
+.bundled-item:hover .edit, 
+.bundled-item:hover .remove,
+.bundled-item:hover .config{
+    opacity: 1;
+}
+.bundled-item .edit a,
+.bundled-item .grab-sorter a,
+.bundled-item .remove a,
+.bundled-item .config a{
+    display: block;
+    overflow: hidden;
+    background-position: center center;
+    height: 15px;
+    width: 12px;
+}
+.bundled-item .edit a{
+    background: url("../img/search_ico_1.png") no-repeat scroll center center transparent;
+}
+.bundled-item .config a{
+    background: url("../img/manuedit.gif") no-repeat scroll -3px center transparent;
+    width: 15px;
+}
+
+.bundle-list li a.loadname {
+    text-decoration: none;
+}
+#bundle_config{
+    background: none repeat scroll 0 0 white;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #CCCCCC;
+    left: 39%;
+    position: absolute;
+    top: 0;
+    width: 61%;
+    z-index: 2;
+}
+
+#pricing_overide{
+    padding: 10px 0 0;
+}
+
+.bundle-item-config{
+    padding: 10px 10px 5px;
+}
+
+.like-table-row label.right{
+    float: right;
+    color:#757575;
+}
+.overlay{
+    width: 99%;
+    height: 100%;
+    position: absolute;
+    top: 0; 
+    line-height: 24px;
+    padding: 0 0.5%;
+    color: #757575;
+    z-index: 0;
+}
+#bundle_ajax {
+    background: url('../img/ajax-loading.gif') no-repeat center center rgba(255,255,255,0.7);
+    display:none;
+    z-index: 3;
+}
