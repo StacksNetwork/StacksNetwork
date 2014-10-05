@@ -1009,21 +1009,21 @@ msgstr "正则表达式的模式来查询. "
 #: xiwizards/Development/folder_watch/folder_watch.inc.php:312
 #, fuzzy
 msgid "Check the number of files matching the regex query with this service."
-msgstr "检查文件的与此服务相匹配的正则表达式查询的数量. "
+msgstr "监控文件的与此服务相匹配的正则表达式查询的数量. "
 
 #: xiwizards/Development/folder_watch/folder_watch.inc.php:328
 #, fuzzy
 msgid ""
 "Check file age of the regex query in seconds with this service. Use ranges "
 "or Warning/Critical to check for age."
-msgstr "检查正则表达式查询的文件老化时间与该服务. 使用范围或警告/严重检查的老化时间. "
+msgstr "监控正则表达式查询的文件老化时间与该服务. 使用范围或警告/严重监控的老化时间. "
 
 #: xiwizards/Development/folder_watch/folder_watch.inc.php:345
 #, fuzzy
 msgid ""
 "Check file size of the regex query in seconds with this service. Use ranges "
 "or Warning/Critical to check for size."
-msgstr "检查正则表达式查询的文件的大小与该服务. 使用范围或警告/严重, 检查尺寸. "
+msgstr "监控正则表达式查询的文件的大小与该服务. 使用范围或警告/严重, 监控尺寸. "
 
 #: xiwizards/Development/folder_watch/folder_watch.inc.php:367
 #, fuzzy
@@ -1737,7 +1737,7 @@ msgstr "输入的whois服务器"
 #, fuzzy
 msgid ""
 "The selected domain will be checked once per day.  Click Finish to continue."
-msgstr "所选择的域名将每天一次检查. 单击Finish继续. "
+msgstr "所选择的域名将每天一次监控. 单击Finish继续. "
 
 #: xiwizards/Development/active_directory_host_import/active_directory_host_import.inc.php:82
 #: xiwizards/Production/bulkhostimport/bulkhostimport.inc.php:84
@@ -2131,7 +2131,7 @@ msgstr "一个全球性的超时运行所有测试. 总的执行时间如果超�
 #: xiwizards/Development/webtransaction/webtransaction.inc.php:293
 #, fuzzy
 msgid "Invalid XML file: Please review your test case file for proper syntax."
-msgstr "无效的xml文件: 请检查您的测试案例文件正确的语法. "
+msgstr "无效的xml文件: 请监控您的测试案例文件正确的语法. "
 
 #: xiwizards/Development/aix/aix.inc.php:21
 #, fuzzy
@@ -3280,7 +3280,7 @@ msgstr "Enabled(默认)"
 #: xicomponents/Protected/scheduledbackups/managebackups.php:143
 #, fuzzy
 msgid "Disabled"
-msgstr "残疾人"
+msgstr "禁用"
 
 #: xiwizards/Production/linux-server/linux-server.inc.php:338
 #, fuzzy
@@ -4468,12 +4468,12 @@ msgstr "页读取每秒"
 #: xiwizards/Production/mssql_server/mssql_server.inc.php:441
 #, fuzzy
 msgid "Check Pages"
-msgstr "检查页"
+msgstr "监控页"
 
 #: xiwizards/Production/mssql_server/mssql_server.inc.php:442
 #, fuzzy
 msgid "The amount of checkpoint pages per sec"
-msgstr "每秒检查点页面的量"
+msgstr "每秒监控点页面的量"
 
 #: xiwizards/Production/mssql_server/mssql_server.inc.php:452
 #, fuzzy
@@ -4560,7 +4560,7 @@ msgstr "监视的平均等待时间来执行"
 msgid ""
 "This is a developer demo wizard that creates checks for severe weather "
 "alerts"
-msgstr "这是一个开发人员的演示向导, 建立灾害性天气警报的检查"
+msgstr "这是一个开发人员的演示向导, 建立灾害性天气警报的监控"
 
 #: xiwizards/Production/wizarddemo/wizarddemo.inc.php:29
 #, fuzzy
@@ -4584,8 +4584,8 @@ msgid ""
 "This wizard will create checks for severe weather alerts in defined counties.\n"
 "\t\t\t   This wizard requires a \"dummy\" host check to categorize the services."
 msgstr ""
-"该向导将创建检查的界定县的灾害性天气警报.  \n"
-"\t \t \t此向导需要一个\"虚拟\"主机检查分类服务. "
+"该向导将创建监控的界定县的灾害性天气警报.  \n"
+"\t \t \t此向导需要一个\"虚拟\"主机监控分类服务. "
 
 #: xiwizards/Production/wizarddemo/wizarddemo.inc.php:99
 #, fuzzy
@@ -4710,7 +4710,7 @@ msgstr "您有没有位置代码定义的服务. "
 #: xiwizards/Production/wizarddemo/wizarddemo.inc.php:315
 #, fuzzy
 msgid "Manually overriding wizard options for this check settings."
-msgstr "手动覆盖此检查设置向导选项. "
+msgstr "手动覆盖此监控设置向导选项. "
 
 #: xiwizards/Production/wizarddemo/wizarddemo.inc.php:341
 #, fuzzy
@@ -4793,7 +4793,7 @@ msgstr "有没有监控选项来配置SNMP陷阱. 单击"下一步"继续. "
 #: xiwizards/Production/bpiwizard/bpiwizard.inc.php:21
 #, fuzzy
 msgid "Create service checks for your Nagios BPI groups."
-msgstr "创建Nagios的BPI组的检查. "
+msgstr "创建Nagios的BPI组的监控. "
 
 #: xiwizards/Production/bpiwizard/bpiwizard.inc.php:98
 #: xiwizards/Production/bpiwizard/bpiwizard.inc.php:140
@@ -4983,7 +4983,7 @@ msgstr "未指定密码. "
 msgid ""
 "Unable to authenticate to remote Nagios XI server - Check your credentials "
 "and the remote XI server version."
-msgstr "无法进行身份验证的远程Nagios XI服务器 - 检查您的凭证和远程XI​​服务器版. "
+msgstr "无法进行身份验证的远程Nagios XI服务器 - 监控您的凭证和远程XI​​服务器版. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:289
 #, fuzzy
@@ -5005,7 +5005,7 @@ msgstr "指定的指标, 您想监控的远程Nagios服务器上. "
 msgid ""
 "Checks the server with an ICMP ping.  Useful for monitoring network "
 "availability of the Nagios server."
-msgstr "检查服务器与一个ICMP的ping. 用于监控Nagios服务器的网络可用性. "
+msgstr "监控服务器与一个ICMP的ping. 用于监控Nagios服务器的网络可用性. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:344
 #, fuzzy
@@ -5016,7 +5016,7 @@ msgstr "Nagios XI Web界面"
 #, fuzzy
 msgid ""
 "Checks the availability of the remote Nagios XI server's web interface."
-msgstr "检查远程Nagios XI服务器的Web接口的可用性. "
+msgstr "监控远程Nagios XI服务器的Web接口的可用性. "
 
 #: xiwizards/Production/nagiosxiserver/nagiosxiserver.inc.php:354
 #, fuzzy
@@ -5391,7 +5391,7 @@ msgstr "监控POP服务可用性"
 #: xiwizards/Production/mailserver/mailserver.inc.php:221
 #, fuzzy
 msgid "RBL Blacklist Check"
-msgstr "RBL黑名单检查"
+msgstr "RBL黑名单监控"
 
 #: xiwizards/Production/exchange/exchange.inc.php:320
 #: xiwizards/Production/mailserver/mailserver.inc.php:222
@@ -5399,7 +5399,7 @@ msgstr "RBL黑名单检查"
 msgid ""
 "Checks to see if your mail server is listed on any public RBLs (real time "
 "blackhole lists)"
-msgstr "检查, 看看您的邮件服务器被列入任何公共RBLs(实时黑洞列表)"
+msgstr "监控, 看看您的邮件服务器被列入任何公共RBLs(实时黑洞列表)"
 
 #: xiwizards/Production/exchange/exchange.inc.php:321
 #: xiwizards/Production/mailserver/mailserver.inc.php:223
@@ -5449,7 +5449,7 @@ msgstr "核心服务"
 msgid ""
 "Checks to make sure core services (specified below) that are essential to "
 "Exchange are running"
-msgstr "正在运行的检查, 以确保核心服务(指定), 是必不可少的交流"
+msgstr "正在运行的监控, 以确保核心服务(指定), 是必不可少的交流"
 
 #: xiwizards/Production/exchange/exchange.inc.php:365
 #, fuzzy
@@ -5461,7 +5461,7 @@ msgstr "Web服务"
 msgid ""
 "Checks to make sure web services (specified below) that are essential to "
 "Exchange are running"
-msgstr "正在运行的检查, 以确保Web服务(以下), 是必不可少的交流"
+msgstr "正在运行的监控, 以确保Web服务(以下), 是必不可少的交流"
 
 #: xiwizards/Production/exchange/exchange.inc.php:373
 #, fuzzy
@@ -5647,7 +5647,7 @@ msgstr "运行的SQL查询. 必须返回一个数字, 而不是一个字符串"
 msgid ""
 "An optional warning threshold to use when checking the result of the SQL "
 "query"
-msgstr "一个可选的警告阈值检查时使用的SQL查询的结果"
+msgstr "一个可选的警告阈值监控时使用的SQL查询的结果"
 
 #: xiwizards/Production/oracle_query/oracle_query.inc.php:313
 #: xiwizards/Production/mysqlquery/mysqlquery.inc.php:292
@@ -5655,7 +5655,7 @@ msgstr "一个可选的警告阈值检查时使用的SQL查询的结果"
 msgid ""
 "An optional critical threshold to use when checking the result of the SQL "
 "query"
-msgstr "检查结果的SQL查询时使用一个可选的临界阈值"
+msgstr "监控结果的SQL查询时使用一个可选的临界阈值"
 
 #: xiwizards/Production/oracle_query/oracle_query.inc.php:349
 #: xiwizards/Production/mysqlquery/mysqlquery.inc.php:326
@@ -5667,7 +5667,7 @@ msgstr "无效的查询名称"
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:21
 #, fuzzy
 msgid "Monitor passive service checks and events such as security alerts."
-msgstr "如安全报警监控的被动服务检查和事件. "
+msgstr "如安全报警监控的被动服务监控和事件. "
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:22
 #: html/includes/components/xicore/status-utils.inc.php:805
@@ -5675,7 +5675,7 @@ msgstr "如安全报警监控的被动服务检查和事件. "
 #: html/reports/eventlog.php:161
 #, fuzzy
 msgid "Passive Check"
-msgstr "被动检查"
+msgstr "被动监控"
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:59
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:144
@@ -5739,14 +5739,14 @@ msgstr "被动检查"
 #: html/reports/availability.php:1977
 #, fuzzy
 msgid "Host"
-msgstr "主持人"
+msgstr "主机"
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:68
 #, fuzzy
 msgid ""
 "The IP address or FQDNS name of the device or server associated with the "
 "passive check(s)."
-msgstr "与被动支票(如适用)的设备或服务器的IP地址或FQDN名称. "
+msgstr "设备的IP地址或FQDN名称或服务器相关的被动监控. "
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:74
 #: xiwizards/Production/bulkhostimport/bulkhostimport.inc.php:363
@@ -5759,24 +5759,24 @@ msgstr "选项"
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:80
 #, fuzzy
 msgid "Check Type:"
-msgstr "检查类型: "
+msgstr "监控类型: "
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:84
 #, fuzzy
 msgid "Security-Related Check"
-msgstr "与安全相关的检查"
+msgstr "与安全相关的监控"
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:85
 #, fuzzy
 msgid "Other Check Type"
-msgstr "检查其他类型"
+msgstr "监控其他类型"
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:87
 #, fuzzy
 msgid ""
 "What type of passive check(s) are you configuring?  Your selection here will"
 " be used to set defaults on the next screen."
-msgstr "什么类型的被动检查(s)是配置? 您的选择将使用此处设置默认值在下一个屏幕上. "
+msgstr "什么类型的被动监控(s)是配置? 您的选择将使用此处设置默认值在下一个屏幕上. "
 
 #: xiwizards/Production/passivecheck/passivecheck.inc.php:170
 #, fuzzy
@@ -5865,7 +5865,7 @@ msgstr "没有指定的服务名称. "
 msgid ""
 "There are no monitoring options to configure with passive checks.  Click "
 "Next to continue."
-msgstr "有没有监控选项来配置与被动检查. 单击"下一步"继续. "
+msgstr "有没有监控选项来配置与被动监控. 单击"下一步"继续. "
 
 #: xiwizards/Production/ldapserver/ldapserver.inc.php:22
 #, fuzzy
@@ -6506,7 +6506,7 @@ msgstr "Nagios的网络分析仪"
 #: xiwizards/Production/networkanalyzer/networkanalyzer.inc.php:118
 #, fuzzy
 msgid "Authentication failed. Please check your API key."
-msgstr "验证失败. 请检查您的API密钥. "
+msgstr "验证失败. 请监控您的API密钥. "
 
 #: xiwizards/Production/networkanalyzer/networkanalyzer.inc.php:126
 #: xicomponents/Production/nagiosna/nagiosna-queries.php:210
@@ -6515,7 +6515,7 @@ msgstr "验证失败. 请检查您的API密钥. "
 msgid ""
 "Failed connect to API. Check your connection to the host (using SSL?) and "
 "make sure your Nagios Network Analyzer is version 2014R1.5 or higher."
-msgstr "无法连接到API. 请检查您的连接到主机, 并确保您的Nagios网络分析仪是2014r1.4或更高版本. "
+msgstr "无法连接到API. 请监控您的连接到主机, 并确保您的Nagios网络分析仪是2014r1.4或更高版本. "
 
 #: xiwizards/Production/networkanalyzer/networkanalyzer.inc.php:227
 #: xiwizards/Production/networkanalyzer/networkanalyzer.inc.php:529
@@ -7058,7 +7058,7 @@ msgstr "监控watchguards的CPU使用率. "
 #: xiwizards/Production/watchguard/watchguard.inc.php:349
 #, fuzzy
 msgid "Checks the active connections that the WatchGuard device is servicing."
-msgstr "检查活动的WatchGuard设备的连接服务. "
+msgstr "监控活动的WatchGuard设备的连接服务. "
 
 #: xiwizards/Production/watchguard/watchguard.inc.php:358
 #: xiwizards/Production/watchguard/watchguard.inc.php:373
@@ -7074,35 +7074,35 @@ msgstr "秒"
 #: xiwizards/Production/watchguard/watchguard.inc.php:364
 #, fuzzy
 msgid "Checks the total number of packets sent by the WatchGuard device."
-msgstr "检查WatchGuard的设备发送的数据包的总数. "
+msgstr "监控WatchGuard的设备发送的数据包的总数. "
 
 #: xiwizards/Production/watchguard/watchguard.inc.php:379
 #, fuzzy
 msgid "Checks the total number of packets received by the WatchGuard device."
-msgstr "检查WatchGuard的设备接收到的数据包的总数. "
+msgstr "监控WatchGuard的设备接收到的数据包的总数. "
 
 #: xiwizards/Production/watchguard/watchguard.inc.php:394
 #, fuzzy
 msgid ""
 "Checks the total number of stream requests received by the WatchGuard "
 "device."
-msgstr "检查由WatchGuard的设备接收到的流请求的总数. "
+msgstr "监控由WatchGuard的设备接收到的流请求的总数. "
 
 #: xiwizards/Production/watchguard/watchguard.inc.php:409
 #, fuzzy
 msgid ""
 "Checks the total number of stream requests dropped by the WatchGuard device."
-msgstr "检查下降由WATCHGUARD装置的流请求的总数. "
+msgstr "监控下降由WATCHGUARD装置的流请求的总数. "
 
 #: xiwizards/Production/watchguard/watchguard.inc.php:424
 #, fuzzy
 msgid "Checks the total number of bytes sent by the WatchGuard device."
-msgstr "检查WatchGuard的设备发送的字节总数. "
+msgstr "监控WatchGuard的设备发送的字节总数. "
 
 #: xiwizards/Production/watchguard/watchguard.inc.php:439
 #, fuzzy
 msgid "Checks the total number of bytes received by the WatchGuard device."
-msgstr "检查WatchGuard的设备接收的字节总数. "
+msgstr "监控WatchGuard的设备接收的字节总数. "
 
 #: xiwizards/Production/watchguard/watchguard.inc.php:609
 #, fuzzy
@@ -7191,7 +7191,7 @@ msgstr "指定的指标, 您想监控的MSSQL服务器上"
 #: xiwizards/Production/mongodb_server/mongodb_server.inc.php:303
 #, fuzzy
 msgid "Check Connection"
-msgstr "检查连接"
+msgstr "监控连接"
 
 #: xiwizards/Production/mongodb_server/mongodb_server.inc.php:304
 #, fuzzy
@@ -7319,7 +7319,7 @@ msgstr "监控复制状态"
 #: xiwizards/Production/mongodb_server/mongodb_server.inc.php:433
 #, fuzzy
 msgid "This check doesn't require any arguments for warning/critical"
-msgstr "这种检查并不需要任何参数警告/严重"
+msgstr "这种监控并不需要任何参数警告/严重"
 
 #: xiwizards/Production/mongodb_server/mongodb_server.inc.php:442
 #, fuzzy
@@ -7334,7 +7334,7 @@ msgstr "监控服务器的复制滞后"
 #: xiwizards/Production/mongodb_server/mongodb_server.inc.php:443
 #, fuzzy
 msgid "This check may show apparent lag of < 10 sec even if there isn't lag"
-msgstr "<10秒, 这个检查可能会表现出明显的滞后, 即使有不落后"
+msgstr "<10秒, 这个监控可能会表现出明显的滞后, 即使有不落后"
 
 #: xiwizards/Production/mongodb_server/mongodb_server.inc.php:453
 #, fuzzy
@@ -7406,7 +7406,7 @@ msgstr "查询警告"
 msgid ""
 "An optional warning threshold to use when checking the result of the SQL "
 "query."
-msgstr "一个可选的警告阈值检查时使用的SQL查询的结果"
+msgstr "一个可选的警告阈值监控时使用的SQL查询的结果"
 
 #: xiwizards/Production/mssql_query/mssql_query.inc.php:314
 #: xiwizards/Production/mssql_query/mssql_query.inc.php:324
@@ -7425,7 +7425,7 @@ msgstr "查询的关键"
 msgid ""
 "An optional critical threshold to use when checking the result of the SQL "
 "query."
-msgstr "检查结果的SQL查询时使用一个可选的临界阈值"
+msgstr "监控结果的SQL查询时使用一个可选的临界阈值"
 
 #: xiwizards/Production/mssql_query/mssql_query.inc.php:330
 #, fuzzy
@@ -7436,7 +7436,7 @@ msgstr "连接警告"
 #, fuzzy
 msgid ""
 "An optional warning threshold to use when checking the SQL connection time."
-msgstr "检查结果的SQL查询时使用一个可选的临界阈值"
+msgstr "监控结果的SQL查询时使用一个可选的临界阈值"
 
 #: xiwizards/Production/mssql_query/mssql_query.inc.php:340
 #, fuzzy
@@ -7447,7 +7447,7 @@ msgstr "连接关键"
 #, fuzzy
 msgid ""
 "An optional critical threshold to use when checking the SQL connection time."
-msgstr "检查结果的SQL查询时使用一个可选的临界阈值"
+msgstr "监控结果的SQL查询时使用一个可选的临界阈值"
 
 #: xiwizards/Production/email-delivery/email-delivery.inc.php:22
 #, fuzzy
@@ -7465,7 +7465,7 @@ msgstr "电子邮件服务器"
 msgid ""
 "The IP address or FQDNS name of the device or server associated with the "
 "Email Delivery check"
-msgstr "该设备的IP地址或FQDN名称或服务器的DHCP检查"
+msgstr "该设备的IP地址或FQDN名称或服务器的DHCP监控"
 
 #: xiwizards/Production/email-delivery/email-delivery.inc.php:317
 #, fuzzy
@@ -8069,7 +8069,7 @@ msgstr "监控DHCP服务器. "
 msgid ""
 "The IP address or FQDNS name of the device or server associated with the "
 "DHCP check"
-msgstr "该设备的IP地址或FQDN名称或服务器的DHCP检查"
+msgstr "该设备的IP地址或FQDN名称或服务器的DHCP监控"
 
 #: xiwizards/Production/dhcp/dhcp.inc.php:120
 #, fuzzy
@@ -8155,7 +8155,7 @@ msgid ""
 "You will need to verify that iptables is allowing access to the dhcp ports (it doesn't by default) before this check will work.\n"
 "            You can run the following command from the command prompt to enable the ports"
 msgstr ""
-"您将需要验证iptables被允许进入的DHCP端口(默认情况下不会), 在此之前检查工作.  \n"
+"您将需要验证iptables被允许进入的DHCP端口(默认情况下不会), 在此之前监控工作.  \n"
 "您可以从命令提示符中运行以下命令启用端口"
 
 #: xiwizards/Production/mysqlquery/mysqlquery.inc.php:22
@@ -8826,14 +8826,14 @@ msgstr "运行的SQL查询. "
 msgid ""
 "An optional warning threshold (integer)to use when checking the result of "
 "the SQL query."
-msgstr "一个可选的警告阈值(整数)检查结果的SQL查询时使用. "
+msgstr "一个可选的警告阈值(整数)监控结果的SQL查询时使用. "
 
 #: xiwizards/Production/postgresquery/postgresquery.inc.php:313
 #, fuzzy
 msgid ""
 "An optional critical threshold (integer) to use when checking the result of "
 "the SQL query."
-msgstr "一个可选的临界阈值(整数)时使用的SQL查询检查结果. "
+msgstr "一个可选的临界阈值(整数)时使用的SQL查询监控结果. "
 
 #: xiwizards/Production/postgresquery/postgresquery.inc.php:349
 #, fuzzy
@@ -8900,7 +8900,7 @@ msgstr "CPU使用率"
 #: xiwizards/Production/ncpa/ncpa.inc.php:250
 #, fuzzy
 msgid "Check the CPU usage of the system"
-msgstr "检查系统的CPU使用率. "
+msgstr "监控系统的CPU使用率. "
 
 #: xiwizards/Production/ncpa/ncpa.inc.php:262
 #, fuzzy
@@ -9126,7 +9126,7 @@ msgstr "无论是社会或用户名. "
 #: xiwizards/Production/switch/switch.inc.php:554
 #: xiwizards/Production/switch/switch.inc.php:555
 msgid "Check All Ports"
-msgstr "检查所有端口"
+msgstr "监控所有端口"
 
 #: xiwizards/Production/switch/switch.inc.php:554
 #: xiwizards/Production/switch/switch.inc.php:555
@@ -9451,7 +9451,7 @@ msgstr "从站I / O"
 #: xiwizards/Production/mysqlserver/mysqlserver.inc.php:571
 #, fuzzy
 msgid "Checks to make sure the MySQL slave I/O is running"
-msgstr "检查, 以确保I / O运行mysql的奴隶"
+msgstr "监控, 以确保I / O运行mysql的奴隶"
 
 #: xiwizards/Production/mysqlserver/mysqlserver.inc.php:580
 #, fuzzy
@@ -9461,7 +9461,7 @@ msgstr "奴隶SQL"
 #: xiwizards/Production/mysqlserver/mysqlserver.inc.php:581
 #, fuzzy
 msgid "Checks to make sure the MySQL slave SQL is running"
-msgstr "检查, 以确保MySQL从SQL运行"
+msgstr "监控, 以确保MySQL从SQL运行"
 
 #: xiwizards/Production/mysqlserver/mysqlserver.inc.php:590
 #, fuzzy
@@ -9581,7 +9581,7 @@ msgstr "一个ICMP的ping监控设备. 可看您的设备网络延迟和一般�
 #: xiwizards/Production/nagiostats/plugins/check_nagios_performance.php:141
 #, fuzzy
 msgid "Total Checks:"
-msgstr "检查总数: "
+msgstr "监控总数: "
 
 #: xiwizards/Production/nagiostats/plugins/check_nagios_performance.php:141
 #, fuzzy
@@ -9598,7 +9598,7 @@ msgstr "排程: "
 #: xiwizards/Production/nagiostats/plugins/check_nagios_performance.php:154
 #, fuzzy
 msgid "Passive Checks Last"
-msgstr "被动检查最新"
+msgstr "被动监控最新"
 
 #: xiwizards/Production/nagiostats/plugins/check_nagios_performance.php:159
 #, fuzzy
@@ -9652,7 +9652,7 @@ msgstr "该向导将允许您监视当地的Nagios服务器的性能统计数据
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:92
 #, fuzzy
 msgid "Verify your localhost "
-msgstr "检查您的本地主机"
+msgstr "监控您的本地主机"
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:94
 #, fuzzy
@@ -9680,7 +9680,7 @@ msgid ""
 "didn't get executed until 03:14:17, there would be a check latency of 2.0 "
 "seconds. On-demand checks have a latency of zero seconds."
 msgstr ""
-"秒, 按计划检查其预定的检查时间滞后. 例如, 如果支票被定为3时十四分15秒, 它并没有得到执行, 直到三时14分17秒, 将支票延迟2.0秒. 要求检查有零点几秒的延迟. "
+"秒, 按计划监控其预定的监控时间滞后. 例如, 如果支票被定为3时十四分15秒, 它并没有得到执行, 直到三时14分17秒, 将支票延迟2.0秒. 要求监控有零点几秒的延迟. "
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:128
 #, fuzzy
@@ -9693,14 +9693,14 @@ msgid ""
 "NSCA daemon, etc.) blocking when they attempt to write to the external "
 "command file."
 msgstr ""
-"缓冲器插槽是用来存放外部命令, 外部命令文件(由一个单独的线程)被读出之前处理它们的Nagios守护进程. 如果您的Nagios守护进程收到了很多的的被动检查或外部命令, 您可以在缓冲区的情况下, 总是充满. 这会导致子进程阻塞, 当他们试图写的外部命令文件(外部脚本, NSCA守护进程等). "
+"缓冲器插槽是用来存放外部命令, 外部命令文件(由一个单独的线程)被读出之前处理它们的Nagios守护进程. 如果您的Nagios守护进程收到了很多的的被动监控或外部命令, 您可以在缓冲区的情况下, 总是充满. 这会导致子进程阻塞, 当他们试图写的外部命令文件(外部脚本, NSCA守护进程等). "
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:130
 #, fuzzy
 msgid ""
 "A number indicating the amount of seconds that the check took to execute "
 "(i.e. the amount of time the check was executing)."
-msgstr "一个数字, 表示的秒数, 检查了执行(即检查时, 正在执行的金额). "
+msgstr "一个数字, 表示的秒数, 监控了执行(即监控时, 正在执行的金额). "
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:134
 #, fuzzy
@@ -9717,8 +9717,8 @@ msgid ""
 msgstr ""
 "nagiostats是一个二进制附带Nagios的是用于监视内部性能. 此向导允许用户为\n"
 "\t选择从列表中选择, 以分析当地的Nagios服务器的性能, 并生成图表和报告, 随着时间的推移.  \n"
-"\tNot所有的检查每一个安装相关的, 因此, 选择的检查监视环境的基础上.  \n"
-"\tSee Nagios的核心文件"
+"\tNot所有的监控每一个安装相关的, 因此, 选择的监控监视环境的基础上.  \n"
+"\tSee Nagios Core文件"
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:140
 #, fuzzy
@@ -9736,8 +9736,8 @@ msgid ""
 "selecting the 1mn checks\n"
 "\twill create a check that runs every 1mn, 15mn checks run every 15mn."
 msgstr ""
-"选择的1MN检查\n"
-"\t斜纹, 请创建一个运行的每一个1MN, 15MN检查运行每1,500万. "
+"选择的1MN监控\n"
+"\t斜纹, 请创建一个运行的每一个1MN, 15MN监控运行每1,500万. "
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:143
 #, fuzzy
@@ -9762,7 +9762,7 @@ msgstr "选择/取消所有通知"
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:148
 #, fuzzy
 msgid "Check Name"
-msgstr "检查名称"
+msgstr "监控名称"
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:148
 #: html/includes/utils-menu.inc.php:805 html/includes/utils-menu.inc.php:936
@@ -9815,7 +9815,7 @@ msgstr "活跃"
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:214
 #, fuzzy
 msgid "Host Checks"
-msgstr "主机检查"
+msgstr "主机监控"
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:175
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:182
@@ -9825,7 +9825,7 @@ msgstr "主机检查"
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:235
 #, fuzzy
 msgid "Service Checks"
-msgstr "服务检查"
+msgstr "服务监控"
 
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:198
 #: xiwizards/Production/nagiostats/nagiostats.inc.php:206
@@ -10069,12 +10069,12 @@ msgstr "FTP服务器统计"
 #: xiwizards/Production/ftpserver/ftpserver.inc.php:167
 #, fuzzy
 msgid "Check the options you would like to monitor on the FTP server."
-msgstr "检查的选项, 您想监视的FTP服务器上. "
+msgstr "监控的选项, 您想监视的FTP服务器上. "
 
 #: xiwizards/Production/ftpserver/ftpserver.inc.php:178
 #, fuzzy
 msgid "Check the FTP server to ensure it can be contacted by clients."
-msgstr "检查, 以确保它的客户联系, 可通过FTP服务器. "
+msgstr "监控, 以确保它的客户联系, 可通过FTP服务器. "
 
 #: xiwizards/Production/ftpserver/ftpserver.inc.php:210
 #, fuzzy
@@ -10086,7 +10086,7 @@ msgstr "文件传输"
 msgid ""
 "Check the FTP server to ensure a test file can be uploaded to and deleted "
 "from the root directory.  Does not support SSL."
-msgstr "检查FTP服务器, 以确保一个测试文件可以被上传到从根目录中删除. 不支持SSL. "
+msgstr "监控FTP服务器, 以确保一个测试文件可以被上传到从根目录中删除. 不支持SSL. "
 
 #: xicomponents/Development/reactoreventhandler/templates/reactorinstances.php:72
 #, fuzzy
@@ -10598,7 +10598,7 @@ msgstr "错误: 该组件需要的Nagios XI 20011R1.1或更高版本. "
 msgid ""
 "Dependencies need to be installed for the sanity checker. Please run the "
 "following from your Nagios XI command line:"
-msgstr "依赖关系需要安装的理智检查. 请从您的nagios十一命令行中运行以下命令: "
+msgstr "依赖关系需要安装的理智监控. 请从您的nagios十一命令行中运行以下命令: "
 
 #: xicomponents/Development/failureprediction/fp-top.inc.php:28
 #, fuzzy
@@ -11304,7 +11304,7 @@ msgstr "开始..."
 #: xicomponents/Development/npush/includes/install.step2.inc.php:43
 #, fuzzy
 msgid "Checking connection..."
-msgstr "检查连接..."
+msgstr "监控连接..."
 
 #: xicomponents/Development/npush/includes/install.step2.inc.php:60
 msgid "Connected!"
@@ -11353,7 +11353,7 @@ msgstr "步骤1: 为npush下载软件的选择"
 msgid ""
 "By default, we have a couple pre-defined options to select from. Check to "
 "select which ones to download."
-msgstr "默认情况下, 我们有几个预先定义的选项可供选择. 检查选择要下载哪些. "
+msgstr "默认情况下, 我们有几个预先定义的选项可供选择. 监控选择要下载哪些. "
 
 #: xicomponents/Development/npush/includes/install.step1.inc.php:12
 #, fuzzy
@@ -12122,7 +12122,7 @@ msgstr "BPI文档"
 msgid ""
 "Advanced grouping and dependency tool for viewing business processes. Can be"
 " used for specialized checks. "
-msgstr "查看业务流程的的高级分组和依赖的工具. 可用于专门的检查. "
+msgstr "查看业务流程的的高级分组和依赖的工具. 可用于专门的监控. "
 
 #: xicomponents/Protected/nagiosbpi/nagiosbpi.inc.php:131
 #, fuzzy
@@ -12165,8 +12165,8 @@ msgid ""
 "The directory location of your bpi.xml file. This file is used to cache check results for BPI service\n"
 "\t\t\t\t\t checks and to decrease CPU usage from BPI checks."
 msgstr ""
-"您的bpi.xml文件的目录位置. 这个文件是用来缓存检查结果BPI服务\n"
-"\t \t \t \t \t检查, 并减少CPU的使用情况从BPI检查. "
+"您的bpi.xml文件的目录位置. 这个文件是用来缓存监控结果BPI服务\n"
+"\t \t \t \t \t监控, 并减少CPU的使用情况从BPI监控. "
 
 #: xicomponents/Protected/nagiosbpi/nagiosbpi.inc.php:164
 #, fuzzy
@@ -12179,7 +12179,7 @@ msgid ""
 "This is the age limit for cached BPI check result data.  If a BPI service check detects this file as being\n"
 "\t\t\t\t\ttoo old, it will recalculate the status of all BPI groups and cache to the XML file."
 msgstr ""
-"这是缓存的BPI检查结果数据的老化时间限制. 如果一个的BPI服务检查检测文件\n"
+"这是缓存的BPI监控结果数据的老化时间限制. 如果一个的BPI服务监控检测文件\n"
 "\t \t \t \t \ttoo老, 它会重新计算BPI组和缓存的状态的XML文件. "
 
 #: xicomponents/Protected/nagiosbpi/nagiosbpi.inc.php:172
@@ -12279,13 +12279,13 @@ msgstr "信息网址"
 #: xicomponents/Protected/nagiosbpi/functions/build_form.inc.php:117
 #, fuzzy
 msgid "Primary Group"
-msgstr "小学组"
+msgstr "主要组"
 
 #: xicomponents/Protected/nagiosbpi/functions/build_form.inc.php:123
 #: html/includes/components/xicore/tac.php:112
 #, fuzzy
 msgid "Health Thresholds"
-msgstr "健康阈值"
+msgstr "健康状况阈值"
 
 #: xicomponents/Protected/nagiosbpi/functions/build_form.inc.php:135
 #, fuzzy
@@ -12295,7 +12295,7 @@ msgstr "必须低于警告阈值. "
 #: xicomponents/Protected/nagiosbpi/functions/build_form.inc.php:143
 #, fuzzy
 msgid "Priority"
-msgstr "优先"
+msgstr "优先级"
 
 #: xicomponents/Protected/nagiosbpi/functions/build_form.inc.php:155
 #: xicomponents/Protected/nagiosbpi/functions/build_form.inc.php:164
@@ -12382,7 +12382,7 @@ msgstr "BPI配置文件无法写入"
 #: xicomponents/Protected/nagiosbpi/functions/bpi_functions.php:196
 #, fuzzy
 msgid "Check file permissions."
-msgstr "检查文件的权限. "
+msgstr "监控文件的权限. "
 
 #: xicomponents/Protected/nagiosbpi/functions/bpi_functions.php:181
 #: xicomponents/Protected/nagiosbpi/functions/bpi_functions.php:187
@@ -12393,7 +12393,7 @@ msgstr "无法写入BPI配置备份文件: "
 #: xicomponents/Protected/nagiosbpi/functions/bpi_functions.php:187
 #, fuzzy
 msgid "Check file permissions"
-msgstr "检查文件的权限"
+msgstr "监控文件的权限"
 
 #: xicomponents/Protected/nagiosbpi/functions/bpi_functions.php:196
 #, fuzzy
@@ -12480,7 +12480,7 @@ msgstr "备份成功创建. "
 #: xicomponents/Protected/nagiosbpi/functions/add_group.inc.php:75
 #, fuzzy
 msgid "Writing to backup file failed. Check permissions for "
-msgstr "写入到备份文件失败. 检查权限"
+msgstr "写入到备份文件失败. 监控权限"
 
 #: xicomponents/Protected/nagiosbpi/functions/add_group.inc.php:81
 #, fuzzy
@@ -12561,7 +12561,7 @@ msgstr "编辑组"
 msgid ""
 "Error determining status for all groups, too many iterations.  Check "
 "configuration file."
-msgstr "错误决定对所有群体的地位, 太多的迭代. 检查配置文件. "
+msgstr "错误决定对所有群体的地位, 太多的迭代. 监控配置文件. "
 
 #: xicomponents/Protected/nagiosbpi/functions/bpi_init.php:135
 #, fuzzy
@@ -13257,7 +13257,7 @@ msgstr "直接分配给联系的主机"
 #: html/includes/components/ccm/ajax.php:249
 #, fuzzy
 msgid "Check any relationships you wish to"
-msgstr "您想检查任何关系"
+msgstr "您想监控任何关系"
 
 #: xicomponents/Protected/bulkmodifications/bulkmodifications.php:1074
 #: xicomponents/Protected/bulkmodifications/bulkmodifications.php:1092
@@ -13404,7 +13404,7 @@ msgstr "指定的目录不存在. "
 msgid ""
 "The directory is likely not writeable by user 'nagios' or group 'nagios' - "
 "check permissions."
-msgstr "该目录可能无法写入由用户Nagios的或组的nagios' - 检查权限. "
+msgstr "该目录可能无法写入由用户Nagios的或组的nagios' - 监控权限. "
 
 #: xicomponents/Protected/scheduledbackups/ajaxcalls.php:183
 #, fuzzy
@@ -13564,7 +13564,7 @@ msgstr "FTP用户名"
 #: xicomponents/Protected/scheduledbackups/managebackups.php:629
 #, fuzzy
 msgid "Test Connection"
-msgstr "检查连接"
+msgstr "监控连接"
 
 #: xicomponents/Protected/scheduledbackups/managebackups.php:493
 #, fuzzy
@@ -14754,21 +14754,21 @@ msgstr "Nagios的图表资源管理器"
 #: html/includes/components/graphexplorer/index.php:268
 #, fuzzy
 msgid "Top Alerts Last 24hrs"
-msgstr "热门通知最后24小时"
+msgstr "最后24小时内最高报警"
 
 #: xicomponents/Production/graphexplorer/index.php:279
 #: html/includes/components/graphexplorer/index.php:272
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:163
 #, fuzzy
 msgid "Host Health"
-msgstr "主机健康"
+msgstr "主机健康状况"
 
 #: xicomponents/Production/graphexplorer/index.php:283
 #: html/includes/components/graphexplorer/index.php:276
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:204
 #, fuzzy
 msgid "Service Health"
-msgstr "服务生"
+msgstr "服务健康状况"
 
 #: xicomponents/Production/graphexplorer/index.php:287
 #: html/includes/components/graphexplorer/index.php:280
@@ -14901,7 +14901,7 @@ msgstr ""
 msgid ""
 "Hosts and services that are renamed will show as <strong>Pending</strong> "
 "until the first check result is received with the new name."
-msgstr "被重命名的主机和服务, 将显示<strong>等待</strong> , 直到第一次检查的结果是收到了新的名称. "
+msgstr "被重命名的主机和服务, 将显示<strong>等待</strong> , 直到第一次监控的结果是收到了新的名称. "
 
 #: xicomponents/Production/rename/rename.php:143
 #: xicomponents/Production/escalationwizard/escalationwizard.php:286
@@ -15093,7 +15093,7 @@ msgstr "平数"
 #: xicomponents/Production/pingaction/pingaction.inc.php:38
 #, fuzzy
 msgid "Provides a fast method of checking host connectivity using ICMP ping. "
-msgstr "使用ICMP的ping检查主机连接提供了一种快速的方法. "
+msgstr "使用ICMP的ping监控主机连接提供了一种快速的方法. "
 
 #: xicomponents/Production/pingaction/pingaction.inc.php:105
 #, fuzzy
@@ -15359,7 +15359,7 @@ msgstr "代理服务器设置"
 #: xicomponents/Production/proxy/proxyconfig.php:78
 #, fuzzy
 msgid "Enable Proxy For Update Checks"
-msgstr "启用代理, 对于更新检查"
+msgstr "启用代理, 对于更新监控"
 
 #: xicomponents/Production/proxy/proxyconfig.php:88
 #, fuzzy
@@ -15394,7 +15394,7 @@ msgid ""
 "\t<strong>Requires v2011R1.8rc or later."
 msgstr ""
 "该组件创建一个代理配置“菜单中的管理面板\n"
-"\t和用于配置的代理服务器设置检查更新.  \n"
+"\t和用于配置的代理服务器设置监控更新.  \n"
 "\t <strong>需要或更高版本v2011R1.8rc. </strong>"
 
 #: xicomponents/Production/proxy/proxy.inc.php:34
@@ -16125,7 +16125,7 @@ msgid ""
 "The user DN (fully distinguished name) that is used to check user "
 "authentication.  Note: <b>[USERNAME]</b> will be automatically replaced with"
 " the user's username when they authenticate."
-msgstr "用户DN(完全可分辨名称), 用来检查用户身份验证. 注<b>: [USERNAME]</b>将被自动替换为用户的用户名, 身份验证时. "
+msgstr "用户DN(完全可分辨名称), 用来监控用户身份验证. 注<b>: [USERNAME]</b>将被自动替换为用户的用户名, 身份验证时. "
 
 #: xicomponents/Production/ldapauth/ldapauth.inc.php:201
 #, fuzzy
@@ -16192,7 +16192,7 @@ msgstr "参见示例代码"
 #: xicomponents/Production/hypermap/dashlet.inc.php:134
 #, fuzzy
 msgid "About This Map"
-msgstr "关于这地图"
+msgstr "关于这拓波动"
 
 #: xicomponents/Production/hypermap/dashlet.inc.php:136
 #, fuzzy
@@ -16334,7 +16334,7 @@ msgid ""
 "directives to this Nagios XI box for dynamic host/service creation with "
 "passive checks from inside the Nagios Network Analyzer server."
 msgstr ""
-"指定地址和用户API密钥对每个Nagios的网络分析仪的服务器. 这些服务器将显示在报告部分中作为服务器上运行的报表, 并且还允许服务和主机的指令发送到动态主机/服务的创建与来自NNA服务器内部被动检查这个Nagios XI盒. "
+"指定地址和用户API密钥对每个Nagios的网络分析仪的服务器. 这些服务器将显示在报告部分中作为服务器上运行的报表, 并且还允许服务和主机的指令发送到动态主机/服务的创建与来自NNA服务器内部被动监控这个Nagios XI盒. "
 
 #: xicomponents/Production/nagiosna/nagiosna.inc.php:650
 #: xicomponents/Production/nagiosna/nagiosna-reports.php:329
@@ -16600,7 +16600,7 @@ msgstr "没有找到API  -  404. 地址可能是错误的. "
 #: xicomponents/Production/nagiosna/nagiosna-queries.php:374
 #, fuzzy
 msgid "Exclude the checked columns from the queries display table"
-msgstr "从查询表中显示的排除检查列"
+msgstr "从查询表中显示的排除监控列"
 
 #: xicomponents/Production/nagiosna/nagiosna-queries.php:408
 #, fuzzy
@@ -16647,7 +16647,7 @@ msgstr "NNA服务器: "
 #: xicomponents/Production/nagiosna/nagiosna-reports.php:374
 #, fuzzy
 msgid "Exclude the checked columns from the report table"
-msgstr "排除从报告表中的列的检查"
+msgstr "排除从报告表中的列的监控"
 
 #: xicomponents/Production/nagiosna/nagiosna-reports.php:412
 #, fuzzy
@@ -16911,7 +16911,7 @@ msgstr "添加nagios用户和组"
 #: xicomponents/Production/nrdsconfigmanager/nrdsconfigmanager.php:187
 #, fuzzy
 msgid "Add cron job to process checks"
-msgstr "添加cron作业过程检查"
+msgstr "添加cron作业过程监控"
 
 #: xicomponents/Production/nrdsconfigmanager/nrdsconfigmanager.php:188
 #, fuzzy
@@ -16931,7 +16931,7 @@ msgstr "的名称, 客户端将发送给Nagios服务器作为主机"
 #: xicomponents/Production/nrdsconfigmanager/nrdsconfigmanager.php:195
 #, fuzzy
 msgid "The frequency in minutes that you want the checks to be run. (1-59)"
-msgstr "分钟, 您想要运行的检查频率.  (1-59)"
+msgstr "分钟, 您想要运行的监控频率.  (1-59)"
 
 #: xicomponents/Production/nrdsconfigmanager/nrdsconfigmanager.php:210
 #, fuzzy
@@ -16958,7 +16958,7 @@ msgstr "从服务器NRDP下载插件"
 #: xicomponents/Production/nrdsconfigmanager/nrdsconfigmanager.php:220
 #, fuzzy
 msgid "Send initial check results to Nagios"
-msgstr "初步检查结果与nagios"
+msgstr "初步监控结果与nagios"
 
 #: xicomponents/Production/nrdsconfigmanager/nrdsconfigmanager.php:222
 #, fuzzy
@@ -16989,7 +16989,7 @@ msgstr "该组件允许管理员管理nagios的远程数据发送(NRDS)"
 msgid ""
 "config files to be distributed to remote clients.  The clients will process "
 "the checks"
-msgstr "要分发到远程客户端配置文件. 客户端将检查处理"
+msgstr "要分发到远程客户端配置文件. 客户端将监控处理"
 
 #: xicomponents/Production/nrdsconfigmanager/nrdsconfigmanager.php:281
 #, fuzzy
@@ -17098,7 +17098,7 @@ msgstr "有没有说明这"
 #: xicomponents/Production/objectnotes/objectnotes.inc.php:121
 #, fuzzy
 msgid "host"
-msgstr "主持人"
+msgstr "主机"
 
 #: xicomponents/Production/objectnotes/objectnotes.inc.php:113
 #: xicomponents/Production/objectnotes/objectnotes.inc.php:121
@@ -17253,7 +17253,7 @@ msgstr "确认并安排停机时间"
 #: xicomponents/Production/massacknowledge/mass_ack.php:264
 #, fuzzy
 msgid "Schedule Immediate Check<"
-msgstr "安排立即检查<"
+msgstr "安排立即监控<"
 
 #: xicomponents/Production/massacknowledge/mass_ack.php:266
 #, fuzzy
@@ -17281,7 +17281,7 @@ msgstr "问题是公认的"
 #: xicomponents/Production/massacknowledge/mass_ack.php:270
 #, fuzzy
 msgid "Check All Items'"
-msgstr "检查所有物品“"
+msgstr "监控所有物品“"
 
 #: xicomponents/Production/massacknowledge/mass_ack.php:271
 #, fuzzy
@@ -17319,7 +17319,7 @@ msgstr "一贯"
 #: xicomponents/Production/massacknowledge/mass_ack.php:288
 #, fuzzy
 msgid "Check All For This Host"
-msgstr "对于该主机检查"
+msgstr "对于该主机监控"
 
 #: xicomponents/Production/massacknowledge/mass_ack.php:336
 #, fuzzy
@@ -17396,7 +17396,7 @@ msgstr "质量确认"
 #: xicomponents/Production/nagvis/nagvis.inc.php:46
 #, fuzzy
 msgid "This component brings Nagvis into the maps menu inside of XI. "
-msgstr "这的组件带来Nagvis到地图菜单里面的XI. "
+msgstr "这的组件带来Nagvis到拓波动菜单里面的XI. "
 
 #: xicomponents/Production/opscreen/merlin.php:46
 #, fuzzy
@@ -17463,7 +17463,7 @@ msgstr "最近状态转换"
 #: xicomponents/Production/opscreen/merlin.php:240
 #, fuzzy
 msgid "Last check"
-msgstr "最后检查"
+msgstr "最后监控"
 
 #: xicomponents/Production/opscreen/opscreen.inc.php:39
 #, fuzzy
@@ -17491,7 +17491,7 @@ msgstr "主机路由跟踪工具"
 #, fuzzy
 msgid ""
 "Provides a fast method of checking host connectivity using traceroute. "
-msgstr "使用traceroute检查主机连接提供了一种快速的方法. "
+msgstr "使用traceroute监控主机连接提供了一种快速的方法. "
 
 #: xicomponents/Production/tracerouteaction/tracerouteaction.inc.php:105
 #, fuzzy
@@ -17813,7 +17813,7 @@ msgstr "此组件添加一个的网络重播报告, 向Nagios XI. "
 #: xicomponents/Production/hypermap_replay/dashlet.inc.php:193
 #, fuzzy
 msgid "About This Report"
-msgstr "关于本报告"
+msgstr "关于该报告"
 
 #: xicomponents/Production/hypermap_replay/dashlet.inc.php:195
 #, fuzzy
@@ -17821,7 +17821,7 @@ msgid ""
 "The network replay displays the historical status of network devices (hosts)"
 " over time, which is useful for understanding how outages affect the overall"
 " health of the network."
-msgstr "网络重播显示随着时间的推移, 这是有用的了解停电影响整体健康的网络的网络设备(主机)的历史地位. "
+msgstr "网络重播显示随着时间的推移, 这是有用的了解停电影响整体网络健康状况的网络设备(主机)的历史地位. "
 
 #: xicomponents/Production/hypermap_replay/dashlet.inc.php:198
 #, fuzzy
@@ -17886,19 +17886,19 @@ msgstr "初始设定值！"
 #: xicomponents/Production/googlemap/set_map_defaults.php:86
 #, fuzzy
 msgid "Return to Google Map"
-msgstr "返回谷歌地图"
+msgstr "返回谷歌拓波动"
 
 #: xicomponents/Production/googlemap/googlemap.inc.php:37
 #, fuzzy
 msgid ""
 "Adds a google map to the maps menu where hosts with defined coordinates can "
 "be viewed. "
-msgstr "添加了谷歌地图的地图菜单, 可以查看主机定义坐标. "
+msgstr "添加了谷歌拓波动的拓波动菜单, 可以查看主机定义坐标. "
 
 #: xicomponents/Production/googlemap/googlemap.inc.php:89
 #, fuzzy
 msgid "Google Map"
-msgstr "谷歌地图"
+msgstr "谷歌拓波动"
 
 #: xicomponents/Production/googlemap/map.php:136
 #, fuzzy
@@ -17923,7 +17923,7 @@ msgstr "获取地理编码的地址"
 #: xicomponents/Production/googlemap/map.php:159
 #, fuzzy
 msgid "Set Map Defaults"
-msgstr "设置地图默认设置"
+msgstr "设置拓波动默认设置"
 
 #: xicomponents/Production/helpsystem/useropts.php:76
 #: html/includes/components/helpsystem/useropts.php:80
@@ -18203,7 +18203,7 @@ msgstr "主机组概述"
 #: html/admin/configwizards.php:109
 #, fuzzy
 msgid "Check for Updates"
-msgstr "检查更新"
+msgstr "监控更新"
 
 #: html/includes/footer.inc.php:25 html/includes/footer.inc.php:61
 #, fuzzy
@@ -18352,12 +18352,12 @@ msgstr "数据可视化"
 #: html/reports/alertheatmap.php:115 html/reports/nagiosxireports.php:72
 #, fuzzy
 msgid "Alert Heatmap"
-msgstr "警报热图"
+msgstr "警报热点视图"
 
 #: html/includes/utils-menu.inc.php:866
 #, fuzzy
 msgid "Nagios Core Reports"
-msgstr "Nagios的核心报告"
+msgstr "Nagios Core报告"
 
 #: html/includes/utils-menu.inc.php:869
 #, fuzzy
@@ -18460,7 +18460,7 @@ msgstr "审计日志"
 #: html/includes/utils-menu.inc.php:1198
 #, fuzzy
 msgid "Check For Updates"
-msgstr "“检查更新”"
+msgstr "“监控更新”"
 
 #: html/includes/utils-menu.inc.php:1228 html/includes/lang/en.inc.php:524
 #: html/includes/lang/en.inc.php:525
@@ -18536,7 +18536,7 @@ msgstr "配置快照"
 #: html/includes/utils-menu.inc.php:1371
 #, fuzzy
 msgid "Check File Permissions"
-msgstr "检查文件的权限"
+msgstr "监控文件的权限"
 
 #: html/includes/utils-menu.inc.php:1410
 #: html/includes/components/ccm/ccm.inc.php:174
@@ -18548,7 +18548,7 @@ msgstr "核心配置管理"
 #: html/includes/utils-menu.inc.php:1432
 #, fuzzy
 msgid "Check Transfers"
-msgstr "检查转让"
+msgstr "监控转让"
 
 #: html/includes/utils-menu.inc.php:1443
 #, fuzzy
@@ -18676,13 +18676,13 @@ msgstr "主机视图"
 #: html/includes/components/nagioscore/ui/index.php:238
 #, fuzzy
 msgid "Maps"
-msgstr "拓扑"
+msgstr "拓波动"
 
 #: html/includes/utils-menu.inc.php:1856 html/includes/lang/en.inc.php:1052
 #: html/includes/lang/en.inc.php:1053
 #, fuzzy
 msgid "Network Status Map"
-msgstr "网络状态拓扑"
+msgstr "网络状态拓波动"
 
 #: html/includes/utils-menu.inc.php:1876
 #: html/includes/components/nagioscore/ui/index.php:261
@@ -18724,7 +18724,7 @@ msgstr "性能"
 #: html/config/configobject.php:541 html/config/configobject.php:1134
 #, fuzzy
 msgid "Nagios Core Config Manager"
-msgstr "Nagios的核心配置管理"
+msgstr "Nagios Core配置管理"
 
 #: html/includes/utils-menu.inc.php:2048
 #, fuzzy
@@ -18855,14 +18855,14 @@ msgstr "服务间的依赖关系"
 #: html/includes/components/ccm/ccm.inc.php:582
 #, fuzzy
 msgid "Nagios Core Main Config"
-msgstr "Nagios的核心主要配置"
+msgstr "Nagios Core主要配置"
 
 #: html/includes/utils-menu.inc.php:2358
 #: html/includes/components/ccm/includes/admin_views.inc.php:135
 #: html/includes/components/ccm/ccm.inc.php:592
 #, fuzzy
 msgid "Nagios Core CGI Config"
-msgstr "Nagios的核心CGI配置"
+msgstr "Nagios CoreCGI配置"
 
 #: html/includes/utils-menu.inc.php:2376
 #: html/includes/components/ccm/ccm.inc.php:614
@@ -19193,7 +19193,7 @@ msgstr "报告"
 #: html/includes/components/nagioscore/ui/index.php:348
 #, fuzzy
 msgid "Nagios Core Process"
-msgstr "Nagios的核心流程"
+msgstr "Nagios Core流程"
 
 #: html/includes/components/nagioscore/ui/index.php:357
 #, fuzzy
@@ -19328,7 +19328,7 @@ msgstr "这台主机有意见"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:509
 #, fuzzy
 msgid "This host is flapping"
-msgstr "这台主机被扑"
+msgstr "这台主机被波动"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:405
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:513
@@ -19341,7 +19341,7 @@ msgstr "这台主机的问题已被确认"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:586
 #, fuzzy
 msgid "Passive Only Check"
-msgstr "被动式只检查"
+msgstr "被动式只监控"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:415
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:523
@@ -19368,17 +19368,17 @@ msgstr "此主机的详细信息查看服务状态"
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:494
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:896
 msgid "Host check is pending..."
-msgstr "主机检查待..."
+msgstr "主机监控待..."
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:496
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:659
 #, fuzzy
 msgid " Check is scheduled for "
-msgstr "检查定为"
+msgstr "监控定为"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:498
 msgid "No check results for host yet..."
-msgstr "主机没有检查结果还..."
+msgstr "主机没有监控结果还..."
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:530
 #, fuzzy
@@ -19407,7 +19407,7 @@ msgstr "启用通知"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:786
 #, fuzzy
 msgid "Schedule a forced immediate check"
-msgstr "立即安排检查"
+msgstr "立即安排监控"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:645
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:813
@@ -19438,7 +19438,7 @@ msgstr "东道国"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:912
 #, fuzzy
 msgid "Current Check"
-msgstr "当前检查"
+msgstr "当前监控"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:738
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:741
@@ -19457,13 +19457,13 @@ msgstr "不变的(稳定)"
 #: html/includes/lang/en.inc.php:683
 #, fuzzy
 msgid "Last Check"
-msgstr "最后检查"
+msgstr "最后监控"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:749
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:922
 #, fuzzy
 msgid "Next Check"
-msgstr "下一步检查"
+msgstr "下一步监控"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:754
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:927
@@ -19475,13 +19475,13 @@ msgstr "最后的状态变化"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:936
 #, fuzzy
 msgid "Check Type"
-msgstr "检查类型"
+msgstr "监控类型"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:765
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:938
 #, fuzzy
 msgid "Check Latency"
-msgstr "检查延迟"
+msgstr "监控延迟"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:771
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:1135
@@ -19552,14 +19552,14 @@ msgstr "国"
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:639
 #, fuzzy
 msgid "Active Checks"
-msgstr "主动检查"
+msgstr "主动监控"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:1093
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:639
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:1269
 #, fuzzy
 msgid "Passive Checks"
-msgstr "被动检查"
+msgstr "被动监控"
 
 #: html/includes/components/xicore/ajaxhelpers-hoststatus.inc.php:1114
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:145
@@ -19837,12 +19837,12 @@ msgstr "显示摘要的网络中断. "
 #: html/admin/performance.php:72
 #, fuzzy
 msgid "Network Health"
-msgstr "网络健康"
+msgstr "网络健康状况"
 
 #: html/includes/components/xicore/dashlets.inc.php:319
 #, fuzzy
 msgid "Displays summary of network health."
-msgstr "显示摘要的网络健康. "
+msgstr "显示网络健康状况的摘要. "
 
 #: html/includes/components/xicore/dashlets.inc.php:330
 #: html/admin/performance.php:73
@@ -19905,25 +19905,25 @@ msgstr "流程设置"
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:440
 #, fuzzy
 msgid "Active Service Checks"
-msgstr "主动服务检查"
+msgstr "主动服务监控"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:115
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:445
 #, fuzzy
 msgid "Passive Service Checks"
-msgstr "被动式服务检查"
+msgstr "被动式服务监控"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:121
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:430
 #, fuzzy
 msgid "Active Host Checks"
-msgstr "活动主机检查"
+msgstr "活动主机监控"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:127
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:435
 #, fuzzy
 msgid "Passive Host Checks"
-msgstr "被动主机检查"
+msgstr "被动主机监控"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:139
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:639
@@ -19944,22 +19944,22 @@ msgstr "主机的迷恋"
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:327
 #, fuzzy
 msgid "Host Check Latency"
-msgstr "主机检查延迟"
+msgstr "主机监控延迟"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:332
 #, fuzzy
 msgid "Host Check Execution Time"
-msgstr "主机检查执行时间"
+msgstr "主机监控执行时间"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:337
 #, fuzzy
 msgid "Service Check Latency"
-msgstr "服务检查延迟"
+msgstr "服务监控延迟"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:342
 #, fuzzy
 msgid "Service Check Execution Time"
-msgstr "服务检查执行时间"
+msgstr "服务监控执行时间"
 
 #: html/includes/components/xicore/ajaxhelpers-monitoringengine.inc.php:380
 #: html/includes/components/xicore/dashlets-monitoringengine.inc.php:139
@@ -20039,7 +20039,7 @@ msgstr "最后"
 #: html/includes/components/xicore/ajaxhelpers-tasks.inc.php:96
 #, fuzzy
 msgid "update check failed"
-msgstr "更新检查失败"
+msgstr "更新监控失败"
 
 #: html/includes/components/xicore/ajaxhelpers-tasks.inc.php:98
 #, fuzzy
@@ -20184,7 +20184,7 @@ msgstr "安排停机时间"
 #: html/includes/components/xicore/status-object-detail.inc.php:1296
 #, fuzzy
 msgid "Submit passive check result"
-msgstr "提交被动的检查结果"
+msgstr "提交被动的监控结果"
 
 #: html/includes/components/xicore/status-object-detail.inc.php:599
 #: html/includes/components/xicore/status-object-detail.inc.php:1300
@@ -20201,7 +20201,7 @@ msgstr "延迟一个通知"
 #: html/includes/components/xicore/status-object-detail.inc.php:619
 #, fuzzy
 msgid "See this service in Nagios Core"
-msgstr "这在Nagios的核心服务"
+msgstr "这在Nagios Core服务"
 
 #: html/includes/components/xicore/status-object-detail.inc.php:642
 #, fuzzy
@@ -20226,12 +20226,12 @@ msgstr "在该主机上的所有服务时间排定"
 #: html/includes/components/xicore/status-object-detail.inc.php:1292
 #, fuzzy
 msgid "Schedule immediate check for all services on this host"
-msgstr "附表立即检查该主机上的所有服务"
+msgstr "附表立即监控该主机上的所有服务"
 
 #: html/includes/components/xicore/status-object-detail.inc.php:1320
 #, fuzzy
 msgid "See this host in Nagios Core"
-msgstr "这台主机在Nagios的核心"
+msgstr "这台主机在Nagios Core"
 
 #: html/includes/components/xicore/status-object-detail.inc.php:1343
 #, fuzzy
@@ -20309,7 +20309,7 @@ msgstr "监测发动机可能会停止. "
 
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:48
 msgid "Check engine"
-msgstr "检查发动机"
+msgstr "监控发动机"
 
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:49
 msgid "Error: Unable to parse XML output!"
@@ -20397,7 +20397,7 @@ msgstr "特点"
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:726
 #, fuzzy
 msgid "Services Disabled"
-msgstr "服务残疾人"
+msgstr "服务禁用"
 
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:656
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:677
@@ -20411,7 +20411,7 @@ msgstr "启用所有服务"
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:658
 #, fuzzy
 msgid "Services Flapping"
-msgstr "服务扑"
+msgstr "服务波动"
 
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:660
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:679
@@ -20420,7 +20420,7 @@ msgstr "服务扑"
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:730
 #, fuzzy
 msgid "Hosts Disabled"
-msgstr "主机残疾人"
+msgstr "主机禁用"
 
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:662
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:681
@@ -20434,7 +20434,7 @@ msgstr "“所有主机”已启用"
 #: html/includes/components/xicore/ajaxhelpers-tac.inc.php:664
 #, fuzzy
 msgid "Hosts Flapping"
-msgstr "主机扑"
+msgstr "主机波动"
 
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:572
 #, fuzzy
@@ -20444,7 +20444,7 @@ msgstr "这项服务有意见"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:576
 #, fuzzy
 msgid "This service is flapping"
-msgstr "这项服务是扑"
+msgstr "这项服务是波动"
 
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:580
 #, fuzzy
@@ -20465,12 +20465,12 @@ msgstr "这项服务是在预定的停机时间"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:1070
 #, fuzzy
 msgid "Service check is pending..."
-msgstr "服务检查是等待..."
+msgstr "服务监控是等待..."
 
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:661
 #, fuzzy
 msgid "No check results for service yet..."
-msgstr "没有服务的检查结果还没有..."
+msgstr "没有服务的监控结果还没有..."
 
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:691
 #, fuzzy
@@ -20533,7 +20533,7 @@ msgstr "服务属性"
 #: html/includes/components/xicore/ajaxhelpers-servicestatus.inc.php:1257
 #, fuzzy
 msgid "Active  Checks"
-msgstr "主动检查"
+msgstr "存活监控"
 
 #: html/includes/components/xicore/dashlets-monitoringengine.inc.php:54
 #, fuzzy
@@ -20574,43 +20574,43 @@ msgstr "过滤器"
 #: html/includes/components/xicore/status-utils.inc.php:839
 #, fuzzy
 msgid "Not Acknowledged"
-msgstr "不应答"
+msgstr "未响应"
 
 #: html/includes/components/xicore/status-utils.inc.php:772
 #: html/includes/components/xicore/status-utils.inc.php:841
 #, fuzzy
 msgid "In Downtime"
-msgstr "在停机"
+msgstr "停机时间内"
 
 #: html/includes/components/xicore/status-utils.inc.php:774
 #: html/includes/components/xicore/status-utils.inc.php:843
 #, fuzzy
 msgid "Not In Downtime"
-msgstr "没有停机时间"
+msgstr "不在停机时间内"
 
 #: html/includes/components/xicore/status-utils.inc.php:776
 #: html/includes/components/xicore/status-utils.inc.php:845
 #, fuzzy
 msgid "Flapping"
-msgstr "扑"
+msgstr "波动"
 
 #: html/includes/components/xicore/status-utils.inc.php:778
 #: html/includes/components/xicore/status-utils.inc.php:847
 #, fuzzy
 msgid "Not Flapping"
-msgstr "不扑"
+msgstr "无波动"
 
 #: html/includes/components/xicore/status-utils.inc.php:780
 #: html/includes/components/xicore/status-utils.inc.php:849
 #, fuzzy
 msgid "Checks Enabled"
-msgstr "检查已启用"
+msgstr "监控已启用"
 
 #: html/includes/components/xicore/status-utils.inc.php:782
 #: html/includes/components/xicore/status-utils.inc.php:851
 #, fuzzy
 msgid "Checks Disabled"
-msgstr "检查残疾人"
+msgstr "监控已禁用"
 
 #: html/includes/components/xicore/status-utils.inc.php:784
 #: html/includes/components/xicore/status-utils.inc.php:853
@@ -20622,7 +20622,7 @@ msgstr "启用通知"
 #: html/includes/components/xicore/status-utils.inc.php:855 html/rr.php:135
 #, fuzzy
 msgid "Notifications Disabled"
-msgstr "通知被禁用"
+msgstr "通知已禁用"
 
 #: html/includes/components/xicore/status-utils.inc.php:788
 #: html/includes/components/xicore/status-utils.inc.php:809
@@ -20630,7 +20630,7 @@ msgstr "通知被禁用"
 #: html/includes/components/xicore/status-utils.inc.php:878
 #, fuzzy
 msgid "Hard State"
-msgstr "硬态"
+msgstr "硬件状态"
 
 #: html/includes/components/xicore/status-utils.inc.php:790
 #: html/includes/components/xicore/status-utils.inc.php:811
@@ -20638,49 +20638,49 @@ msgstr "硬态"
 #: html/includes/components/xicore/status-utils.inc.php:880
 #, fuzzy
 msgid "Soft State"
-msgstr "软状态"
+msgstr "软件状态"
 
 #: html/includes/components/xicore/status-utils.inc.php:793
 #: html/includes/components/xicore/status-utils.inc.php:862
 #, fuzzy
 msgid "Event Handler Disabled"
-msgstr "事件处理程序禁用"
+msgstr "事件处理程序已禁用"
 
 #: html/includes/components/xicore/status-utils.inc.php:795
 #: html/includes/components/xicore/status-utils.inc.php:864
 #, fuzzy
 msgid "Event Handler Enabled"
-msgstr "事件处理程序启用"
+msgstr "事件处理程序已启用"
 
 #: html/includes/components/xicore/status-utils.inc.php:797
 #: html/includes/components/xicore/status-utils.inc.php:866
 #, fuzzy
 msgid "Flap Detection Disabled"
-msgstr "皮瓣检测无效"
+msgstr "波动检测功能已禁用"
 
 #: html/includes/components/xicore/status-utils.inc.php:799
 #: html/includes/components/xicore/status-utils.inc.php:868
 #, fuzzy
 msgid "Flap Detection Enabled"
-msgstr "皮瓣检测功能"
+msgstr "波动检测功能已启用"
 
 #: html/includes/components/xicore/status-utils.inc.php:801
 #: html/includes/components/xicore/status-utils.inc.php:870
 #, fuzzy
 msgid "Passive Checks Disabled"
-msgstr "被动检查禁用. "
+msgstr "被动监控已禁用. "
 
 #: html/includes/components/xicore/status-utils.inc.php:803
 #: html/includes/components/xicore/status-utils.inc.php:872
 #, fuzzy
 msgid "Passive Checks Enabled"
-msgstr "被动检查已启用"
+msgstr "被动监控已启用"
 
 #: html/includes/components/xicore/status-utils.inc.php:807
 #: html/includes/components/xicore/status-utils.inc.php:876
 #, fuzzy
 msgid "Active Check"
-msgstr "主动检查"
+msgstr "存活监控"
 
 #: html/includes/components/xicore/recurringdowntime.php:136
 #: html/includes/components/xicore/recurringdowntime.php:151
@@ -21031,7 +21031,7 @@ msgstr "新的Nagios XI版本！"
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:43
 #, fuzzy
 msgid "Last update check failed"
-msgstr "上次更新检查失败"
+msgstr "上次更新监控失败"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:71
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:240
@@ -21043,13 +21043,13 @@ msgstr "系统状态退化！"
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:455
 #, fuzzy
 msgid "Active Host Checks Are Disabled"
-msgstr "活动主机检查是禁用"
+msgstr "活动主机监控是禁用"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:93
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:466
 #, fuzzy
 msgid "Active Service Checks Are Disabled"
-msgstr "主动服务检查禁用"
+msgstr "主动服务监控禁用"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:101
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:477
@@ -21088,7 +21088,7 @@ msgstr "下载最新版本"
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:207
 #, fuzzy
 msgid "Update Check Failed."
-msgstr "更新检查失败. "
+msgstr "更新监控失败. "
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:208
 #, fuzzy
@@ -21096,13 +21096,13 @@ msgid ""
 "The last update check failed.  Make sure your Nagios XI server can access the Internet and check for program updates.\n"
 "\tStaying updated with the latest release of Nagios XI is important to preventing security breaches."
 msgstr ""
-"最后更新检查失败. 请确保您的Nagios XI服务器可以访问互联网和检查程序更新.  \n"
+"最后更新监控失败. 请确保您的Nagios XI服务器可以访问互联网和监控程序更新.  \n"
 "\tStaying更新, 最新版本的Nagios XI是很重要的, 以防止安全漏洞. "
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:211
 #, fuzzy
 msgid "Try a manual update check"
-msgstr "尝试手动更新检查"
+msgstr "尝试手动更新监控"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:241
 #, fuzzy
@@ -21116,12 +21116,12 @@ msgstr ""
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:244
 #, fuzzy
 msgid "Check system status"
-msgstr "检查系统状态"
+msgstr "监控系统状态"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:245
 #, fuzzy
 msgid "Check monitoring engine status"
-msgstr "检查发动机状态监测"
+msgstr "监控发动机状态监测"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:297
 #, fuzzy
@@ -21155,12 +21155,12 @@ msgstr "没有运行！"
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:458
 #, fuzzy
 msgid "Active Host Checks Are Enabled"
-msgstr "活动主机检查已启用"
+msgstr "活动主机监控已启用"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:469
 #, fuzzy
 msgid "Active Service Checks Are Enabled"
-msgstr "主动服务检查已启用"
+msgstr "主动服务监控已启用"
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:480
 #, fuzzy
@@ -21180,7 +21180,7 @@ msgstr "系统问题"
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:641
 #, fuzzy
 msgid "Update Check Problem: Last update check failed."
-msgstr "更新检查问题: 上次更新检查失败. "
+msgstr "更新监控问题: 上次更新监控失败. "
 
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:644
 #, fuzzy
@@ -21215,7 +21215,7 @@ msgstr "安装的版本"
 #: html/includes/components/xicore/ajaxhelpers-misc.inc.php:668
 #, fuzzy
 msgid "Last Update Check"
-msgstr "最后更新检查"
+msgstr "最后更新监控"
 
 #: html/includes/components/xicore/ajaxhelpers-sysstat.inc.php:98
 #, fuzzy
@@ -21439,7 +21439,7 @@ msgstr "删除配置文件: "
 #: html/includes/components/ccm/classes/data_class.php:455
 #, fuzzy
 msgid "Errors while deleting the old configuration file - please check!:"
-msgstr "删除旧的配置文件时出现错误 - 请检查！"
+msgstr "删除旧的配置文件时出现错误 - 请监控！"
 
 #: html/includes/components/ccm/includes/hostservice.inc.php:396
 #, fuzzy
@@ -21523,7 +21523,7 @@ msgstr "CCM导入工具目前不支持对象的名称, 以'＃', 或一组排除
 #: html/includes/components/ccm/includes/admin_views.inc.php:54
 #, fuzzy
 msgid "Check your configurations after import before saving to file!"
-msgstr "检查您的配置保存到文件导入后的前！"
+msgstr "监控您的配置保存到文件导入后的前！"
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:57
 msgid "Import"
@@ -21533,12 +21533,12 @@ msgstr "进口"
 #, fuzzy
 msgid ""
 "This file contains all global configuration information for Nagios Core."
-msgstr "这个文件包含了所有的全局配置信息Nagios的核心. "
+msgstr "这个文件包含了所有的全局配置信息Nagios Core. "
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:85
 #, fuzzy
 msgid "Nagios Core Configuration"
-msgstr "Nagios的核心配置"
+msgstr "Nagios Core配置"
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:96
 #: html/includes/components/ccm/includes/admin_views.inc.php:146
@@ -21555,7 +21555,7 @@ msgstr "Unabled保存文件"
 #: html/includes/components/ccm/includes/admin_views.inc.php:146
 #, fuzzy
 msgid "check permissions"
-msgstr "检查权限. "
+msgstr "监控权限. "
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:99
 #: html/includes/components/ccm/includes/admin_views.inc.php:150
@@ -21567,17 +21567,17 @@ msgstr "nagios.cfg文件无法访问"
 #: html/includes/components/ccm/includes/admin_views.inc.php:150
 #, fuzzy
 msgid "Check permissions and verify write access"
-msgstr "检查权限和验证的写访问"
+msgstr "监控权限和验证的写访问"
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:111
 #, fuzzy
 msgid "ERROR: Unable to read / write nagios.cfg file. Check permissions!"
-msgstr "错误: 无法读/写nagios.cfg文件. 检查的权限！"
+msgstr "错误: 无法读/写nagios.cfg文件. 监控的权限！"
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:134
 #, fuzzy
 msgid "This file contains all CGI configuration information for Nagios Core."
-msgstr "此文件包含所有的的CGI配置信息为Nagios的核心. "
+msgstr "此文件包含所有的的CGI配置信息为Nagios Core. "
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:146
 #, fuzzy
@@ -21587,7 +21587,7 @@ msgstr "无法保存文件"
 #: html/includes/components/ccm/includes/admin_views.inc.php:162
 #, fuzzy
 msgid "ERROR: Unable to read / write cgi.cfg file.  Check permissions!"
-msgstr "错误: 无法读/写cgi.cfg文件. 检查的权限！"
+msgstr "错误: 无法读/写cgi.cfg文件. 监控的权限！"
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:254
 #, fuzzy
@@ -21688,7 +21688,7 @@ msgstr "无法写入文件"
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:565
 msgid "Check permissions"
-msgstr "检查权限"
+msgstr "监控权限"
 
 #: html/includes/components/ccm/includes/admin_views.inc.php:568
 #: html/includes/lang/en.inc.php:177
@@ -21928,7 +21928,7 @@ msgstr "主机配置文件成功写入了！"
 #, fuzzy
 msgid ""
 "Cannot open/overwrite the host configuration files (check the permissions)!"
-msgstr "无法打开/覆盖主机配置文件(检查权限)！"
+msgstr "无法打开/覆盖主机配置文件(监控权限)！"
 
 #: html/includes/components/ccm/includes/applyconfig.inc.php:223
 #, fuzzy
@@ -21944,7 +21944,7 @@ msgstr "服务配置文件成功写入了！"
 #, fuzzy
 msgid ""
 "Cannot open/overwrite service configuration files (check the permissions)!"
-msgstr "无法打开/覆盖服务配置文件(检查权限)！"
+msgstr "无法打开/覆盖服务配置文件(监控权限)！"
 
 #: html/includes/components/ccm/includes/applyconfig.inc.php:319
 msgid "Can't find Nagios binary!"
@@ -22090,7 +22090,7 @@ msgstr "标准"
 
 #: html/includes/components/ccm/includes/hidden_overlay_functions.inc.php:162
 msgid "Testing check from command line..."
-msgstr "命令行测试检查..."
+msgstr "命令行测试监控..."
 
 #: html/includes/components/ccm/includes/hidden_overlay_functions.inc.php:184
 #, fuzzy
@@ -22123,7 +22123,7 @@ msgid ""
 "The Nagios CCM (Core Config Manager) is a front-end interface for managing "
 "Nagios object configuration files."
 msgstr ""
-"Nagios的核心配置管理器(CCM)是一个前端的接口\n"
+"Nagios Core配置管理器(CCM)是一个前端的接口\n"
 "\t \tfor管理Nagios的对象配置文件. "
 
 #: html/includes/components/ccm/includes/common_functions.inc.php:23
@@ -22159,7 +22159,7 @@ msgstr ""
 msgid ""
 "Configurations from a Nagios Core install can be imported via the 'Import "
 "Config Files' page in the Tools section."
-msgstr "从Nagios的核心配置, 安装可以通过“导入配置文件”中的工具部分页面被导入. "
+msgstr "从Nagios Core配置, 安装可以通过“导入配置文件”中的工具部分页面被导入. "
 
 #: html/includes/components/ccm/includes/common_functions.inc.php:28
 #, fuzzy
@@ -22347,7 +22347,7 @@ msgstr "配置文件已成功删除！"
 #: html/includes/components/ccm/includes/activate.inc.php:152
 #, fuzzy
 msgid " - please check permissions!"
-msgstr "- 请检查权限！"
+msgstr "- 请监控权限！"
 
 #: html/includes/components/ccm/includes/activate.inc.php:162
 #, fuzzy
@@ -22820,7 +22820,7 @@ msgstr "管理Servicegroups"
 
 #: html/includes/components/ccm/page_templates/common_settings.php:91
 msgid "Check command"
-msgstr "检查命令"
+msgstr "监控命令"
 
 #: html/includes/components/ccm/page_templates/common_settings.php:111
 msgid "Command view"
@@ -22834,7 +22834,7 @@ msgstr "没有选择的命令"
 #: html/includes/components/ccm/page_templates/common_settings.php:146
 #, fuzzy
 msgid "Test Check Command"
-msgstr "测试检查命令"
+msgstr "测试监控命令"
 
 #: html/includes/components/ccm/page_templates/escalation_dependency_template.php:67
 #, fuzzy
@@ -22992,7 +22992,7 @@ msgstr "管理Servicegroup"
 #: html/includes/components/ccm/page_templates/form_header.php:94
 #, fuzzy
 msgid "Check Settings"
-msgstr "检查设置"
+msgstr "监控设置"
 
 #: html/includes/components/ccm/page_templates/check_settings.php:15
 #, fuzzy
@@ -23002,7 +23002,7 @@ msgstr "初始状态"
 #: html/includes/components/ccm/page_templates/check_settings.php:29
 #, fuzzy
 msgid "Check interval"
-msgstr "检查间隔"
+msgstr "监控间隔"
 
 #: html/includes/components/ccm/page_templates/check_settings.php:33
 #, fuzzy
@@ -23012,22 +23012,22 @@ msgstr "重试间隔"
 #: html/includes/components/ccm/page_templates/check_settings.php:37
 #, fuzzy
 msgid "Max check attempts"
-msgstr "最大尝试检查"
+msgstr "最大尝试监控"
 
 #: html/includes/components/ccm/page_templates/check_settings.php:41
 #, fuzzy
 msgid "Active checks enabled"
-msgstr "启用主动检查"
+msgstr "启用主动监控"
 
 #: html/includes/components/ccm/page_templates/check_settings.php:48
 #, fuzzy
 msgid "Passive checks enabled"
-msgstr "被动检查已启用"
+msgstr "被动监控已启用"
 
 #: html/includes/components/ccm/page_templates/check_settings.php:55
 #, fuzzy
 msgid "Check period"
-msgstr "检查期间"
+msgstr "监控期间"
 
 #: html/includes/components/ccm/page_templates/check_settings.php:71
 #, fuzzy
@@ -23037,7 +23037,7 @@ msgstr "新鲜门槛"
 #: html/includes/components/ccm/page_templates/check_settings.php:75
 #, fuzzy
 msgid "Check freshness"
-msgstr "检查新鲜感"
+msgstr "监控新鲜感"
 
 #: html/includes/components/ccm/page_templates/check_settings.php:88
 #, fuzzy
@@ -23130,7 +23130,7 @@ msgstr "命令类型"
 #: html/includes/components/ccm/page_templates/command_template.php:27
 #, fuzzy
 msgid "check command"
-msgstr "检查命令"
+msgstr "监控命令"
 
 #: html/includes/components/ccm/page_templates/command_template.php:28
 #, fuzzy
@@ -23172,7 +23172,7 @@ msgstr "配置文件: "
 #: html/includes/components/ccm/classes/config_class.php:375
 #, fuzzy
 msgid "Cannot delete the file (check the permissions)!"
-msgstr "无法删除的文件(检查权限)！"
+msgstr "无法删除的文件(监控权限)！"
 
 #: html/includes/components/ccm/classes/config_class.php:506
 #: html/includes/components/ccm/classes/config_class.php:956
@@ -23186,7 +23186,7 @@ msgstr "配置写入失败: "
 #: html/includes/components/ccm/classes/config_class.php:1221
 #, fuzzy
 msgid "Cannot open/overwrite the configuration file (check the permissions)!"
-msgstr "无法打开/覆盖配置文件(检查权限)！"
+msgstr "无法打开/覆盖配置文件(监控权限)！"
 
 #: html/includes/components/ccm/classes/config_class.php:867
 msgid "Configuration file"
@@ -23318,7 +23318,7 @@ msgstr "服务文件删除: "
 
 #: html/includes/components/ccm/classes/data_class.php:470
 msgid "Errors while deleting the old configuration file - please check!"
-msgstr "删除旧的配置文件时出现错误 - 请检查！"
+msgstr "删除旧的配置文件时出现错误 - 请监控！"
 
 #: html/includes/components/ccm/classes/data_class.php:730
 #, fuzzy
@@ -23380,7 +23380,7 @@ msgstr "缺少数据库连接参数！"
 #: html/includes/components/ccm/classes/import_class.php:97
 #, fuzzy
 msgid "Cannot open the data file (check the permissions)!"
-msgstr "无法打开数据文件(检查权限)！"
+msgstr "无法打开数据文件(监控权限)！"
 
 #: html/includes/components/ccm/classes/import_class.php:288
 #: html/includes/components/ccm/classes/import_class.php:309
@@ -23994,7 +23994,7 @@ msgstr "上传插件"
 #: html/includes/lang/en.inc.php:92
 #, fuzzy
 msgid "Check For Updates Now"
-msgstr "现在检查更新"
+msgstr "现在监控更新"
 
 #: html/includes/lang/en.inc.php:100 html/login.php:819
 #, fuzzy
@@ -24303,7 +24303,7 @@ msgstr "随着选择: "
 #: html/includes/lang/en.inc.php:215 html/admin/globalconfig.php:168
 #, fuzzy
 msgid "Check Now"
-msgstr "立即检查"
+msgstr "立即监控"
 
 #: html/includes/lang/en.inc.php:216
 #, fuzzy
@@ -24434,7 +24434,7 @@ msgid ""
 "The database you specified does not contain tables from the NDOUtils addon."
 "  You must use the same database for both NDOUtils and Reports.  Check your "
 "configuration file."
-msgstr "您所指定的数据库不包含表的从该NDOUtils的插件. 您必须使用相同的数据库为NDOUtils和报告. 检查您的配置文件. "
+msgstr "您所指定的数据库不包含表的从该NDOUtils的插件. 您必须使用相同的数据库为NDOUtils和报告. 监控您的配置文件. "
 
 #: html/includes/lang/en.inc.php:259
 #, fuzzy
@@ -25051,7 +25051,7 @@ msgstr "系统设置"
 #: html/includes/lang/en.inc.php:522 html/admin/globalconfig.php:165
 #, fuzzy
 msgid "Automatically Check for Updates"
-msgstr "自动检查更新"
+msgstr "自动监控更新"
 
 #: html/includes/lang/en.inc.php:527
 #, fuzzy
@@ -25283,7 +25283,7 @@ msgid ""
 "Nagios Core Config Manager provides an advanced graphical interface for "
 "configuring the Nagios Core monitoring and alerting engine. Recommended for "
 "advanced users only."
-msgstr "Nagios的核心配置管理提供了先进的图形界面配置Nagios的核心监测和预警发动机. 推荐适用于高级用户. "
+msgstr "Nagios Core配置管理提供了先进的图形界面配置Nagios Core监测和预警发动机. 推荐适用于高级用户. "
 
 #: html/includes/lang/en.inc.php:628
 #, fuzzy
@@ -25291,12 +25291,12 @@ msgid ""
 "Use this feature to apply any outstanding configuration changes to Nagios "
 "Core.  Changes will be applied and the monitoring engine will be restarted "
 "with the updated configuration."
-msgstr "使用此功能适用于任何悬而未决的配置更改Nagios的核心. 更改将被应用与更新的配置和监控引擎将重新启动. "
+msgstr "使用此功能适用于任何悬而未决的配置更改Nagios Core. 更改将被应用与更新的配置和监控引擎将重新启动. "
 
 #: html/includes/lang/en.inc.php:632
 #, fuzzy
 msgid "Success!  Nagios Core was restarted with an updated configuration."
-msgstr "成功了！ Nagios的核心是重新开始一个更新的配置. "
+msgstr "成功了！ Nagios Core是重新开始一个更新的配置. "
 
 #: html/includes/lang/en.inc.php:633
 #, fuzzy
@@ -25304,7 +25304,7 @@ msgid ""
 "An error occurred while attempting to apply your configuration to Nagios "
 "Core.  Monitoring engine configuration files have been rolled back to their "
 "last known good checkpoint."
-msgstr "试图运用您的配置Nagios的核心时发生错误. 监控引擎配置文件已被回滚到最后一次正确的检查站. "
+msgstr "试图运用您的配置Nagios Core时发生错误. 监控引擎配置文件已被回滚到最后一次正确的监控站. "
 
 #: html/includes/lang/en.inc.php:634
 #, fuzzy
@@ -25522,7 +25522,7 @@ msgstr "主机不可达"
 #: html/includes/lang/en.inc.php:730
 #, fuzzy
 msgid "Host Flapping"
-msgstr "主机扑"
+msgstr "主机波动"
 
 #: html/includes/lang/en.inc.php:731
 #, fuzzy
@@ -25543,7 +25543,7 @@ msgstr "服务未知"
 #: html/includes/lang/en.inc.php:736
 #, fuzzy
 msgid "Service Flapping"
-msgstr "服务扑"
+msgstr "服务波动"
 
 #: html/includes/lang/en.inc.php:737
 #, fuzzy
@@ -25912,12 +25912,12 @@ msgstr "安全性认证成功更​​新. "
 #: html/includes/lang/en.inc.php:885
 #, fuzzy
 msgid "Nagios Core Backend Password"
-msgstr "Nagios的核心骨干密码"
+msgstr "Nagios Core骨干密码"
 
 #: html/includes/lang/en.inc.php:887
 #, fuzzy
 msgid "No Nagios Core backend password."
-msgstr "没有Nagios的核心骨干密码. "
+msgstr "没有Nagios Core骨干密码. "
 
 #: html/includes/lang/en.inc.php:891
 #, fuzzy
@@ -26368,7 +26368,7 @@ msgstr "查看树图"
 #: html/includes/lang/en.inc.php:1056
 #, fuzzy
 msgid "View Balloon Map"
-msgstr "气球地图"
+msgstr "气球拓波动"
 
 #: html/includes/lang/en.inc.php:1061 html/includes/lang/en.inc.php:1062
 #, fuzzy
@@ -26590,7 +26590,7 @@ msgstr "计划停机时间, 在设定的时间间隔重复(出现)的定义如�
 #: html/includes/lang/en.inc.php:1151 html/includes/lang/en.inc.php:1152
 #, fuzzy
 msgid "Config File Permissions Check"
-msgstr "配置文件权限检查"
+msgstr "配置文件权限监控"
 
 #: html/includes/lang/en.inc.php:1157 html/includes/lang/en.inc.php:1158
 #, fuzzy
@@ -26613,14 +26613,14 @@ msgstr "移动运营商更新. "
 #: html/includes/lang/en.inc.php:1162 html/includes/lang/en.inc.php:1163
 #, fuzzy
 msgid "Check Data Transfer"
-msgstr "检查数据传输"
+msgstr "监控数据传输"
 
 #: html/includes/lang/en.inc.php:1164
 #, fuzzy
 msgid ""
 "Configure settings for transferring host and service check results to and "
 "from this Nagios XI server."
-msgstr "传输的主机和服务检查的结果, 从这个Nagios XI服务器配置设置. "
+msgstr "传输的主机和服务监控的结果, 从这个Nagios XI服务器配置设置. "
 
 #: html/includes/lang/en.inc.php:1166 html/includes/lang/en.inc.php:1167
 #, fuzzy
@@ -26929,17 +26929,17 @@ msgstr "Nagios的仪表盘"
 #: html/rr.php:218
 #, fuzzy
 msgid "Nagios Rapid Response"
-msgstr "“Nagios的快速应变"
+msgstr "“Nagios的快速响应"
 
 #: html/rr.php:490
 #, fuzzy
 msgid "View "
-msgstr "看"
+msgstr "查看"
 
 #: html/rr.php:491
 #, fuzzy
 msgid "Host "
-msgstr "主持人"
+msgstr "主机"
 
 #: html/rr.php:491
 #, fuzzy
@@ -26979,7 +26979,7 @@ msgstr "获得Nagios XI在线帮助. "
 #: html/help/main.php:65
 #, fuzzy
 msgid "Frequently Asked Questions"
-msgstr "常问问题"
+msgstr "常见问题"
 
 #: html/help/main.php:67
 #, fuzzy
@@ -26994,7 +26994,7 @@ msgstr "访问支持论坛"
 #: html/help/main.php:69
 #, fuzzy
 msgid "Visit the Support Wiki"
-msgstr "访问支持维基"
+msgstr "访问技术支持Wiki"
 
 #: html/help/main.php:82
 #, fuzzy
@@ -27061,7 +27061,7 @@ msgstr "有疑问或有技术难题吗? 即刻联系我们: "
 #: html/loginsplash.inc.php:35 html/about/main.php:86 html/login.php:291
 #, fuzzy
 msgid "Support"
-msgstr "支持"
+msgstr "服务支持"
 
 #: html/loginsplash.inc.php:37 html/about/main.php:88 html/login.php:293
 #, fuzzy
@@ -27152,7 +27152,7 @@ msgid ""
 "solutions a possibility through their tireless contributions.  We just "
 "wanted to let you know that we think you rock."
 msgstr ""
-"PHP开发社区, MySQL和Postgres的开发社区, ADODB项目的团队, 的jQuery项目团队和扩展jQuery社区, 秀水图标集作者PHPMailer的团队, famfamfam.com, RRDTool的项目, Nagios的核心项目, "
+"PHP开发社区, MySQL和Postgres的开发社区, ADODB项目的团队, 的jQuery项目团队和扩展jQuery社区, 秀水图标集作者PHPMailer的团队, famfamfam.com, RRDTool的项目, Nagios Core项目, "
 " Nagios插件项目, PNP项目, Nagvis项目, NagiosQL项目, 的Vartour风格的项目, F "
 "*的Nagios的图像包的作者, 和整个Nagios的社区和更大的OSS社区成员通过他们的使伟大的OSS解决方案的可能性不懈的贡献. 我们只是想让您知道, 我们想您摇滚. "
 
@@ -27213,14 +27213,14 @@ msgstr "商标使用限制"
 msgid ""
 "Your user agent does not support frames or is currently configured not to "
 "display frames."
-msgstr "您的用户代理不支持框架, 或被配置为不显示框架. "
+msgstr "您的用户代理不支持IFRAME框架, 或被配置为不显示IFRAME框架. "
 
 #: html/tools/main.php:50
 #, fuzzy
 msgid ""
 "Tools are utilities that you can quickly access from Nagios using your web "
 "browser."
-msgstr "这些工具是实用工具, 您可以使用您的Web浏览器通过Nagios快速访问. "
+msgstr "这些是常用工具, 您可以使用您的Web浏览器通过Nagios快速访问. "
 
 #: html/tools/main.php:53
 #, fuzzy
@@ -27502,7 +27502,7 @@ msgstr "发送密码重置请求"
 msgid ""
 "We have sent a password reset link and token to your email address on file. "
 "Please check your email to continue."
-msgstr "我们已经派出了密码重置链接, 令牌上的文件您的电子邮件地址. 请检查您的电子邮件以继续. "
+msgstr "我们已经派出了密码重置链接, 令牌上的文件您的电子邮件地址. 请监控您的电子邮件以继续. "
 
 #: html/login.php:741
 #, fuzzy
@@ -27549,7 +27549,7 @@ msgstr "完成重设密码"
 #: html/login.php:804
 #, fuzzy
 msgid "Fill out the fields below to reset your password."
-msgstr "填写以下栏位重设密码. "
+msgstr "填写下列字段重设密码. "
 
 #: html/login.php:823
 #, fuzzy
@@ -27586,7 +27586,7 @@ msgstr "用户安装的组件“"
 msgid ""
 "Could not download component version list from Nagios Server, check Internet"
 " Connnectivity"
-msgstr "Nagios服务器无法下载组件版本列表, 检查互联网Connnectivity"
+msgstr "Nagios服务器无法下载组件版本列表, 监控互联网Connnectivity"
 
 #: html/admin/components.php:643
 #, fuzzy
@@ -27707,17 +27707,17 @@ msgstr "独特的ID丢失上线＃"
 #: html/admin/mobilecarriers.php:206
 #, fuzzy
 msgid "Description missing on line #"
-msgstr "说明缺少上线＃"
+msgstr "说明缺少 位于行 #"
 
 #: html/admin/mobilecarriers.php:208
 #, fuzzy
 msgid "Format missing on line #"
-msgstr "上线的格式丢失＃"
+msgstr "格式错误 位于行 #"
 
 #: html/admin/mobilecarriers.php:221
 #, fuzzy
 msgid "User updated global mobile carrier settings"
-msgstr "用户全球移动运营商设置更新"
+msgstr "用户全局移动运营商设置更新"
 
 #: html/admin/mobilecarriers.php:234
 #, fuzzy
@@ -27732,12 +27732,12 @@ msgstr "激活状态"
 #: html/admin/license.php:149
 #, fuzzy
 msgid "Activated"
-msgstr "活性"
+msgstr "活动状态"
 
 #: html/admin/license.php:156
 #, fuzzy
 msgid "Not Activated"
-msgstr "未激活"
+msgstr "非活动状态"
 
 #: html/admin/license.php:157
 #, fuzzy
@@ -27818,7 +27818,7 @@ msgstr "完整的升级"
 #: html/admin/updates.php:483
 #, fuzzy
 msgid "Checking..."
-msgstr "检查..."
+msgstr "监控..."
 
 #: html/admin/updates.php:497
 #, fuzzy
@@ -27851,7 +27851,7 @@ msgid ""
 "monitoring environments, and in environments where external applications and"
 " services send data to Nagios."
 msgstr ""
-"这些设置会影响了Nagios XI接受和处理被动的主机和服务检查的结果, 从外部应用程序, 服务和远程Nagios的服务器的能力. 启用入站检查是非常重要的, 在分布式监控环境, 以及外部应用程序和服务的环境中, 将数据发送到Nagios的. "
+"这些设置会影响了Nagios XI接受和处理被动的主机和服务监控的结果, 从外部应用程序, 服务和远程Nagios的服务器的能力. 启用入站监控是非常重要的, 在分布式监控环境, 以及外部应用程序和服务的环境中, 将数据发送到Nagios的. "
 
 #: html/admin/dtinbound.php:105
 #, fuzzy
@@ -27884,7 +27884,7 @@ msgid ""
 "Remote clients must be able to contact this server on port 80 TCP (HTTP) in "
 "order to access the NRDP API and submit check results.  You may have to open"
 " firewall ports to allow access"
-msgstr "远程客户端必须能够与这台服务器上的TCP端口80(HTTP), 以访问NRDP的API, 并提交检查结果. 您可能必须打开防火墙端口以允许访问"
+msgstr "远程客户端必须能够与这台服务器上的TCP端口80(HTTP), 以访问NRDP的API, 并提交监控结果. 您可能必须打开防火墙端口以允许访问"
 
 #: html/admin/dtinbound.php:134
 #, fuzzy
@@ -27971,7 +27971,7 @@ msgid ""
 "Remote clients must be able to contact this server on port 5667 TCP in order"
 " to access NSCA and submit check results.  You may have to open firewall "
 "ports to allow access"
-msgstr "远程客户端必须能够与这台服务器上的端口5667 TCP访问NSCA, 并提交检查结果. 您可能必须打开防火墙端口以允许访问"
+msgstr "远程客户端必须能够与这台服务器上的端口5667 TCP访问NSCA, 并提交监控结果. 您可能必须打开防火墙端口以允许访问"
 
 #: html/admin/dtinbound.php:200
 #, fuzzy
@@ -27999,7 +27999,7 @@ msgstr "每个发送者必须使用相同的加密方法, 您在这里指定的�
 #: html/admin/dtinbound.php:244
 #, fuzzy
 msgid "The password used to decrypt check data that is received by NSCA"
-msgstr "用来检查数据解密的密码, 收到NSCA"
+msgstr "用来监控数据解密的密码, 收到NSCA"
 
 #: html/admin/dtinbound.php:247
 #, fuzzy
@@ -28009,7 +28009,7 @@ msgstr "每个发送者必须使用相同的密码"
 #: html/admin/dtinbound.php:291
 #, fuzzy
 msgid "User updated inbound check transfer settings"
-msgstr "用户更新的入境检查传送设置"
+msgstr "用户更新的入境监控传送设置"
 
 #: html/admin/dtinbound.php:322
 #, fuzzy
@@ -28248,7 +28248,7 @@ msgid ""
 "These settings affect Nagios XI's ability to send host and service checks "
 "results to remote Nagios servers.  Enabling outbound checks is important in "
 "distributed monitoring environments."
-msgstr "这些设置会影响了Nagios XI能够发送到远程的Nagios服务器的主机和服务检查的结果. 在分布式监控环境中, 启用出站检查是很重要的. "
+msgstr "这些设置会影响了Nagios XI能够发送到远程的Nagios服务器的主机和服务监控的结果. 在分布式监控环境中, 启用出站监控是很重要的. "
 
 #: html/admin/dtoutbound.php:114
 #, fuzzy
@@ -28276,7 +28276,7 @@ msgid ""
 "Filters allow you to optionally exclude (or only include) certain checks in "
 "outbound data based on various criteria.  Filters apply globally to data "
 "sent out via both NSCA and NRDP"
-msgstr "过滤器允许, 您可以选择排除(或包括)若干检查发出的数据根据​​不同的标准. 过滤器适用于在全球范围内通过NSCA和NRDP都发出的数据"
+msgstr "过滤器允许, 您可以选择排除(或包括)若干监控发出的数据根据​​不同的标准. 过滤器适用于在全球范围内通过NSCA和NRDP都发出的数据"
 
 #: html/admin/dtoutbound.php:148
 #, fuzzy
@@ -28399,7 +28399,7 @@ msgstr ""
 #: html/admin/dtoutbound.php:406
 #, fuzzy
 msgid "User updated outbound check transfer settings"
-msgstr "用户已更新出站检查传送设置"
+msgstr "用户已更新出站监控传送设置"
 
 #: html/admin/dtoutbound.php:437
 #, fuzzy
@@ -28572,7 +28572,7 @@ msgstr "配置文件"
 #: html/admin/configpermscheck.php:192
 #, fuzzy
 msgid "The permissions on the Nagios Core configuration files to be okay"
-msgstr "Nagios的核心配置文件的权限会好起来的"
+msgstr "Nagios Core配置文件的权限会好起来的"
 
 #: html/admin/configpermscheck.php:194
 #, fuzzy
@@ -28607,7 +28607,7 @@ msgstr "管理出站传输设置"
 msgid ""
 "Configure outbound check transfer options.  Useful for distributed "
 "monitoring and redundant/failover setups."
-msgstr "配置出站检查传输选项. 有用的分布式监控和冗余/故障转移设置. "
+msgstr "配置出站监控传输选项. 有用的分布式监控和冗余/故障转移设置. "
 
 #: html/admin/datatransfer.php:77
 #, fuzzy
@@ -28619,7 +28619,7 @@ msgstr "管理入站传输设置"
 msgid ""
 "Configure inbound check reception options.  Useful for receiving passive "
 "checks from external hosts, applications, and third-party addons."
-msgstr "配置入站检查接收选项. 可用于接收来自外部主机, 应用程序和第三方插件的被动检查. "
+msgstr "配置入站监控接收选项. 可用于接收来自外部主机, 应用程序和第三方插件的被动监控. "
 
 #: html/admin/autologin.php:98
 #, fuzzy
@@ -28890,22 +28890,22 @@ msgstr "最大时间(分钟), 以保持系统的命令. "
 #: html/admin/performance.php:467
 #, fuzzy
 msgid "Max Service Checks Age"
-msgstr "最大服务检查龄, "
+msgstr "最大服务监控龄, "
 
 #: html/admin/performance.php:473
 #, fuzzy
 msgid "Max time in minutes to keep service checks."
-msgstr "最大时间, 以分钟, 以保持服务的检查. "
+msgstr "最大时间, 以分钟, 以保持服务的监控. "
 
 #: html/admin/performance.php:479
 #, fuzzy
 msgid "Max Host Checks Age"
-msgstr "最大主机检查老化时间"
+msgstr "最大主机监控老化时间"
 
 #: html/admin/performance.php:485
 #, fuzzy
 msgid "Max time in minutes to keep host checks."
-msgstr "最大时间, 以分钟, 以保持主机检查. "
+msgstr "最大时间, 以分钟, 以保持主机监控. "
 
 #: html/admin/performance.php:491
 #, fuzzy
@@ -29115,7 +29115,7 @@ msgid ""
 "This page shows host and services that check results have been received for,"
 " but which have not yet been configured in Nagios.  Passive checks may be "
 "received by NSCA or NRDP (as defined in your"
-msgstr "此页显示, 检查结果已经收到, 但尚未在Nagios配置的主机和服务. 被动检查可能会收到由NSCA和NRDP(中所定义的"
+msgstr "此页显示, 监控结果已经收到, 但尚未在Nagios配置的主机和服务. 被动监控可能会收到由NSCA和NRDP(中所定义的"
 
 #: html/admin/missingobjects.php:201
 #, fuzzy
@@ -29125,7 +29125,7 @@ msgstr "入站传输设置"
 #: html/admin/missingobjects.php:201
 #, fuzzy
 msgid "or through the direct check submission API."
-msgstr "或通过直接检查提交的API. "
+msgstr "或通过直接监控提交的API. "
 
 #: html/admin/missingobjects.php:204
 #, fuzzy
@@ -29136,7 +29136,7 @@ msgid ""
 msgstr ""
 "您可以删除不需要的主机和服务, 或将它们添加到您的监控配置通过此页面.  \n"
 "\t \n"
-"\tNote持续性的大量的未使用的被动检查可能会导致性能下降. "
+"\tNote持续性的大量的未使用的被动监控可能会导致性能下降. "
 
 #: html/admin/missingobjects.php:209
 #, fuzzy
@@ -29258,7 +29258,7 @@ msgstr "当第一次检测到一个潜在的问题是"
 #: html/config/configobject.php:297
 #, fuzzy
 msgid "Re-check the service every"
-msgstr "重新检查服务"
+msgstr "重新监控服务"
 
 #: html/config/configobject.php:300 html/config/configobject.php:1217
 #: html/config/monitoringwizard.php:614
@@ -29496,7 +29496,7 @@ msgstr "监控主机每"
 #: html/config/configobject.php:1214
 #, fuzzy
 msgid "Re-check the host every"
-msgstr "重新检查主机"
+msgstr "重新监控主机"
 
 #: html/config/configobject.php:1227
 #, fuzzy
@@ -29586,7 +29586,7 @@ msgstr "如果服务不能被删除"
 #: html/config/deleteobject.php:213 html/config/deleteobject.php:475
 #, fuzzy
 msgid "Check the most recent"
-msgstr "检查最近的"
+msgstr "监控最近的"
 
 #: html/config/deleteobject.php:213 html/config/deleteobject.php:475
 #, fuzzy
@@ -29768,7 +29768,7 @@ msgstr "分钟. "
 #: html/config/monitoringwizard.php:611
 #, fuzzy
 msgid "Re-check the host and service(s) every"
-msgstr "重新检查主机和服务(S)每"
+msgstr "重新监控主机和服务(S)每"
 
 #: html/config/monitoringwizard.php:883
 #, fuzzy
@@ -30369,17 +30369,17 @@ msgstr "主机事件处理程序"
 #: html/reports/eventlog.php:189
 #, fuzzy
 msgid "Flapping Start"
-msgstr "扑启动"
+msgstr "波动启动"
 
 #: html/reports/eventlog.php:191
 #, fuzzy
 msgid "Flapping Disabled"
-msgstr "扑残疾人"
+msgstr "波动禁用"
 
 #: html/reports/eventlog.php:193
 #, fuzzy
 msgid "Flapping Stop"
-msgstr "扑停止"
+msgstr "波动停止"
 
 #: html/reports/eventlog.php:197
 #, fuzzy
@@ -30479,7 +30479,7 @@ msgstr "停机期间的责任地区"
 #: html/reports/sla.php:503 html/reports/availability.php:580
 #, fuzzy
 msgid "Include Soft States"
-msgstr "包括软状态"
+msgstr "包括软件状态"
 
 #: html/reports/sla.php:514 html/reports/availability.php:591
 #, fuzzy
@@ -30490,7 +30490,7 @@ msgstr "首先假定主机状态"
 #: html/reports/availability.php:595 html/reports/availability.php:615
 #, fuzzy
 msgid "Unspecified"
-msgstr "指定"
+msgstr "未指定"
 
 #: html/reports/sla.php:521 html/reports/sla.php:541
 #: html/reports/availability.php:598 html/reports/availability.php:618
@@ -30501,7 +30501,7 @@ msgstr "目前状态"
 #: html/reports/sla.php:524 html/reports/availability.php:601
 #, fuzzy
 msgid "Host Up"
-msgstr "主机了"
+msgstr "主机在线"
 
 #: html/reports/sla.php:534 html/reports/availability.php:611
 #, fuzzy
@@ -30511,7 +30511,7 @@ msgstr "首先假定服务状态"
 #: html/reports/sla.php:544 html/reports/availability.php:621
 #, fuzzy
 msgid "Service Ok"
-msgstr "服务"
+msgstr "服务OK"
 
 #: html/reports/sla.php:557 html/reports/availability.php:634
 #, fuzzy
@@ -30528,17 +30528,17 @@ msgstr "SLA状态"
 #: html/reports/alertheatmap.php:363
 #, fuzzy
 msgid "Show Hosts"
-msgstr "节目主持人"
+msgstr "显示主机"
 
 #: html/reports/alertheatmap.php:368
 #, fuzzy
 msgid "Show Services"
-msgstr "SNMP服务"
+msgstr "显示服务"
 
 #: html/reports/alertheatmap.php:373
 #, fuzzy
 msgid "Map Links"
-msgstr "地图友情链接"
+msgstr "拓波动连接"
 
 #: html/reports/alertheatmap.php:378
 #, fuzzy
@@ -30548,12 +30548,12 @@ msgstr "影响"
 #: html/reports/alertheatmap.php:451
 #, fuzzy
 msgid "No matching events to map.  Try expanding your search criteria"
-msgstr "没有匹配的事件地图. 请尝试扩大您的搜索条件"
+msgstr "没有匹配的事件拓波动. 请尝试扩大您的搜索条件"
 
 #: html/reports/alertheatmap.php:504
 #, fuzzy
 msgid "Generating heatmap image"
-msgstr "生成的热图图像"
+msgstr "生成的热点视图图像"
 
 #: html/reports/alertheatmap.php:519
 #, fuzzy
@@ -30563,7 +30563,7 @@ msgstr "此前"
 #: html/reports/alertheatmap.php:521
 #, fuzzy
 msgid "More Recent"
-msgstr "更多最新"
+msgstr "更多最新事件"
 
 #: html/reports/alertheatmap.php:605
 #, fuzzy
@@ -30631,12 +30631,12 @@ msgstr "运行警报直方图报告"
 msgid ""
 "Provides a visual heatmap image of host and service alerts over time.  "
 "Useful for spotting when problems occur most often."
-msgstr "提供了一个直观的热图图像的主机和服务随着时间的推移警报. 有用的, 能发现问题时, 最常发生的. "
+msgstr "提供了一个直观的热点视图图像的主机和服务随着时间的推移警报. 有用的, 能发现问题时, 最常发生的. "
 
 #: html/reports/nagiosxireports.php:75
 #, fuzzy
 msgid "Run alert heatmap report"
-msgstr "运行警报热图报告"
+msgstr "运行警报热点视图报告"
 
 #: html/reports/nagiosxireports.php:79
 #, fuzzy
@@ -30655,7 +30655,7 @@ msgstr "执行通知的报告"
 msgid ""
 "Provides a detailed log of events captured by the Nagios Core monitoring "
 "engine.  Useful for debugging problems."
-msgstr "Nagios的核心监测引擎捕获的事件提供了一个详细的日志. 有用的调试问题. "
+msgstr "Nagios Core监测引擎捕获的事件提供了一个详细的日志. 有用的调试问题. "
 
 #: html/reports/nagiosxireports.php:85
 #, fuzzy
@@ -30665,17 +30665,17 @@ msgstr "运行事件日志报告"
 #: html/reports/hmtest.php:21 html/reports/hmtest.php:24
 #, fuzzy
 msgid "Heatmap Example"
-msgstr "例如热图"
+msgstr "热点视图范例"
 
 #: html/reports/availability.php:654
 #, fuzzy
 msgid "Display service performance graphs"
-msgstr "显示服务的性能曲线图"
+msgstr "显示服务的性能曲线视图"
 
 #~ msgid ""
 #~ "Failed to connect to API. Check your connection to the host and make sure "
 #~ "your NSTI is version 3.0.2 or higher."
-#~ msgstr "无法连接到API. 请检查您的连接到主机, 并确保您的NSTI是3.0.2或更高版本. "
+#~ msgstr "无法连接到API. 请监控您的连接到主机, 并确保您的NSTI是3.0.2或更高版本. "
 
 #~ msgid ""
 #~ "404 - API not found. The address may be wrong or the server may be offline."
@@ -30735,7 +30735,7 @@ msgstr "显示服务的性能曲线图"
 #~ msgstr "<span class='urgent'><strong>应用配置</strong>生效的新变化. </span>"
 
 #~ msgid "Cannot backup the configuration file (check the permissions)!"
-#~ msgstr "无法备份的配置文件(检查权限)！"
+#~ msgstr "无法备份的配置文件(监控权限)！"
 
 #~ msgid "Hide menu"
 #~ msgstr "隐藏菜单"
@@ -30785,7 +30785,7 @@ msgstr "显示服务的性能曲线图"
 #~ msgid ""
 #~ "Failed connect to API. Check your connection to the host and make sure your "
 #~ "NSTI is version 3.0.2 or higher."
-#~ msgstr "无法连接到API. 请检查您的连接到主机, 并确保您的NSTI是3.0.2或更高版本. "
+#~ msgstr "无法连接到API. 请监控您的连接到主机, 并确保您的NSTI是3.0.2或更高版本. "
 
 #~ msgid "Success! "
 #~ msgstr "成功！"
@@ -30810,7 +30810,7 @@ msgstr "显示服务的性能曲线图"
 
 #~ msgid ""
 #~ "Cannot backup and delete the old configuration file (check the permissions)!"
-#~ msgstr "无法备份并删除旧的配置文件(检查权限)！"
+#~ msgstr "无法备份并删除旧的配置文件(监控权限)！"
 
 #~ msgid "Host Selection<"
 #~ msgstr "主机选择<"
@@ -30834,7 +30834,7 @@ msgstr "显示服务的性能曲线图"
 #~ "directives to this Nagios XI box for dynamic host/service creation with "
 #~ "passive checks from inside the NSTI server."
 #~ msgstr ""
-#~ "指定地址和用户API密钥对每个Nagios的网络分析仪的服务器. 这些服务器将显示在报告部分中作为服务器上运行的报表, 并且还允许服务和主机的指令发送到动态主机/服务的创建与来自NNA服务器内部被动检查这个Nagios XI盒. "
+#~ "指定地址和用户API密钥对每个Nagios的网络分析仪的服务器. 这些服务器将显示在报告部分中作为服务器上运行的报表, 并且还允许服务和主机的指令发送到动态主机/服务的创建与来自NNA服务器内部被动监控这个Nagios XI盒. "
 
 #~ msgid "Unkown"
 #~ msgstr "未知"
@@ -30875,7 +30875,7 @@ msgstr "显示服务的性能曲线图"
 #~ "The Regex search pattern to look for.  The recursive option checks all "
 #~ "subdirectories in the specified path. To search for all files use rergex "
 #~ "patterns such as ^ and/or *."
-#~ msgstr "正则表达式搜索模式中去寻找. 递归选项检查在指定路径下的所有子目录. 搜索所有文件都使用rergex模式, 如^和/或*. "
+#~ msgstr "正则表达式搜索模式中去寻找. 递归选项监控在指定路径下的所有子目录. 搜索所有文件都使用rergex模式, 如^和/或*. "
 
 #~ msgid "Count Type"
 #~ msgstr "计数类型"
@@ -30886,7 +30886,7 @@ msgstr "显示服务的性能曲线图"
 #~ msgid ""
 #~ "Check file age in seconds with this setting. (Format: "
 #~ "warningAge,criticalAge)"
-#~ msgstr "在几秒钟内使用该设置检查文件老化.  (格式: 老化报警, 关键老化)"
+#~ msgstr "在几秒钟内使用该设置监控文件老化.  (格式: 老化报警, 关键老化)"
 
 #~ msgid "File Size Tracker"
 #~ msgstr "文件大小追踪器"
@@ -30897,7 +30897,7 @@ msgstr "显示服务的性能曲线图"
 #~ msgid ""
 #~ "This setting checks the file size of the queried file name in bytes. The Sum"
 #~ " setting will make the check recursive. (Format: warningSize,criticalSize)"
-#~ msgstr "此设置检查以字节为单位的查询文件名的文件的大小. 总和设置会使检查递归.  (格式: warningsize, criticalsize)"
+#~ msgstr "此设置监控以字节为单位的查询文件名的文件的大小. 总和设置会使监控递归.  (格式: warningsize, criticalsize)"
 
 #~ msgid "Monitor a file or directory to see if a file has been placed in it."
 #~ msgstr "监视文件或目录, 看是否有文件被放置在里面. "
@@ -30918,7 +30918,7 @@ msgstr "显示服务的性能曲线图"
 #~ msgstr "报警类型"
 
 #~ msgid "Set warning type- high to check if the count is too high."
-#~ msgstr "设置报警类型, 检查计数过高. "
+#~ msgstr "设置报警类型, 监控计数过高. "
 
 #~ msgid "Define the value where a Warning response is triggered."
 #~ msgstr "定义并提出警告的响应被触发值. "
@@ -31117,7 +31117,7 @@ msgstr "显示服务的性能曲线图"
 #~ msgstr "请输入凭据. "
 
 #~ msgid "Error connecting, check credentials."
-#~ msgstr "错误的连接, 检查凭证. "
+#~ msgstr "错误的连接, 监控凭证. "
 
 #~ msgid "The IP address or FQDNS name of the Nagios Network Analyzer server."
 #~ msgstr "IP地址或Nagios网络分析服务器的FQDN名称. "
@@ -31389,7 +31389,7 @@ msgstr "显示服务的性能曲线图"
 #~ msgstr "监控交换机/路由器的ICMP \"ping\". 可看网络延迟和正常运行时间. "
 
 #~ msgid "\"Check All Ports\""
-#~ msgstr "\"检查所有端口\""
+#~ msgstr "\"监控所有端口\""
 
 #~ msgid "\"Uncheck All Ports\""
 #~ msgstr "\"取消选中所有端口\""
@@ -31469,7 +31469,7 @@ msgstr "显示服务的性能曲线图"
 #~ "或 <a href='javascript:location.reload(true)' id='retry'>再次尝试相同的检测</a> . "
 
 #~ msgid "Manually overriding wizard options for this check settings.\""
-#~ msgstr "手动覆盖该检查设置的向导选项. "
+#~ msgstr "手动覆盖该监控设置的向导选项. "
 
 #~ msgid "Manually overriding wizard options for notification settings.\""
 #~ msgstr "手动覆盖所有通知设置的向导选项. "
