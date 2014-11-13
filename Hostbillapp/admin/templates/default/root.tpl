@@ -52,7 +52,7 @@
         
         <br/><br/>
         <div>
-            <strong>Latest modules: </strong>
+            <strong>最新功能模块: </strong>
             <iframe src="https://hostbillapp.com/latest_items.html" border="0" frameborder="0" width="179"></iframe>
         </div>
 	</td>

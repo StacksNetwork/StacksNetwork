@@ -3,7 +3,7 @@
                 	<div class="left menubar">
 
               <a style="margin-right: 30px;font-weight:bold;"
-                 href="#" class="menuitm" onclick="$('#domsyncmgr').toggle();return false"><span class="gear_small">Synchronize now</span></a>
+                 href="#" class="menuitm" onclick="$('#domsyncmgr').toggle();return false"><span class="gear_small">现在同步</span></a>
 
             </div>
                             <div class="clear"></div>
@@ -18,14 +18,14 @@
                     </td>
                     <td>
                         <select name="registrar" id="domregistrar" class="inp styled todisable">
-                            <option value="0">All</option>
+                            <option value="0">所有</option>
                             {foreach from=$domainmodules item=modx}
                             <option value="{$modx.id}">{$modx.module}</option>
                             {/foreach}
                         </select>
                     </td>
                     <td>
-                        Domains to synchronize:
+                        域名进行同步:
                     </td>
                     <td>
                         <input name="domaincount" id="domaincount" value="{$totaltosync}" class="inp styled  todisable" size="3" />
@@ -36,11 +36,11 @@
                     </td>
                     <td>
                          <select name="status" id="domstatus" class="inp styled  todisable">
-                            <option value="All">All</option>
-                            <option value="Active">Active</option>
-                            <option value="Expired">Expired</option>
-                            <option value="Pending Transfer">Pending Transfer</option>
-                            <option value="Pending Registration">Pending Registration</option>
+                            <option value="All">所有</option>
+                            <option value="Active">激活</option>
+                            <option value="Expired">到期</option>
+                            <option value="Pending Transfer">转移待定</option>
+                            <option value="Pending Registration">注册待定</option>
                         </select>
                     </td>
                     <td>
