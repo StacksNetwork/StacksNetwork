@@ -109,7 +109,7 @@ function show_map($config)
           $count = (($count < 100) ? $count : 100);
           if ($down > 0)
           {
-            $locations_down[] = "[$lat, $lon, '$location_name', $down, ".$count*$down.", '".count($devices_up). " Devices UP, " . count($devices_down). " Devices DOWN: (". implode(", ", $devices_down).")', '$location_url']";
+            $locations_down[] = "[$lat, $lon, '$location_name', $down, ".$count*$down.", '".count($devices_up). " 设备启用, " . count($devices_down). " 设备关闭: (". implode(", ", $devices_down).")', '$location_url']";
           } else if ($count) {
             $locations_up[]   = "[".$lat.", ".$lon.", '".$location_name."',         0,       ".$count.", '".count($devices_up). " Devices UP: (". implode(", ", $devices_up).")', '$location_url']";
           }

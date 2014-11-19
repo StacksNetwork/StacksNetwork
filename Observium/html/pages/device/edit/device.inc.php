@@ -38,15 +38,15 @@ if ($_POST['editing'])
 
     if ($rows_updated > 0 || $updated)
     {
-      $update_message = "Device record updated.";
-      if ($updated == 2) { $update_message.= " Please note that the updated sysLocation string will only be visible after the next poll."; }
+      $update_message = "设备记录更新.";
+      if ($updated == 2) { $update_message.= " 请注意更新syslocation字符串只能下一次才会可见."; }
       $updated = 1;
       $device = dbFetchRow("SELECT * FROM `devices` WHERE `device_id` = ?", array($device['device_id']));
     } elseif ($rows_updated = '-1') {
-      $update_message = "Device record unchanged. No update necessary.";
+      $update_message = "设备记录无变化. 无更新必要.";
       $updated = -1;
     } else {
-      $update_message = "Device record update error.";
+      $update_message = "设备记录更新错误.";
     }
   }
   else
@@ -72,17 +72,17 @@ if ($updated && $update_message)
  <form id="edit" name="edit" method="post" class="form-horizontal" action="<?php echo($url); ?>">
 
   <fieldset>
-  <legend>Device Properties</legend>
+  <legend>设备属性</legend>
   <input type=hidden name="editing" value="yes">
   <div class="control-group">
-    <label class="control-label" for="descr">Description</label>
+    <label class="control-label" for="descr">说明</label>
     <div class="controls">
       <input name="descr" type=text size="32" value="<?php echo(htmlspecialchars($device['purpose'])); ?>"></input>
     </div>
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="type">Type</label>
+    <label class="control-label" for="type">类型</label>
     <div class="controls">
       <select class="selectpicker" name="type">
 <?php
@@ -93,7 +93,7 @@ foreach ($config['device_types'] as $type)
   if ($device['type'] == $type['type']) { echo(' selected="1"'); $unknown = 0; }
   echo(' >' . ucfirst($type['type']) . '</option>');
 }
-if ($unknown) { echo('          <option value="other">Other</option>'); }
+if ($unknown) { echo('          <option value="other">其它</option>'); }
 
 ?>
               </select>
@@ -101,11 +101,11 @@ if ($unknown) { echo('          <option value="other">Other</option>'); }
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="sysLocation">Override sysLocation</label>
+    <label class="control-label" for="sysLocation">重写系统位置</label>
 
     <div class="controls">
       <input id="location_check" type="checkbox" onclick="edit.sysLocation.disabled=!edit.override_sysLocation.checked"
-            name="override_sysLocation" <?php if ($override_sysLocation_bool) { echo(' checked="1"'); } ?> data-id="location_check" data-label="Use custom location below.">
+            name="override_sysLocation" <?php if ($override_sysLocation_bool) { echo(' checked="1"'); } ?> data-id="location_check" data-label="使用下面的自定义位置.">
     </div>
   </div>
 
@@ -118,7 +118,7 @@ $('#location_check').click(function() {
 </script>
 
   <div class="control-group">
-    <label class="control-label" for="sysLocation">Custom location</label>
+    <label class="control-label" for="sysLocation">自定义位置</label>
     <div class="controls" id="location_text">
       <input type=text name="sysLocation" size="32" <?php if (!$override_sysLocation_bool) { echo(' disabled="1"'); } ?>
               value="<?php echo(htmlspecialchars($override_sysLocation_string)); ?>" />
@@ -126,23 +126,23 @@ $('#location_check').click(function() {
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="disabled">Disable</label>
+    <label class="control-label" for="disabled">禁用</label>
     <div class="controls">
       <input name="disabled" type="checkbox" id="disabled" value="1" <?php if ($device["disabled"]) { echo("checked=checked"); } ?> />
-      <span class="help-inline">Disables polling and discovery.</span>
+      <span class="help-inline">禁用轮询与发现.</span>
     </div>
   </div>
-  <?php // FIXME (Mike): $device['ignore'] and get_dev_attrib($device,'disable_notify') it is same/redundant options? ?>
+  <?php // FIXME (Mike): $device['ignore'] and get_dev_attrib($device,'disable_notify') 这是相同的或冗余的选项? ?>
   <div class="control-group">
-    <label class="control-label" for="sysLocation">Device ignore</label>
+    <label class="control-label" for="sysLocation">设备忽略</label>
     <div class="controls">
       <input name="ignore" type="checkbox" id="disable" value="1" <?php if ($device['ignore']) { echo("checked=checked"); } ?> />
-      <span class="help-inline">Device ignore.</span>
+      <span class="help-inline">设备忽略.</span>
     </div>
   </fieldset>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> Save Changes</button>
+    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> 保存更改</button>
   </div>
 
 </form>
@@ -152,7 +152,7 @@ $('#location_check').click(function() {
 
 #print_optionbar_start();
 #list($sizeondisk, $numrrds) = foldersize($config['rrd_dir']."/".$device['hostname']);
-#echo("Size on Disk: <b>" . formatStorage($sizeondisk) . "</b> in <b>" . $numrrds . " RRD files</b>.");
+#echo("磁盘上的大小: <b>" . formatStorage($sizeondisk) . "</b> 位于 <b>" . $numrrds . " RRD 文件</b>.");
 #print_optionbar_end();
 
 // EOF

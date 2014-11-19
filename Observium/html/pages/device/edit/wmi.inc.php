@@ -30,7 +30,7 @@ if ($_POST['editing'])
     if (!empty($wmi_username)) { set_dev_attrib($device, 'wmi_username', $wmi_username); } else { del_dev_attrib($device, 'wmi_username'); }
     if (!empty($wmi_password)) { set_dev_attrib($device, 'wmi_password', $wmi_password); } else { del_dev_attrib($device, 'wmi_password'); }
 
-    $update_message = "Device IPMI data updated.";
+    $update_message = "设备 IPMI 数据更新.";
     $updated = 1;
   }
   else
@@ -74,7 +74,7 @@ if($_POST['toggle_poller'] && isset($GLOBALS['config']['wmi']['modules'][$_POST[
     }
   }
 </script>
-<fieldset><legend>WMI Settings</legend></fieldset>
+<fieldset><legend>WMI配置</legend></fieldset>
 <div class="row">
   <div class="col-md-6">
     <div class="well info_box">
@@ -83,35 +83,35 @@ if($_POST['toggle_poller'] && isset($GLOBALS['config']['wmi']['modules'][$_POST[
         <fieldset>
           <input type=hidden name="editing" value="yes">
           <div class="control-group">
-            <label class="control-label" for="wmi_override">Override WMI Config</label>
+            <label class="control-label" for="wmi_override">重写WMI配置</label>
             <div class="controls">
               <input type="checkbox" id="wmi_override" name="wmi_override" <?php if (get_dev_attrib($device,'wmi_override')) { echo(' checked="1"'); } ?> />
             </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label" for="wmi_hostname">WMI Hostname</label>
+            <label class="control-label" for="wmi_hostname">WMI主机名</label>
             <div class="controls">
               <input name="wmi_hostname" type="text" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'wmi_hostname'))); ?>"></input>
             </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label" for="wmi_domain">WMI Domain</label>
+            <label class="control-label" for="wmi_domain">WMI域名</label>
             <div class="controls">
               <input name="wmi_domain" type="text" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'wmi_domain'))); ?>"></input>
             </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label" for="wmi_username">WMI Username</label>
+            <label class="control-label" for="wmi_username">WMI用户名</label>
             <div class="controls">
               <input name="wmi_username" type="text" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'wmi_username'))); ?>"></input>
             </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label" for="wmi_password">WMI Password</label>
+            <label class="control-label" for="wmi_password">WMI密码</label>
             <div class="controls">
               <input name="wmi_password" type="password" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'wmi_password'))); ?>"></input>
             </div>
@@ -126,13 +126,13 @@ if($_POST['toggle_poller'] && isset($GLOBALS['config']['wmi']['modules'][$_POST[
   </div>
   <div class="col-md-6">
     <div class="well info_box">
-      <div class="title"><i class="oicon-gear"></i> Poller Modules</div>
+      <div class="title"><i class="oicon-gear"></i> 轮询模块</div>
       <table class="table table-bordered table-striped table-condensed table-rounded">
         <thead>
         <tr>
-          <th>Module</th>
-          <th width="80">Global</th>
-          <th width="80">Device</th>
+          <th>模块</th>
+          <th width="80">全局</th>
+          <th width="80">设备</th>
           <th width="80"></th>
         </tr>
         </thead>
@@ -143,17 +143,17 @@ if($_POST['toggle_poller'] && isset($GLOBALS['config']['wmi']['modules'][$_POST[
   {
     echo('<tr><td><b>'.$module.'</b></td><td>');
 
-    echo(($module_status ? '<span class=green>enabled</span>' : '<span class=red>disabled</span>' ));
+    echo(($module_status ? '<span class=green>启用</span>' : '<span class=red>禁用</span>' ));
 
     echo('</td><td>');
 
     if (isset($attribs['wmi_poll_'.$module]))
     {
-      if ($attribs['wmi_poll_'.$module]) { echo("<span class=green>enabled</span>"); $toggle = "Disable"; $btn_class = "btn-danger";
-      } else { echo('<span class=red>disabled</span>'); $toggle = "Enable"; $btn_class = "btn-success";}
+      if ($attribs['wmi_poll_'.$module]) { echo("<span class=green>启用</span>"); $toggle = "禁用"; $btn_class = "btn-danger";
+      } else { echo('<span class=red>禁用</span>'); $toggle = "启用"; $btn_class = "btn-success";}
     } else {
-      if ($module_status) { echo("<span class=green>enabled</span>"); $toggle = "Disable"; $btn_class = "btn-danger";
-      } else { echo('<span class=red>disabled</span>'); $toggle = "Enable"; $btn_class = "btn-success";}
+      if ($module_status) { echo("<span class=green>enabled</span>"); $toggle = "禁用"; $btn_class = "btn-danger";
+      } else { echo('<span class=red>禁用</span>'); $toggle = "启用"; $btn_class = "btn-success";}
     }
 
     echo('</td><td>');

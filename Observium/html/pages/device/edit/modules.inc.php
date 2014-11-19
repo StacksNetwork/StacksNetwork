@@ -61,15 +61,15 @@ if($_POST['toggle_discovery'] && isset($config['discovery_modules'][$_POST['togg
   <div class="col-md-6"> <!-- begin poller options -->
 
 <fieldset>
-  <legend>Poller Modules</legend>
+  <legend>轮询模块</legend>
 </fieldset>
 
 <table class="table table-bordered table-striped table-condensed table-rounded">
   <thead>
     <tr>
-      <th>Module</th>
-      <th width="80">Global</th>
-      <th width="80">Device</th>
+      <th>模块</th>
+      <th width="80">全局</th>
+      <th width="80">设备</th>
       <th width="80"></th>
     </tr>
   </thead>
@@ -115,15 +115,15 @@ foreach ($config['poller_modules'] as $module => $module_status)
 <div class="col-md-6"> <!-- begin ports options -->
 
 <fieldset>
-  <legend>Ports polling options</legend>
+  <legend>端口轮询方案</legend>
 </fieldset>
 
 <table class="table table-bordered table-striped table-condensed table-rounded">
   <thead>
     <tr>
       <th>Module</th>
-      <th width="80">Global</th>
-      <th width="80">Device</th>
+      <th width="80">全局</th>
+      <th width="80">设备</th>
       <th width="80"></th>
     </tr>
   </thead>
@@ -138,10 +138,10 @@ foreach (array_keys($config) as $module)
   $attrib_set = isset($attribs[$module]);
 
   echo('<tr><td><strong>'.str_replace('enable_ports_', '', $module).'</strong></td><td>');
-  echo(($module_status ? '<span class="text-success">enabled</span>' : '<span class="text-danger">disabled</span>'));
+  echo(($module_status ? '<span class="text-success">启用</span>' : '<span class="text-danger">禁用</span>'));
   echo('</td><td>');
 
-  $attrib_status = '<span class="text-danger">disabled</span>'; $toggle = 'Enable';
+  $attrib_status = '<span class="text-danger">禁用</span>'; $toggle = 'Enable';
   $btn_class = 'btn-success'; $btn_toggle = 'value="Toggle"';
   if ($module == 'enable_ports_junoseatmvp' && $device['os'] != 'junose') /// FIXME. see here includes/discovery/junose-atm-vp.inc.php
   {
@@ -172,15 +172,15 @@ foreach (array_keys($config) as $module)
 <div class="col-md-6"> <!-- begin discovery options -->
 
 <fieldset>
-  <legend>Discovery Modules</legend>
+  <legend>自动发现模块</legend>
 </fieldset>
 
 <table class="table table-bordered table-striped table-condensed table-rounded">
   <thead>
     <tr>
-      <th>Module</th>
-      <th width="80">Global</th>
-      <th width="80">Device</th>
+      <th>模块</th>
+      <th width="80">全局</th>
+      <th width="80">设备</th>
       <th width="80"></th>
     </tr>
   </thead>
@@ -192,10 +192,10 @@ foreach ($config['discovery_modules'] as $module => $module_status)
   $attrib_set = isset($attribs['discover_'.$module]);
 
   echo('<tr><td><strong>'.$module.'</strong></td><td>');
-  echo(($module_status ? '<span class="text-success">enabled</span>' : '<span class="text-danger">disabled</span>'));
+  echo(($module_status ? '<span class="text-success">启用</span>' : '<span class="text-danger">禁用</span>'));
   echo('</td><td>');
 
-  $attrib_status = '<span class="text-danger">disabled</span>'; $toggle = 'Enable';
+  $attrib_status = '<span class="text-danger">禁用</span>'; $toggle = 'Enable';
   $btn_class = 'btn-success'; $btn_toggle = 'value="Toggle"';
   if (($attrib_set && $attribs['discover_'.$module]) || (!$attrib_set && $module_status))
   {

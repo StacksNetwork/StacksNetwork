@@ -12,11 +12,11 @@
  *
  */
 
-$pagetitle[] = "轮询/发现时间";
+$pagetitle[] = "轮询/自动发现时间";
 
 ?>
 
-<h3>轮询/发现时间</h3>
+<h3>轮询/自动发现时间</h3>
 
 <table class="table table-striped table-condensed table-bordered">
   <thead>
@@ -119,7 +119,7 @@ $proc['avg2']['discovery'] = sqrt($proc['avg2']['discovery'] / $devices['count']
 $proc['avg2']['discovery'] = round($proc['avg2']['discovery'], 2);
 
 echo('    <tr>
-      <th colspan="4" style="text-align: right;">Total time for all devices (average per device):</th>
+      <th colspan="4" style="text-align: right;">所有设备的总时间(平均每设备):</th>
       <th colspan="3" style="text-align: left;">'.$cache['devices']['timers']['polling'].'s ('.$proc['avg2']['poller'].'s)</th>
       <th></th>
       <th colspan="3" style="text-align: left;">'.$cache['devices']['timers']['discovery'].'s ('.$proc['avg2']['discovery'].'s)</th>

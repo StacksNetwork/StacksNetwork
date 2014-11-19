@@ -86,12 +86,12 @@ if ($_POST['editing'])
 
       if (dbUpdate($update, 'devices', '`device_id` = ?', array($device['device_id'])))
       {
-        print_success("Device SNMP configuration updated");
+        print_success("设备的SNMP配置更新");
       } else {
-        print_warning("Device SNMP configuration update is not required");
+        print_warning("SNMP配置装置不需要更新");
       }
     }
-    if (!$ok) { print_error("Device SNMP configuration not updated"); }
+    if (!$ok) { print_error("设备的SNMP配置没有更新"); }
 
     unset($update);
   }
@@ -107,10 +107,10 @@ $device = device_by_id_cache($device['device_id'], $ok);
 <div class="row">
   <div class="col-md-6">
   <div class="well info_box">
-  <div class="title"><i class="oicon-gear"></i> Basic Configuration</div>
+  <div class="title"><i class="oicon-gear"></i> 基本配置</div>
     <fieldset>
       <div class="control-group">
-      <label class="control-label" for="snmpver">Protocol Version</label>
+      <label class="control-label" for="snmpver">协议版本</label>
       <div class="controls">
         <select class="selectpicker" name="snmpver" id="snmpver">
           <option value="v1"  <?php echo($device['snmpver'] == 'v1' ? 'selected' : ''); ?> >v1</option>
@@ -121,7 +121,7 @@ $device = device_by_id_cache($device['device_id'], $ok);
      </div>
 
       <div class="control-group">
-      <label class="control-label" for="snmpver">Transport</label>
+      <label class="control-label" for="snmpver">传输</label>
         <div class="controls">
           <select class="selectpicker" name="transport">
             <?php
@@ -137,21 +137,21 @@ $device = device_by_id_cache($device['device_id'], $ok);
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="port">Port</label>
+        <label class="control-label" for="port">端口</label>
         <div class="controls">
           <input type=text name="port" size="32" value="<?php echo(htmlspecialchars($device['port'])); ?>"/>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="timeout">Timeout</label>
+        <label class="control-label" for="timeout">超时</label>
         <div class="controls">
           <input type=text name="timeout" size="32" value="<?php echo(htmlspecialchars($device['timeout'])); ?>"/>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="retries">Retries</label>
+        <label class="control-label" for="retries">重试次数</label>
         <div class="controls">
           <input type=text name="retries" size="32" value="<?php echo(htmlspecialchars($device['retries'])); ?>"/>
         </div>
@@ -162,7 +162,7 @@ $device = device_by_id_cache($device['device_id'], $ok);
 
 <div class="col-lg-6 pull-right">
   <div class="well info_box">
-  <div class="title"><i class="oicon-key"></i> Authentication Configuration</div>
+  <div class="title"><i class="oicon-key"></i> 验证配置</div>
 
   <!-- To be able to hide it -->
    <div id="snmpv2">
@@ -180,7 +180,7 @@ $device = device_by_id_cache($device['device_id'], $ok);
   <div id="snmpv3">
     <fieldset>
       <div class="control-group">
-        <label class="control-label" for="authlevel">Auth Level</label>
+        <label class="control-label" for="authlevel">认证级别</label>
         <div class="controls">
           <select class="selectpicker" name="authlevel">
             <option value="noAuthNoPriv" <?php echo($device['authlevel'] == 'noAuthNoPriv' ? 'selected' : ''); ?> >noAuthNoPriv</option>
@@ -191,21 +191,21 @@ $device = device_by_id_cache($device['device_id'], $ok);
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="authname">Auth User Name</label>
+        <label class="control-label" for="authname">授权的用户名称</label>
         <div class="controls">
           <input type=text name="authname" size="32" value="<?php echo(htmlspecialchars($device['authname'])); ?>"/>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="authpass">Auth Password</label>
+        <label class="control-label" for="authpass">授权密码</label>
         <div class="controls">
           <input type="password" name="authpass" size="32" value="<?php echo(htmlspecialchars($device['authpass'])); ?>"/>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="authalgo">Auth Algorithm</label>
+        <label class="control-label" for="authalgo">认证算法</label>
         <div class="controls">
           <select class="selectpicker" name="authalgo">
             <option value="MD5">MD5</option>
@@ -215,14 +215,14 @@ $device = device_by_id_cache($device['device_id'], $ok);
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="cryptopass">Crypto Password</label>
+        <label class="control-label" for="cryptopass">加密密码</label>
         <div class="controls">
           <input type="password" name="cryptopass" size="32" value="<?php echo(htmlspecialchars($device['cryptopass'])); ?>"/>
         </div>
       </div>
 
       <div class="control-group">
-        <label class="control-label" for="cryptoalgo">Crypto Algorithm</label>
+        <label class="control-label" for="cryptoalgo">密码算法</label>
         <div class="controls">
           <select class="selectpicker" name="cryptoalgo">
             <option value="AES">AES</option>
@@ -238,7 +238,7 @@ $device = device_by_id_cache($device['device_id'], $ok);
 </div>
   <div class="col-md-12">
     <div class="form-actions">
-      <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> Save Changes</button>
+      <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> 保存更改</button>
     </div>
   </div>
 </div>

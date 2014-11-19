@@ -13,6 +13,6 @@
 
 print_inventory($vars);
 
-$pagetitle = "库存";
+$pagetitle = "清单";
 
 // EOF

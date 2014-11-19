@@ -26,7 +26,7 @@ if (empty($vars['device']) && !empty($vars['hostname']))
   // If device lookup fails, generate an error.
   if (empty($vars['device']))
   {
-    print_error('<h3>Invalid Hostname</h3>
+    print_error('<h3>无效的主机名</h3>
                    A device matching the given hostname was not found. Please retype the hostname and try again.');
     break;
   }
@@ -35,7 +35,7 @@ if (empty($vars['device']) && !empty($vars['hostname']))
 // If there is no device specified in the URL, generate an error.
 if (empty($vars['device']))
 {
-  print_error('<h3>No device specified</h3>
+  print_error('<h3>无指定的设备</h3>
                    A valid device was not specified in the URL. Please retype and try again.');
   break;
 }
@@ -50,7 +50,7 @@ if ($vars['tab'] == "port" && is_numeric($vars['device']) && port_permitted($var
   {
     $permit_ports = TRUE;
   } else {
-    print_error('<h3>Invalid device/port combination</h3>
+    print_error('<h3>无效的设备/端口组合</h3>
                     The port/device combination was invalid. Please retype and try again.');
   }
 }
@@ -58,7 +58,7 @@ if ($vars['tab'] == "port" && is_numeric($vars['device']) && port_permitted($var
 // If there is no valid device specified in the URL, generate an error.
 if (!isset($cache['devices']['id'][$vars['device']]) && !$permit_ports)
 {
-  print_error('<h3>No valid device specified</h3>
+  print_error('<h3>没有有效的指定设备</h3>
                   A valid device was not specified in the URL. Please retype and try again.');
   break;
 }
@@ -117,7 +117,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
 
     if ($health)
     {
-      $navbar['options']['health'] = array('text' => '健康状况', 'icon' => 'oicon-system-monitor');
+      $navbar['options']['health'] = array('text' => '网络健康', 'icon' => 'oicon-system-monitor');
     }
 
     // Print applications tab if there are matching entries in `applications` table
@@ -287,11 +287,11 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     // Print the inventory tab if inventory is enabled and either entphysical or hrdevice tables have entries
     if (dbFetchCell('SELECT COUNT(*) FROM `entPhysical` WHERE `device_id` = ?', array($device['device_id'])) > '0')
     {
-      $navbar['options']['entphysical'] = array('text' => '库存', 'icon' => 'oicon-wooden-box');
+      $navbar['options']['entphysical'] = array('text' => '清单', 'icon' => 'oicon-wooden-box');
     }
     elseif (dbFetchCell('SELECT COUNT(*) FROM `hrDevice` WHERE `device_id` = ?', array($device['device_id'])) > '0')
     {
-      $navbar['options']['hrdevice'] = array('text' => '库存', 'icon' => 'oicon-wooden-box');
+      $navbar['options']['hrdevice'] = array('text' => '清单', 'icon' => 'oicon-wooden-box');
     }
 
     // Print service tab if show_services enabled and there are entries in the services table
@@ -412,7 +412,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     // If this device has never been polled, print a warning here
     if (!$device['last_polled'] || $device['last_polled'] == '0000-00-00 00:00:00')
     {
-      print_warning('<h3>Device not yet polled</h3>
+      print_warning('<h3>设备尚未轮询</h3>
 This device has not yet been successfully polled. System information and statistics will not be populated and graphs will not draw.
 Please wait 5-10 minutes for graphs to draw correctly.');
     }
@@ -420,7 +420,7 @@ Please wait 5-10 minutes for graphs to draw correctly.');
     // If this device has never been discovered, print a warning here
     if (!$device['last_discovered'] || $device['last_discovered'] == '0000-00-00 00:00:00')
     {
-      print_warning('<h3>Device not yet discovered</h3>
+      print_warning('<h3>设备尚未发现</h3>
 This device has not yet been successfully discovered. System information and statistics will not be populated and graphs will not draw.
 This device should be automatically discovered within 10 minutes.');
     }
@@ -429,7 +429,7 @@ This device should be automatically discovered within 10 minutes.');
     {
       include($config['html_dir']."/pages/device/".basename($tab).".inc.php");
     } else {
-      print_error('<h3>Tab does not exist</h3>
+      print_error('<h3>表不存在</h3>
 The requested tab does not exist. Please correct the URL and try again.');
     }
 

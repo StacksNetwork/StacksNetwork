@@ -427,7 +427,7 @@ function pagination($vars, $total, $per_page = 10)
 
     $pagination.= '
        <div class="pull-right input-prepend">
-       <span class="add-on well-shaded"># per page</span>
+       <span class="add-on well-shaded"># 每页显示</span>
        <select style="width: 75px;" name="type" id="type"
        onchange="window.open(this.options[this.selectedIndex].value,\'_top\')">';
 

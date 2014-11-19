@@ -59,7 +59,7 @@ if ($existform)
   echo('<div style="float: left;">');
   echo("
 
-<h1>Remove Service</h1>
+<h1>删除服务</h1>
 
 <form id='delsrv' name='delsrv' method='post' action=''>
   <input type=hidden name='delsrv' value='yes'>
@@ -86,7 +86,7 @@ if ($existform)
 echo('<div style="width: 45%; float: right;">');
 
 echo("
-<h1>Add Service</h1>
+<h1>添加服务</h1>
 
 <form id='addsrv' name='addsrv' method='post' action=''>
   <input type=hidden name='addsrv' value='yes'>

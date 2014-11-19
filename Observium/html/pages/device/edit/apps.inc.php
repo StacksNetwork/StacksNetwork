@@ -64,11 +64,11 @@ if ($_POST['device'])
 
   if ($updated)
   {
-    print_message("Applications updated!");
+    print_message("应用程序更新!");
   }
   else
   {
-    print_message("No changes.");
+    print_message("无变化.");
   }
 }
 
@@ -86,14 +86,14 @@ if (count($apps_enabled))
 
 <form id='appedit' name='appedit' method='post' action='' class='form-inline'>
   <fieldset>
-  <legend>Device Properties</legend>
+  <legend>设备属性</legend>
 
   <input type=hidden name=device value='<?php echo $device['device_id'];?>'>
 <table class='table table-striped table-bordered table-condensed table-rounded'>
   <thead>
     <tr align=center>
-      <th width=100>Enable</th>
-      <th>Application</th>
+      <th width=100>启用</th>
+      <th>应用</th>
     </tr>
   </thead>
   <tbody>
@@ -118,7 +118,7 @@ foreach ($applications as $app)
 </table>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> Save Changes</button>
+    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> 保存更改</button>
   </div>
 
 </form>

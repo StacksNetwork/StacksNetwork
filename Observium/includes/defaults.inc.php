@@ -228,7 +228,7 @@ $config['amqp']['modules']['mempools']     = TRUE;
 // Geocoding Configuration
 
 $config['geocoding']['enable']             = TRUE;                  // Enable Geocoding
-$config['geocoding']['api']                = 'google';            // Which GEO API use ('mapquest', 'google')
+$config['geocoding']['api']                = 'mapquest';            // Which GEO API use ('mapquest', 'google')
 $config['geocoding']['default']['lat']     =  "120.750829";         // Default latitude
 $config['geocoding']['default']['lon']     =  "30.79033";        // Default longitude
 
@@ -238,7 +238,7 @@ $config['location_menu_geocoded']          = TRUE;                    // Build l
 
 $config['rrdgraph_def_text']  = "-c BACK#EEEEEE00 -c SHADEA#EEEEEE00 -c SHADEB#EEEEEE00 -c FONT#000000 -c CANVAS#FFFFFF00 -c GRID#a5a5a5";
 $config['rrdgraph_def_text'] .= " -c MGRID#FF9999 -c FRAME#5e5e5e -c ARROW#5e5e5e -R normal";
-$config['rrdgraph_real_95th'] = FALSE; // Set to TRUE if you want to display the 95% based on the highest value. (aka real 95%)
+$config['rrdgraph_real_95th'] = TRUE; // Set to TRUE if you want to display the 95% based on the highest value. (aka real 95%)
 $config['overlib_defaults']   = ",FGCOLOR,'#ffffff', BGCOLOR, '#e5e5e5', BORDER, 0, CELLPAD, 0, CAPCOLOR, '#555555', TEXTCOLOR, '#3e3e3e'";
 
 $list_colour_a = "#ffffff";
@@ -369,7 +369,7 @@ $config['enable_ports_fdbcount']        = 0; // Enable count of FDB per-port.
 
 // Billing System Configuration
 
-$config['enable_billing']               = 0; // Enable Billing
+$config['enable_billing']               = 1; // Enable Billing
 $config['billing']['customer_autoadd']  = 0; // Enable Auto-add bill per customer
 $config['billing']['circuit_autoadd']   = 0; // Enable Auto-add bill per circuit_id
 $config['billing']['bill_autoadd']      = 0; // Enable Auto-add bill per bill_id
@@ -395,7 +395,7 @@ $config['nfsen_enable'] = 0;
 
 // Location Mapping
 // Use this feature to map ugly locations to pretty locations
-#config['location_map']['Under the Sink'] = "Under The Sink, The Office, London, UK";
+#config['location_map']['Under the Sink'] = "Under The Sink, The Office, Shanghai, CN";
 
 // Ignores & Allows
 // Has to be lowercase
@@ -422,7 +422,7 @@ $config['bad_if'][] = "span rp";
 $config['bad_if'][] = "span sp";
 $config['bad_if'][] = "sslvpn";
 $config['bad_if'][] = "pppoe-";
-#$config['bad_if'][] = "control plane";  // Example for cisco control plane
+#$config['bad_if'][] = "控制面板";  // Example for cisco control plane
 
 $config['bad_if_regexp'][] = "/^ng[0-9]+$/";
 $config['bad_if_regexp'][] = "/^sl[0-9]/";
@@ -579,18 +579,18 @@ $config['allow_entity_sensor']['specialEnum'] = 1;
 
 // Syslog Settings
 
-$config['syslog']['filter'][] = 'last message repeated';
-$config['syslog']['filter'][] = 'Connection from UDP: [';
-$config['syslog']['filter'][] = 'ipSystemStatsTable node ipSystemStatsOutFragOKs not implemented';
+$config['syslog']['filter'][] = '最后一条消息重复';
+$config['syslog']['filter'][] = 'UDP连接: [';
+$config['syslog']['filter'][] = 'ipsystemstatstable节点ipsystemstatsoutfragoks没有执行';
 $config['syslog']['filter'][] = 'diskio.c';  // Ignore some crappy stuff from SNMP daemon
-$config['syslog']['filter'][] = '/run/user/lightdm/gvfs: Permission denied';
-$config['syslog']['filter'][] = "Could not open output pipe '/dev/xconsole'";
+$config['syslog']['filter'][] = '/run/user/lightdm/gvfs: 拒绝访问';
+$config['syslog']['filter'][] = "未能打开输出管道 '/dev/xconsole'";
 
 $config['syslog']['fifo']  = FALSE;       // Set this to a FIFO to take input from FIFO
 
 // Virtualization
 
-$config['enable_libvirt'] = 0; // Enable Libvirt VM support
+$config['enable_libvirt'] = 1; // Enable Libvirt VM support
 $config['libvirt_protocols']    = array("qemu+ssh","xen+ssh"); // Mechanisms used, add or remove if not using this on any of your machines.
 
 // Unix Agent settings
@@ -745,16 +745,16 @@ $config['discovery_modules']['services']                  = 1;
 
 // Simple Observium API Settings
 
-$config['api']['enabled']                        = 0;        // Enable or disable the API
-$config['api']['module']['inventory']            = 0;        // Enable or disable the inventory module for the API
-$config['api']['module']['billing']              = 0;        // Enable or disable the billing module for the API
-$config['api']['module']['packages']             = 0;        // Enable or disable the packages module for the API
-$config['api']['module']['encryption']           = 0;        // Enable encryption of data (be aware that this can be very slow and cpu intensive!!!)
+$config['api']['enabled']                        = 1;        // Enable or disable the API
+$config['api']['module']['inventory']            = 1;        // Enable or disable the inventory module for the API
+$config['api']['module']['billing']              = 1;        // Enable or disable the billing module for the API
+$config['api']['module']['packages']             = 1;        // Enable or disable the packages module for the API
+$config['api']['module']['encryption']           = 1;        // Enable encryption of data (be aware that this can be very slow and cpu intensive!!!)
 $config['api']['encryption']['key']              = "I_Need_To_Change_This_Key";        // Set a random encryption/decryption key
 
 // Unsupported settings
 
 $config['short_hostname']['length']   = 12; // Alter short_hostname() target length, changing this is not officially supported!
-$config['short_port_descr']['length'] = 22;
+$config['short_port_descr']['length'] = 32;
 
 // End includes/defaults.inc.php

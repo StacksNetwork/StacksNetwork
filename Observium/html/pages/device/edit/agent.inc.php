@@ -21,18 +21,18 @@ if ($_POST['editing'])
     {
       del_dev_attrib($device, 'agent_port');
       $updated = 1;
-      $update_message = "Agent settings updated.";
+      $update_message = "代理设置更新.";
     }
     elseif (!is_numeric($agent_port))
     {
-      $update_message = "Agent port must be numeric!";
+      $update_message = "代理端口必须是数字!";
       $updated = 0;
     }
     else
     {
       set_dev_attrib($device, 'agent_port', $agent_port);
       $updated = 1;
-      $update_message = "Agent settings updated.";
+      $update_message = "代理设置更新.";
     }
   }
 }
@@ -54,9 +54,9 @@ if ($updated && $update_message)
 
   <div id="agent">
     <fieldset>
-      <legend>Agent Connectivity</legend>
+      <legend>代理连接</legend>
       <div class="control-group">
-        <label class="control-label" for="agent_port">Agent Port</label>
+        <label class="control-label" for="agent_port">代理端口</label>
         <div class="controls">
           <input type=text name="agent_port" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device, 'agent_port'))); ?>"/>
         </div>
@@ -65,7 +65,7 @@ if ($updated && $update_message)
   </div>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> Save Changes</button>
+    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> 保存更改</button>
   </div>
 
 </form>

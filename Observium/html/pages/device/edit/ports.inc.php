@@ -30,7 +30,7 @@ if ($updated && $update_message)
 
 <form id='ignoreport' name='ignoreport' method='post' action='' class='form form-inline'>
 <fieldset>
-  <legend>Port Properties</legend>
+  <legend>端口属性</legend>
 
   <input type=hidden name='ignoreport' value='yes'>
   <input type=hidden name=device value='<?php echo $device['device_id']; ?>'>
@@ -39,24 +39,24 @@ if ($updated && $update_message)
   <thead>
     <tr align=center>
       <th width=70>ifIndex</th>
-      <th width=200>Port</th>
+      <th width=200>端口</th>
       <th width=145>ifType</th>
-      <th width=110>Polling</th>
-      <th width=110>Alerts</th>
-      <!-- <th width=110>% Threshold</th>   -->
-      <!-- <th width=110>BPS Threshold</th> -->
-      <!-- <th width=110>PPS Threshold</th> -->
+      <th width=110>轮询</th>
+      <th width=110>警报</th>
+      <!-- <th width=110>% 阈值</th>   -->
+      <!-- <th width=110>BPS阈值</th> -->
+      <!-- <th width=110>PPS阈值</th> -->
       <th width=110>64bit</th>
     </tr>
     <tr align=center>
-      <th><button class='btn btn-mini btn-primary' type='submit' value='Save' title='Save current port disable/ignore settings'><i class="icon-ok icon-white"></i> Save</button></td>
-      <th><!-- <button class='btn btn-mini btn-danger' type='submit' value='Reset' id='form-reset' title='Reset form to previously-saved settings'><i class="oicon-remove oicon-white"></i> Reset</button> --></th>
-      <th><button class='btn btn-mini' type='submit' value='Alerted' id='alerted-toggle' title='Toggle alerting on all currently-alerted ports'>Enabled & Down</button>
-          <button class='btn btn-mini' type='submit' value='Down' id='down-select' title='Disable alerting on all currently-down ports'>Down</button></th>
-      <th><button class='btn btn-mini' type='submit' value='Toggle' id='disable-toggle' title='Toggle polling for all ports'>Toggle</button>
-          <button class='btn btn-mini' type='submit' value='Select' id='disable-select' title='Disable polling on all ports'>All</button></th>
-      <th><button class='btn btn-mini' type='submit' value='Toggle' id='ignore-toggle' title='Toggle alerting for all ports'>Toggle</button>
-          <button class='btn btn-mini' type='submit' value='Select' id='ignore-select' title='Disable alerting on all ports'>All</button></th>
+      <th><button class='btn btn-mini btn-primary' type='submit' value='Save' title='Save current port disable/ignore settings'><i class="icon-ok icon-white"></i> 保存</button></td>
+      <th><!-- <button class='btn btn-mini btn-danger' type='submit' value='Reset' id='form-reset' title='Reset form to previously-saved settings'><i class="oicon-remove oicon-white"></i> 重置</button> --></th>
+      <th><button class='btn btn-mini' type='submit' value='Alerted' id='alerted-toggle' title='Toggle alerting on all currently-alerted ports'>启用 & 关闭</button>
+          <button class='btn btn-mini' type='submit' value='Down' id='down-select' title='Disable alerting on all currently-down ports'>关闭</button></th>
+      <th><button class='btn btn-mini' type='submit' value='Toggle' id='disable-toggle' title='Toggle polling for all ports'>切换</button>
+          <button class='btn btn-mini' type='submit' value='Select' id='disable-select' title='Disable polling on all ports'>全部</button></th>
+      <th><button class='btn btn-mini' type='submit' value='Toggle' id='ignore-toggle' title='Toggle alerting for all ports'>切换</button>
+          <button class='btn btn-mini' type='submit' value='Select' id='ignore-select' title='Disable alerting on all ports'>全部</button></th>
       <th></th>
 
 <!--      <th></th>
@@ -173,9 +173,9 @@ foreach (dbFetchRows("SELECT * FROM `ports` WHERE `deleted` = '0' AND `device_id
 
   if ($port['port_64bit'] == 1)
   {
-    echo '<td class="green">Yes</td>';
+    echo '<td class="green">是</td>';
   } elseif($port['port_64bit'] == 0) {
-    echo '<td class="orange">No</td>';
+    echo '<td class="orange">否</td>';
   } else {
     echo '<td>Unchecked</td>';
   }
@@ -188,7 +188,7 @@ foreach (dbFetchRows("SELECT * FROM `ports` WHERE `deleted` = '0' AND `device_id
 </table>
 </fieldset>
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> Save Changes</button>
+    <button type="submit" class="btn btn-primary" name="submit" value="save"><i class="icon-ok icon-white"></i> 保存更改</button>
   </div>
 </form>
 <?php

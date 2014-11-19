@@ -34,28 +34,28 @@
   </script>
 
   <fieldset>
-    <legend>Delete device</legend>
+    <legend>删除设备</legend>
 <?php
-  print_warning("<h4>Warning!</h4>
-      This will delete this device from Observium including all logging entries, but will not delete the RRDs.");
+  print_warning("<h4>警告!</h4>
+      这将从Observium包括所有日志条目删除该设备, 但不会删除RRDs.");
 ?>
 
     <div class="control-group">
-      <label class="control-label">Delete RRDs</label>
+      <label class="control-label">删除 RRDs</label>
       <div class="controls">
         <input type="checkbox" name="deleterrd" value="confirm" onchange="javascript: showWarningRRD(this.checked);">
       </div>
     </div>
 
     <div class="control-group">
-      <label class="control-label" for="sysContact">Confirm Deletion</label>
+      <label class="control-label" for="sysContact">确认删除</label>
       <div class="controls">
         <input type="checkbox" name="confirm" value="confirm" onchange="javascript: showWarning(this.checked);">
       </div>
     </div>
 
     <div class="form-actions">
-      <button id="deleteBtn" type="submit" class="btn btn-danger" name="delete" disabled="disabled"><i class="icon-remove icon-white"></i> Delete device</button>
+      <button id="deleteBtn" type="submit" class="btn btn-danger" name="delete" disabled="disabled"><i class="icon-remove icon-white"></i> 删除设备</button>
     </div>
   </fieldset>
 </form>

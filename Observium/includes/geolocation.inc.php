@@ -93,7 +93,7 @@ function get_geolocation($address)
       }
     }
   }
-  if ($debug) { echo "GEO-API REQUEST: $request\n"; }
+  if ($debug) { echo "GEO-API 需要: $request\n"; }
 
   /// Put the values from the data array into the return array where they exist, else replace them with defaults or Unknown.
   if ($config['geocoding']['api'] == 'google')

@@ -40,7 +40,7 @@ foreach (dbFetchRows('SELECT D.device_id AS device_id, `hostname`, `entPhysicalM
 natcasesort($devices);
 $search[] = array('type'    => 'select',
                   'width'   => '160px',
-                  'name'    => 'Devices',
+                  'name'    => '设备',
                   'id'      => 'device_id',
                   'value'   => $vars['device_id'],
                   'values'  => $devices);
@@ -48,24 +48,24 @@ $search[] = array('type'    => 'select',
 ksort($parts);
 $search[] = array('type'    => 'multiselect',
                   'width'   => '160px',
-                  'name'    => 'Parts',
+                  'name'    => '部件',
                   'id'      => 'parts',
                   'value'   => $vars['parts'],
                   'values'  => $parts);
 //Serial field
 $search[] = array('type'    => 'text',
                   'width'   => '160px',
-                  'name'    => 'Serial',
+                  'name'    => '系列',
                   'id'      => 'serial',
                   'value'   => $vars['serial']);
 //Description field
 $search[] = array('type'    => 'text',
                   'width'   => '160px',
-                  'name'    => 'Desc',
+                  'name'    => '说明',
                   'id'      => 'description',
                   'value'   => $vars['description']);
 
-print_search($search, 'Inventory');
+print_search($search, '清单');
 
 // Pagination
 $vars['pagination'] = TRUE;
@@ -74,7 +74,7 @@ if(!$vars['pageno']) { $vars['pageno'] = 1; }
 
 print_inventory($vars);
 
-$pagetitle[] = '库存';
+$pagetitle[] = '清单';
 
 ?>
 

@@ -50,13 +50,13 @@ echo('<tr class="entity">');
 echo("      <th style='width: 1px'></th>\n");
 echo("      <th style='width: 1px'></th>\n");
 
-$cols = array(array('head' => 'Device', 'sort' => 'device', 'width' => 250),
-              array('head' => 'Port', 'sort' => 'port', 'width' => 350),
-              array('head' => 'Traffic', 'sort' => 'traffic', 'width' => 100),
-              array('head' => 'Traffic %', 'sort' => 'traffic_perc', 'width' => 90),
-              array('head' => 'Packets', 'sort' => 'packets', 'width' => 90),
-              array('head' => 'Speed', 'sort' => 'speed', 'width' => 90),
-              array('head' => 'MAC Address', 'sort' => 'mac', 'width' => 150)
+$cols = array(array('head' => '设备', 'sort' => 'device', 'width' => 250),
+              array('head' => '端口', 'sort' => 'port', 'width' => 350),
+              array('head' => '流量', 'sort' => 'traffic', 'width' => 100),
+              array('head' => '流量 %', 'sort' => 'traffic_perc', 'width' => 90),
+              array('head' => '数据包', 'sort' => 'packets', 'width' => 90),
+              array('head' => '速率', 'sort' => 'speed', 'width' => 90),
+              array('head' => 'MAC地址', 'sort' => 'mac', 'width' => 150)
               );
 
 foreach ($cols as $col)
@@ -88,7 +88,7 @@ foreach ($ports as $port)
 
     if ($port['in_errors'] > 0 || $port['out_errors'] > 0)
     {
-      $error_img = generate_port_link($port,"<img src='images/16/chart_curve_error.png' alt='Interface Errors' border=0>",errors);
+      $error_img = generate_port_link($port,"<img src='images/16/chart_curve_error.png' alt='接口错误' border=0>",errors);
     } else { $error_img = ""; }
 
     $port['bps_in'] = formatRates($port['ifInOctets_rate'] * 8);

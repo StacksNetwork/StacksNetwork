@@ -19,7 +19,7 @@ if ($_POST['editing'])
 
     if (!is_numeric($ssh_port))
     {
-      $update_message = "SSH port must be numeric!";
+      $update_message = "SSH 端口必须为数字!";
       $updated = 0;
     }
     else
@@ -32,13 +32,13 @@ if ($_POST['editing'])
 
       if ($rows_updated > 0)
       {
-        $update_message = $rows_updated . " Device record updated.";
+        $update_message = $rows_updated . " 设备记录更新.";
         $updated = 1;
       } elseif ($rows_updated = '-1') {
-        $update_message = "Device record unchanged. No update necessary.";
+        $update_message = "设备记录未更改. 无需更新.";
         $updated = -1;
       } else {
-        $update_message = "Device record update error.";
+        $update_message = "设备记录更新失败.";
         $updated = 0;
       }
     }

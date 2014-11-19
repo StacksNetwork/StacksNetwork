@@ -43,15 +43,15 @@ if ($_POST['submit'] == "update-vsvrs" && $_SESSION['userlevel'] == '10')
 
 <form id='update-vsvrs' name='update-vsvrs' method='post' action=''>
 <fieldset>
-  <legend>Netscaler vServer Properties</legend>
+  <legend>Netscaler vServer 性能</legend>
 
 <table class="table table-bordered table-striped table-condensed">
   <thead>
     <tr>
-      <th width="120">MIB Type</th>
-      <th>Name</th>
-      <th width="60">Status</th>
-      <th width="50">Alerts</th>
+      <th width="120">MIB 类型</th>
+      <th>名称</th>
+      <th width="60">状态</th>
+      <th width="50">警报</th>
     </tr>
   </thead>
   <tbody>
@@ -76,7 +76,7 @@ foreach ($vsvrs as $vsvr)
 </fieldset>
 
   <div class="form-actions">
-    <button type="submit" class="btn btn-primary" name="submit" value="update-vsvrs"><i class="icon-ok icon-white"></i> Save Changes</button>
+    <button type="submit" class="btn btn-primary" name="submit" value="update-vsvrs"><i class="icon-ok icon-white"></i> 保存更改</button>
   </div>
 </form>
 <?php

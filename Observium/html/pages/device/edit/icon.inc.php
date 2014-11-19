@@ -21,14 +21,14 @@ if ($_POST['editing'])
 
     if ($rows_updated > 0 || $updated)
     {
-      $update_message = "Device icon updated.";
+      $update_message = "设备图标更新.";
       $updated = 1;
       $device = dbFetchRow("SELECT * FROM `devices` WHERE `device_id` = ?", array($device['device_id']));
     } elseif ($rows_updated = '-1') {
-      $update_message = "Device icon unchanged. No update necessary.";
+      $update_message = "设备图标无变化. 无更新必要.";
       $updated = -1;
     } else {
-      $update_message = "Device icon update error.";
+      $update_message = "设备图标更新失败.";
     }
   }
   else
@@ -46,7 +46,7 @@ if ($updated && $update_message)
 
 ?>
 
-<h3>Device icon</h3>
+<h3>设备图标</h3>
 
 <table cellpadding="0" cellspacing="0">
   <tr>
