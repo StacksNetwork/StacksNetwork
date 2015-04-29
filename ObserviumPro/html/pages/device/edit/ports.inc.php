@@ -11,7 +11,7 @@
  *
  */
 
-if ($_POST['ignoreport'])
+if ($vars['ignoreport'])
 {
   if ($_SESSION['userlevel'] == '10')
   {

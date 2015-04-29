@@ -11,28 +11,28 @@
  *
  */
 
-$pagetitle[] = "用户喜好";
+$page_title[] = "用户喜好";
 
 // Change password
-if ($_POST['password'] == "save")
+if ($vars['password'] == "save")
 {
-  if (authenticate($_SESSION['username'],$_POST['old_pass']))
+  if (authenticate($_SESSION['username'], $vars['old_pass']))
   {
-    if ($_POST['new_pass'] == "" || $_POST['new_pass2'] == "")
+    if ($vars['new_pass'] == "" || $vars['new_pass2'] == "")
     {
-      print_warning("密码不能为空.");
+      print_warning("密码不能是空的.");
     }
-    elseif ($_POST['new_pass'] == $_POST['new_pass2'])
+    elseif ($vars['new_pass'] == $vars['new_pass2'])
     {
-      auth_change_password($_SESSION['username'], $_POST['new_pass']);
-      print_success("密码已更改.");
+      auth_change_password($_SESSION['username'], $vars['new_pass']);
+      print_success("密码更改.");
     }
     else
     {
       print_warning("密码不匹配.");
     }
   } else {
-    print_warning("密码错误");
+    print_warning("不正确的密码");
   }
 }
 
@@ -43,31 +43,31 @@ if (is_numeric($_SESSION['user_id']))
   $prefs = get_user_prefs($user_id);
 
   // Reset RSS/Atom key
-  if ($_POST['atom_key'] == "toggle")
+  if ($vars['atom_key'] == "toggle")
   {
     if (set_user_pref($user_id, 'atom_key', md5(strgen())))
     {
-      print_success('RSS/Atom密钥重置.');
+      print_success('RSS/Atomm 密钥重置.');
       $prefs = get_user_prefs($user_id);
     } else {
-      print_error('产生错误的RSS/Atom密钥.');
+      print_error('错误生成 RSS/Atom 密钥.');
     }
   }
 
   // Reset API key
-  if ($_POST['api_key'] == "toggle")
+  if ($vars['api_key'] == "toggle")
   {
     if (set_user_pref($user_id, 'api_key', md5(strgen())))
     {
-      print_success('API密钥重置.');
+      print_success('API 密钥重置.');
       $prefs = get_user_prefs($user_id);
     } else {
-      print_error('产生错误的API密钥.');
+      print_error('错误生成 API 密钥.');
     }
   }
 }
-$atom_key_updated = (isset($prefs['atom_key']['updated']) ? formatUptime(time() - strtotime($prefs['atom_key']['updated']), 'shorter').' ago' : '从未');
-$api_key_updated  = (isset($prefs['api_key']['updated'])  ? formatUptime(time() - strtotime($prefs['api_key']['updated']),  'shorter').' ago' : '从未');
+$atom_key_updated = (isset($prefs['atom_key']['updated']) ? formatUptime(time() - strtotime($prefs['atom_key']['updated']), 'shorter').' ago' : 'Never');
+$api_key_updated  = (isset($prefs['api_key']['updated'])  ? formatUptime(time() - strtotime($prefs['api_key']['updated']),  'shorter').' ago' : 'Never');
 ?>
 
 <form id="edit" name="edit" method="post" class="form-horizontal" action="">
@@ -85,7 +85,7 @@ if (auth_can_change_password($_SESSION['username']))
     <fieldset>
 
       <div class="control-group">
-        <label class="control-label" for="old_pass">原密码</label>
+        <label class="control-label" for="old_pass">旧密码</label>
         <div class="controls">
           <input type="password" name="old_pass" autocomplete="off" size="32" />
         </div>
@@ -111,8 +111,8 @@ if (auth_can_change_password($_SESSION['username']))
 <?php
 }
 
-if     ($_SESSION['userlevel'] == 10) { $user_device = '<strong class="text text-success">全局访问管理</strong>'; }
-elseif ($_SESSION['userlevel'] < 10 && $_SESSION['userlevel'] >= 5) { $user_device = '<strong class="text text-info">全局阅读权限</strong>'; }
+if     ($_SESSION['userlevel'] == 10) { $user_device = '<strong class="text text-success">管理全局访问</strong>'; }
+elseif ($_SESSION['userlevel'] < 10 && $_SESSION['userlevel'] >= 5) { $user_device = '<strong class="text text-info">全局浏览访问</strong>'; }
 elseif ($_SESSION['userlevel'] < 5)
 {
   $user_device = '';
@@ -122,7 +122,7 @@ elseif ($_SESSION['userlevel'] < 5)
     $dev_access = 1;
   }
 
-  if (!$dev_access) { $user_device = "无访问!"; }
+  if (!$dev_access) { $user_device = "无法访问!"; }
 }
 
 ?>
@@ -141,21 +141,21 @@ elseif ($_SESSION['userlevel'] < 5)
 
   <div class="col-lg-6 pull-right">
   <div class="well info_box">
-  <div class="title"><i class="oicon-key"></i> 密钥</div>
+  <div class="title"><i class="oicon-key"></i> 加密密钥</div>
   <table class="table table-bordered table-striped table-condensed">
     <tr>
-      <th>RSS/Atom访问密钥</th>
+      <th>RSS/Atom 访问密钥</th>
 <?php
   // Warn about lack of mcrypt unless told not to.
   if (!check_extension_exists('mcrypt'))
   {
-    echo('<th colspan="2"><span class="text text-danger">需要使用 RSS/Atom 功能 PHP mcrypt 模块是必需的.</span></th>');
+    echo('<th colspan="2"><span class="text text-danger">使用 RSS/Atom PHP 模块是必需的.</span></th>');
   }
   elseif (!check_extension_exists('SimpleXML'))
   {
-    echo('<th colspan="2"><span class="text text-danger">需要使用 RSS/Atom 功能 PHP SimpleXML 模块是必需的.</span></th>');
+    echo('<th colspan="2"><span class="text text-danger">使用 RSS/Atom PHP SimpleXML 模块是必需的.</span></th>');
   } else {
-    echo("      <th>RSS/Atom访问密码已创建 $atom_key_updated.</th>");
+    echo("      <th>RSS/Atom 访问密钥生成 $atom_key_updated.</th>");
     echo <<<RSS
       <th><form id="atom_key" method="post" action="">
           <button type="submit" class="btn btn-mini btn-success" name="atom_key" value="toggle">重置</button>
@@ -169,8 +169,8 @@ RSS;
       <th colspan=3></th>
     </tr>
     <tr>
-      <th>API访问密钥</th>
-      <th>API访问密码已创建 <?php echo($api_key_updated); ?>.</th>
+      <th>API 访问密钥</th>
+      <th>API 访问密钥生成 <?php echo($api_key_updated); ?>.</th>
       <th><form id="api_key" method="post" action="">
           <button type="submit" class="btn btn-mini btn-success" name="api_key" value="toggle" disabled="disabled">重置</button>
           </form>

@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage web
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -83,7 +83,7 @@ function print_syslogs($vars)
 
   $query = 'FROM `syslog` ';
   $query .= $where . $query_permitted;
-  $query_count = 'SELECT COUNT(`seq`) ' . $query;
+  $query_count = 'SELECT COUNT(*) ' . $query;
 
   $query = 'SELECT * ' . $query;
   $query .= ' ORDER BY `seq` DESC ';
@@ -100,9 +100,9 @@ function print_syslogs($vars)
     // There have been no entries returned. Print the warning.
 
     print_warning('<h4>没有发现任何日志内容!</h4>
-检查syslog守护进程和observium配置选项设置是否正确, 你的设备被配置为发送系统日志到Observium且没有防火墙封锁消息.
+检查Syslog守护进程和Observium配置选项设置是否正确, 你的设备被配置为发送系统日志到Observium且没有防火墙封锁消息.
 
-查看 <a href="'.OBSERVIUM_URL.'/wiki/Category:Documentation" target="_blank">文档</a> 和 <a href="'.OBSERVIUM_URL.'/wiki/Configuration_Options#Syslog_Settings" target="_blank">设置选项</a> 为更多信息.');
+查看 <a href="'.OBSERVIUM_URL.'/wiki/Category:Documentation" target="_blank">文档</a> 和 <a href="'.OBSERVIUM_URL.'/wiki/Configuration_Options#Syslog_Settings" target="_blank">设置选项</a> 了解更多信息.');
 
   } else {
     // Entries have been returned. Print the table.
@@ -116,7 +116,7 @@ function print_syslogs($vars)
     {
       $string .= '  <thead>' . PHP_EOL;
       $string .= '    <tr>' . PHP_EOL;
-      $string .= '      <th></th>' . PHP_EOL;
+      $string .= '      <th class="state-marker"></th>' . PHP_EOL;
   #    $string .= '      <th></th>' . PHP_EOL;
       $string .= '      <th>日期</th>' . PHP_EOL;
       if ($list['device']) { $string .= '      <th>设备</th>' . PHP_EOL; }
@@ -129,31 +129,31 @@ function print_syslogs($vars)
 
     foreach ($entries as $entry)
     {
-
-      switch($entry['priority']) {
+      switch ($entry['priority'])
+      {
         case "0": // Emergency
         case "1": // Alert
         case "2": // Critical
         case "3": // Error
-            $entry['class']  = "purple"; $entry['table_tab_colour'] = "#cc0000"; $entry['html_row_class'] = "error";
+            $entry['html_row_class'] = "error";
             break;
         case "4": // Warning
-            $entry['class']  = "purple"; $entry['table_tab_colour'] = "#ff6600"; $entry['html_row_class'] = "warning";
+            $entry['html_row_class'] = "warning";
             break;
         case "5": // Notification
-            $entry['class']  = "green"; $entry['table_tab_colour'] = "#009900"; $entry['html_row_class'] = "recovery";
+            $entry['html_row_class'] = "recovery";
             break;
         case "6": // Informational
-            $entry['class']  = "green"; $entry['table_tab_colour'] = "#194B7F"; // $entry['html_row_class'] = "info";
+            $entry['html_row_class'] = "up";
             break;
         case "7": // Debugging
-            $entry['class']  = "purple"; $entry['table_tab_colour'] = "#740074"; $entry['html_row_class'] = "suppressed";
+            $entry['html_row_class'] = "suppressed";
             break;
         default:
       }
 
       $string .= '  <tr class="'.$entry['html_row_class'].'">' . PHP_EOL;
-      $string .= '<td style="width: 1px; background-color: '.$entry['table_tab_colour'].'; margin: 0px; padding: 0px"></td>' . PHP_EOL;
+      $string .= '<td class="state-marker"></td>' . PHP_EOL;
 
       if ($short)
       {
@@ -187,7 +187,7 @@ function print_syslogs($vars)
         $string .= '    <td>';
         $string .= '<strong>' . $entry['program'] . '</strong> : ';
       }
-      $string .= htmlspecialchars($entry['msg']) . '</td>' . PHP_EOL;
+      $string .= escape_html($entry['msg']) . '</td>' . PHP_EOL;
       $string .= '  </tr>' . PHP_EOL;
     }
 

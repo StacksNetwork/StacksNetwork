@@ -211,7 +211,7 @@ Profile: <select class="submitme" name="premade" onchange="$('.pdescriptions').h
                         <table  cellpadding="0" cellspacing="0"  width="100%" >
                             <tbody> <tr class="havecontrols">
                                     {if $field.options & 1}
-                                        <td width="90" {if ($field.options & 16) || ($field.options & 256)}style="background:#F0F0F3;color:#767679;"{/if} >
+                                        <td width="120" {if ($field.options & 16) || ($field.options & 256)}style="background:#F0F0F3;color:#767679;"{/if} >
                                             <div style="padding:10px 5px;">
                                                 <a class="sorter-ha menuitm {if !($field.options & 16) || !($field.options & 64)}menuf{/if}" style="width:14px;margin-left:4px;" onclick="return false" href="#"><span title="move" class="movesth">&nbsp;</span></a><!--
                                                 -->{if !($field.options & 16)}<a class="menuitm {if !($field.options & 64)}menuc{else}menul{/if}" style="width:14px;" href="?cmd=clients&action=field&field_id={$field.id}" onclick="return editFieldForm('{$field.id}');" title="edit"  ><span class="editsth"></span></a>{/if}<!--
@@ -229,7 +229,7 @@ Profile: <select class="submitme" name="premade" onchange="$('.pdescriptions').h
                                                 
                                         </td>
                                     {else}
-                                        <td width="90" ><div style="padding:10px 5px;">
+                                        <td width="120" ><div style="padding:10px 5px;">
                                                 <a style="width:14px;margin-left:4px;" onclick="return false" class="sorter-ha menuitm {if !($field.options & 16) || !($field.options & 64)}menuf{/if}" href="#"><span title="move" class="movesth">&nbsp;</span></a><!--
                                                 -->{if !($field.options & 16)}<a class="menuitm {if !($field.options & 64)}menuc{else}menul{/if}"style="width:14px;" href="?cmd=clients&action=field&field_id={$field.id}" onclick="return editFieldForm('{$field.id}');" title="edit" ><span class="editsth"></span></a>{/if}<!--
                                                 -->{if !($field.options & 64)}<a class="menuitm menul" title="delete"  href="?cmd=clients&action=fields&make=delete&field_id={$field.id}" onclick="return delete_field('{$field.id}',0);"><span class="delsth"></span></a>{/if}
@@ -252,7 +252,7 @@ Profile: <select class="submitme" name="premade" onchange="$('.pdescriptions').h
     </div>
 {if !$ajax}
 	</div>	 
-<script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+<script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
 	 {literal}<script type="text/javascript">
 	function bindSortOrder() {
             $("#grab-sorter").dragsort({ dragSelector: "a.sorter-ha", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });

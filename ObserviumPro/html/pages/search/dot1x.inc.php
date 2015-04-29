@@ -57,7 +57,7 @@ $vars['pagination'] = TRUE;
 
 print_dot1xtable($vars);
 
-$pagetitle[] = '.1x Session Search';
+$page_title[] = '.1x Session Search';
 
 ?>
 

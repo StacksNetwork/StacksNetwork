@@ -500,5 +500,5 @@
 
 {/if}
 {if $action=='addadministrator' || $action=='administrator'}
-    <script src="{$template_dir}/js/editadmins.js" type="text/javascript"></script>
+    <script src="{$template_dir}/js/editadmins.js?v={$hb_version}" type="text/javascript"></script>
 {/if}

@@ -1,5 +1,5 @@
 {if $showall}
-    <script src="{$template_dir}js/statistics.js" type="text/javascript"></script>
+    <script src="{$template_dir}js/statistics.js?v={$hb_version}" type="text/javascript"></script>
     {literal}
         <style type="text/css">
 
@@ -216,7 +216,7 @@
                                         <td style="width:1%">{$label}</td>
                                     {/foreach}
                                     <td>
-                                        <div style="width:{$bar_width[$tidx][$indx]}; background-color:#{$bar_color[$tidx]}">
+                                        <div style="width:{if $bar_width[$tidx][$indx]}{$bar_width[$tidx][$indx]}{else}0%{/if}; background-color:#{$bar_color[$tidx]}">
                                             <span>
                                                 {if $bar_currency[$tidx]}
                                                     {$mchart[$tidx][$indx]|price:$bar_currency[$tidx]}
@@ -240,7 +240,7 @@
                         <tr>
                             <td style="width:1%">{$label}</td>
                             <td>
-                                <div style="width:{$bar_width[$indx]}; background-color:#5F8BBF"><span>{$chart[$indx]}</span></div>
+                                <div style="width:{if $bar_width[$indx]}{$bar_width[$indx]}{else}0%{/if}; background-color:#5F8BBF"><span>{$chart[$indx]}</span></div>
                             </td>
                         </tr>
                     {/foreach}

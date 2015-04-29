@@ -15,7 +15,7 @@ echo('<tr class="list">');
 
 echo('<td class="list">');
 
-if (getidbyname($vm['vmwVmDisplayName']))
+if (get_device_id_by_hostname($vm['vmwVmDisplayName']))
 {
   echo(generate_device_link(device_by_name($vm['vmwVmDisplayName'])));
 } else {

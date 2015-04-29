@@ -7,26 +7,14 @@
  * @package    observium
  * @subpackage ajax
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
-
-if (isset($_GET['debug']) && $_GET['debug'])
-{
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 0);
-  ini_set('log_errors', 0);
-  ini_set('allow_url_fopen', 0);
-  ini_set('error_reporting', E_ALL);
-}
 
 include_once("../includes/defaults.inc.php");
 include_once("../config.php");
 include_once("../includes/definitions.inc.php");
 
-//include($config['install_dir'] . "/includes/common.inc.php");
-//include($config['install_dir'] . "/includes/rewrites.inc.php");
-//include($config['install_dir'] . "/includes/dbFacile.php");
 include($config['install_dir'] . "/includes/functions.inc.php");
 include($config['html_dir'] . "/includes/functions.inc.php");
 include($config['html_dir'] . "/includes/authenticate.inc.php");
@@ -35,21 +23,24 @@ if (!$_SESSION['authenticated']) { echo('<li class="nav-header">会话已过期,
 
 include($config['html_dir'] . "/includes/cache-data.inc.php");
 
+$query_limit = 8; // Limit per query
+
 // Is there a POST/GET query string?
 if (isset($_REQUEST['queryString']))
 {
-  $queryString = $_REQUEST['queryString'];
+  $queryString = trim($_REQUEST['queryString']);
 
   // Is the string length greater than 0?
   if (strlen($queryString) > 0)
   {
+    $query_param = "%$queryString%";
     $found = 0;
 
     /// SEARCH DEVICES
     $query_permitted_device = generate_query_permitted(array('device'), array('device_table' => 'devices'));
     $results = dbFetchRows("SELECT * FROM `devices`
                             WHERE (`hostname` LIKE ? OR `location` LIKE ?) $query_permitted_device
-                            ORDER BY `hostname` LIMIT 8", array("%$queryString%", "%$queryString%"));
+                            ORDER BY `hostname` LIMIT $query_limit", array($query_param, $query_param));
     if (count($results))
     {
       $found = 1;
@@ -84,7 +75,7 @@ if (isset($_REQUEST['queryString']))
     $results = dbFetchRows("SELECT * FROM `ports`
                             LEFT JOIN `devices` ON `ports`.`device_id` = `devices`.`device_id`
                             WHERE (`ifAlias` LIKE ? OR `ifDescr` LIKE ?) $query_permitted_port
-                            ORDER BY `ifDescr` LIMIT 8", array("%$queryString%", "%$queryString%"));
+                            ORDER BY `ifDescr` LIMIT $query_limit", array($query_param, $query_param));
 
     if (count($results))
     {
@@ -119,7 +110,7 @@ if (isset($_REQUEST['queryString']))
     $results = dbFetchRows("SELECT * FROM `sensors`
                             LEFT JOIN `devices` ON `sensors`.`device_id` = `devices`.`device_id`
                             WHERE `sensor_descr` LIKE ? $query_permitted_device
-                            ORDER BY `sensor_descr` LIMIT 8", array("%$queryString%"));
+                            ORDER BY `sensor_descr` LIMIT $query_limit", array($query_param));
 
     if (count($results))
     {
@@ -152,7 +143,7 @@ if (isset($_REQUEST['queryString']))
     /// SEARCH ACCESSPOINTS
     $results = dbFetchRows("SELECT * FROM `wifi_accesspoints`
                             WHERE `name` LIKE ?
-                            ORDER BY `name` LIMIT 8", array("%$queryString%"));
+                            ORDER BY `name` LIMIT $query_limit", array($query_param));
 
     if (count($results))
     {
@@ -185,41 +176,41 @@ if (isset($_REQUEST['queryString']))
     /// SEARCH IP ADDRESSES
 
     list($addr, $mask) = explode('/', $queryString);
-    $address_type = "ipv4";
-    if (is_numeric(stripos($queryString, ':abcdef'))) { $address_type = 'ipv6'; }
 
-    switch ($address_type)
+    if (preg_match('/^(?:(?<both>\d+)|(?<ipv6>[\d\:abcdef]+)|(?<ipv4>[\d\.]+))$/i', $addr, $matches))
     {
-      case 'ipv6':
-        $ip_valid = Net_IPv6::checkIPv6($addr);
-        break;
-      case 'ipv4':
-        $ip_valid = Net_IPv4::validateIP($addr);
-        break;
+      $query_ipv4  = 'SELECT `port_id`, `ipv4_address` AS `ip_address`, `ipv4_prefixlen` AS `ip_prefixlen` FROM `ipv4_addresses`';
+      $query_ipv4 .= ' WHERE `ipv4_address` LIKE ?';
+      $query_ipv6  = 'SELECT `port_id`, `ipv6_compressed` AS `ip_address`, `ipv6_prefixlen` AS `ip_prefixlen` FROM `ipv6_addresses`';
+      $query_ipv6 .= ' WHERE (`ipv6_address` LIKE ? OR `ipv6_compressed` LIKE ?)';
+      $query_end   = $query_permitted_port . " ORDER BY `ip_address` LIMIT $query_limit";
+      $query_param = "%$addr%";
+      if (isset($matches['ipv4']))
+      {
+        // IPv4 only
+        $results = dbFetchRows($query_ipv4 . $query_end, array($query_param));
+      }
+      else if (isset($matches['ipv6']))
+      {
+        // IPv6 only
+        $results = dbFetchRows($query_ipv6 . $query_end, array($query_param, $query_param));
+      } else {
+        // Both
+        $results_ipv4 = dbFetchRows($query_ipv4 . $query_end, array($query_param));
+        $results_ipv6 = dbFetchRows($query_ipv6 . $query_end, array($query_param, $query_param));
+        if ((count($results_ipv4) + count($results_ipv6)) > $query_limit)
+        {
+          // Ya.. it's not simple
+          $count_ipv4 = $query_limit - min(count($results_ipv6), intval($query_limit/2));
+          $results_ipv4 = array_slice($results_ipv4, 0, $count_ipv4);
+          $results_ipv6 = array_slice($results_ipv6, 0, $query_limit - $count_ipv4);
+        }
+        $results = array_merge($results_ipv4, $results_ipv6);
+      }
+  
+    } else {
+      $results = array();
     }
-#    if ($ip_valid)
-#    {
-#      // If address valid -> seek occurrence in network
-#      if (!$mask) { $mask = ($address_type === 'ipv4') ? '32' : '128'; }#
-
-#     } else {
-      // If address not valid -> seek LIKE
-      $where .= ' AND A.`ipv4_address` LIKE ?';
-      $param[] = '%'.$addr.'%';
-#    }
-
-    // FIXME no v6 yet.
-    $query =  'SELECT * ';
-    $query .= 'FROM `ipv4_addresses` AS A ';
-    $query .= 'LEFT JOIN `ports` ON `A`.`port_id` = `ports`.`port_id` ';
-    $query .= 'WHERE deleted=0 ';
-    $query .= $where;
-    $query .= ' ORDER BY A.`ipv4_address` LIMIT 8';
-
-#  $debug=1;
-
-    // Query addresses
-    $results = dbFetchRows($query, $param);
 
     if (count($results))
     {
@@ -231,8 +222,6 @@ if (isset($_REQUEST['queryString']))
       }
 
       echo('<li class="nav-header">找到IP: '.count($results).' (on '.count($addr_ports).' ports)</li>');
-
-#      foreach ($addr_ports as $port_id => $result)
 
       foreach ($results as $result)
       {
@@ -246,7 +235,7 @@ if (isset($_REQUEST['queryString']))
 
         $descr = $device['hostname'].' | '.rewrite_ifname($port['label']);
 
-        $name = $result['ipv4_address'].'/'.$result['ipv4_prefixlen'];
+        $name = $result['ip_address'].'/'.$result['ip_prefixlen'];
         if (strlen($name) > 35) { $name = substr($name, 0, 35) . "..."; }
 
         /// FIXME: once we have alerting, colour this to the sensor's status

@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage web
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -63,22 +63,24 @@ function build_alert_table_query($vars)
   }
 
   // Permissions query
-  $query_permitted = generate_query_permitted();
+  $query_permitted = generate_query_permitted(array('device'), array('hide_ignored' => TRUE));
+
+  // Base query
+  $query = 'FROM `alert_table` ';
+  $query .= 'LEFT JOIN `alert_table-state` USING(`alert_table_id`) ';
+  $query .= $where . $query_permitted;
 
   // Build the query to get a count of entries
-  $query_count = 'SELECT COUNT(`alert_table_id`) FROM `alert_table`';
-  $query_count .= $where . $query_permitted;
+  $query_count = 'SELECT COUNT(`alert_table_id`) '.$query;
 
   // Build the query to get the list of entries
-  $query = 'SELECT * FROM `alert_table` ';
-  $query .= 'LEFT JOIN `alert_table-state` ON `alert_table`.`alert_table_id` = `alert_table-state`.`alert_table_id`';
-  $query .= $where . $query_permitted;
+  $query = 'SELECT * '.$query;
   $query .= ' ORDER BY `device_id`, `alert_test_id`, `entity_type`, `entity_id` DESC ';
 
   if (isset($vars['pagination']) && $vars['pagination'])
   {
     pagination($vars, 0, TRUE); // Get default pagesize/pageno
-    $vars['start']      = $vars['pagesize'] * $vars['pageno'] - $vars['pagesize'];
+    $vars['start'] = $vars['pagesize'] * $vars['pageno'] - $vars['pagesize'];
     $query .= 'LIMIT '.$vars['start'].','.$vars['pagesize'];
   }
 
@@ -94,7 +96,7 @@ function build_alert_table_query($vars)
  */
 function print_alert_table($vars)
 {
-  global $alert_rules;
+  global $alert_rules; global $config;
 
   // This should be set outside, but do it here if it isn't
   if (!is_array($alert_rules)) { $alert_rules = cache_alert_rules(); }
@@ -123,7 +125,7 @@ function print_alert_table($vars)
   // Hide device if we know entity_id
   if (isset($vars['entity_id'])) { $list['device_id'] = FALSE; }
   // Hide entity_type if we know the alert_test_id
-  if (isset($vars['alert_test_id'])) { $list['entity_type'] = FALSE; }
+  if (isset($vars['alert_test_id']) || TRUE) { $list['entity_type'] = FALSE; } // Hide entity types in favour of icons to save space
 
   if ($vars['pagination'] && !$short)
   {
@@ -134,7 +136,7 @@ function print_alert_table($vars)
 echo('<table class="table table-condensed table-bordered table-striped table-rounded table-hover">
   <thead>
     <tr>
-      <th style="width: 1px;"></th>
+      <th class="state-marker"></th>
       <th style="width: 1px;"></th>');
       // No table id
       //<th style="width: 5%;">Id</th>');
@@ -175,10 +177,8 @@ echo '
 
     echo('<tr class="'.$alert['html_row_class'].'" style="cursor: pointer;" onclick="location.href=\''.generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'alert', 'alert_entry' => $alert['alert_table_id'])).'\'">');
 
-    echo('<td style="width: 1px; background-color: '.$alert['table_tab_colour'].'; margin: 0px; padding: 0px"></td>');
+    echo('<td class="state-marker"></td>');
     echo('<td style="width: 1px;"></td>');
-    // This would display the table id as hex, but even then it gets a bit long.
-    #echo('<td>'.dechex($alert['alert_table_id']).'</td>');
 
     // If we know the device, don't show the device
     if ($list['device_id'])
@@ -198,7 +198,7 @@ echo '
     // Print a link to the entity
     if ($list['entity_id'])
     {
-      echo('<td><span class="entity-title">'.generate_entity_link($alert['entity_type'], $alert['entity_id']).'</span></td>');
+      echo('<td><span class="entity-title"><i class="' . $config['entities'][$alert['entity_type']]['icon'] . '"></i> '.generate_entity_link($alert['entity_type'], $alert['entity_id']).'</span></td>');
     }
 
     echo('<td>');

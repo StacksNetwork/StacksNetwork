@@ -27,12 +27,12 @@
             {/if}
         {if $q.log}{$q.log}{/if}
         {if $q.task=='nextinvoice'}- <a href="?cmd=accounts&account_id={$account_id}&action=generateinvoice{foreach from=$q.items item=i}&{$i.what}[]={$i.rel_id}{/foreach}&security_token={$security_token}" 
-             onclick="return confirm('您确定需要现在就生成账单吗?')">现在生成</a>
+             onclick="return confirm('Are you sure you want to generate invoice now?')">generate now</a>
         {/if}
         <br/>
     </span>
     {if ($q.status=='Pending' && $q.custom_id) || ($q.event && !$q.custom_id)}
-        <a href="#" class="rembtn left" style="margin-left:6px;" onclick="if (confirm('您确定需要取消这个任务吗?'))
+        <a href="#" class="rembtn left" style="margin-left:6px;" onclick="if (confirm('Are you sure you wish to cancel this task?'))
                     ajax_update('?cmd=accounts&action=getqueue&id={$account_id}&make=canceltask&task={$q.custom_id}&account_id={$account_id}&event={$q.event}', false, '#autoqueue', true);
                 return false;">{$lang.Remove}</a>
     {/if}
@@ -290,12 +290,12 @@ function loadTemplate(addon_id,fn)  {
         {$req.reason}
         </div>
         {/foreach}
-		<div style="text-align: right; padding: 0 4px 4px"><a href="?cmd=logs&action=cancelations">更多</a></div>
+		<div style="text-align: right; padding: 0 4px 4px"><a href="?cmd=logs&action=cancelations">more</a></div>
     </div>
     {/if}
 
 {elseif $action=='getstatus'}
-    <strong>{if $status}{$status}{else}未知{/if}</strong> <a href="" onclick="getStatus({$service_id}, this); return false;"><img src="{$template_dir}img/arrow_refresh_small.gif" alt="refresh" /></a>
+    <strong>{if $status}{$status}{else}Unknown{/if}</strong> <a href="" onclick="getStatus({$service_id}, this); return false;"><img src="{$template_dir}img/arrow_refresh_small.gif" alt="refresh" /></a>
 {elseif $action == 'log'}
 <table width="100%" cellspacing="0" cellpadding="3" border="0" class="glike hover">
         <tbody>
@@ -389,16 +389,16 @@ function loadTemplate(addon_id,fn)  {
             </tr>
             <tr>
 
-                <td>状态</td>
+                <td>Status</td>
                 <td >
                     <select name="filter[status]">
                         <option value=''>{$lang.Any}</option>
-                        <option {if $currentfilter.status=='Pending'}selected="selected" {/if}>{$lang.Pending}</option>
-                        <option {if $currentfilter.status=='Active'}selected="selected" {/if}>{$lang.Active}</option>
-                        <option {if $currentfilter.status=='Suspended'}selected="selected" {/if}>{$lang.Suspended}</option>
-                        <option {if $currentfilter.status=='Terminated'}selected="selected" {/if}>{$lang.Terminated}</option>
-                        <option {if $currentfilter.status=='Cancelled'}selected="selected" {/if}>{$lang.Cancelled}</option>
-                        <option {if $currentfilter.status=='Fraud'}selected="selected" {/if}>{$lang.Fraud}</option>
+                        <option value="Pending"  {if $currentfilter.status=='Pending'}selected="selected" {/if}>{$lang.Pending}</option>
+                        <option value="Active"  {if $currentfilter.status=='Active'}selected="selected" {/if}>{$lang.Active}</option>
+                        <option value="Suspended"  {if $currentfilter.status=='Suspended'}selected="selected" {/if}>{$lang.Suspended}</option>
+                        <option value="Terminated"  {if $currentfilter.status=='Terminated'}selected="selected" {/if}>{$lang.Terminated}</option>
+                        <option value="Cancelled"  {if $currentfilter.status=='Cancelled'}selected="selected" {/if}>{$lang.Cancelled}</option>
+                        <option value="Fraud"  {if $currentfilter.status=='Fraud'}selected="selected" {/if}>{$lang.Fraud}</option>
                     </select>
                 </td>
 
@@ -539,7 +539,7 @@ function loadTemplate(addon_id,fn)  {
 							{/foreach}
 						</select>
 <input type="hidden" name="customfn" value="AttachToServer" />
-						<input type="submit"  value="连接到该服务器"/>
+						<input type="submit"  value="Attach to this server"/>
 
 	{elseif $action=='customfn' && $customfn=='GetOsTemplates'}
 	<select name="os">
@@ -617,7 +617,7 @@ function loadTemplate(addon_id,fn)  {
                         <td><strong>{if $bkp.type != 'autobackup'}Manual{else}{$bkp.type|ucfirst}{/if}</strong></td>
                         <td><strong>{if $bkp.available}{$lang.Available}{else}{$lang.Pending}{/if}</strong></td>
                         <td>{$bkp.date}</td>
-                        <td>{if $bkp.size}{$bkp.size}{else}尚未生成{/if}</td>
+                        <td>{if $bkp.size}{$bkp.size}{else}Not build yet{/if}</td>
                         <td>{if $bkp.available}<button type="submit" value="{$backup.id}" style="font-weight: bold" onclick="if(!restore_backup(this)) return false;" >{$lang.Restore}</button>{else}{$lang.Notavailable}{/if}</td>
                         <td>{if $bkp.type != 'autobackup'}<a href="" onclick="delete_backup(this,{$bkp.id}); return false;" class="delbtn">{$lang.Delete}</a>{/if}</td>
                     </tr>
@@ -704,7 +704,7 @@ function loadTemplate(addon_id,fn)  {
      <tr>
           <td><input type="checkbox" class="check" value="{$account.id}" name="selected[]"/></td>
           <td><a href="?cmd=accounts&action=edit&id={$account.id}&list={$currentlist}">{$account.id}</a></td>
-          <td><a href="?cmd=clients&action=show&id={$account.client_id}">{$account.firstname} {$account.lastname}</a></td>
+          <td><a href="?cmd=clients&action=show&id={$account.client_id}">{$account.lastname} {$account.firstname}</a></td>
           <td>{$account.domain}</td>
           <td>{$account.name}</td>
           <td>{$account.total|price:$account.currency_id}</td>

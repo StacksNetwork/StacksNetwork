@@ -1,15 +1,15 @@
 <link href="{$template_dir}hbchat/media/settings.css?v={$hb_version}" rel="stylesheet" media="all" />
 <table border="0" cellspacing="0" cellpadding="0" width="100%" id="content_tb" {if $currentfilter}class="searchon"{/if}>
        <tr>
-        <td colspan="2"><h3>LiveChat</h3></td>
+        <td colspan="2"><h3>STACKS® LiveChat</h3></td>
 
     </tr>
     <tr>
         <td class="leftNav">
-            <a href="?cmd=hbchat"  class="tstyled {if !$action || $action=='default'}selected{/if}">LiveChat</a>
-            <a href="?cmd=hbchat&action=settings"  class="tstyled {if $action=='settings' || $action=='departments' || $action=='widgets' || $action=='geoip'}selected{/if}">聊天设置</a>
-            <a href="?cmd=hbchat&action=canned"  class="tstyled {if $action=='canned'}selected{/if}">录制响应</a>
-            <a href="?cmd=hbchat&action=history"  class="tstyled {if $action=='history' || $action=='viewtranscript'}selected{/if}">聊天记录</a>
+            <a href="?cmd=hbchat"  class="tstyled {if !$action || $action=='default'}selected{/if}">STACKS® LiveChat</a>
+            <a href="?cmd=hbchat&action=settings"  class="tstyled {if $action=='settings' || $action=='departments' || $action=='widgets' || $action=='geoip'}selected{/if}">对话设置</a>
+            <a href="?cmd=hbchat&action=canned"  class="tstyled {if $action=='canned'}selected{/if}">录制对话过程</a>
+            <a href="?cmd=hbchat&action=history"  class="tstyled {if $action=='history' || $action=='viewtranscript'}selected{/if}">对话记录</a>
 
         </td>
         <td  valign="top"  class="bordered" rowspan="2"><div id="bodycont">
@@ -26,10 +26,10 @@
                 <div class="blank_state blank_news">
                     <div class="blank_info">
                         <h1>首先创建部门</h1>
-                        聊天的员工可以被分配到部门 - 创建一个部门在使用LiveChat之前.
+                        负责与客户沟通的员工可以分配到该部门 - 开始使用此功能前至少建立一个部门.
                         <div class="clear"></div>
                         <a style="margin-top:10px" href="?cmd=hbchat&action=departments&do=add" class="new_add new_menu">
-                            <span>添加新的在线支持部门</span></a>
+                            <span>添加新的聊天部门</span></a>
                         <div class="clear"></div>
                     </div>
                 </div>
@@ -59,9 +59,9 @@
                                 <table border="0" cellspacing="0" cellpadding="4" width="600" class="introduce">
                                     <tr>
                                         <td width="1" style="border-left:none;"></td>
-                                        <td width="100">在线访客:</td>
-                                        <td width="100">在线员工:</td>
-                                        <td width="100" style="border-right:none;">正在进行的LiveChat:</td>
+                                        <td width="100">访客在线:</td>
+                                        <td width="100">员工在线:</td>
+                                        <td width="100" style="border-right:none;">进行中的聊天对话:</td>
                                    </tr>
                                     <tr>
                                         <td width="1" style="border-left:none;"></td>
@@ -76,7 +76,7 @@
                         <tr>
                             <td style="padding:20px 20px 0px;">
                                 <a  class="new_dchat new_menu" {if $amiassigned}href="?cmd=hbchat"  onclick="return open_chat_console();"{else}href="?cmd=hbchat&action=departments&flash=true" {/if}>
-                                        <span>打开聊天控制台</span></a>
+                                        <span>打开LiveChat控制器</span></a>
 
                                 <div class="clear"></div>
                             </td>

@@ -143,8 +143,8 @@ echo '
           <tr>
             <td>', $check['alert_test_id'], '</td>
             <td>', '<i class="',$config['entities'][$check['entity_type']]['icon'],'"></i> ', nicecase($check['entity_type']), '</td>
-            <td>', $check['alert_name'], '</td>
-            <td><i>', $check['alert_message'], '</i></td>
+            <td>', escape_html($check['alert_name']), '</td>
+            <td><i>', escape_html($check['alert_message']), '</i></td>
             <td>';  // FUCK THIS COMMA SHIT IT IS HIGHLY ANNOYING -T
             if ($check['suppress_recovery']) { echo('<div style="text-decoration: line-through" title="回收通知抑制">R</div>'); }
             echo '</td>
@@ -202,9 +202,9 @@ foreach ($conditions as $condition)
 {
   $condition_text[] = $condition['metric'].' '.$condition['condition'].' '.$condition['value'];
   echo '<tr>';
-  echo '<td>'.$condition['metric'].'</td>';
-  echo '<td>'.$condition['condition'].'</td>';
-  echo '<td>'.$condition['value'].'</td>';
+  echo '<td>'.escape_html($condition['metric']).'</td>';
+  echo '<td>'.escape_html($condition['condition']).'</td>';
+  echo '<td>'.escape_html($condition['value']).'</td>';
   echo '</tr>';
 }
 
@@ -244,9 +244,9 @@ foreach ($assocs as $assoc_id => $assoc)
   {
     foreach ($assoc['device_attribs'] as $attribute)
     {
-      echo($attribute['attrib'].' ');
-      echo($attribute['condition'].' ');
-      echo($attribute['value']);
+      echo(escape_html($attribute['attrib']).' ');
+      echo(escape_html($attribute['condition']).' ');
+      echo(escape_html($attribute['value']));
       echo('<br />');
       $assoc_dev_text[] = $attribute['attrib'].' '.$attribute['condition'].' '.$attribute['value'];
     }
@@ -263,9 +263,9 @@ foreach ($assocs as $assoc_id => $assoc)
   {
     foreach ($assoc['entity_attribs'] as $attribute)
     {
-      echo($attribute['attrib'].' ');
-      echo($attribute['condition'].' ');
-      echo($attribute['value']);
+      echo(escape_html($attribute['attrib']).' ');
+      echo(escape_html($attribute['condition']).' ');
+      echo(escape_html($attribute['value']));
       echo('<br />');
       $assoc_entity_text[] = $attribute['attrib'].' '.$attribute['condition'].' '.$attribute['value'];
     }

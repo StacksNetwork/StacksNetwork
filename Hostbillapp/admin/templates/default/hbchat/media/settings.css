@@ -1,0 +1,40 @@
+table.hbchat_table_1 td {
+    border: 1px solid #CCCCCC;
+    padding: 7px 5px;
+}
+table.hbchat_table_1 {
+    font-size:11px;
+    border-collapse: collapse;
+}
+table.hbchat_table_1 td.backcolor {
+    background-color: #F9F9F9;
+}
+table.introduce td {
+      border-left: 1px solid #d3d3d3;
+      border-right:1px solid #fff;
+      padding:0px 0px 0px 10px;
+      color:#4B4B4B;
+      text-shadow:1px 1px 1px #FFFFFF;
+}
+table.introduce td b {
+    font-size:26px;
+}
+div.favico_off {
+    background:url(../../img/star-empty.png) no-repeat top left;
+    width:16px;
+    height:16px;
+    cursor:pointer;
+}
+div.favico_on {
+    background:url(../../img/star.png) no-repeat top left !important;
+}
+.chatbg_1 {
+    padding:20px;
+    background-color:#F6F6F6;
+  background-image: -moz-linear-gradient(top, #F6F6F6, #F1F1F1);
+  background-image: -ms-linear-gradient(top, #F6F6F6, #F1F1F1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#F6F6F6), to(#F1F1F1));
+  background-image: -webkit-linear-gradient(top, #F6F6F6, #F1F1F1);
+  background-image: -o-linear-gradient(top, #F6F6F6, #F1F1F1);
+  background-image: linear-gradient(top, #F6F6F6, #F1F1F1);
+}

@@ -31,7 +31,7 @@
                                 <li><a href="?action=download&invoice=preview" ><span><b>{$lang.previewinvoice}</b></span></a></li>
                                 <li class="list-2elem"><a href="?cmd=configuration&picked_tab=3&picked_subtab=0"><span>{$lang.invmethod}</span></a></li>
                                 <li class="list-2elem picked" ><a href="?cmd=configuration&action=invoicetemplates"><span>{$lang.invcustomize}</span></a></li>
-                                <li class="list-2elem" ><a href="?cmd=configuration&action=estimatetemplates"><span>预期定制</span></a></li>
+                                <li class="list-2elem" ><a href="?cmd=configuration&action=estimatetemplates"><span>统计自定义化</span></a></li>
                                 <li class="list-2elem"><a href="?cmd=configuration&picked_tab=3&picked_subtab=1"><span>{$lang.creditcards}</span></a></li>
                                 <li class="list-2elem"><a href="?cmd=configuration&picked_tab=3&picked_subtab=2"><span>{$lang.clbalance}</span></a></li>
                                 <li class="list-2elem"><a href="?cmd=configuration&picked_tab=3&picked_subtab=3"><span>信用记录</span></a></li>

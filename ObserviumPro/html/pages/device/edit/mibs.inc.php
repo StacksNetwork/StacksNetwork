@@ -48,9 +48,9 @@ ksort($other_mibs);
 
 $attribs = get_dev_attribs($device['device_id']);
 
-if($_POST['toggle_mib'] && isset($mibs[$_POST['toggle_mib']]))
+if($vars['toggle_mib'] && isset($mibs[$vars['toggle_mib']]))
 {
-  $mib = $_POST['toggle_mib'];
+  $mib = $vars['toggle_mib'];
 
   if (isset($attribs['mib_'.$mib]))
   {

@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -33,7 +33,7 @@ $navbar['brand'] = "警报检测";
 $types = dbFetchRows("SELECT `entity_type` FROM `alert_table` GROUP BY `entity_type`");
 
 $navbar['options']['all']['url'] = generate_url($vars, array('page' => 'alert_checks', 'entity_type' => NULL));
-$navbar['options']['all']['text'] = htmlspecialchars(nicecase('all'));
+$navbar['options']['all']['text'] = escape_html(nicecase('所有'));
 if (!isset($vars['entity_type'])) {
   $navbar['options']['all']['class'] = "active";
   $navbar['options']['all']['url'] = generate_url($vars, array('page' => 'alerts_checks', 'entity_type' => NULL));
@@ -48,7 +48,7 @@ foreach ($types as $thing)
   } else {
     $navbar['options'][$thing['entity_type']]['url'] = generate_url($vars, array('page' => 'alert_checks', 'entity_type' => $thing['entity_type']));
   }
-  $navbar['options'][$thing['entity_type']]['text'] = htmlspecialchars(nicecase($thing['entity_type']));
+  $navbar['options'][$thing['entity_type']]['text'] = escape_html(nicecase($thing['entity_type']));
 }
 
 // Print out the navbar defined above
@@ -62,12 +62,13 @@ foreach (dbFetchRows("SELECT * FROM `alert_table` LEFT JOIN `alert_table-state` 
   echo '<table class="table table-condensed table-bordered table-striped table-rounded table-hover">
   <thead>
     <tr>
-    <th></th><th></th>
+    <th class="state-marker"></th><th></th>
     <th style="width: 25px">Id</th>
     <th style="width: 250px">名称</th>
+    <th width="40"></th>
     <th style="width: 300px">测试</th>
-    <th>设备匹配/实体匹配</th>
-    <th style="width: 40px">实体</th>
+    <th>Device 匹配/对象匹配</th>
+    <th style="width: 40px">对像</th>
     </tr>
   </thead>
   <tbody>', PHP_EOL;
@@ -81,19 +82,19 @@ foreach ($alert_check as $check)
   echo('<tr class="'.$check['html_row_class'].'">');
 
   echo('
-    <td style="width: 1px; background-color: '.$check['table_tab_colour'].'; margin: 0px; padding: 0px"></td>
+    <td class="state-marker"></td>
     <td style="width: 1px;"></td>');
 
   // Print the conditions applied by this alert
 
-  echo '<td><strong>';
-  echo $check['alert_test_id'];
-  echo '</td>';
+  echo '<td><strong>' . $check['alert_test_id'] . '</td>';
 
   echo '<td><strong>';
-  echo '<a href="', generate_url(array('page' => 'alert_check', 'alert_test_id' => $check['alert_test_id'])), '">' . $check['alert_name']. '</a></strong><br />';
-  echo '<small>',$check['alert_message'],'</small>';
+  echo '<a href="', generate_url(array('page' => 'alert_check', 'alert_test_id' => $check['alert_test_id'])), '">' . escape_html($check['alert_name']). '</a></strong><br />';
+  echo '<small>',escape_html($check['alert_message']),'</small>';
   echo '</td>';
+
+  echo '<td><i class="' . $config['entities'][$check['entity_type']]['icon'] . '"></i></td>';
 
   // Loop the tests used by this alert
   echo '<td>';
@@ -164,4 +165,4 @@ foreach ($alert_check as $check)
 
 echo '</table>';
 
-?>
+// EOF

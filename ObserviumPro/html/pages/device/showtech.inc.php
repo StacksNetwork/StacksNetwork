@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 /**
  * Observium Network Management and Monitoring System
@@ -20,17 +20,17 @@ if ($_SESSION['userlevel'] == 10) // Admin page only
   <div class="col-md-12">
     <div class="well info_box">
       <div class="title"><a href="<?php echo(generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'perf'))); ?>">
-        <i class="oicon-clock"></i> Duration</a></div>
+        <i class="oicon-clock"></i> 持续时间</a></div>
       <div class="content">
 
 <?php
   $ptime = dbFetchRow('SELECT * FROM `devices_perftimes` WHERE `operation` = "poll" AND `device_id` = ? ORDER BY `start` DESC LIMIT 1', array($device['device_id']));
 
-  echo "Last Polled: <b>" . format_unixtime($ptime['start']) .'</b> (took '.$ptime['duration'].'s) - <a href="' . generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'perf')) . '">Details</a><p />';
+  echo "最后一次轮询: <b>" . format_unixtime($ptime['start']) .'</b> (took '.$ptime['duration'].'s) - <a href="' . generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'perf')) . '">详情</a><p />';
 
   $dtime = dbFetchRow('SELECT * FROM `devices_perftimes` WHERE `operation` = "discover" AND `device_id` = ? ORDER BY `start` DESC LIMIT 1', array($device['device_id']));
 
-  echo "Last discovered: <b>" . format_unixtime($dtime['start']) .'</b> (took '.$dtime['duration'].'s) - <a href="' . generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'perf')) . '">Details</a><p />';
+  echo "最后一次发现: <b>" . format_unixtime($dtime['start']) .'</b> (took '.$dtime['duration'].'s) - <a href="' . generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'perf')) . '">详情</a><p />';
 ?>
 
       </div>
@@ -49,12 +49,12 @@ if ($_SESSION['userlevel'] == 10) // Admin page only
 
     if ($device_config_file)
     {
-      print_success("Configuration file for device was found; will be displayed to users with level 7 or higher.");
+      print_success("发现设备配置文件; 7级以上的用户将可以查看.");
     } else {
-      print_warning("Configuration file for device was not found.");
+      print_warning("未发现设备配置文件.");
     }
   } else {
-    print_warning("No RANCID directories configured.");
+    print_warning("没有任何RANCID的目录配置.");
   }
 ?>
       </div>
@@ -73,19 +73,19 @@ if ($_SESSION['userlevel'] == 10) // Admin page only
 
     if ($smokeping_files['incoming'][$device['hostname']])
     {
-      print_success("RRD for incoming latency found.");
+      print_success("RRD发现进向流量延迟.");
     } else {
-      print_error("RRD for incoming latency not found.");
+      print_error("RRD未发现进向流量延迟.");
     }
 
     if ($smokeping_files['outgoing'][$device['hostname']])
     {
-      print_success("RRD for outgoing latency found.");
+      print_success("RRD发现出向流量延迟.");
     } else {
-      print_error("RRD for outgoing latency not found.");
+      print_error("RRD未发现出向流量延迟.");
     }
   } else {
-    print_warning("No Smokeping directory configured.");
+    print_warning("没有配置Smokeping目录.");
   }
 ?>
       </div>
@@ -96,11 +96,11 @@ if ($_SESSION['userlevel'] == 10) // Admin page only
 
     <div class="well info_box">
       <div class="title"><a href="<?php echo(generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'graphs'))); ?>">
-        <i class="oicon-blocks"></i> Device Graphs</a></div>
+        <i class="oicon-blocks"></i> 设备图形</a></div>
       <div class="content">
 
         <table class="table table-rounded table-bordered table-striped">
-        <tr><th>Graph Type</th><th style="width: 80px;">Has File</th><th style="width: 80px;">Has Array</th><th style="width: 80px;">Enabled</th></tr>
+        <tr><th>图形类型</th><th style="width: 80px;">具有文件</th><th style="width: 80px;">具有数组</th><th style="width: 80px;">启用</th></tr>
 <?php
   foreach ($device['graphs'] as $graph_entry)
   {

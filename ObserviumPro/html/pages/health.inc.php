@@ -11,9 +11,10 @@
  *
  */
 
-$datas = array('processor' => array('icon' => 'oicon-processor'),
-               'mempool'   => array('icon' => 'oicon-memory'),
-               'storage'   => array('icon' => 'oicon-drive'));
+$datas = array('processor' => array('icon' => $config['entities']['processor']['icon']),
+               'mempool'   => array('icon' => $config['entities']['mempool']['icon']),
+               'storage'   => array('icon' => $config['entities']['storage']['icon']),
+               'status'    => array('icon' => $config['entities']['status']['icon']));
 if (isset($health_items['toner'])) { $datas['toner'] = array('icon' => 'oicon-contrast'); }
 
 foreach (array_keys($config['sensor_types']) as $type)
@@ -22,7 +23,7 @@ foreach (array_keys($config['sensor_types']) as $type)
 }
 
 if (!$vars['metric']) { $vars['metric'] = "processor"; }
-if (!$vars['view']) { $vars['view'] = "detail"; }
+if (!$vars['view'])   { $vars['view']   = "detail"; }
 
 $link_array = array('page' => 'health');
 
@@ -65,9 +66,9 @@ $navbar['options']['graphs']['right'] = TRUE;
 if ($vars['view'] == "graphs")
 {
   $navbar['options']['graphs']['class'] = 'active';
-  $navbar['options']['graphs']['url']   = generate_url($link_array, array('metric'=> $vars['metric'], 'view' => "detail"));
+  $navbar['options']['graphs']['url']   = generate_url($vars, array('view' => "detail"));
 } else {
-  $navbar['options']['graphs']['url']    = generate_url($link_array, array('metric'=> $vars['metric'], 'view' => "graphs"));
+  $navbar['options']['graphs']['url']    = generate_url($vars, array('view' => "graphs"));
 }
 
 print_navbar($navbar);
@@ -86,6 +87,6 @@ if (isset($datas[$vars['metric']]))
   print_warning("没有传感器类型 " . $vars['metric'] . " 发现.");
 }
 
-$pagetitle[] = "系统健康";
+$page_title[] = "系统健康";
 
 // EOF

@@ -1,6 +1,6 @@
 <link rel="stylesheet" media="screen" type="text/css" href="{$template_dir}js/colorpicker/css/colorpicker.css" />
-<script type="text/javascript" src="{$template_dir}js/colorpicker/colorpicker.js"></script>
-<script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+<script type="text/javascript" src="{$template_dir}js/colorpicker/colorpicker.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
 {literal}
 <script>
     $(document).ready(function(){

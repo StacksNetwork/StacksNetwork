@@ -70,7 +70,7 @@ $vars['pagination'] = TRUE;
 
 print_inventory($vars);
 
-$pagetitle[] = '清单';
+$page_title[] = '清单';
 
 ?>
 

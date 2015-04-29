@@ -11,7 +11,7 @@
  *
  */
 
-$pagetitle[] = "客户";
+$page_title[] = "客户";
 ?>
 
 <table class="table table-hover table-striped-two table-bordered table-condensed table-rounded" style="margin-top: 10px;">

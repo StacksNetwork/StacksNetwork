@@ -126,7 +126,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td >{$lang.Client}</td>
-                                                    <td ><a href="?cmd=clients&action=show&id={$details.client_id}">{$details.firstname} {$details.lastname}</a> </td>
+                                                    <td ><a href="?cmd=clients&action=show&id={$details.client_id}">{$details.lastname} {$details.firstname}</a> </td>
                                                     <td >{$lang.billingcycle}</td>
                                                     <td ><select name="billingcycle">
                                                             <option value="Free" {if $details.billingcycle=='Free'}selected='selected'{/if}>{$lang.Free}</option>

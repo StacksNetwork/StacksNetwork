@@ -7,9 +7,11 @@
  *
  * @package    observium
  * @subpackage webui
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
+
+echo("EMAILING");
 
 // Find local hostname
 $localhost = get_localhost();
@@ -56,6 +58,8 @@ $emails = $cache['emails'][$alert_id];
 
 if ($emails)
 {
+  if (OBS_DEBUG) { print_r($emails); }
+
   // Mail backend params
   $backend = strtolower(trim($config['email']['backend']));
   switch ($backend)
@@ -79,12 +83,15 @@ if ($emails)
       $params['username']  = $config['email']['smtp_username'];
       $params['password']  = $config['email']['smtp_password'];
       $params['localhost'] = $localhost;
-      if ($debug) { $params['debug'] = TRUE; }
+      if (OBS_DEBUG) { $params['debug'] = TRUE; }
       break;
     case 'mail':
     default:
       $backend = 'mail'; // Default mailer backend
   }
+
+  // Time sent RFC 2822
+  $time_rfc = date('r', time());
 
   // Mail headers
   $headers = array();
@@ -111,7 +118,7 @@ if ($emails)
   $headers['X-Priority']   = 3;             // Mail priority
   $headers['X-Mailer']     = OBSERVIUM_PRODUCT.' '.OBSERVIUM_VERSION; // X-Mailer:
   $headers['Message-ID']   = '<' . md5(uniqid(time())) . '@' . $localhost . '>';
-  $headers['Date']         = date('r', time());
+  $headers['Date']         = $time_rfc;
 
   // Mail body
   if (!is_array($message))
@@ -126,7 +133,8 @@ if ($emails)
       $message['text'] = $old_message;
     }
   }
-  $time_sent = date($config['timestamp_format']);
+  //$time_sent = date($config['timestamp_format']);
+  $time_sent = $time_rfc;
   // Creating the Mime message
   $mime = new Mail_mime(array('head_charset' => 'utf-8',
                               'text_charset' => 'utf-8',

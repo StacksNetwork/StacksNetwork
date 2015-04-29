@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -18,11 +18,17 @@
   <div class="col-md-6">
 <?php
 
+if (is_executable($config['install_dir'].'/scripts/distro'))
+{
+  $os = explode('|', external_exec($config['install_dir'].'/scripts/distro'), 5);
+  $os_version = $os[0].' '.$os[1].' ['.$os[2].'] ('.$os[3].' '.$os[4].')';
+  unset($os);
+}
 $apache_version  = str_replace("Apache/", "", $_SERVER['SERVER_SOFTWARE']);
 $php_version     = phpversion();
 $mysql_version   = dbFetchCell("SELECT version()");
-$snmp_version    = str_replace(" version:", "", shell_exec($config['snmpget'] . " --version 2>&1"));
-$rrdtool_version = implode(" ",array_slice(explode(" ",shell_exec($config['rrdtool'] . " --version |head -n1")),1,1));
+$snmp_version    = str_replace(" version:", "", external_exec($config['snmpget'] . " --version 2>&1"));
+$rrdtool_version = implode(" ",array_slice(explode(" ",external_exec($config['rrdtool'] . " --version |head -n1")),1,1));
 
 ?>
   <div class="well info_box">
@@ -30,12 +36,13 @@ $rrdtool_version = implode(" ",array_slice(explode(" ",shell_exec($config['rrdto
     <div class="content">
         <table class="table table-bordered table-striped table-condensed-more">
           <tbody>
-            <tr><td><b><?php echo OBSERVIUM_PRODUCT; ?></b></td><td><?php echo OBSERVIUM_VERSION; ?></td></tr>
-            <tr><td><b>Apache</b></td><td><?php echo($apache_version); ?></td></tr>
-            <tr><td><b>PHP</b></td><td><?php echo($php_version); ?></td></tr>
-            <tr><td><b>MySQL</b></td><td><?php echo($mysql_version); ?></td></tr>
-            <tr><td><b>SNMP</b></td><td><?php echo($snmp_version); ?></td></tr>
-            <tr><td><b>RRDtool</b></td><td><?php echo($rrdtool_version); ?></td></tr>
+            <tr><td><b><?php echo(escape_html(OBSERVIUM_PRODUCT)); ?></b></td><td><?php echo(escape_html(OBSERVIUM_VERSION)); ?></td></tr>
+            <tr><td><b>OS</b></td><td><?php echo(escape_html($os_version)); ?></td></tr>
+            <tr><td><b>Apache</b></td><td><?php echo(escape_html($apache_version)); ?></td></tr>
+            <tr><td><b>PHP</b></td><td><?php echo(escape_html($php_version)); ?></td></tr>
+            <tr><td><b>MySQL</b></td><td><?php echo(escape_html($mysql_version)); ?></td></tr>
+            <tr><td><b>SNMP</b></td><td><?php echo(escape_html($snmp_version)); ?></td></tr>
+            <tr><td><b>RRDtool</b></td><td><?php echo(escape_html($rrdtool_version)); ?></td></tr>
           </tbody>
         </table>
     </div>
@@ -44,12 +51,12 @@ $rrdtool_version = implode(" ",array_slice(explode(" ",shell_exec($config['rrdto
   <div style="margin-bottom: 20px; margin-top: 10px;">
   <table style="width: 100%; background: transparent;">
     <tr>
-      <td style="width: 20%; text-align: center;"><a class="btn btn-small" href="<?php echo OBSERVIUM_URL; ?>"><i style="font-size: small;" class="icon-globe"></i> Web</a></td>
-      <td style="width: 20%; text-align: center;"><a class="btn btn-small" href="http://jira.observium.org/"><i style="font-size: small;" class="icon-bug"></i> Bugtracker</a></td>
-      <td style="width: 20%; text-align: center;"><a class="btn btn-small" href="<?php echo OBSERVIUM_URL; ?>/wiki/Mailing_Lists"><i style="font-size: small;" class="icon-envelope"></i> 邮件列表</a></td>
-      <td style="width: 20%; text-align: center;"><a class="btn btn-small" href="http://twitter.com/observium"><i style="font-size: small;" class="icon-twitter-sign"></i> Twitter</a></td>
-      <!--<td><a class="btn btn-small" href="http://twitter.com/observium_svn"><i class="icon-twitter-sign"></i> SVN Twitter</a></td>-->
-      <td style="width: 20%; text-align: center;"><a class="btn btn-small" href="http://www.facebook.com/pages/Observium/128354461353"><i style="font-size: small;" class="icon-facebook-sign"></i> Facebook</a></td>
+      <td style="width: 20%; text-align: center;"><a class="btn btn-small" target="_blank" href="<?php echo OBSERVIUM_URL; ?>"><i style="font-size: small;" class="icon-globe"></i> Web</a></td>
+      <td style="width: 20%; text-align: center;"><a class="btn btn-small" target="_blank" href="http://jira.observium.org/"><i style="font-size: small;" class="icon-bug"></i> Bugtracker</a></td>
+      <td style="width: 20%; text-align: center;"><a class="btn btn-small" target="_blank" href="<?php echo OBSERVIUM_URL; ?>/wiki/Mailing_Lists"><i style="font-size: small;" class="icon-envelope"></i> Mailing List</a></td>
+      <td style="width: 20%; text-align: center;"><a class="btn btn-small" target="_blank" href="http://twitter.com/observium"><i style="font-size: small;" class="icon-twitter-sign"></i> Twitter</a></td>
+      <!--<td><a class="btn btn-small" target="_blank" href="http://twitter.com/observium_svn"><i class="icon-twitter-sign"></i> SVN Twitter</a></td>-->
+      <td style="width: 20%; text-align: center;"><a class="btn btn-small" target="_blank" href="http://www.facebook.com/pages/Observium/128354461353"><i style="font-size: small;" class="icon-facebook-sign"></i> Facebook</a></td>
     </tr>
   </table>
   </div>
@@ -89,43 +96,52 @@ $rrdtool_version = implode(" ",array_slice(explode(" ",shell_exec($config['rrdto
     <div class="content">
 
 <?php
-$stat_devices = dbFetchCell("SELECT COUNT(device_id) FROM `devices`");
-$stat_ports = dbFetchCell("SELECT COUNT(port_id) FROM `ports`");
-$stat_syslog = dbFetchCell("SELECT COUNT(seq) FROM `syslog`");
-$stat_events = dbFetchCell("SELECT COUNT(event_id) FROM `eventlog`");
-$stat_apps = dbFetchCell("SELECT COUNT(app_id) FROM `applications`");
-$stat_services = dbFetchCell("SELECT COUNT(service_id) FROM `services`");
-$stat_storage = dbFetchCell("SELECT COUNT(storage_id) FROM `storage`");
-$stat_diskio = dbFetchCell("SELECT COUNT(diskio_id) FROM `ucd_diskio`");
-$stat_processors = dbFetchCell("SELECT COUNT(processor_id) FROM `processors`");
-$stat_memory = dbFetchCell("SELECT COUNT(mempool_id) FROM `mempools`");
-$stat_sensors = dbFetchCell("SELECT COUNT(sensor_id) FROM `sensors`");
-$stat_toner = dbFetchCell("SELECT COUNT(toner_id) FROM `toner`");
-$stat_hrdev = dbFetchCell("SELECT COUNT(hrDevice_id) FROM `hrDevice`");
-$stat_entphys = dbFetchCell("SELECT COUNT(entPhysical_id) FROM `entPhysical`");
+$stat_devices   = dbFetchCell("SELECT COUNT(*) FROM `devices`;");
+$stat_ports     = dbFetchCell("SELECT COUNT(*) FROM `ports`;");
+$stat_syslog    = dbFetchCell("SELECT COUNT(*) FROM `syslog`;");
+$stat_events    = dbFetchCell("SELECT COUNT(*) FROM `eventlog`;");
+$stat_apps      = dbFetchCell("SELECT COUNT(*) FROM `applications`;");
+$stat_services  = dbFetchCell("SELECT COUNT(*) FROM `services`;");
+$stat_storage   = dbFetchCell("SELECT COUNT(*) FROM `storage`;");
+$stat_diskio    = dbFetchCell("SELECT COUNT(*) FROM `ucd_diskio`;");
+$stat_processors = dbFetchCell("SELECT COUNT(*) FROM `processors`;");
+$stat_memory    = dbFetchCell("SELECT COUNT(*) FROM `mempools`;");
+$stat_sensors   = dbFetchCell("SELECT COUNT(*) FROM `sensors`;");
+$stat_sensors  += dbFetchCell("SELECT COUNT(*) FROM `status`;");
+$stat_toner     = dbFetchCell("SELECT COUNT(*) FROM `toner`;");
+$stat_hrdev     = dbFetchCell("SELECT COUNT(*) FROM `hrDevice`;");
+$stat_entphys   = dbFetchCell("SELECT COUNT(*) FROM `entPhysical`;");
 
-$stat_ipv4_addy = dbFetchCell("SELECT COUNT(ipv4_address_id) FROM `ipv4_addresses`");
-$stat_ipv4_nets = dbFetchCell("SELECT COUNT(ipv4_network_id) FROM `ipv4_networks`");
-$stat_ipv6_addy = dbFetchCell("SELECT COUNT(ipv6_address_id) FROM `ipv6_addresses`");
-$stat_ipv6_nets = dbFetchCell("SELECT COUNT(ipv6_network_id) FROM `ipv6_networks`");
+$stat_ipv4_addy = dbFetchCell("SELECT COUNT(*) FROM `ipv4_addresses`;");
+$stat_ipv4_nets = dbFetchCell("SELECT COUNT(*) FROM `ipv4_networks`;");
+$stat_ipv6_addy = dbFetchCell("SELECT COUNT(*) FROM `ipv6_addresses`;");
+$stat_ipv6_nets = dbFetchCell("SELECT COUNT(*) FROM `ipv6_networks`;");
 
-$stat_pw = dbFetchCell("SELECT COUNT(pseudowire_id) FROM `pseudowires`");
-$stat_vrf = dbFetchCell("SELECT COUNT(vrf_id) FROM `vrfs`");
-$stat_vlans = dbFetchCell("SELECT COUNT(vlan_id) FROM `vlans`");
+$stat_pw    = dbFetchCell("SELECT COUNT(*) FROM `pseudowires`;");
+$stat_vrf   = dbFetchCell("SELECT COUNT(*) FROM `vrfs`;");
+$stat_vlans = dbFetchCell("SELECT COUNT(*) FROM `vlans`;");
+
+$stat_db    = get_db_size();
+$stat_rrd   = get_dir_size($config['rrd_dir']);
+
 ?>
       <table class="table table-bordered table-striped table-condensed">
         <tbody>
           <tr>
-            <td style='width: 45%;'><i class='oicon-servers'></i> <strong>设备</strong></td><td><span class='pull-right'><?php echo($stat_devices); ?></span></td>
-            <td style='width: 45%;'><i class='oicon-network-ethernet'></i> <strong>端口</strong></td><td><span class='pull-right'><?php echo($stat_ports); ?></span></td>
+            <td style='width: 45%;'><i class='oicon-database'></i> <strong>DB大小</strong></td><td><span class='pull-right'><?php echo(formatStorage($stat_db)); ?></span></td>
+            <td style='width: 45%;'><i class='oicon-box-zipper'></i> <strong>RRD大小</strong></td><td><span class='pull-right'><?php echo(formatStorage($stat_rrd)); ?></span></td>
+          </tr>
+          <tr>
+            <td><i class='oicon-servers'></i> <strong>设备</strong></td><td><span class='pull-right'><?php echo($stat_devices); ?></span></td>
+            <td><i class='oicon-network-ethernet'></i> <strong>端口</strong></td><td><span class='pull-right'><?php echo($stat_ports); ?></span></td>
           </tr>
           <tr>
             <td><i class='oicon-ipv4'></i> <strong>IPv4地址</strong></td><td><span class='pull-right'><?php echo($stat_ipv4_addy); ?></span></td>
             <td><i class='oicon-ipv4'></i> <strong>IPv4网络</strong></td><td><span class='pull-right'><?php echo($stat_ipv4_nets); ?></span></td>
           </tr>
           <tr>
-            <td><i class='oicon-ipv6'></i> <strong>IPv6地址</strong></td><td><span class='pull-right'><?php echo($stat_ipv6_addy); ?></span></td>
-            <td><i class='oicon-ipv6'></i> <strong>IPv6网络</strong></td><td><span class='pull-right'><?php echo($stat_ipv6_nets); ?></span></td>
+            <td><i class='oicon-ipv6'></i> <strong>IPv6 Addresses</strong></td><td><span class='pull-right'><?php echo($stat_ipv6_addy); ?></span></td>
+            <td><i class='oicon-ipv6'></i> <strong>IPv6 Networks</strong></td><td><span class='pull-right'><?php echo($stat_ipv6_nets); ?></span></td>
            </tr>
          <tr>
             <td><i class='oicon-gear'></i> <strong>服务</strong></td><td><span class='pull-right'><?php echo($stat_services); ?></span></td>

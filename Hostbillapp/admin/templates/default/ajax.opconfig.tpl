@@ -1,4 +1,4 @@
-<script type="text/javascript" src="{$template_dir}js/opconfig.js"></script>
+<script type="text/javascript" src="{$template_dir}js/opconfig.js?v={$hb_version}"></script>
 <script type="text/javascript">
     HBOpConfig.init('{$category_id}','{$template_name}');                
 </script>
@@ -11,14 +11,14 @@
             {if $k=='productfeatures'}{continue}{/if}
             <label for="{$k}" class="nodescr">{$c.name} </label>
             {if $c.type=='input'}
-                <input type="text" class="w250" name="opconfig[{$k}]" value="{$c.value|htmlspecialchars}" style="margin-bottom:5px"/>
+                {hbinput type="text" class="w250" name="opconfig[`$k`]" value=$c.value style="margin-bottom:5px"}
+                {*}<input type="text" class="w250" name="opconfig[{$k}]" value="{$c.value|htmlspecialchars}" style="margin-bottom:5px"/>{*}
             {elseif $c.type=='hidden'}
                 <input type="hidden" id="opconfig_{$k}" name="opconfig[{$k}]" value="{$c.value|htmlspecialchars}" />
             {elseif $c.type=='link'}
                 <div class="w250 winput" style="padding-top:7px !important"><a href="{$c.value}" target="_blank" class="external"><b>{$c.name}</b></a></div>
             {elseif $c.type=='textarea'}
-                <textarea class="w250" name="opconfig[{$k}]" style="margin-bottom:5px">{$c.value|htmlspecialchars}</textarea>
-
+                {hbwysiwyg class="w250" name="opconfig[`$k`]" style="margin-bottom:5px" value=$c.value blockwysiwyg=true}
             {elseif $c.type=='checkbox'}
                 <input type="checkbox" {if $c.value=='1'}checked="checked"{/if} name="opconfig[{$k}]" value="1" style="margin-bottom:5px" />
                 <input type="hidden" name="opconfig[checkboxes_][]" value="{$k}" />
@@ -42,7 +42,7 @@
                 </script>
             {elseif $c.type=='premade'}
                 {if !$premadeinit}
-                    <script type="text/javascript" src="{$template_dir}js/ajaxfileupload.js"></script>
+                    <script type="text/javascript" src="{$template_dir}js/ajaxfileupload.js?v={$hb_version}"></script>
                     
                     {assign var=premadeinit value=true}
                 {/if}
@@ -102,7 +102,7 @@
             {elseif $c.type=='colorpicker'}
                 {if !$colorpickerinit}
                     <link rel="stylesheet" media="screen" type="text/css" href="{$template_dir}js/colorpicker/css/colorpicker.css" />
-                    <script type="text/javascript" src="{$template_dir}js/colorpicker/colorpicker.js"></script>
+                    <script type="text/javascript" src="{$template_dir}js/colorpicker/colorpicker.js?v={$hb_version}"></script>
                     {assign var=colorpickerinit value=true}
                 {/if}
                 <input id="colorSelector_{$k}_i" type="hidden" class="w250" size="7" name="opconfig[{$k}]" value="{$c.value}" style="margin-bottom:5px"/>
@@ -121,7 +121,11 @@
                     livePreview:true, color:{/literal}'{$c.value}'{literal}}{/literal});</script>
             {/if}
             <div class="clear"></div>
-        {if $c.description}<div class="fs11" style="padding-left:170px;clear:both;margin-bottom:10px;color:#666">{$c.description}</div>{/if}
+        {if $c.description || true}
+            <div class="fs11" style="padding-left:170px;clear:both;margin-bottom:10px;color:#666">
+                {$c.description}
+            </div>
+        {/if}
     {/foreach}</div>
 </form>
 </div><div class="dark_shelf dbottom">

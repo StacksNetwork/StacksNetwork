@@ -354,141 +354,127 @@
   
 
 
-  <form action="" method="post" id="itemsform">
-<table class="invoice-table" width="100%" border="0" cellpadding="0" cellspacing="0">
-			<tbody id="main-invoice">
-				<tr>
-					<th>{$lang.Description}</th>
-					<th width="8%" class="acenter">{$lang.qty}</th>
-					<th width="7%" class="acenter">{$lang.Taxed}</th>
-					<th width="9%" class="acenter">{$lang.Price}</th>
-					<th width="13%" class="aright">{$lang.Linetotal}</th>
-					<th width="1%" class="acenter">&nbsp;</th>
+                   <form action="" method="post" id="itemsform">
+                       <table class="invoice-table" width="100%" border="0" cellpadding="0" cellspacing="0">
+                           <thead>
+                               <tr>
+                                   <th>{$lang.Description}</th>
+                                   <th width="8%" class="acenter">{$lang.qty}</th>
+                                   <th width="7%" class="acenter">{$lang.Taxed}</th>
+                                   <th width="9%" class="acenter">{$lang.Price}</th>
+                                   <th width="13%" class="aright">{$lang.Linetotal}</th>
+                                   <th width="1%" class="acenter">&nbsp;</th>
 
-				</tr>
-				{foreach from=$estimate.items item=item}
-				<tr id="line_{$item.id}">
-					<td class="editline">
-					<span class="line_descr">{$item.description|nl2br}</span>
-					<a class="editbtn" style="display:none;"  href="#">{$lang.Edit}</a>
-						<div style="display:none" class="editor-line">
-							<textarea name="item[{$item.id}][description]">{$item.description}</textarea>
-							<a class="savebtn" href="#" >{$lang.savechanges}</a>
-						</div>
-					</td>
-					<td class="acenter"><input name="item[{$item.id}][qty]" value="{$item.qty}" size="2" class="foc invitem invqty" style="text-align:center"/></td>
-					<td class="acenter"><input type="checkbox" name="item[{$item.id}][taxed]" {if $item.taxed == 1}checked="checked" {/if}value="1" class="invitem2"/></td>
-					<td class="acenter"><input name="item[{$item.id}][amount]" value="{$item.amount}" size="4" class="foc invitem invamount" style="text-align:right"/></td>
-					<td class="aright">{$currency.sign} <span id="ltotal_{$item.id}">{$item.linetotal|string_format:"%.2f"}</span> {if $currency.code}{$currency.code}{else}{$currency.iso}{/if}</td>
-					<td class="acenter"><a href="?cmd=estimates&action=removeline&id={$estimate.id}&line={$item.id}" class="removeLine"><img src="{$template_dir}img/trash.gif" alt="{$lang.Delete}"/></a></td>
-				</tr>
-				{/foreach}
-				<tr id="addliners">
-					<td class="summary blu">
-					<strong>{$lang.newline}</strong>: <input name="nline" id="nline" style="width:80%"/>
-					</td>
-					<td class="summary blu acenter"><input name="nline_qty" id="nline_qty" size="2" style="text-align:center" value="1"/></td>
-					<td class="summary blu acenter"><input name="nline_tax" type="checkbox" value="1" id="nline_tax" /></td>
-					<td class="summary blu acenter"><input name="nline_price" id="nline_price" size="4" /></td>
-					<td class="summary blu" colspan="2"><input type="button" value="{$lang.Add}" class="prodok" style="font-weight:bold"/>
-						<input type="button" id="addliner" value="{$lang.moreoptions}" /></td>
-					
-					
-												
-				</tr>
-				<tr id="addliners2" style="display:none">
-					<td class="summary blu" colspan="6">					
-					
-					<span id="catoptions_container" style="display:none;">
-					 <select name="category_id"  id="catoptions">					
-					<option value="0" selected="selected">{$lang.pickoneoption}</option>
-					{foreach from=$categories item=cat}
-						<option value="{$cat.id}">{$lang.fromcategory}: {$cat.name}</option>
-					{/foreach}
-						<option value="-2">{$lang.productaddons}</option>
-					</select>
-					<input type="button" id="rmliner" value="{$lang.Cancel}" />
-					</span>
-					<span id="products" style="display:none;"></span>
-					<span id="productname" style="display:none;"></span>
-					</div>
-					
-					</td>							
-				</tr>
-			</tbody>
-					
-			<tr>
-				<td style="border:none;padding:20px 10px;margin:0px;" valign="top">
-					<table border="0" cellpadding="0" cellspacing="0" width="100%" class="fs11 nomarg">
-							<tr>
-								<td width="50%"><strong>{$lang.estnotes}:</strong></td>
-								<td width="50%" style="padding-left:10px"><strong>{$lang.estadminnotes}:</strong></td>
-							</tr>
-							<tr>
-								<td width="50%">
-									<textarea class="notes_field" style="width:90%;height:60px;" name="notes" id="est_notes">{$estimate.notes}</textarea>
-								</td>
-								<td width="50%" style="padding-left:10px">
-									<textarea class="notes_field" style="width:90%;height:60px;" name="admin_notes" id="est_admin_notes">{$estimate.notes_private}</textarea>
-								</td>
-							</tr>
-							<tr>
-								<td width="50%" >
-									<div  class="notes_submit" id="notes_submit" style="display:none"><input value="{$lang.savechanges}" type="button" /></div>
-								</td>
-								<td width="50%" style="padding-left:10px" >
-									<div  class="notes_submit"  id="admin_notes_submit" style="display:none"><input value="{$lang.savechanges}" type="button" /></div>
-								</td>
-							</tr>
-						</table>
-				
-				</td>
-				<td colspan="5" style="border:none;padding:10px 0px;margin:0px;" valign="top">
-				<table width="100%">
-					<tbody id="updatetotals">
-						<tr>					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Subtotal}</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.subtotal|price:$currency}</strong></td>	
-					<td class="summary" width="2%"></td>				
-				</tr>
-				<tr>
-					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Discount}</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.credit|price:$currency}</strong></td>		
-					<td class="summary"></td>				
-				</tr>
-				
-				{if $estimate.taxrate!=0}
-				<tr>
-					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate}%)</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.tax|price:$currency}</strong></td>		
-					<td class="summary"></td>				
-				</tr>
-				{/if}
-				{if $estimate.taxrate2!=0}
-				<tr>
-					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate2}%)</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.tax2|price:$currency}</strong></td>	
-					<td class="summary"></td>					
-				</tr>
-				{/if}
-				<tr>
-				
-					<td class="summary aright" colspan="2" valign="top"><strong class="bigger">{$lang.Total}</strong></td>
-					<td class="summary aright" colspan="2" valign="top" ><strong class="bigger">{$estimate.total|price:$currency}</strong></td>	
-					<td class="summary"  valign="top"></td>					
-				</tr>
-					</tbody>
-				</table>
-				
-				</td>
-			</tr>
-			
-				
-			</table>
-{securitytoken}</form>
+                               </tr>
+                               </thead>
+                           <tbody id="main-invoice">
+                               {include file="invoices/estimate_items.tpl"}
+                           </tbody>
+                           <tbody id="new-item-invoice">
+                               <tr id="addliners">
+                                   <td class="summary blu">
+                                       <strong>{$lang.newline}</strong>: <input name="nline" id="nline" style="width:80%"/>
+                                   </td>
+                                   <td class="summary blu acenter"><input name="nline_qty" id="nline_qty" size="7" style="text-align:center" value="1"/></td>
+                                   <td class="summary blu acenter"><input name="nline_tax" type="checkbox" value="1" id="nline_tax" /></td>
+                                   <td class="summary blu acenter"><input name="nline_price" id="nline_price" size="13" /></td>
+                                   <td class="summary blu" colspan="2"><input type="button" value="{$lang.Add}" class="prodok" style="font-weight:bold"/>
+                                       <input type="button" id="addliner" value="{$lang.moreoptions}" /></td>
+
+
+
+                               </tr>
+                               <tr id="addliners2" style="display:none">
+                                   <td class="summary blu" colspan="6">					
+
+                                       <span id="catoptions_container" style="display:none;">
+                                           <select name="category_id"  id="catoptions">					
+                                               <option value="0" selected="selected">{$lang.pickoneoption}</option>
+                                               {foreach from=$categories item=cat}
+                                                   <option value="{$cat.id}">{$lang.fromcategory}: {$cat.name}</option>
+                                               {/foreach}
+                                               <option value="-2">{$lang.productaddons}</option>
+                                           </select>
+                                           <input type="button" id="rmliner" value="{$lang.Cancel}" />
+                                       </span>
+                                       <span id="products" style="display:none;"></span>
+                                       <span id="productname" style="display:none;"></span>
+                                     
+                                   </td>							
+                               </tr>
+                           </tbody>
+
+                           <tr>
+                               <td style="border:none;padding:20px 10px;margin:0px;" valign="top">
+                                   <table border="0" cellpadding="0" cellspacing="0" width="100%" class="fs11 nomarg">
+                                       <tr>
+                                           <td width="50%"><strong>{$lang.estnotes}:</strong></td>
+                                           <td width="50%" style="padding-left:10px"><strong>{$lang.estadminnotes}:</strong></td>
+                                       </tr>
+                                       <tr>
+                                           <td width="50%">
+                                               <textarea class="notes_field" style="width:90%;height:60px;" name="notes" id="est_notes">{$estimate.notes}</textarea>
+                                           </td>
+                                           <td width="50%" style="padding-left:10px">
+                                               <textarea class="notes_field" style="width:90%;height:60px;" name="admin_notes" id="est_admin_notes">{$estimate.notes_private}</textarea>
+                                           </td>
+                                       </tr>
+                                       <tr>
+                                           <td width="50%" >
+                                               <div  class="notes_submit" id="notes_submit" style="display:none"><input value="{$lang.savechanges}" type="button" /></div>
+                                           </td>
+                                           <td width="50%" style="padding-left:10px" >
+                                               <div  class="notes_submit"  id="admin_notes_submit" style="display:none"><input value="{$lang.savechanges}" type="button" /></div>
+                                           </td>
+                                       </tr>
+                                   </table>
+
+                               </td>
+                               <td colspan="5" style="border:none;padding:10px 0px;margin:0px;" valign="top">
+                                   <table width="100%">
+                                       <tbody id="updatetotals">
+                                           <tr>					
+                                               <td class="summary aright"  colspan="2"><strong>{$lang.Subtotal}</strong></td>
+                                               <td class="summary aright" colspan="2"><strong>{$estimate.subtotal|price:$currency}</strong></td>	
+                                               <td class="summary" width="2%"></td>				
+                                           </tr>
+                                           <tr>
+
+                                               <td class="summary aright"  colspan="2"><strong>{$lang.Discount}</strong></td>
+                                               <td class="summary aright" colspan="2"><strong>{$estimate.credit|price:$currency}</strong></td>		
+                                               <td class="summary"></td>				
+                                           </tr>
+
+                                           {if $estimate.taxrate!=0}
+                                               <tr>
+
+                                                   <td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate}%)</strong></td>
+                                                   <td class="summary aright" colspan="2"><strong>{$estimate.tax|price:$currency}</strong></td>		
+                                                   <td class="summary"></td>				
+                                               </tr>
+                                           {/if}
+                                           {if $estimate.taxrate2!=0}
+                                               <tr>
+
+                                                   <td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate2}%)</strong></td>
+                                                   <td class="summary aright" colspan="2"><strong>{$estimate.tax2|price:$currency}</strong></td>	
+                                                   <td class="summary"></td>					
+                                               </tr>
+                                           {/if}
+                                           <tr>
+
+                                               <td class="summary aright" colspan="2" valign="top"><strong class="bigger">{$lang.Total}</strong></td>
+                                               <td class="summary aright" colspan="2" valign="top" ><strong class="bigger">{$estimate.total|price:$currency}</strong></td>	
+                                               <td class="summary"  valign="top"></td>					
+                                           </tr>
+                                       </tbody>
+                                   </table>
+
+                               </td>
+                           </tr>
+                       </table>
+{securitytoken}
+                   </form>
  
 <p align="right" style="color:#999999; {if $estimate.status=='Dead' || $estimate.status=='Draft'}display:none;{/if}" id="clientlink" >
 <strong>{$lang.clientlink}</strong> {$system_url}?action=estimate&amp;id={$estimate.hash}
@@ -522,45 +508,45 @@
 
 
 {elseif $action=='updatetotals'}
+    <tbody id="main-invoice">
+        {include file="invoices/estimate_items.tpl"}
+    </tbody>
+    <tbody id="updatetotals">
+        <tr>					
+            <td class="summary aright"  colspan="2"><strong>{$lang.Subtotal}</strong></td>
+            <td class="summary aright" colspan="2"><strong>{$estimate.subtotal|price:$currency}</strong></td>	
+            <td class="summary" width="2%"></td>				
+        </tr>
+        <tr>
 
+            <td class="summary aright"  colspan="2"><strong>{$lang.Discount}</strong></td>
+            <td class="summary aright" colspan="2"><strong>{$estimate.credit|price:$currency}</strong></td>		
+            <td class="summary"></td>				
+        </tr>
 
-	<tr>					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Subtotal}</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.subtotal|price:$currency}</strong></td>	
-					<td class="summary" width="2%"></td>				
-				</tr>
-				<tr>
-					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Discount}</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.credit|price:$currency}</strong></td>		
-					<td class="summary"></td>				
-				</tr>
-				
-				{if $estimate.taxrate!=0}
-				<tr>
-					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate}%)</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.tax|price:$currency}</strong></td>		
-					<td class="summary"></td>				
-				</tr>
-				{/if}
-				{if $estimate.taxrate2!=0}
-				<tr>
-					
-					<td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate2}%)</strong></td>
-					<td class="summary aright" colspan="2"><strong>{$estimate.tax2|price:$currency}</strong></td>	
-					<td class="summary"></td>					
-				</tr>
-				{/if}
-				<tr>
-				
-					<td class="summary aright" colspan="2" valign="top"><strong class="bigger">{$lang.Total}</strong></td>
-					<td class="summary aright" colspan="2" valign="top" ><strong class="bigger">{$estimate.total|price:$currency}</strong></td>	
-					<td class="summary"  valign="top"></td>					
-				</tr>
+        {if $estimate.taxrate!=0}
+            <tr>
 
+                <td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate}%)</strong></td>
+                <td class="summary aright" colspan="2"><strong>{$estimate.tax|price:$currency}</strong></td>		
+                <td class="summary"></td>				
+            </tr>
+        {/if}
+        {if $estimate.taxrate2!=0}
+            <tr>
 
+                <td class="summary aright"  colspan="2"><strong>{$lang.Tax} ({$estimate.taxrate2}%)</strong></td>
+                <td class="summary aright" colspan="2"><strong>{$estimate.tax2|price:$currency}</strong></td>	
+                <td class="summary"></td>					
+            </tr>
+        {/if}
+        <tr>
 
+            <td class="summary aright" colspan="2" valign="top"><strong class="bigger">{$lang.Total}</strong></td>
+            <td class="summary aright" colspan="2" valign="top" ><strong class="bigger">{$estimate.total|price:$currency}</strong></td>	
+            <td class="summary"  valign="top"></td>					
+        </tr>
+    </tbody>
 {elseif $action=='getproduct'}
 {if $products}
 	<select name="product" id="product_id">{foreach from=$products item=prod}<option value="{$prod.id}">{$prod.name} {$prod.price|price:$currency}</option>{/foreach}</select>
@@ -590,7 +576,8 @@
 {if $ajax}
 <script type="text/javascript">bindEstimatesDetForm();</script>
 {/if}
-
+{elseif $action=='addline' || $action=='removeline'}
+    {include file="invoices/items.tpl"}
 {elseif $action=='addline'}
 
 	{if $newline}
@@ -600,9 +587,9 @@
 							<textarea name="item[{$newline.id}][description]">{$newline.description}</textarea>
 							<a class="savebtn" href="#" >{$lang.savechanges}</a>
 						</div></td>
-					<td class="acenter"><input name="item[{$newline.id}][qty]" value="{$newline.qty}" size="2" class="foc invitem invqty" style="text-align:center"/></td>
+					<td class="acenter"><input name="item[{$newline.id}][qty]" value="{$newline.qty}" size="7" class="foc invitem invqty" style="text-align:center"/></td>
 					<td class="acenter"><input type="checkbox" name="item[{$newline.id}][taxed]" {if $newline.taxed == 1}checked="checked" {/if}value="1" class="invitem2"/></td>
-					<td class="acenter"><input name="item[{$newline.id}][amount]" value="{$newline.amount}" size="4" class="foc invitem invamount" style="text-align:right"/></td>
+					<td class="acenter"><input name="item[{$newline.id}][amount]" value="{$newline.amount}" size="13" class="foc invitem invamount" style="text-align:right"/></td>
 					<td class="aright">{$currency.sign} <span id="ltotal_{$newline.id}">{$newline.linetotal|string_format:"%.2f"}</span> {if $currency.code}{$currency.code}{else}{$currency.iso}{/if}</td>
 <td class="acenter"><a href="?cmd=estimates&action=removeline&id={$estimateid}&line={$newline.id}" class="removeLine"><img src="{$template_dir}img/trash.gif" alt="{$lang.Delete}"/></a>{if $ajax}
 <script type="text/javascript">bindEstimatesDetForm(); //estimatesItemsSubmit()</script>

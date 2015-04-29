@@ -15,8 +15,7 @@
 
 
                 {if $action=='add'}
-                    <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-                    <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
+                    <script type="text/javascript" src="{$template_dir}js/ace/ace.js?v={$hb_version}"></script>
                     {include file='ajax.emailtemplates.tpl'}
 
                 {elseif $action=='preview'}
@@ -32,8 +31,11 @@
 
 
                 {elseif $action=='edit' }
-                    <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-                    <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
+                    {*}
+                    <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js?v={$hb_version}"></script>
+                    <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js?v={$hb_version}"></script>
+                    {*}
+                    <script type="text/javascript" src="{$template_dir}js/ace/ace.js?v={$hb_version}"></script>
                     {include file='ajax.emailtemplates.tpl'}
 
                 {elseif $action=='default' || $action=='admins'}

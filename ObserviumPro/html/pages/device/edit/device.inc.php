@@ -7,18 +7,18 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
-if ($_POST['editing'])
+if ($vars['editing'])
 {
   if ($_SESSION['userlevel'] > "7")
   {
     $updated = 0;
 
-    $override_sysLocation_bool = $_POST['override_sysLocation'];
-    if (isset($_POST['sysLocation'])) { $override_sysLocation_string = $_POST['sysLocation']; }
+    $override_sysLocation_bool = $vars['override_sysLocation'];
+    if (isset($vars['sysLocation'])) { $override_sysLocation_string = $vars['sysLocation']; }
 
     if (get_dev_attrib($device,'override_sysLocation_bool') != $override_sysLocation_bool
      || get_dev_attrib($device,'override_sysLocation_string') != $override_sysLocation_string)
@@ -32,19 +32,19 @@ if ($_POST['editing'])
     # FIXME needs more sanity checking! and better feedback
     # FIXME -- update location too? Need to trigger geolocation!
 
-    $param = array('purpose' => $_POST['descr'], 'type' => $_POST['type'], 'ignore' => $_POST['ignore'], 'disabled' => $_POST['disabled']);
+    $param = array('purpose' => $vars['descr'], 'type' => $vars['type'], 'ignore' => $vars['ignore'], 'disabled' => $vars['disabled']);
 
     $rows_updated = dbUpdate($param, 'devices', '`device_id` = ?', array($device['device_id']));
 
     if ($rows_updated > 0 || $updated)
     {
-      if ((bool)$_POST['ignore'] != (bool)$device['ignore'])
+      if ((bool)$vars['ignore'] != (bool)$device['ignore'])
       {
-        log_event('设备 '.((bool)$_POST['ignore'] ? 'ignored' : 'attended').': '.$device['hostname'], $device['device_id'], 'device');
+        log_event('设备 '.((bool)$vars['ignore'] ? 'ignored' : 'attended').': '.$device['hostname'], $device['device_id'], 'device', $device['device_id'], 5);
       }
-      if ((bool)$_POST['disabled'] != (bool)$device['disabled'])
+      if ((bool)$vars['disabled'] != (bool)$device['disabled'])
       {
-        log_event('设备 '.((bool)$_POST['disabled'] ? 'disabled' : 'enabled').': '.$device['hostname'], $device['device_id'], 'device');
+        log_event('设备 '.((bool)$vars['disabled'] ? 'disabled' : 'enabled').': '.$device['hostname'], $device['device_id'], 'device');
       }
       $update_message = "设备更新的记录.";
       if ($updated == 2) { $update_message.= " 请注意, 最新的系统位置字符串将在轮询后可见."; }
@@ -85,7 +85,7 @@ if ($updated && $update_message)
   <div class="control-group">
     <label class="control-label" for="descr">概述</label>
     <div class="controls">
-      <input name="descr" type=text size="32" value="<?php echo(htmlspecialchars($device['purpose'])); ?>" />
+      <input name="descr" type=text size="32" value="<?php echo(escape_html($device['purpose'])); ?>" />
     </div>
   </div>
 
@@ -109,7 +109,7 @@ if ($unknown) { echo('          <option value="other">其它</option>'); }
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="sysLocation">重写系统联系人</label>
+    <label class="control-label" for="sysLocation">重写系统的位置</label>
 
     <div class="controls">
       <input id="location_check" type="checkbox" onclick="edit.sysLocation.disabled=!edit.override_sysLocation.checked"
@@ -129,7 +129,7 @@ $('#location_check').click(function() {
     <label class="control-label" for="sysLocation">自定义位置</label>
     <div class="controls" id="location_text">
       <input type=text name="sysLocation" size="32" <?php if (!$override_sysLocation_bool) { echo(' disabled="disabled"'); } ?>
-              value="<?php echo(htmlspecialchars($override_sysLocation_string)); ?>" />
+              value="<?php echo(escape_html($override_sysLocation_string)); ?>" />
     </div>
   </div>
 

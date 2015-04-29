@@ -5,7 +5,7 @@
                 <th width="60">聊天ID</th>
                 <th  width="160">{$lang.Date}</th>
                 <th width="160">用户名</th>
-                <th>主题</th>
+                <th>Subject</th>
             </tr>
         </tbody>
         <tbody >
@@ -13,8 +13,8 @@
                 <tr>
                     <td><a href="?cmd=hbchat&action=viewtranscript&id={$trans.id}" ># {$trans.id}</a></td>
                     <td>{$trans.date_start|dateformat:$date_format}</td>
-                    <td>{if $trans.visitor_name}{$trans.visitor_name}{else}<em>没有名字</em>{/if}</td>
-                    <td><a href="?cmd=hbchat&action=viewtranscript&id={$trans.id}">{if $trans.subject}{$trans.subject}{else}<em>没有主题</em>{/if}</a></td>
+                    <td>{if $trans.visitor_name}{$trans.visitor_name}{else}<em>无名称</em>{/if}</td>
+                    <td><a href="?cmd=hbchat&action=viewtranscript&id={$trans.id}">{if $trans.subject}{$trans.subject}{else}<em>无主题</em>{/if}</a></td>
                 </tr>
             {foreachelse}
                 <tr>
@@ -47,15 +47,15 @@
             <tr>
                 <td><a href="?cmd=hbchat&action=viewtranscript&id={$trans.id}" ># {$trans.id}</a></td>
                 <td>{$trans.date_start|dateformat:$date_format}</td>
-                <td>{if $trans.visitor_name}{$trans.visitor_name}{else}<em>没有名字</em>{/if}</td>
-                <td><a href="?cmd=hbchat&action=viewtranscript&id={$trans.id}">{if $trans.subject}{$trans.subject}{else}<em>没有主题</em>{/if}</a></td>
+                <td>{if $trans.visitor_name}{$trans.visitor_name}{else}<em>无名称</em>{/if}</td>
+                <td><a href="?cmd=hbchat&action=viewtranscript&id={$trans.id}">{if $trans.subject}{$trans.subject}{else}<em>无主题</em>{/if}</a></td>
                 <td></td>
-                <td><a href="?cmd=hbchat&make=delete&action=history&id={$trans.id}&security_token={$security_token}" onclick="return confirm('您确定需要删除该录像吗?');" class="delbtn">删除</a></td>
+                <td><a href="?cmd=hbchat&make=delete&action=history&id={$trans.id}&security_token={$security_token}" onclick="return confirm('Are you sure you wish to remove this transcript?');" class="delbtn">删除</a></td>
             </tr>
         {/foreach}
     {else}
         <tr>
-            <td colspan="6"><p align="center" >未找到任何录像</p></td>
+            <td colspan="6"><p align="center" >未发现转账信息</p></td>
         </tr>
     {/if}
 {/if}

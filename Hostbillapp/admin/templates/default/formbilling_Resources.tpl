@@ -88,7 +88,8 @@
 {literal}
 <script type="text/javascript">
     updatepricingform_calbacks['metered']=function() {
-        var w= $('input[name=paytype]:checked').val();
+        var w= $('input[name=paytype]:checked, input[name=bundle_paytype]:checked').val();
+        
         switch(w){
             case 'Once':
                 $('.pricingtableR ._pricing','#facebox').hide().filter('.mpricing').show().find('span').hide();
@@ -111,7 +112,7 @@
                 if($('#metered_btype').length && $('#metered_btype').val()=='PrePay') {
                     $('.pricingtableR ._pricing','#facebox').hide().filter('.mpricing').show().find('span').hide();
                 } else {
-                    $('.pricingtableR ._pricing','#facebox').hide().filter('.apricing', '.spricing', '.qpricing', '.mpricing').show();
+                    $('.pricingtableR ._pricing','#facebox').hide().filter('.apricing, .spricing, .qpricing, .mpricing').show();
                 }
                 break;
             case 'Flavor':

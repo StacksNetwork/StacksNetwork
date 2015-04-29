@@ -7,11 +7,11 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
-$pagetitle[] = '端口';
+$page_title[] = '端口';
 
 // Set Defaults here
 
@@ -28,7 +28,7 @@ if ($vars['searchbar'] != 'hide')
 <form method="post" action="ports/" class="form form-inline" style="margin-bottom: 0;" id="ports-form">
   <div class="row">
     <div class="col-lg-2">
-      <select name="device_id" id="device_id" class="selectpicker" multiple title="所有设备">
+      <select name="device_id" id="device_id" class="selectpicker" multiple title="所有设备" data-live-search="true">
 <?php
 
 foreach (dbFetchRows('SELECT `device_id`, `hostname` FROM `devices` GROUP BY `hostname` ORDER BY `hostname`') as $data)
@@ -37,14 +37,14 @@ foreach (dbFetchRows('SELECT `device_id`, `hostname` FROM `devices` GROUP BY `ho
   {
     echo('        <option value="'.$data['device_id'].'"');
     if ($data['device_id'] == $vars['device_id'] || in_array($data['device_id'], $vars['device_id']) ) { echo(' selected'); }
-    echo('>'.$data['hostname'].'</option>');
+    echo('>'.escape_html($data['hostname']).'</option>');
   }
 }
 ?>
       </select>
     </div>
     <div class="col-lg-2">
-        <input placeholder="端口名称" title="端口名称" type="text" name="ifDescr" id="ifDescr" <?php if (strlen($vars['ifDescr'])) {echo('value="'.$vars['ifDescr'].'"');} ?> />
+        <input placeholder="端口名称" title="端口名称" type="text" name="ifDescr" id="ifDescr" <?php if (strlen($vars['ifDescr'])) { echo('value="'.$vars['ifDescr'].'"'); } ?> />
     </div>
 
     <div class="col-lg-2">
@@ -120,10 +120,10 @@ foreach ($sorts as $sort => $sort_text)
   </div>
   <div class="row" style="margin-top: 10px;">
     <div class="col-lg-2">
-      <input placeholder="主机名" type="text" name="hostname" id="hostname" title="主机名" <?php if (strlen($vars['hostname'])) {echo('value="'.$vars['hostname'].'"');} ?> />
+      <input placeholder="主机名" type="text" name="hostname" id="hostname" title="主机名" <?php if (strlen($vars['hostname'])) { echo('value="'.$vars['hostname'].'"'); } ?> />
     </div>
     <div class="col-lg-2">
-        <input placeholder="端口说明" title="端口说明" type="text" name="ifAlias" id="ifAlias" <?php if (strlen($vars['ifAlias'])) {echo('value="'.$vars['ifAlias'].'"');} ?> />
+        <input placeholder="端口说明" title="端口说明" type="text" name="ifAlias" id="ifAlias" <?php if (strlen($vars['ifAlias'])) { echo('value="'.$vars['ifAlias'].'"'); } ?> />
     </div>
     <div class="col-lg-2">
       <select name="ifSpeed" id="ifSpeed" class="selectpicker" title="所有速率" multiple>
@@ -169,7 +169,7 @@ foreach ($ports as $data)
           {
             if ($location === '') { $location = OBS_VAR_UNSET; }
             $value = var_encode($location);
-            $name  = htmlspecialchars($location);
+            $name  = escape_html($location);
             echo('<option value="'.$value.'"');
             if (in_array($location, $vars['location'])) { echo(" selected"); }
             echo(">" . $name . "</option>");
@@ -236,85 +236,25 @@ foreach (array('graphs') as $type)
 print_navbar($navbar);
 unset($navbar);
 
-if ($debug) { print_vars($vars); }
+if (OBS_DEBUG) { print_vars($vars); }
 
 $param = array();
 
-if (!isset($vars['ignore']))   { $vars['ignore'] = "0"; }
+//if (!isset($vars['ignore']))   { $vars['ignore'] = "0"; }
 if (!isset($vars['disabled'])) { $vars['disabled'] = "0"; }
 if (!isset($vars['deleted']))  { $vars['deleted'] = "0"; }
 
 $select = "`ports`.`port_id` AS `port_id`, `devices`.`device_id` AS `device_id`";
-$where = " WHERE 1 ";
 
-include($config['html_dir'].'/includes/port-sort-select.inc.php');
+$where_array = build_ports_where_array($vars);
 
-foreach ($vars as $var => $value)
+$where = ' WHERE 1 ';
+$where .= implode('', $where_array);
+if (!$config['web_show_disabled'])
 {
-  if ($value != '')
-  {
-    switch ($var)
-    {
-      case 'location':
-        $where .= generate_query_values($value, $var);
-        break;
-      case 'device_id':
-        $where .= generate_query_values($value, 'ports.device_id');
-        break;
-      case 'group':
-        $values = get_group_entities($value);
-        $where .= generate_query_values($values, 'ports.port_id');
-        break;
-      case 'deleted':
-      case 'ignore':
-      case 'disable':
-      case 'ifSpeed':
-        $where .= generate_query_values($value, 'ports.'.$var);
-        break;
-      case 'ifType':
-        $where .= generate_query_values($value, 'ports.ifType');
-        break;
-      case 'hostname':
-      case 'ifAlias':
-      case 'ifDescr':
-        $where .= generate_query_values($value, $var, '%LIKE%');
-        break;
-      case 'port_descr_type':
-        $where .= generate_query_values($value, $var, 'LIKE');
-        break;
-      case 'errors':
-        if ($value == 1 || $value == "yes")
-        {
-          $where .= " AND (`ifInErrors_delta` > '0' OR `ifOutErrors_delta` > '0')";
-        }
-        break;
-      case 'alerted':
-        if ($value == "yes")
-        {
-          $where .= "AND `ifAdminStatus` = ? AND ( `ifOperStatus` = ? OR `ifOperStatus` = ? )";
-          $param[] = "up";
-          $param[] = "LowerLayerDown";
-          $param[] = "down";
-        }
-      case 'state':
-        if ($value == "down")
-        {
-          $where .= "AND `ifAdminStatus` = ? AND `ifOperStatus` = ?";
-          $param[] = "up";
-          $param[] = "down";
-        } elseif($value == "up") {
-          $where .= "AND `ifAdminStatus` = ? AND ( `ifOperStatus` = ? OR `ifOperStatus` = ? )";
-          $param[] = "up";
-          $param[] = "up";
-          $param[] = "monitoring";
-        } elseif($value == "admindown") {
-          $where .= "AND `ifAdminStatus` = ?";
-          $param[] = "down";
-        }
-      break;
-    }
-  }
+  $where .= ' AND `devices`.`disabled` = "0"';
 }
+include($config['html_dir'].'/includes/port-sort-select.inc.php');
 
 $sql  = "SELECT " . $select;
 $sql .= " FROM `ports`";

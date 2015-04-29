@@ -73,7 +73,7 @@ $vars['pagination'] = TRUE;
 
 print_fdbtable($vars);
 
-$pagetitle[] = "FDB搜索";
+$page_title[] = "FDB搜索";
 
 ?>
 

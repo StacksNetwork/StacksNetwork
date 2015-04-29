@@ -4,8 +4,8 @@
             <tr>
                 <td><input type="checkbox" class="check" value="{$affiliate.client_id}" name="selected[]"/></td>
                 <td><a href="?cmd=affiliates&amp;action=affiliate&amp;id={$affiliate.id}">{$affiliate.id}</a></td>
-                <td><a href="?cmd=clients&amp;action=show&amp;id={$affiliate.client_id}">{$affiliate.firstname}</a></td>
                 <td><a href="?cmd=clients&amp;action=show&amp;id={$affiliate.client_id}">{$affiliate.lastname}</a></td>		  
+                <td><a href="?cmd=clients&amp;action=show&amp;id={$affiliate.client_id}">{$affiliate.firstname}</a></td>
                 <td >{$affiliate.visits}</td>
                 <td>{$affiliate.signups}</td>
                 <td>{$affiliate.balance|price:$affiliate.currency_id}</td>
@@ -46,7 +46,7 @@
             <tr>
                 <td><input type="checkbox" class="check" value="{$voucher.id}" name="selected[]"/></td>
                 <td>{$voucher.code}</td>
-                <td><a href="?cmd={$cmd}&action=affiliate&id={$voucher.aff_id}">{$voucher.firstname} {$voucher.lastname}</a></td>
+                <td><a href="?cmd={$cmd}&action=affiliate&id={$voucher.aff_id}">{$voucher.lastname} {$voucher.firstname}</a></td>
                 <td>{if $voucher.type == 'percent'}{$voucher.value}%{else}{$voucher.value|price:$currency}{/if}</td>		  
                 <td>{$voucher.num_usage}</td>
             </tr>
@@ -63,8 +63,8 @@
                 <td>{$order.id}</td>
                 <td><a href="?cmd=orders&action=edit&id={$order.order_id}" >{$order.number}</a></td>
                 <td>{$order.date_created|dateformat:$date_format}</td>
-                <td><a href="?cmd=affiliate&action=show&id={$order.aff_id}">{$order.firstname} {$order.lastname}</a></td>
-                <td><a href="?cmd=clients&action=show&id={$order.client_id}">{$order.c_firstname} {$order.c_lastname}</a></td>
+                <td><a href="?cmd=affiliate&action=show&id={$order.aff_id}">{$order.lastname} {$order.firstname}</a></td>
+                <td><a href="?cmd=clients&action=show&id={$order.client_id}">{$order.c_lastname} {$order.c_firstname}</a></td>
                 <td>{$order.total|price:$order.c_currency_id}</td>
                 <td>{$order.commission|price:$order.currency_id}</td>
                 <td>

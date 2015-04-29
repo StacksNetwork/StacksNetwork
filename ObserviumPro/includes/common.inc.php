@@ -8,24 +8,45 @@
  * @package    observium
  * @subpackage common
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 // Common Functions
 /// FIXME. There should be functions that use only standard php (and self) functions.
 
-// Get current DB Schema version
-// DOCME needs phpdoc block
+/**
+ * Get current DB Schema version
+ *
+ * @return string DB schema version
+ */
 // TESTME needs unit testing
-// MOVEME to includes/functions.inc.php
 function get_db_version()
 {
-  return dbFetchCell('SELECT `version` FROM `dbSchema`');
+  if (!isset($GLOBALS['cache']['db_version']))
+  {
+    $GLOBALS['cache']['db_version'] = dbFetchCell('SELECT `version` FROM `dbSchema`;');
+  }
+  return $GLOBALS['cache']['db_version'];
 }
 
-// Get local hostname
-// DOCME needs phpdoc block
+/**
+ * Get current DB Size
+ *
+ * @return string DB size in bytes
+ */
+// TESTME needs unit testing
+function get_db_size()
+{
+  $db_size = dbFetchCell('SELECT SUM(`data_length` + `index_length`) AS `size` FROM `information_schema`.`tables` WHERE `table_schema` = ?;', array($GLOBALS['config']['db_name']));
+  return $db_size;
+}
+
+/**
+ * Get local hostname
+ *
+ * @return string FQDN local hostname
+ */
 function get_localhost()
 {
   global $cache;
@@ -45,6 +66,22 @@ function get_localhost()
   }
 
   return $cache['localhost'];
+}
+
+/**
+ * Get the directory size
+ *
+ * @param string $directory
+ * @return integer Directory size in bytes
+ */
+function get_dir_size($directory)
+{
+  $size = 0;
+  foreach(new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory)) as $file)
+  {
+    if ($file->getFileName() != '..') { $size += $file->getSize(); }
+  }
+  return $size;
 }
 
 // DOCME needs phpdoc block
@@ -120,6 +157,42 @@ function percent_colour($value, $brightness = 128, $max = 100, $min = 0, $thirdC
   // alternatives:
   // return $thirdColourHex . $firstHex . $secondHex;
   // return $firstHex . $thirdColourHex . $secondHex;
+}
+
+/**
+ * Convert sequence of numbers in an array to range of numbers.
+ * Example:
+ *  array(1,2,3,4,5,6,7,8,9,10)    -> '1-10'
+ *  array(1,2,3,5,7,9,10,11,12,14) -> '1-3,5,7,9-12,14'
+ *
+ * @param array $arr Array with sequence of numbers
+ * @param string $separator Use this separator for list
+ * @param bool $sort Sort input array or not
+ * @return string
+ */
+function range_to_list($arr, $separator = ',', $sort = TRUE)
+{
+  if ($sort) { sort($arr, SORT_NUMERIC); }
+
+  for ($i = 0; $i < count($arr); $i++)
+  {
+    $rstart = $arr[$i];
+    $rend   = $rstart;
+    while (isset($arr[$i+1]) && $arr[$i+1] - $arr[$i] == 1)
+    {
+      $rend = $arr[$i+1];
+      $i++;
+    }
+    if (is_numeric($rstart) && is_numeric($rend))
+    {
+      $ranges[] = ($rstart == $rend) ? $rstart : $rstart.'-'.$rend;
+    } else {
+      return ''; // Not numeric value(s)
+    }
+  }
+  $list = implode($separator, $ranges);
+
+  return $list;
 }
 
 // DOCME needs phpdoc block
@@ -203,7 +276,12 @@ function print_vars($vars)
 /**
  * Convert SNMP timeticks string into seconds
  *
- * SNMP timeticks can be in two different formats: "(2100)" or "0:0:00:21.00".
+ * SNMP timeticks can be in two different normal formats:
+ *  - "(2105)"       == 21.05 sec
+ *  - "0:0:00:21.05" == 21.05 sec
+ * Sometime devices return wrong type or numeric instead timetick:
+ *  - "Wrong Type (should be Timeticks): 1632295600" == 16322956 sec
+ *  - "1546241903" == 15462419.03 sec
  * Parse the timeticks string and convert it to seconds.
  *
  * @param string $timetick
@@ -213,7 +291,21 @@ function print_vars($vars)
  */
 function timeticks_to_sec($timetick, $float = FALSE)
 {
-  $timetick = trim($timetick, '()');
+  if (strpos($timetick, 'Wrong Type') !== FALSE)
+  {
+    // Wrong Type (should be Timeticks): 1632295600
+    list(, $timetick) = explode(': ', $timetick, 2);
+  }
+
+  $timetick = trim($timetick, " \t\n\r\0\x0B\"()"); // Clean string
+  if (is_numeric($timetick))
+  {
+    // When "Wrong Type" or timetick as an integer, than time with count of ten millisecond ticks
+    $time = $timetick / 100;
+    return ($float ? (float)$time : (int)$time);
+  }
+  if (!preg_match('/^[\d\.: ]+$/', $timetick)) { return FALSE; }
+
   $timetick_array = explode(':', $timetick);
   if (count($timetick_array) == 1 && is_numeric($timetick))
   {
@@ -300,9 +392,9 @@ function formatUptime($uptime, $format = "long")
       if ($up['m'] > 0) { $result .= $up['m'] . ' minute' . ($up['m'] != 1 ? 's ' : ' '); }
       if ($up['s'] > 0) { $result .= $up['s'] . ' second' . ($up['s'] != 1 ? 's ' : ' '); }
     } else {
-      if ($up['h'] > 0) { $result .= $up['h'] . 'h '; }
-      if ($up['m'] > 0) { $result .= $up['m'] . 'm '; }
-      if ($up['s'] > 0) { $result .= $up['s'] . 's '; }
+      if ($up['h'] > 0) { $result .= $up['h'] . '小时 '; }
+      if ($up['m'] > 0) { $result .= $up['m'] . '分 '; }
+      if ($up['s'] > 0) { $result .= $up['s'] . '秒 '; }
     }
   } else {
     $count = 6;
@@ -453,7 +545,8 @@ function external_exec($command, $timeout = NULL)
     $timeout = 0;
   } else {
     // set timeout to null (not to 0!), see stream_select() description
-    $timeout = $timeout_usec = NULL;
+    $timeout_usec = NULL;
+    $timeout = NULL;
   }
 
   $descriptorspec = array(
@@ -503,7 +596,15 @@ function external_exec($command, $timeout = NULL)
       // Break from this loop if the process exited before timeout
       if (!$status['running'])
       {
-        break;
+        if (feof($pipes[1]) === FALSE)
+        {
+          // Very rare situation, seems as next proc_get_status() bug
+          if (!isset($status_fix)) { $status_fix = $status; }
+          print_debug("Wrong process status! Try fix..");
+        } else {
+          //var_dump($status);
+          break;
+        }
       }
       // Break from this loop if the process exited by timeout
       if ($timeout !== NULL)
@@ -523,7 +624,12 @@ function external_exec($command, $timeout = NULL)
       usleep(10000);
       $status = proc_get_status($process);
     }
-    $exec_status['exitcode'] = $status['exitcode'];
+    else if (isset($status_fix))
+    {
+      // See fixed proc_get_status() above
+      $status = $status_fix;
+    }
+    $exec_status['exitcode'] = (int)$status['exitcode'];
     $exec_status['stderr']   = rtrim($stderr);
     $stdout = preg_replace('/(?:\n|\r\n|\r)$/D', '', $stdout); // remove last (only) eol
   } else {
@@ -539,23 +645,23 @@ function external_exec($command, $timeout = NULL)
   $exec_status['runtime']  = $runtime;
   $exec_status['stdout']   = $stdout;
 
-  if ($GLOBALS['debug'])
+  if (OBS_DEBUG)
   {
-    if ($GLOBALS['config']['snmp']['hide_auth'] && preg_match("/snmp(?:bulk)?(?:get|walk)\s+(?:-(?:t|r|Cr)['\d\s]+){0,3}-v[123]c?\s+/", $command))
+    if (OBS_DEBUG < 2 && $GLOBALS['config']['snmp']['hide_auth'] && preg_match("/snmp(?:bulk)?(?:get|walk)\s+(?:-(?:t|r|Cr)['\d\s]+){0,3}-v[123]c?\s+/", $command))
     {
       // Hide snmp auth params from debug cmd out,
       // for help users who want send debug output to developers
       $pattern = "/\s+(-[cuxXaA])\s*(?:'.+?')(@\d+)?/";
       $command = preg_replace($pattern, ' \1 ***\2', $command);
     }
-    print_message('CMD[%y'.$command.'%n]'.PHP_EOL.
-                  'EXITCODE['.($exec_status['exitcode'] > 0 ? '%r' : '%g').$exec_status['exitcode'].'%n]'.PHP_EOL.
-                  'RUNTIME['.($runtime > 59 ? '%r' : '%g').round($runtime, 4).'s%n]', 'color');
-    print_message("STDOUT[\n".$stdout."\n]", NULL, FALSE);
+    print_message(PHP_EOL.'CMD[%y'.$command.'%n]'.PHP_EOL.
+                  'EXITCODE['.($exec_status['exitcode'] !== 0 ? '%r' : '%g').$exec_status['exitcode'].'%n]'.PHP_EOL.
+                  'RUNTIME['.($runtime > 59 ? '%r' : '%g').round($runtime, 4).'s%n]', 'console');
+    print_message("STDOUT[\n".$stdout."\n]", 'console', FALSE);
     if ($exec_status['exitcode'] && $exec_status['stderr'])
     {
       // Show stderr if exitcode not 0
-      print_message("STDERR[\n".$exec_status['stderr']."\n]", NULL, FALSE);
+      print_message("STDERR[\n".$exec_status['stderr']."\n]", 'console', FALSE);
     }
   }
 
@@ -628,42 +734,67 @@ function print_prompt($text, $default_yes = FALSE)
   return $return;
 }
 
-// DOCME needs phpdoc block
-// TESTME needs unit testing
-function print_debug($text)
+/**
+ * This function echoes text with style 'debug', see print_message().
+ * Here checked constant OBS_DEBUG, if OBS_DEBUG not set output - empty.
+ *
+ * @param string $text
+ * @param boolean $strip Stripe special characters (for web) or html tags (for cli)
+ */
+function print_debug($text, $strip = FALSE)
 {
-  if ($GLOBALS['debug'])
+  if (OBS_DEBUG)
   {
-    print_message($text, 'debug');
+    print_message($text, 'debug', $strip);
   }
 }
 
-// DOCME needs phpdoc block
-// TESTME needs unit testing
-function print_error($text)
+/**
+ * This function echoes text with style 'error', see print_message().
+ *
+ * @param string $text
+ * @param boolean $strip Stripe special characters (for web) or html tags (for cli)
+ */
+function print_error($text, $strip = TRUE)
 {
-  print_message($text, 'error');
+  print_message($text, 'error', $strip);
 }
 
-// DOCME needs phpdoc block
-// TESTME needs unit testing
-function print_warning($text)
+/**
+ * This function echoes text with style 'warning', see print_message().
+ *
+ * @param string $text
+ * @param boolean $strip Stripe special characters (for web) or html tags (for cli)
+ */
+function print_warning($text, $strip = TRUE)
 {
-  print_message($text, 'warning');
+  print_message($text, 'warning', $strip);
 }
 
-// DOCME needs phpdoc block
-// TESTME needs unit testing
-function print_success($text)
+/**
+ * This function echoes text with style 'success', see print_message().
+ *
+ * @param string $text
+ * @param boolean $strip Stripe special characters (for web) or html tags (for cli)
+ */
+function print_success($text, $strip = TRUE)
 {
-  print_message($text, 'success');
+  print_message($text, 'success', $strip);
 }
 
-// DOCME needs phpdoc block
-// TESTME needs unit testing
+/**
+ * This function echoes text with specific styles (different for cli and web output).
+ *
+ * @param string $text
+ * @param string $type Supported types: default, success, warning, error, debug
+ * @param boolean $strip Stripe special characters (for web) or html tags (for cli)
+ */
 function print_message($text, $type='', $strip = TRUE)
 {
   global $config;
+
+  // Do nothing if input text not any string (like NULL, array or other). (Empty string '' still printed).
+  if (!is_string($text) && !is_numeric($text)) { return NULL; }
 
   $type = trim(strtolower($type));
   switch ($type)
@@ -677,25 +808,32 @@ function print_message($text, $type='', $strip = TRUE)
     case 'warning':
       $color = array('cli'       => '%b',                   // blue
                      'cli_color' => FALSE,                  // by default cli coloring disabled
-                     'class'     => 'alert');               // yellow
+                     'class'     => 'alert alert-warning');               // yellow
       $icon  = 'oicon-bell';
       break;
     case 'error':
       $color = array('cli'       => '%r',                   // red
                      'cli_color' => FALSE,                  // by default cli coloring disabled
-                     'class'     => 'alert alert-error');   // red
+                     'class'     => 'alert alert-danger');   // red
       $icon  = 'oicon-exclamation-red';
       break;
     case 'debug':
       $color = array('cli'       => '%r',                   // red
                      'cli_color' => FALSE,                  // by default cli coloring disabled
-                     'class'     => 'alert alert-error');   // red
+                     'class'     => 'alert alert-danger');  // red
       $icon  = 'oicon-exclamation-red';
       break;
     case 'color':
       $color = array('cli'       => '',                     // none
                      'cli_color' => TRUE,                   // allow using coloring
                      'class'     => 'alert alert-info');    // blue
+      $icon  = 'oicon-information';
+      break;
+    case 'console':
+      // This is special type used nl2br conversion for display console messages on WUI with correct line breaks
+      $color = array('cli'       => '',                     // none
+                     'cli_color' => TRUE,                   // allow using coloring
+                     'class'     => 'alert alert-suppressed'); // purple
       $icon  = 'oicon-information';
       break;
     default:
@@ -708,46 +846,96 @@ function print_message($text, $type='', $strip = TRUE)
 
   if (is_cli())
   {
-    include_once("Console/Color2.php");
-
-    if ($strip) { $text = strip_tags($text); }
-    $msg  = new Console_Color2();
-    print $msg->convert($color['cli'].$text."%n\n", $color['cli_color']);
+    if ($strip)
+    {
+      $text = html_entity_decode($text, ENT_QUOTES, 'UTF-8'); // Convert special HTML entities back to characters
+      $text = str_ireplace(array('<br />', '<br>', '<br/>'), PHP_EOL, $text); // Convert html <br> to into newline
+      $text = strip_tags($text);
+    }
+    if ($type == 'debug' && !$color['cli_color'])
+    {
+      // For debug just echo message.
+      echo($text . PHP_EOL);
+    } else {
+      include_once("Console/Color2.php");
+      $msg  = new Console_Color2();
+      print $msg->convert($color['cli'].$text.'%n'.PHP_EOL, $color['cli_color']);
+    }
   } else {
     if ($text === '') { return NULL; } // Do not web output if the string is empty
     if ($strip)
     {
+      if ($text == strip_tags($text))
+      {
+        // Convert special characters to HTML entities only if text not have html tags
+        $text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+      }
       if ($color['cli_color'])
       {
         // Replace some Pear::Console_Color2 color codes with html styles
-        $replace = array('</span>',                            // '%n'
+        $replace = array('%',                                  // '%%'
+                         '</span>',                            // '%n'
                          '<span class="label label-warning">', // '%y'
                          '<span class="label label-success">', // '%g'
                          '<span class="label label-danger">',  // '%r'
                          '<span class="label label-primary">', // '%b'
                          '<span class="label label-info">',    // '%c'
                          '<span class="label label-default">', // '%W'
-                         '<span class="label label-default"> style="color:black;"', // '%k'
-                         '<span style="font-weight: bold;"',   // '%_'
-                         '<span style="text-decoration: underline;"', // '%U'
-                         '%',                                  // '%%'
+                         '<span class="label label-default" style="color:black;">', // '%k'
+                         '<span style="font-weight: bold;">',  // '%_'
+                         '<span style="text-decoration: underline;">', // '%U'
                          );
       } else {
-        $replace = '';
+        $replace = array('%', '');
       }
-      $text = str_replace(array('%n', '%y', '%g', '%r', '%b', '%c', '%W', '%k', '%_', '%U', '%%'), $replace, $text);
+      $text = str_replace(array('%%', '%n', '%y', '%g', '%r', '%b', '%c', '%W', '%k', '%_', '%U'), $replace, $text);
     }
-    $msg = '<div class="'.$color['class'].'">';
+
+    $msg = PHP_EOL.'    <div class="'.$color['class'].'">';
     if ($type != 'warning' && $type != 'error')
     {
       $msg .= '<button type="button" class="close" data-dismiss="alert">&times;</button>';
     }
+    if ($type == 'console')
+    {
+      $text = nl2br(trim($text)); // Convert newline to <br /> for console messages with line breaks
+    }
+
     $msg .= '
-      <div class="pull-left" style="padding:0 5px 0 0"><i class="'.$icon.'"></i></div>
-      <div>'.nl2br($text).'</div>
-    </div>';
+      <div>'.$text.'</div>
+    </div>'.PHP_EOL;
+
     echo($msg);
   }
+}
+
+// TESTME needs unit testing
+/**
+ * Print an discovery/poller module stats
+ *
+ * @global array $GLOBALS['module_stats']
+ * @param array $device Device array
+ * @param string $module Module name
+ */
+function print_module_stats($device, $module)
+{
+  $log_event = FALSE;
+  $stats_msg = array();
+  foreach (array('added', 'updated', 'deleted', 'unchanged') as $key)
+  {
+    if ($GLOBALS['module_stats'][$module][$key])
+    {
+      $stats_msg[] = (int)$GLOBALS['module_stats'][$module][$key].' '.$key;
+      if ($key != 'unchanged') { $log_event = TRUE; }
+    }
+  }
+  if (count($GLOBALS['module_stats'][$module])) { echo(PHP_EOL); }
+  if (count($stats_msg)) { print_message("Module [ $module ] stats: ".implode(', ', $stats_msg)); }
+  if ($GLOBALS['module_stats'][$module]['time'])
+  {
+    print_message("Module [ $module ] time: ".$GLOBALS['module_stats'][$module]['time']."s");
+  }
+  if ($log_event) { log_event(nicecase($module).': '.implode(', ', $stats_msg).'.', $device, 'device', $device['device_id']); }
 }
 
 // DOCME needs phpdoc block
@@ -761,6 +949,7 @@ function print_obsolete_config($filter = '')
   // Do not move this array to definitions, because they should be not configurable
   $deprecated = array(
     array('old' => 'warn->ifdown',        'new' => 'frontpage->device_status->ports'),
+    array('old' => 'alerts->email->enable',       'new' => 'email->enable',       'info' => 'changed since r5787'),
     array('old' => 'alerts->email->default',      'new' => 'email->default',      'info' => 'changed since r5787'),
     array('old' => 'alerts->email->default_only', 'new' => 'email->default_only', 'info' => 'changed since r5787'),
     array('old' => 'email_backend',       'new' => 'email->backend',       'info' => 'changed since r5787'),
@@ -773,6 +962,7 @@ function print_obsolete_config($filter = '')
     array('old' => 'email_smtp_auth',     'new' => 'email->smtp_auth',     'info' => 'changed since r5787'),
     array('old' => 'email_smtp_username', 'new' => 'email->smtp_username', 'info' => 'changed since r5787'),
     array('old' => 'email_smtp_password', 'new' => 'email->smtp_password', 'info' => 'changed since r5787'),
+    array('old' => 'discovery_modules->cisco-pw', 'new' => 'discovery_modules->pseudowires', 'info' => 'changed since r6205'),
   );
 
   $list = array();
@@ -899,6 +1089,25 @@ function get_sensor_rrd($device, $sensor)
 
   return($rrd_file);
 }
+
+// DOCME needs phpdoc block
+// TESTME needs unit testing
+// MOVEME to includes/functions.inc.php
+function get_status_rrd($device, $status)
+{
+  global $config;
+
+  # For IPMI, sensors tend to change order, and there is no index, so we prefer to use the description as key here.
+  if ($config['os'][$device['os']]['status_descr'] || $sensor['poller_type'] == "ipmi")
+  {
+    $rrd_file = "status-".$status['status_type']."-".$status['status_descr'] . ".rrd";
+  } else {
+    $rrd_file = "status-".$status['status_type']."-".$status['status_index'] . ".rrd";
+  }
+
+  return($rrd_file);
+}
+
 
 // Get port array by ID (using cache)
 // DOCME needs phpdoc block
@@ -1104,41 +1313,6 @@ function get_all_devices($device, $type = "")
 
 // DOCME needs phpdoc block
 // TESTME needs unit testing
-// RENAME to get_device_icon()
-// MOVEME to html/includes/functions.inc.php
-function getImage($device)
-{
-  global $config;
-
-  $device['os'] = strtolower($device['os']);
-
-  if ($device['icon'] && file_exists($config['html_dir'] . "/images/os/" . $device['icon'] . ".png"))
-  {
-    $image = '<img src="' . $config['base_url'] . '/images/os/' . $device['icon'] . '.png" alt="" />';
-  }
-  elseif ($config['os'][$device['os']]['icon'] && file_exists($config['html_dir'] . "/images/os/" . $config['os'][$device['os']]['icon'] . ".png"))
-  {
-    $image = '<img src="' . $config['base_url'] . '/images/os/' . $config['os'][$device['os']]['icon'] . '.png" alt="" />';
-  } else {
-    if (file_exists($config['html_dir'] . '/images/os/' . $device['os'] . '.png'))
-    {
-      $image = '<img src="' . $config['base_url'] . '/images/os/' . $device['os'] . '.png" alt="" />';
-    }
-    if ($device['os'] == "linux")
-    {
-      $distro = strtolower(trim($device['distro']));
-      if (file_exists($config['html_dir'] . "/images/os/".safename($distro) . ".png"))
-      {
-        $image = '<img src="' . $config['base_url'] . '/images/os/' . htmlentities($distro) . '.png" alt="" />';
-      }
-    }
-  }
-
-  return $image;
-}
-
-// DOCME needs phpdoc block
-// TESTME needs unit testing
 // MOVEME to includes/functions.inc.php
 function get_application_by_id($application_id)
 {
@@ -1228,7 +1402,7 @@ function ifclass($ifOperStatus, $ifAdminStatus)
 function device_by_name($name, $refresh = 0)
 {
   // FIXME - cache name > id too.
-  return device_by_id_cache(getidbyname($name), $refresh);
+  return device_by_id_cache(get_device_id_by_hostname($name), $refresh);
 }
 
 // DOCME needs phpdoc block
@@ -1253,15 +1427,22 @@ function device_by_id_cache($device_id, $refresh = '0')
     $device = $cache['devices']['id'][$device_id];
   } else {
     $device = dbFetchRow("SELECT * FROM `devices` WHERE `device_id` = ?", array($device_id));
-    humanize_device($device);
-    
-    // Fetch device graphs
-    $device['graphs'] = dbFetchRows("SELECT * FROM `device_graphs` WHERE `device_id` = ?", array($device_id));
-     
-    $cache['devices']['id'][$device_id] = $device;
   }
 
-  return $device;
+  if(!empty($device))
+  {
+    humanize_device($device);
+    if ($refresh || !isset($device['graphs']))
+    {
+      // Fetch device graphs
+      $device['graphs'] = dbFetchRows("SELECT * FROM `device_graphs` WHERE `device_id` = ?", array($device_id));
+    }
+    $cache['devices']['id'][$device_id] = $device;
+
+    return $device;
+  } else {
+    return FALSE;
+  }
 }
 
 // DOCME needs phpdoc block
@@ -1281,6 +1462,17 @@ function mres($string)
   return mysql_real_escape_string($string);
 }
 
+/**
+ * Wrapper to htmlspecialchars()
+ *
+ * @param string $string
+ */
+// TESTME needs unit testing
+function escape_html($string)
+{
+  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+}
+
 // DOCME needs phpdoc block
 // TESTME needs unit testing
 // MOVEME to includes/functions.inc.php
@@ -1292,7 +1484,7 @@ function getifhost($id)
 // DOCME needs phpdoc block
 // TESTME needs unit testing
 // MOVEME to includes/functions.inc.php
-function gethostbyid($id)
+function get_device_by_device_id($id)
 {
   global $cache;
 
@@ -1348,7 +1540,7 @@ function getpeerhost($id)
 // DOCME needs phpdoc block
 // TESTME needs unit testing
 // MOVEME to includes/functions.inc.php
-function getifindexbyid($id)
+function get_ifIndex_by_port_id($id)
 {
   return dbFetchCell("SELECT `ifIndex` FROM `ports` WHERE `port_id` = ?", array($id));
 }
@@ -1356,7 +1548,7 @@ function getifindexbyid($id)
 // DOCME needs phpdoc block
 // TESTME needs unit testing
 // MOVEME to includes/functions.inc.php
-function getifbyid($id)
+function get_port_by_port_id($id)
 {
   return dbFetchRow("SELECT * FROM `ports` WHERE `port_id` = ?", array($id));
 }
@@ -1364,7 +1556,7 @@ function getifbyid($id)
 // DOCME needs phpdoc block
 // TESTME needs unit testing
 // MOVEME to includes/functions.inc.php
-function getifdescrbyid($id)
+function get_port_descr_by_port_id($id)
 {
   return dbFetchCell("SELECT `ifDescr` FROM `ports` WHERE `port_id` = ?", array($id));
 }
@@ -1372,19 +1564,25 @@ function getifdescrbyid($id)
 // DOCME needs phpdoc block
 // TESTME needs unit testing
 // MOVEME to includes/functions.inc.php
-function getidbyname($hostname)
+function get_device_id_by_hostname($hostname)
 {
   global $cache;
 
   if (isset($cache['devices']['hostname'][$hostname]))
   {
     $id = $cache['devices']['hostname'][$hostname];
-  } else
+  }
+  else
   {
     $id = dbFetchCell("SELECT `device_id` FROM `devices` WHERE `hostname` = ?", array($hostname));
   }
 
-  return $id;
+  if(is_numeric($id))
+  {
+    return $id;
+  } else {
+    return FALSE;
+  }
 }
 
 // DOCME needs phpdoc block
@@ -1716,7 +1914,14 @@ function gethostbynamel6($host, $try_a = TRUE)
   if ($try_a == TRUE)
   {
     if ($etc && strstr($etc, '.')) { $ip4[] = $etc; }
-    $dns = dns_get_record($host, DNS_A + DNS_AAAA);
+    // Separate A and AAAA queries, see: https://www.mail-archive.com/observium@observium.org/msg09239.html
+    $dns = dns_get_record($host, DNS_A);
+    if (!is_array($dns)) { $dns = array(); }
+    $dns6 = dns_get_record($host, DNS_AAAA);
+    if (is_array($dns6))
+    {
+      $dns = array_merge($dns, $dns6);
+    }
   } else {
     if ($etc && strstr($etc, ':')) { $ip6[] = $etc; }
     $dns = dns_get_record($host, DNS_AAAA);
@@ -1818,11 +2023,17 @@ function get_port_rrdfilename($port, $suffix = NULL, $fullpath = FALSE)
 // TESTME needs unit testing
 function get_http_request($request)
 {
-  global $config, $debug;
+  global $config;
+
+  if (OBS_HTTP_REQUEST === FALSE)
+  {
+    print_debug("HTTP requests skipped since previous request exit with timeout.");
+    return FALSE;
+  }
 
   $response = '';
 
-  $opts = array('http' => array('timeout' => '20'));
+  $opts = array('http' => array('timeout' => '15'));
   if (isset($config['http_proxy']) && $config['http_proxy'])
   {
     $opts['http']['proxy'] = 'tcp://' . $config['http_proxy'];
@@ -1836,8 +2047,38 @@ function get_http_request($request)
     $opts['http']['header'] = 'Proxy-Authorization: Basic '.$auth;
   }
 
+  $start = utime();
   $context = stream_context_create($opts);
   $response = file_get_contents($request, FALSE, $context);
+  $runtime = utime() - $start;
+  if (OBS_DEBUG)
+  {
+    if (OBS_DEBUG < 2 && strpos($request, 'update.observium.org')) { $request = preg_replace('/&stats=.+/', '&stats=***', $request); }
+    print_message(PHP_EOL.'REQUEST[%y'.$request.'%n]'.PHP_EOL.
+                  'RUNTIME['.($runtime > 3 ? '%r' : '%g').round($runtime, 4).'s%n]', 'console');
+    if (OBS_DEBUG > 1)
+    {
+      print_message("RESPONSE[\n".$response."\n]", 'console', FALSE);
+    }
+  }
+
+  // Set OBS_HTTP_REQUEST for skip all other requests
+  if (!defined('OBS_HTTP_REQUEST'))
+  {
+    if ($response === FALSE)
+    {
+      define('OBS_HTTP_REQUEST', FALSE);
+      print_debug(__FUNCTION__.'() exit with timeout. Access to outside localnet is blocked by firewall or network problems. Check proxy settings.');
+      logfile(__FUNCTION__.'() exit with timeout. Access to outside localnet is blocked by firewall or network problems. Check proxy settings.');
+    } else {
+      define('OBS_HTTP_REQUEST', TRUE);
+    }
+  }
+  // FIXME. what if first request fine, but second broken?
+  //else if ($response === FALSE)
+  //{
+  //  if (function_exists('runkit_constant_redefine')) { runkit_constant_redefine('OBS_HTTP_REQUEST', FALSE); }
+  //}
 
   return $response;
 }

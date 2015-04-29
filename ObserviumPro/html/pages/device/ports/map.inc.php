@@ -18,6 +18,6 @@
 </div>
 
 <?php
-$pagetitle[] = "拓扑";
+$page_title[] = "拓扑";
 
 // EOF

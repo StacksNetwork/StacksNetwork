@@ -180,7 +180,7 @@
 	table.translations {margin:10px 0;padding:0; width:100%;border-top:solid 1px #ddd}
 	table.translations td, table.translations th{padding:10px;border-bottom:solid 1px #ddd; border-left:solid 1px #ddd; margin:0 0; vertical-align:top}
 	table.translations th{background:#eee}
-	table.translations .firstcell{border-left:none; width:55px; text-align:center}
+	table.translations .firstcell{border-left:none; width:65px; text-align:center}
 	table.translations .firstcell a.menuitm span{ padding-left: 14px;}
 	.pagebuttons{margin:15px}
 	table.translations textarea, table.translations input{padding:0; margin:0; width:100%; height:15px; line-height:15px; border:solid 1px #ddd}
@@ -295,8 +295,8 @@
         Globl.cancel = '{/literal}{if $lang.Cancel}{$lang.Cancel}{else}Cancel{/if}{literal}';
 	</script> 
 	{/literal}
-	<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js"></script>
-    <script type="text/javascript" src="{$template_dir}js/langedit.js"></script>
+	<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js?v={$hb_version}"></script>
+    <script type="text/javascript" src="{$template_dir}js/langedit.js?v={$hb_version}"></script>
 	<form action="" method="post" id="transform" onsubmit="{if $action=='translate'}return saveTranslations(this){/if}">
 	{if $action=='translate'}
             <input type="hidden" value="{$language_det.target}" name="target" />
@@ -343,11 +343,11 @@
             </ul>
 			<a class="menuitm menuf" href="#" onclick="return pagination_toggle()">
 				{if $lang.showall}{$lang.showall}{else}Show all{/if}
-			</a>
-			<a class="menuitm menul" href="#" onclick="return pagination_toggle()" >
+			</a><!--
+			--><a class="menuitm menul" href="#" onclick="return pagination_toggle()" >
 				{if $lang.Off}{$lang.Off}{else}Off{/if}
 			</a>
-			<div class="clear"></div>
+			<!-- --><div class="clear"></div>
 		</div>{/if}
 		
 		<div style="padding:10px 5px 0 5px"> 
@@ -422,8 +422,8 @@
 						{if $line.found}<a name="found"></a>{/if}
 						<a href="#" class="menuitm menuf" title="{if $lang.Edit}{$lang.Edit}{else}Edit{/if}" onclick="return editTranslation(this)" >
 							<span class="editsth"></span>
-						</a>
-						<a href="#" class="menuitm menul" title="{if $lang.Delete}{$lang.Delete}{else}Delete{/if}" onclick="return delTranslation(this)" >
+						</a><!--
+						--><a href="#" class="menuitm menul" title="{if $lang.Delete}{$lang.Delete}{else}Delete{/if}" onclick="return delTranslation(this)" >
 							<span class="delsth"></span>
 						</a>
 					</td>
@@ -455,8 +455,8 @@
 			</div>
 			<a class="menuitm menuf" href="#" onclick="return pagination_toggle()">
 				{if $lang.showall}{$lang.showall}{else}Show all{/if}
-			</a>
-			<a class="menuitm menul" href="#" onclick="return pagination_toggle()" >
+			</a><!--
+			--><a class="menuitm menul" href="#" onclick="return pagination_toggle()" >
 				{if $lang.Off}{$lang.Off}{else}Off{/if}
 			</a>
 			<div class="clear"></div>
@@ -549,15 +549,16 @@
 				<div style="padding:13px 5px; float:left;min-width:90px;text-align:left">
 					<a href="?cmd=langedit&action=translate&lang={$language.id}" class="menuitm menuf" title="{if $lang.Edit}{$lang.Edit}{else}Edit{/if}" >
 						<span class="editsth"></span>
-					</a>
-					<a href="?cmd=langedit&action=export&lang={$language.id}" class="menuitm {if !in_array($language.id,$default_langs)}menuc{else}menul{/if}" target="_blank" title="{if $lang.lang_export}{$lang.lang_export}{else}Export{/if}" style="padding-right:2px" >
+					</a><!--
+					--><a href="?cmd=langedit&action=export&lang={$language.id}" class="menuitm {if !in_array($language.id,$default_langs)}menuc{else}menul{/if}" target="_blank" title="{if $lang.lang_export}{$lang.lang_export}{else}Export{/if}" style="padding-right:2px" >
 						<span class="disk-export"></span>
-					</a>
+					</a><!--
 					{if !in_array($language.id,$default_langs)}
-					<a href="#" class="menuitm menul" onclick="return delLanguage({$language.id})" title="{if $lang.Delete}{$lang.Delete}{else}Delete{/if}" >
+					--><a href="#" class="menuitm menul" onclick="return delLanguage({$language.id})" title="{if $lang.Delete}{$lang.Delete}{else}Delete{/if}" >
 						<span class="delsth"></span>
 					</a>
 					{/if}
+                                        <!-- -->
 				</div>
 				<div style="padding:13px 5px;min-width:230px; float:left">{$language.name|capitalize}</div>
 				{if $language.target!='admin' || !in_array($language.id,$default_langs)}

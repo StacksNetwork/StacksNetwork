@@ -24,10 +24,14 @@ if (count($drives))
 {
 ?>
 
-   <div class="well info_box">
-      <div class="title"><a href="<?php echo(generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'health', 'metric' => 'storage'))); ?>">
-        <i class="oicon-drive"></i> 存储</a></div>
-      <div class="content">
+  <div class="widget widget-table">
+    <div class="widget-header">
+      <a href="<?php echo(generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'health', 'metric' => 'storage'))); ?>">
+        <i class="oicon-drive"></i><h3> 存储</h3>
+      </a>
+    </div>
+    <div class="widget-content">
+
 
 <?php
   echo('<table class="table table-condensed-more table-striped table-bordered">');

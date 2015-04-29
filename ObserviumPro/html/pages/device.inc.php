@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage webui
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -21,12 +21,12 @@ if (isset($vars['device']) && !is_numeric($vars['device']))
 
 if (empty($vars['device']) && !empty($vars['hostname']))
 {
-  $vars['device'] = getidbyname($vars['hostname']);
+  $vars['device'] = get_device_id_by_hostname($vars['hostname']);
 
   // If device lookup fails, generate an error.
   if (empty($vars['device']))
   {
-    print_error('<h3>无效的主机名</h3>
+    print_error('<h4>无效的主机名</h4>
                    指定名称的设备没有被发现. 请重新键入名称并再试一次.');
     break;
   }
@@ -35,7 +35,7 @@ if (empty($vars['device']) && !empty($vars['hostname']))
 // If there is no device specified in the URL, generate an error.
 if (empty($vars['device']))
 {
-  print_error('<h3>没有指定设备</h3>
+  print_error('<h4>没有指定设备</h4>
                    指定的URL内没有有效的设备. 请重新键入并再试一次.');
   break;
 }
@@ -61,7 +61,7 @@ if ($vars['tab'] == "port" && is_numeric($vars['device']) && (isset($vars['port'
 // If there is no valid device specified in the URL, generate an error.
 if (!isset($cache['devices']['id'][$vars['device']]) && !$permit_ports)
 {
-  print_error('<h3>没有指定设备</h3>
+  print_error('<h4>没有指定设备</h4>
                   指定的URL内没有有效的设备. 请重新键入并再试一次.');
   break;
 }
@@ -93,7 +93,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
   $device_state = unserialize($device['device_state']);
 
   // Add the device hostname to the page title array
-  $pagetitle[] = $device['hostname'];
+  $page_title[] = escape_html($device['hostname']);
 
   // If the device's OS type has a group, set the device's os_group
   if ($config['os'][$device['os']]['group']) { $device['os_group'] = $config['os'][$device['os']]['group']; }
@@ -111,11 +111,10 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
 
     $navbar['options']['graphs'] = array('text' => '图像', 'icon' => 'oicon-chart-up');
 
-    $health =  dbFetchCell('SELECT COUNT(*) FROM storage WHERE device_id = ?', array($device['device_id'])) +
-               dbFetchCell('SELECT COUNT(sensor_id) FROM sensors WHERE device_id = ?', array($device['device_id'])) +
-               dbFetchCell('SELECT COUNT(*) FROM cempMemPool WHERE device_id = ?', array($device['device_id'])) +
-               dbFetchCell('SELECT COUNT(*) FROM cpmCPU WHERE device_id = ?', array($device['device_id'])) +
-               dbFetchCell('SELECT COUNT(*) FROM processors WHERE device_id = ?', array($device['device_id']));
+    $health =  dbFetchCell('SELECT COUNT(*) FROM `storage` WHERE device_id = ?', array($device['device_id'])) +
+               dbFetchCell('SELECT COUNT(*) FROM `sensors` WHERE device_id = ?', array($device['device_id'])) +
+               dbFetchCell('SELECT COUNT(*) FROM `mempools` WHERE device_id = ?', array($device['device_id'])) +
+               dbFetchCell('SELECT COUNT(*) FROM `processors` WHERE device_id = ?', array($device['device_id']));
 
     if ($health)
     {
@@ -147,7 +146,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     }
 
     // Print the SLAs tab if there are matching entries in the slas table
-    if (dbFetchCell('SELECT COUNT(sla_id) FROM slas WHERE device_id = ?', array($device['device_id'])) > '0')
+    if (dbFetchCell('SELECT COUNT(*) FROM `slas` WHERE `device_id` = ? AND `deleted` = 0', array($device['device_id'])) > '0')
     {
       $navbar['options']['slas'] = array('text' => 'SLAs', 'icon' => 'oicon-chart-up');
     }
@@ -158,8 +157,14 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
       $navbar['options']['accesspoints'] = array('text' => '接入点', 'icon' => 'oicon-wi-fi-zone');
     }
 
-    // Print the access points tab if there are matching entries in the accesspoints table
-    if (dbFetchCell('SELECT COUNT(wifi_accesspoint_id) FROM wifi_accesspoints WHERE device_id = ?', array($device['device_id'])) > '0')
+    // Print the wifi tab if wifi things exist
+
+    $device_ap_count    = dbFetchCell('SELECT COUNT(wifi_accesspoint_id) FROM `wifi_accesspoints` WHERE `device_id` = ?', array($device['device_id']));
+    $device_radio_count = dbFetchCell('SELECT COUNT(wifi_radio_id)       FROM `wifi_radios`       WHERE `device_id` = ?', array($device['device_id']));
+    $device_wlan_count  = dbFetchCell('SELECT COUNT(wlan_id)             FROM `wifi_wlans`        WHERE `device_id` = ?', array($device['device_id']));
+
+
+    if ($device_ap_count > 0 || $device_radio_count > 0)
     {
       $navbar['options']['wifi'] = array('text' => 'WiFi', 'icon' => 'oicon-wi-fi-zone');
     }
@@ -185,7 +190,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     // Pring Virtual Machines tab if there are matching entries in the vminfo table
     if (dbFetchCell('SELECT COUNT(id) FROM vminfo WHERE device_id = ?', array($device['device_id'])) > '0')
     {
-      $navbar['options']['vm'] = array('text' => 'VMs', 'icon' => 'oicon-network-cloud');
+      $navbar['options']['vm'] = array('text' => '虚拟机VMs', 'icon' => 'oicon-network-cloud');
     }
 
     // $loadbalancer_tabs is used in device/loadbalancer/ to build the submenu. we do it here to save queries
@@ -313,13 +318,15 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     // If the user has global write permissions, show them the edit tab
     if ($_SESSION['userlevel'] >= "10")
     {
-      $navbar['options']['data'] = array('text' => NULL, 'icon' => 'oicon-application-list', 'right' => TRUE);
-      $navbar['options']['perf'] = array('text' => NULL, 'icon' => 'oicon-time', 'right' => TRUE);
-      $navbar['options']['edit'] = array('text' => NULL, 'icon' => 'oicon-gear', 'right' => TRUE);
+      $navbar['options']['data']       = array('text' => NULL, 'icon' => 'oicon-application-list',  'right' => TRUE, 'alt' => "设备原始数据.");
+      $navbar['options']['perf']       = array('text' => NULL, 'icon' => 'oicon-time',              'right' => TRUE, 'alt' => "轮询器/自动发现性能指标.");
+      $navbar['options']['rediscover'] = array('text' => NULL, 'icon' => 'oicon-box-search-result', 'right' => TRUE, 'alt' => "5分钟内对该设备重新运行自动发现.", 'id' => "rediscover", 'url' => "#");
+      $navbar['options']['edit']       = array('text' => NULL, 'icon' => 'oicon-gear',              'right' => TRUE, 'alt' => "设备设置.");
     }
 ?>
 
 <script>
+
 (function ($) {
 
         $(function() {
@@ -330,7 +337,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
                                 $nav = $('.subnav'),
                                 navHeight = $('.navbar').first().height(),
                                 subnavHeight = $('.subnav').first().height(),
-                                subnavTop = $('.subnav').length && $('.subnav').offset().top - 14,
+                                subnavTop = $('.subnav').length && $('.subnav').offset().top,
                                 marginTop = parseInt($body.css('margin-top'), 10);
                                 isFixed = 0;
 
@@ -367,7 +374,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     {
       if (!isset($vars['tab'])) { $vars['tab'] = $option; }
       if ($vars['tab'] == $option) { $navbar['options'][$option]['class'] .= " active"; }
-      $navbar['options'][$option]['url'] = generate_device_url($device, array('tab'=>$option));
+      if (!isset($navbar['options'][$option]['url'])) { $navbar['options'][$option]['url'] = generate_device_url($device, array('tab' => $option)); }
     }
 
     if ($vars['tab'] == 'port')        { $navbar['options']['ports']['class'] .= " active"; }
@@ -384,7 +391,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     // If this device has never been polled, print a warning here
     if (!$device['last_polled'] || $device['last_polled'] == '0000-00-00 00:00:00')
     {
-      print_warning('<h3>设备尚未轮询</h3>
+      print_warning('<h4>设备尚未轮询</h4>
 该设备尚未成功地轮询. 系统信息和统计不应图不会绘制.
 请等待5-10分钟图绘制正确.');
     }
@@ -392,7 +399,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     // If this device has never been discovered, print a warning here
     if (!$device['last_discovered'] || $device['last_discovered'] == '0000-00-00 00:00:00')
     {
-      print_warning('<h3>设备尚未发现</h3>
+      print_warning('<h4>设备尚未发现</h4>
 该设备尚未成功地发现. 系统信息和统计不应图不会绘制.
 该设备应在10分钟内自动发现.');
     }
@@ -401,7 +408,7 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
     {
       include($config['html_dir']."/pages/device/".basename($tab).".inc.php");
     } else {
-      print_error('<h3>标签不存在</h3>
+      print_error('<h4>标签不存在</h4>
 所请求的标签不存在. 请输入正确的URL并再试一次.');
     }
 
@@ -410,4 +417,28 @@ if (isset($cache['devices']['id'][$vars['device']]) || $permit_ports)
   }
 }
 
-// EOF
+?>
+
+<script>
+
+$('#rediscover').click(function(e) {
+  e.preventDefault();
+
+  $.ajax({
+    type: "POST",
+    url: "/ajax/form.php",
+    async: true,
+    dataType: "json",
+    data: { device_id: '<?php echo $device['device_id']; ?>', form: "device-rediscover" },
+    success:function(data) {
+      $.bootstrapGrowl( data['message'], 'success' );
+    },
+    error:function(textStatus) {
+      $.bootstrapGrowl( "Error making AJAX call." + textStatus, { type: 'danger' } );
+    }
+  });
+});
+
+</script>
+
+

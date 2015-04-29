@@ -420,7 +420,7 @@
                                         <th  ><a href="?cmd=productaddons&action=addcategory" class="editbtn" >{$lang.createnewcat}</a></th>
                                     </tr>
                                 </table>
-                                <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+                                <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
                                 <script type="text/javascript">{literal}
                                     $("#grab-sorter").dragsort({ dragSelector: "a.sorter-handle",  dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
 		
@@ -670,7 +670,7 @@
 
 
 
-                                    {securitytoken}</form><script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+                                    {securitytoken}</form><script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
                                 <script type="text/javascript">{literal}
                                     $("#grab-sorter").dragsort({ dragSelector: "a.sorter-handle",  dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
 		
@@ -698,8 +698,8 @@
                                 {/if}
                                 {/if}
                                 {if $action=='addon' || $action=='addaddon'}
-                    <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-                    <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
+                    <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js?v={$hb_version}"></script>
+                    <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js?v={$hb_version}"></script>
                     <script type="text/javascript">
                         {literal}
 				

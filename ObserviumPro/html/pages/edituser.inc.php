@@ -18,7 +18,7 @@
 include("usermenu.inc.php");
 include("includes/javascript-interfacepicker.inc.php");
 
-$pagetitle[] = "编辑用户";
+$page_title[] = "编辑用户";
 
 if ($_SESSION['userlevel'] != '10') { include("includes/error-no-perm.inc.php"); } else
 {
@@ -46,7 +46,7 @@ if ($_SESSION['userlevel'] != '10') { include("includes/error-no-perm.inc.php");
     echo("<option value='" . $user_entry['user_id']  . "'");
     if ($user_entry['user_id'] == $vars['user_id']) { echo(' 已选 '); }
     #echo(" onchange=\"location.href='edituser/user_id=' + this.options[this.selectedIndex].value + '/';\" ");
-    echo(">" . $user_entry['username'] . "</option>");
+    echo(">" . escape_html($user_entry['username']) . "</option>");
   }
 
   echo('</select>
@@ -66,7 +66,7 @@ if ($_SESSION['userlevel'] != '10') { include("includes/error-no-perm.inc.php");
     if (auth_usermanagement() && $vars['user_id'] !== $_SESSION['user_id'])
     {
       echo('<ul class="nav pull-right">');
-      echo('<li><a href="'.generate_url(array('page'=>'edituser', 'action'=>'deleteuser', 'user_id'=>$vars['user_id'])).'"><i class="oicon-cross-button"></i> 删除用户</a></li>');
+      echo('<li><a href="'.generate_url(array('page' => 'edituser', 'action' => 'deleteuser', 'user_id' => $vars['user_id'])).'"><i class="oicon-cross-button"></i> 删除用户</a></li>');
       echo('</ul>');
     }
   }
@@ -89,13 +89,13 @@ if ($_SESSION['userlevel'] != '10') { include("includes/error-no-perm.inc.php");
 
     if (auth_can_change_password($user_data['username']) && $vars['action'] == "changepass")
     {
-      if ($_POST['new_pass'] == "" || $_POST['new_pass2'] == "")
+      if ($vars['new_pass'] == "" || $vars['new_pass2'] == "")
       {
         print_warning("密码不能留空.");
       }
-      elseif ($_POST['new_pass'] == $_POST['new_pass2'])
+      elseif ($vars['new_pass'] == $vars['new_pass2'])
       {
-        auth_change_password($user_data['username'], $_POST['new_pass']);
+        auth_change_password($user_data['username'], $vars['new_pass']);
         print_message("密码已更改.");
       } else {
         print_error("密码不匹配!");
@@ -142,7 +142,7 @@ if ($_SESSION['userlevel'] != '10') { include("includes/error-no-perm.inc.php");
         <table class="table table-bordered table-striped table-condensed">
           <tr>
             <th>用户名</th>
-            <td><?php echo($user_data['username']); ?></td>
+            <td><?php echo(escape_html($user_data['username'])); ?></td>
             <th>用户等级</th>
             <td><?php echo($user_data['level']); ?></td>
           </tr>

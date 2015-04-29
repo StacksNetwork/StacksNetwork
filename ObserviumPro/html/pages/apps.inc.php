@@ -7,13 +7,14 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 $navbar['class'] = 'navbar-narrow';
 $navbar['brand'] = '应用';
 
+$app_types = array();
 foreach ($app_list as $app)
 {
   if ($vars['app'] == $app['app_type'])
@@ -22,6 +23,7 @@ foreach ($app_list as $app)
   }
   $navbar['options'][$app['app_type']]['url']  = generate_url(array('page' => 'apps', 'app' => $app['app_type']));
   $navbar['options'][$app['app_type']]['text'] = nicecase($app['app_type']);
+  $app_types[$app['app_type']] = array();
 }
 
 print_navbar($navbar);
@@ -39,6 +41,6 @@ if ($vars['app'])
   include("pages/apps/overview.inc.php");
 }
 
-$pagetitle[] = "应用";
+$page_title[] = "应用";
 
 // EOF

@@ -7,12 +7,12 @@
  *
  * @package    observium
  * @subpackage webui
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
-  $bill_id     = ((is_numeric($_GET['bill_id'])) ? $_GET['bill_id'] : 0);
-  $history_id  = ((is_numeric($_GET['history_id'])) ? $_GET['history_id'] : 0);
+  $bill_id     = ((is_numeric($vars['bill_id'])) ? $vars['bill_id'] : 0);
+  $history_id  = ((is_numeric($vars['history_id'])) ? $vars['history_id'] : 0);
 
   $filename    = "billing-report_".$history_id.".pdf";
   $i           = 0;

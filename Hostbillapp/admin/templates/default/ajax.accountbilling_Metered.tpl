@@ -11,7 +11,7 @@
              {foreach from=$metered_usage_log.usage key=da item=val name=usageloop}
             {if $val.type=='Report'}
             <tr class="{if $smarty.foreach.usageloop.iteration%2==0}even{else}odd{/if}">
-                <td >{$da}</td>
+                <td >{$val.date}</td>
                 {foreach from=$metered_usage_log.variables item=variab key=v}
                 <td>{if $val.$v}{$val.$v}{else}0{/if} {$variab.unit_name}</td>
                 {/foreach}
@@ -19,7 +19,7 @@
             </tr>
             {else}
             <tr class="{if $smarty.foreach.usageloop.iteration%2==0}even{else}odd{/if}">
-                <td  style="background:#ecf5ff">{$da}</td>
+                <td  style="background:#ecf5ff">{$val.date}</td>
                 {foreach from=$metered_usage_log.variables item=variab key=v}
                 <td style="background:#ecf5ff">-</td>
                 {/foreach}
@@ -37,7 +37,7 @@
 
              {foreach from=$metered_usage_log.usage key=da item=val name=usageloop}
             <tr class="{if $smarty.foreach.usageloop.iteration%2==0}even{else}odd{/if}">
-                <td >{$da}</td>
+                <td >{$val.date}</td>
                 {foreach from=$metered_usage_log.variables item=variab key=v}
                 <td>Avg: {$val[$v].use} {$variab.unit_name}<br><small>Price: {$val[$v].price|price:$metered_usage_log.currency:true:false:true:4}</small></td>
                 {/foreach}

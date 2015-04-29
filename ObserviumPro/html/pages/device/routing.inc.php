@@ -22,7 +22,7 @@ $type_text['ipsec_tunnels'] = "IPSEC隧道";
 $type_text['loadbalancer_rservers'] = "Rservers";
 $type_text['loadbalancer_vservers'] = "服务器集群";
 
-$pagetitle[] = "路由";
+$page_title[] = "路由";
 
 $navbar = array();
 $navbar['brand'] = "路由";

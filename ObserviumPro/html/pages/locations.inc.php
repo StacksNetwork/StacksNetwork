@@ -7,11 +7,11 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
-$pagetitle[] = "位置";
+$page_title[] = "位置";
 
 if (!$vars['view']) { $vars['view'] = "basic"; }
 
@@ -50,7 +50,7 @@ foreach (get_locations() as $location)
 
   if ($location === '') { $location = OBS_VAR_UNSET; }
   $value = var_encode($location);
-  $name  = htmlspecialchars($location);
+  $name  = escape_html($location);
   echo('      <tr class="locations">
            <td class="interface" style="width: 300px;">' . generate_link($name, array('page' => 'devices', 'location' => $value)) . '</td>
            <td style="width: 100px;">' . $alert . '</td>

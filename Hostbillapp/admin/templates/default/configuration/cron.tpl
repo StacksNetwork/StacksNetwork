@@ -48,7 +48,7 @@
             return false;
         }{/literal}
     </script>
-    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js"></script>
+    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js?v={$hb_version}"></script>
     <link rel="stylesheet" href="{$template_dir}js/facebox/facebox.css" type="text/css" />
 </div>
 

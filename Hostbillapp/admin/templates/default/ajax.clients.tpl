@@ -58,8 +58,8 @@
             {if $cardcode.token_gateway_id}
                 <tbody id="ccbody">
                     <tr>
-                        <td colspan="2">  Client credit card <b>{$cardcode.cardnum}</b> has been tokenised by payment module <b>{$cardcode.module}</b>. <br/>
-                            This process is irreversible, to edit credit card remove current entry and add new CC</td>
+                        <td colspan="2">  用户信用卡 <b>{$cardcode.cardnum}</b> 已标记为支付模块 <b>{$cardcode.module}</b>. <br/>
+                            这个过程是不可逆的, 编辑的信用卡删除当前内容并添加新的信用卡</td>
                     </tr>
                     <tr>
                         <td colspan="2" align="center">
@@ -165,7 +165,7 @@
      <tr>
           <td><input type="checkbox" class="check" value="{$client.id}" name="selected[]"/></td>
           <td><a href="?cmd=clients&amp;action=show&amp;id={$client.id}">{$client.id}</a></td>
-              <td><a href="?cmd=clients&amp;action=show&amp;id={$client.id}">{$client.lastname}</a></td>
+          <td><a href="?cmd=clients&amp;action=show&amp;id={$client.id}">{$client.lastname}</a></td>
           <td><a href="?cmd=clients&amp;action=show&amp;id={$client.id}">{$client.firstname}</a></td>
           <td>{$client.email}</td>
           <td>{$client.companyname}</td>
@@ -197,7 +197,7 @@
               </div>
          <span class="a2  livemode" onclick="$('.secondtd').show();$('.tdetails').hide();$('.a2').hide();$('.a1').show();return false;"> <strong class="">{$stats.credit|price:$stats.currency_id}</strong></span>
         <span class="a2 fs11 "><a href="#" class="editbtn" onclick="$('.secondtd').show();$('.tdetails').hide();$('.a2').hide();$('.a1').show();return false;">{$lang.Edit}</a></span>
-        <span class="fs11 ">[ <a class="editbtn" href="?cmd=transactions&amp;action=add&amp;related_client_id={$client_id}">{$lang.addcredit}</a> <a class="editbtn editgray" href="?cmd=clientcredit&filter[client_id]={$client_id}" target="_blank">信用日志</a>  ]</span>
+        <span class="fs11 ">[ <a class="editbtn" href="?cmd=transactions&amp;action=add&amp;related_client_id={$client_id}">{$lang.addcredit}</a> <a class="editbtn editgray" href="?cmd=clientcredit&filter[client_id]={$client_id}" target="_blank">Credit log</a>  ]</span>
          </td></tr>
   
   
@@ -247,7 +247,7 @@
           <tr>
             <td>{$lang.lastname}</td>
             <td><input type="text" value="{$currentfilter.lastname}" size="30" name="filter[lastname]"/></td>
-
+			
             <td width="15%">{$lang.datecreated}</td>
             <td ><input type="text" value="{if $currentfilter.datecreated}{$currentfilter.datecreated|dateformat:$date_format}{/if}" size="15" name="filter[datecreated]" class="haspicker"/></td>
 
@@ -278,9 +278,9 @@
             <td>{$lang.Status}</td>
             <td>
                 <select name="filter[status]">
-                    <option value="" {if $currentfilter.status==''}selected="selected"{/if}>{$lang.All}</option>
-                    <option {if $currentfilter.status=='Active'}selected="selected"{/if}>{$lang.Active}</option>
-                    <option {if $currentfilter.status=='Closed'}selected="selected"{/if}>{$lang.Closed}</option>
+                    <option value="" {if $currentfilter.status==''}selected="selected"{/if} >{$lang.All}</option>
+                    <option value="Active" {if $currentfilter.status=='Active'}selected="selected"{/if} >{$lang.Active}</option>
+                    <option value="Closed" {if $currentfilter.status=='Closed'}selected="selected"{/if} >{$lang.Closed}</option>
                 </select>
             </td>
           </tr>
@@ -336,7 +336,7 @@
                 </select>
             </td>
 
-            <td>防止自动冻结/终止</td>
+            <td>防止自动暂停/终止</td>
             <td>
                 <select name="filter[overideautosusp]">
                     <option value="" {if $currentfilter.overideautosusp==''}selected="selected"{/if}>-</option>
@@ -345,7 +345,7 @@
                 </select>
             </td>
 
-            <td>滞纳金</td>
+            <td>Late fees</td>
             <td>
                 <select name="filter[latefeeoveride]">
                     <option value="" {if $currentfilter.latefeeoveride==''}selected="selected"{/if}>-</option>

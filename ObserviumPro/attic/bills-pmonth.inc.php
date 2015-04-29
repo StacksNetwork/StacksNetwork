@@ -1,6 +1,6 @@
 <?php
 
-$pagetitle[]      = "以往计费周期";
+$page_title[]      = "以往计费周期";
 $isAdmin          = (($_SESSION['userlevel'] == "10") ? true : false);
 $disabled         = ($isAdmin ? "" : "disabled=\"disabled\"");
 $links['add']     = ($isAdmin ? generate_url($vars, array('view' => 'add')) : "javascript:;");

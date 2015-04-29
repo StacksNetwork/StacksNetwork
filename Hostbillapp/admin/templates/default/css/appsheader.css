@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#hbheader ul.mainer li a .fourth {
+    float: left;
+    height: 31px;
+    width: 11px;
+}
+#hbheader a,#hbheader a:active, #hbheader a:visited{
+    color:#2a5db0;
+}
+#hbheader td.logoLeftNav {
+    vertical-align: middle;
+    width: 188px;
+}
+#hbheader a img {
+    border: none;
+}
+#hbheader .menushelf {
+    background: #354a5f;
+    border: none;
+}
+#hbheader ul.mainer {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#hbheader ul.mainer li
+{ width: auto!important;
+    cursor:pointer;float:left;}
+#hbheader  ul.mainer li a,
+#hbheader ul.mainer li a:visited,
+#hbheader ul.mainer li a:active{color:#fff;display:block;font-family:Arial, Helvetica, sans-serif;font-size:12px;height:34px;overflow:none;text-decoration:none; padding:1px 10px;}
+#hbheader   ul.mainer li a .second {
+    background: none;
+    float: left;
+    height: 22px;
+    overflow: none;
+    padding: 8px 0px 0px;
+    font-size: 13px;
+}
+#hbheader  ul.mainer li a:hover  {background: #3598DC}
+#hbheader {
+    line-height: 1 !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#hbheader #topbar {
+    border-bottom: solid 1px #ccc;
+    font-size: 11px;
+    padding: 5px;
+}
+#hbheader .left {
+    float:left;
+}
+#hbheader .right {
+    float:right;
+}
+#hbheader #body-content {
+    margin: 10px;
+}
+#hbheader .clear {
+    clear: both;
+}

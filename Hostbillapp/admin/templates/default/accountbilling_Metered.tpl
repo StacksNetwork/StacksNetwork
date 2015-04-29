@@ -89,7 +89,7 @@
 <br />
 {literal}
 <link rel="stylesheet" href="../includes/types/widgets/meteredwidget/demo_table.css" type="text/css" />
-<script type="text/javascript" src="../includes/types/widgets/meteredwidget/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="../includes/types/widgets/meteredwidget/jquery.dataTables.min.js?v={$hb_version}"></script> 
 <script type="text/javascript">
     var bPaginate={
         "bFilter": false,

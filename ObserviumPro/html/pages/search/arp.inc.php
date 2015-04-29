@@ -71,7 +71,7 @@ $vars['pagination'] = TRUE;
 
 print_arptable($vars);
 
-$pagetitle[] = 'ARP/NDP搜素';
+$page_title[] = 'ARP/NDP搜素';
 
 ?>
 

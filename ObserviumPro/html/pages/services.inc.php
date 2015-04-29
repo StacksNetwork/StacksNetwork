@@ -11,7 +11,7 @@
  *
  */
 
-$pagetitle[] = "服务";
+$page_title[] = "服务";
 
 print_optionbar_start();
 

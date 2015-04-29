@@ -9,14 +9,14 @@ $device_query = mysql_query("SELECT * FROM `devices` WHERE `device_id` LIKE '%" 
 
 while ($device = mysql_fetch_assoc($device_query))
 {
-  $port = $device['port'];
+  $port = $device['snmp_port'];
 
   echo($device['hostname']. " ");
 
   if (isPingable($device['hostname']))
   {
     $pos = snmp_get($device, "sysDescr.0", "-Oqv", "SNMPv2-MIB");
-    echo($device['protocol'].":".$device['hostname'].":".$device['port']." - ".$device['community']." ".$device['snmpver'].": ");
+    echo($device['protocol'].":".$device['hostname'].":".$device['snmp_port']." - ".$device['snmp_community']." ".$device['snmp_version'].": ");
     if ($pos == '')
     {
       $status='0';

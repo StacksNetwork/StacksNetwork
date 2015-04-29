@@ -65,13 +65,15 @@ if ($entry = get_alert_entry_by_id($vars['alert_entry']))
 
 <div class="row">
   <div class="col-md-4">
-    <div class="well info_box">
-      <div class="title"><i class="oicon-bell"></i> 报警详情</div>
-      <div class="content">
+    <div class="widget">
+      <div class="widget-header">
+        <i class="oicon-bell"></i> <h3>报警详情</h3>
+      </div>
+      <div class="widget-content">
         <table class="table table-condensed table-bordered table-striped table-rounded">
           <tbody>
-            <tr><th>类型</th><td><?php echo $entry['entity_type']; ?></td></tr>
-            <tr><th>实体</th><td><?php echo generate_entity_link($entry['entity_type'], $entry['entity_id'], $entity['entity_name']); ?></td></tr>
+            <tr><th>类型</th><td><?php echo '<i class="' . $config['entities'][$alert['entity_type']]['icon'] . '"></i> ' . nicecase($entry['entity_type']); ?></td></tr>
+            <tr><th>对象</th><td><?php echo generate_entity_link($entry['entity_type'], $entry['entity_id'], $entity['entity_name']); ?></td></tr>
             <tr><th>检测器</th><td><a href="<?php echo generate_url(array('page' => 'alert_check', 'alert_test_id' => $alert['alert_test_id'])); ?>"><?php echo $alert['alert_name']; ?></a></td></tr>
             <tr><th>错误信息</th><td><?php echo $alert['alert_message']; ?></td></tr>
           </tbody>
@@ -81,9 +83,12 @@ if ($entry = get_alert_entry_by_id($vars['alert_entry']))
   </div>
 
   <div class="col-md-4">
-    <div class="well info_box">
-      <div class="title"><i class="oicon-time"></i> 状态</div>
-      <div class="content">
+    <div class="widget">
+      <div class="widget-header">
+        <i class="oicon-time"></i> <h3>状态</h3>
+      </div>
+      <div class="widget-content">
+
         <table class="table table-condensed table-bordered table-striped table-rounded">
           <tr><th>状态</th><td><span class="<?php echo $entry['class']; ?>"><?php echo $entry['last_message']; ?></span></td></tr>
           <tr><th>最新监测</th><td><?php echo $entry['checked']; ?></span></td></tr>
@@ -96,10 +101,11 @@ if ($entry = get_alert_entry_by_id($vars['alert_entry']))
   </div>
 
   <div class="col-md-4">
-    <div class="well info_box">
-      <div class="title"><i class="oicon-gear"></i> 设置</div>
-      <div class="title title-right"><a href=""><a href="#delete_alert_modal" data-toggle="modal"><i class="oicon-minus-circle"></i> 删除</a></div>
-      <div class="content">
+    <div class="widget widget">
+      <div class="widget-header">
+        <i class="oicon-gear"></i> <h3>设置</h3>
+      </div>
+      <div class="widget-content">
         <table class="table table-condensed table-bordered table-striped table-rounded">
           <tr><th>忽略直至</th>
             <td>

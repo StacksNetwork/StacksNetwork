@@ -5,7 +5,7 @@
  *
  * @package    observium
  * @subpackage templates
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 /**
@@ -34,7 +34,7 @@
       <td>
         <table class="observium" id="deviceinfo">
   <tbody>
-    <tr><td class="header">{{ALERT_STATE}}</td><td><a style="float: right;" href="{{ALERT_URL}}">修改</a></td></tr>
+    <tr><td class="header">{{ALERT_STATE}}</td><td><a style="float: right;" href="{{{ALERT_URL}}}">修正</a></td></tr>
     <tr><td><strong>报警</strong></td><td class="red">{{ALERT_MESSAGE}}</td></tr>
     <tr><td><strong>实体</strong></td><td>{{{ENTITY_LINK}}}</td></tr>
     {{#ENTITY_DESCRIPTION}}

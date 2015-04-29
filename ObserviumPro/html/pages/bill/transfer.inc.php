@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage webui
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -51,22 +51,22 @@ $lastmonth    = dbFetchCell("SELECT UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 MO
 $yesterday    = dbFetchCell("SELECT UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY))");
 $rightnow     = date(U);
 */
-$bi           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+$bi           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
 $bi          .= '&amp;from=' . $unixfrom .  '&amp;to=' . $unixto;
 $bi          .= '&amp;type=day&amp;imgbill=1';
 $bi          .= '&amp;x=1230&amp;y=300" alt="">';
 
-$li           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+$li           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
 $li          .= '&amp;from=' . $unix_prev_from .  '&amp;to=' . $unix_prev_to;
 $li          .= '&amp;type=day';
 $li          .= '&amp;x=1230&amp;y=300" alt="">';
 
-$di           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+$di           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
 $di          .= '&amp;from=' . $config['time']['day'] .  '&amp;to=' . $config['time']['now'];
 $di          .= '&amp;type=hour';
 $di          .= '&amp;x=1230&amp;y=300" alt="">';
 
-$mi           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+$mi           = '<img src="bandwidth-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
 $mi          .= '&amp;from=' . $lastmonth .  '&amp;to=' . $rightnow;
 $mi          .= '&amp;type=day';
 $mi          .= '&amp;x=1230&amp;y=300" alt="">';

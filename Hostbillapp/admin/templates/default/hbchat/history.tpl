@@ -1,7 +1,7 @@
 {if $action=='viewtranscript'}
         <link href="{$template_dir}hbchat/media/popup.css?v={$hb_version}" rel="stylesheet" media="all" />
 <div class="blu">
-    <strong>Chat transcript #{$details.id}</strong> <a href="?cmd=hbchat&action=history">&laquo; 返回</a>
+    <strong>聊天记录 #{$details.id}</strong> <a href="?cmd=hbchat&action=history">&laquo; 返回</a>
 
     </div>
         <div style="padding:10px">
@@ -16,7 +16,7 @@
                                 </tr>
                                 <tr class="odd">
                                     <td class="first">用户名</td>
-                                    <td>{$details.visitor_name} {if $details.client_id}<a href="?cmd=clients&action=show&id={$details.client_id}" target="_blank">已注册用户</a>{/if}</td>
+                                    <td>{$details.visitor_name} {if $details.client_id}<a href="?cmd=clients&action=show&id={$details.client_id}" target="_blank">注册用户</a>{/if}</td>
                                 </tr>
                                 <tr>
                                     <td class="first">用户邮箱</td>
@@ -28,7 +28,7 @@
                                 </tr>
                                 <tr>
                                     <td class="first">员工</td>
-                                    <td>{$details.lastname} {$details.firstname}</td>
+                                    <td>{$details.firstname} {$details.lastname}</td>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first">聊天类型</td>
@@ -60,7 +60,7 @@
                                     <td># {$details.id}</td>
                                 </tr>
                                 <tr class="odd">
-                                    <td class="first">Geodata</td>
+                                    <td class="first">位置数据</td>
                                     <td>{$details.countryname}, {$details.city}</td>
                                 </tr>
 
@@ -95,7 +95,7 @@
         <tbody>
             <tr>
                 <th width="60"><a href="?cmd=hbchat&action=history&orderby=id|ASC"  class="sortorder">聊天ID</a></th>
-                <th  width="160"><a href="?cmd=hbchat&action=history&orderby=date_start|ASC"  class="sortorder">{$lang.date}</a></th>
+                <th  width="160"><a href="?cmd=hbchat&action=history&orderby=date_start|ASC"  class="sortorder">{$lang.Date}</a></th>
                 <th width="160"><a href="?cmd=hbchat&action=history&orderby=visitor_name|ASC"  class="sortorder">用户名</a></th>
                 <th><a href="?cmd=hbchat&action=history&orderby=subject|ASC"  class="sortorder">主题</a></th>
                 <th width="20">&nbsp;</th>

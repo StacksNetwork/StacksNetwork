@@ -13,7 +13,7 @@
 
 ?>
 
-<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered table-condensed">
 
 <?php
 
@@ -21,7 +21,6 @@ $rrdfile = get_port_rrdfilename($port, NULL, TRUE);
 
 if (is_file($rrdfile))
 {
-  $iid = $id;
   echo('<tr><td>');
   echo('<h4>流量</h4>');
   $graph_array['type'] = "port_bits";

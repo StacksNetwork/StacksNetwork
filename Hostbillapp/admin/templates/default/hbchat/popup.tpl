@@ -8,8 +8,8 @@
         <script type="text/javascript" src="{$template_dir}hbchat/media/popup.js?v={$hb_version}"></script>
         <script type="text/javascript" src="{$template_dir}hbchat/media/jquery.simplemodal.js?v={$hb_version}"></script>
         <script type="text/javascript" src="{$template_dir}hbchat/media/osx.js?v={$hb_version}"></script>
-        <script type="text/javascript" src="{$template_dir}hbchat/media/soundmanager2-nodebug-jsmin.js"></script>
-        <script type="text/javascript" src="{$template_dir}hbchat/media/jquery.jgrowl_minimized.js"></script>
+        <script type="text/javascript" src="{$template_dir}hbchat/media/soundmanager2-nodebug-jsmin.js?v={$hb_version}"></script>
+        <script type="text/javascript" src="{$template_dir}hbchat/media/jquery.jgrowl_minimized.js?v={$hb_version}"></script>
         <link href="{$template_dir}_style.css?v={$hb_version}" rel="stylesheet" media="all" />
         <link href="{$template_dir}hbchat/media/popup.css?v={$hb_version}" rel="stylesheet" media="all" />
         <link href="{$template_dir}hbchat/media/osx.css?v={$hb_version}" rel="stylesheet" media="all" />
@@ -33,7 +33,7 @@
     <body class="hbpopup">
 
         <div id="hb_chat_tabs_container">
-            <div class="chat_tab chat_tab_active" onclick="HBOperator.switch_tab('visitors', this);"><span class="tab_txt">实时访客</span><span id="visitors_count" class="tab_counter">0</span></div>
+            <div class="chat_tab chat_tab_active" onclick="HBOperator.switch_tab('visitors', this);"><span class="tab_txt">实时流量</span><span id="visitors_count" class="tab_counter">0</span></div>
           
             <div class="clear" id="clearer"></div>
 
@@ -60,7 +60,7 @@
                         <input type="radio" name="current_status" value="Away" id="status_away"  onclick="return HBOperator.change_status('Away');" />离开
                         <input type="radio" name="current_status" value="Offline" id="status_offline"  onclick="return HBOperator.change_status('Offline');" />离线
                     </td>
-                    <td width="90">今天的聊天: <br/> 共有 <span class="fs10"><span id="chats_today_cnt">0</span> 次被接受</span></td>
+                    <td width="90">今日对话: <br/> <span class="fs10"><span id="chats_today_cnt">0</span> 接受</span></td>
                 </tr>
             </table>
         </div>
@@ -69,13 +69,13 @@
 
         {* BOF: SIMPLEMODAL.JS *}
         <div id="away_notice" style="display:none;">
-            您不在电脑旁. 30分钟后您将被自动登出. <br />
+            您看上去好像离开了, 30分钟后您将被自动登出. <br />
             <input type="button" onclick="return HBOperator.close_modal()" value="Go back online" style="font-weight:bold;" class="submitme"/>
         </div>
-        <div id="away_notice_title" style="display:none;">您的当前状态: 离开</div>
+        <div id="away_notice_title" style="display:none;">您当前的状态: 离开</div>
 
          <div id="visitorchange_notice" style="display:none;">
-            您可以更改用户在这里提供的详细联络方式. <br />
+            您可以更改用户在这里提供详细联系方式. <br />
             <table border="0" cellspacing="0" cellpadding="2" >
                 <tr>
                     <td>用户名:</td>
@@ -86,21 +86,21 @@
                     <td><input class="styled_text visitor_email" name="visitor_email"  value="" /></td>
                 </tr>
                 <tr>
-                    <td colspan="2"> <input type="button" onclick="return HBOperator.update_chat_details()" value="更新用户信息" style="font-weight:bold;" class="submitme"/></td>
+                    <td colspan="2"> <input type="button" onclick="return HBOperator.update_chat_details()" value="更新用户详情" style="font-weight:bold;" class="submitme"/></td>
                 </tr>
 
             </table>
         </div>
-        <div id="visitorchange_title" style="display:none;">更改聊天联系方式</div>
+        <div id="visitorchange_title" style="display:none;">更改聊天联系人信息</div>
 
     
 
          <div id="offline_notice" style="display:none;">
-            Please confirm going offline.<br />
+            请确认注销登录.<br />
             <input type="button" onclick="return HBOperator.change_status('Offline-Confirmed');" value="Logout" class="submitme" style="font-weight:bold;" />
             <input type="button" onclick="return HBOperator.close_modal()" value="Stay online"  class="submitme"/>
         </div>
-        <div id="offline_notice_title" style="display:none;">您确定需要断开连接吗?</div>
+        <div id="offline_notice_title" style="display:none;">您确定您需要断开吗?</div>
         <div id="osx-modal-content" style="display:none">
             <div id="osx-modal-title"></div>
             <div class="close simplemodal-close">x</div>
@@ -114,9 +114,9 @@
         {literal}
 
         <div id="hb_chat_template" style="display:none">
-            <textarea id="visitorban_title" >Confirm visitor ban {{visitor_name}}</textarea>
+            <textarea id="visitorban_title" >确认拉黑访客 {{visitor_name}}</textarea>
             <textarea id="visitorban_content" >
-            您确定要将该用户加入黑名单 <b>7天</b> 吗? 聊天总是对黑名单的游客显示离线.<br/>
+            您确定您需要拉黑该访客 <b>7天</b>? 聊天系统将对被拉黑的游客显示为离线.<br/>
             <input type="button" onclick="return HBOperator.banVisitor('{{id}}');" value="Ban from chat" class="submitme" style="font-weight:bold;" />
 
             </textarea>
@@ -131,7 +131,7 @@
                                         <div class="accept_call" style="display:none">
                                             <b>{{visitor_name}}</b> 请求聊天.
                                             <div class="clear"></div>
-                                            <span onclick="return HBOperator.acceptChat('{{id}}')" class="new_control control_el"><span class="addsth">Join chat</span></span> <span class="orspace fs11">or</span><a href="javascript:void(0)" class="editbtn orspace" onclick="return  HBOperator.close_tab('chat_{{id}}');">decline</a>
+                                            <span onclick="return HBOperator.acceptChat('{{id}}')" class="new_control control_el"><span class="addsth">加入聊天</span></span> <span class="orspace fs11">或</span><a href="javascript:void(0)" class="editbtn orspace" onclick="return  HBOperator.close_tab('chat_{{id}}');">谢绝</a>
                                         </div>
 
                                     </div>
@@ -150,8 +150,8 @@
                                     <div class="c_bottom_content">
                                         <div class="left">
                                             <div class="bottom_tabs_container">
-                                                <div class="chat_tab_btm chat_btm_active tc_inputbar" onclick="HBOperator.switch_tab_bottom('{{id}}','c_inputbar');"><span class="tab_txt tab_msg">Send message</span></div>
-                                                <div class="chat_tab_btm tc_canned_content" onclick="HBOperator.switch_tab_bottom('{{id}}','c_canned_content');"><span class="tab_txt tab_canned">Canned responses</span></div>
+                                                <div class="chat_tab_btm chat_btm_active tc_inputbar" onclick="HBOperator.switch_tab_bottom('{{id}}','c_inputbar');"><span class="tab_txt tab_msg">发送信息</span></div>
+                                                <div class="chat_tab_btm tc_canned_content" onclick="HBOperator.switch_tab_bottom('{{id}}','c_canned_content');"><span class="tab_txt tab_canned">录制聊天内容</span></div>
                                             </div>
                                         </div>
                                         <div class="right">
@@ -173,9 +173,9 @@
                                 <ul >
                                     <li class="current" onclick="HBOperator.switch_visitor_tab('chat_{{id}}', 'visitor', this);"><span>访客</span></li>
                                     <li class="break"></li>
-                                    <li onclick="HBOperator.switch_visitor_tab('chat_{{id}}', 'footprints', this);"><span>Footprints</span><span class="tab_counter">{{visitor.footprints}}</span></li>
+                                    <li onclick="HBOperator.switch_visitor_tab('chat_{{id}}', 'footprints', this);"><span>足迹</span><span class="tab_counter">{{visitor.footprints}}</span></li>
                                     <li class="break"></li>
-                                    <li onclick="HBOperator.switch_visitor_tab('chat_{{id}}', 'transcripts', this);"><span>Transcripts</span><span class="tab_counter">{{visitor.chatsTotal}}</span></li>
+                                    <li onclick="HBOperator.switch_visitor_tab('chat_{{id}}', 'transcripts', this);"><span>录制</span><span class="tab_counter">{{visitor.chatsTotal}}</span></li>
                                     <li class="break"></li>
                                     <li onclick="HBOperator.open_tab('visitor', '{{visitor_id}}',false,true)"><span>更多</span></li>
                                     <li class="break"></li>
@@ -194,10 +194,10 @@
                                             </tr>
                                             <tr >
                                                 <td class="first">用户邮箱</td>
-                                                <td>{{#visitor_email}}{{visitor_email}}{{/visitor_email}}{{^visitor_email}}<em>None</em>{{/visitor_email}} <span class="alike right" onclick="HBOperator.user_change_prompt('{{id}}')">change</span></td>
+                                                <td>{{#visitor_email}}{{visitor_email}}{{/visitor_email}}{{^visitor_email}}<em>无</em>{{/visitor_email}} <span class="alike right" onclick="HBOperator.user_change_prompt('{{id}}')">change</span></td>
                                             </tr>
                                              <tr class="odd">
-                                                <td class="first">总共聊天</td>
+                                                <td class="first">共计聊天</td>
                                                 <td>{{visitor.chatsTotal}}</td>
                                             </tr>
                                             <tr >
@@ -233,7 +233,7 @@
 
                                         <div class="controls_content">
                                             <span class="control_el" onclick="return HBOperator.open_ticket('{{id}}')"><span class="ticket">开启工单</span></span>
-                                            <span class="control_el" onclick="return HBOperator.banVisitorPrompt('{{visitor.visitor_name}}','{{visitor_id}}')"><span class="ban">拉入黑名单</span></span>
+                                            <span class="control_el" onclick="return HBOperator.banVisitorPrompt('{{visitor.visitor_name}}','{{visitor_id}}')"><span class="ban">从聊天中拉黑</span></span>
                                         </div>
                                         
                                     </div>
@@ -252,7 +252,7 @@
                                                 </tr>
                                                 {{/visitor.footprint_list}}
                                                 {{^visitor.footprint_list}}
-                                                <tr><td class="fs11">没有发现足迹</td></tr>
+                                                <tr><td class="fs11">未发现足迹</td></tr>
                                                 {{/visitor.footprint_list}}
                                             </tbody>
                                         </table>
@@ -270,7 +270,7 @@
                         <table border="0" cellspacing="0" cellpadding="0" width="100%" class="display" style="table-layout: fixed;">
                                             <thead>
                                                 <tr>
-                                                    <th class="" width="120">Date</th>
+                                                    <th class="" width="120">日期</th>
                                                     <th class="">主题</th>
                                                 </tr>
                                             </thead>
@@ -278,11 +278,11 @@
                                                 {{#transcripts}}
                                                 <tr>
                                                     <td class="subjectline"><div class="df1"><div class="df2"><div class="df3"><a  href="javascript:void(0)" onclick="return HBOperator.printChat('{{id}}')">{{date_start}}</a></div></div></div></td>
-                                                   <td class="subjectline"><div class="df1"><div class="df2"><div class="df3"><a  href="javascript:void(0)" onclick="return HBOperator.printChat('{{id}}')">{{#subject}}{{subject}}{{/subject}}{{^subject}}No subject{{/subject}}</a></div></div></div></td>
+                                                   <td class="subjectline"><div class="df1"><div class="df2"><div class="df3"><a  href="javascript:void(0)" onclick="return HBOperator.printChat('{{id}}')">{{#subject}}{{subject}}{{/subject}}{{^subject}}无主题{{/subject}}</a></div></div></div></td>
                                                 </tr>
                                                 {{/transcripts}}
                                                 {{^transcripts}}
-                                                <tr><td class="" colspan="2">没有发现记录</td></tr>
+                                                <tr><td class="" colspan="2">没有发现录制内容</td></tr>
                                                 {{/transcripts}}
                                             </tbody>
                                         </table>
@@ -293,7 +293,7 @@
                 {if $canned_fav}
                    {foreach from=$canned_fav item=r} <span class="tag" onclick="HBOperator.useCanned(this)" content="{$r.body|escape:'dquotes'}">{$r.title}</span>{/foreach}
                                            {else}
-          没有创建响应录像 &amp; 设置为我的最爱
+          没有发现录制内容 &amp; 设置为最爱
             {/if}
              {literal}
                
@@ -313,9 +313,9 @@
                                     <li class="break"></li>
                                     <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'footprints', this);"><span>足迹</span><span class="tab_counter">{{footprints}}</span></li>
                                     <li class="break"></li>
-                                    <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'transcripts', this);"><span>记录</span><span class="tab_counter">{{chatsTotal}}</span></li>
+                                    <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'transcripts', this);"><span>录制</span><span class="tab_counter">{{chatsTotal}}</span></li>
                                     <li class="break"></li>
-                                    <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'geolocation', this);"><span>地理位置</span></li>
+                                    <li onclick="HBOperator.switch_visitor_tab('visitor_{{id}}', 'geolocation', this);"><span>位置数据</span></li>
                                     <li class="break"></li>
                                     <li onclick="HBOperator.open_tab('visitor', '{{id}}', false, true, true); " class="refresh"><span class="refresh"></span></li>
                                     <li class="break"></li>
@@ -398,17 +398,17 @@
 
                                         <div class="controls_content">
                                             <span class="control_el" onclick="$('#invitation_container_{{id}}').toggle();"><span class="invite">邀请聊天</span></span>
-                                            <span class="control_el" onclick="return HBOperator.banVisitorPrompt('{{name}}','{{id}}')"><span class="ban">拉入黑名单</span></span>
+                                            <span class="control_el" onclick="return HBOperator.banVisitorPrompt('{{name}}','{{id}}')"><span class="ban">从聊天中拉黑</span></span>
                                         </div>
                                         <div id="invitation_container_{{id}}" style="display:none" class="p6">
-                                            <b>初始信息:</b>
+                                            <b>原始信息:</b>
                                             {/literal}{if $canned_fav}{literal}
                                             <select name="canned_response" class="canned_response styled_text" id="invitation_message_{{id}}" style="width:350px;">
                                                 {/literal}
                    {foreach from=$canned_fav item=r} <option value="{$r.id}">{$r.title}</option>{/foreach}    </select>
                                            {else}  <input type="text" class="styled_text" id="invitation_message_{literal}{{id}}{/literal}" style="width:350px;"/>{/if}{literal}
 
-                                           <b>Dept:</b>
+                                           <b>部门:</b>
                                             <select name="department_id" class="styled_text" id="department_id_{{id}}">
                                                 {/literal}
                    {foreach from=$mydepts item=r} <option value="{$r.id}">{$r.name}</option>{/foreach}    </select>{literal}
@@ -424,7 +424,7 @@
                                                     <th>页面</th>
                                                     <th>参考来源</th>
                                                     <th width="79">页面停留时间</th>
-                                                    <th width="65">访问总数</th>
+                                                    <th width="65">合计访问</th>
                                                     <th width="140">最后一次访问</th>
                                                 </tr>
                                             </thead>
@@ -440,7 +440,7 @@
                                                 </tr>
                                                 {{/footprint_list}}
                                                 {{^footprint_list}}
-                                                <tr><td colspan="4">没有发现足迹</td></tr>
+                                                <tr><td colspan="4">未发现足迹</td></tr>
                                                 {{/footprint_list}}
                                             </tbody>
                                         </table>
@@ -478,7 +478,7 @@
                         <tr>
                             <th width="20"></th>
                             <th width="85">IP</th>
-                            <th width="80">在线时长</th>
+                            <th width="80">在线时间</th>
                             <th width="65">足迹</th>
                             <th width="33">聊天</th>
                             <th>当前页面</th>

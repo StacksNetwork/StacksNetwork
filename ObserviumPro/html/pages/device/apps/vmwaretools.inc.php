@@ -11,7 +11,7 @@
  *
  */
 
-$app_graphs['default'] = array('vmwaretools_mem' => 'Memory Resource Allocation',
-                'vmwaretools_cpu' => 'CPU Resource Allocation');
+$app_graphs['default'] = array('vmwaretools_mem' => '内存资源配置',
+                'vmwaretools_cpu' => 'CPU资源配置');
 
 // EOF

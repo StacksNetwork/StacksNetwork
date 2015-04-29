@@ -41,7 +41,7 @@
 		<td class="evel">
             <select name="{$tld.id}[period]">
                 {section name=foo loop=9} 
-                    <option {if $smarty.section.foo.iteration == $tld.period}selected="selected"{/if}>{$smarty.section.foo.iteration}{if $smarty.section.foo.iteration == 1} 年{else} 年{/if}</option>
+                    <option {if $smarty.section.foo.iteration == $tld.period}selected="selected"{/if}>{$smarty.section.foo.iteration}{if $smarty.section.foo.iteration == 1} Year{else} Years{/if}</option>
                 {/section}
             </select></td>
             	
@@ -76,17 +76,17 @@
 	{if $tld.tld}
 	<td>
 		<input type="hidden" name="sort[]" value="{$tld.id}" />
-		 {if !$smarty.foreach.cat.first}<a href="javascript:void(0);" onclick="sortit(this,'up')"  class="upsorter">上班</a>{/if}</td>
-        <td> {if !$smarty.foreach.cat.last}<a href="javascript:void(0);" onclick="sortit(this,'down')"  class="downsorter">下班</a>{/if}</td>
+		 {if !$smarty.foreach.cat.first}<a href="javascript:void(0);" onclick="sortit(this,'up')"  class="upsorter">Up</a>{/if}</td>
+        <td> {if !$smarty.foreach.cat.last}<a href="javascript:void(0);" onclick="sortit(this,'down')"  class="downsorter">Down</a>{/if}</td>
         
 		{else}
 		<td></td>		
 		<td></td>
 		{/if}
 		
-		<!--<td><a href="?cmd=ticketdepts&make=delete&id={$dept.id}&security_token={$security_token}" class="delbtn" onclick="return confirm('您确定要删除该部门吗?');">删除</a></td>-->
+		<!--<td><a href="?cmd=ticketdepts&make=delete&id={$dept.id}&security_token={$security_token}" class="delbtn" onclick="return confirm('Are you sure you want to delete this dept?');">Delete</a></td>-->
 		 <td><input type="submit" value="{$lang.Save}" name="save[{$tld.id}]" /></td>
-            <td><a href="?cmd=tldprices&delete[{$tld.id}]&security_token={$security_token}" onclick="return confirm('{$lang.deletetldconfirm}');" class="delbtn">删除</a></td>
+            <td><a href="?cmd=tldprices&delete[{$tld.id}]&security_token={$security_token}" onclick="return confirm('{$lang.deletetldconfirm}');" class="delbtn">Delete</a></td>
       </tr>
 	  	{/foreach}
 		 </tbody>

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="{$template_dir}js/server.js"></script>
+<script type="text/javascript" src="{$template_dir}js/server.js?v={$hb_version}"></script>
 <table border="0" cellspacing="0" cellpadding="0" width="100%" id="content_tb">
     <tr>
         <td colspan="2"><h3>{$lang.apps}</h3></td>    
@@ -12,7 +12,7 @@
         <td  valign="top"  class="bordered">
             <div id="bodycont" style="">
                 {if $action=='add'}
-                    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js"></script>
+                    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js?v={$hb_version}"></script>
                     <link rel="stylesheet" href="{$template_dir}js/facebox/facebox.css" type="text/css" />
                     <form method="post" action="" id="serverform">
                         <input type="hidden" value="add" name="make"/>

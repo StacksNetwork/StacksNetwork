@@ -342,12 +342,12 @@ function unixfsgraph ($id, $graph, $from, $to, $width, $height, $title, $vertica
   
   $options = "--alt-autoscale-max -E --start $from --end $to --width $width --height $height -b 1024 -l 0";
   if($width <= "300") { $options .= " --font LEGEND:7:".$config['mono_font']." --font AXIS:6:".$config['mono_font']." --font-render-mode normal "; }
-  $hostname = gethostbyid($device);
+  $hostname = get_device_by_device_id($device);
   $iter = "1";
   $sql = mysql_query("SELECT * FROM storage where storage_id = '$id'");
   $options .= "COMMENT:\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Size\ \ \ \ \ \ Used\ \ \ \ %age\l";
   while($fs = mysql_fetch_array($sql)) {
-    $hostname = gethostbyid($fs['device_id']);
+    $hostname = get_device_by_device_id($fs['device_id']);
     if($iter=="1") {$colour="CC0000";} elseif($iter=="2") {$colour="008C00";} elseif($iter=="3") {$colour="4096EE";
     } elseif($iter=="4") {$colour="73880A";} elseif($iter=="5") {$colour="D01F3C";} elseif($iter=="6") {$colour="36393D";
     } elseif($iter=="7") {$colour="FF0084"; $iter = "0"; }

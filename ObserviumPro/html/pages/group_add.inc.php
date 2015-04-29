@@ -33,7 +33,7 @@ include($config['html_dir']."/includes/group-navbar.inc.php");
     foreach (array('entity_type', 'group_name', 'group_descr',
                    'assoc_device_conditions', 'assoc_entity_conditions') as $var)
     {
-      if (!isset($_POST[$var]) || strlen($_POST[$var]) == '0') { echo("丢失需求数据.</div>"); break 2; }
+      if (!isset($vars[$var]) || strlen($vars[$var]) == '0') { echo("Missing required data.</div>"); break 2; }
     }
 
     $group_array = array();

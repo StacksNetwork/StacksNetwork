@@ -18,7 +18,7 @@ if ($isAdmin) {
     if (bill_permitted($customers['entity_id'])) {
       $customer = dbFetchRow("SELECT * FROM `users` WHERE `user_id` = ? ORDER BY `user_id`", array($customers['user_id']));
       $name     = (empty($customer['realname']) ? $customer['username'] : $customer['realname']);
-      $select   = (($_POST['billinguser'] == $customer['user_id']) ? " selected" : "");
+      $select   = (($vars['billinguser'] == $customer['user_id']) ? " selected" : "");
       $users[$customer['user_id']] = $name;
     }
   }

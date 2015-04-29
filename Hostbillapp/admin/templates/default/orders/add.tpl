@@ -14,7 +14,7 @@
                     {include file='orders/ajax.add.tpl' }
                 </div>
 
-                <h1>订单内容</h1>
+                <h1>Order items</h1>
                 <form action="?cmd={$cmd}&action={$action}&make=add" method="post" onsubmit="order.edit(this); return false;">
                     <input type="hidden" value="{$draft_id}" class="draft_id" name="id" />
                     <table width="100%" class="ordertable" cellpadding="3" cellspacing="0" border="0" >
@@ -39,7 +39,7 @@
                         <a class="menuitm" href="?cmd={$cmd}&action={$action}&id={$draft_id}" >{$lang.revertchanges}</a>
                         <a class="menuitm menul" href="?cmd={$cmd}&action={$action}&id={$draft.id}&make=delete" onclick="return confirm('{$lang.deleteorderconfirm}');" ><span style="color:red">{$lang.deldraft}</span></a>    
                         &nbsp;<small>{$lang.whenfinished}</small>
-                        <a class="menuitm" href="?cmd={$cmd}&action={$action}&id={$draft.id}&make=create" onclick="return order.confirm_unsaved('有一些修改内容尚未保存, 您是否要继续?')" >{$lang.generatefromdraft}</a>
+                        <a class="menuitm" href="?cmd={$cmd}&action={$action}&id={$draft.id}&make=create" onclick="return order.confirm_unsaved('There are some unsaved changes, do you want to continue?')" >{$lang.generatefromdraft}</a>
                 
 
                         <div class="order_price right">{$draft.price.cost|price:$draft.currency}</div>
@@ -47,11 +47,11 @@
                     </div>
                 </form>
                 
-                <h1>添加新内容</h1>
+                <h1>Add new item</h1>
 
                 <ul id="tabbedmenu" class="tabs">
-                    <li class="tpicker active"><a onclick="return false" href="#tab1">新增的服务</a></li>
-                    <li class="tpicker"><a onclick="return false" href="#tab2">现有的服务</a> </li>
+                    <li class="tpicker active"><a onclick="return false" href="#tab1">New Services</a></li>
+                    <li class="tpicker"><a onclick="return false" href="#tab2">Existing Services</a> </li>
                 </ul>
                 <div class="tab_container">
                     <form class="tab" action="?cmd={$cmd}&action={$action}&make=add" method="post" onsubmit="order.additem(this); return false;">
@@ -59,7 +59,7 @@
                         <table width="100%" class="draft-input" cellpadding="3" cellspacing="0" border="0" >
                             <tbody>
                                 <tr >
-                                    <td style="width:160px">选择一个产品</td>
+                                    <td style="width:160px">Select a product</td>
                                     <td>
                                         <select class="inp" style="min-width:160px" onchange="order.list_items(this)" name="items">
                                             <option value="service">{$lang.none}</option>
@@ -79,7 +79,7 @@
                         <table width="100%" class="draft-input" cellpadding="3" cellspacing="0" border="0" >
                             <tbody>
                                 <tr >
-                                    <td style="width:160px">选择客户服务</td>
+                                    <td style="width:160px">Select client service</td>
                                     <td>
                                         <select class="inp client_services" style="min-width:160px" onchange="return order.load_service(this);" name="service">
                                             <option value="0">{$lang.none}</option>
@@ -93,7 +93,7 @@
                         </table>
                     </form>
                 </div>
-                <script type="text/javascript" src="{$template_dir}js/order.js"></script>
+                <script type="text/javascript" src="{$template_dir}js/order.js?v={$hb_version}"></script>
                 {literal}
                     <script type="text/javascript">
                         {/literal}

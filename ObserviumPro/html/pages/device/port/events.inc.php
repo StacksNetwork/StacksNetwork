@@ -14,8 +14,11 @@
 // Pagination
 $vars['pagination'] = TRUE;
 
+$vars['entity'] = $port['port_id'];
+$vars['entity_type'] = "port";
+
 print_events($vars);
 
-$pagetitle[] = "事件";
+$page_title[] = "事件";
 
 // EOF

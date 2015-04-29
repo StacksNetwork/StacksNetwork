@@ -1,6 +1,6 @@
-<b>排队账单上的物品</b><br/>
+<b>账单队列内容</b><br/>
 {if !$items}
-    <em>该客户尚未有任何在队列中的账单</em>
+    <em>该客户没有任何账单队列</em>
 {else}
     <ul style="border:solid 1px #ddd;border-bottom:none;margin-bottom:10px" id="grab-sorter" >
         {foreach from=$items item=f}
@@ -16,7 +16,7 @@
                             </td>
                             <td style="width: 30%">
                                 {if !$f.rel_id}
-                                    for any service
+                                    对于任意服务
                                 {else}
                                     {foreach from=$services item=service}
                                         {if $f.rel_id==$service.id}
@@ -27,7 +27,7 @@
                                 {/if}
                             </td>
                             <td width="20" >
-                                <a onclick=" if(confirm('您确定需要删除该产品吗?')) return itemqueue.del('{$f.id}'); return false;" class="delbtn" href="#">delete</a>
+                                <a onclick=" if(confirm('您确定要删除该内容吗?')) return itemqueue.del('{$f.id}'); return false;" class="delbtn" href="#">删除</a>
                             </td>
                         </tr>
                     </table>
@@ -38,15 +38,15 @@
 {/if}
 <div id="itemqueueform" style="display:none; background: white">
     <div style="padding: 5px">
-        <h1>添加新的商品队列</h1>
+        <h1>添加新内容到队列</h1>
         <table cellpadding="5" cellspacing="0" style="width: 100%">
             <tr>
                 <td align="right" width="160"><strong>{$lang.Description}</strong></td>
-                <td><input type="text" name="queueitem[description]" class="inp" placeholder="商品名称与介绍"  style="width:370px;"/></td>
+                <td><input type="text" name="queueitem[description]" class="inp" placeholder="内容名称与说明"  style="width:370px;"/></td>
             </tr>
             <tr>
                 <td align="right" width="160"><strong>{$lang.Note}</strong></td>
-                <td><textarea name="queueitem[note]" class="inp" placeholder="简单的介绍该商品. 这将会在账单中显示" style="width:370px; height:4em"></textarea></td>
+                <td><textarea name="queueitem[note]" class="inp" placeholder="对该内容进行简短的说明. 这将会被标注到账单备注" style="width:370px; height:4em"></textarea></td>
             </tr>
             <tr>
                 <td align="right" ><strong>{$lang.price}</strong></td>
@@ -67,7 +67,7 @@
                 </td>
             </tr>
             <tr>
-                <td align="right"  ><strong>添加服务到下一次账单</strong></td>
+                <td align="right"  ><strong>增加对服务下一个账单</strong></td>
                 <td >
                     <select name="queueitem[rel_id]" class="inp">
                         <option value="0">{$lang.Any}</option>
@@ -102,7 +102,7 @@
     </div>
 </div>
 {if !$forbidAccess.editClients}
-<a href="#" class="menuitm right greenbtn" onclick="return itemqueue.form()"><span>添加产品</span></a>
+<a href="#" class="menuitm right greenbtn" onclick="return itemqueue.form()"><span>添加内容</span></a>
 {/if}
 <div class="clear"></div>
 {literal}

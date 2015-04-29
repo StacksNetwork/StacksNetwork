@@ -58,7 +58,7 @@ $vars['pagination'] = TRUE;
 // Print addresses
 print_addresses($vars);
 
-$pagetitle[] = "IPv6地址搜索";
+$page_title[] = "IPv6地址搜索";
 
 ?>
 

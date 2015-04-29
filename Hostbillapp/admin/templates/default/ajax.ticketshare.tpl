@@ -82,19 +82,19 @@
         <div class="shownice tabb" style="margin:2em 10px; padding:1em"> 
         <strong>Sharing url:</strong>
         <input type="text" value="{$sharing_url}" readonly="readonly" style="background:none;border:none; width:50%" onclick="this.select();"></br>
-        <small>您的服务器没有开启 mod_rewrite 让你可以接收任何URL 或 接受协议 <a target="_blank" class="external" href="http://wiki.hostbillapp.com/index.php?title=Ticket_Sharing_requirements">工单共享要求</a></small>
+        <small>Your server has to have mod_rewrite enabled for you to receive any invites or be able to respond to accepted agreements <a target="_blank" class="external" href="http://wiki.hostbillapp.com/index.php?title=Ticket_Sharing_requirements">Ticket sharing requirements</a></small>
         </div>
     </div>  
     {* <strong>{$lang.nothingtodisplay}</strong> *}
 {else}
     <div class="blank_state blank_services">
         <div class="blank_info">
-            <h1>连接多家厂商 & 协助部门</h1>
-           您可以通过系统轻松简单的连接多个供应商或者服务协助部门.<br />
-            如果你想邀请您的协助部门请共享下面的链接 {$sharing_url}
+            <h1>Connect multiple brands & help desks</h1>
+            You can connect multiple HostBill ticketing systems to colaborate on tickets with partner/sub-companies easly.<br />
+            If you want to be invited your helpdesk sharing url is {$sharing_url}
             <div class="clear"></div>
             <a style="margin-top:10px" href="?cmd={$cmd}&action=invite" class="new_add new_menu">
-                <span>邀请其它协助部门</span>
+                <span>Invite other help desks</span>
             </a>
             <div class="clear"></div>
         </div>

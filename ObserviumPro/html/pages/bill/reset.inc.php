@@ -41,7 +41,7 @@ $url    = generate_url(array('page' => 'bill', 'bill_id' => $bill_id, 'view' => 
           <div class="controls">
             <label class="checkbox">
               <input type="checkbox" name="confirm" value="mysql" onchange="javascript: showWarning();">
-              Yes, please reset MySQL data for all interfaces on this bill!
+              是的，请重置MySQL数据在这个账单的所有网络接口!
             </label>
 <!--            <label class="checkbox" rel="tooltip-left" title="This option isn't available at this time">
               <input disabled type="checkbox" name="confirm" value="rrd" onchange="javascript: showWarning();">
@@ -52,7 +52,7 @@ $url    = generate_url(array('page' => 'bill', 'bill_id' => $bill_id, 'view' => 
         </div>
         <div class="alert alert-message" id="warning" style="display: none;">
           <h4 class="alert-heading"><i class="icon-warning-sign"></i> 警告!</h4>
-          Are you sure you want to reset all <strong>MySQL</strong> and/or <strong>RRD</strong> data for all interface on this bill?
+          您确定要重 <strong>MySQL</strong> 和/或 <strong>RRD</strong> 数据在这个账单的所有网络接口?
         </div>
       </fieldset>
       <div class="form-actions">

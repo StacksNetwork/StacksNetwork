@@ -1,7 +1,7 @@
 {if $changes}
-<script type="text/javascript" src="{$template_dir}js/facebox/facebox.js"></script>
+<script type="text/javascript" src="{$template_dir}js/facebox/facebox.js?v={$hb_version}"></script>
  <link rel="stylesheet" href="{$template_dir}js/facebox/facebox.css" type="text/css" />
-<b>客户配置文件修改</b>
+<b>客户资料更改</b>
 <ul style="border:solid 1px #ddd;border-bottom:none;margin-bottom:10px" id="grab-sorter" class="fs11">
     {foreach from=$changes item=f name=fl}
 <li style="background:#ffffff; {if $smarty.foreach.fl.iteration>4}display:none;{/if}"><div style="border-bottom:solid 1px #ddd;">

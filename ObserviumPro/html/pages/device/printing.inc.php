@@ -13,7 +13,7 @@
 
 echo('<table class="table table-condensed table-striped">');
 
-$graph_title = "Toner";
+$graph_title = "硒鼓";
 $graph_type = "device_toner";
 
 include("includes/print-device-graph.php");
@@ -32,14 +32,14 @@ unset($graph_array);
 
 if (get_dev_attrib($device, "imagingdrum_c_oid"))
 {
-  $graph_title = "Imaging Drums";
+  $graph_title = "成像鼓";
   $graph_type = "device_imagingdrums";
 
   include("includes/print-device-graph.php");
 }
 elseif (get_dev_attrib($device, "imagingdrum_oid"))
 {
-  $graph_title = "Imaging Drum";
+  $graph_title = "成像鼓";
   $graph_type = "device_imagingdrum";
 
   include("includes/print-device-graph.php");
@@ -49,7 +49,7 @@ unset($graph_array);
 
 if (get_dev_attrib($device, "fuser_oid"))
 {
-  $graph_title = "Fuser";
+  $graph_title = "融合器";
   $graph_type = "device_fuser";
 
   include("includes/print-device-graph.php");
@@ -59,7 +59,7 @@ unset($graph_array);
 
 if (get_dev_attrib($device, "transferroller_oid"))
 {
-  $graph_title = "Transfer Roller";
+  $graph_title = "传送辊";
   $graph_type = "device_transferroller";
 
   include("includes/print-device-graph.php");
@@ -69,7 +69,7 @@ unset($graph_array);
 
 if (get_dev_attrib($device, "wastebox_oid"))
 {
-  $graph_title = "Waste Toner Box";
+  $graph_title = "废碳粉盒";
   $graph_type = "device_wastebox";
 
   include("includes/print-device-graph.php");
@@ -77,6 +77,6 @@ if (get_dev_attrib($device, "wastebox_oid"))
 
 echo('</table>');
 
-$pagetitle[] = "Printing";
+$page_title[] = "打印";
 
 ?>

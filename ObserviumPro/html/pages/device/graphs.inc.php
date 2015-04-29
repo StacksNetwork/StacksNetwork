@@ -18,8 +18,10 @@ $link_array = array('page'    => 'device',
                     'device'  => $device['device_id'],
                     'tab' => 'graphs');
 
-foreach (dbFetchRows("SELECT * FROM `device_graphs` WHERE `device_id` = ? AND `enabled` = 1 ORDER BY `graph`", array($device['device_id'])) as $entry)
+foreach ($device['graphs'] as $entry)
 {
+  if (isset($entry['enabled']) && !$entry['enabled']) { continue; } // Skip disabled graphs
+
   $section = $config['graph_types']['device'][$entry['graph']]['section'];
   if (in_array($section, $config['graph_sections']))
   {
@@ -61,6 +63,6 @@ foreach ($graph_enable as $graph => $entry)
 
 echo('</table>');
 
-$pagetitle[] = "图像";
+$page_title[] = "图像";
 
 // EOF

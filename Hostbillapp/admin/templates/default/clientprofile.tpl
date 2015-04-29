@@ -32,7 +32,7 @@
     <input type="hidden" value="{$parent.id}" name="parent_id" id="parent_id"/>
     <div id="ticketbody">
 	{if $action=='showprofile'}
-        <h1>#{$parent.id} <a href="?cmd=clients&action=show&id={$parent.id}">{$parent.firstname} {$parent.lastname}</a> {$lang.contact}: {$client.firstname} {$client.lastname}</h1>
+        <h1>#{$parent.id} <a href="?cmd=clients&action=show&id={$parent.id}">{$parent.lastname} {$parent.firstname}</a> {$lang.contact}: {$client.lastname} {$client.firstname}</h1>
         <div class="ticketmsg ticketmain" id="client_tab">
             <div class="slide" style="display:block">
                 <div class="right replybtn tdetail" id="tdetail">
@@ -122,7 +122,7 @@
         </div>
     </div>
     {elseif $action=='newprofile'}
-			<h1>#{$parent.id} <a href="?cmd=clients&action=show&id={$parent.id}">{$parent.firstname} {$parent.lastname}</a> &raquo;  {$lang.addcontact}</h1>
+			<h1>#{$parent.id} <a href="?cmd=clients&action=show&id={$parent.id}">{$parent.lastname} {$parent.firstname}</a> &raquo;  {$lang.addcontact}</h1>
 			<input type="hidden" name="id" value="{$parent.id}" />
 			<div id="client_tab" class="ticketmsg ticketmain">
 			<table cellspacing="1" cellpadding="0" width="100%">

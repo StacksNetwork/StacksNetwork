@@ -11,7 +11,7 @@
  *
  */
 
-$app_graphs['default'] = array('freeradius_authentication' => 'FreeRADIUS Authentication',
-                'freeradius_accounting' => 'FreeRADIUS Accounting');
+$app_graphs['default'] = array('freeradius_authentication' => 'FreeRADIUS验证',
+                'freeradius_accounting' => 'FreeRADIUS统计');
 
 // EOF

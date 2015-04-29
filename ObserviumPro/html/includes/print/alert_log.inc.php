@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage web
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -53,17 +53,15 @@ function print_alert_log($vars)
 
     if (!$events['short'])
     {
-      $string .= '  <thead>' . PHP_EOL;
-      $string .= '    <tr>' . PHP_EOL;
-      $string .= '      <th style="width: 1px;"></th>' . PHP_EOL;
-      $string .= '      <th>日期</th>' . PHP_EOL;
-      if ($list['device'])   { $string .= '      <th>设备</th>' . PHP_EOL; }
-      if ($list['alert_test_id']) { $string .= '       <th>报警检测</th>' . PHP_EOL; }
-      if ($list['entity'])   { $string .= '      <th>实体</th>' . PHP_EOL; }
-      $string .= '      <th>信息</th>' . PHP_EOL;
-      $string .= '      <th>状态</th>' . PHP_EOL;
-      $string .= '    </tr>' . PHP_EOL;
-      $string .= '  </thead>' . PHP_EOL;
+      $cols = array();
+      $cols[]       = array(NULL,            'class="state-marker"');
+      $cols['date'] = array('Date',          'style="width: 160px"');
+      if ($list['device'])        { $cols['device']        = '设备'; }
+      if ($list['alert_test_id']) { $cols['alert_test_id'] = '报警检测'; }
+      if ($list['entity'])        { $cols['entity']        = '单位'; }
+      $cols[]         = '信息';
+      $cols['status'] = '状态';
+      $string .= get_table_header($cols); // , $vars); // Actually sorting is disabled now
     }
     $string   .= '  <tbody>' . PHP_EOL;
 
@@ -77,27 +75,27 @@ function print_alert_log($vars)
   // Set colours and classes based on the status of the alert
   if ($entry['log_type'] == 'OK')
   {
-    $entry['class']  = "green"; $entry['table_tab_colour'] = "#009900"; $entry['html_row_class'] = "recovery";
+    $entry['class']  = "green";  $entry['html_row_class'] = "recovery";
   } else if ($entry['log_type'] == 'RECOVER_NOTIFY') {
-    $entry['class']  = "green"; $entry['table_tab_colour'] = "#194b7f"; $entry['html_row_class'] = "info";
+    $entry['class']  = "green";  $entry['html_row_class'] = "info";
   } else if ($entry['log_type'] == 'ALERT_NOTIFY') {
-    $entry['class']  = "red"; $entry['table_tab_colour'] = "#cc0000"; $entry['html_row_class'] = "error";
+    $entry['class']  = "red";    $entry['html_row_class'] = "error";
   } elseif($entry['log_type'] == 'FAIL') {
-    $entry['class']  = "red"; $entry['table_tab_colour'] = "#cc0000"; $entry['html_row_class'] = "error";
+    $entry['class']  = "red";    $entry['html_row_class'] = "error";
   } elseif($entry['log_type'] == 'FAIL_DELAYED') {
-    $entry['class']  = "purple"; $entry['table_tab_colour'] = "#ff6600"; $entry['html_row_class'] = "warning";
+    $entry['class']  = "purple"; $entry['html_row_class'] = "warning";
   } elseif($entry['log_type'] == 'FAIL_SUPPRESSED') {
-    $entry['class']  = "purple"; $entry['table_tab_colour'] = "#740074"; $entry['html_row_class'] = "suppressed";
+    $entry['class']  = "purple"; $entry['html_row_class'] = "suppressed";
   } elseif($entry['log_type'] == 'RECOVER_SUPPRESSED') {
-    $entry['class']  = "purple"; $entry['table_tab_colour'] = "#740074"; $entry['html_row_class'] = "suppressed";
+    $entry['class']  = "purple"; $entry['html_row_class'] = "suppressed";
   } else {
     // Anything else set the colour to grey and the class to disabled.
-    $entry['class']  = "gray"; $entry['table_tab_colour'] = "#555555"; $entry['html_row_class'] = "disabled";
+    $entry['class']  = "gray"; $entry['html_row_class'] = "disabled";
   }
 
       $string .= '  <tr class="'.$entry['html_row_class'].'">' . PHP_EOL;
 
-      $string .= '<td style="width: 1px; background-color: '.$entry['table_tab_colour'].'; margin: 0px; padding: 0px"></td>' . PHP_EOL;
+      $string .= '<td class="state-marker"></td>' . PHP_EOL;
 
       if ($events['short'])
       {
@@ -105,7 +103,7 @@ function print_alert_log($vars)
         $timediff = $GLOBALS['config']['time']['now'] - strtotime($entry['timestamp']);
         $string .= overlib_link('', formatUptime($timediff, "short-3"), format_timestamp($entry['timestamp']), NULL) . '</td>' . PHP_EOL;
       } else {
-        $string .= '    <td style="width: 160px">';
+        $string .= '    <td>';
         $string .= format_timestamp($entry['timestamp']) . '</td>' . PHP_EOL;
       }
 
@@ -120,15 +118,16 @@ function print_alert_log($vars)
       }
       if ($list['alert_test_id']) { $string .= '     <td><a href="'. generate_url(array('page' => 'alert_check', 'alert_test_id' => $alert_rule['alert_test_id'])). '">'. $alert_rule['alert_name']. '</a></td>'; }
 
-      if ($list['entity']) {
-       $string .= '    <td>';
-       if ($list['entity_type']) { $string .= '<i class="' . $config['entities'][$entry['entity_type']]['icon'] . '"></i> '; }
-       $string .= '    ' . generate_entity_link($entry['entity_type'], $entry['entity_id']) . '</td>' . PHP_EOL;
+      if ($list['entity'])
+      {
+        $string .= '    <td>';
+        if ($list['entity_type']) { $string .= '<i class="' . $config['entities'][$entry['entity_type']]['icon'] . '"></i> '; }
+        $string .= '    ' . generate_entity_link($entry['entity_type'], $entry['entity_id']) . '</td>' . PHP_EOL;
       }
 
-      $string .= '<td>' . htmlspecialchars($entry['message']) . '</td>' . PHP_EOL;
+      $string .= '<td>' . escape_html($entry['message']) . '</td>' . PHP_EOL;
 
-      $string .= '<td>' . htmlspecialchars($entry['log_type']) . '</td>' . PHP_EOL;
+      $string .= '<td>' . escape_html($entry['log_type']) . '</td>' . PHP_EOL;
       $string .= '  </tr>' . PHP_EOL;
     }
 

@@ -9,20 +9,22 @@
  * @package    observium
  * @subpackage billing
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 chdir(dirname($argv[0]));
+$scriptname = basename($argv[0]);
 
-include("includes/defaults.inc.php");
-include("config.php");
-include("includes/definitions.inc.php");
+include_once("includes/defaults.inc.php");
+include_once("config.php");
+
+$options = getopt("rd");
+
+include_once("includes/definitions.inc.php");
 include("includes/functions.inc.php");
 
-$options = getopt("r");
-
-if (isset($options['r'])) { echo("Clearing history table.\n"); dbQuery("TRUNCATE TABLE `bill_history`"); }
+if (isset($options['r'])) { print_message("Clearing history table."); dbQuery("TRUNCATE TABLE `bill_history`"); }
 
 foreach (dbFetchRows("SELECT * FROM `bills` ORDER BY `bill_id`") as $bill)
 {

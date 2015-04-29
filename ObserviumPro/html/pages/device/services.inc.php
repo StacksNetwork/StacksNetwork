@@ -67,6 +67,6 @@ else
    echo("无服务");
 }
 
-$pagetitle[] = "服务";
+$page_title[] = "服务";
 
 // EOF

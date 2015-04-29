@@ -13,10 +13,10 @@
 
 echo('<table class="table table-hover table-bordered table-striped table-condensed table-rounded">');
 echo('<thead><tr>
-        <th>Server Name</th>
-        <th>Status</th>
-        <th>Operating System</th>
-        <th>Memory</th>
+        <th>服务器名称</th>
+        <th>状态</th>
+        <th>操作系统</th>
+        <th>内存</th>
         <th>CPU</th>
       </tr></thead>');
 
@@ -27,6 +27,6 @@ foreach (dbFetchRows("SELECT * FROM vminfo WHERE device_id = ? ORDER BY vmwVmDis
 
 echo("</table>");
 
-$pagetitle[] = "Virtual Machines";
+$page_title[] = "虚拟机";
 
 // EOF

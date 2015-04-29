@@ -38,10 +38,10 @@
                         <div class="right hasnotes ticketflag-note" title="包含管理员备注的工单"></div>
                     {/if}
                     {if $ticket.flags & 2}
-                        <div class="right ticketflag-bill" title="包含额外费用的服务工单"></div>
+                        <div class="right ticketflag-bill" title="额外付费的工单"></div>
                     {/if}
                     {if $ticket.flags & 4}
-                        <div class="right ticketflag-writing" title="另一位工作人员已经开始撰写这份工单的回复"></div>
+                        <div class="right ticketflag-writing" title="另一名员工开始写这分工单的回复"></div>
                     {/if}
                     {if $ticket.tags}
                         <div class="right inlineTags">
@@ -140,7 +140,7 @@
 
                                 <input type="checkbox" onchange="$(this).next().slideToggle(); if(!$('#bulk_status input').val().length) dropdown_handler('Answered', $('#bulk_status'), null, $('#bulk_status_m').find('a[href=Answered]').html());" name="bulk_reply"/> {$lang.addreply} 
                                 <textarea style="width: 99%; display: none" name="bulk_message"></textarea>
-                                <a name="bulk_actions" rel=".bottom-fixed form" href="#" class="submiter menuitm greenbtn" onclick="$(this).parents('.bottom-fixed').slideUp('fast');">Apply to selected</a>
+                                <a name="bulk_actions" rel=".bottom-fixed form" href="#" class="submiter menuitm greenbtn" onclick="$(this).parents('.bottom-fixed').slideUp('fast');">应用选定</a>
 
                                 <ul id="bulk_macro_m" class="ddmenu" load="?cmd=predefinied&action=getmacros">
                                     <li><a href="0">{$lang.none}</a></li>
@@ -171,7 +171,7 @@
                                 <ul id="bulk_owner_m" class="ddmenu" >
                                     <li><a href="0">{$lang.nochange}</a></li>
                                         {foreach from=$staff_members item=stfmbr}
-                                        <li><a href="{$stfmbr.id}">{$stfmbr.firstname} {$stfmbr.lastname}</a></li>
+                                        <li><a href="{$stfmbr.id}">{$stfmbr.lastname} {$stfmbr.firstname}</a></li>
                                         {/foreach}
                                 </ul>
                                 <ul id="bulk_share_m" class="ddmenu">
@@ -285,7 +285,7 @@
                 <div id="blank_state" class="blank_state blank_news" style="padding:0 15px ">
                     <div class="blank_info">
                         {if !$enableFeatures.support}
-                            <h1>Feature not enabled on your system</h1>
+                            <h1>在您的系统里功能未启用</h1>
                         {elseif $assigned}
                             <h1>{$lang.nothingtodisplay}</h1>
                             {$lang.nothing_assigned}
@@ -372,7 +372,7 @@
         {if $tview}
             <a href="?cmd={$cmd}&tview={$tview.id}&resetfilter=1" {if $currentfilter}style="display:inline"{/if} class="freseter">{$lang.filterisactive}</a>
         {else}
-            <a href="?cmd=ticketviews&action=fromfilter"  {if $currentfilter}style="display:inline"{/if} ><b>Create View</b></a>
+            <a href="?cmd=ticketviews&action=fromfilter"  {if $currentfilter}style="display:inline"{/if} ><b>创建视图</b></a>
             <a href="?cmd=tickets&resetfilter=1"  {if $currentfilter}style="display:inline"{/if}  class="freseter">{$lang.filterisactive}</a>
         {/if}
     </div>
@@ -414,19 +414,19 @@
                     <td>{$lang.tags}</td>
                     <td >
                         <input type="text" value="{$currentfilter.tag|escape}" size="40" name="filter[tag]" style="width:200px;" /> 
-                        <a href="#" id="tagdescr" class="vtip_description" title="在查询内容时您可以使用 &quot;and&quot;, &quot;or&quot;, &quot;not&quot; 等关键词, default is &quot;and&quot;, example: <br> &bullet;&nbsp;tag1 tag2 or tag3 &raquo; (tag1 and tag2) or tag3"></a>
+                        <a href="#" id="tagdescr" class="vtip_description" title="您可以使用 &quot;和&quot;, &quot;或&quot;, &quot;不是&quot; 关键词当过滤标签时, 默认为 &quot;和&quot;, 例如: <br> &bullet;&nbsp;tag1 tag2 或 tag3 &raquo; (tag1 和 tag2) 或 tag3"></a>
                         <script type="text/javascript">$("#tagdescr").vTip();</script>
                         {*}<select name="filter[_tag]"  style="width:56px;">
                             <option {if $currentfilter._tag=='any'}selected="selected"{/if} value="any">任意</option>
-                            <option {if $currentfilter._tag=='all'}selected="selected"{/if} value="all">全部</option>
+                            <option {if $currentfilter._tag=='all'}selected="selected"{/if} value="all">所有</option>
                         </select>{*}
                     </td>
-                    <td>仅未读</td>
+                    <td>Unread only</td>
                     <td ><input type="checkbox" name="filter[admin_read]" {if $currentfilter.body=="0"}checked="checked"{/if} value="0" /></td>
 
                 </tr>
                 <tr>
-                    <td>分配给</td>
+                    <td>Assigned to</td>
                     <td >
                         <select name="filter[owner_id]" >
                             <option value=""> - </option>
@@ -471,7 +471,7 @@
                 </a>
                 {if count($staff_members) > 1}
                     <a class="menuitm setStatus menuc" id="hd6" onclick="return false;" href="#" >
-                        <span class="morbtn">{if $ticket.owner_id}{foreach from=$staff_members item=stfmbr}{if $stfmbr.id==$ticket.owner_id}Assigned to {$stfmbr.lastname} {$stfmbr.firstname}{break}{/if}{/foreach}{else}分配给{/if}</span>
+                        <span class="morbtn">{if $ticket.owner_id}{foreach from=$staff_members item=stfmbr}{if $stfmbr.id==$ticket.owner_id}分配给 {$stfmbr.lastname} {$stfmbr.firstname}{break}{/if}{/foreach}{else}分配给{/if}</span>
                     </a>
                     <a class="menuitm setStatus menuc" id="hd7" onclick="return false;" href="#" >
                         <span class="morbtn">订阅</span>
@@ -495,7 +495,7 @@
                 {if count($staff_members) > 1}
                     <ul class="ddmenu" id="hd6_m">
                         {if $ticket.owner_id}
-                            <li><a href="assign:0">删除分配</a></li>
+                            <li><a href="assign:0">移除分配</a></li>
                         {/if}
                     {foreach from=$staff_members item=stfmbr}
                         <li><a href="assign:{$stfmbr.id}">{$stfmbr.lastname} {$stfmbr.firstname}</a></li>
@@ -503,11 +503,11 @@
                     </ul>
                     <ul class="ddmenu" id="hd7_m">
                         {if $ticket.subscriptions}
-                            <li><a href="assign:0:1">删除所有</a></li>
+                            <li><a href="assign:0:1">移除所有</a></li>
                             {/if}
                             {foreach from=$staff_members item=stfmbr}
                                 {if $stfmbr.id != $ticket.owner_id}
-                                    <li><a href="assign:{$stfmbr.id}:1{if in_array($stfmbr.id,$ticket.subscriptions)}:1{/if}">{if in_array($stfmbr.id,$ticket.subscriptions)}删除{else}添加{/if} {$stfmbr.lastname} {$stfmbr.firstname}</a></li>
+                                    <li><a href="assign:{$stfmbr.id}:1{if in_array($stfmbr.id,$ticket.subscriptions)}:1{/if}">{if in_array($stfmbr.id,$ticket.subscriptions)}移除{else}添加{/if} {$stfmbr.firstname} {$stfmbr.lastname}</a></li>
                                 {/if}
                             {/foreach}
                     </ul>
@@ -579,10 +579,10 @@
                         <div>
                             <span class="left" style="padding-top:5px;padding-left:5px;">
                                 <form action="?cmd=newclient" method="post" target="_blank">
-                                    <a href="#" onclick="$(this).parent().submit(); return false;">注册为新客户</a>
+                                    <a href="#" onclick="$(this).parent().submit(); return false;">注册未新用户</a>
                                     <input type="hidden" name="email" value="{$ticket.email}" />
-                                    <input type="hidden" name="firstname" value="{$ticket.name|regex_replace:"/^([^ ]+)\s.+$/":'$1'|escape}" />
                                     <input type="hidden" name="lastname" value="{$ticket.name|regex_replace:"/^[^ ]+\s?/":'$1'|escape}" />
+                                    <input type="hidden" name="firstname" value="{$ticket.name|regex_replace:"/^([^ ]+)\s.+$/":'$1'|escape}" />
                                     <input type="hidden" name="ticket_id" value="{$ticket.id}" />
                                 </form>
                             </span>
@@ -610,7 +610,7 @@
                         
                         <div class="tdetails auto-height" style="float: right; border-left: 1px solid #bbb; background: #f7f7f7; padding: 5px; margin: -5px -5px -5px 15px; width: 230px;">
                             <a href="#" class="editTicket fs11 right" onclick="$(this).toggle().next().toggle()">编辑详情</a>
-                            <a href="#" class="editTicket editbtn none right" onclick="$(this).toggle().prev().toggle()">Save details</a>
+                            <a href="#" class="editTicket editbtn none right" onclick="$(this).toggle().prev().toggle()">保存详情</a>
                             <table border="0" width="100%">
                                 <tr>
                                     <td align="right" class="light" style="min-width: 90px">{$lang.department}:</td>
@@ -670,7 +670,7 @@
                                     </td>
                                 </tr>
                                 <tr {if !$ticket.cc}style="display:none"{/if} class="sh_row">
-                                    <td align="right" class="light">抄送</td>
+                                    <td align="right" class="light">抄送CC</td>
                                     <td align="left">
                                         <div class="fold-text">{if $ticket.cc}{$ticket.cc}{else}{$lang.none}{/if}</div>
                                         <input name="cc" value="{$ticket.cc}"  style="display: none; width: 250px" class="inp"/>
@@ -730,9 +730,9 @@
                         <div class="right">
                             {$lang.opened} {$ticket.date|dateformat:$date_format}
  
-                            {if $ticket.type == 'Client'} 正在使用控制台, 已登录
-                            {elseif $ticket.type == 'Unregistered'} 来自前台, 未登录
-                            {elseif $ticket.type != 'Admin'} 通过Email
+                            {if $ticket.type == 'Client'} using client area, logged in
+                            {elseif $ticket.type == 'Unregistered'} from client area, not logged in
+                            {elseif $ticket.type != 'Admin'} via Email
                             {/if}
                             &nbsp;&nbsp;&nbsp;
                         </div>
@@ -787,9 +787,9 @@
                             <div class="right">
                                 {$lang.replied} {$reply.date|dateformat:$date_format} <span style="color:#555">id: {$reply.id}</span>
                                 <span style="display: none;">
-                                    {if $reply.type == 'Client'} 正在使用控制台, 已登录
-                                    {elseif $reply.type == 'Unregistered'} 来自前台, 没有登录
-                                    {elseif $reply.type != 'Admin'} 通过Email
+                                    {if $reply.type == 'Client'} 使用客户中心, 需要登录
+                                    {elseif $reply.type == 'Unregistered'} 来自客户中心, 无需登录
+                                    {elseif $reply.type != 'Admin'} 通过 Email
                                     {/if}
                                 </span>
                                 &nbsp;&nbsp;&nbsp;
@@ -821,7 +821,7 @@
             <div style="{if !($ticket.flags & 1)}display:none;{/if}" id="ticketnotebox" >
                 <div class="hr-info">
                     <span>
-                        注意 <a title="仅部门分配的备注信息才能被本部门的管理员和员工所见. 客户不会看到任何您写在这里的内容." class="vtip_description" style="padding-left:16px">&nbsp;</a>
+                        备注 <a title="备注是管理者和被分配该工单的员工给可见的. 客户无法看到您在这里所写的内容." class="vtip_description" style="padding-left:16px">&nbsp;</a>
                     </span>
                 </div>
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" >
@@ -836,7 +836,7 @@
                     <tbody>
                         <tr class="odd">
                             <td style="vertical-align: baseline; white-space: nowrap; padding: 5px">
-                                <script src="{$template_dir}js/fileupload/init.fileupload.js"></script>
+                                <script src="{$template_dir}js/fileupload/init.fileupload.js?v={$hb_version}"></script>
                                 <strong style="">{if $admindata.lastname!='' && $admindata.firstname!=''}{$admindata.firstname} {$admindata.lastname}{else}{$admindata.username}{/if}</strong>
                             </td>
                             <td width="100%">
@@ -848,7 +848,7 @@
                                 <div id="notes_submit" class="notes_submit admin-note-submit">
                                     <input value="{$lang.LeaveNotes}" type="button" id="ticketnotessave">
                                 </div>
-                                <a href="#" class="editbtn" id="ticketnotesfile">Attach file</a>
+                                <a href="#" class="editbtn" id="ticketnotesfile">添加文件</a>
                             </div>
                             </td>
                         </tr>
@@ -859,7 +859,7 @@
            <div style="{if !($ticket.flags & 2)}display:none;{/if}" id="ticketbils" >
                <div class="hr-info">
                     <span>
-                        实时跟踪 & 账单 <a title="您可以在这里为支持服务添加账单. 新的服务内容类似草稿 - 拥有账单权限的员工可以通过它们生成账单." class="vtip_description" style="padding-left:16px">&nbsp;</a>
+                        实时跟踪 & 账单 <a title="您可以在这里添加收费服务工单. 添加了对应项目作为草稿, 以便于执行该工单的人员可以以此生成账单." class="vtip_description" style="padding-left:16px">&nbsp;</a>
                     </span>
                 </div>
                <div class="ticket-msgbox">
@@ -877,7 +877,7 @@
                         <a href="#reply" name="reply" class="active bgo" onclick="return false;"><strong>{$lang.Reply}</strong></a>
                         <a href="#reply" name="notes" class="badd"  onclick="$(this).hide();$('#ticketnotebox').slideDown('fast');$('#ticketnotesarea').focus();return false;" style="{if $ticket.flags & 1}display:none;{/if}">{$lang.LeaveNotes}</a>
                         {if $enableFeatures.supportext}
-                            <a href="#reply" name="notes" class="badd"  onclick="$(this).hide();ticket.getBilling();$('#ticketbils').slideDown('fast'); return false;" style="{if $ticket.flags & 2}display:none;{/if}">Time Tracking & Bills</a>
+                            <a href="#reply" name="notes" class="badd"  onclick="$(this).hide();ticket.getBilling();$('#ticketbils').slideDown('fast'); return false;" style="{if $ticket.flags & 2}display:none;{/if}">实时跟踪 & 账单</a>
                         {/if}
                         <div class="clear"></div>
                     </div>
@@ -927,6 +927,12 @@
                             <div id="attachments"> </div>
                             <br />
 
+
+
+                            <table border="0" cellspacing="0" cellpadding="3" width="100%">
+                                <tr><td width="300">
+
+
                             <table border="0" cellspacing="0" cellpadding="3">
                                 <tr>
                                     <td><strong>{$lang.Setstatus}: </strong></td>
@@ -937,24 +943,35 @@
                                             {/foreach}
                                         </select> 
                                         <strong>&amp;</strong>
-                                        <input type="submit" name="justsend" value="{$lang.Send}" style="font-weight:bold; width: 100px;" id="ticketsubmitter"/>
+                                        <button name="justsend" value="{$lang.Send}" style="font-weight: bold;width: 94px;padding: 10px 20px;font-size: 12px;" id="ticketsubmitter" class=" new_control greenbtn">{$lang.Send}</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: right"><input type="checkbox" name="send_save" onclick="$('label[for=\'replyaddid\']').next().toggle();" id="replyaddid"/> </td>
                                     <td colspan="2">
                                         <label style="float: left; min-width: 180px;line-height: 23px;" for="replyaddid">{$lang.asmacro}</label>
-                                        <label style="display: none">{$lang.Name} <input class="inp" type="text" name="send_save_name" value=""/></label>
+                                        <label style="display: none"><input class="inp" type="text" name="send_save_name" value=""/></label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: right"><input type="checkbox" name="send_save2" onclick="$('label[for=\'addasarticle\']').next().toggle();" id="addasarticle"/> </td>
                                     <td colspan="2">
                                         <label style="float: left; min-width: 180px;line-height: 23px;" for="addasarticle">{$lang.askbarticle}</label>
-                                        <label style="display: none">{$lang.Name} <input class="inp" type="text" name="send_save_name2" value=""/></label>
+                                        <label style="display: none"><input class="inp" type="text" name="send_save_name2" value=""/></label>
                                     </td>
                                 </tr>
                             </table>
+                                    </td>
+                                <td id="ticketwidgetarea" valign="top" style="padding:10px;background:#f5f9ff">
+                                    {foreach from=$ticketwidgets item=ticketwidget}
+                                        <a  class="new_control" href="?cmd={$ticketwidget.module}&ticket_id={$ticket.id}" style="margin:10px 10px 10px 0px;"><span>{$ticketwidget.modname}</span></a>
+                                    {/foreach}
+                                </td>
+                                </tr>
+
+                            </table>
+
+
                             <input type="hidden" id="backredirect" name="brc" value="{$backredirect}" />
                             {securitytoken}
                         </form>
@@ -962,18 +979,10 @@
                 </td>
                 <td valign="top" class="blu" style="padding: 0; width: 10px;">
                     <div style="height: 25px; width: 100%; background: rgb(247, 247, 247);"></div>
-                    <div class="blu">
-                        <div class="gbar" id="rswitcher">
-                            <a href="?cmd=predefinied&action=gettop" class="active d1">{$lang.mymacros}</a>
-                            <a href="?cmd=predefinied&action=browser" class="d2">{$lang.browsemacros}</a>
-                            <a href="?cmd=knowledgebase&action=browser" class="d3">{$lang.kbarticles}</a>
-                            <div class="clear"></div>
-                        </div>
-                        <div id="suggestion">
-                            <div class="d1" style="display: block">Loading...</div>
-                            <div class="d2">Loading...</div>
-                            <div class="d3">Loading...</div>
-                        </div>
+                    <div class="blu" style="width:237px;" id="ticketwidget">
+
+
+
                     </div>
                 </td>
             </tr>
@@ -1000,6 +1009,7 @@
     <form action="?cmd=tickets&action=new" method="post" id="newticketform" enctype="multipart/form-data">
         <input type="hidden" name="make" value="createticket" />
         <input type="hidden" value="new" id="ticket_number" />
+        <input type="hidden" name="useclientname" value="1" />
         <div class="lighterblue" style="padding:5px">
             <table width="100%" cellspacing="2" cellpadding="3" border="0" class="">
                 <tbody>
@@ -1056,7 +1066,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>分配给</td>
+                        <td>Assigned to</td>
                         <td>
                             <select name="owner_id" class="inp">
                                 <option value="0">{$lang.none}</option>
@@ -1143,6 +1153,12 @@
         {securitytoken}
     </form>
     {if $ajax}
+        {literal}
             <script type="text/javascript">bindEvents();bindTicketEvents();</script>
+            {/literal}
     {/if}
+            <script type="text/javascript">
+                    $(document).trigger('HostBill.newticketform');
+
+            </script>
 {/if}

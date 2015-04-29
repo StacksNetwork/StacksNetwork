@@ -12,8 +12,8 @@
         {if !$details}
         <h3>Chat not found</h3>
         {else}
-        <h3 class="left" style="margin-top:0px;">聊天记录 #{$details.id}</h3>
-         <div class="right"><a class="printit" onclick="window.print()" href="javascript:void()">打印</a></div>
+        <h3 class="left" style="margin-top:0px;">Chat transcript #{$details.id}</h3>
+         <div class="right"><a class="printit" onclick="window.print()" href="javascript:void()">Print</a></div>
         <div class="clear"></div>
         <div class="cwrapper">
         <table cellspacing="0" cellpadding="0" border="0" width="100%">
@@ -21,28 +21,28 @@
                     <td width="50%" valign="top" >
                         <table cellspacing="0" cellpadding="0" width="100%" class="bluetable">
                             <tbody><tr>
-                                    <td class="first">主题</td>
-                                    <td>{if $details.subject}{$details.subject}{else}<em>无主题</em>{/if}</td>
+                                    <td class="first">Subject</td>
+                                    <td>{if $details.subject}{$details.subject}{else}<em>No subject</em>{/if}</td>
                                 </tr>
                                 <tr class="odd">
-                                    <td class="first">用户名</td>
-                                    <td>{$details.visitor_name} {if $details.client_id}<a href="?cmd=clients&action=show&id={$details.client_id}" target="_blank">注册客户</a>{/if}</td>
+                                    <td class="first">User name</td>
+                                    <td>{$details.visitor_name} {if $details.client_id}<a href="?cmd=clients&action=show&id={$details.client_id}" target="_blank">Registered client</a>{/if}</td>
                                 </tr>
                                 <tr>
-                                    <td class="first">用户邮箱</td>
-                                    <td>{if $details.visitor_email}{$details.visitor_email}{else}<em>未提供</em>{/if}</td>
+                                    <td class="first">User email</td>
+                                    <td>{if $details.visitor_email}{$details.visitor_email}{else}<em>None provided</em>{/if}</td>
                                 </tr>
                                 <tr class="odd">
-                                    <td class="first">日期</td>
+                                    <td class="first">Date</td>
                                     <td>{$details.date_start|dateformat:$date_format}</td>
                                 </tr>
                                 <tr>
-                                    <td class="first">员工</td>
-                                    <td>{$details.lastname} {$details.firstname}</td>
+                                    <td class="first">Staff</td>
+                                    <td>{$details.firstname} {$details.lastname}</td>
                                 </tr>
                                 <tr class="odd">
                                     <td class="first">Chat type</td>
-                                    <td>{if $details.type=='AC'}员工邀请{else}用户请求{/if}</td>
+                                    <td>{if $details.type=='AC'}Staff invitation{else}User request{/if}</td>
                                 </tr>
                             </tbody></table>
                     </td>
@@ -50,15 +50,15 @@
                         <table cellspacing="0" cellpadding="0" width="100%" class="bluetable">
                             <tbody>
                                 <tr>
-                                    <td class="first">部门</td>
+                                    <td class="first">Department</td>
                                     <td >{$details.deptname}</td>
                                 </tr>
                                 <tr class="odd">
-                                    <td class="first">状态</td>
+                                    <td class="first">Status</td>
                                     <td >{$details.status}</td>
                                 </tr>
                                 <tr>
-                                    <td class="first">持续时间</td>
+                                    <td class="first">Duration</td>
                                     <td>{$details.duration}</td>
                                 </tr>
                                 <tr class="odd">
@@ -66,7 +66,7 @@
                                     <td>{$details.robin_count}</td>
                                 </tr>
                                 <tr>
-                                    <td class="first">聊天ID</td>
+                                    <td class="first">Chat ID</td>
                                     <td># {$details.id}</td>
                                 </tr>
                                 <tr class="odd">

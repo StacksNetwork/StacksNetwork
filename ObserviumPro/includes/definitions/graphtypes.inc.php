@@ -7,17 +7,17 @@
  *
  * @package    observium
  * @subpackage definitions
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 // Graph sections is used to categorize /device/graphs/
 
-$config['graph_sections'] = array('general', 'system', 'firewall', 'netstats', 'wireless',
-                                  'storage', 'vpdn', 'appliance', 'poller', 'netapp',
-                                  'netscaler_tcp' => 'Netscaler TCP', 'netscaler_ssl' => 'Netscaler SSL',
-                                  'netscaler_http' => 'Netscaler HTTP', 'netscaler_comp' => 'Netscaler Compression',
-                                  'proxysg' => 'Proxy SG');
+$config['graph_sections'] = array(
+  'general', 'system', 'firewall', 'netstats', 'wireless', 'storage', 'vpdn', 'appliance',
+  'poller', 'netapp', 'netscaler_tcp', 'netscaler_ssl', 'netscaler_http', 'netscaler_comp',
+  'proxysg'
+);
 
 // Graph types
 
@@ -42,7 +42,34 @@ $config['graph_types']['device']['netapp_tape_io'] = array('section' => 'netapp'
 $config['graph_types']['device']['netapp_cp_ops']  = array('section' => 'netapp', 'descr' => 'NetApp检查操作系统', 'order' => '4');
 
 // Poller graphs
+$config['graph_types']['poller']['wrapper_threads'] = array(
+  'section'   => 'poller',
+  'descr'     => 'Poller Devices/Threads',
+  'file'      => 'poller-wrapper.rrd',
+  'rra_max'   => FALSE,
+  'scale_min' => '-1',
+  'num_fmt'   => '5.0',
+  'unit_text' => 'Count',
+  'ds'        => array(
+    'devices'   => array('label' => 'Devices', 'draw' => 'AREA', 'line' => TRUE, 'colour' => '3ca3c1', 'rra_min' => 0),
+    'threads'   => array('label' => 'Threads', 'draw' => 'AREA', 'line' => TRUE, 'colour' => 'f9a022', 'rra_min' => 0),
+    //'totaltime' => array('label' => 'Total time', 'line' => TRUE, 'colour' => 'c5c5c5', 'rra_min' => 0),
+  )
+);
+$config['graph_types']['poller']['wrapper_times'] = array(
+  'section'   => 'poller',
+  'descr'     => 'Poller Total time',
+  'file'      => 'poller-wrapper.rrd',
+  'rra_max'   => FALSE,
+  'scale_min' => '0',
+  'num_fmt'   => '6.1',
+  'unit_text' => 'Seconds',
+  'ds'        => array(
+    'totaltime' => array('label' => 'Total time', 'draw' => 'AREA', 'line' => TRUE, 'colour' => 'c5c5c5', 'rra_min' => 0),
+  )
+);
 
+// Device graphs
 $config['graph_types']['device']['poller_perf']    = array(
   'section'   => 'poller',
   'descr'     => '轮询时间',
@@ -233,6 +260,23 @@ $config['graph_types']['device']['checkpoint_memory_operations']    = array(
     'Hmem-free-operation'  => array('label' => 'Hmem释放',          'draw' => 'LINE', 'file' => 'checkpoint-mib_fwhmem.rrd'),
     'Hmem-failed-alc'      => array('label' => 'Hmem未分配',  'draw' => 'LINE', 'file' => 'checkpoint-mib_fwhmem.rrd'),
     'Hmem-failed-free'     => array('label' => 'Hmem未释放',   'draw' => 'LINE', 'file' => 'checkpoint-mib_fwhmem.rrd')
+  )
+);
+
+// MSERIES
+
+$config['graph_types']['device']['mseries_alarms'] = array(
+  'section'   => 'system',
+  'descr'     => '报警',
+  'file'      => 'MSERIES-ALARM-MIB-alarmGeneral.rrd',
+  'scale_min' => '0',
+  'no_mag'    => TRUE,
+  'num_fmt'   => '6.0',
+  'colours'   => 'mixed',
+  'unit_text' => '报警',
+  'ds'        => array(
+    'active_alarms' => array('label' => '活跃警报'),
+    'logged_alarms' => array('label' => '记录报警'),
   )
 );
 
@@ -731,16 +775,16 @@ $config['graph_types']['device']['asyncos_workq']['section'] = 'appliance';
 $config['graph_types']['device']['asyncos_workq']['order'] = '0';
 $config['graph_types']['device']['asyncos_workq']['descr'] = '工作队列的消息';
 
-$config['graph_types']['device']['smokeping_in_all'] = 'This is an aggregate graph of the incoming smokeping tests to this host. The line corresponds to the average RTT. The shaded area around each line denotes the standard deviation.';
+$config['graph_types']['device']['smokeping_in_all'] = '这是测试主机流入的Smokeping聚合曲线图. 行对应于平均的RTT. 在每一行的阴影部分是指标准偏差.';
 
 $config['graph_types']['application']['unbound_queries']['long'] = '对递归解析器DNS查询. 多余的回复可能是干净的复制数据包, 迟到的应答, 或是欺骗危险数据.';
-$config['graph_types']['application']['unbound_queue']['long']   = 'The queries that did not hit the cache and need recursion service take up space in the requestlist. If there are too many queries, first queries get overwritten, and at last resort dropped.';
+$config['graph_types']['application']['unbound_queue']['long']   = '查询未命中高速缓存和递归服务在请求列表的占用空间. 如果有太多的疑问, 第一个查询将被重写, 并在最后被丢弃.';
 $config['graph_types']['application']['unbound_memory']['long']  = '使用未绑定内存.';
 $config['graph_types']['application']['unbound_qtype']['long']   = '通过DNS RR型的查询.';
 $config['graph_types']['application']['unbound_class']['long']   = '通过DNS RR型的类查询.';
 $config['graph_types']['application']['unbound_opcode']['long']  = '查询的DNS查询包指令的操作码.';
 $config['graph_types']['application']['unbound_rcode']['long']   = '返回值排序的结果. 校验RRSets每秒伪造具有明显伪造RRSets的数量.';
-$config['graph_types']['application']['unbound_flags']['long']   = 'This graphs plots the flags inside incoming queries. For example, if QR, AA, TC, RA, Z flags are set, the query can be rejected. RD, AD, CD and DO are legitimately set by some software.';
+$config['graph_types']['application']['unbound_flags']['long']   = '本图的区块是流入流量查询标志. 例如, 如果 QR, AA, TC, RA, Z 标识被设置了, 查询可以拒绝. RD, AD, CD 和 DO 通过一些软件合法的设置.';
 
 $config['graph_types']['application']['bind_answers']['descr'] = 'BIND 接受的应答';
 $config['graph_types']['application']['bind_query_in']['descr'] = 'BIND 传入的查询';
@@ -760,6 +804,78 @@ $config['graph_types']['application']['bind_zone_maint']['descr'] = 'BIND Zone�
 $config['graph_types']['device']['firewall_sessions_ipv4']['section']  = 'firewall';
 $config['graph_types']['device']['firewall_sessions_ipv4']['order']    = '0';
 $config['graph_types']['device']['firewall_sessions_ipv4']['descr']    = '防火墙的会话(IPv4)';
+
+// Bluecoat ProxyAV Graphs
+$config['graph_types']['device']['files_scanned'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'Files Scanned',
+  'file'      => 'proxyav.rrd',
+  'colours'   => 'mixed',
+  'unit_text' => 'Files',
+  'ds'        => array(
+    'FilesScanned'        => array('descr' => 'Files Scanned', 'ds_type' => 'COUNTER', 'ds_min' => '0'),
+  )
+);
+$config['graph_types']['device']['virus_detected'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'Viruses Detected',
+  'file'      => 'proxyav.rrd',
+  'colours'   => 'mixed',
+  'unit_text' => 'Viruses',
+  'ds'        => array(
+    'VirusesDetected'     => array('descr' => 'Viruses Detected', 'ds_type' => 'COUNTER', 'ds_min' => '0'),
+  )
+);
+$config['graph_types']['device']['slow_icap'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'Slow ICAP Connections',
+  'file'      => 'proxyav.rrd',
+  'colours'   => 'mixed',
+  'unit_text' => 'Conns',
+  'ds'        => array(
+    'SlowICAPConnections' => array('descr' => 'Slow ICAP Connections', 'ds_type' => 'GAUGE', 'ds_min' => '0'),
+  )
+);
+$config['graph_types']['device']['icap_scanned'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'ICAP Files Scanned',
+  'file'      => 'proxyav.rrd',
+  'colours'   => 'mixed',
+  'unit_text' => 'Files',
+  'ds'        => array(
+    'ICAPFilesScanned' => array('descr' => 'ICAP Files Scanned', 'ds_type' => 'COUNTER', 'ds_min' => '0'),
+  )
+);
+$config['graph_types']['device']['icap_virus'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'ICAP Viruses Detected',
+  'file'      => 'proxyav.rrd',
+  'colours'   => 'mixed',
+  'unit_text' => 'Viruses',
+  'ds'        => array(
+    'ICAPVirusesDetected' => array('descr' => 'ICAP Viruses Detected', 'ds_type' => 'COUNTER', 'ds_min' => '0'),
+  )
+);
+$config['graph_types']['device']['sicap_scanned'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'Secure ICAP Files Scanned',
+  'file'      => 'proxyav.rrd',
+  'colours'   => 'mixed',
+  'unit_text' => 'Files',
+  'ds'        => array(
+    'SecureICAPFilesScan' => array('descr' => 'Secure ICAP Files Scanned', 'ds_type' => 'COUNTER', 'ds_min' => '0'),
+  )
+);
+$config['graph_types']['device']['sicap_virus'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'Secure ICAP Viruses Detected',
+  'file'      => 'proxyav.rrd',
+  'colours'   => 'mixed',
+  'unit_text' => 'Viruses',
+  'ds'        => array(
+    'SecureICAPVirusesDe' => array('descr' => 'Secure ICAP Viruses Detected', 'ds_type' => 'COUNTER', 'ds_min' => '0'),
+  )
+);
 
 // Blue Coat ProxySG graphs
 $config['graph_types']['device']['bluecoat_http_client']['section']  = 'proxysg';
@@ -811,5 +927,58 @@ $config['graph_types']['device']['arubacontroller_numaps']['descr']   = 'AP数�
 $config['graph_types']['device']['arubacontroller_numaps']['section'] = 'wireless';
 $config['graph_types']['device']['arubacontroller_numclients']['descr']   = '无线客户端';
 $config['graph_types']['device']['arubacontroller_numclients']['section'] = 'wireless';
+
+// Fireeye Active VMs
+$config['graph_types']['device']['fe_active_vms'] = array(
+  'section'   => 'appliance',
+  'descr'     => 'Active VMs',
+  'file'      => 'fireeye_activevms.rrd',
+  'colours'   => 'blues',
+  'unit_text' => 'VMs',
+  'ds'        => array(
+    'vms'     => array('label' => 'Current', 'draw' => 'LINE'),
+  )
+);
+
+// Indexed graphs
+
+// SLAs
+$config['graph_types']['device']['sla_echo'] = array(
+  //'section'   => 'sla',
+  'descr'     => 'SLA',
+  'file'      => 'sla-index.rrd',
+  'index'     => TRUE,
+  'colours'   => 'greens',
+  'scale_min' => -0.5,
+  'no_mag'    => TRUE,
+  //'unit_text' => 'SLA', // unit_text and other variables sets in graphs/device/definition.inc.php
+  'ds'        => array(
+    'rtt'       => array('label' => 'Median RTT:', 'unit' => 'ms', 'num_fmt' => 4.1, 'draw' => 'LINE2'),
+  )
+);
+
+/// FIXME. This is too hard graph, I left graph file include for this type (graphs/device/sla_jitter.inc.php)
+/*
+$config['graph_types']['device']['sla_jitter'] = array(
+  //'section'   => 'sla',
+  'descr'     => 'SLA Jitter',
+  'file'      => 'sla_jitter-index.rrd',
+  'index'     => TRUE,
+  'colours'   => 'blues',
+  'scale_min' => -0.5,
+  'no_mag'    => TRUE,
+  //'unit_text' => 'SLA', // unit_text and other variables sets in graphs/device/definition.inc.php
+  'ds'        => array(
+    'rtt'         => array('label' => 'Median RTT:', 'unit' => 'ms', 'num_fmt' => 4.1, 'draw' => 'LINE2'),
+    'rtt_count'   => array('descr' => 'Complete packets count', 'graph' => FALSE, 'cdef' => 'rtt_success,rtt_loss,+'),
+    'ploss'       => array('descr' => 'Percent of lost packets', 'graph' => FALSE, 'cdef' => 'rtt_loss,UNKN,EQ,1,rtt_loss,IF,rtt_count,/,100,*,CEIL'),
+    //'rtt'       => array('label' => 'Median RTT:', 'unit' => 'ms', 'num_fmt' => 4.1, 'draw' => 'LINE2'),
+    'rtt_minimum' => array('label' => 'RTT minimal', 'cdef' => 'rtt_minimum,rtt,-', 'draw' => 'AREASTACK', 'rra_min' => FALSE, 'rra_max' => FALSE),
+    'rtt_maximum' => array('label' => 'RTT maximal', 'cdef' => 'rtt_maximum,rtt,-', 'draw' => 'AREASTACK', 'rra_min' => FALSE, 'rra_max' => FALSE),
+    'rtt_success' => array('label' => 'RTT success', 'draw' => 'LINE1.5'),
+    'rtt_loss'    => array('label' => 'RTT loss',    'draw' => 'LINE1.5'),
+  )
+);
+*/
 
 // End includes/definitions/graphtypes.inc.php

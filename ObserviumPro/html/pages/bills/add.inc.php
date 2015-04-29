@@ -11,9 +11,11 @@
  *
  */
 
-$pagetitle[]      = "添加新账单";
+$page_title[]      = "添加新账单";
 $links['this']    = generate_url($vars);
 $links['bills']   = generate_url(array('page' => 'bills'));
+
+if ($_SESSION['userlevel'] == "10") {
 
 ?>
 
@@ -22,7 +24,6 @@ $links['bills']   = generate_url(array('page' => 'bills'));
     <li class="active"><a href="#properties" data-toggle="tab">账单属性</a></li>
 <?php
 
-if ($_SESSION['userlevel'] == "10") {
   if (is_numeric($vars['port'])) {
     $billingport = dbFetchRow("SELECT * FROM `ports` AS P, `devices` AS D WHERE `port_id` = ? AND D.device_id = P.device_id", array($vars['port']));
     echo("    <li><a href=\"#ports\" data-toggle=\"tab\">账单端口</a></li>\n");
@@ -147,7 +148,8 @@ for ($x=1;$x<32;$x++) {
 <?php
 
   } else {
-    echo("<div class=\"alert alert-error\"><i class=\"icon-warning-sign\"></i> <strong>错误!</strong><br />您没有管理权限来创建一个新的账单.</div>");
+    print_error("<h4>错误!</h4>
+                您没有管理权限来创建一个新的账单.");
   }
 
-?>
+// EOF

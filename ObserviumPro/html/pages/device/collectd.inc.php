@@ -112,6 +112,6 @@ echo('<table class="table table-bordered table-condensed table-striped table-hov
 
 echo('</table>');
 
-$pagetitle[] = "汇总";
+$page_title[] = "汇总";
 
 // EOF

@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{$template_dir}js/gui.elements.css" type="text/css" />
-<script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-<script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
-<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js"></script>
+<script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js?v={$hb_version}"></script>
 <table border="0" cellspacing="0" cellpadding="0" width="100%" id="content_tb">
     <tr>
         <td ><h3>{$lang.Downloads}</h3></td>

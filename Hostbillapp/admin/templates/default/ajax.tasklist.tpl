@@ -61,7 +61,7 @@
 </script>
 {/literal}{/if}{if $cmd=='services' || $action=='getproducttasks'}
 {if $tasks}
-<b>自定义自动化任务: </b>
+<b>Custom automation tasks: </b>
 <div class="p5">
     <table width="100%" cellspacing="0" cellpadding="6" border="0">
 
@@ -82,7 +82,7 @@
             </td>
         </tr>
         {/foreach}
-        <tr><td colspan="2"><a id="addnew_addon_btn" onclick="return assignNewTask({$product_id});" class="new_control" href="#"><span class="addsth">添加新的自定义任务</span></a></td></tr>
+        <tr><td colspan="2"><a id="addnew_addon_btn" onclick="return assignNewTask({$product_id});" class="new_control" href="#"><span class="addsth">Add new custom task</span></a></td></tr>
     </table>
 </div>
 {/if}
@@ -124,18 +124,18 @@
             <input type="hidden" name="action" value="savetask" />
             <input type="hidden" name="id" value="{$task.id}" />
             <div class="tabb">
-                <h3 style="margin:0px;">编辑任务: {$task.name}</h3>
+                <h3 style="margin:0px;">Edit task: {$task.name}</h3>
                 <div class="clear"></div>
 
                 <div class="form" style="margin:10px 0px">
 
-                    <label class="nodescr">任务:</label>
+                    <label class="nodescr">Task:</label>
                     <input type="text" disabled="disabled" value="{if $task.langid}{$lang[$task.langid]}{else}{$task.name}{/if}" class="w250" />
 
                     <div class="clear"></div>
                     {/if}
                     {if $task.description}<div class="clear" style="padding: 5px 0px 15px 160px;font-size:11px;color:#707070">{$task.description}</div>{/if}
-                    <label class="nodescr">执行</label>
+                    <label class="nodescr">Execute</label>
                     <input name="days" size="2" value="{if $task.interval}{$task.interval}{else}1{/if}" type="text"  />
                     <select name="interval_type" id="interval_type">
                         <option value="DAY" {if $task.interval_type=='DAY'}selected="selected"{/if}>{$lang.days}</option>
@@ -231,14 +231,14 @@
             <input type="hidden" name="id" value="{$task.id}" />
             <input type="hidden" name="place" value="{$place}" />
             <div class="tabb">
-                <h3 style="margin:0px;">创建新的自定义自动化任务</h3>
-                <div class="clear"><small>您可以安排任何任务可以自动执行某些事件</small></div>
+                <h3 style="margin:0px;">Create new custom automation task</h3>
+                <div class="clear"><small>You can schedule any taks to be executed automatically on certain events</small></div>
 
                 <div class="form" style="margin:10px 0px">
 
-                    <label class="nodescr">任务:</label>
+                    <label class="nodescr">Task:</label>
                     <select class="w250" name="task" onchange="changeTaskType($(this).val(),'{$place}');" >
-                        <option value="0">选择任务类型</option>
+                        <option value="0">Select task type</option>
                         {foreach from=$tasks item=task key=k}
                         <option value="{$k}">{if $task.langid}{$lang[$task.langid]}{else}{$task.name}{/if}</option>
                         {/foreach}
@@ -248,27 +248,27 @@
 
                     </div>
 				{if $premade}	<div id="usepredefined" class="shownice" style="padding:5px 0px">
-                        <div class="clear"></div><label>预置任务<small>保存配置时间, 使您可以使用预制任务</small></label>
+                        <div class="clear"></div><label>Premade tasks<small>To save configuration time you can use premade tasks</small></label>
                         <select onchange="$('#savechanges').hide(); if($(this).val()=='1')$('#loadurl').show();else if($(this).val()=='0') $('#loadurl').hide(); else {literal}{ $('#loadurl').hide(); $('#savechanges').show(); }{/literal}" id="premade_val" style="width:120;margin-right:10px;" name="premade">
-                            <option value="0">无</option>
-                            <!--<option style="font-weight:bold" value="1">从URL加载</option>-->
+                            <option value="0">None</option>
+                            <!--<option style="font-weight:bold" value="1">Load from URL</option>-->
 						{foreach from=$premade item=p}
                             <option value="{$p.file}">{$p.name}</option>
 						{/foreach}
                         </select>
                         <div class="fs11" style="padding: 2px ">
                             <!--
-						<strong>您也可以在这里找到其它的预制任务:</strong>
+						<strong>You can also find other premade tasks here:</strong>
 						<a class="external" target="_blank" href="http://hostbillapp.com/fastconfig/forms/">http://hostbillapp.com/fastconfig/forms/</a>
 						-->
                         </div>
                         <div class="clear"></div>
                         <div style="display:none" id="loadurl">
-                            <label>Step 1. <small>粘帖 <a target="_blank" href="http://hostbillapp.com/fastconfig/forms/">配置URL</a></small></label>
+                            <label>Step 1. <small>Paste <a target="_blank" href="http://hostbillapp.com/fastconfig/forms/">config url</a></small></label>
                             <input type="text" id="premadeurl_val" name="premadeurl" class="w250"><div class="clear"></div>
-                            <label>Step 2. <small>提交验证设置</small></label>
+                            <label>Step 2. <small>Submit and verify setup</small></label>
                             <div class="left" style="margin:2px 10px">
-                                <span class="bcontainer dhidden" style=""><a class="new_control greenbtn" href="#" onclick="return createField()"><span>创建新任务</span></a></span>
+                                <span class="bcontainer dhidden" style=""><a class="new_control greenbtn" href="#" onclick="return createField()"><span>Crate new task</span></a></span>
                             </div>
                             <div class="clear"></div>
                         </div>

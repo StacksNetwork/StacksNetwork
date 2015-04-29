@@ -9,27 +9,23 @@
  * @package    observium
  * @subpackage cli
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 chdir(dirname($argv[0]));
 
-include("includes/defaults.inc.php");
-include("config.php");
-include("includes/definitions.inc.php");
+include_once("includes/defaults.inc.php");
+include_once("config.php");
+
+$options = getopt("h:d");
+
+include_once("includes/definitions.inc.php");
 include("includes/functions.inc.php");
 
 $scriptname = basename($argv[0]);
 
-$options = getopt("h:d");
-
 $cli = TRUE;
-
-if (isset($options['d']))
-{
-  $debug = TRUE;
-}
 
 $localhost = get_localhost();
 
@@ -234,6 +230,7 @@ $scriptname -h device [-d debug]
 SYNTAX:
 -h <设备id> | <设备名称的通配符>  发送测试电子邮件管理员所述设备.
 -d                                           Enable debug mode.
+ -dd                                         More verbose debugging output.
 
 %r无效的参数!%n", 'color');
 }

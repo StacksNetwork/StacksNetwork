@@ -11,7 +11,7 @@
  *
  */
 
-  $pagetitle[] = "使用历史";
+  $page_title[] = "使用历史";
   $i           = 0;
 
   $img['his']  = "<img src=\"bandwidth-graph.php?bill_id=".$bill_id;

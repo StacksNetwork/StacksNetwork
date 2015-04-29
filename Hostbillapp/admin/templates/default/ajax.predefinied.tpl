@@ -147,7 +147,7 @@
                             if($('select[name="owner"]').children('[value="'+resp.macro.owner+'"]').length){
                                 var txt = $('select[name="owner"]').children('[value="'+resp.macro.owner+'"]').text(); 
                                 $('select[name="owner"]').val(resp.macro.owner).prev().text(txt);
-                                $('#hd6 span').text('Assigned to '+txt)
+                                $('#hd6 span').text('分配给 '+txt)
                                 
                             }
                         }
@@ -319,15 +319,15 @@
             </tr>
             <tr>
                 <td >{*
-                    <label><input type="radio" {if !$reply.note}checked="checked"{/if} name="note" value="0" /> <b>Reply</b></label><br />
-                    <label><input type="radio" {if $reply.note}checked="checked"{/if} name="note" value="1" /> <b>Note</b></label>
-                    *}<b>Reply</b>:
+                    <label><input type="radio" {if !$reply.note}checked="checked"{/if} name="note" value="0" /> <b>回复</b></label><br />
+                    <label><input type="radio" {if $reply.note}checked="checked"{/if} name="note" value="1" /> <b>备注</b></label>
+                    *}<b>回复</b>:
                 </td>
                 <td>
                     <textarea style="width:99%" rows="12"  name="reply">{$reply.reply}</textarea>
                 </td>
 
-                <td style="vertical-align: top" >
+                <td style="vertical-align: top" rowspan="2">
                     <label class="action-label">
                         <span>{$lang.changestatus}:</span>
                         <select name="status" class="inp">
@@ -368,7 +368,7 @@
                             {/foreach}
                         </select>
                     </label>
-                    <div class="clear">Tags to add</div>
+                    <div class="clear">添加标签</div>
                     <div id="tagsInput" class="left ticketsTags" style="position:relative; width:400px;line-height: 14px; padding: 3px 0 0 5px; border: 1px solid #ddd; background: #fff; margin-right: 3px; overflow: visible">
                         {foreach from=$reply.tags item=tag}
                             <span class="tag"><a>{$tag}</a> |<a class="cls">x</a></span>
@@ -385,7 +385,7 @@
                         {/foreach}
                     </div>
 
-                    <div class="clear" style="padding-top:10px;">Tags to remove</div>
+                    <div class="clear" style="padding-top:10px;">移除标签</div>
                     <div id="tagsInput2" class="left ticketsTags" style="position:relative; width:400px;line-height: 14px; padding: 3px 0 0 5px; border: 1px solid #ddd; background: #fff; margin-right: 3px; overflow: visible">
                         {foreach from=$reply.tags_rem item=tag}
                             <span class="tag"><a>{$tag}</a> |<a class="cls">x</a></span>
@@ -401,6 +401,14 @@
                             <input type="hidden" name="tags_rem[]" value="{$tag}" />
                         {/foreach}
                     </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <strong>通知</strong>
+                </td>
+                <td>
+                    <input type="checkbox" name="notify" value="1" {if $reply.notify}checked="checked"{/if}> 回复工单时发送电子邮件通知
                 </td>
             </tr>
 
@@ -536,7 +544,7 @@
                             </li>
                         {/foreach}
                     {else}
-                        <li><div style="float:none; text-align: center">Your list is currently empty</div></li>
+                        <li><div style="float:none; text-align: center">您的列表是空的</div></li>
                     {/if}
                 </ul>
                 <br />
@@ -566,7 +574,7 @@
                     </form>
                 {/if}
             </div>
-            <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+            <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
             {literal}
                 <script type="text/javascript">
  

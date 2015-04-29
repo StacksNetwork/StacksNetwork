@@ -20,6 +20,6 @@ $vars['entity_id']   = $vars['port'];
 // Print Alert Log
 print_alert_log($vars);
 
-$pagetitle[] = '警报日志';
+$page_title[] = '警报日志';
 
 // EOF

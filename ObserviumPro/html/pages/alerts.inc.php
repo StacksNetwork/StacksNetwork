@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -22,7 +22,7 @@ $navbar['brand'] = "警报类型";
 $types = dbFetchRows("SELECT `entity_type` FROM `alert_table` GROUP BY `entity_type`");
 
 $navbar['options']['all']['url'] = generate_url($vars, array('page' => 'alerts', 'entity_type' => 'all'));
-$navbar['options']['all']['text'] = htmlspecialchars(nicecase('all'));
+$navbar['options']['all']['text'] = escape_html(nicecase('全部'));
 if ($vars['entity_type'] == 'all') {
   $navbar['options']['all']['class'] = "active";
   $navbar['options']['all']['url'] = generate_url($vars, array('page' => 'alerts', 'entity_type' => NULL));
@@ -37,11 +37,11 @@ foreach ($types as $thing)
   } else {
     $navbar['options'][$thing['entity_type']]['url'] = generate_url($vars, array('page' => 'alerts', 'entity_type' => $thing['entity_type']));
   }
-  $navbar['options'][$thing['entity_type']]['text'] = htmlspecialchars(nicecase($thing['entity_type']));
+  $navbar['options'][$thing['entity_type']]['text'] = escape_html(nicecase($thing['entity_type']));
 }
 
 $navbar['options_right']['status']['url']  = generate_url($vars, array('page' => 'alerts', 'status' => 'failed'));
-$navbar['options_right']['status']['text'] = '仅失败';
+$navbar['options_right']['status']['text'] = '仅显示失败报警';
 $navbar['options_right']['status']['icon'] = 'oicon-exclamation-red';
 
 if ($vars['status'] == 'failed')

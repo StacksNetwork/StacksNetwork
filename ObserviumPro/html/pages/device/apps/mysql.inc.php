@@ -11,39 +11,39 @@
  *
  */
 
-$app_sections = array('system' => "System",
-                      'queries' => "Queries",
+$app_sections = array('system' => "系统",
+                      'queries' => "查询",
                       'innodb' => "InnoDB");
 
 $app_graphs['system'] = array(
-                'mysql_connections' => 'Connections',
-                'mysql_status' => 'Process List',
-                'mysql_files_tables' => 'Files and Tables',
-                'mysql_myisam_indexes' => 'MyISAM Indexes',
-                'mysql_network_traffic' => 'Network Traffic',
-                'mysql_table_locks' => 'Table Locks',
-                'mysql_temporary_objects' => 'Temporary Objects'
+                'mysql_connections' => '连接数',
+                'mysql_status' => '进程列表',
+                'mysql_files_tables' => '文件与数据表',
+                'mysql_myisam_indexes' => 'MyISAM索引',
+                'mysql_network_traffic' => '网络流量',
+                'mysql_table_locks' => '数据表锁定',
+                'mysql_temporary_objects' => '临时对象'
                 );
 
 $app_graphs['queries'] = array(
-                'mysql_command_counters' => 'Command Counters',
-                'mysql_query_cache' => 'Query Cache',
-                'mysql_query_cache_memory' => 'Query Cache Memory',
-                'mysql_select_types' => 'Select Types',
-                'mysql_slow_queries' => 'Slow Queries',
-                'mysql_sorts' => 'Sorts',
+                'mysql_command_counters' => '命令计数器',
+                'mysql_query_cache' => '查询缓存',
+                'mysql_query_cache_memory' => '查询内存缓存',
+                'mysql_select_types' => '选择类型',
+                'mysql_slow_queries' => '慢速查询',
+                'mysql_sorts' => '分类',
                 );
 
 $app_graphs['innodb'] = array(
-                'mysql_innodb_buffer_pool' => 'InnoDB Buffer Pool',
-                'mysql_innodb_buffer_pool_activity' => 'InnoDB Buffer Pool Activity',
-                'mysql_innodb_insert_buffer' => 'InnoDB Insert Buffer',
+                'mysql_innodb_buffer_pool' => 'InnoDB缓冲池',
+                'mysql_innodb_buffer_pool_activity' => 'InnoDB活动缓冲池',
+                'mysql_innodb_insert_buffer' => 'InnoDB插入缓冲',
                 'mysql_innodb_io' => 'InnoDB IO',
-                'mysql_innodb_io_pending' => 'InnoDB IO Pending',
-                'mysql_innodb_log' => 'InnoDB Log',
-                'mysql_innodb_row_operations' => 'InnoDB Row Operations',
-                'mysql_innodb_semaphores' => 'InnoDB semaphores',
-                'mysql_innodb_transactions' => 'InnoDB Transactions',
+                'mysql_innodb_io_pending' => 'InnoDB IO挂起',
+                'mysql_innodb_log' => 'InnoDB日志',
+                'mysql_innodb_row_operations' => 'InnoDB行操作',
+                'mysql_innodb_semaphores' => 'InnoDB信号',
+                'mysql_innodb_transactions' => 'InnoDB事务',
                 );
 
 // EOF

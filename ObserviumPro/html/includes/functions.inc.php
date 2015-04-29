@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage functions
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -22,17 +22,30 @@ if (is_file($config['install_dir']."/includes/debug/ref.inc.php")) { include($co
 
 include_once($config['html_dir'].'/includes/graphs/functions.inc.php');
 
+
 $print_functions = array('addresses', 'events', 'mac_addresses', 'rows',
                          'status', 'arptable', 'fdbtable', 'navbar',
                          'search', 'syslogs', 'inventory', 'alert',
                          'device', 'authlog', 'dot1xtable', 'alert_log',
-                         'common');
+                         'common', 'pseudowires', 'routing');
 
 foreach ($print_functions as $item)
 {
   $print_path = $config['html_dir'].'/includes/print/'.$item.'.inc.php';
   if (is_file($print_path)) { include($print_path); }
 }
+
+// Load generic entity include
+
+include($config['html_dir'].'/includes/entities/generic.inc.php');
+
+// Load all per-entity includes
+foreach ($config['entities'] as $entity_type => $item)
+{
+  $path = $config['html_dir'].'/includes/entities/'.$entity_type.'.inc.php';
+  if (is_file($path)) { include($path); }
+}
+
 
 // Parce $_GET, $_POST and URI into $vars
 // TESTME needs unit testing
@@ -96,7 +109,7 @@ function get_vars($vars_order = array())
               {
                 $vars[$name] = 'yes';
               } else {
-                $value = str_replace('%7F', '/', urldecode($value)); // 7F - (not defined in HTML 4 standard)
+                $value = str_replace('%7F', '/', urldecode($value)); // %7F (DEL, delete) - not defined in HTML 4 standard
                 if (strpos($value, ','))
                 {
                   // Here commas list (convert to array)
@@ -104,6 +117,10 @@ function get_vars($vars_order = array())
                 } else {
                   // Here can be string as encoded array
                   $vars[$name] = var_decode($value);
+                  if (strpos($vars[$name], '%1F') !== FALSE)
+                  {
+                    $vars[$name] = str_replace('%1F', ',', $vars[$name]); // %1F (US, unit separator) - not defined in HTML 4 standard
+                  }
                 }
               }
             }
@@ -116,7 +133,7 @@ function get_vars($vars_order = array())
         {
           if (!isset($vars[$name]))
           {
-            $value = str_replace('%7F', '/', urldecode($value)); // 7F - (not defined in HTML 4 standard)
+            $value = str_replace('%7F', '/', urldecode($value)); // %7F (DEL, delete) - not defined in HTML 4 standard
             if (strpos($value, ','))
             {
               // Here commas list (convert to array)
@@ -124,6 +141,10 @@ function get_vars($vars_order = array())
             } else {
               // Here can be string as encoded array
               $vars[$name] = var_decode($value);
+              if (strpos($vars[$name], '%1F') !== FALSE)
+              {
+                $vars[$name] = str_replace('%1F', ',', $vars[$name]); // %1F (US, unit separator) - not defined in HTML 4 standard
+              }
             }
           }
         }
@@ -152,7 +173,154 @@ function get_vars($vars_order = array())
     }
   }
 
+  //r($vars);
   return($vars);
+}
+
+/**
+ * Build ports WHERE array
+ *
+ * This function returns an array of "WHERE" statements from a $vars array.
+ * The returned array can be implode()d and used on the ports table.
+ * Originally extracted from the /ports/ page
+ *
+ * @param array $vars
+ * @return array
+ */
+function build_ports_where_array($vars)
+{
+  $where = array();
+
+  foreach ($vars as $var => $value)
+  {
+    if ($value != '')
+    {
+      switch ($var)
+      {
+        case 'location':
+          $where[] = generate_query_values($value, $var);
+          break;
+        case 'device_id':
+          $where[] = generate_query_values($value, 'ports.device_id');
+          break;
+        case 'group':
+          $values  = get_group_entities($value);
+          $where[] = generate_query_values($values, 'ports.port_id');
+          break;
+        case 'disable':
+          $var = 'disabled';
+        case 'disabled':    // FIXME. 'disabled' column never used in ports..
+        case 'deleted':
+        case 'ignore':
+        case 'ifSpeed':
+        case 'ifType':
+          $where[] = generate_query_values($value, 'ports.'.$var);
+          break;
+        case 'hostname':
+        case 'ifAlias':
+        case 'ifDescr':
+          $where[] = generate_query_values($value, $var, '%LIKE%');
+          break;
+        case 'port_descr_type':
+          $where[] = generate_query_values($value, $var, 'LIKE');
+          break;
+        case 'errors':
+          if ($value == 1 || $value == "yes")
+          {
+            $where[] = " AND (`ifInErrors_delta` > '0' OR `ifOutErrors_delta` > '0')";
+          }
+          break;
+        case 'alerted':
+          if ($value == "yes")
+          {
+            $where[] = ' AND `ifAdminStatus` = "up" AND (`ifOperStatus` = "lowerLayerDown" OR `ifOperStatus` = "down")';
+          }
+        case 'state':
+          if ($value == "down")
+          {
+            $where[] = 'AND `ifAdminStatus` = "up" AND (`ifOperStatus` = "lowerLayerDown" OR `ifOperStatus` = "down")';
+          }
+          else if ($value == "up")
+          {
+            $where[] = 'AND `ifAdminStatus` = "up" AND ( `ifOperStatus` = "up" OR `ifOperStatus` = "monitoring" )';
+          }
+          else if ($value == "admindown")
+          {
+            $where[] = 'AND `ifAdminStatus` = "down"';
+          }
+          break;
+        case 'cbqos':
+          if ($value && $value != 'no')
+          {
+            $where[] = generate_query_values($cache['ports']['cbqos'], 'ports.port_id');
+          }
+          break;
+      }
+    }
+  }
+
+  return $where;
+}
+
+/**
+ * Build devices where array
+ *
+ * This function returns an array of "WHERE" statements from a $vars array.
+ * The returned array can be implode()d and used on the devices table.
+ * Originally extracted from the /devices/ page
+ *
+ * @param array $vars
+ * @return array
+ */
+function build_devices_where_array($vars)
+{
+  $where_array = array();
+  foreach ($vars as $var => $value)
+  {
+    if ($value != '')
+    {
+      switch ($var)
+      {
+        case 'group':
+          $values = get_group_entities($value);
+          $where_array[$var] = generate_query_values($values, 'device_id');
+          break;
+        case 'hostname':
+        case 'sysname':
+          $where_array[$var] = generate_query_values($value, $var, '%LIKE%');
+          break;
+        case 'location_text':
+          $where_array[$var] = generate_query_values($value, 'devices.location', '%LIKE%');
+          break;
+        case 'location':
+          $where_array[$var] = generate_query_values($value, 'devices.location');
+          break;
+        case 'location_lat':
+        case 'location_lon':
+        case 'location_country':
+        case 'location_state':
+        case 'location_county':
+        case 'location_city':
+          if ($GLOBALS['config']['geocoding']['enable'])
+          {
+            $where_array[$var] = generate_query_values($value, 'devices_locations.' . $var);
+          }
+          break;
+        case 'os':
+        case 'version':
+        case 'hardware':
+        case 'features':
+        case 'type':
+        case 'status':
+        case 'ignore':
+        case 'disabled':
+          $where_array[$var] = generate_query_values($value, $var);
+          break;
+      }
+    }
+  }
+
+  return $where_array;
 }
 
 // Detect if current URI is link to graph
@@ -243,19 +411,26 @@ function datetime_preset($preset)
 function bug()
 {
   echo('<div class="alert alert-error">
-  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <button type="button" class="close" data-dismiss="alert">&次;</button>
   <strong>Bug!</strong> 请报告给 Observium 开发团队.
 </div>');
 }
 
-// This function determines type of web browser.
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function detect_browser()
+/**
+ * This function determines type of web browser (mobile/tablet/generic)
+ * and attempts to determine the capabilities by User-Agent.
+ *
+ * @param string $user_agent Custom User-Agent string, by default, the value of HTTP User-Agent header is used
+ * @param bool $return_array If set to TRUE, this function will return an array instead of browser 'type' string
+ *
+ * @return mixed Return type of browser (generic/mobile/tablet) or array with various data (user_agent, type, browser, platform)
+ */
+// TESTME! needs unit testing
+function detect_browser($user_agent = NULL, $return_array = FALSE)
 {
   global $cache;
 
-  if ($cache['detect_browser'])
+  if (is_null($user_agent) && $cache['detect_browser'])
   {
     return $cache['detect_browser'];
   }
@@ -264,18 +439,45 @@ function detect_browser()
 
   $detect = new Mobile_Detect;
 
-  $cache['detect_browser'] = 'generic';
+  if (!is_null($user_agent))
+  {
+    // Set custom User-Agent
+    $detect->setUserAgent($user_agent);
+  } else {
+    $user_agent = $_SERVER['HTTP_USER_AGENT'];
+  }
+
+  $type = 'generic';
   if ($detect->isMobile())
   {
     // Any phone device (exclude tablets).
-    $cache['detect_browser'] = 'mobile';
+    $type = 'mobile';
     if ($detect->isTablet())
     {
       // Any tablet device.
-      $cache['detect_browser'] = 'tablet';
+      $type = 'tablet';
     }
   }
 
+  if ($return_array)
+  {
+    // Load additional function
+    if (!function_exists('parse_user_agent'))
+    {
+      include_once($GLOBALS['config']['html_dir'].'/includes/UserAgentParser.php');
+    }
+
+    // Detect Browser name, version and platform
+    $ua_info = parse_user_agent($user_agent);
+
+    $cache['detect_browser'] = array('user_agent' => $user_agent,
+                                     'type'       => $type,
+                                     'browser'    => $ua_info['browser'].' '.$ua_info['version'],
+                                     'platform'   => $ua_info['platform']
+                                     );
+  } else {
+    $cache['detect_browser'] = $type;
+  }
   return $cache['detect_browser'];
 }
 
@@ -342,7 +544,7 @@ function toner2colour($descr, $percent)
   if (substr($descr, -1) == 'C' || toner_map($descr, "cyan"   )) { $colour['left'] = "55D6D3"; $colour['right'] = "33B4B1"; }
   if (substr($descr, -1) == 'M' || toner_map($descr, "magenta")) { $colour['left'] = "F24AC8"; $colour['right'] = "D028A6"; }
   if (substr($descr, -1) == 'Y' || toner_map($descr, "yellow" )) { $colour['left'] = "FFF200"; $colour['right'] = "DDD000"; }
-  if (substr($descr, -1) == 'K' || toner_map($descr, "black"  )) { $colour['left'] = "000000"; $colour['right'] = "222222"; }
+  if (substr($descr, -1) == 'K' || toner_map($descr, "black"  )) { $colour['left'] = "111111"; $colour['right'] = "555555"; }
 
   return $colour;
 }
@@ -351,10 +553,7 @@ function toner2colour($descr, $percent)
 // DOCME needs phpdoc block
 function generate_link($text, $vars, $new_vars = array(), $escape = TRUE)
 {
-  if ($escape)
-  {
-    $text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-  }
+  if ($escape) { $text = escape_html($text); }
   return '<a href="'.generate_url($vars, $new_vars).'">'.$text.'</a>';
 }
 
@@ -405,7 +604,8 @@ function pagination(&$vars, $total, $return_vars = FALSE)
 
   if ($total > 9)
   {
-    $pagination .= '<div class="row"><div class="col-sm-1"><span style="margin-top: 10px; line-height: 20px; background-color: #F5F5F5;" class="btn disabled">'.$total.'&nbsp;项目</span></div>';
+    $pagination .= '<div class="row">';
+    $pagination .= '<div class="col-sm-1"><span class="btn disabled" style="line-height: 20px;">'.$total.'&nbsp;条数据</span></div>';
     $pagination .= '<div class="col-sm-10">';
     $pagination .= '<div class="pagination pagination-centered"><ul>';
 
@@ -492,7 +692,7 @@ function pagination(&$vars, $total, $return_vars = FALSE)
 
     $pagination.= '
        <div class="col-sm-1">
-       <form class="pull-right" style="margin-top: 10px;" action="">
+       <form class="pull-right" action="">
        <select class="selectpicker" data-width="90px" name="type" id="type" onchange="window.open(this.options[this.selectedIndex].value,\'_top\')">';
 
     foreach ($pagesizes as $pagesize)
@@ -583,7 +783,7 @@ function generate_feed_url($vars)
             }
             break;
           case 'feed':
-            $title = "Observium :: ".ucfirst($value)." Feed";
+            $title = "Observium :: ".ucfirst($value)." 进入";
             $param[] = 'size='.$GLOBALS['config']['frontpage']['eventlog']['items'];
             // no break here
           case 'size':
@@ -612,14 +812,16 @@ function generate_location_url($location, $vars = array())
 
 // TESTME needs unit testing
 // DOCME needs phpdoc block
-function generate_overlib_content($graph_array, $text = NULL)
+function generate_overlib_content($graph_array, $text = NULL, $escape = TRUE)
 {
   global $config;
 
   $graph_array['height'] = "100";
   $graph_array['width']  = "210";
+  
+  if ($escape) { $text = escape_html($text); }
 
-  $overlib_content = '<div style="width: 590px;"><span style="font-weight: bold; font-size: 16px;">'.$text."</span><br />";
+  $overlib_content = '<div style="width: 590px;"><span style="font-weight: bold; font-size: 16px;">'.$text.'</span><br />';
   foreach (array('day', 'week', 'month', 'year') as $period)
   {
     $graph_array['from'] = $config['time'][$period];
@@ -645,118 +847,24 @@ function get_percentage_colours($percentage)
   return($background);
 }
 
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_device_url($device, $vars=array())
+/**
+ * Generate common popup links which uses ajax/entitypopup.php
+ *
+ * @param string $type Popup type, see possible types in html/ajax/entitypopup.php
+ * @param string $text Text used as link name and ajax data
+ * @param array $vars Array for generate url
+ * @param boolean $escape Escape or not text in url
+ * @return string Returns string with link, when hover on this link show popup message based on type
+ */
+function generate_popup_link($type, $text = NULL, $vars = array(), $escape = TRUE)
 {
-  return generate_url(array('page' => 'device', 'device' => $device['device_id']), $vars);
-}
+  if (!is_string($type) || !is_string($text)) { return ''; }
 
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_device_link_header($device, $vars=array())
-{
-  global $config;
+  $url  = (count($vars) ? generate_url($vars) : 'javascript:void(0)'); // If vars empty, set link not clickable
+  $data = $text;
+  if ($escape) { $text = escape_html($text); }
 
-  humanize_device($device);
-
-  if ($device['os'] == "ios") { formatCiscoHardware($device, true); } // FIXME or generic function for more than just IOS? [and/or do this at poll time]
-
-  $contents = '
-      <table class="table table-striped table-bordered table-rounded table-condensed">
-        <tr class="'.$device['html_row_class'].'" style="font-size: 10pt;">
-          <td style="width: 10px; background-color: '.$device['html_tab_colour'].'; margin: 0px; padding: 0px"></td>
-          <td width="40" style="padding: 10px; text-align: center; vertical-align: middle;">'.getImage($device).'</td>
-          <td width="200"><a href="#" class="'.$class.'" style="font-size: 15px; font-weight: bold;">'.$device['hostname'].'</a><br />'. htmlspecialchars(truncate($device['location'],64, '')) .'</td>
-          <td>'.htmlspecialchars($device['hardware']).' <br /> '.$device['os_text'].' '.$device['version'].'</td>
-          <td>'.deviceUptime($device, 'short').'<br />'.htmlspecialchars($device['sysName']).'
-          </tr>
-        </table>
-';
-
-  return $contents;
-}
-
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_device_link_contents($device, $vars=array(), $start=0, $end=0)
-{
-  global $config;
-
-  if (!$start) { $start = $config['time']['day']; }
-  if (!$end)   { $end   = $config['time']['now']; }
-
-  $contents = generate_device_link_header($device, $vars=array());
-
-  if (isset($config['os'][$device['os']]['over']))
-  {
-    $graphs = $config['os'][$device['os']]['over'];
-  }
-  elseif (isset($device['os_group']) && isset($config['os'][$device['os_group']]['over']))
-  {
-    $graphs = $config['os'][$device['os_group']]['over'];
-  }
-  else
-  {
-    $graphs = $config['os']['default']['over'];
-  }
-
-  // Preprocess device graphs array
-  foreach ($device['graphs'] as $graph)
-  {
-    $graphs_enabled[] = $graph['graph'];
-  }
-
-  foreach ($graphs as $entry)
-  {
-    $graph = $entry['graph'];
-
-    if ($graph && in_array(str_replace('device_','',$graph),$graphs_enabled) !== FALSE)
-    {
-      if (isset($entry['text']))
-      {
-        // Text is provided in the array, this overrides the default
-        $text = $entry['text'];
-      } else {
-        // No text provided for the minigraph, fetch from array
-        preg_match('/^(?P<type>[a-z0-9A-Z-]+)_(?P<subtype>[a-z0-9A-Z-_]+)/', $graph, $graphtype);
-
-        if (isset($graphtype['type']) && isset($graphtype['subtype']))
-        {
-          $type = $graphtype['type'];
-          $subtype = $graphtype['subtype'];
-        
-          $text = $config['graph_types'][$type][$subtype]['descr'];
-        } else {
-          $text = nicecase($subtype); // Fallback to the type itself as a string, should not happen!
-        }
-      }
-
-      $contents .= '<div style="width: 708px">';
-      $contents .= '<span style="margin-left: 5px; font-size: 12px; font-weight: bold;">'.$text.'</span><br />';
-      $contents .= "<img src=\"graph.php?device=" . $device['device_id'] . "&amp;from=".$start."&amp;to=".$end."&amp;width=275&amp;height=100&amp;type=".$graph."&amp;legend=no&amp;draw_all=yes" . '" style="margin: 2px;">';
-      $contents .= "<img src=\"graph.php?device=" . $device['device_id'] . "&amp;from=".$config['time']['week']."&amp;to=".$end."&amp;width=275&amp;height=100&amp;type=".$graph."&amp;legend=no&amp;draw_all=yes" . '" style="margin: 2px;">';
-      $contents .= '</div>';
-    }
-  }
-
-  return $contents;
-}
-
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_device_link($device, $text=NULL, $vars=array(), $escape = TRUE)
-{
-  if (is_array($device) && !$device['hostname']) { $device = device_by_id_cache($device['device_id']); }
-  $class = devclass($device);
-  if (!$text) { $text = $device['hostname']; }
-
-  $url = generate_device_url($device, $vars);
-  $link = overlib_link($url, $text, $contents, $class, $escape);
-
-  if (!device_permitted($device['device_id'])) { return $device['hostname']; }
-
-  return '<a href="'.$url.'" class="entity-popup '.$class.'" data-eid="'.$device['device_id'].'" data-etype="device">'.$text.'</a>';
+  return '<a href="'.$url.'" class="entity-popup" data-eid="'.$data.'" data-etype="'.$type.'">'.$text.'</a>';
 }
 
 // Generate overlib links from URL, link text, contents and a class.
@@ -769,14 +877,12 @@ function overlib_link($url, $text, $contents, $class = NULL, $escape = FALSE)
 
   $link_iter++;
 
-  if ($escape)
-  {
-    $text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-  }
+  if ($escape) { $text = escape_html($text); }
+
   // Allow the Grinch to disable popups and destroy Christmas.
   if ($config['web_mouseover'] && detect_browser() != 'mobile')
   {
-    $output  = '<a href="'.$url.'" class="tooltip-from-data '.$class.'" data-tooltip="'.htmlspecialchars($contents).'">'.$text.'</a>';
+    $output  = '<a href="'.$url.'" class="tooltip-from-data '.$class.'" data-tooltip="'.escape_html($contents).'">'.$text.'</a>';
   } else {
     $output  = '<a href="'.$url.'" class="'.$class.'">'.$text.'</a>';
   }
@@ -860,26 +966,41 @@ function bill_permitted($bill_id)
   return $allowed;
 }
 
+
+
+// TESTME needs unit testing
+// MOVEME to includes/functions.inc.php
+/**
+ * Returns a device_id when given an entity_id and an entity_type. Returns FALSE if the device isn't found.
+ *
+ * @param $entity_id
+ * @param $entity_type
+ *
+ * @return bool|integer
+ */
+function get_device_id_by_entity_id($entity_id, $entity_type)
+{
+
+  // $entity = get_entity_by_id_cache($entity_type, $entity_id);
+  $translate = entity_type_translate_array($entity_type);
+
+  if (is_numeric($entity_id) && $entity_type)
+  {
+    $device_id = dbFetchCell('SELECT `device_id` FROM `' .   $translate['table']. '` WHERE `' . $translate['id_field'] . '` = ?', array($entity_id));
+  }
+  if (is_numeric($device_id))
+  {
+    return $device_id;
+  } else {
+    return FALSE;
+  }
+}
+
 // TESTME needs unit testing
 // DOCME needs phpdoc block
 function port_permitted($port_id, $device_id = NULL)
 {
-  global $permissions;
-
-  if (!is_numeric($device_id)) { $device_id = get_device_id_by_port_id($port_id); }
-
-  if ($_SESSION['userlevel'] >= "5")
-  {
-    $allowed = TRUE;
-  } elseif (device_permitted($device_id)) {
-    $allowed = TRUE;
-  } elseif ($permissions['port'][$port_id]) {
-    $allowed = TRUE;
-  } else {
-    $allowed = FALSE;
-  }
-
-  return $allowed;
+  return is_entity_permitted($port_id, 'port', $device_id);
 }
 
 // TESTME needs unit testing
@@ -953,6 +1074,7 @@ function print_graph_tag($args)
 // DOCME needs phpdoc block
 function generate_graph_tag($args)
 {
+
   $style = implode(";", $args['style']);
   unset($args['style']);
 
@@ -1052,114 +1174,6 @@ function print_percentage_bar($width, $height, $percent, $left_text, $left_colou
   return $output;
 }
 
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_port_link_header($port)
-{
-  global $config;
-
-  // Push through processing function to set attributes
-  humanize_port($port);
-
-  $contents = '
-      <table style="margin-top: 10px; margin-bottom: 10px;" class="table table-striped table-bordered table-rounded table-condensed">
-        <tr class="'.$port['row_class'].'" style="font-size: 10pt;">
-          <td style="width: 10px; background-color: '.$port['table_tab_colour'].'; margin: 0px; padding: 0px"></td>
-          <td style="width: 10px;"></td>
-          <td width="250"><a href="#" class="'.$port['html_row_class'].'" style="font-size: 15px; font-weight: bold;">'.rewrite_ifname($port['label']).'</a><br />'.htmlentities($port['ifAlias']).'</td>
-          <td width="100">'.$port['human_speed'].'<br />'.$port['ifMtu'].'</td>
-          <td>'.$port['human_type'].'<br />'.$port['human_mac'].'</td>
-        </tr>
-          </table>';
-
-  return $contents;
-}
-
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_port_popup($port, $text = NULL, $type = NULL)
-{
-  global $config;
-
-  if (!isset($port['os'])) { $port = array_merge($port, device_by_id_cache($port['device_id'])); }
-
-  humanize_port($port);
-
-  if (!$text) { $text = rewrite_ifname($port['label']); }
-  if ($type) { $port['graph_type'] = $type; }
-  if (!isset($port['graph_type'])) { $port['graph_type'] = 'port_bits'; }
-
-  $class = ifclass($port['ifOperStatus'], $port['ifAdminStatus']);
-
-  if (!isset($port['os'])) { $port = array_merge($port, device_by_id_cache($port['device_id'])); }
-
-  $content = generate_device_link_header($port);
-  $content .= generate_port_link_header($port);
-
-  $content .= '<div style="width: 700px">';
-  $graph_array['type']     = $port['graph_type'];
-  $graph_array['legend']   = "yes";
-  $graph_array['height']   = "100";
-  $graph_array['width']    = "275";
-  $graph_array['to']       = $config['time']['now'];
-  $graph_array['from']     = $config['time']['day'];
-  $graph_array['id']       = $port['port_id'];
-  $content .= generate_graph_tag($graph_array);
-  $graph_array['from']     = $config['time']['week'];
-  $content .= generate_graph_tag($graph_array);
-  $graph_array['from']     = $config['time']['month'];
-  $content .= generate_graph_tag($graph_array);
-  $graph_array['from']     = $config['time']['year'];
-  $content .= generate_graph_tag($graph_array);
-  $content .= "</div>";
-
-  return $content;
-}
-
-// Note, by default text NOT escaped.
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_port_link($port, $text = NULL, $type = NULL, $escape = FALSE)
-{
-  global $config;
-
-#  if (!isset($port['os'])) { $port = array_merge($port, device_by_id_cache($port['device_id'])); }
-
-  humanize_port($port);
-
-  if (!isset($port['html_class'])) { $port['html_class'] = ifclass($port['ifOperStatus'], $port['ifAdminStatus']); }
-  if (!isset($text)) { $text = rewrite_ifname($port['label']); }
-
-  $url = generate_port_url($port);
-
-  if (port_permitted($port['port_id'], $port['device_id']))
-  {
-    if ($escape)
-    {
-      $text = htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
-    }
-    return '<a href="'.$url.'" class="entity-popup '.$port['html_class'].'" data-eid="'.$port['port_id'].'" data-etype="port">'.$text.'</a>';
-  } else {
-    return rewrite_ifname($text);
-  }
-}
-
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_port_url($port, $vars=array())
-{
-  return generate_url(array('page' => 'device', 'device' => $port['device_id'], 'tab' => 'port', 'port' => $port['port_id']), $vars);
-}
-
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_port_thumbnail($args)
-{
-  if (!$args['bg']) { $args['bg'] = "FFFFFF"; }
-  $args['content'] = "<img src='graph.php?type=".$args['graph_type']."&amp;id=".$args['port_id']."&amp;from=".$args['from']."&amp;to=".$args['to']."&amp;width=".$args['width']."&amp;height=".$args['height']."&amp;bg=".$args['bg']."'>";
-  echo(generate_port_link($args, $args['content']));
-}
-
 // DOCME needs phpdoc block
 function print_optionbar_start($height = 0, $width = 0, $marginbottom = 5)
 {
@@ -1176,13 +1190,20 @@ function print_optionbar_end()
 // DOCME needs phpdoc block
 function geteventicon($message)
 {
-  if ($message == "Device status changed to Down") { $icon = "server_connect.png"; }
-  if ($message == "Device status changed to Up") { $icon = "server_go.png"; }
-  if ($message == "Interface went down" || $message == "Interface changed state to Down") { $icon = "if-disconnect.png"; }
-  if ($message == "Interface went up" || $message == "Interface changed state to Up") { $icon = "if-connect.png"; }
-  if ($message == "Interface disabled") { $icon = "if-disable.png"; }
-  if ($message == "Interface enabled") { $icon = "if-enable.png"; }
+  if ($message == "设备状态变化为异常") { $icon = "server_connect.png"; }
+  if ($message == "设备状态变化为正常") { $icon = "server_go.png"; }
+  if ($message == "接口变为异常" || $message == "接口状态变化为异常") { $icon = "if-disconnect.png"; }
+  if ($message == "接口变为正常" || $message == "接口状态变化为正常") { $icon = "if-connect.png"; }
+  if ($message == "接口禁用") { $icon = "if-disable.png"; }
+  if ($message == "接口启用") { $icon = "if-enable.png"; }
   if (isset($icon)) { return $icon; } else { return false; }
+}
+
+function get_entity_icon($entity)
+{
+
+  $config['entities'][$entry['type']]['icon'];
+
 }
 
 // TESTME needs unit testing
@@ -1207,16 +1228,49 @@ function devclass($device)
   return $class;
 }
 
+/**
+ * Return cached locations list
+ *
+ * If filter used, return locations avialable only for specified params.
+ * Without filter return all avialable locations (cached)
+ *
+ * @param array $filter
+ * @return array
+ */
 // TESTME needs unit testing
-// DOCME needs phpdoc block
-function get_locations()
+function get_locations($filter = array())
 {
   global $cache;
 
-  $locations = array();
-  foreach ($cache['device_locations'] as $location => $count)
+  foreach ($filter as $var => $value)
   {
-    $locations[] = $location;
+    switch ($var)
+    {
+      case 'location_lat':
+      case 'location_lon':
+      case 'location_country':
+      case 'location_state':
+      case 'location_county':
+      case 'location_city':
+        // Check geo params only when GEO enabled globally
+        if (!$GLOBALS['config']['geocoding']['enable']) { break; }
+      case 'location':
+        $where_array[$var] = generate_query_values($value, $var);
+        break;
+    }
+  }
+
+  if (count($where_array))
+  {
+    // Return only founded locations
+    $where = implode('', $where_array) . generate_query_permitted();
+    $locations = dbFetchColumn("SELECT `location` FROM `devices_locations` WHERE 1 $where GROUP BY `location`;");
+  } else {
+    $locations = array();
+    foreach ($cache['device_locations'] as $location => $count)
+    {
+      $locations[] = $location;
+    }
   }
   sort($locations);
 
@@ -1335,7 +1389,7 @@ function generate_ap_link($args, $text = NULL, $type = NULL, $escape = FALSE)
   global $config;
 
   humanize_port($args);
-  if (!$text) { $text = rewrite_ifname($args['label']); }
+  if (!$text) { $text = rewrite_ifname($args['label'], !$escape); } // Negative escape flag for exclude double escape
   if ($type) { $args['graph_type'] = $type; }
   if (!isset($args['graph_type'])) { $args['graph_type'] = 'port_bits'; }
 
@@ -1390,7 +1444,7 @@ function generate_ap_url($ap, $vars=array())
  *  generate_query_permitted(array('device', 'port'), array('port_table' => 'I')) ==
  *   ' AND `device_id` IN (1,4,8,33) AND `device_id` NOT IN (66) AND (`device_id` != '' AND `device_id` IS NOT NULL)
  *     AND `I`.`port_id` IN (1,4,8,33) AND `I`.`port_id` NOT IN (66) AND (`I`.`port_id` != '' AND `I`.`port_id` IS NOT NULL) '
- *  generate_query_permitted(array('device', 'port'), array('port_table' => 'I', 'ignored' => TRUE))
+ *  generate_query_permitted(array('device', 'port'), array('port_table' => 'I', 'hide_ignored' => TRUE))
  *    This additionaly exclude all ignored devices and ports
  *
  * @uses html/includes/cache-data.inc.php
@@ -1400,7 +1454,7 @@ function generate_ap_url($ap, $vars=array())
  * @global array $GLOBALS['cache']['ports']
  * @global string $GLOBALS['vars']['page']
  * @param array|string $type_array Array with permission types, currently allowed 'devices', 'ports'
- * @param array $options Options for each permission type: device_table, port_table, ignored
+ * @param array $options Options for each permission type: device_table, port_table, hide_ignored, hide_disabled
  * @return string
  */
 // TESTME needs unit testing
@@ -1409,6 +1463,13 @@ function generate_query_permitted($type_array = array('device'), $options = arra
   if (!is_array($type_array)) { $type_array = array($type_array); }
   $user_limitted = ($_SESSION['userlevel'] < 7 ? TRUE : FALSE);
   $page = $GLOBALS['vars']['page'];
+  if (!isset($GLOBALS['cache']['devices']['permitted']))
+  {
+    // Note, this function must used after load permissions list!
+    print_error("Function ".__FUNCTION__."() on page '$page' called before include cache-data.inc.php or something wrong with caching permissions. Please report this to developers!");
+  }
+  // Use option hide_disabled if passed or use config
+  $options['hide_disabled'] = (isset($options['hide_disabled']) ? (bool)$options['hide_disabled'] : !$GLOBALS['config']['web_show_disabled']);
 
   $query_permitted = '';
 
@@ -1440,11 +1501,11 @@ function generate_query_permitted($type_array = array('device'), $options = arra
         $devices_excluded = array();
         if (strpos($page, 'device') !== 0)
         {
-          if ($options['ignored'] && count($GLOBALS['cache']['devices']['ignored']))
+          if ($options['hide_ignored'] && count($GLOBALS['cache']['devices']['ignored']))
           {
             $devices_excluded = array_merge($devices_excluded, $GLOBALS['cache']['devices']['ignored']);
           }
-          if (!$GLOBALS['config']['web_show_disabled'] && count($GLOBALS['cache']['devices']['disabled']))
+          if ($options['hide_disabled'] && count($GLOBALS['cache']['devices']['disabled']))
           {
             $devices_excluded = array_merge($devices_excluded, $GLOBALS['cache']['devices']['disabled']);
           }
@@ -1494,18 +1555,18 @@ function generate_query_permitted($type_array = array('device'), $options = arra
         if ($page != 'device' && !in_array('device', $type_array))
         {
           // Don't show ports for disabled devices (except on 'device' page or if 'device' permissions already queried)
-          if (count($GLOBALS['cache']['ports']['device_disabled']) && !$user_limitted)
+          if ($options['hide_disabled'] && count($GLOBALS['cache']['ports']['device_disabled']) && !$user_limitted)
           {
             $ports_excluded = array_merge($ports_excluded, $GLOBALS['cache']['ports']['device_disabled']);
           }
           // Don't show ports for ignored devices (except on 'device' page)
-          if ($options['ignored'] && count($GLOBALS['cache']['ports']['device_ignored']))
+          if ($options['hide_ignored'] && count($GLOBALS['cache']['ports']['device_ignored']))
           {
             $ports_excluded = array_merge($ports_excluded, $GLOBALS['cache']['ports']['device_ignored']);
           }
         }
         // Don't show ignored ports (only on some pages!)
-        if (($page == 'overview' || $options['ignored']) && count($GLOBALS['cache']['ports']['ignored']))
+        if (($page == 'overview' || $options['hide_ignored']) && count($GLOBALS['cache']['ports']['ignored']))
         {
           $ports_excluded = array_merge($ports_excluded, $GLOBALS['cache']['ports']['ignored']);
         }
@@ -1536,45 +1597,73 @@ function generate_query_permitted($type_array = array('device'), $options = arra
   return $query_permitted;
 }
 
-// TESTME needs unit testing
-// DOCME needs phpdoc block
-function generate_query_values($value, $column, $condition_like = FALSE)
+/**
+ * This function generates WHERE condition string from array with values
+ * NOTE, value should be exploded by comma before use generate_query_values(), for example in get_vars()
+ *
+ * @param mixed $value
+ * @param string $column
+ * @param string $condition
+ * @return string
+ */
+function generate_query_values($value, $column, $condition = NULL)
 {
-  if (!is_array($value)) { $value = explode(',', $value); }
+  //if (!is_array($value)) { $value = explode(',', $value); }
+  if (!is_array($value)) { $value = array((string)$value); }
   $column = '`' . str_replace(array('`', '.'), array('', '`.`'), $column) . '`'; // I.column -> `I`.`column`
-  $values = array();
-  if ($condition_like)
+  $condition = ($condition === TRUE ? 'LIKE' : strtoupper(trim($condition)));
+  if (strpos($condition, 'NOT') === 0 || strpos($condition, '!=') === 0)
+  {
+    $negative  = TRUE;
+    $condition = str_replace(array('NOT', '!=', ' '), '', $condition);
+  } else {
+    $negative  = FALSE;
+  }
+
+  $search  = array('%', '_');
+  $replace = array('\%', '\_');
+  $values  = array();
+  switch ($condition)
   {
     // Use LIKE condition
-    foreach ($value as $v)
-    {
-      $v = str_replace(array('%', '_', '*'), array('\%', '\_', '%'), $v);
-      switch (strtoupper($condition_like))
+    case 'LIKE':
+      // Replace stars by % only for LIKE condition
+      $search[]  = '*';
+      $replace[] = '%';
+    case '%LIKE%':
+    case '%LIKE':
+    case 'LIKE%':
+      if ($negative) { $implode = ' AND '; $like = ' NOT LIKE '; }
+      else           { $implode = ' OR ';  $like = ' LIKE '; }
+      foreach ($value as $v)
       {
-        case '%LIKE%':
-        case '%LIKE':
-        case 'LIKE%':
-        case 'LIKE':
-          $v = str_replace('LIKE', $v, $condition_like);
-          break;
+        $v = mysql_real_escape_string($v); // Escape BEFORE replace!
+        $v = str_replace($search, $replace, $v);
+        $v = str_replace('LIKE', $v, $condition);
+        $values[] = $column . $like . "'" . $v . "'";
       }
-      $values[] = $column . " LIKE '" . $v . "'";
-    }
-    $where = ' AND (' . implode(' OR ', $values) . ')';
-  } else {
+      $where = ' AND (' . implode($implode, $values) . ')';
+      break;
     // Use IN condition
-    foreach ($value as $v)
-    {
-      $v = ($v == OBS_VAR_UNSET ? '' : trim($v));
-      $values[] = "'".$v."'";
-    }
-    if (count($values) == 1)
-    {
-      $where = ' AND '.$column.' = ' . $values[0];
-    } else {
-      $where = ' AND '.$column.' IN (' . implode(',', $values) . ')';
-    }
+    default:
+      foreach ($value as $v)
+      {
+        if ($v == OBS_VAR_UNSET)
+        {
+          $values[] = "''";
+        } else {
+          $values[] = "'" . mysql_real_escape_string($v) . "'";
+        }
+      }
+      if (count($values) == 1)
+      {
+        $where = ' AND ' . $column . ($negative ? ' != ' : ' = ') . $values[0];
+      } else {
+        $where = ' AND ' . $column . ($negative ? ' NOT IN (' : ' IN (') . implode(',', $values) . ')';
+      }
+      break;
   }
+
   return $where;
 }
 
@@ -1695,5 +1784,137 @@ function darken_color($rgb, $darker=2) {
 
     return $hash.$R.$G.$B;
 }
+
+// Originally from http://stackoverflow.com/questions/6054033/pretty-printing-json-with-php/21162086#21162086
+
+// FIXME : This is only required for PHP < 5.4, remove this when our requirements are >= 5.4
+
+if (!defined('JSON_UNESCAPED_SLASHES')) { define('JSON_UNESCAPED_SLASHES', 64); }
+if (!defined('JSON_PRETTY_PRINT'))      { define('JSON_PRETTY_PRINT', 128); }
+if (!defined('JSON_UNESCAPED_UNICODE')) { define('JSON_UNESCAPED_UNICODE', 256); }
+
+function json_output($status, $message)
+{
+  header("Content-type: application/json");
+  echo json_encode(array("status" => $status, "message" => $message));
+
+  exit();
+}
+
+function _json_encode($data, $options = 448)
+{
+  if (version_compare(PHP_VERSION, '5.4', '>=')) {
+    return json_encode($data, $options);
+  }
+  else {
+    return _json_format(json_encode($data), $options);
+  }
+}
+
+function _json_format($json, $options = 448)
+{
+  $prettyPrint = (bool) ($options & JSON_PRETTY_PRINT);
+  $unescapeUnicode = (bool) ($options & JSON_UNESCAPED_UNICODE);
+  $unescapeSlashes = (bool) ($options & JSON_UNESCAPED_SLASHES);
+  if (!$prettyPrint && !$unescapeUnicode && !$unescapeSlashes)
+  {
+    return $json;
+  }
+  $result = '';
+  $pos = 0;
+  $strLen = strlen($json);
+  $indentStr = ' ';
+  $newLine = "\n";
+  $outOfQuotes = true;
+  $buffer = '';
+  $noescape = true;
+  for ($i = 0; $i < $strLen; $i++)
+  {
+    // Grab the next character in the string
+    $char = substr($json, $i, 1);
+    // Are we inside a quoted string?
+    if ('"' === $char && $noescape)
+    {
+      $outOfQuotes = !$outOfQuotes;
+    }
+    if (!$outOfQuotes)
+    {
+      $buffer .= $char;
+      $noescape = '\\' === $char ? !$noescape : true;
+      continue;
+    }
+    elseif ('' !== $buffer)
+    {
+      if ($unescapeSlashes)
+      {
+        $buffer = str_replace('\\/', '/', $buffer);
+      }
+      if ($unescapeUnicode && function_exists('mb_convert_encoding'))
+      {
+        // http://stackoverflow.com/questions/2934563/how-to-decode-unicode-escape-sequences-like-u00ed-to-proper-utf-8-encoded-cha
+        $buffer = preg_replace_callback('/\\\\u([0-9a-f]{4})/i',
+          function ($match)
+          {
+            return mb_convert_encoding(pack('H*', $match[1]), 'UTF-8', 'UCS-2BE');
+          }, $buffer);
+      }
+      $result .= $buffer . $char;
+      $buffer = '';
+      continue;
+    }
+    elseif(false !== strpos(" \t\r\n", $char))
+    {
+      continue;
+    }
+    if (':' === $char)
+    {
+      // Add a space after the : character
+      $char .= ' ';
+    }
+    elseif (('}' === $char || ']' === $char))
+    {
+      $pos--;
+      $prevChar = substr($json, $i - 1, 1);
+      if ('{' !== $prevChar && '[' !== $prevChar)
+      {
+        // If this character is the end of an element,
+        // output a new line and indent the next line
+        $result .= $newLine;
+        for ($j = 0; $j < $pos; $j++)
+        {
+          $result .= $indentStr;
+        }
+      }
+      else
+      {
+        // Collapse empty {} and []
+        $result = rtrim($result) . "\n\n" . $indentStr;
+      }
+    }
+    $result .= $char;
+    // If the last character was the beginning of an element,
+    // output a new line and indent the next line
+    if (',' === $char || '{' === $char || '[' === $char)
+    {
+      $result .= $newLine;
+      if ('{' === $char || '[' === $char)
+      {
+        $pos++;
+      }
+      for ($j = 0; $j < $pos; $j++)
+      {
+        $result .= $indentStr;
+      }
+    }
+  }
+  // If buffer not empty after formating we have an unclosed quote
+  if (strlen($buffer) > 0)
+  {
+    //json is incorrectly formatted
+    $result = false;
+  }
+  return $result;
+}
+
 
 // EOF

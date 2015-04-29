@@ -1,0 +1,1 @@
+Use hb_api.php.* version that matches your Observium version and rename it to hb_api.php

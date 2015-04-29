@@ -16,7 +16,7 @@
                         <select name="refund_type" id="refundtype">
                             {foreach from=$rtypes item=rt}
                                 <option value="{$rt}">
-                                   {$lang[$rt]}
+                                    {$lang[$rt]}
                                 </option>
                             {/foreach}
                         </select>
@@ -36,7 +36,7 @@
                         {/if}
                     </td>
                     <td>
-                        {if "config:CnoteEnable:on"|checkcondition }<input name="creditnote" type="checkbox" value="1" checked="checked" onclick="$('#refundbox').toggle()" />
+                        {if "config:CnoteEnable:on"|checkcondition }<input name="creditnote" type="checkbox" value="1" checked="checked" />
                         {/if}
                     </td>
                 </tr>                
@@ -97,23 +97,23 @@
             {securitytoken}
         </form>
         <script type="text/javascript">
-            var colective_max = parseFloat('{$maxref}'),    
+            var colective_max = parseFloat('{$maxref}'),
                 dec_precision = {$decprecision},
-                    transaction_max = {literal}{{/literal}{foreach from=$transactions item=t}'{$t.trans_id}':parseFloat('{$t.amount}'),{/foreach}{literal} }{/literal}
+                transaction_max = {literal}{{/literal}{foreach from=$transactions item=t}'{$t.trans_id}':parseFloat('{$t.amount}'),{/foreach}{literal} }{/literal}
             {literal}
                 $(function() {
                     function getLimit() {
                         var type = $('#refundtype').val(),
-                                limit = colective_max;
+                            limit = colective_max;
                         if (type == 'refund_gateway') {
                             limit = transaction_max[$('.credit_transaction option:selected').text()];
                         }
                         return limit;
                     }
                     function setRefundAmount(v) {
-                    
+
                         $('#refundamount').val(v.toFixed(dec_precision)).change();
-                    
+
                     }
                     function parseStr2Int(str) {
                         var val = parseFloat(str.replace(/[^\d.]+/g, ''));
@@ -122,7 +122,7 @@
 
                     $('.credititem').change(function() {
                         var that = $(this),
-                                id = that.attr('data-rel');
+                            id = that.attr('data-rel');
                         if (that.is(':checked')) {
                             $('#amount' + id).prop('disabled', false);
                         } else {
@@ -132,13 +132,14 @@
                         $($('.creditamount:not(:disabled)').get().reverse()).each(function() {
                             refund += parseStr2Int($(this).val());
                         }).keyup();
+                        
                         setRefundAmount(refund);
                     });
 
                     $('#refundamount').change(function() {
                         var that = $(this),
-                                limit = getLimit(),
-                                val = parseFloat(that.val());
+                            limit = getLimit(),
+                            val = parseFloat(that.val());
                         $('#maxrefund').text(limit);
                         if (val > limit) {
                             val = limit;
@@ -146,31 +147,38 @@
                         }
                         window.console.log(typeof val, val);
                         $('#confirmrefund').prop('disabled', !(val > 0));
-                        var w=that.val().toString().length * 7.5;
-                        w=w<35?35:w;
+                        var w = that.val().toString().length * 7.5;
+                        w = w < 35 ? 35 : w;
                         that.width(w);
                     }).change();
 
                     $('#refundtype, #credittransid').change(function() {
                         var itemcredit = 0,
-                                refundLimit = getLimit();
+                            refundLimit = getLimit();
                         $('.creditamount').unbind('keyup').each(function(x) {
                             var that = $(this),
-                                    val = parseStr2Int(that.val());
+                                val = parseStr2Int(that.val()),
+                                linemax = parseStr2Int(that.attr('max'));
+                                
                             if (itemcredit >= refundLimit)
                                 that.prop('disabled', true).parents('tr').eq(0).find('.credititem').prop('checked', false);//.change();
                             else if (itemcredit + val > refundLimit) {
-                                
+
                                 that.val((refundLimit - itemcredit).toFixed(dec_precision));
-                                }
+                            }
                             itemcredit += val;
 
                             that.keyup(function() {
                                 if (that.is(':disabled'))
                                     return false;
                                 var val = parseStr2Int(that.val()),
-                                        creditval = 0,
-                                        refundLimit = getLimit();
+                                    creditval = 0,
+                                    refundLimit = getLimit();
+                                    
+                                if(val > linemax){
+                                    val = linemax;
+                                    that.val(val.toFixed(dec_precision));
+                                }
                                 $('.creditamount:not(:disabled)').not(this).each(function(y) {
                                     creditval += parseStr2Int($(this).val());
                                 });
@@ -181,12 +189,19 @@
                                 setRefundAmount(creditval + val);
                             })
                         }).eq(0).keyup();
-                    });
+                    }).change();
 
-                    
-                    if($('input[name=creditnote]').is(':checked')) { 
-                        $('.credititem').eq(0).change()
-                    }
+                
+                    $('input[name=creditnote]').on('click manual', function(){
+                        if($(this).is(':checked')){
+                            $('#refundbox').show()
+                            //$('.credititem').eq(0).change()
+                            $('#refundamount').prop('readonly', true).css({border: 'none'});
+                        }else{
+                            $('#refundbox').hide()
+                            $('#refundamount').prop('readonly', false).css({border: ''});
+                        }
+                    }).trigger('manual');
                 });
             {/literal}    
         </script>

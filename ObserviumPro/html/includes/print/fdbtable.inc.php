@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage web
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -33,7 +33,6 @@ function print_fdbtable($vars)
   {
     if ($value != '')
     {
-      $cond = array();
       switch ($var)
       {
         case 'device':
@@ -42,12 +41,11 @@ function print_fdbtable($vars)
           break;
         case 'port':
         case 'port_id':
-          $where .= ' AND I.`port_id` = ?';
-          $param[] = $value;
+          $where .= generate_query_values($value, 'I.port_id');
           break;
         case 'interface':
-          $where .= ' AND I.`ifDescr` LIKE ?';
-          $param[] = $value;
+        case 'port_name':
+          $where .= generate_query_values($value, 'I.ifDescr', 'LIKE%');
           break;
         case 'vlan_id':
           $where .= generate_query_values($value, 'F.vlan_id');
@@ -56,9 +54,7 @@ function print_fdbtable($vars)
           $where .= generate_query_values($value, 'V.vlan_name');
           break;
         case 'address':
-          $where .= ' AND F.`mac_address` LIKE ?';
-          # FIXME hm? mres in a dbFacile parameter?
-          $param[] = '%'.str_replace(array(':', ' ', '-', '.', '0x'),'',mres($value)).'%';
+          $where .= generate_query_values(str_replace(array(':', ' ', '-', '.', '0x'),'', $value), 'F.mac_address', '%LIKE%');
           break;
       }
     }
@@ -104,7 +100,7 @@ function print_fdbtable($vars)
     humanize_port($entry);
 
     $string .= '  <tr>' . PHP_EOL;
-    $string .= '    <td style="width: 160px;">' . format_mac($entry['mac_address']) . '</td>' . PHP_EOL;
+    $string .= '    <td style="width: 160px;">' . generate_popup_link('mac', format_mac($entry['mac_address'])) . '</td>' . PHP_EOL;
     if ($list['device'])
     {
       $dev = device_by_id_cache($entry['device_id']);
@@ -112,7 +108,7 @@ function print_fdbtable($vars)
     }
     if ($entry['ifInErrors_delta'] > 0 || $entry['ifOutErrors_delta'] > 0)
     {
-      $port_error = generate_port_link($entry, '<span class="label label-important">Errors</span>', 'port_errors');
+      $port_error = generate_port_link($entry, '<span class="label label-important">错误</span>', 'port_errors');
     }
     $string .= '    <td class="entity">' . generate_port_link($entry, short_ifname($entry['label'])) . ' ' . $port_error . '</td>' . PHP_EOL;
     $string .= '    <td>Vlan' . $entry['vlan_vlan'] . '</td>' . PHP_EOL;

@@ -20,7 +20,7 @@
 			{include file='ajax.langedit.tpl'}
 			
 			<link rel="stylesheet" href="{$template_dir}js/gui.elements.css" type="text/css" />
-			<script type="text/javascript" src="{$template_dir}js/gui.elements.js"></script>
+			<script type="text/javascript" src="{$template_dir}js/gui.elements.js?v={$hb_version}"></script>
             </div>
         </td>
     </tr>

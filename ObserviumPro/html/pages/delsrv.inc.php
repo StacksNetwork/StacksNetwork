@@ -16,7 +16,7 @@ if ($_SESSION['userlevel'] < '5')
   include("includes/error-no-perm.inc.php");
 } else {
 
-  $pagetitle[] = "删除服务";
+  $page_title[] = "删除服务";
 
   if ($_POST['delsrv'])
   {

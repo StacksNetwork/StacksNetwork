@@ -60,8 +60,7 @@ function print_arptable($vars)
             $param[] = '%'.$value.'%';
           } else {
             $where .= ' AND `mac_address` LIKE ?';
-            // FIXME hm? mres in a dbFacile parameter?
-            $param[] = '%'.str_replace(array(':', ' ', '-', '.', '0x'),'',mres($value)).'%';
+            $param[] = '%'.str_replace(array(':', ' ', '-', '.', '0x'),'', $value).'%';
           }
           break;
       }
@@ -106,20 +105,20 @@ function print_arptable($vars)
 
   foreach ($entries as $entry)
   {
-    humanize_port ($entry);
+    humanize_port($entry);
     $ip_version = $entry['ip_version'];
     $ip_address = ($ip_version == 6) ? Net_IPv6::compress($entry['ip_address']) : $entry['ip_address'];
     $arp_host = dbFetchRow('SELECT * FROM `ipv'.$ip_version.'_addresses` AS A
                            LEFT JOIN `ports` AS I ON A.`port_id` = I.`port_id`
                            LEFT JOIN `devices` AS D ON D.`device_id` = I.`device_id`
                            WHERE A.`ipv'.$ip_version.'_address` = ?', array($ip_address));
-    $arp_name = ($arp_host) ? generate_device_link($arp_host) : '';
-    $arp_if = ($arp_host) ? generate_port_link($arp_host) : '';
-    if ($arp_host['device_id'] == $entry['device_id']) { $arp_name = 'Self Device'; }
-    if ($arp_host['port_id'] == $entry['port_id']) { $arp_if = 'Self Port'; }
+    $arp_name   = ($arp_host) ? generate_device_link($arp_host) : '';
+    $arp_if     = ($arp_host) ? generate_port_link($arp_host) : '';
+    if ($arp_host['device_id'] == $entry['device_id']) { $arp_name = '自设备'; }
+    if ($arp_host['port_id'] == $entry['port_id']) { $arp_if = '自端口'; }
 
     $string .= '  <tr>' . PHP_EOL;
-    $string .= '    <td style="width: 160px;">' . format_mac($entry['mac_address']) . '</td>' . PHP_EOL;
+    $string .= '    <td style="width: 160px;">' . generate_popup_link('mac', format_mac($entry['mac_address'])) . '</td>' . PHP_EOL;
     $string .= '    <td style="width: 140px;">' . $ip_address . '</td>' . PHP_EOL;
     if ($list['device'])
     {
@@ -130,7 +129,7 @@ function print_arptable($vars)
     {
       if ($entry['ifInErrors_delta'] > 0 || $entry['ifOutErrors_delta'] > 0)
       {
-        $port_error = generate_port_link($entry, '<span class="label label-important">Errors</span>', 'port_errors');
+        $port_error = generate_port_link($entry, '<span class="label label-important">错误</span>', 'port_errors');
       }
       $string .= '    <td class="entity">' . generate_port_link($entry, short_ifname($entry['label'])) . ' ' . $port_error . '</td>' . PHP_EOL;
     }

@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>HostBill - {$business_name} </title>
 <link href="{$template_dir}_style.css" rel="stylesheet" media="all" />
-<script type="text/javascript" src="{$template_dir}js/jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="{$template_dir}js/jquery-1.3.2.min.js?v={$hb_version}"></script>
 <style>{literal}
 a {
  	font-weight:bold;
@@ -179,7 +179,7 @@ html, body {
 		</div>
 		
 	</div>
-	<div style="text-align:right;"><small>Powered by <a href="https://www.stacksnet.com/" target="_blank" >STACKS® NETWORK</a></small></div>
+	<div style="text-align:right;"><small>Powered by <a href="http://hostbillapp.com" target="_blank" >HostBill</a></small></div>
 </div>
 </div>
 

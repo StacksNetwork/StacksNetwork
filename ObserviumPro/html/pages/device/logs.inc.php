@@ -42,7 +42,7 @@ switch ($vars['section'])
     include('pages/device/logs/'.$vars['section'].'.inc.php');
     break;
   default:
-    echo('<h2>错误. 没有任何部分 '.$vars['section'].'.<br /> 请汇报至 observium 开发团队.</h2>');
+    echo('<h2>错误. 没有任何部分 '.$vars['section'].'.<br /> 请汇报至Observium开发团队.</h2>');
     break;
 }
 

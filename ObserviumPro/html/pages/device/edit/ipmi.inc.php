@@ -7,11 +7,11 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
-if ($_POST['editing'])
+if ($vars['editing'])
 {
   if ($_SESSION['userlevel'] > 7)
   {
@@ -63,28 +63,28 @@ if ($updated && $update_message)
   <div class="control-group">
     <label class="control-label" for="ipmi_hostname">IPMI主机名</label>
     <div class="controls">
-      <input name="ipmi_hostname" type="text" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'ipmi_hostname'))); ?>"/>
+      <input name="ipmi_hostname" type="text" size="32" value="<?php echo(escape_html(get_dev_attrib($device, 'ipmi_hostname'))); ?>"/>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label" for="ipmi_port">IPMI端口</label>
     <div class="controls">
-      <input type=text name="ipmi_port" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'ipmi_port'))); ?>"/>
+      <input type=text name="ipmi_port" size="32" value="<?php echo(escape_html(get_dev_attrib($device, 'ipmi_port'))); ?>"/>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label" for="ipmi_username">IPMI用户名</label>
     <div class="controls">
-      <input name="ipmi_username" type="text" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'ipmi_username'))); ?>"/>
+      <input name="ipmi_username" type="text" size="32" value="<?php echo(escape_html(get_dev_attrib($device, 'ipmi_username'))); ?>"/>
     </div>
   </div>
 
   <div class="control-group">
     <label class="control-label" for="ipmi_password">IPMI密码</label>
     <div class="controls">
-      <input name="ipmi_password" type="password" size="32" value="<?php echo(htmlspecialchars(get_dev_attrib($device,'ipmi_password'))); ?>"/>
+      <input name="ipmi_password" type="password" size="32" value="<?php echo(escape_html(get_dev_attrib($device, 'ipmi_password'))); // FIXME. For passwords we should use filter instead escape! ?>"/>
     </div>
   </div>
 

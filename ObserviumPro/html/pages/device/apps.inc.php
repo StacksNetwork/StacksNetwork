@@ -150,6 +150,6 @@ if (is_file($app_filename))
   }
 }
 
-$pagetitle[] = "应用";
+$page_title[] = "应用";
 
 // EOF

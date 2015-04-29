@@ -8,31 +8,15 @@
  * @package    observium
  * @subpackage billing
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 ini_set('allow_url_fopen', 0);
-ini_set('display_errors', 0);
 
-if (strpos($_SERVER['REQUEST_URI'], "debug"))
-{
-  $debug = "1";
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  ini_set('log_errors', 1);
-  ini_set('error_reporting', E_ALL ^ E_NOTICE);
-} else {
-  $debug = FALSE;
-  ini_set('display_errors', 0);
-  ini_set('display_startup_errors', 0);
-  ini_set('log_errors', 0);
-  ini_set('error_reporting', 0);
-}
-
-include("../includes/defaults.inc.php");
-include("../config.php");
-include("../includes/definitions.inc.php");
+include_once("../includes/defaults.inc.php");
+include_once("../config.php");
+include_once("../includes/definitions.inc.php");
 include("../includes/functions.inc.php");
 include("includes/functions.inc.php");
 include("includes/authenticate.inc.php");
@@ -43,34 +27,36 @@ include("includes/jpgraph/src/jpgraph_line.php");
 include("includes/jpgraph/src/jpgraph_utils.inc.php");
 include("includes/jpgraph/src/jpgraph_date.php");
 
-if (is_numeric($_GET['bill_id']))
+$vars = get_vars('GET');
+
+if (is_numeric($vars['bill_id']))
 {
   if ($_SERVER['REMOTE_ADDR'] != $_SERVER['SERVER_ADDR'])
   {
-    if (bill_permitted($_GET['bill_id']))
+    if (bill_permitted($vars['bill_id']))
     {
-      $bill_id = $_GET['bill_id'];
+      $bill_id = $vars['bill_id'];
     } else {
       echo("禁止未经授权的访问.");
       exit;
     }
   } else {
-    $bill_id = $_GET['bill_id'];
+    $bill_id = $vars['bill_id'];
   }
 } else {
   echo("禁止未经授权的访问.");
   exit;
 }
 
-$start = $_GET['from'];
-$end =   $_GET['to'];
-$xsize = $_GET['x'];
-$ysize = $_GET['y'];
-$count = $_GET['count'];
+$start = $vars['from'];
+$end =   $vars['to'];
+$xsize = $vars['x'];
+$ysize = $vars['y'];
+$count = $vars['count'];
 $count = $count + 0;
 $iter = 1;
 
-if ($_GET['type']) { $type = $_GET['type']; } else { $type = "date"; }
+if ($vars['type']) { $type = $vars['type']; } else { $type = "date"; }
 
 $dur = $end - $start;
 
@@ -209,23 +195,23 @@ $lineplot->SetFillColor("#d5d5d5@0.5");
 $lineplot_in = new LinePlot($in_data, $ticks);
 
 $lineplot_in->SetLegend("流入流量");
-$lineplot_in->SetColor('darkgreen');
-$lineplot_in->SetFillColor('lightgreen@0.4');
+$lineplot_in->SetColor('#'.$config['graph_colours']['greens'][1]);
+$lineplot_in->SetFillColor('#'.$config['graph_colours']['greens'][0]);
 $lineplot_in->SetWeight(1);
 
 $lineplot_out = new LinePlot($out_data_inv, $ticks);
 $lineplot_out->SetLegend("流出流量");
-$lineplot_out->SetColor('darkblue');
-$lineplot_out->SetFillColor('lightblue@0.4');
+$lineplot_out->SetColor('#'.$config['graph_colours']['blues'][1]);
+$lineplot_out->SetFillColor('#'.$config['graph_colours']['blues'][0]);
 $lineplot_out->SetWeight(1);
 
-if ($_GET['95th'])
+if ($vars['95th'])
 {
   $lineplot_95th = new LinePlot($per_data, $ticks);
   $lineplot_95th ->SetColor("red");
 }
 
-if ($_GET['ave'])
+if ($vars['ave'])
 {
   $lineplot_ave = new LinePlot($ave_data, $ticks);
   $lineplot_ave ->SetColor("red");
@@ -240,16 +226,16 @@ $graph->Add($lineplot);
 $graph->Add($lineplot_in);
 $graph->Add($lineplot_out);
 
-if ($_GET['95th'])
+if ($vars['95th'])
 {
   $graph->Add($lineplot_95th);
 }
 
-if ($_GET['ave'])
+if ($vars['ave'])
 {
   $graph->Add($lineplot_ave);
 }
 
 $graph->stroke();
 
-?>
+// EOF

@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -36,7 +36,7 @@ foreach ($alert_table as $entity_type => $thing)
 
   $navbar['options'][$entity_type]['url'] = generate_url(array('page' => 'device', 'device' => $device['device_id'],
                                                   'tab' => 'alerts', 'entity_type' => $entity_type));
-  $navbar['options'][$entity_type]['text'] = htmlspecialchars(nicecase($entity_type));
+  $navbar['options'][$entity_type]['text'] = escape_html(nicecase($entity_type));
 }
 
 $navbar['options_right']['update']['url']  = generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'alerts', 'action'=>'update'));

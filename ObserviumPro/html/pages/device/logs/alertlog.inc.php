@@ -37,7 +37,7 @@ natcasesort($alert_test_array);
 $search[] = array('type'    => 'multiselect',
                   'name'    => '检测器',
                   'id'      => 'alert_test_id',
-                  'width'   => '150px',
+                  'width'   => '125px',
                   'value'   => $vars['alert_test_id'],
                   'values'  => $alert_test_array);
 
@@ -51,7 +51,7 @@ foreach (array('ALERT_NOTIFY','FAIL','FAIL_DELAYED','FAIL_SUPPRESSED','OK','RECO
 $search[] = array('type'    => 'multiselect',
                   'name'    => '状态类型',
                   'id'      => 'log_type',
-                  'width'   => '150px',
+                  'width'   => '125px',
 //                  'subtext' => TRUE,
                   'value'   => $vars['log_type'],
                   'values'  => $status_types);
@@ -63,13 +63,13 @@ $search[] = array('type'    => 'multiselect',
 #                  'width'   => '130px',
 #                  'value'   => $vars['message']);
 
-$search[] = array('type'    => 'newline',
-                  'hr'      => TRUE);
+// $search[] = array('type'    => 'newline',
+//                  'hr'      => TRUE);
 $search[] = array('type'    => 'datetime',
                   'id'      => 'timestamp',
                   'presets' => TRUE,
-                  'min'     => dbFetchCell('SELECT MIN(`timestamp`) FROM `alert_log` WHERE `device_id` = ?', array($vars['device'])),
-                  'max'     => dbFetchCell('SELECT MAX(`timestamp`) FROM `alert_log` WHERE `device_id` = ?', array($vars['device'])),
+                  'min'     => dbFetchCell('SELECT `timestamp` FROM `alert_log` WHERE `device_id` = ? ORDER BY `timestamp` LIMIT 0,1;', array($vars['device'])),
+                  'max'     => dbFetchCell('SELECT `timestamp` FROM `alert_log` WHERE `device_id` = ? ORDER BY `timestamp` DESC LIMIT 0,1;', array($vars['device'])),
                   'from'    => $vars['timestamp_from'],
                   'to'      => $vars['timestamp_to']);
 
@@ -81,7 +81,7 @@ $vars['pagination'] = TRUE;
 // Print Alert Log
 print_alert_log($vars);
 
-$pagetitle[] = '警报日志';
+$page_title[] = '警报日志';
 
 ?>
   </div> <!-- col-md-12 -->

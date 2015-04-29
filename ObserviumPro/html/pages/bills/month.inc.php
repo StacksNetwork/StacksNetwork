@@ -11,7 +11,7 @@
  *
  */
 
-$pagetitle[]      = "目前的计费时间";
+$page_title[]      = "目前的计费时间";
 $isAdmin          = (($_SESSION['userlevel'] == "10") ? true : false);
 $disabled         = ($isAdmin ? "" : "disabled=\"disabled\"");
 $links['add']     = ($isAdmin ? generate_url($vars, array('view' => 'add')) : "javascript:;");

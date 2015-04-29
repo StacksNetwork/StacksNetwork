@@ -26,7 +26,7 @@ foreach (dbFetchRows("SELECT * FROM `groups_assoc` WHERE 1") as $entry)
 $types = dbFetchRows("SELECT `entity_type` FROM `group_table` GROUP BY `entity_type`");
 
 $navbar['options']['all']['url'] = generate_url($vars, array('page' => 'groups', 'entity_type' => NULL));
-$navbar['options']['all']['text'] = htmlspecialchars(nicecase('all'));
+$navbar['options']['all']['text'] = escape_html(nicecase('all'));
 if (!isset($vars['entity_type'])) {
   $navbar['options']['all']['class'] = "active";
   $navbar['options']['all']['url'] = generate_url($vars, array('page' => 'groups', 'entity_type' => NULL));
@@ -41,7 +41,7 @@ foreach ($types as $thing)
   } else {
     $navbar['options'][$thing['entity_type']]['url'] = generate_url($vars, array('page' => 'groups', 'entity_type' => $thing['entity_type']));
   }
-  $navbar['options'][$thing['entity_type']]['text'] = htmlspecialchars(nicecase($thing['entity_type']));
+  $navbar['options'][$thing['entity_type']]['text'] = escape_html(nicecase($thing['entity_type']));
 }
 
 $navbar['options_right']['update']['url']  = generate_url(array('page' => 'groups_regenerate', 'action'=>'update'));

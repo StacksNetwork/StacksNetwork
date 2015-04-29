@@ -42,7 +42,7 @@ if ($bill_data['bill_type'] == "cdr") {
 <div class="row">
   <div class="col-md-6">
    <div class="well info_box">
-    <div class="title"><i class="oicon-wrench"></i> Bill Properties</div>
+    <div class="title"><i class="oicon-wrench"></i> 账单属性</div>
     <div class="content">
         <input type="hidden" name="action" value="update_bill">
         <script type="text/javascript">
@@ -53,15 +53,15 @@ if ($bill_data['bill_type'] == "cdr") {
         </script>
         <fieldset>
           <div class="control-group">
-            <label class="control-label" for="bill_name">Description</label>
+            <label class="control-label" for="bill_name">说明</label>
             <div class="controls">
               <input class="col-lg-10" type="text" name="bill_name" value="<?php echo $bill_data["bill_name"]; ?>" />
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label" for="bill_type">Billing Type</label>
+            <label class="control-label" for="bill_type">账单类型</label>
             <div class="controls">
-              <input type="radio" style="margin-bottom: 8px;" name="bill_type" value="cdr" onchange="javascript: billType();" <?php if ($bill_data['bill_type'] == "cdr") { echo('checked '); } ?>/> CDR / 95th percentile
+              <input type="radio" style="margin-bottom: 8px;" name="bill_type" value="cdr" onchange="javascript: billType();" <?php if ($bill_data['bill_type'] == "cdr") { echo('checked '); } ?>/> CDR / 95th计费
               <input type="radio" style="margin-bottom: 8px;" name="bill_type" value="quota" onchange="javascript: billType();" <?php if ($bill_data['bill_type'] == "quota") { echo('checked '); } ?>/> 限额
             <!--
               <div class="btn-group" data-toggle="buttons-radio" style="margin-bottom: 5px;">
@@ -179,12 +179,13 @@ $port_ids = dbFetchRows("SELECT `port_id` FROM `bill_ports` WHERE bill_id = ?", 
 
 if (is_array($ports))
 {
-  foreach ($port_ids AS $port_entry) {
+  foreach ($port_ids AS $port_entry)
+  {
 
-  $emptyCheck = true;
+    $emptyCheck = true;
 
-  $port   = get_port_by_id($port_entry['port_id']);
-  $device = device_by_id_cache($port['device_id']);
+    $port   = get_port_by_id($port_entry['port_id']);
+    $device = device_by_id_cache($port['device_id']);
 
     $devicebtn = '<button class="btn"><i class="oicon-servers"></i> '.generate_device_link($device).'</button>';
     if (empty($port['ifAlias'])) { $portalias = ""; } else { $portalias = " - ".$port['ifAlias'].""; }
@@ -204,10 +205,9 @@ if (is_array($ports))
     echo('            </div>' . PHP_EOL);
     echo('          </form>' . PHP_EOL);
   }
-  if (!$emptyCheck) {
-    echo('          <div class="alert alert-info">' . PHP_EOL);
-    echo('            <i class="icon-info-sign"></i> 没有端口分配至该账单' . PHP_EOL);
-    echo('          </div>' . PHP_EOL);
+  if (!$emptyCheck)
+  {
+    print_warning('没有端口分配至该账单');
   }
 }
 
@@ -227,16 +227,17 @@ if (is_array($ports))
         <div class="control-group">
           <label class="control-label" for="device">设备</label>
           <div class="controls">
-            <select style="width: 300px;" id="device" name="device" onchange="getInterfaceList(this, 'port_id')">
+            <select style="width: 300px;" id="device" name="device" class="selectpicker" onchange="getInterfaceList(this, 'port_id')">
               <option value=''>选择一个设备</option>
 <?php
 
 $devices = dbFetchRows("SELECT * FROM `devices` ORDER BY hostname");
 foreach ($devices as $device)
 {
-  unset($done);
-  foreach ($access_list as $ac) { if ($ac == $device['device_id']) { $done = 1; } }
-  if (!$done) { echo("              <option value='" . $device['device_id']  . "'>" . $device['hostname'] . "</option>"); }
+  if (device_permitted($device['device_id']))
+  {
+    echo("              <option value='" . $device['device_id']  . "'>" . $device['hostname'] . "</option>");
+  }
 }
 
 ?>
@@ -246,7 +247,7 @@ foreach ($devices as $device)
         <div class="control-group">
           <label class="control-label" for="port_id">端口</label>
           <div class="controls">
-            <select style="width: 300px;" id="port_id" name="port_id"></select>
+            <select multiple style="width: 300px;" id="port_id" class="selectpicker" name="port_id[]"></select>
           </div>
         </div>
       </fieldset>

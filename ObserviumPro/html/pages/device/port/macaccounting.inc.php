@@ -49,9 +49,12 @@ $ifalias = $port['name'];
 if ($port['ifPhysAddress']) { $mac = $port['ifPhysAddress']; }
 
 $color = "black";
-if ($port['ifAdminStatus'] == "down") { $status = "<span class='grey'>禁用</span>"; }
-if ($port['ifAdminStatus'] == "up" && $port['ifOperStatus'] == "down") { $status = "<span class='red'>启用 / 断线</span>"; }
-if ($port['ifAdminStatus'] == "up" && $port['ifOperStatus'] == "up") { $status = "<span class='green'>启用 / 连接</span>"; }
+if      ($port['ifAdminStatus'] == "down") { $status = "<span class='grey'>禁用</span>"; }
+else if ($port['ifAdminStatus'] == "up")
+{
+  if ($port['ifOperStatus'] == "down" || $port['ifOperStatus'] == "lowerLayerDown") { $status = "<span class='red'>启用 / 已断开</span>"; }
+  else                                                                              { $status = "<span class='green'>启用 / 已连接</span>"; }
+}
 
 $i = 1;
 $inf = rewrite_ifname($ifname);
@@ -82,7 +85,7 @@ else
               'BLANK' => NULL,
               'mac' => 'MAC地址',
               'BLANK' => NULL,
-              'ip' => 'IP Address',
+              'ip' => 'IP地址',
               'graphs' => NULL,
               'bps_in' => '流入流量',
               'bps_out' => '流出流量',

@@ -8,14 +8,14 @@
 
                     <td width="15%">{$lang.clientname}</td>
                     <td><input type="text" value="{$currentfilter.lastname}" size="40" name="filter[lastname]"/></td>
-                    <td width="15%">Invoice id</td>
+                    <td width="15%">账单ID</td>
                     <td><input type="text" value="{$currentfilter.invoice_id}" size="40" name="filter[invoice_id]"/></td>
                 </tr>
                       <tr>
 
-                    <td width="15%">Transaction no</td>
+                    <td width="15%">交易编号</td>
                     <td><input type="text" value="{$currentfilter.trans_id}" size="40" name="filter[trans_id]"/></td>
-                    <td width="15%">Staff member</td>
+                    <td width="15%">工作人员</td>
                     <td><input type="text" value="{$currentfilter.admin_name}" size="40" name="filter[admin_name]"/></td>
                 </tr>    
                 <tr><td colspan="4"><center><input type="submit" value="{$lang.Search}" />&nbsp;&nbsp;&nbsp;<input type="submit" value="{$lang.Cancel}" onclick="$('#hider2').show();$('#hider').hide();return false;"/></center></td></tr>
@@ -42,14 +42,14 @@
                     <tbody>
                         <tr>      
                             <th  width="130"><a href="?cmd=clientcredit&orderby=date|ASC"  class="sortorder">{$lang.Date}</a></th>
-                            <th  width="150"><a href="?cmd=clientcredit&orderby=lastname|ASC"  class="sortorder">Client</a></th>
-                            <th><a href="?cmd=clientcredit&orderby=description|ASC"  class="sortorder">Description</a></th>
-                            <th width="90">Increase</th>
-                            <th width="90">Decrease</th>
-                            <th width="90">Credit after</th>
-                            <th width="130"><a href="?cmd=clientcredit&orderby=transaction_id|ASC"  class="sortorder">Trans. id</a></th>
-                            <th width="90"><a href="?cmd=clientcredit&orderby=invoice_id|ASC"  class="sortorder">Invoice</a></th>
-                            <th width="130"><a href="?cmd=clientcredit&orderby=admin_name|ASC"  class="sortorder">Staff</a></th>
+                            <th  width="150"><a href="?cmd=clientcredit&orderby=lastname|ASC"  class="sortorder">客户</a></th>
+                            <th><a href="?cmd=clientcredit&orderby=description|ASC"  class="sortorder">说明</a></th>
+                            <th width="90">增加</th>
+                            <th width="90">减少</th>
+                            <th width="90">信用</th>
+                            <th width="130"><a href="?cmd=clientcredit&orderby=transaction_id|ASC"  class="sortorder">支付. id</a></th>
+                            <th width="90"><a href="?cmd=clientcredit&orderby=invoice_id|ASC"  class="sortorder">账单</a></th>
+                            <th width="130"><a href="?cmd=clientcredit&orderby=admin_name|ASC"  class="sortorder">员工</a></th>
                         </tr>
                     </tbody> 
                     <tbody id="updater"> 
@@ -58,13 +58,13 @@
                         <tr>
                             <td>{$email.date|dateformat:$date_format}</td>   
                             <td>
-                               <a href="?cmd=clients&action=show&id={$email.client_id}" target="_blank">{$email.firstname} {$email.lastname}</a>
+                               <a href="?cmd=clients&action=show&id={$email.client_id}" target="_blank">{$email.lastname} {$email.firstname}</a>
                             </td>
                             <td>{$email.description}</td>   
                             <td>{$email.in|price:$email.currency_id}</td>  
                             <td>{$email.out|price:$email.currency_id}</td>  
                             <td>{$email.balance|price:$email.currency_id}</td>  
-                            <td>{if $email.transaction_id}<a href="?cmd=transactions&action=edit&id={$email.transaction_id}" target="_blank">{$email.transaction_id}</a>{else}-{/if}</td> 
+                            <td>{if $email.transid}<a href="?cmd=transactions&action=edit&id={$email.transid}" target="_blank" title="{$email.transaction_id}">{$email.transaction_id|truncate:16}</a>{elseif $email.transaction_id}{$email.transaction_id|truncate:16}{else}-{/if}</td> 
                             <td>{if $email.invoice_id}<a href="?cmd=invoices&action=edit&id={$email.invoice_id}&list=all" target="_blank">{$email.invoice_id}</a>{else}-{/if}</td> 
                             <td>{if $email.admin_id}<a href="?cmd=editadmins&action=administrator&id={$email.admin_id}" target="_blank">{$email.admin_name}</a>{else}-{/if}</td> 
                         </tr>

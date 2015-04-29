@@ -11,6 +11,12 @@
  *
  */
 
+//        <span style="clear:none; float: right; margin-right: 10px; border-left: 1px;">
+//          <a href="#delete_alert_modal" data-toggle="modal"><i class="oicon-minus-circle"></i></a>
+//          <a href="#delete_alert_modal" data-toggle="modal"><i class="oicon-minus-circle"></i></a>
+//        </span>
+
+
 include($config['html_dir']."/includes/alerting-navbar.inc.php");
 
  // Hardcode exit if user doesn't have global write permissions.
@@ -21,7 +27,7 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
     exit;
   }
 
-  if (isset($_POST['submit']) && $_POST['submit'] == "add_alert_check")
+  if (isset($vars['submit']) && $vars['submit'] == "add_alert_check")
   {
     echo '<div class="alert alert-info">
     <button type="button" class="close" data-dismiss="alert">×</button>
@@ -30,7 +36,7 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
 
     foreach (array('entity_type', 'alert_name', 'alert_severity', 'check_conditions', 'assoc_device_conditions', 'assoc_entity_conditions') as $var)
     {
-      if (!isset($_POST[$var]) || strlen($_POST[$var]) == '0') { echo("丢失需求数据.</div>"); break 2; }
+      if (!isset($vars[$var]) || strlen($vars[$var]) == '0') { echo("缺少必要数据.</div>"); break 2; }
     }
 
     $check_array = array();
@@ -43,14 +49,14 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
     }
     $check_array['conditions'] = json_encode($conds);
 
-    $check_array['entity_type'] = $_POST['entity_type'];
-    $check_array['alert_name'] = $_POST['alert_name'];
-    $check_array['alert_message'] = $_POST['alert_message'];
-    $check_array['severity'] = $_POST['alert_severity'];
-    $check_array['suppress_recovery'] = ($_POST['alert_send_recovery'] == 'on' ? 0 : 1);
+    $check_array['entity_type'] = $vars['entity_type'];
+    $check_array['alert_name'] = $vars['alert_name'];
+    $check_array['alert_message'] = $vars['alert_message'];
+    $check_array['severity'] = $vars['alert_severity'];
+    $check_array['suppress_recovery'] = ($vars['alert_send_recovery'] == 'on' ? 0 : 1);
     $check_array['alerter'] = NULL;
-    $check_array['and'] = $_POST['alert_and'];
-    $check_array['delay'] = $_POST['alert_delay'];
+    $check_array['and'] = $vars['alert_and'];
+    $check_array['delay'] = $vars['alert_delay'];
     $check_array['enable'] = '1';
 
     $check_id = dbInsert('alert_tests', $check_array);
@@ -59,7 +65,7 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
       echo('<p>Alert inserted as <a href="'.generate_url(array('page' => 'alert_check', 'alert_test_id' => $check_id)).'">'.$check_id.'</a></p>');
       $assoc_array = array();
       $assoc_array['alert_test_id'] = $check_id;
-      $assoc_array['entity_type'] = $_POST['entity_type'];
+      $assoc_array['entity_type'] = $vars['entity_type'];
       $assoc_array['enable'] = '1';
       $dev_conds = array();
       foreach (explode("\n", $vars['assoc_device_conditions']) AS $cond)
@@ -99,9 +105,12 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
 
 <div class="row">
   <div class="col-md-6">
-    <div class="well info_box">
-      <div class="title"><i class="oicon-bell"></i> 警报检测程序详情</div>
-      <div class="content">
+  <div class="widget">
+    <div class="widget-header">
+      <i class="oicon-bell"></i><h3>检测程序详情</h3>
+    </div>
+    <div class="widget-content">
+
   <fieldset>
   <div class="control-group">
     <label class="control-label" for="entity_type">实体类型</label>
@@ -161,11 +170,18 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
     </div> <!--  info_box-->
   </div> <!-- col -->
 
- <div class="col-md-6">
-    <div class="well info_box">
-      <div class="title"><i class="oicon-traffic-light"></i> 检测条件</div>
-      <div class="title" style="float: right; margin-bottom: -10px;"><a href="#" onclick="return false;" class="tooltip-from-element" data-tooltip-id="tooltip-help-conditions"><i class="oicon-question"></i></a></div>
-      <div class="content">
+
+
+<div class="col-md-6">
+  <div class="widget">
+    <div class="widget-header">
+      <i class="oicon-traffic-light"></i><h3>检测条件</h3>
+      <div class="widget-controls">
+        <a href="#" onclick="return false;" class="tooltip-from-element" data-tooltip-id="tooltip-help-conditions"><i class="oicon-question"></i></a>
+      </div>
+    </div>
+    <div class="widget-content">
+
         <div style="margin-bottom: 10px;">
       <select name="alert_and" class="selectpicker">
         <option value="0" data-icon="oicon-or">要求任何条件</option>
@@ -177,18 +193,23 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
       </div> <!-- content -->
     </div> <!-- infobox -->
 
-    <div class="well info_box">
-      <div class="title"><i class="oicon-sql-join-left"></i> 关联</div>
-      <div class="title" style="float: right; margin-bottom: -10px;"><a href="#" onclick="return false;" class="tooltip-from-element" data-tooltip-id="tooltip-help-associations"><i class="oicon-question"></i></a></div>
-      <div class="content">
+    <!-- Assocations -->
+  <div class="widget">
+    <div class="widget-header">
+      <i class="oicon-sql-join-left"></i><h3>关联</h3>
+      <div class="widget-controls">
+        <a href="#" onclick="return false;" class="tooltip-from-element" data-tooltip-id="tooltip-help-associations"><i class="oicon-question"></i></a>
+      </div>
+    </div>
+    <div class="widget-content">
         <div class="control-group">
           <label>设备关联</label>
           <textarea class="col-md-12" rows="3" name="assoc_device_conditions" placeholder=""></textarea>
           </div>
         <div class="control-group">
           <label>实体关联</label>
-    <textarea class="col-md-12" rows="3" name="assoc_entity_conditions"></textarea>
-  </div>
+          <textarea class="col-md-12" rows="3" name="assoc_entity_conditions"></textarea>
+        </div>
       </div> <!-- content -->
     </div> <!-- infobox -->
 
@@ -204,9 +225,9 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
 <div id="tooltip-help-conditions" style="display: none;">
 
       条件应该输入该格式
-      <pre>metric_1 条件 value_1
-metric_2 条件 value_2
-metric_3 条件 value_3</pre>
+      <pre>metric_1 condition value_1
+metric_2 condition value_2
+metric_3 condition value_3</pre>
 
       例如在一个启用的端口异常时报警
       <pre>ifAdminStatus equals up
@@ -216,10 +237,10 @@ ifOperStatus equals down</pre>
 
 <div id="tooltip-help-associations" style="display: none;">
 
-      组织应该使用该格式
-      <pre>attribute_1 条件 value_1
-attribute_2 条件 value_2
-attribute_3 条件 value_3</pre>
+      应该使用该组织格式
+      <pre>attribute_1 condition value_1
+attribute_2 condition value_2
+attribute_3 condition value_3</pre>
 
       例如匹配核心网络设备的主机名
       <pre>type equals network

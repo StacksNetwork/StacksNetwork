@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage webui
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -18,7 +18,7 @@ switch($vars['tab'])
 
   case "24hour":
     $active['24hour']  = "active";
-    $graph  = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+    $graph  = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
     $graph .= '&amp;from=' . $config['time']['day'] .  '&amp;to=' . $config['time']['now'];
     $graph .= '&amp;x=1230&amp;y=300';
     $graph .= $imgtype.'" alt="">';
@@ -26,7 +26,7 @@ switch($vars['tab'])
 
   case "monthly":
     $active['monthly']  = "active";
-    $graph  = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+    $graph  = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
     $graph .= '&amp;from=' . $lastmonth_unix .  '&amp;to=' . $rightnow_unix;
     $graph .= '&amp;x=1230&amp;y=300';
     $graph .= $imgtype.'" alt="">';
@@ -34,7 +34,7 @@ switch($vars['tab'])
 
   case "previous":
     $active['previous']  = "active";
-    $graph  = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+    $graph  = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
     $graph .= '&amp;from=' . $unix_prev_from .  '&amp;to=' . $unix_prev_to;
     $graph .= '&amp;x=1230&amp;y=300';
     $graph .= $imgtype.'" alt="">';
@@ -43,7 +43,7 @@ switch($vars['tab'])
   case "billing":
   default:
     $active['billing']  = "active";
-    $graph    = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $_GET['bill_code'];
+    $graph    = '<img src="billing-graph.php?bill_id=' . $bill_id . '&amp;bill_code=' . $vars['bill_code'];
     $graph   .= '&amp;from=' . $unixfrom .  '&amp;to=' . $unixto;
     $graph   .= '&amp;x=1230&amp;y=300';
     $graph   .= $imgtype.'" alt="">';

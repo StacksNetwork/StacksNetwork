@@ -27,12 +27,12 @@ if ($_SESSION['userlevel'] < '10')
       {
         if (deluser($delete_username))
         {
-          print_success('用户 "' . $delete_username . '" 已删除!');
+          print_success('用户 "' . escape_html($delete_username) . '" 已删除!');
         } else {
-          print_error('错误删除用户 "' . $delete_username . '"!');
+          print_error('错误删除用户 "' . escape_html($delete_username) . '"!');
         }
       } else {
-        print_error('您已经请求的用户删除 "' . $delete_username . '". 这一操作不能逆转.<br /><a href="edituser/action=deleteuser/user_id=' . $vars['user_id'] . '/confirm=yes/">单击确定</a>');
+        print_error('您已经请求的用户删除 "' . escape_html($delete_username) . '". 该操作不可逆转.<br /><a href="edituser/action=deleteuser/user_id=' . $vars['user_id'] . '/confirm=yes/">Click to confirm</a>');
       }
     }
   } else {

@@ -72,8 +72,8 @@
                 <tr>
                     <th width="20"><input type="checkbox" id="checkall"/></th>
                     <th><a href="?cmd=affiliates&list={$currentlist}&orderby=id|ASC" class="sortorder">{$lang.affiliatehash}</a></th>
-                    <th><a href="?cmd=affiliates&list={$currentlist}&orderby=firstname|ASC"  class="sortorder">{$lang.firstname}</a></th>
                     <th><a href="?cmd=affiliates&list={$currentlist}&orderby=lastname|ASC"  class="sortorder">{$lang.lastname}</a></th>
+                    <th><a href="?cmd=affiliates&list={$currentlist}&orderby=firstname|ASC"  class="sortorder">{$lang.firstname}</a></th>
                     <th><a href="?cmd=affiliates&list={$currentlist}&orderby=visits|ASC"  class="sortorder">{$lang.visitors}</a></th>
                     <th><a href="?cmd=affiliates&list={$currentlist}&orderby=signups|ASC"  class="sortorder">{$lang.signups}</a></th>
                     <th><a href="?cmd=affiliates&list={$currentlist}&orderby=balance|ASC"  class="sortorder">{$lang.balance}</a></th>  
@@ -192,7 +192,7 @@
         </div>
             
         <div id="ticketbody">
-            <h1>{$lang.affiliatehash}{$affiliate.id} {$affiliate.firstname} {$affiliate.lastname}</h1>
+            <h1>{$lang.affiliatehash}{$affiliate.id} {$affiliate.lastname} {$affiliate.firstname}</h1>
             <div id="client_nav">
                 <!--navigation-->
                 <a class="nav_el nav_sel left" href="#">{$lang.affdetails}</a> 
@@ -212,7 +212,7 @@
                             </tr>
                             <tr>
                                 <td >{$lang.Client}</td>
-                                <td ><a href="?cmd=clients&action=show&id={$affiliate.client_id}">{$affiliate.firstname} {$affiliate.lastname}</a> </td>
+                                <td ><a href="?cmd=clients&action=show&id={$affiliate.client_id}">{$affiliate.lastname} {$affiliate.firstname}</a> </td>
                                 
                                 <td >{$lang.affsince}</td>
                                 <td >{$affiliate.date_created|dateformat:$date_format}</td>
@@ -287,7 +287,7 @@
                                                 <tr {if $order.paid=='1'}class="compor"{/if}>
                                                     <td>{$order.id}</td>
                                                     <td>{$order.date_created|dateformat:$date_format}</td>
-                                                    <td><a href="?cmd=clients&action=show&id={$order.client_id}">{$order.firstname} {$order.lastname}</a></td>
+                                                    <td><a href="?cmd=clients&action=show&id={$order.client_id}">{$order.lastname} {$order.firstname}</a></td>
                                                     <td style="vertical-align: top">
                                                         {$lang.Order}# {$order.order_id} {$lang.Total}: {$order.total|price:$order.currency_id}
                                                         {if $order.invoice_id}

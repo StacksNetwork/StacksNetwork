@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -21,49 +21,14 @@ if ($vars['format'] != 'graphs')
   unset($vars['from'], $vars['to'], $vars['timestamp_from'], $vars['timestamp_to'], $vars['graph']);
 }
 
-/// FIXME - new style (print_search_simple) of searching here
+$query_permitted = generate_query_permitted(array('device'), array('device_table' => 'devices'));
+
+$where_array = build_devices_where_array($vars);
 
 $where = ' WHERE 1 ';
-$where_array = array();
-$query_permitted = generate_query_permitted(array('device'), array('device_table' => 'devices'));
-foreach ($vars as $var => $value)
-{
-  if ($value != '')
-  {
-    switch ($var)
-    {
-      case 'group':
-        $values = get_group_entities($value);
-        $where_array[$var] = generate_query_values($values, 'device_id');
-        break;
-      case 'hostname':
-      case 'sysname':
-        $where_array[$var] = generate_query_values($value, $var, '%LIKE%');
-        break;
-      case 'location_text':
-        $where_array[$var] = generate_query_values($value, 'location', '%LIKE%');
-        break;
-      case 'os':
-      case 'version':
-      case 'hardware':
-      case 'features':
-      case 'type':
-      case 'status':
-      case 'ignore':
-      case 'disabled':
-      case 'location_country':
-      case 'location_state':
-      case 'location_county':
-      case 'location_city':
-      case 'location':
-        $where_array[$var] = generate_query_values($value, $var);
-        break;
-    }
-  }
-}
 $where .= implode('', $where_array);
 
-$pagetitle[] = "设备";
+$page_title[] = "设备";
 
 if ($vars['searchbar'] != "hide")
 {
@@ -97,7 +62,7 @@ if ($vars['searchbar'] != "hide")
   foreach (get_locations() as $entry)
   {
     if ($entry === '') { $entry = OBS_VAR_UNSET; }
-    $search_items['location'][$entry] = htmlspecialchars($entry);
+    $search_items['location'][$entry] = $entry;
   }
 
   foreach (get_type_groups('device') as $entry)
@@ -111,6 +76,7 @@ if ($vars['searchbar'] != "hide")
                                 'uptime'   => '运行时间');
 
   $form = array('type'  => 'rows',
+                'space' => '10px',
                 //'brand' => NULL,
                 //'class' => 'well',
                 //'hr'    => FALSE,
@@ -318,7 +284,12 @@ switch ($vars['sort'])
     break;
 }
 
-$query = "SELECT * FROM `devices` " . $where . $query_permitted . $order;
+$query = "SELECT * FROM `devices` ";
+if ($config['geocoding']['enable'])
+{
+  $query .= " LEFT JOIN `devices_locations` USING (`device_id`) ";
+}
+$query .= $where . $query_permitted . $order;
 
 list($format, $subformat) = explode("_", $vars['format'], 2);
 

@@ -24,8 +24,7 @@ include($config['html_dir']."/includes/alerting-navbar.inc.php");
 
 unset($search, $devices_array, $priorities, $programs);
 
-$where = ' WHERE 1 ';
-$where .= generate_query_permitted();
+$where = ' WHERE 1 ' . generate_query_permitted();
 
 //Device field
 // Show devices only with syslog messages
@@ -74,7 +73,7 @@ $search[] = array('type'    => 'multiselect',
 #ALERT_NOTIFY,FAIL,FAIL_DELAYED,FAIL_SUPPRESSED,OK,RECOVER_NOTIFY,RECOVER_SUPPRESSED
 
 // Status Field
-foreach (array('ALERT_NOTIFY','FAIL','FAIL_DELAYED','FAIL_SUPPRESSED','OK','RECOVER_NOTIFY') AS $status_type)
+foreach (array('ALERT_NOTIFY','FAIL','FAIL_DELAYED','FAIL_SUPPRESSED','OK','RECOVER_NOTIFY') as $status_type)
 {
   $status_types[$status_type] = $status_type;
 }
@@ -86,12 +85,13 @@ $search[] = array('type'    => 'multiselect',
                   'value'   => $vars['log_type'],
                   'values'  => $status_types);
 
-//Message field
-#$search[] = array('type'    => 'text',
-#                  'name'    => '信息',
-#                  'id'      => 'message',
-#                  'width'   => '130px',
-#                  'value'   => $vars['message']);
+$search[] = array('type'    => 'datetime',
+                  'id'      => 'timestamp',
+                  'presets' => TRUE,
+                  'min'     => dbFetchCell('SELECT `timestamp` FROM `alert_log`' . $where . ' ORDER BY `timestamp` LIMIT 0,1;'),
+                  'max'     => dbFetchCell('SELECT `timestamp` FROM `alert_log`' . $where . ' ORDER BY `timestamp` DESC LIMIT 0,1;'),
+                  'from'    => $vars['timestamp_from'],
+                  'to'      => $vars['timestamp_to']);
 
 print_search($search, '警报日志', 'search', 'alert_log/');
 
@@ -101,7 +101,7 @@ $vars['pagination'] = TRUE;
 // Print Alert Log
 print_alert_log($vars);
 
-$pagetitle[] = '警报日志';
+$page_title[] = '警报日志';
 
 ?>
   </div> <!-- col-md-12 -->

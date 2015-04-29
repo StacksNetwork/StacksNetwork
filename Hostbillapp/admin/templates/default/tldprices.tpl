@@ -711,7 +711,7 @@
                     <div class="clear"></div>
                     {/if}
                 </div>
-                <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+                <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
                 <script type="text/javascript">{literal}
                     $("#grab-sorter").dragsort({ dragSelector: "a.sorter-handle",  dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
 		
@@ -776,7 +776,7 @@
         </td>
     </tr>
 </table>
-<script type="text/javascript" src="{$template_dir}js/facebox/facebox.js"></script>
+<script type="text/javascript" src="{$template_dir}js/facebox/facebox.js?v={$hb_version}"></script>
 <link rel="stylesheet" href="{$template_dir}js/facebox/facebox.css" type="text/css" />
 <script type="text/javascript">
     {literal}

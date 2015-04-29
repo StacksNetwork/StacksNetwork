@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -26,7 +26,7 @@ if ($_SESSION['userlevel'] == 10 && $vars['submit'])
   // We are editing. Lets see what we are editing.
   if ($vars['submit'] == "delete_assoc")
   {
-    $rows_updated = dbDelete('group_assoc', '`group_assoc_id` = ?', array($vars['assoc_id']));
+    $rows_updated = dbDelete('groups_assoc', '`group_assoc_id` = ?', array($vars['assoc_id']));
   }
   elseif ($vars['submit'] == "assoc_add")
   {
@@ -478,7 +478,7 @@ foreach ($assocs as $assoc_id => $assoc)
     <div class="control-group">
       <label class="control-label" for="group_descr">概述</label>
       <div class="controls">
-        <textarea class="form-control col-md-12" name="group_descr" rows="3" placeholder="分组信息."/><?php echo(htmlspecialchars($group['group_descr'])); ?></textarea>
+        <textarea class="form-control col-md-12" name="group_descr" rows="3" placeholder="分组信息."/><?php echo(escape_html($group['group_descr'])); ?></textarea>
       </div>
     </div>
 

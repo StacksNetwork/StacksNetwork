@@ -430,7 +430,7 @@
 {elseif $action=='getimportlog'}
 
 <div class="blu">
-    <a href="?cmd=logs&action=importlog"><strong>&laquo; Back to all imported emails</strong></a></div>
+    <a href="?cmd=logs&action=importlog"><strong>&laquo; 返回所有导入电子邮件</strong></a></div>
 <div class="lighterblue" style="padding:5px">
     <strong>{$lang.From}</strong> {$email.from}<br />
     <strong>{$lang.To}</strong> {$email.to}<br />
@@ -438,7 +438,7 @@
     <strong>{$lang.Status}</strong> {$email.status}<br />
     <strong>{$lang.Received}</strong> {$email.date|dateformat:$date_format}<br /><br />
     {if $email.headers}
-    <a href="#" class="editbtn" onclick="$(this).hide().next().show(); return false;">Show email headers</a>
+    <a href="#" class="editbtn" onclick="$(this).hide().next().show(); return false;">显示邮件标题</a>
     <table class="whitetable" width="99%" cellspacing="0" cellpading="0" style="table-layout:fixed; word-wrap: break-word; display:none">
         {foreach from=$email.headers item=header key=name name=headers}
         <tr {if $smarty.foreach.headers.index%2==0}class="even"{/if}>
@@ -549,11 +549,11 @@
         <table cellspacing="0" cellpadding="3" border="0" width="100%" class="glike hover">
             <tbody>
                 <tr>
-                    <th width="200">Date</th>
-                    <th width="150">IP address</th>
+                    <th width="200">日期</th>
+                    <th width="150">IP地址</th>
                     <th width="150">API ID</th>
-                    <th width="150">Called function</th>
-                    <th >Result</th>
+                    <th width="150">被调用的函数</th>
+                    <th >结果</th>
                 </tr>
             </tbody>
             <tbody id="updater">
@@ -619,9 +619,9 @@
         <table cellspacing="0" cellpadding="3" border="0" width="100%" class="glike hover">
             <tbody>
                 <tr>
-                    <th width="200">Date</th>
-                    <th width="150">Type</th>
-                    <th >Error</th>
+                    <th width="200">日期</th>
+                    <th width="150">类型</th>
+                    <th >错误</th>
                 </tr>
             </tbody>
             <tbody id="updater">

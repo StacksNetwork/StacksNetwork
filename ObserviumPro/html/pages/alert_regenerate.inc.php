@@ -21,10 +21,9 @@ if ($_SESSION['userlevel'] < 10)
   // Regenerate alerts
 
   echo '<div class="well">';
-  foreach (dbFetchRows("SELECT * FROM `devices`") AS $device)
+  foreach (dbFetchRows("SELECT * FROM `devices`") as $device)
   {
     $result = update_device_alert_table($device);
-
     print_message($result['message'], $result['class']);
   }
 

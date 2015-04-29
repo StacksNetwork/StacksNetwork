@@ -3,7 +3,7 @@
         <div class="haveitems">
             <ul>
                 <li {if !$do}class="picked"{/if}><a href="?cmd=hbchat&action=departments">部门列表</a></li>
-                <li {if $do=='add'}class="picked"{/if}><a  href="?cmd=hbchat&action=departments&do=add">添加新部门</a></li>
+                <li {if $do=='add'}class="picked"{/if}><a  href="?cmd=hbchat&action=departments&do=add">添加新的部门</a></li>
             </ul>
         </div>
     </div>
@@ -33,7 +33,7 @@
                         </td>
                     </tr>
                      <tr >
-                        <td width="160" align="right"><strong>指定人员</strong></td>
+                        <td width="160" align="right"><strong>分配员工</strong></td>
                         <td class="editor-container">
                             {foreach from=$staff item=s}
                                 <input type="checkbox" name="admins[]" value="{$s.id}" {if $department.admins[$s.id]}checked="checked"{/if} /> {$s.firstname} {$s.lastname} <br/>
@@ -51,10 +51,10 @@
                         </td>
                     </tr>
                      <tr >
-                         <td width="160" align="right" valign="top"><strong>显示离线状态 <a title="这个选项和部门离线聊天图标将显示允许留言" class="vtip_description"></a></strong></td>
+                         <td width="160" align="right" valign="top"><strong>显示离线状态 <a title="该选项和部门离线聊天图标将显示允许留言" class="vtip_description"></a></strong></td>
                         <td class="editor-container">
                            <input type="checkbox" name="options[]" value="1" {if $department.options & 1 || !$department}checked="checked"{/if} /> <br/>
-                           {if $tdepts}留下信息将开启服务工单:
+                           {if $tdepts}留言将会打开工单:
                            <select name="ticket_dept_id" class="inp styled">
                                {foreach from=$tdepts item=td}
                                <option value="{$td.id}" {if $td.id==$department.ticket_dept_id}selected="selected"{/if}>{$td.name}</option>
@@ -62,13 +62,13 @@
                            </select>
                            {else}
                            <input type="hidden" name="ticket_dept_id" value="0" />
-                           Please configure <a href="?cmd=ticketdepts&action=add">ticket department</a> 留下离线信息
+                           请配置 <a href="?cmd=ticketdepts&action=add">工单部门</a> 进行留言
                            {/if}
                         </td>
                     </tr>
                     <tr><td colspan="2"></td></tr>
                     <tr><td colspan="2"><a onclick="$('#submitform').submit();return false;" href="#" class="new_dsave new_menu">
-                        <span>保存修改</span>
+                        <span>保存更改</span>
                         </a></td></tr>
                 </tbody>
 </table>
@@ -82,8 +82,8 @@
       {if !$departments}
                 <div class="blank_state blank_news">
                     <div class="blank_info">
-                        <h1>首先建立部门</h1>
-                        聊天的员工可以被分配到部门- 创建一个部门在使用LiveChat之前.
+                        <h1>首先创建部门</h1>
+                        负责与客户沟通的员工可以分配到该部门 - 开始使用此功能前至少建立一个部门.
                         <div class="clear"></div>
                         <a style="margin-top:10px" href="?cmd=hbchat&action=departments&do=add" class="new_add new_menu">
                             <span>添加新的聊天部门</span></a>
@@ -105,7 +105,7 @@
                         <td >
                             <a class="editbtn" href="?cmd=hbchat&action=departments&do=edit&id={$d.id}">编辑</a></td>
                         <td class="lastitm">
-                            <a onclick="return confirm('您确定需要删除该部门吗?');" class="delbtn" href="?cmd=hbchat&action=departments&make=delete&id={$d.id}&security_token={$security_token}">删除</a>
+                            <a onclick="return confirm('您确定要删除该部门?');" class="delbtn" href="?cmd=hbchat&action=departments&make=delete&id={$d.id}&security_token={$security_token}">删除</a>
                         </td>
                     </tr>
                     {/foreach}

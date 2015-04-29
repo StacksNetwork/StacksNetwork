@@ -9,34 +9,19 @@
  * @package    observium
  * @subpackage discovery
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 chdir(dirname($argv[0]));
 
+include_once("includes/defaults.inc.php");
+include_once("config.php");
+
+// Get options before definitions!
 $options = getopt("h:i:m:n:dquV");
 
-include("includes/defaults.inc.php");
-include("config.php");
-
-if (isset($options['d']))
-{
-  echo("DEBUG!\n");
-  $debug = TRUE;
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  ini_set('log_errors', 1);
-  ini_set('error_reporting', 1);
-} else {
-  $debug = FALSE;
-  #  ini_set('display_errors', 0);
-  ini_set('display_startup_errors', 0);
-  ini_set('log_errors', 0);
-  #  ini_set('error_reporting', 0);
-}
-
-include("includes/definitions.inc.php");
+include_once("includes/definitions.inc.php");
 include("includes/functions.inc.php");
 include("includes/discovery/functions.inc.php");
 
@@ -81,7 +66,7 @@ if (isset($options['h']))
       $doing = 'all';
       break;
     case 'new':
-      $where = 'AND (`last_discovered` IS NULL OR `last_discovered` = ?)';
+      $where = 'AND (`last_discovered` IS NULL OR `last_discovered` = ? OR `force_discovery` = "1")';
       $params[] = '0000-00-00 00:00:00';
       $doing = 'new';
       break;
@@ -152,6 +137,7 @@ OPTIONS:
 
 DEBUGGING OPTIONS:
  -d                                          Enable debugging output.
+ -dd                                         More verbose debugging output.
  -m                                          Specify modules (separated by commas) to be run.
 
 %r无效的参数!%n", 'color', FALSE);
@@ -173,7 +159,7 @@ foreach (dbFetchRows("SELECT * FROM `devices` WHERE `status` = 1 AND `disabled` 
   if ($options['h'] == 'new' || isSNMPable($device))
   {
     discover_device($device, $options);
-    if (function_exists('update_device_alert_table')) { update_device_alert_table($device); } // not exist in 'community' edition
+    if (!isset($options['m']) && function_exists('update_device_alert_table')) { update_device_alert_table($device); } // not exist in 'community' edition
   } else {
     $string = "设备 '" . $device['hostname'] . "' 跳过, 因为关闭了正在运行的自动发现进程.";
     print_debug($string);

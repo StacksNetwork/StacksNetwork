@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="{$template_dir}js/gui.elements.css" type="text/css" />
-<script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-<script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
-<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js"></script>
-<script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+<script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
 {literal}
     <style>
         a.sorter-handler{
@@ -309,7 +309,7 @@
                     </form>
 
                 {else}
-                    {if !$categories.categories && !$categories.parent_cat}
+                    {if $categories.id == '0' && !$categories.categories && !$categories.parent_cat}
                         <div class="blank_state blank_kb">
                             <div class="blank_info">
                                 <h1>{$lang.blank_kb}</h1>

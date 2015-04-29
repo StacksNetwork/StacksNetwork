@@ -6,10 +6,10 @@
             <div class="list-1">
                 <ul>
                     <li class="active last">
-                        <a href="#"><span class="ico money">人工服务费率</span></a>
+                        <a href="#"><span class="ico money">收费服务项目</span></a>
                     </li>{*}
                     <li class="last">
-                        <a href="#"><span class="ico plug">职务-导入过滤器</span></a>
+                        <a href="#"><span class="ico plug">导入过滤器</span></a>
                     </li>{*}
                 </ul>
             </div>
@@ -17,15 +17,15 @@
                 <div class="navsubmenu haveitems" style="display: block;">
                     <ul>
                         {if !$forbidAccess.editSupportRates }
-                            <li class="list-2elem"><a href="?cmd={$cmd}&action=add" onclick="track.newRate(); return false;"><span>新建人工服务费率</span></a></li>
-                            <li class="list-2elem"><a onclick="return confirm('您确定需要删除选定的条目吗?');" class="submiter" name="delete" href="?cmd=ticketbans&amp;action=add&amp;type=pre"><span>Delete Selected</span></a></li>
+                            <li class="list-2elem"><a href="?cmd={$cmd}&action=add" onclick="track.newRate(); return false;"><span>新建收费服务项目</span></a></li>
+                            <li class="list-2elem"><a onclick="return confirm('Are you sure you want to delete selected entries?');" class="submiter" name="delete" href="?cmd=ticketbans&amp;action=add&amp;type=pre"><span>删除所选</span></a></li>
                         {/if}
                     </ul>
                     <div class="right"><div class="pagination"></div></div>
                 </div>
                 <div style="display:none" class="navsubmenu haveitems">
                     <ul>
-                        <li class="list-2elem"><a href="?cmd=ticketbans&amp;action=add"><span>添加职务导入过滤器</span></a></li>
+                        <li class="list-2elem"><a href="?cmd=ticketbans&amp;action=add"><span>添加导入过滤器</span></a></li>
                     </ul>
                 </div>
 
@@ -42,8 +42,8 @@
                         <th width="20"><input id="checkall" type="checkbox" /></th>
                         <th><a class="sortorder" href="?cmd={$cmd}&orderby=id|ASC">ID</a></th>
                         <th><a class="sortorder" href="?cmd={$cmd}&orderby=name|ASC">姓名</a></th>
-                        <th>Description</th>
-                        <th width="160"><a class="sortorder" href="?cmd={$cmd}&orderby=price|ASC">每工时费用</a></th>
+                        <th>说明</th>
+                        <th width="160"><a class="sortorder" href="?cmd={$cmd}&orderby=price|ASC">时薪</a></th>
                         <th width="50"></th>
                     </tr>
                 </thead>
@@ -58,7 +58,7 @@
                         <td>{$rate.description|escape}</td>
                         <td>{$rate.price|price:$currency}</td>
                         <td>
-                            <a onclick="return confirm('您确定需要删除该条目吗?');" class="delbtn" href="?cmd={$cmd}&action=delete&id={$rate.id}&security_token={$security_token}">Delete</a>
+                            <a onclick="return confirm('Are you sure you want to delete this entry?');" class="delbtn" href="?cmd={$cmd}&action=delete&id={$rate.id}&security_token={$security_token}">删除</a>
                         </td>
                     </tr>
                 {/foreach}
@@ -78,7 +78,7 @@
                 <div class="navsubmenu haveitems" style="display: block;">
                     <ul>
                         {if !$forbidAccess.editSupportRates }
-                            <li class="list-2elem"><a href="?cmd={$cmd}&action=add" onclick="track.newRate(); return false;"><span>新建人工服务费率</span></a></li>
+                            <li class="list-2elem"><a href="?cmd={$cmd}&action=add" onclick="track.newRate(); return false;"><span>新建收费服务项目</span></a></li>
                         {/if}
                     </ul>
                     <div class="right"><div class="pagination"></div></div>
@@ -88,12 +88,12 @@
      </div>
         <div class="blank_state blank_services" {if $rates}style="display: none"{/if} id="blanklist">
             <div class="blank_info">
-                <h1>人工服务费率/实时跟踪</h1>
-                您尚未定义任何服务费率, 您至少需要定义一条. 您才可以开具人工服务费账单.
+                <h1>工单账单 / 实时追踪</h1>
+                你没有任何的支持费率尚未确定, 您将需要创建至少一个之前, 你将能够创造支持账单.
                 <div class="clear"></div>
                 {if !$forbidAccess.editSupportRates }
                 <a style="margin-top:10px" href="?cmd={$cmd}" class="new_add new_menu" onclick="track.newRate(); return false;">
-                    <span>新建人工服务费率</span>
+                    <span>新的收费服务项目</span>
                 </a>
                 {/if}
                 <div class="clear"></div>
@@ -112,17 +112,17 @@
                     <tr>
                         <td id="s_menu" style="width: 200px">
                             <div id="initial-desc"><strong>姓名</strong>
-                                <br><small>姓名将被应用到账单的内容说明. </small>
+                                <br><small>姓名将用于账单项目描述. </small>
                             </div><br>
                             <div id="initial-desc"><strong>价格</strong>
-                                <br><small>将用于计算每个小时的服务价格.</small>
+                                <br><small>一个小时的服务价格, 将被计算.</small>
                             </div><br>
                             <div id="initial-desc"><strong>说明</strong>
-                                <br><small>写几句在登录时可见的话, 仅显示于后台登陆时.</small>
+                                <br><small>描述简短内容, 管理员唯一可见.</small>
                             </div>
                         </td>
                         <td class="conv_content faceform" style="vertical-align: top">
-                            <h3 style="margin-bottom:0px;">添加新的人工服务费率</h3><br>
+                            <h3 style="margin-bottom:0px;">添加新的费率</h3><br>
                             <fieldset>
                                 <legend>姓名</legend>
                                 <input type="text" name="name" value="{$entry.name}">
@@ -152,7 +152,7 @@
                 <div class="right">
                     <span class="bcontainer ">
                         <a href="#" onclick="$('.spinner').show();$('#saveform').submit();return false;" class="new_control greenbtn">
-                            <span>保存修改</span>
+                            <span>保存更改</span>
                         </a>
                     </span>
                     <span>&nbsp;</span>
@@ -175,7 +175,7 @@
                    <tr>
                        <th style=" width: 185px">开始时间</th>
                        <th style=" width: 185px">结束时间</th>
-                       <th>费率</th>
+                       <th>速度</th>
                        <th>价格</th>
                        <th>备注</th>
                        <th>状态</th>
@@ -195,14 +195,14 @@
                        <td>
                             {if !$entry.status}<span class="Draft">{$lang.Draft}</span>
                             {else}
-                                {if $entry.invoice_id}<span class="Active">账单 <small><a href="?cmd=invoices&action=edit&id={$entry.invoice_id}&list=all" style="color: #4D89AB" >#{$entry.invoice_id}</a></small></span>
-                                {elseif $entry.queue_id}<span class="Pending">排队</span>
+                                {if $entry.invoice_id}<span class="Active">Invoiced <small><a href="?cmd=invoices&action=edit&id={$entry.invoice_id}&list=all" style="color: #4D89AB" >#{$entry.invoice_id}</a></small></span>
+                                {elseif $entry.queue_id}<span class="Pending">Queued</span>
                                 {else}<span class="Cancelled">{$lang.Cancelled}</span>
                                 {/if}
                             {/if}
                             </td>
                        <td>{$entry.admin}</td>
-                       <td>{if !$entry.status}<a href="#{$entry.id}" class="delbtn" onclick="if(confirm('您确定需要删除该条目吗?')) ticket.delBilling('{$entry.id}'); return false;"></a>{/if}</td>
+                       <td>{if !$entry.status}<a href="#{$entry.id}" class="delbtn" onclick="if(confirm('Are you sure you want to delete this entry?')) ticket.delBilling('{$entry.id}'); return false;"></a>{/if}</td>
                    </tr>
                    {foreachelse}
                    <tr>
@@ -240,7 +240,7 @@
                 <button onclick="ticket.startBilling($('#billtype').val(), $('#billingservices').val()); return false;" style="padding: 3px; line-height: 13px;">账单待定内容</button>
                 <select id="billtype" name="type" class="inp" onchange="if($(this).val() == '1') $(this).next().show(); else  $(this).next().hide();">
                     <option value="0">立即</option>
-                    <option value="1">添加到下一个客户账单</option>
+                    <option value="1">添加到下一位客户账单</option>
                 </select>
                 <select id="billingservices" class="inp" style="display: none">
                     <option value="0">{$lang.Any}</option>
@@ -252,19 +252,19 @@
            {/if}
         </form>
         {if $init}
-            <script type="text/javascript" src="{$template_dir}js/timepicker/jquery.timepicker.min.js" ></script>
+            <script type="text/javascript" src="{$template_dir}js/timepicker/jquery.timepicker.min.js?v={$hb_version}" ></script>
         {/if}
         <link media="all" rel="stylesheet" href="{$template_dir}js/timepicker/jquery.timepicker.css" />
-        <script type="text/javascript" src="{$template_dir}js/tickettimetracking.js" ></script>
+        <script type="text/javascript" src="{$template_dir}js/tickettimetracking.js?v={$hb_version}" ></script>
     {else}
         <div class="blank_services">
             <div class="blank_info" style="padding: 10px;">
-                <h1>人工服务费率/实时跟踪</h1>
-                您尚未定义任何服务费率, 您至少需要定义一条. 您才可以开具人工服务费账单.
+                <h1>付费工单 / 时间追踪</h1>
+                您没有任何的支持率尚未确定, 您将需要创建至少一个之前, 你将能够创建支持法案.
                 <div class="clear"></div>
                 {if !$forbidAccess.editSupportRates }
                 <a style="margin-top:10px" href="?cmd={$cmd}" class="new_add new_menu" onclick="track.newRate(); return false;">
-                    <span>新建人工服务费率</span>
+                    <span>新的收费服务项目</span>
                 </a>
                 {/if}
                 <div class="clear"></div>
@@ -273,7 +273,7 @@
     {/if}
 {/if}
 {if ($action=='ticket' && !$rates && 'acl:editSupportRates'|checkcondition) || $action=='default'}
-    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js"></script>
+    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js?v={$hb_version}"></script>
     <link rel="stylesheet" href="{$template_dir}js/facebox/facebox.css" type="text/css" />
     {literal}
         <script type="text/javascript">

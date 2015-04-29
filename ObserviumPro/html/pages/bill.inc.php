@@ -2,12 +2,12 @@
 
 /**
  * Observium Network Management and Monitoring System
- * Copyright (C) 2006-2014, Adam Armstrong - http://www.observium.org
+ * Copyright (C) 2006-2015, Adam Armstrong - http://www.observium.org
  *
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -29,8 +29,8 @@ $bill_id    = $vars['bill_id'];
 $isAdmin    = (($_SESSION['userlevel'] == "10") ? true : false);
 $isUser     = bill_permitted($bill_id);
 
-//if ($isAdmin && isset($_POST)) { include("pages/bill/actions.inc.php"); }
-//if ($isAdmin && isset($_GET['delete_bill_port'])) { include("pages/bill/actions.inc.php"); }
+//if ($isAdmin && isset($vars)) { include("pages/bill/actions.inc.php"); }
+//if ($isAdmin && isset($vars['delete_bill_port'])) { include("pages/bill/actions.inc.php"); }
 include("pages/bill/actions.inc.php");
 
 if ($isUser) {

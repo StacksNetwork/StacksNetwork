@@ -78,7 +78,7 @@
     </div>
     <div class="dark_shelf dbottom">
         <div class="left spinner"><img src="ajax-loading2.gif"></div>
-        <div class="left fs11" style="color:white"><span class="left">Search: </span><div class="spinner left" style="display:block;margin-left:5px;"><input type="text" id="searchin" style="font-size:11px !important;" onkeyup="findModuleList(this)" /></div><div class="clear"></div></div>
+        <div class="left fs11" style="color:white"><span class="left">搜索: </span><div class="spinner left" style="display:block;margin-left:5px;"><input type="text" id="searchin" style="font-size:11px !important;" onkeyup="findModuleList(this)" /></div><div class="clear"></div></div>
         <div class="right">
             <span class="bcontainer"><a href="#" class="submiter menuitm" onclick="$(document).trigger('close.facebox');return false;"><span>{$lang.Close}</span></a></span>
         </div>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="right">
                     <a href="{if $module.active=='1'}?cmd=managemodules&action={$module.type|strtolower}&expand=true&id={$module.id}{else}?cmd=managemodules&action={$module.type}&activate&modulename={$module.filename}{/if}&security_token={$security_token}" class=" {if $module.active=='1'}menuitm disabled{else}new_control greenbtn{/if}">
-                        <span>{if $module.active=='1'}Activated{else}Activate{/if}</span>
+                        <span>{if $module.active=='1'}已激活{else}激活{/if}</span>
                     </a> </div>
                 <div class="clear"></div></div>
             {/foreach}
@@ -129,7 +129,7 @@
         </script>
         {/literal}
         <div style="padding:10px;background:#fff;" class="form conv_content">
-            <h3>{$modconfig.module} Configuration</h3>
+            <h3>{$modconfig.module} 配置</h3>
             <form action="" method="post" onsubmit="return submit_externalc(this);" >
                 <input type="hidden" name="filename" value="{$modconfig.filename}" />
                 <input type="hidden" name="id" value="{$modconfig.id}" />
@@ -193,7 +193,7 @@
                                         </td>
                                         <td width="60" align="right"> 
                                             <a href="#" class="new_control greenbtn" onclick="return perform_search();">
-                                                <span>Search</span>
+                                                <span>搜索</span>
                                             </a>
                                         </td>
                                     </tr>
@@ -203,7 +203,7 @@
                     </form>
                     <div class="mmfeatured" id="search-results" style="display:none;">
                         <div class="mmfeatured-inner">
-                            <h2>Search results</h2>
+                            <h2>搜索结果</h2>
 
                             <div id="sresults">
                                 <div style="text-align:center;
@@ -215,7 +215,7 @@
                     </div>
                     <div class="mmfeatured">
                         <div class="mmfeatured-inner">
-                            <h2>Popular modules</h2>
+                            <h2>流行模块</h2>
                             {foreach from=$featured item=module key=k name=floop} 
                                 <div class="addon_module"  {if $smarty.foreach.floop.last}style="border:none"{/if}>
                                     <div class="left">
@@ -224,7 +224,7 @@
                                     </div>
                                     <div class="right">
                                         <a href="{if $module.active=='1'}?cmd=managemodules&action={$module.type}&expand=true&id={$module.id}{else}?cmd=managemodules&action={$module.type}&activate&modulename={$k}{/if}&security_token={$security_token}" class=" {if $module.active=='1'}menuitm disabled{else}new_control greenbtn{/if}">
-                                            <span>{if $module.active=='1'}Activated{else}Activate{/if}</span>
+                                            <span>{if $module.active=='1'}已激活{else}激活{/if}</span>
                                         </a> </div>
                                     <div class="clear"></div></div>
                                 {/foreach}
@@ -235,7 +235,7 @@
 
                 <td  valign="top"><div class="mmfeatured" id="latest_additions">
                         <div class="mmfeatured-inner">
-                            <h2>Latest additions</h2>
+                            <h2>新添加的</h2>
                             <div id="loadme">
                                 <div style="text-align:center;
                                              padding:80px;">
@@ -378,37 +378,37 @@
                                                                         <span >
                                                                             <strong>{$lang.editConfiguration}</strong>
                                                                         </span>
-                                                                    </a>
-                                                                {/if}
-                                                                <a   class="menuitm  {if !empty($b.config) || $b.type=='Payment' }menul{/if}" href="#" onclick="$('#deactivate-btn-{$b.id}').click();
+                                                                    </a>{*}
+                                                                {*}{/if}{*}
+                                                                {*}<a   class="menuitm  {if !empty($b.config) || $b.type=='Payment' }menul{/if}" href="#" onclick="$('#deactivate-btn-{$b.id}').click();
                                                                                         return false;">
                                                                     <span style="color:red">{$lang.Deactivate}</span>
-                                                                </a>
-                                                            {elseif $b.type=='Other' || $b.type=='Notification'}
-                                                                <a   class="menuitm menuf {if $expand==$b.id}activated{/if}" href="#" onclick="$('#config-row-{$b.id}').toggle();
+                                                                </a>{*}
+                                                            {*}{elseif $b.type=='Other' || $b.type=='Notification'}{*}
+                                                                {*}<a   class="menuitm menuf {if $expand==$b.id}activated{/if}" href="#" onclick="$('#config-row-{$b.id}').toggle();
                                                                                         $(this).toggleClass('activated');
                                                                                         return false;">
                                                                     <span>
                                                                         <strong>{$lang.editConfiguration}</strong>
                                                                     </span>
-                                                                </a>
-                                                                {if $b.template}
-                                                                    <a class="menuitm menuc"   href="?cmd=module&module={$b.id}" target="_blank">
+                                                                </a>{*}
+                                                                {*}{if $b.template}{*}
+                                                                    {*}<a class="menuitm menuc"   href="?cmd=module&module={$b.id}" target="_blank">
                                                                         <span >{$lang.Manage}</span>
-                                                                    </a>
-                                                                {/if}
-                                                                {if $b.uninstall}
-                                                                    <a   class="menuitm  menuc" href="#" onclick="$('#uninstall-btn-{$b.id}').click();
+                                                                    </a>{*}
+                                                                {*}{/if}{*}
+                                                                {*}{if $b.uninstall}{*}
+                                                                    {*}<a   class="menuitm  menuc" href="#" onclick="$('#uninstall-btn-{$b.id}').click();
                                                                                         return false;">
                                                                         <span style="color:red">{$lang.Uninstall}</span>
-                                                                    </a>
-                                                                {/if}
-                                                                <a   class="menuitm  menul" href="#" onclick="$('#deactivate-btn-{$b.id}').click();
+                                                                    </a>{*}
+                                                                {*}{/if}{*}
+                                                                {*}<a   class="menuitm  menul" href="#" onclick="$('#deactivate-btn-{$b.id}').click();
                                                                                         return false;">
                                                                     <span style="color:red">{$lang.Deactivate}</span>
-                                                                </a>
-                                                                {if $b.uninstall}
-                                                                    <input type="submit" value="{$lang.Uninstall}"  name="uninstall" onclick='return confirm("{$lang.uninstallmoduleconfirm}")' style="display:none" id="uninstall-btn-{$b.id}"/>
+                                                                </a>{*}
+                                                               {*}{if $b.uninstall}{*}
+                                                                    {*}<input type="submit" value="{$lang.Uninstall}"  name="uninstall" onclick='return confirm("{$lang.uninstallmoduleconfirm}")' style="display:none" id="uninstall-btn-{$b.id}"/>
                                                                 {/if}
                                                             {/if}
                                                         </div>
@@ -446,10 +446,10 @@
                                                                     <td width="170" style="vertical-align: top; text-align: right">{$lang.allowedtouse} </td>
                                                                     <td class="fs11">
                                                                         <label>
-                                                                            <input type="radio" value="1" name="admins_all" {if !$b.admins}checked="checked"{/if} />All staff members
+                                                                            <input type="radio" value="1" name="admins_all" {if !$b.admins}checked="checked"{/if} />所有员工
                                                                         </label>
                                                                         <label>
-                                                                            <input type="radio" value="0"  name="admins_all" {if $b.admins}checked="checked"{/if}/>Selected staff members
+                                                                            <input type="radio" value="0"  name="admins_all" {if $b.admins}checked="checked"{/if}/>选择员工
                                                                         </label>
                                                                         
                                                                         <div {if !$b.admins}style="display: none"{/if}>
@@ -542,7 +542,7 @@
                         </li>
                     </ul>   
                     {if $action=='payment' || $action=='fraud'}
-                        <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+                        <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
                         {literal}
                         <script type="text/javascript">
                             $("#grab-sorter").dragsort({ dragSelector: "a.sorter-handle", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>"});

@@ -35,7 +35,7 @@
     {if $results.Invoices}
         <li class="choices-header choices-Invoices">{$lang.Invoices}</li>
             {foreach from=$results.Invoices item=re}
-            <li class="result"><a href="?cmd=invoices&action=edit&id={$re.id}&list=all">{if $proforma && ($re.status=='Paid' || $re.status=='Refunded') && $re.paid_id!=''}{$re.paid_id}{else}{$re.date|invprefix:$prefix}{$re.id}{/if}
+            <li class="result"><a href="?cmd=invoices&action=edit&id={$re.id}&list=all">{if $proforma && ($re.status=='Paid' || $re.status=='Refunded') && $re.paid_id!=''}{$re.paid_id}{else}{$re.date|invprefix:$prefix:$re.client_id}{$re.id}{/if}
                     <span class="second">{$re.firstname} {$re.lastname}</span>
                 </a>
             </li>

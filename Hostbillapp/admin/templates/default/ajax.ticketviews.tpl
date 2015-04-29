@@ -94,9 +94,9 @@
         <table cellspacing="0" cellpadding="7" border="0" width="100%" class="glike hover">
             <thead>
                 <tr>
-                    <th>名称</th>
-                    <th>所有人</th>
-                    <th>类型</th>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th>Type</th>
                     <th width="50"></th>
                 </tr>
             </thead>
@@ -106,9 +106,9 @@
                     <tr>
                         <td><a href="?cmd=ticketviews&action=edit&id={$view.id}" title="edit">{$view.name}</a></td>
                         <td>{if $view.username}{$view.username}{else}--{/if}</td>
-                        <td>{if $view.options & 1}公开{else}私人{/if}</td>
+                        <td>{if $view.options & 1}Public{else}Private{/if}</td>
                         <td>
-                            <a onclick="return confirm('您确定需要删除该视图吗?');" class="delbtn" href="?cmd=ticketviews&action=delete&id={$view.id}&security_token={$security_token}">删除</a>
+                            <a onclick="return confirm('Are you sure you want to delete this view?');" class="delbtn" href="?cmd=ticketviews&action=delete&id={$view.id}&security_token={$security_token}">Delete</a>
                         </td>
                     </tr>
                 {/foreach}
@@ -125,7 +125,7 @@
         <div class="blu" style="line-height: 20px;" >
             <a href="?cmd={$cmd}&action=add" class="new_control">
                 <span class="addsth">
-                    <strong>新建视图</strong>
+                    <strong>Create view</strong>
                 </span>
             </a>
         </div>
@@ -133,11 +133,11 @@
     {else}
         <div class="blank_state blank_services">
             <div class="blank_info">
-                <h1>自定义工单视图</h1>
-                选择会被排列的工单类型与希望他们能怎么展示给您查阅!
+                <h1>Custom ticket views</h1>
+                Select whitch ticket should be listed and how you want them to be presented to you!
                 <div class="clear"></div>
                 <a style="margin-top:10px" href="?cmd={$cmd}&action=add" class="new_add new_menu">
-                    <span>新建视图</span>
+                    <span>Create view</span>
                 </a>
                 <div class="clear"></div>
             </div>
@@ -230,13 +230,13 @@
             </div>
             {if !($view.options & 4)}
             <div class="view-option">
-                <b>读者</b>
-                <input {if !($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="0"/> 私人
-                <input {if ($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="1"/> 公开
+                <b>Audience</b>
+                <input {if !($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="0"/> Private
+                <input {if ($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="1"/> Public
             </div>
             {/if}
             <div class="view-option">
-                <b>部门</b>
+                <b>Departments</b>
                 {foreach from=$departments item=option key=value}
                     <label><input class="inp_m_checkbox" type="checkbox" value="{$option.id}"  name="view_filter[1048576][{$option.id}]" 
                                   {if !$option.my}disabled="disabled"{/if}
@@ -245,7 +245,7 @@
                     </label>
                 {/foreach}
             </div>
-            <h3 class="view-sep">包含栏目</h3>
+            <h3 class="view-sep">Columns to include</h3>
             <ul class="view-columns clearfix">
                 {foreach from=$columns item=name key=field name=loop}
                     <li width="33%">
@@ -255,14 +255,14 @@
                 {/foreach}
             </ul>
             {if !($view.options & 4)}
-            <h3 class="view-sep">过滤</h3>
+            <h3 class="view-sep">Filters</h3>
             <ul class="view-filters clearfix">
                 {foreach from=$filters item=filtr key=field name=loop}
                     {if $filtr}
                     <li>
                         <span {if $filtr.type}class="span-{if $filtr.options}m-{/if}{$filtr.type}"{/if}>{if $lan[$filtr.name]}{$lang[$filtr.name]}{else}{$filtr.name|ucfirst}{/if}
                         {if $filtr.type == 'tags'}
-                            <a href="#" id="tagdescr" class="vtip_description" title="在过滤内容时您可以使用 &quot;and&quot;, &quot;or&quot;, &quot;not&quot; 等关键词, 默认是 &quot;and&quot;, 例如: <br> &bullet;&nbsp;tag1 tag2 or tag3 &raquo; (tag1 and tag2) or tag3"></a>
+                            <a href="#" id="tagdescr" class="vtip_description" title="You can use &quot;and&quot;, &quot;or&quot;, &quot;not&quot; keywords when filtering with tags, default is &quot;and&quot;, example: <br> &bullet;&nbsp;tag1 tag2 or tag3 &raquo; (tag1 and tag2) or tag3"></a>
                         {/if}
                         </span>
                         
@@ -301,8 +301,8 @@
                                 </label>
                             </div>
                             <select class="inp" style="width: 19%" name="view_filter[{$field}][tag]">
-                                <option {if $view.filters.$field.tag == 'any'}selected="selected"{/if} value="any" >任意</option>
-                                <option {if $view.filters.$field.tag == 'all'}selected="selected"{/if} value="all" >全部</option>
+                                <option {if $view.filters.$field.tag == 'any'}selected="selected"{/if} value="any" >Any</option>
+                                <option {if $view.filters.$field.tag == 'all'}selected="selected"{/if} value="all" >All</option>
                             </select>
                             <div id="tags_{$field}" style="display: none">
                                 {foreach from=$view.filters.$field item=tag key=k}
@@ -339,7 +339,7 @@
         <div class="blu">	
             <table border="0" cellpadding="2" cellspacing="0" >
                 <tr>
-                    <td><a href="?cmd={$cmd}"><strong>&laquo; {$lang.backto} 工单视图</strong></a>&nbsp;</td>
+                    <td><a href="?cmd={$cmd}"><strong>&laquo; {$lang.backto} Ticket views</strong></a>&nbsp;</td>
                     <td><input type="submit" name="save" value="{$lang.Save}" style="font-weight:bold;"/></td>                            
                 </tr>
             </table>

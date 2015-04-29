@@ -81,7 +81,7 @@ function getValues($port)
 {
   global $config, $device;
 
-  if ($device['snmpver'] == "1") {
+  if ($device['snmp_version'] == "1") {
     $oids = "IF-MIB::ifInOctets.".$port['ifIndex']." IF-MIB::ifOutOctets.".$port['ifIndex'];
   } else {
     $oids = "IF-MIB::ifHCInOctets.".$port['ifIndex']." IF-MIB::ifHCOutOctets.".$port['ifIndex'];

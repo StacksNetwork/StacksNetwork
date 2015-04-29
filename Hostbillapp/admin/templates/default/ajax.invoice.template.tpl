@@ -1,6 +1,6 @@
 {if $action=='edittemplate'}
-<script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-<script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
+<script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js?v={$hb_version}"></script>
 {literal}
 <script type="text/javascript">
     function loadTPLEditor() {
@@ -72,7 +72,7 @@
             <td colspan="2">
                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                     <tr>
-                        <td width="205" style="padding-right:6px;" align="right"><b>模板名称:</b></td>
+                        <td width="205" style="padding-right:6px;" align="right"><b>Template name:</b></td>
                         <td><input name="name" value="{$invtpl.template_name}" size="30" class="inp" /></td>
                     </tr>
                 </table>
@@ -90,7 +90,7 @@
                     </tr>
                     <tr>
                         <td valign="top"  class="sectionbody" style="padding:10px;">
-                            <b>Template variables: <a class="vtip_description" title="将变量的实际值替换发票 displayed/downloaded.<br/> I.e. {literal}{$invoice.date}{/literal} 将更换账单日期"></a></b><br/>
+                            <b>Template variables: <a class="vtip_description" title="Variables will be replaced by actual values when invoice is displayed/downloaded.<br/> I.e. {literal}{$invoice.date}{/literal} will be replaced with invoice date"></a></b><br/>
                              
                            <table border="0" cellspacing="0" cellpadding="3" width="100%">
                               
@@ -111,14 +111,14 @@
                                 </tr>
                                 <tr>
                                <td id="variable-box" style="display:none">
-                                   <b class="fs11">复制粘贴到模板:</b>
+                                   <b class="fs11">Copy & paste to template:</b>
                                    <div id="var-container" style="border:solid 1px #DDD;padding:5px;font-size:13px;"></div>
                                </td>
                                </tr>
                            </table>
                             <br><br>
 
-                            <span class="fs11">Tips: <em>如果您想使用的图片文件, 请务必放在 /templates 目录下</em></span>
+                            <span class="fs11">Tip: <em>If you wish to use images make sure to place them under /templates dir</em></span>
                             <br/>
                         </td>
                     </tr>
@@ -157,14 +157,14 @@
                      <tr>
                          <td width="200" style="border:none" valign="top"  align="center" class="fs11">
                              {if $configuration.InvCompanyLogo!=''}
-                             当前的LOGO: 
+                             Current logo: 
                              <img src="../templates/{$configuration.InvCompanyLogo}" alt="{$configuration.BusinessName}" />
                              {else}
-                             还未上传任何LOGO图形文件
+                             No logo uploaded yet
                              {/if}
                          </td>
                          <td style="border:none">
-                             上传新的LOGO图形: <input  name="file"  id="InvCompanyLogo"   type="file" /><br />
+                             Upload new logo: <input  name="file"  id="InvCompanyLogo"   type="file" /><br />
 
                          </td>
                      </tr>
@@ -177,7 +177,7 @@
 		
         </td></tr>
     <tr class="bordme">
-        <td width="205" align="right" valign="top"><strong>账单模板</strong></td>
+        <td width="205" align="right" valign="top"><strong>Invoice template</strong></td>
         <td colspan="3">
             <table style="border:1px solid #CCCCCC; border-collapse: collapse" cellspacing="0" cellpadding="3">
 
@@ -186,13 +186,13 @@
             <input class="left" type="radio" name="InvoiceTemplate" value="{$tpl.id}" {if $configuration.InvoiceTemplate==$tpl.id}checked="checked"{/if} id="seo_{$tpl.id}" />
             <label for="seo_{$tpl.id}" class="w150 left">{$tpl.name}</label>
             <div class="left">
-            <a href="?cmd=configuration&action=invoicetemplates&make=preview&content_id={$tpl.id}&security_token={$security_token}" class="fs11">预览</a>
+            <a href="?cmd=configuration&action=invoicetemplates&make=preview&content_id={$tpl.id}&security_token={$security_token}" class="fs11">Preview</a>
             {if $tpl.parent_id=='0'}
-            <a href="?cmd=configuration&action=invoicetemplates&make=customize&id={$tpl.id}&security_token={$security_token}" class="fs11 orspace">自定义</a>
+            <a href="?cmd=configuration&action=invoicetemplates&make=customize&id={$tpl.id}&security_token={$security_token}" class="fs11 orspace">Customize</a>
 
             {else}
-            <a href="?cmd=configuration&action=edittemplate&template_id={$tpl.id}" class="fs11 orspace">编辑</a>
-            <a href="?cmd=configuration&action=invoicetemplates&make=delete&id={$tpl.id}&security_token={$security_token}" class="fs11 editbtn orspace" onclick="return confirm('您确定需要删除该模板吗?')">删除</a>
+            <a href="?cmd=configuration&action=edittemplate&template_id={$tpl.id}" class="fs11 orspace">Edit</a>
+            <a href="?cmd=configuration&action=invoicetemplates&make=delete&id={$tpl.id}&security_token={$security_token}" class="fs11 editbtn orspace" onclick="return confirm('Are you sure you wish to remove this template?')">Delete</a>
             {/if}
             </div>
             <div class="clear"></div>
@@ -203,7 +203,7 @@
     </tr>
     {if $configuration.CnoteEnable=='on'}
         <tr class="bordme">
-            <td width="205" align="right" valign="top"><strong>创建备注模板</strong></td>
+            <td width="205" align="right" valign="top"><strong>Credit note template</strong></td>
             <td colspan="3">
                 <table style="border:1px solid #CCCCCC; border-collapse: collapse" cellspacing="0" cellpadding="3">
                     {foreach from=$cnotetemplate item=tpl}
@@ -211,12 +211,12 @@
                                 <input class="left" type="radio" name="CNoteTemplate" value="{$tpl.id}" {if $configuration.CNoteTemplate==$tpl.id}checked="checked"{/if} id="seo_{$tpl.id}" />
                                 <label for="seo_{$tpl.id}" class="w150 left">{$tpl.name}</label>
                                 <div class="left">
-                                    <a href="?cmd=configuration&action=invoicetemplates&make=preview&content_id={$tpl.id}&security_token={$security_token}" class="fs11">预览</a>
+                                    <a href="?cmd=configuration&action=invoicetemplates&make=preview&content_id={$tpl.id}&security_token={$security_token}" class="fs11">Preview</a>
                                     {if $tpl.parent_id=='0'}
-                                        <a href="?cmd=configuration&action=invoicetemplates&make=customize&id={$tpl.id}&security_token={$security_token}" class="fs11 orspace">自定义</a
+                                        <a href="?cmd=configuration&action=invoicetemplates&make=customize&id={$tpl.id}&security_token={$security_token}" class="fs11 orspace">Customize</a
                                     {else}
-                                        <a href="?cmd=configuration&action=edittemplate&template_id={$tpl.id}" class="fs11 orspace">编辑</a>
-                                        <a href="?cmd=configuration&action=invoicetemplates&make=delete&id={$tpl.id}&security_token={$security_token}" class="fs11 editbtn orspace" onclick="return confirm('您确定需要删除该模板吗?')">删除</a>
+                                        <a href="?cmd=configuration&action=edittemplate&template_id={$tpl.id}" class="fs11 orspace">Edit</a>
+                                        <a href="?cmd=configuration&action=invoicetemplates&make=delete&id={$tpl.id}&security_token={$security_token}" class="fs11 editbtn orspace" onclick="return confirm('Are you sure you wish to remove this template?')">Delete</a>
                                     {/if}
                                 </div>
                                 <div class="clear"></div>
@@ -229,7 +229,7 @@
                     
                     <tr class="bordme">
                         <td width="205" align="right" valign="middle">
-                           <b>使用用第二货币: <a class="vtip_description" title="所有账单金额均会用2种货币进行显示, 原始(生成一份账单), 从下面的列表中选出第二分. <br/>仅适用于今后启用这个选项生成的账单."></a></b><br/>
+                           <b>Use 2nd currency: <a class="vtip_description" title="All invoice values will be displayed in 2 currencies, original (the one invoice was generated in), and second selected from list below. <br/>Works only on invoices generated after this option is enabled."></a></b><br/>
                            </td>  
                     <td colspan="3">
                          <input type="checkbox" name="Invoice2ndcurrency" value="1" {if $configuration.Invoice2ndcurrency}checked="checked"{/if} onclick="$('#daybefore,#comment').toggle()" />
@@ -243,7 +243,7 @@
                           
                            <tr class="bordme" id="daybefore" {if !$configuration.Invoice2ndcurrency}style="display:none"{/if}>
                         <td width="205" align="right" valign="middle">
-                           <b>前一天的汇率: <a class="vtip_description" title="如果启用了第二货币, 系统将使用每天不同的汇率为创建账单(应用欧盟(EU)的账单付款日期). <br/> 使用这个选项从上述日期之前的一天的汇率(在一些欧盟国家的要求)"></a></b><br/>
+                           <b>'Day before' conversion: <a class="vtip_description" title="If 2nd currency is enabled, HostBill will use conversion rate from day invoice was created (for EU invoices payment date is used). <br/> To use conversion rate from day before mentioned dates use this option (required in some EU countries)"></a></b><br/>
                            </td>  
                     <td colspan="3"> <input type="checkbox" name="InvoiceDayBefore" value="1" {if $configuration.InvoiceDayBefore}checked="checked"{/if} />
                         
@@ -251,7 +251,7 @@
                           
                            <tr class="bordme" id="comment" {if !$configuration.Invoice2ndcurrency}style="display:none"{/if}>
                         <td width="205" align="right" valign="middle">
-                           <b>在备注中使用汇率: <a class="vtip_description" title="在账单备注中使用汇率替换后的第二货币"></a></b><br/>
+                           <b>Conversion rate in note: <a class="vtip_description" title="Place conversion rate used for 2nd currency in invoice notes"></a></b><br/>
                            </td>  
                     <td colspan="3"> <input type="checkbox" name="InvoiceConversionRate" value="1" {if $configuration.InvoiceConversionRate}checked="checked"{/if} />
                         
@@ -259,7 +259,7 @@
                           
                           <tr class="bordme">           
                             <td width="205" align="right" valign="middle">
-                            <b>使用第二种语言: <a class="vtip_description" title="当激活所有语言时 {literal}{$lang}{/literal} 将增加第二语言的翻译"></a></b><br/>
+                            <b>Use 2nd language: <a class="vtip_description" title="When enabled all {literal}{$lang}{/literal} will be additionally translated with second language"></a></b><br/>
                               </td>  
                     <td colspan="3">
                         <input type="checkbox" name="Invoice2ndlanguage" value="1" {if $configuration.Invoice2ndlanguage}checked="checked"{/if} />
@@ -302,7 +302,7 @@
 <table border="0" cellpadding="10" width="100%" cellspacing="0"  class="sectioncontenttable">
     
     <tr class="bordme">
-        <td width="205" align="right" valign="top"><strong>预期模板</strong></td>
+        <td width="205" align="right" valign="top"><strong>Estimate template</strong></td>
         <td colspan="3">
             <table style="border:1px solid #CCCCCC; border-collapse: collapse" cellspacing="0" cellpadding="3">
 
@@ -311,13 +311,13 @@
             <input class="left" type="radio" name="InvoiceTemplate" value="{$tpl.id}" {if $configuration.EstimateTemplate==$tpl.id}checked="checked"{/if} id="seo_{$tpl.id}" />
             <label for="seo_{$tpl.id}" class="w150 left">{$tpl.name}</label>
             <div class="left">
-            <a href="?cmd=configuration&action=estimatetemplates&make=preview&content_id={$tpl.id}&security_token={$security_token}" class="fs11">预览</a>
+            <a href="?cmd=configuration&action=estimatetemplates&make=preview&content_id={$tpl.id}&security_token={$security_token}" class="fs11">Preview</a>
             {if $tpl.parent_id=='0'}
-            <a href="?cmd=configuration&action=estimatetemplates&make=customize&id={$tpl.id}&security_token={$security_token}" class="fs11 orspace">自定义</a>
+            <a href="?cmd=configuration&action=estimatetemplates&make=customize&id={$tpl.id}&security_token={$security_token}" class="fs11 orspace">Customize</a>
 
             {else}
-            <a href="?cmd=configuration&action=edittemplate&template_id={$tpl.id}&type=estimate" class="fs11 orspace">编辑</a>
-            <a href="?cmd=configuration&action=estimatetemplates&make=delete&id={$tpl.id}&security_token={$security_token}" class="fs11 editbtn orspace" onclick="return confirm('您确定需要删除该模板吗?')">删除</a>
+            <a href="?cmd=configuration&action=edittemplate&template_id={$tpl.id}&type=estimate" class="fs11 orspace">Edit</a>
+            <a href="?cmd=configuration&action=estimatetemplates&make=delete&id={$tpl.id}&security_token={$security_token}" class="fs11 editbtn orspace" onclick="return confirm('Are you sure you wish to remove this template?')">Delete</a>
             {/if}
             </div>
             <div class="clear"></div>

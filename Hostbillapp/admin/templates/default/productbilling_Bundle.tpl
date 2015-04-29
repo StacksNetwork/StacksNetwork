@@ -74,7 +74,7 @@
             <div id="bundle_ajax" class="overlay">
             </div>
         </div>
-        <script type="text/javascript" src="{$template_dir}js/bundle.js"></script>
+        <script type="text/javascript" src="{$template_dir}js/bundle.js?v={$hb_version}"></script>
         <link media="all" type="text/css" rel="stylesheet" href="{$template_dir}js/bundle.css" />
         
 {* breaking out fom td*}

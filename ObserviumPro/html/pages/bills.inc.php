@@ -32,7 +32,7 @@ if (!is_file("includes/jpgraph/src/jpgraph.php") || defined('DEFAULT_THEME_CLASS
 $isAdmin    = (($_SESSION['userlevel'] == "10") ? true : false);
 $isUser     = bill_permitted($bill_id);
 
-if ($vars['addbill'] == "yes")
+if ($vars['addbill'] == "yes" && !empty($vars['bill_name']))
 {
   $updated = '1';
 
@@ -62,22 +62,21 @@ if ($vars['addbill'] == "yes")
 
   $bill_id = dbInsert($insert, 'bills');
 
-  $message .= $message_break . "账单 ".htmlspecialchars($vars['bill_name'])." (".$bill_id.") 添加!";
+  $message .= $message_break . "账单 ".escape_html($vars['bill_name'])." (".$bill_id.") 已生成!";
   $message_break .= "<br />";
 
   if (is_numeric($bill_id) && is_numeric($vars['port']))
   {
     dbInsert(array('bill_id' => $bill_id, 'port_id' => $vars['port']), 'bill_ports');
-    $message .= $message_break . "端口 ".htmlspecialchars($vars['port'])." 添加!";
+    $message .= $message_break . "端口 ".escape_html($vars['port'])." 已添加!";
     $message_break .= "<br />";
   }
 }
 
-$pagetitle[] = "账单";
+$page_title[] = "账单";
 
 switch($vars["view"]) {
   case "history":
-    echo("<meta http-equiv=\"refresh\" content=\"360\">\n");
     echo("<h2 style=\"margin-bottom: 10px;\">客户账单: 历史账单</h2>\n");
 
     include("pages/bills/search.inc.php");
@@ -90,7 +89,6 @@ switch($vars["view"]) {
     include("pages/bills/add.inc.php");
     break;
   default:
-    echo("<meta http-equiv=\"refresh\" content=\"360\">\n");
     echo("<h2 style=\"margin-bottom: 10px;\">客户账单: 本期账单</h2>\n");
 
     include("pages/bills/search.inc.php");

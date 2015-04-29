@@ -1,0 +1,129 @@
+//
+// Alerts
+// --------------------------------------------------
+
+
+// Base styles
+// -------------------------
+
+.alert {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: @margin-base;
+  text-shadow: 0 1px 0 rgba(255,255,255,.5);
+  background-color: @state-warning-bg;
+  //border: 1px solid @state-warning-border;
+  .border-radius(@border-radius-base);
+  border: 1px solid @well-border;
+  border-left: 7px solid;
+
+}
+
+.alert + .alert {
+    margin-top: -@margin-base/2;
+}
+
+.alert,
+.alert h4 {
+  // Specified for the h4 to prevent conflicts of changing @headingsColor
+  color: @state-warning-text;
+}
+.alert h4, .alert h5, .alert h3 {
+  margin: 0;
+  border-bottom: none;
+}
+
+
+
+// Adjust close link position
+.alert .close {
+  position: relative;
+  top: -2px;
+  right: -21px;
+  line-height: @line-height-base;
+}
+
+
+.alert-mixin(@class, @border-color, @text-color, @background-color) {
+
+  .@{class} {
+    border-left-color: @border-color;
+    //border-color: @callout-color;
+    #gradient > .vertical(@background-color, lighten(@background-color, 1%));
+    //color: darken(@font-color, 10%);
+    color: @text-color;
+  }
+
+  &.@{class} h4, &.@{class} b {
+    color: darken(@text-color, 5%);
+  }
+}
+
+.alert-mixin(alert,             @blue-grey,             @blue-grey,   @blue-grey-50);
+
+.alert-mixin(alert-info,        @info-text,        @info-text,        @info-bg);
+.alert-mixin(alert-danger,      @danger-text,      @danger-text,      @danger-bg);
+.alert-mixin(alert-warning,     @warning-text,     @warning-text,     @warning-bg);
+.alert-mixin(alert-success,     @success-text,     @success-text,     @success-bg);
+.alert-mixin(alert-recovery,    @recovery-text,    @recovery-text,    @recovery-bg);
+.alert-mixin(alert-suppressed,  @suppress-text,    @suppress-text,    @suppress-bg);
+.alert-mixin(alert-delay,       @delay-text,       @delay-text,       @delay-bg);
+.alert-mixin(alert-up-ignore, @ignore-text, @ignore-text, @ignore-bg);
+.alert-mixin(alert-down-ignore, @ignore-error-text, @ignore-error-text, @ignore-error-bg);
+.alert-mixin(alert-disabled,    @disabled-text,    @disabled-text,    @disabled-bg);
+
+
+// Block alerts
+// -------------------------
+
+.alert-block {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.alert-block > p,
+.alert-block > ul {
+  margin-bottom: 0;
+}
+.alert-block p + p {
+  margin-top: 5px;
+}
+
+// Observium-style Statusbox, used on front-page
+
+.statusbox {
+  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-right: 5px;
+  float: left;
+  padding: 2px;
+  width: 133px;
+  height: 85px;
+  line-height:130%;
+  display: table;
+
+//  border: 1px solid @state-warning-border;
+//  .border-radius(@baseBorderRadius);
+
+}
+
+.statusbox + .statusbox {
+    margin-top: 0px;
+}
+
+.statusbox:last-of-type {
+  margin-bottom: 10px;
+}
+
+.statusbox-wide {
+  width: 270px;
+}
+
+.statusbox p {
+  text-align: center;
+  display: table-row;
+}
+
+.statusbox .header {
+  text-align: center;
+  display: table-row;
+  font-weight: bold;
+}

@@ -9,33 +9,19 @@
  * @package    observium
  * @subpackage poller
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 chdir(dirname($argv[0]));
 
+include_once("includes/defaults.inc.php");
+include_once("config.php");
+
+// Get options before definitions!
 $options = getopt("h:i:m:n:dqrV");
 
-if (isset($options['d']))
-{
-  echo("DEBUG!\n");
-  $debug = TRUE;
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  ini_set('log_errors', 1);
-#  ini_set('error_reporting', E_ALL ^ E_NOTICE);
-} else {
-  $debug = FALSE;
-#  ini_set('display_errors', 0);
-  ini_set('display_startup_errors', 0);
-  ini_set('log_errors', 0);
-#  ini_set('error_reporting', 0);
-}
-
-include("includes/defaults.inc.php");
-include("config.php");
-include("includes/definitions.inc.php");
+include_once("includes/definitions.inc.php");
 include("includes/functions.inc.php");
 include("includes/polling/functions.inc.php");
 
@@ -117,6 +103,7 @@ OPTIONS:
 DEBUGGING OPTIONS:
  -r                                          Do not create or update RRDs
  -d                                          Enable debugging output.
+ -dd                                         More verbose debugging output.
  -m                                          Specify module(s) (separated by commas) to be run.
 
 %r无效的参数!%n", 'color', FALSE);

@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage definitions
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -38,7 +38,7 @@ if (is_file($config['install_dir'] . '/.svn/entries'))
       $svn_train = 'stable';
     } elseif (preg_match('/trunk/', trim($svn[4]), $matches))
     {
-      $svn_train = 'current';
+      $svn_train = 'rolling';
     }
   }
 }
@@ -53,7 +53,7 @@ if ($svn_new)
     $svn_train = 'stable';
   } elseif (preg_match('/trunk/', $svn, $matches))
   {
-    $svn_train = 'current';
+    $svn_train = 'rolling';
   }
 
   if (preg_match('/Last\ Changed\ Rev:\ ([0-9]+)\s*Last\ Changed\ Date:\ ([0-9\-]+)/m', $svn, $matches))

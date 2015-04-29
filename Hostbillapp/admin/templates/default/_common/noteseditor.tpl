@@ -26,11 +26,11 @@
         <div id="notes_submit" class="notes_submit admin-note-submit">
             <input type="button" name="savenotes" value="{$lang.savechanges}" onclick="return AdminNotes.addNew();">
         </div>
-        <a href="#" class="editbtn" onclick="return AdminNotes.addFile();">Attach file</a>
+        <a href="#" class="editbtn" onclick="return AdminNotes.addFile();">添加文件</a>
         <a href="#" class="editbtn" onclick="return AdminNotes.hide();">{$lang.Cancel}</a>
     </div>
 </div>
-<script src="{$template_dir}js/fileupload/init.fileupload.js"></script>
+<script src="{$template_dir}js/fileupload/init.fileupload.js?v={$hb_version}"></script>
 {literal}
     <script type="text/javascript">
         $(function() {

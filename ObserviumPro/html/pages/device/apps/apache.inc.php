@@ -11,9 +11,9 @@
  *
  */
 
-$app_graphs['default'] = array('apache_bits' => 'Traffic',
-                'apache_hits' => 'Hits',
-                'apache_cpu'  => 'CPU Utilisation',
-                'apache_scoreboard' => 'Scoreboard Statistics');
+$app_graphs['default'] = array('apache_bits' => '流量',
+                'apache_hits' => '命中',
+                'apache_cpu'  => 'CPU占用',
+                'apache_scoreboard' => '记分数据');
 
 // EOF

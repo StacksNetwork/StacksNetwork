@@ -128,6 +128,6 @@ elseif ($vars['view'] == "outgoing")
 
 echo('</table>');
 
-$pagetitle[] = "潜在因素";
+$page_title[] = "潜在因素";
 
 // EOF

@@ -14,14 +14,14 @@
 ?>
 <div class="row">
   <div class="col-md-12 well">
-    <h3>Inventory:</h3>
+    <h3>清单:</h3>
     <p>
-      With this module it is possible to export the data that can be found in the
-      device inventory.
+      使用该模块能够导出在设备列表中发现的数据内容
+      设备清单.
     </p>
     <dl>
-      <dt>device</dt>
-      <dd>The device id of the device you want to grab the inventory from</dd>
+      <dt>设备</dt>
+      <dd>想要从设备清单中抓取设备ID</dd>
     </dl>
     <pre>
       <strong>Explanation :</strong> Collect the inventory list of server with id 2

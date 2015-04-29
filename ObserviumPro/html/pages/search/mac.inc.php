@@ -53,7 +53,7 @@ $vars['pagination'] = TRUE;
 // Print MAC addresses
 print_mac_addresses($vars);
 
-$pagetitle[] = 'MAC地址';
+$page_title[] = 'MAC地址';
 
 ?>
 

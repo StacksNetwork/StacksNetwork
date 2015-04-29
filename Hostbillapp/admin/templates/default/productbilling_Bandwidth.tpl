@@ -7,8 +7,8 @@
 <div id="bandwidthmgr" >
     <div style="">
 
-     {*   <b>以下变量可以被测量分析并出具自动化账单: <a title="注意: 填写收费标准如下, 您希望该产品套餐<b>遵循</b>的收费标准是什么. 结束的数量设置为 0 意味着 &无限; (无限的)
-            <br/> 例如100GB流量/月对于本产品是免费的, 所有超出部分都应配置到计费账单表内." class="vtip_description"></a></b>
+     {*   <b>Following variables can be measued and billed automatically: <a title="Note: Fill price rules below with amounts you wish to charge <b>over</b> whats offered with this package as standard. Ending QTY set to 0 means &infin; (infinity)
+            <br/> I.e. 100GB traffic/month is free with package, everything over that should be configured with metered billing table." class="vtip_description"></a></b>
      <div class="clear"></div>
      *}
         
@@ -18,7 +18,7 @@
         <div class="clear"></div>
         <table width="100%" cellspacing="0" cellpadding="6" border="0">
             <tr>
-                <td width="160" >生成使用账单</td>
+                <td width="160" >Generate usage invoices</td>
                 <td >
                     <select name="config[BandwidthCycle]" class="inp">
                         <option value="Monthly" {if $configuration.BandwidthCycle=='Monthly'}selected="selected"{/if}>{$lang.Monthly}</option>
@@ -31,31 +31,31 @@
             </tr>
             <tr>
                 <td width="160" style="background:#F0F0F3"></td>
-                <td style="background:#F0F0F3"><input type="checkbox" id="bandwidth_by_client" value="1" onclick="importBandwidthForm()" /> 让客户在注册过程中选择自己的限制, 计费方式 & 价格.
+                <td style="background:#F0F0F3"><input type="checkbox" id="bandwidth_by_client" value="1" onclick="importBandwidthForm()" /> Let client choose his limits, measurement method & pricing during signup.
                 </td>
           </tr>
           <tr style="display:none" id="bwclient_info">
                 <td style="background:#F0F0F3" colspan="2">
-                    <em>禁用此选项请从 组件->表单 删除"计费方式"表单元素并保村.</em> <br/>
-                    <b>关于超额的注意事项:</b> <a title="如果你让客户选择自己的上限值和测量方法, 平均价格将根据客户选择而自动计算. <br/>
-                    I.e. 客户使用了 100Mbps 并限定了 $10USD 的价格, 他的平均价格将为 $0.1/Mb" class="vtip_description"></a>
+                    <em>To disable this option please remove "Billing Method" form element from Components->Forms and save changes.</em> <br/>
+                    <b>Note about overages:</b> <a title="If you allow client to choose his limits and measurement method, overage price will be calculated automatically based on client option. <br/>
+                    I.e. client use 100 Mbps limit with $10USD price, his overage price would be $0.1/Mb" class="vtip_description"></a>
                     
                 </td>
           </tr>
               <tr class="bw_tohide">
-                <td width="160" style="background:#F0F0F3">测量/计费方法</td>
+                <td width="160" style="background:#F0F0F3">Measurement/Billing method</td>
                 <td style="background:#F0F0F3">
                     <select name="config[BandwidthModel]" class="inp" onchange="change_measurement(this)">
-                        <option value="95th" {if $configuration.BandwidthModel=='95th'}selected="selected"{/if}>95th 计费</option>
-                        <option value="average" {if $configuration.BandwidthModel=='average'}selected="selected"{/if}>平均流量</option>
-                        <option value="total" {if $configuration.BandwidthModel=='total'}selected="selected"{/if}>峰值带宽</option>
+                        <option value="95th" {if $configuration.BandwidthModel=='95th'}selected="selected"{/if}>95th Percentile</option>
+                        <option value="average" {if $configuration.BandwidthModel=='average'}selected="selected"{/if}>Average Bandwidth</option>
+                        <option value="total" {if $configuration.BandwidthModel=='total'}selected="selected"{/if}>Total Transfer</option>
                     </select>
 
                 </td>
             </tr>
 
               <tr class="bw_tohide">
-                <td width="160" style="background:#F0F0F3">免费传输</td>
+                <td width="160" style="background:#F0F0F3">Free transfer</td>
                 <td style="background:#F0F0F3">
                     <input type="text" class="inp" size="4"  value="{if $configuration.BandwidthTransfer}{$configuration.BandwidthTransfer}{else}100{/if}" name="config[BandwidthTransfer]" id="config_tw_overage"/>
                     
@@ -70,11 +70,11 @@
                         <option value="Gbit" {if $configuration.BandwidthTransferUnit=='Gbit'}selected="selected"{/if}>Gbps</option>
                     </select>
                     
-                    <input type="checkbox" id="transfer_by_admin" value="1" onclick="importBandwidthForm('transfer_by_admin')" /> 分别设定每个帐号的基础
+                    <input type="checkbox" id="transfer_by_admin" value="1" onclick="importBandwidthForm('transfer_by_admin')" /> Set individually per account basis
                 </td>
             </tr>
   <tr class="bw_tohide">
-                <td width="160" style="background:#F0F0F3">超额比例</td>
+                <td width="160" style="background:#F0F0F3">Overate rate</td>
                 <td style="background:#F0F0F3">
                    {$currency.sign} <input type="text" class="inp" size="4"  value="{if $configuration.BandwidthOverage}{$configuration.BandwidthOverage}{else}0{/if}" name="config[BandwidthOverage]" id="config_bw_overage" />
                      {$currency.code}
@@ -92,15 +92,15 @@
                     </select>
                     
                     
-                    <input type="checkbox" id="overage_by_admin" value="1"  onclick="importBandwidthForm('overage_by_admin')" /> 分别设定每个帐号的基础
+                    <input type="checkbox" id="overage_by_admin" value="1"  onclick="importBandwidthForm('overage_by_admin')" /> Set individually per account basis
                 </td>
             </tr>
                 <tr>
-                    <td >设置费用</td>
+                    <td >Setup fee</td>
                     <td>{$currency.sign} <input type="text" class="inp" size="4"  value="{if $configuration.BandwidthSetupFee}{$configuration.BandwidthSetupFee}{else}0.00{/if}" name="config[BandwidthSetupFee]" /> {$currency.code}</td>
                 </tr>
                 <tr>
-                    <td>固定的重复收费 <a title="固定值, 重复收费业务" class="vtip_description"></a></td>
+                    <td>Fixed recurring fee <a title="Fixed amount, recurring charge for service" class="vtip_description"></a></td>
                     <td>{$currency.sign} <input type="text" class="inp" size="4" value="{if $configuration.BandwidthRecurringFee}{$configuration.BandwidthRecurringFee}{else}0.00{/if}" name="config[BandwidthRecurringFee]" /> {$currency.code}</td>
                 </tr>
 

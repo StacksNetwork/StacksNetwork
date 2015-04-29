@@ -18,7 +18,7 @@
         {/if}
     {/if}
     <div class="left">
-        <span class="left" style="padding-top:5px;padding-left:5px;"><strong>{$_client.firstname} {$_client.lastname}</strong>&nbsp;&nbsp;</span>
+        <span class="left" style="padding-top:5px;padding-left:5px;"><strong>{$_client.lastname} {$_client.firstname}</strong>&nbsp;&nbsp;</span>
 
         {if $enableFeatures.profiles=='on'}
             <a class="nav_el  left"  href="?cmd=clients&action=clientcontacts&id={if $_client.parent_id}{$_client.parent_id}{elseif $_client.client_id}{$_client.client_id}{else}{$_client.id}{/if}" onclick="return false" >{$lang.Contacts}</a>

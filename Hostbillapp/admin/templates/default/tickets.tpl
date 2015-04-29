@@ -10,8 +10,8 @@
         lang['none'] = "{$lang.none}";
         lang['nochange'] = "{$lang.nochange}";
 </script>
-<script type="text/javascript" src="{$template_dir}js/tickets.js"></script>
-<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js"></script>
+<script type="text/javascript" src="{$template_dir}js/tickets.js?v={$hb_version}"></script>
+<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js?v={$hb_version}"></script>
 <table border="0" cellspacing="0" cellpadding="0" width="100%" id="content_tb" {if $currentfilter}class="searchon"{/if}>
     <tr>
         <td ><h3>{$lang.ticketsection}</h3></td>
@@ -26,7 +26,7 @@
                         <a href="?cmd={$cmd}&tview={$tview.id}&resetfilter=1" {if $currentfilter}style="display:inline"{/if} class="freseter">{$lang.filterisactive}</a>
                     {else}
                         <a href="?cmd=tickets&action=getadvanced" class="fadvanced">{$lang.filterdata}</a>
-                        <a href="?cmd=ticketviews&action=fromfilter"  {if $currentfilter}style="display:inline"{/if} ><b>Create View</b></a>
+                        <a href="?cmd=ticketviews&action=fromfilter"  {if $currentfilter}style="display:inline"{/if} ><b>创建视图</b></a>
                         <a href="?cmd=tickets&resetfilter=1"  {if $currentfilter}style="display:inline"{/if}  class="freseter">{$lang.filterisactive}</a>
                     {/if}
                 </div>
@@ -105,7 +105,7 @@
                 <a href="?cmd=supportrating"  class="tstyled {if $cmd=='supportrating'}selected{/if}">工单评分</a>
                 <a href="?cmd=ticketviews"  class="tstyled {if $cmd=='ticketviews' && !$tview}selected{/if}">工单视图</a>
                 {if $enableFeatures.supportext}
-                    <a href="?cmd=tickettimetracking"  class="tstyled {if $cmd=='tickettimetracking'}selected{/if}">人工服务费率</a>
+                    <a href="?cmd=tickettimetracking"  class="tstyled {if $cmd=='tickettimetracking'}selected{/if}">收费服务</a>
                 {/if}
             {/if}
             <br />
@@ -115,7 +115,7 @@
                 <strong>{$lang.tags}</strong>
                 <div class="ticketsTags">
                     <div id="tagsBox">
-                        <em>Loading...</em>
+                        <em>加载中...</em>
                     </div>
                 </div>
             </div>

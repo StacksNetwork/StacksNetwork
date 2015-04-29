@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage alerter
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -26,9 +26,11 @@ function check_entity($type, $entity, $data)
 
   print_message("\n检测警报");
 
-  if ($GLOBALS['debug']) { print_vars($data); }
+  if (OBS_DEBUG) { print_vars($data); }
 
   list($entity_table, $entity_id_field, $entity_name_field, $entity_ignore_field) = entity_type_translate($type);
+
+  if (!isset($alert_table[$type][$entity[$entity_id_field]])) { return; } // Just return to avoid PHP warnings
 
   $alert_info = array('entity_type' => $type, 'entity_id' => $entity[$entity_id_field]);
 
@@ -82,6 +84,9 @@ function check_entity($type, $entity, $data)
       {
         // Check to see if this alert has been suppressed by anything
         ## FIXME -- not all of this is implemented
+
+        // Have all alerts been suppressed?
+        if ($config['alerts']['suppress']) { $alert_suppressed = TRUE; $suppressed[] = "GLOBAL"; }
 
         // Have all alerts on the device been suppressed?
         if ($device['ignore']) { $alert_suppressed = TRUE; $suppressed[] = "DEV"; }
@@ -278,8 +283,6 @@ function cache_device_alert_table($device_id)
 // TESTME needs unit testing
 function cache_alert_rules($vars = array())
 {
-  global $debug;
-
   $alert_rules = array();
   $rules_count = 0;
   $where = 'WHERE 1';
@@ -295,7 +298,7 @@ function cache_alert_rules($vars = array())
     $rules_count++;
   }
 
-  if ($debug) { echo("缓存 $rules_count 报警规则.\n"); }
+  print_debug("已缓存 $rules_count 报警规则.");
 
   return $alert_rules;
 }
@@ -560,13 +563,12 @@ function match_device_entities($device_id, $entity_attribs, $entity_type)
 {
   // FIXME - this is going to be horribly slow.
 
-  $param = array();
-
-  list($entity_table, $entity_id_field, $entity_name_field) = entity_type_translate ($entity_type);
-
+  list($entity_table, $entity_id_field, $entity_name_field) = entity_type_translate($entity_type);
   $entity_type = entity_type_translate_array($entity_type);
+  if (!is_array($entity_type)) { return NULL; } // Do nothing if entity type unknown
 
-  $sql   = "SELECT * FROM `".mres($entity_table)."`";
+  $param = array();
+  $sql   = "SELECT * FROM `" . mysql_real_escape_string($entity_table) . "`";
   $sql  .= " WHERE device_id = ?";
 
   #print_vars($entity_type);
@@ -644,7 +646,6 @@ function match_device_entities($device_id, $entity_attribs, $entity_type)
   }
 
   // print_vars(array($sql, $param));
-  // $GLOBALS['debug'] = 1;
 
   $entities = dbFetchRows($sql, $param);
 
@@ -813,7 +814,7 @@ function process_alerts($device)
 
   $sql  = "SELECT * FROM `alert_table`";
   $sql .= " LEFT JOIN `alert_table-state` ON `alert_table`.`alert_table_id` = `alert_table-state`.`alert_table_id`";
-  $sql .= " WHERE `device_id` = ?";
+  $sql .= " WHERE `device_id` = ? AND `alert_status` IS NOT NULL;";
 
   foreach (dbFetchRows($sql, array($device['device_id'])) as $entry)
   {
@@ -972,6 +973,14 @@ function process_alerts($device)
     else if ($entry['alert_status'] == '1')
     {
       echo("状态: OK. ");
+    }
+    else if ($entry['alert_status'] == '2')
+    {
+      echo("Status: Notification Delayed. ");
+    }
+    else if ($entry['alert_status'] == '3')
+    {
+      echo("Status: Notification Suppressed. ");
     } else {
       echo("未知的状态.");
     }
@@ -1000,7 +1009,7 @@ function alert_notify($device, $title, $message, $alert_id = FALSE)
 {
   /// NOTE. Need full rewrite to universal function with message queues and multi-protocol (email,jabber,twitter)
 
-  global $config, $debug;
+  global $config;
 
   $notify_status = FALSE; // Set alert notify status to FALSE by default
 
@@ -1020,7 +1029,7 @@ function alert_notify($device, $title, $message, $alert_id = FALSE)
     }
 
     // if alert_contacts table is not in use, fall back to default
-    if (!$transports) $transports = array('email');
+    if (empty($transports)) $transports = array('email');
 
     foreach ($transports as $method)
     {

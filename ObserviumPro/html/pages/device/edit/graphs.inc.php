@@ -23,7 +23,7 @@ foreach (dbFetchRows("SELECT `graph`,`enabled` FROM `device_graphs` WHERE `devic
   $graphs_sections[$section][$graph] = (bool)$entry['enabled'];
 }
 
-$graph = $_POST['toggle_graph'];
+$graph = $vars['toggle_graph'];
 if ($graph && isset($graphs_db[$graph]) &&
     !in_array($config['graph_types']['device'][$graph]['section'], array('poller', 'system')))
 {

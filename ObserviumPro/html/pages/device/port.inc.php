@@ -24,23 +24,17 @@ if ($permit_ports)
 
   $port_details = 1;
 
-  $hostname = $device['hostname'];
-  $hostid   = $device['port_id'];
-  $ifname   = $port['ifDescr'];
-  $ifIndex  = $port['ifIndex'];
-  $speed = humanspeed($port['ifSpeed']);
-
-  $ifalias = $port['name'];
-
   if ($port['ifPhysAddress']) { $mac = (string)$port['ifPhysAddress']; }
 
   $color = "black";
-  if ($port['ifAdminStatus'] == "down") { $status = "<span class='grey'>禁用</span>"; }
-  if ($port['ifAdminStatus'] == "up" && $port['ifOperStatus'] == "down") { $status = "<span class='red'>启用 / 断开</span>"; }
-  if ($port['ifAdminStatus'] == "up" && $port['ifOperStatus'] == "up") { $status = "<span class='green'>启用 / 连接</span>"; }
+  if      ($port['ifAdminStatus'] == "down") { $status = "<span class='grey'>禁用</span>"; }
+  else if ($port['ifAdminStatus'] == "up")
+  {
+    if ($port['ifOperStatus'] == "down" || $port['ifOperStatus'] == "lowerLayerDown") { $status = "<span class='red'>启用 / 已断开</span>"; }
+    else                                                                              { $status = "<span class='green'>启用 / 已连接</span>"; }
+  }
 
   $i = 1;
-  $inf = rewrite_ifname($ifname);
   $show_all = 1;
 
   echo('<table class="table table-hover table-striped table-bordered table-condensed table-rounded">');
@@ -53,7 +47,7 @@ if ($permit_ports)
 
   $link_array = array('page'    => 'device',
                       'device'  => $device['device_id'],
-                      'tab' => 'port',
+                      'tab'     => 'port',
                       'port'    => $port['port_id']);
 
   $navbar['options']['graphs']['text']   = '图像';

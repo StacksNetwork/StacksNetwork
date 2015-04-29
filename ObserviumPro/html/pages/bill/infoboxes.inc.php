@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage webui
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -34,7 +34,7 @@ if ($bill_data['bill_type'] == "quota") {
   $allowed    = format_si($quota)."B";
   $overuse    = $total_data - $quota;
   $overuse    = (($overuse <= 0) ? "<span class=\"badge badge-success\">-</span>" : "<span class=\"badge badge-important\">".format_bytes_billing($overuse)."</span>");
-  $type       = "Quota";
+  $type       = "限流";
   $imgtype    = "&amp;ave=yes";
   $current    = array(
                   'in' => format_bytes_billing($bill_data['total_data_in']),
@@ -89,22 +89,22 @@ $lastmonth    = dbFetchCell("SELECT UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 MO
 $yesterday    = dbFetchCell("SELECT UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 DAY))");
 $rightnow     = date(U);
 
-$bi           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $_GET['bill_code'];
+$bi           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $vars['bill_code'];
 $bi          .= "&amp;from=" . $unixfrom .  "&amp;to=" . $unixto;
 $bi          .= "&amp;x=1050&amp;y=300";
 $bi          .= "$imgtype'>";
 
-$li           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $_GET['bill_code'];
+$li           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $vars['bill_code'];
 $li          .= "&amp;from=" . $unix_prev_from .  "&amp;to=" . $unix_prev_to;
 $li          .= "&amp;x=1050&amp;y=300";
 $li          .= "$imgtype'>";
 
-$di           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $_GET['bill_code'];
+$di           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $vars['bill_code'];
 $di          .= "&amp;from=" . $config['time']['day'] .  "&amp;to=" . $config['time']['now'];
 $di          .= "&amp;x=1050&amp;y=300";
 $di          .= "$imgtype'>";
 
-$mi           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $_GET['bill_code'];
+$mi           = "<img src='billing-graph.php?bill_id=" . $bill_id . "&amp;bill_code=" . $vars['bill_code'];
 $mi          .= "&amp;from=" . $lastmonth .  "&amp;to=" . $rightnow;
 $mi          .= "&amp;x=1050&amp;y=300";
 $mi          .= "$imgtype'>";
@@ -141,7 +141,7 @@ $perc['width'] = (($percent <= "100") ? $percent : "100");
          <thead>
           <tr>
             <th style="width: 25%;">类型</th>
-            <th style="width: 25%;">允许</th>
+            <th style="width: 25%;">限流</th>
             <th style="width: 25%;">已用</th>
             <th style="width: 25%;">超额</th>
           </tr>
@@ -175,7 +175,7 @@ $perc['width'] = (($percent <= "100") ? $percent : "100");
             <td><span class="badge"><?php echo($current['tot']); ?></span></td>
           </tr>
           <tr>
-            <th>Average</th>
+            <th>平均</th>
 
             <td><span class="badge badge-success"><?php echo($average['in']); ?></span></td>
             <td><span class="badge badge-info"><?php echo($average['out']); ?></span></td>
@@ -183,7 +183,7 @@ $perc['width'] = (($percent <= "100") ? $percent : "100");
           </tr>
 <?php if ($bill_data['bill_type'] == "quota") { ?>
           <tr>
-            <th>Estimated</th>
+            <th>预计</th>
 
             <td><span class="badge badge-success"><?php echo($estimated['in']); ?></span></td>
             <td><span class="badge badge-info"><?php echo($estimated['out']); ?></span></td>
@@ -204,11 +204,11 @@ $perc['width'] = (($percent <= "100") ? $percent : "100");
 
   <div class="col-md-6">
     <div class="well info_box">
-      <div class="title"><i class="oicon-information-button"></i> 账单信息</div>
+      <div class="title"><i class="oicon-information-button"></i> 计费信息</div>
       <div class="content">
         <table class="table table-striped table-bordered table-condensed table-rounded">
           <tr>
-            <th style="width: 25%;">Billing period</th>
+            <th style="width: 25%;">计费周期</th>
             <td><?php echo($fromtext." to ".$totext); ?></td>
           </tr>
 
@@ -217,7 +217,7 @@ $perc['width'] = (($percent <= "100") ? $percent : "100");
             <td><?php echo($optional['cust']); ?></td>
           </tr>
           <tr>
-            <th><i class="icon-info-sign"></i> 账单参考</th>
+            <th><i class="icon-info-sign"></i> 计费参考</th>
 
             <td><?php echo($optional['ref']); ?></td>
           </tr>
@@ -227,17 +227,17 @@ $perc['width'] = (($percent <= "100") ? $percent : "100");
             <td><?php echo($optional['notes']); ?></td>
           </tr>
           <tr>
-            <th style="width: 175px;"><i class="icon-time"></i> 最后调查</th>
+            <th style="width: 175px;"><i class="icon-time"></i> 最近一次轮询</th>
 
             <td><?php echo(strftime('%A, %e %B %Y @ %H:%M:%S', $optional['poll'])); ?></td>
           </tr>
           <tr>
-            <th><i class="icon-time"></i> 最后计算</th>
+            <th><i class="icon-time"></i> 最近一次计费</th>
 
             <td><?php echo(strftime('%A, %e %B %Y @ %H:%M:%S', time($optional['calc']))); ?></td>
           </tr>
           <tr>
-            <th style="width: 175px;"><i class="icon-random"></i> 账单端口</th>
+            <th style="width: 175px;"><i class="icon-random"></i> 计费端口</th>
 
             <td><?php include($config['html_dir']."/pages/bill/ports.inc.php");
                 ?></td>

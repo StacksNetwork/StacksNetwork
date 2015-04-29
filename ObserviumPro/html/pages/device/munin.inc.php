@@ -7,7 +7,7 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -37,7 +37,7 @@ foreach ($graph_enable as $section => $nothing)
     if ($vars['group'] == $type) { $navbar['options'][$type]['class'] = "active"; }
 
     $navbar['options'][$type]['url'] = generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'munin', 'group' => $type));
-    $navbar['options'][$type]['text'] = htmlspecialchars(ucwords($section));
+    $navbar['options'][$type]['text'] = escape_html(ucwords($section));
 
   }
 }
@@ -71,6 +71,6 @@ foreach ($graph_enable as $graph => $entry)
 
 echo('</table>');
 
-$pagetitle[] = "Graphs";
+$page_title[] = "Graphs";
 
 ?>

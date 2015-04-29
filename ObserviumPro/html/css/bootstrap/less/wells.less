@@ -1,0 +1,320 @@
+//
+// Wells
+// --------------------------------------------------
+
+
+// Base class
+.well {
+  min-height: 20px;
+  padding: @margin-base;
+  margin-bottom: 10px;
+  background-color: @well-bg;
+  border: 1px solid @well-border;
+  border-radius: @border-radius-base;
+//  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+//  .widget-shadow(inset 0 1px 1px rgba(0,0,0,.05));
+  blockquote {
+    border-color: #ddd;
+    border-color: rgba(0,0,0,.15);
+  }
+}
+
+// Sizes
+.well-lg {
+  padding: 24px;
+  border-radius: @border-radius-large;
+}
+.well-sm {
+  padding: 9px;
+  border-radius: @border-radius-small;
+}
+
+.well-shaded {
+  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+}
+
+.well-white {
+  background-color: @white;
+}
+
+// Info boxes, as used on the overview pages
+
+/*------------------------------------------------------------------
+[ Widget / .widget ]
+*/
+
+.widget {
+  position: relative;
+  width: auto;
+  clear: both;
+  margin-bottom: 10px;
+}
+
+.widget .widget-header {
+  position: relative;
+  height: 28px;
+  line-height: 26px;
+
+  #gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+
+  border: 1px solid @navbarBorder;
+
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-background-clip: padding-box;
+}
+
+.widget .widget-header h3 {
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: @gray;
+  line-height: 14px;
+  //text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.widget .widget-header [class^="icon-"],
+.widget .widget-header [class*=" icon-"],
+.widget .widget-header [class^="oicon-"],
+.widget .widget-header [class*=" oicon-"]{
+  display: inline-block;
+  margin-top: -2px;
+  // margin-right: -2px;
+  margin-left: 10px;
+  font-size: 16px;
+  color: #555;
+  vertical-align: middle;
+}
+
+.widget .widget-content {
+  padding: 10px 10px 10px;
+  background: #FFF;
+  border: 1px solid #D5D5D5;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.widget .widget-header + .widget-content {
+  border-top: none;
+  -webkit-border-top-left-radius: 0;
+  -webkit-border-top-right-radius: 0;
+  -moz-border-radius-topleft: 0;
+  -moz-border-radius-topright: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.widget.widget-nopad .widget-content {
+  padding: 0;
+}
+
+.widget .widget-content:before,
+.widget .widget-content:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+
+.widget .widget-content:after {
+  clear: both;
+}
+
+.widget .widget-content:before,
+.widget .widget-content:after {
+  content: " ";
+  /* 1 */
+
+  display: table;
+  /* 2 */
+
+}
+
+.widget .widget-content:after {
+  clear: both;
+}
+
+.widget.widget-table .widget-content {
+  padding: 0;
+}
+
+.widget.widget-table .table {
+  border: none;
+}
+
+.widget.widget-table .table,
+.widget .table {
+  margin-bottom: 0;
+}
+
+
+.widget.widget-table .table tr td:first-child,
+.widget.widget-table .table tr th:first-child {
+  border-left: none;
+}
+
+.widget.widget-plain {
+  background: transparent;
+  border: none;
+}
+
+.widget.widget-plain .widget-content {
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.widget.widget-box .widget-content {
+  background: #E3E3E3;
+  background: #FFF;
+}
+
+// Toolbar Icons
+
+.widget .widget-header .widget-toolbar, .widget .widget-footer .widget-toolbar {
+  margin: 0;
+  padding: 0;
+  float: right;
+  list-style: none; 
+}
+
+.widget .widget-header .widget-toolbar .ibutton-container, .widget .widget-footer .widget-toolbar .ibutton-container {
+  margin-top: 6px; 
+}
+
+.widget .widget-header .widget-toolbar > li, .widget .widget-footer .widget-toolbar > li {
+  position: relative;
+  float: left;
+  // margin-left: 15px;
+  line-height: 26px;
+  padding-right: 10px;
+  color: #636363;
+  font-size: 12px; 
+}
+
+.widget .widget-header .widget-toolbar > li ul, .widget .widget-footer .widget-toolbar > li ul {
+  left: auto;
+  right: 0; 
+}
+
+.widget .widget-header .widget-toolbar > li.widget-toolbar-link, .widget .widget-footer .widget-toolbar > li.widget-toolbar-link {
+  // padding-right: 0; 
+}
+
+.widget .widget-header .widget-toolbar > li.widget-toolbar-link > a, .widget .widget-footer .widget-toolbar > li.widget-toolbar-link > a {
+  border-left: 1px solid #cecece;
+  height: 26px;
+  line-height: 24px;
+  display: block;
+  // padding: 0 10px; 
+}
+
+.widget .widget-header .widget-toolbar > li.widget-toolbar-link > a i, .widget .widget-footer .widget-toolbar > li.widget-toolbar-link > a i {
+  font-size: 16px; 
+}
+
+.widget .widget-header .widget-icons [class^="icon-"],
+.widget .widget-header .widget-icons [class*=" icon-"],
+.widget .widget-header .widget-icons [class^="oicon-"],
+.widget .widget-header .widget-icons [class*=" oicon-"]{
+  display: inline-block;
+  margin-right: 0px;
+  margin-left: 5px;
+  font-size: 16px;
+  color: #555;
+  vertical-align: middle;
+  float: right;
+}
+
+.widget .widget-header .widget-toolbar > li.widget-toolbar-link > a:hover, .widget .widget-footer .widget-toolbar > li.widget-toolbar-link > a:hover {
+  background: #efefef;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2VmZWZlZiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #efefef));
+  background-image: -webkit-linear-gradient(top, #ffffff, #efefef);
+  background-image: -moz-linear-gradient(top, #ffffff, #efefef);
+  background-image: -o-linear-gradient(top, #ffffff, #efefef);
+  background-image: linear-gradient(top, #ffffff, #efefef); 
+}
+
+.widget .widget-header .widget-toolbar > li.widget-toolbar-link > a:active, .widget .widget-footer .widget-toolbar > li.widget-toolbar-link > a:active {
+  background: #e5e5e5; 
+}
+
+.widget .widget-header .widget-toolbar > li > i, .widget .widget-footer .widget-toolbar > li > i {
+  font-size: 14px;
+  height: 26px;
+  line-height: 26px; 
+}
+
+.widget .widget-header .widget-toolbar > li.open > a, .widget .widget-footer .widget-toolbar > li.open > a {
+  background: #eee; 
+}
+
+.widget .widget-header .widget-controls {
+  float: right;
+  margin-bottom: -26px;
+  margin-right: 10px;
+  border-left: solid @navbarBorder 1px;
+}
+
+// Info boxes, as used on the overview pages
+
+.info_box {
+//    margin-top: @baseMargin * 2;
+//    margin-bottom: 0; // This will cause some messy things in places, but it prevents double margin for infoboxes. adama.
+    margin-top: @margin-base * 2;
+    padding-bottom: 10px;
+}
+
+.info_box:first-of-type {
+    margin-top: @margin-base * 1;
+}
+
+
+.info_box .title {
+    position: relative;
+    top : -@margin-base * 2;
+    margin-left: 0em;
+    padding: 2px 7px;
+    display: inline;
+    font-size: 1em;
+
+    .border-radius(@border-radius-base);
+
+    border: 1px solid @grayBorder;
+
+    background-color: @grayEvenLighter;
+    #gradient > .vertical(@gradient-light, @gradient-dark);
+
+}
+
+.info_box .title:hover {
+    background-color: @grayEvenLighter;
+    #gradient > .vertical(@gradient-dark, @gradient-light);
+}
+
+.info_box .title-right {
+  float: right;
+  margin-bottom: -14px;
+  margin-top: -2px;
+}
+
+.info_box .title a {
+    color: @gray;
+    text-decoration: none;
+}
+
+.info_box .content {
+  margin-top: -@margin-base;
+}
+

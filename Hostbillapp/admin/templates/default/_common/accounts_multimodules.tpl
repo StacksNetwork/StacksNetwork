@@ -1,6 +1,6 @@
 {foreach from=$details.modules item=module key=mid}
 <ul class="accor">
-    <li><a href="#">Module details: {$module.modname} ({$module.status})</a>
+    <li><a href="#">模块详细介绍: {$module.modname} ({$module.status})</a>
         <div class="sor">
             <table width="100%" cellpadding="0" cellspacing="0">
                 <tr>
@@ -15,7 +15,7 @@
                                             <select name="modules[{$mid}][server_id]" id="server_id" >
                                                 <option value="0" {if $server.id=='0'}selected="selected" def="def"{/if}>{$lang.none}</option>
                                                 {foreach from=$moduleservers.$mid item=server}
-                                                <option value="{$server.id}" {if $module.server_id==$server.id}selected="selected" def="def"{/if}>{$server.name} ({$server.accounts}/{$server.max_accounts} Accounts)</option>
+                                                <option value="{$server.id}" {if $module.server_id==$server.id}selected="selected" def="def"{/if}>{$server.name} ({$server.accounts}/{$server.max_accounts} 账户)</option>
                                                 {foreachelse}
                                                 <option value="0">{$lang.noservers}</option>
                                                 {/foreach}

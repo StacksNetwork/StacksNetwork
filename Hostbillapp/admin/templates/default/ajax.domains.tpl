@@ -213,16 +213,17 @@
                 <td width="15%" >{$lang.Domain}</td>
                       <td ><input type="text" value="{$currentfilter.name}" size="35" name="filter[name]"/></td>
                       <td width="15%">{$lang.Status}</td>
-                      <td ><select name="filter[status]">
+                      <td >
+                          <select name="filter[status]">
                           <option value="">{$lang.Anystatus} </option>
-                          <option>{$lang.Pending}</option>
-                          <option>{$lang.PendingTransfer}</option>
-                                  <option>{$lang.PendingRegister}</option>
-                          <option>{$lang.Active}</option>
-                          <option>{$lang.Expired}</option>
-                          <option>{$lang.Cancelled}</option>
-
-                        </select></td>
+                          <option value="Pending" >{$lang.Pending}</option>
+                          <option value="Pending Transfer" >{$lang.PendingTransfer}</option>
+                          <option value="Pending Registration" >{$lang.PendingRegistration}</option>
+                          <option value="Active" >{$lang.Active}</option>
+                          <option value="Expired" >{$lang.Expired}</option>
+                          <option value="Cancelled" >{$lang.Cancelled}</option>
+                        </select>
+                      </td>
                     </tr>
                     <tr>
                       <td >{$lang.Registrar}</td>
@@ -335,7 +336,7 @@
                             {foreach from=$ContactInfo item=line key=name}
                                 <tr>
                                     <td align="right" width="120">{if $name == 'firstname'}{$lang.Name}{elseif $lang[$name]}{$lang.$name}{else}{$name|capitalize}{/if}</td>
-                                    <td><input type="text" size="30" value="{$line|escape}" name="updateContactInfo[{$ctype}][{$name}]" {if $line == "disabled"}disabled="disabled" {/if}/></td>
+                                    <td><input type="text" size="30" value="{$line|escape}" name="updateContactInfo[{$name}]" {if $line == "disabled"}disabled="disabled" {/if}/></td>
                                 </tr>
                             {/foreach}
                         </table>    

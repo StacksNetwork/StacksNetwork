@@ -157,7 +157,7 @@
 {if ($details.status=='Active' || $details.status=='Suspended') && $custom.GetStatus}
     <tr>
         <td >{$lang.Status}</td>
-        <td ><a href="" onclick="getStatus({$details.id}, this); return false;">Get Status</a></td>
+        <td ><a href="" onclick="getStatus({$details.id}, this); return false;">获取状态</a></td>
     </tr>
 {/if}
 {literal}

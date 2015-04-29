@@ -24,7 +24,7 @@ if ($_SESSION['userlevel'] == '10')
 
   print_authlog($vars);
 
-  $pagetitle[] = '认证日志';
+  $page_title[] = '认证日志';
 
 } else {
   include("includes/error-no-perm.inc.php");

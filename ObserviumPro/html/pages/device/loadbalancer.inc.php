@@ -23,7 +23,7 @@ $type_text['loadbalancer_vservers'] = "Serverfarms";
 $type_text['netscaler_vsvr'] = "VServers";
 $type_text['netscaler_services'] = "Services";
 
-$pagetitle[] = "Load Balancer";
+$page_title[] = "Load Balancer";
 
 $navbar['brand'] = "Load Balancer";
 $navbar['class'] = "navbar-narrow";

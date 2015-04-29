@@ -1,0 +1,68 @@
+//
+// Callouts
+// ----------------------------------
+
+
+// Base Styles
+// ------------------
+
+.callout {
+
+  min-height: 20px;
+  padding: @margin-base;
+  margin-bottom: @margin-base;
+
+  #gradient > .vertical(@white, darken(@white, 2%));
+
+  border: 1px solid @well-border;
+  border-left-width: 7px;
+  border-radius: @border-radius-base;
+
+}
+
+.callout h4 {
+  margin-top: 0;
+  margin-bottom: @margin-base/2;
+  margin-left: 0px;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout code {
+  border-radius: 3px;
+}
+
+.callout+.callout {
+  margin-top: -@margin-base/2;
+}
+
+.callout-mixin(@name, @callout-color, @font-color, @background-color) {
+
+  .@{name} {
+    border-left-color: @callout-color;
+    //border-color: @callout-color;
+    //#gradient > .vertical(@background-color, darken(@background-color, 2%));
+    #gradient > .vertical(@white, darken(@white, 2%));
+    //color: darken(@font-color, 10%);
+    color: @text-color;
+  }
+
+  &.@{name} h4 {
+    //color: darken(@font-color, 10%);
+    color: @font-color;
+  }
+}
+
+.callout-mixin(callout,            @blue-grey,             @blue-grey,   @blue-grey-50);
+
+.callout-mixin(callout-primary,    @brand-primary,        @brand-primary,       @white);
+
+.callout-mixin(callout-info,       @info-text,            @info-text,           @info-bg);
+.callout-mixin(callout-error,      @danger-text,          @danger-text,         @danger-bg);
+.callout-mixin(callout-warning,    @warning-text,         @warning-text,        @warning-bg);
+.callout-mixin(callout-success,    @success-text,         @success-text,        @success-bg);
+.callout-mixin(callout-suppressed, @suppress-text,        @suppress-text,       @suppress-bg);
+.callout-mixin(callout-delay,      @delay-text,           @delay-text,          @delay-bg);
+

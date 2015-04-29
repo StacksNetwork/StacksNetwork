@@ -16,17 +16,31 @@
         {if $server_fields.display.ssl}<tr><td  align="right" width="165"><strong>{if $server_fields.description.ssl}{$server_fields.description.ssl}{else}{$lang.Secure}{/if}</strong></td><td align="left"><input type="checkbox" value="1" {if $server.secure == '1'}checked="checked"{/if} name="secure"/> {if $server_fields.description.ssl}{else}{$lang.usessl}{/if}</td></tr>{/if}
         {if $server_fields.display.custom}
             {foreach from=$server_fields.display.custom item=conf key=k}
+                {assign var="name" value=$k}
+                {assign var="name2" value=$modconfig.module}
+                {assign var="baz" value="$name2$name"}
                 <tr>
-                    <td  align="right" width="165"><strong>{$k}</strong></td>
-                            {if $conf.type=='input'}
-                        <td ><input type="text" name="custom[{$k}]" value="{$server.custom.$k}" class="inp"/></td>
-                        {elseif $conf.type=='password'}
-                        <td ><input type="password" name="custom[{$k}]" value="{$server.custom.$k}"  class="inp"/></td>
-                        {elseif $conf.type=='textarea'}
-                        <td >
-                            <span style="vertical-align:top"><textarea name="custom[{$k}]" rows="5" cols="60" style="margin:0px" >{$server.custom.$k}</textarea></span>
-                        </td>
+                    <td  align="right" width="165">
+                        <strong>{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}</strong>
+                         {if $conf.description}<a style="padding: 5px 12px 0 10px; background-position: center center;" class="vtip_description" title="{$conf.description}"></a>{/if}
+                    </td>
+                    <td >
+                    {if $conf.type=='input'}
+                        <input type="text" name="custom[{$k}]" value="{$server.custom.$k}" class="inp"/>
+                    {elseif $conf.type=='check'}
+                        <input type="checkbox" name="custom[{$k}]" value="1" {if $server.custom.$k==1}checked="checked"{/if}/>
+                    {elseif $conf.type=='password'}
+                       <input type="password" name="custom[{$k}]" value="{$server.custom.$k}"  class="inp"/>
+                    {elseif $conf.type=='textarea'}
+                        <span style="vertical-align:top"><textarea name="custom[{$k}]" rows="5" cols="60" style="margin:0px" >{$server.custom.$k}</textarea></span>
+                    {elseif $conf.type=='select'}
+                        <select name="option[{$k}]"  class="inp" >
+                            {foreach from=$conf.default item=selectopt}
+                                <option {if $conf.value == $selectopt}selected="selected" {/if}>{$selectopt}</option>
+                            {/foreach}
+                        </select> 
                     {/if}
+                     </td>
                 </tr>
             {/foreach}
         {/if}
@@ -40,7 +54,10 @@
                 {assign var="name" value=$k}
                 {assign var="name2" value=$modconfig.module}
                 {assign var="baz" value="$name2$name"}
-                <td align="right" width="165"><strong>{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</strong></td>
+                <td align="right" width="165">
+                    <strong>{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</strong>
+                    {if $conf.description}<a style="padding: 5px 12px 0 10px; background-position: center center;" class="vtip_description" title="{$conf.description}"></a>{/if}
+                </td>
                 {if $conf.type=='input'}
 
                     <td ><input type="text" name="option[{$k}]" value="{$conf.value}" class="inp"/></td>
@@ -49,11 +66,13 @@
                     {elseif $conf.type=='check'}
                     <td ><input name="option[{$k}]" type="checkbox" value="1" {if $conf.value == "1"}checked="checked"{/if} style="margin:0px"  /></td>
                     {elseif $conf.type=='select'}
-                    <td ><select name="option[{$k}]"  class="inp" >
+                    <td >
+                        <select name="option[{$k}]"  class="inp" >
                             {foreach from=$conf.default item=selectopt}
                                 <option {if $conf.value == $selectopt}selected="selected" {/if}>{$selectopt}</option>
                             {/foreach}
-                        </select> </td>
+                        </select> 
+                    </td>
                     {elseif $conf.type=='textarea'}
                     <td >
                         <span style="vertical-align:top"><textarea name="option[{$k}]" rows="5" cols="60" style="margin:0px" >{$conf.value}</textarea></span>

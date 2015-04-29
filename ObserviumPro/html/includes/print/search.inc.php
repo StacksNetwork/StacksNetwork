@@ -7,7 +7,7 @@
  *
  * @package    observium
  * @subpackage web
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
@@ -158,7 +158,7 @@ function print_form($data)
   $form_id    = 'form-'.strgen();
   $form_class = ($data['type'] == 'rows' ? 'form-inline' : 'form');
   $base_class = ($data['class'] ? $data['class'] : 'well');
-  $base_space = '5px';
+  $base_space = ($data['space'] ? $data['space'] : '5px');
   $used_vars  = array();
 
   // Form elements
@@ -261,7 +261,7 @@ function get_form_element($item, $type = '')
                          'lmonth'    => '上月',
                          'tyear'     => '今年',
                          'lyear'     => '去年');
-        $string .= '    <select id="'.$item['id'].'" class="selectpicker show-tick" data-size="false" data-width="auto">' . PHP_EOL . '      ';
+        $string .= '    <select id="'.$item['id'].'" class="selectpicker show-tick" data-size="false" data-width="120px">' . PHP_EOL . '      ';
         $string .= '<option value="" selected>日期/时间设定</option>';
         foreach ($presets as $k => $v)
         {
@@ -373,6 +373,7 @@ function get_form_element($item, $type = '')
       $string .= 'class="selectpicker show-tick';
       if ($item['right']) { $string .= ' pull-right'; }
       $string .= '" data-selected-text-format="count>2"';
+      if (count($item['values']) > 12) { $string .= ' data-live-search="true"'; }
       $string .= $data_width . $data_size . '>' . PHP_EOL . '      ';
       if (!is_array($item['value'])) { $item['value'] = array($item['value']); }
       foreach ($item['values'] as $k => $name)
@@ -393,7 +394,7 @@ function get_form_element($item, $type = '')
           $string .= ' selected';
         }
 
-        $string .= '>'.$name.'</option> ';
+        $string .= '>'.escape_html($name).'</option> ';
       }
       $string .= PHP_EOL . '    </select>' . PHP_EOL;
       // End 'select' & 'multiselect'

@@ -39,7 +39,7 @@ $url    = generate_url(array('page' => 'bill', 'bill_id' => $bill_id, 'view' => 
           <div class="controls">
             <label class="checkbox">
               <input type="checkbox" name="confirm" value="confirm" onchange="javascript: showWarning(this.checked);">
-              Yes, please delete this bill!
+              是的, 请删除该账单!
             </label>
           </div>
         </div>

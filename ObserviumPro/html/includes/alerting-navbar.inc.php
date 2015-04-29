@@ -7,16 +7,16 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 if (!is_array($alert_rules)) { $alert_rules = cache_alert_rules(); }
 
 $navbar['class'] = 'navbar-narrow';
-$navbar['brand'] = '警报';
+$navbar['brand'] = '报警';
 
-$pages = array('alerts' => '警报', 'alert_checks' => '警报检查', 'alert_log' => '警报记录');
+$pages = array('alerts' => '报警', 'alert_checks' => '报警检测', 'alert_log' => '报警日志', 'alert_contacts' => '报警联系人');
 
 foreach ($pages as $page_name => $page_desc)
 {
@@ -26,7 +26,7 @@ foreach ($pages as $page_name => $page_desc)
   }
 
   $navbar['options'][$page_name]['url'] = generate_url(array('page' => $page_name));
-  $navbar['options'][$page_name]['text'] = htmlspecialchars($page_desc);
+  $navbar['options'][$page_name]['text'] = escape_html($page_desc);
 }
 
 $navbar['options_right']['update']['url']  = generate_url(array('page' => 'alert_regenerate', 'action'=>'update'));

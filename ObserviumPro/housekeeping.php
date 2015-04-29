@@ -9,33 +9,18 @@
  * @package    observium
  * @subpackage housekeeping
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
 chdir(dirname($argv[0]));
 
+include_once("includes/defaults.inc.php");
+include_once("config.php");
+
 $options = getopt("A:Vyaselrptd");
 
-if (isset($options['d']))
-{
-  echo("DEBUG!\n");
-  $debug = TRUE;
-  ini_set('display_errors', 1);
-  ini_set('display_startup_errors', 1);
-  ini_set('log_errors', 1);
-#  ini_set('error_reporting', E_ALL ^ E_NOTICE);
-} else {
-  $debug = FALSE;
-#  ini_set('display_errors', 0);
-  ini_set('display_startup_errors', 0);
-  ini_set('log_errors', 0);
-#  ini_set('error_reporting', 0);
-}
-
-include("includes/defaults.inc.php");
-include("config.php");
-include("includes/definitions.inc.php");
+include_once("includes/definitions.inc.php");
 include("includes/functions.inc.php");
 
 $scriptname = basename($argv[0]);
@@ -111,6 +96,7 @@ OPTIONS:
 
 DEBUGGING OPTIONS:
  -d                                          Enable debugging output.
+ -dd                                         More verbose debugging output.
 
 EXAMPLES:
   $scriptname -a                        Clean up by all modules interactively (with prompts!)

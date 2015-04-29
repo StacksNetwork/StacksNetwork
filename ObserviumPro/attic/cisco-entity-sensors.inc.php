@@ -8,7 +8,7 @@ while ($sensor = mysql_fetch_assoc($sensors))
 
   $oid = $sensor['entPhysicalIndex'];
 
-  $sensor_cmd  = $config['snmpget'] . " -M ".$config['mibdir']." -m CISCO-ENTITY-SENSOR-MIB -O Uqnv -" . $device['snmpver'] . " -c " . $device['community'] . " " . $device['hostname'].":".$device['port'];
+  $sensor_cmd  = $config['snmpget'] . " -M ".$config['mibdir']." -m CISCO-ENTITY-SENSOR-MIB -O Uqnv -" . $device['snmp_version'] . " -c " . $device['snmp_community'] . " " . $device['hostname'].":".$device['snmp_port'];
   $sensor_cmd .= " entSensorValue.$oid entSensorStatus.$oid";
 
   $sensor_data = trim(shell_exec($sensor_cmd));

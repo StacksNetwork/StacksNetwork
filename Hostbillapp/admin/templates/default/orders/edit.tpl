@@ -160,7 +160,7 @@
         </script>            {/literal}
 
 
-        <h1>订单内容</h1>
+        <h1>Order items</h1>
 
         <table width="100%" class="ordertable" cellpadding="3" cellspacing="0" border="0" style="border:solid 1px #ddd;border-bottom: none;">
             <tbody>

@@ -11,7 +11,7 @@
  *
  */
 
-$pagetitle[] = "路由";
+$page_title[] = "路由";
 
 if ($_GET['optb'] == "graphs" || $_GET['optc'] == "graphs") { $graphs = "graphs"; } else { $graphs = "nographs"; }
 

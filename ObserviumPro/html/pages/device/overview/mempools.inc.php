@@ -23,10 +23,13 @@ $mempools = dbFetchRows($sql, array($device['device_id']));
 if (count($mempools))
 { ?>
 
-<div class="well info_box">
-    <div class="title"><a href="<?php echo(generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'health', 'metric' => 'mempool'))); ?>">
-      <i class="oicon-memory"></i> 内存池</a></div>
-    <div class="content">
+    <div class="widget widget-table">
+      <div class="widget-header">
+        <a href="<?php echo(generate_url(array('page' => 'device', 'device' => $device['device_id'], 'tab' => 'health', 'metric' => 'mempool'))); ?>">
+          <i class="oicon-memory"></i><h3>内存</h3>
+        </a>
+      </div>
+      <div class="widget-content">
 
 <?php
   echo('<table class="table table-condensed-more table-striped table-bordered">');

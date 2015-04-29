@@ -1,4 +1,5 @@
 <script type="text/javascript">loadelements.estimates=true;</script>
+<script type="text/javascript" src="{$template_dir}js/invoices.js?v={$hb_version}"></script>
 <table border="0" cellspacing="0" cellpadding="0" width="100%" id="content_tb" {if $currentfilter}class="searchon"{/if}>
   <tr>
     <td ><h3>{$lang.Estimates}</h3></td>

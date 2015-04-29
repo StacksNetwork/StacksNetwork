@@ -13,40 +13,40 @@
 
 unset($search, $priorities, $programs, $timestamp_min, $timestamp_max);
 
-$timestamp_min = dbFetchCell('SELECT MIN(`timestamp`) FROM `syslog` WHERE `device_id` = ?', array($vars['device']));
+$timestamp_min = dbFetchCell('SELECT `timestamp` FROM `syslog` WHERE `device_id` = ? ORDER BY `timestamp` LIMIT 0,1;', array($vars['device']));
 if ($timestamp_min)
 {
-  $timestamp_max = dbFetchCell('SELECT MAX(`timestamp`) FROM `syslog` WHERE `device_id` = ?', array($vars['device']));
+  $timestamp_max = dbFetchCell('SELECT `timestamp` FROM `syslog` WHERE `device_id` = ? ORDER BY `timestamp` DESC LIMIT 0,1;', array($vars['device']));
 
   //Message field
   $search[] = array('type'    => 'text',
-                    'name'    => 'ĞÅÏ¢',
+                    'name'    => 'ä¿¡æ¯',
                     'id'      => 'message',
                     'width'   => '130px',
                     'value'   => $vars['message']);
   //Priority field
-  //$priorities[''] = 'ËùÓĞÓÅÏÈ¼¶';
+  //$priorities[''] = 'æ‰€æœ‰ä¼˜å…ˆçº§';
   foreach ($config['syslog']['priorities'] as $p => $priority)
   {
     if ($p > 7) { continue; }
     $priorities[$p] = ucfirst($priority['name']);
   }
   $search[] = array('type'    => 'multiselect',
-                    'name'    => 'ÓÅÏÈ¼¶',
+                    'name'    => 'ä¼˜å…ˆçº§',
                     'id'      => 'priority',
                     'width'   => '160px',
                     'subtext' => TRUE,
                     'value'   => $vars['priority'],
                     'values'  => $priorities);
   //Program field
-  //$programs[''] = 'ËùÓĞ³ÌĞò';
-  foreach (dbFetchRows('SELECT `program` FROM `syslog` WHERE `device_id` = ? GROUP BY `program` ORDER BY `program`', array($vars['device'])) as $data)
+  //$programs[''] = 'æ‰€æœ‰ç¨‹åº';
+  foreach (dbFetchColumn('SELECT `program` FROM `syslog` IGNORE INDEX (`program`) WHERE `device_id` = ? GROUP BY `program`;', array($vars['device'])) as $program)
   {
-    $program = ($data['program']) ? $data['program'] : '[[EMPTY]]';
+    $program = ($program != '' ? $program : OBS_VAR_UNSET);
     $programs[$program] = $program;
   }
   $search[] = array('type'    => 'multiselect',
-                    'name'    => '³ÌĞò',
+                    'name'    => 'ç¨‹åº',
                     'id'      => 'program',
                     'width'   => '160px',
                     'value'   => $vars['program'],
@@ -61,7 +61,7 @@ if ($timestamp_min)
                     'from'    => $vars['timestamp_from'],
                     'to'      => $vars['timestamp_to']);
 
-  print_search($search, 'ÏµÍ³ÈÕÖ¾');
+  print_search($search, 'ç³»ç»Ÿæ—¥å¿—');
 
   // Pagination
   $vars['pagination'] = TRUE;
@@ -69,13 +69,13 @@ if ($timestamp_min)
   // Print syslog
   print_syslogs($vars);
 } else {
-  print_warning('<h4>Î´ÕÒµ½ÏµÍ³ÈÕÖ¾ÄÚÈİ!</h4>
-¸ÃÉè±¸Ã»ÓĞÈÎºÎÈÕÖ¾ÄÚÈİ.
-¼ì²éµÄÏµÍ³ÈÕÖ¾ÊØ»¤½ø³ÌÓëObserviumÅäÖÃÑ¡ÏîÉèÖÃÊÇ·ñÕıÈ·, ¸ÃÉè±¸±»ÅäÖÃÎª·¢ËÍÏµÍ³ÈÕÖ¾µ½Observium, ÇÒÃ»ÓĞ±»·À»ğÇ½·âËøµÄĞÅÏ¢.
+  print_warning('<h4>æœªæ‰¾åˆ°ç³»ç»Ÿæ—¥å¿—å†…å®¹!</h4>
+è¯¥è®¾å¤‡æ²¡æœ‰ä»»ä½•æ—¥å¿—å†…å®¹.
+æ£€æŸ¥çš„ç³»ç»Ÿæ—¥å¿—å®ˆæŠ¤è¿›ç¨‹ä¸Observiumé…ç½®é€‰é¡¹è®¾ç½®æ˜¯å¦æ­£ç¡®, è¯¥è®¾å¤‡è¢«é…ç½®ä¸ºå‘é€ç³»ç»Ÿæ—¥å¿—åˆ°Observium, ä¸”æ²¡æœ‰è¢«é˜²ç«å¢™å°é”çš„ä¿¡æ¯.
 
-See <a href="'.OBSERVIUM_URL.'/wiki/Category:Documentation" target="_blank">ÎÄµµ</a> Óë <a href="'.OBSERVIUM_URL.'/wiki/Configuration_Options#Syslog_Settings" target="_blank">ÉèÖÃÑ¡Ïî</a> ÁË½â¸ü¶àĞÅÏ¢.');
+æŸ¥é˜… <a href="'.OBSERVIUM_URL.'/wiki/Category:Documentation" target="_blank">æ–‡æ¡£</a> ä¸ <a href="'.OBSERVIUM_URL.'/wiki/Configuration_Options#Syslog_Settings" target="_blank">è®¾ç½®é€‰é¡¹</a> äº†è§£æ›´å¤šä¿¡æ¯.');
 }
 
-$pagetitle[] = 'ÏµÍ³ÈÕÖ¾';
+$page_title[] = 'ç³»ç»Ÿæ—¥å¿—';
 
 // EOF

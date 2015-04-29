@@ -1,6 +1,6 @@
 <b>客户文件</b><br/>
 {if !$files}
-    <em>该客户没有任何文件</em>
+    <em>该客户端没有任何文件</em>
 {else}
 <ul style="border:solid 1px #ddd;border-bottom:none;margin-bottom:10px" id="grab-sorter" >
     {foreach from=$files item=f}
@@ -10,7 +10,7 @@
                 <td><a class="dwbtn left" href="?cmd=root&amp;action=download&amp;type=downloads&amp;id={$f.id}">下载</a> <a href="?cmd=root&amp;action=download&amp;type=downloads&amp;id={$f.id}">{$f.name}</a></td>
                 <td width="20" >
                     {if !$forbidAccess.editClients}
-                    <a onclick="return confirm('您确定需要删除该文件吗?')" class="delbtn" href="?cmd=clients&amp;action=deleteclientfile&amp;&client_id={$client_id}&file_id={$f.id}&amp;security_token={$security_token}">删除</a>
+                    <a onclick="return confirm('Are you sure you want to delete this file?')" class="delbtn" href="?cmd=clients&amp;action=deleteclientfile&amp;&client_id={$client_id}&file_id={$f.id}&amp;security_token={$security_token}">删除</a>
                     {/if}
                 </td>
 
@@ -39,7 +39,7 @@
 		
 			<td align="right"><strong>仅限管理员</strong></td>
 			<td><input type="checkbox" name="admin_only" value="1" /></td>
-			<td><input type="submit" name="uploadfile" value="上传" style="font-weight:bold" onclick="$('#clientform').append('<input name=\'action\' value=\'uploadclientfile\' type=\'hidden\' />')" /></td>
+			<td><input type="submit" name="uploadfile" value="Upload" style="font-weight:bold" onclick="$('#clientform').append('<input name=\'action\' value=\'uploadclientfile\' type=\'hidden\' />')" /></td>
 		</tr>
 
 

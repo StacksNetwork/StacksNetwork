@@ -53,7 +53,7 @@ else
 
   if ($updated) { print_message("设备设置保存"); }
 
-  $pagetitle[] = "添加服务";
+  $page_title[] = "添加服务";
 
   echo("
 <h4>添加服务</h4>
@@ -94,7 +94,7 @@ else
     </tr>
    <tr>
   </table>
-  <input type='submit' name='Submit' value='Add' />
+  <input type='submit' name='Submit' value='添加' />
   <label><br />
   </label>
 </form>");

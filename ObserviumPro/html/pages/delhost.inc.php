@@ -18,7 +18,7 @@ if ($_SESSION['userlevel'] < 10)
   exit;
 }
 
-$pagetitle[] = "删除设备";
+$page_title[] = "删除设备";
 
 if (is_numeric($vars['id']))
 {
@@ -26,7 +26,7 @@ if (is_numeric($vars['id']))
   if ($device && $vars['confirm'])
   {
     $delete_rrd = ($vars['deleterrd'] == 'confirm') ? TRUE : FALSE;
-    print_warning(delete_device($vars['id'], $delete_rrd));
+    print_message(delete_device($vars['id'], $delete_rrd), 'console');
     //echo('<div class="btn-group ">
     //        <button type="button" class="btn btn-default"><a href="/"><i class="oicon-globe-model"></i> 概述</a></button>
     //        <button type="button" class="btn btn-default"><a href="/devices/"><i class="oicon-servers"></i> 设备列表</a></button>

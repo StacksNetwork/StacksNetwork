@@ -29,6 +29,44 @@ $(document).on('click', '#tagsBox span, .inlineTags span', function() {
 $(document).delegate('a.freseter', 'mousedown', function() {
     $('.fTag em').html('').parent().hide();
 });
+$(document).delegate('#ticketwidgetarea a', 'click', function() {
+
+  return  ticket.loadWidet($(this));
+
+});
+$(document).on('HostBill.newticketform',function(){
+    if ($('#suggestion').length > 0) {
+
+        $.post('?cmd=predefinied&action=gettop', {empty1mc: 'param'}, function(data) {
+            var resp = parse_response(data);
+            if (resp) {
+                $('#suggestion div.d1').html(resp);
+                $('#suggestion div.d1').show();
+            }
+        });
+
+        $('#rswitcher a').click(function() {
+            $('#rswitcher a').removeClass('active');
+            $('#suggestion').addLoader();
+            var el = $(this);
+
+            $.post($(this).attr('href'), {empty1mc: 'param'}, function(data) {
+                var resp = parse_response(data);
+                if (resp) {
+                    $('#suggestion div').hide();
+                    $('#suggestion div.' + el.attr('class')).html(resp).show();
+                    $('#suggestion').hideLoader();
+                    el.addClass('active');
+                }
+            });
+            return false;
+        });
+
+    }
+});
+$(document).on('HostBill.ticketload',function(){
+    $('#ticketwidgetarea a').eq(0).click();
+});
 $(document).delegate('.filterform input[type="submit"]:first', 'click', function() {
     if ($(this).parents('form')[0]['filter[tag]'].value)
         $('.fTag em').text($(this).parents('form')[0]['filter[tag]'].value).parent().show();
@@ -338,6 +376,12 @@ ticket = {
             $('#ticketbils > .ticket-msgbox').html(parse_response(data))
         })
     },
+    loadWidet: function(element) {
+        var url = $(element).attr('href');
+        ajax_update(url, { ticket_number: $('#ticket_number').val() }, '#ticketwidget', true);
+
+        return false;
+    }
 }
 
 
@@ -379,7 +423,7 @@ function dropdown_handler(a, o, p, h) {
                     switch (key) {
                         case 'reply':
                             if (resp.macro[key] != null && resp.macro[key].length) {
-                                $('input[name="bulk_reply"]').attr('checked', true);
+                                $('input[name="bulk_reply"]').attr('checked', 'checked').prop('checked', true);
                                 $('textarea[name="bulk_message"]').slideDown().val(resp.macro[key]);
                             }
                             break;

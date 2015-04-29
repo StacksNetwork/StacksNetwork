@@ -11,11 +11,11 @@
  *
  */
 
-if (isset($_POST['billsearch']))
+if (isset($vars['billsearch']))
 {
   $where = " WHERE 1 ";
   $param = array();
-  foreach ($_POST as $item=>$value)
+  foreach ($vars as $item=>$value)
   {
     if (!empty($value))
     {

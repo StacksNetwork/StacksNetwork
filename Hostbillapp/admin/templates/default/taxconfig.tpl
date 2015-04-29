@@ -30,7 +30,8 @@
                             <ul >
                                 <li><a href="?cmd=configuration&picked_tab=5&picked_subtab=0"><span>{$lang.maincurrency}</span></a></li>
                                 <li><a href="?cmd=configuration&picked_tab=5&picked_subtab=1"><span>{$lang.addcurrencies}</span></a></li>
-                                <li><a href="?cmd=taxconfig"><span>{$lang.taxes}</span></a></li>
+                                <li class="picked"><a href="?cmd=taxconfig"><span>{$lang.taxes}</span></a></li>
+                                <li><a href="?cmd=currencytocountry"><span>Currency to country</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -103,7 +104,16 @@
                                             calculate tax from net amount
                                         </td>
                                     </tr>
-									 <tr  class="rest bordme"  {if !$enabletax}style="display:none"{/if}>
+                                    <tr  class="rest bordme"  {if !$enabletax}style="display:none"{/if}>
+                                         <td width="205" align="right"><strong>Calculate Negative tax</strong></td>
+                                        <td>
+                                            <input type="radio" name="AllowNegativeTax" {if $AllowNegativeTax}checked="checked"{/if} value="on" /><strong>{$lang.yes}, </strong> 
+                                            calculate tax from items with negative ammount on all invoices<br />
+                                            <input type="radio" name="AllowNegativeTax" {if !$AllowNegativeTax}checked="checked"{/if} value="off" /><strong>{$lang.no}, </strong> 
+                                            allow negative tax only on Credit note invoices
+                                        </td>
+                                    </tr>
+                                    <tr  class="rest bordme"  {if !$enabletax}style="display:none"{/if}>
                                          <td width="205" align="right"><strong>{$lang.applytofunds}</strong></td>
                                         <td>
                                             <input type="radio" name="TaxClientFunds" {if $taxclientfunds=='gross'}checked="checked"{/if} value="gross" /><strong>{$lang.yes}, </strong> {$lang.TaxFunds3}<br />

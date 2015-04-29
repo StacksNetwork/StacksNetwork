@@ -11,7 +11,7 @@
  *
  */
 
-$pagetitle[] = "搜索";
+$page_title[] = "搜索";
 
 $sections = array('ipv4' => 'IPv4地址', 'ipv6' => 'IPv6地址', 'mac' => 'MAC地址', 'arp' => 'ARP/NDP表', 'fdb' => 'FDB表');
 

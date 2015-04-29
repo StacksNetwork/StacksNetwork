@@ -153,7 +153,7 @@
                             <tr>
                                 <td width="160" align="right"><strong>{$lang.appliesto}</strong></td>
                                 <td><input type="checkbox" name="apply_products" onclick="sh_('#products', this)" {if $coupon.products!=''}checked="checked"{/if}/> {$lang.Products}<br />
-                                    <input type="checkbox" name="apply_upgrades" onclick="sh_('#upgrades', this)" {if $coupon.upgrades!=''}checked="checked"{/if} /> {$lang.Upgrades}<br />
+                                    {*}<input type="checkbox" name="apply_upgrades" onclick="sh_('#upgrades', this)" {if $coupon.upgrades!=''}checked="checked"{/if} /> {$lang.Upgrades}<br />{*}
                                     <input type="checkbox" name="apply_addons" onclick="sh_('#addons', this)" {if $coupon.addons!=''}checked="checked"{/if}/> {$lang.Addons}<br />
                                     <input type="checkbox" name="apply_domains" onclick="sh_('#domains', this)" {if $coupon.domains!=''}checked="checked"{/if}/> {$lang.Domains}
                                 </td>			

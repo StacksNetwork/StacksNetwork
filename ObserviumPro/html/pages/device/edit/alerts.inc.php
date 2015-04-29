@@ -7,17 +7,17 @@
  * @package    observium
  * @subpackage webui
  * @author     Adam Armstrong <adama@memetic.org>
- * @copyright  (C) 2006-2014 Adam Armstrong
+ * @copyright  (C) 2006-2015 Adam Armstrong
  *
  */
 
-if ($_POST['editing'])
+if ($vars['editing'])
 {
   if ($_SESSION['userlevel'] > "7")
   {
-    $override_sysContact_bool = mres($_POST['override_sysContact']); # FIXME not sure if this mres is needed, it's sent to dbFacile? or doesn't set dev attrib use that?
-    if (isset($_POST['sysContact'])) { $override_sysContact_string  = mres($_POST['sysContact']); }
-    $disable_notify  = mres($_POST['disable_notify']);
+    $override_sysContact_bool = $vars['override_sysContact'];
+    if (isset($vars['sysContact'])) { $override_sysContact_string  = $vars['sysContact']; }
+    $disable_notify  = $vars['disable_notify'];
 
     if ($override_sysContact_bool) { set_dev_attrib($device, 'override_sysContact_bool', '1'); } else { del_dev_attrib($device, 'override_sysContact_bool'); }
     if (isset($override_sysContact_string)) { set_dev_attrib($device, 'override_sysContact_string', $override_sysContact_string); };
@@ -67,7 +67,7 @@ $disable_notify = get_dev_attrib($device,'disable_notify');
                 <span class="add-on btn"><i data-time-icon="icon-time" data-date-icon="icon-calendar" class="icon-time"></i></span>
                 <input type="text" style="width: 150px;" data-format="yyyy-MM-dd hh:mm:ss" name="ignore_until" id="ignore_until" value="<?php echo($device['ignore_until'] ? $device['ignore_until'] : ''); ?>">
               </div>
-              <input type=checkbox data-toggle="switch" name="ignore_until_enable" <?php echo($device['ignore_until'] ? 'checked' : ''); ?>>
+              <input type=checkbox data-size="small" data-on-color="primary" data-off-color="danger" data-toggle="switch" name="ignore_until_enable" <?php echo($device['ignore_until'] ? 'checked' : ''); ?>>
     </div>
   </div>
 
@@ -83,7 +83,7 @@ $disable_notify = get_dev_attrib($device,'disable_notify');
   <div class="control-group">
     <label class="control-label" for="sysContact">自定义联系人</label>
     <div class="controls">
-      <input type=text name="sysContact" size="32" <?php if (!$override_sysContact_bool) { echo(' disabled="1"'); } ?> value="<?php echo(htmlspecialchars($override_sysContact_string)); ?>" />
+      <input type=text name="sysContact" size="32" <?php if (!$override_sysContact_bool) { echo(' disabled="1"'); } ?> value="<?php echo(escape_html($override_sysContact_string)); ?>" />
     </div>
   </div>
 

@@ -17,15 +17,19 @@
 || $product_features=='ulli+description+'
 || $product_features=='ulli+spec'}
 <tr>
-	<td width="160" align="right" valign="top" ><strong>产品的功能</strong></td>
+	<td width="160" align="right" valign="top" ><strong>Product features</strong></td>
 	<td >
 	{if $product.description!=''}
 		<div style="display:none" id="oridesc">{$product.description}</div>
 	{/if}
 	<div id="featureeditor">
 		<div class="featureline nl"><span>{$lang.feature}: </span> <input type="text" size='40'/> 
-		{if $product_features=='ulli+description' || $product_features=='ulli+description+'}<span>{$lang.Description}:</span> <textarea  cols="60" style="height:2em;vertical-align: middle;" class="desc" ></textarea>{/if}
-		{if $product_features=='ulli+spec'} <span>值:</span> <input type="text" class="spec" >{/if}
+		{if $product_features=='ulli+description' || $product_features=='ulli+description+'}<span>{$lang.Description}:</span> 
+                    <textarea  cols="60" style="height:2em;vertical-align: middle;" class="desc" ></textarea>
+                {/if}
+		{if $product_features=='ulli+spec'} <span>Value:</span> 
+                    <input type="text" class="spec" >
+                {/if}
 		</div>
 		<div class="featureline"><a href="#" class="editbtn" onclick="return addNextFeature(this)">{$lang.addmorefeatures}</a></div>
 	</div>
@@ -34,7 +38,7 @@
 </tr>
 <tr>
 	<td width="160" align="right" valign="top" >
-		<strong>额外的特点</strong>
+		<strong>Aditional features</strong>
 	</td>
 	<td >
 	<div id="adt_featureeditor">

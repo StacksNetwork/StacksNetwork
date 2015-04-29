@@ -31,7 +31,7 @@ foreach ($navbar['options'] as $option => $array)
 print_navbar($navbar);
 unset($navbar);
 ?>
-      <table class="table table-bordered table-striped">
+      <table class="table table-bordered table-condensed table-striped">
       <thead>
       <tr><th><a title="Physical hardware entity">实体</a></th>
           <th><a title="Address Family">AFI</a></th>

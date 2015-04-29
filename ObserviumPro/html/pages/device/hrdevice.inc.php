@@ -90,6 +90,6 @@ foreach (dbFetchRows("SELECT * FROM `hrDevice` WHERE `device_id` = ? ORDER BY `h
 echo("  </tbody>\n");
 echo("</table>\n");
 
-$pagetitle[] = "清单";
+$page_title[] = "清单";
 
 // EOF

@@ -30,7 +30,7 @@ margin:0px !important;
     configfields_lang['premade_over'] = "{$lang.premade_over}";
     configfields_lang['delconf2'] = "{$lang.delconf2}";
 </script>
-<script type="text/javascript" src="{$template_dir}js/configfields.js"></script>
+<script type="text/javascript" src="{$template_dir}js/configfields.js?v={$hb_version}"></script>
 {/if}
 {if $action=='loadpremade_field'}
 {if $fields}
@@ -85,7 +85,7 @@ margin:0px !important;
 								{literal}
 								$('body').ajaxComplete(function() {
 								{/literal}
-									$('#config_{$field.variable}').html('<em class="fs11">Set by client using <a href="#"   title="{$lang.Edit}" onclick="return editCustomFieldForm({$field.id},{$product_id});" >Forms: {$field.name}</a> (<a href="?cmd=configfields&make=delete&id={$field.id}&product_id={$product_id}" class="editbtn" onclick=" if(!deleteItemConfCat(this))$(\'#modulepicker\').change();return false;">remove</a>)</em>');
+									$('#config_{$field.variable}').html('<em class="fs11">Set by client using <a href="#"   title="{$lang.Edit}" onclick="return editCustomFieldForm({$field.id},{$product_id});" >Forms: {$field.name|escape:'javascript'}</a> (<a href="?cmd=configfields&make=delete&id={$field.id}&product_id={$product_id}" class="editbtn" onclick=" if(!deleteItemConfCat(this))$(\'#modulepicker\').change();return false;">remove</a>)</em>');
 									$('#config_{$field.variable}_descr').remove();
 								{literal}
 									});
@@ -190,7 +190,7 @@ function refreshConfigView(pid) {
 				
 {elseif $action=='previewfields'}
 <div id="formloader" style="background:#fff;padding:10px;">
-<script type="text/javascript" src="{$template_dir}js/jqueryui/js/jquery-ui-1.8.12.custom.min.js"></script>
+<script type="text/javascript" src="{$template_dir}js/jqueryui/js/jquery-ui-1.8.12.custom.min.js?v={$hb_version}"></script>
 <link href="{$template_dir}js/jqueryui/css/ui-lightness/jquery-ui-1.8.12.custom.css" rel="stylesheet" media="all" />
 {if $custom}
 <table border="0" width="100%" cellspacing="0" cellpadding="3">
@@ -222,199 +222,199 @@ function refreshConfigView(pid) {
         <div class="clear"></div>
     </div>	
 	{/if}
-{elseif $action=='field' || $action=='getaddform' || $action=='duplicatefield'}
-<div id="formloader">
-<form id="saveform" method="post" action="">
-<input type="hidden" name="type" value="{if $type}{$type}{else}{$field.type.type}{/if}"/>
-<input type="hidden" name="id" value="{$field.id}" id="field_category_id"/>
-<input type="hidden" name="make" value="{if $field.id=='new'}addfield{else}editfield{/if}"/>
-<input type="hidden" name="action" value="field"/>
-<input type="hidden" name="product_id" value="{$product_id}"/>
+            {elseif $action=='field' || $action=='getaddform' || $action=='duplicatefield'}
+                <div id="formloader">
+                    <form id="saveform" method="post" action="">
+                        <input type="hidden" name="type" value="{if $type}{$type}{else}{$field.type.type}{/if}"/>
+                        <input type="hidden" name="id" value="{$field.id}" id="field_category_id"/>
+                        <input type="hidden" name="make" value="{if $field.id=='new'}addfield{else}editfield{/if}"/>
+                        <input type="hidden" name="action" value="field"/>
+                        <input type="hidden" name="product_id" value="{$product_id}"/>
 
 
-        <table border="0" cellspacing="0" cellpadding="0" border="0" width="100%">
-        <tr>
-            <td width="140" id="s_menu" style="" valign="top">
-                <div id="lefthandmenu">
-                        <a class="tchoice" href="#">Basic settings</a>
-                        {if $field.type.info.subitems}<a class="tchoice" href="#">Values</a>{/if}
-                        {if $field.type.info.pricing && !$field.type.info.subitems}<a class="tchoice" href="#">Pricing</a>{/if}
-                        {if $field.type.info.validation}<a class="tchoice" href="#">Validation</a>{/if}
-						 <a class="tchoice" href="#">Advanced</a>
-						{foreach from=$field.type.templates item=tp key=tpname}
-						<a class="tchoice" href="#">{$tpname}</a>
-						{/foreach}
-                       
-                </div>
-            </td>
-            <td class="conv_content form"  valign="top">
-               <div class="tabb">
-                   <h3 style="margin-bottom:0px;"><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  />  {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Basic settings</h3>
-                   <div class="clear"><small>{$lang[$field.type.description]}</small></div>
-                   <div style="padding:10px 3px;border:solid 2px red;background:#FFFED1;margin:5px 0px 15px;display:none;" class="clear" id="lengthwarning">Your php.ini setting <b>max_input_vars</b> is too low to properly save this form element. <a href="http://wiki.hostbillapp.com/index.php?title=Forms:_Fix_not_saving_forms_configuration" target="_blank">How to fix this.</a></div>
-                    <div class="clear"></div><label class="nodescr">Field name</label>
+                        <table border="0" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td width="140" id="s_menu" style="" valign="top">
+                                    <div id="lefthandmenu">
+                                        <a class="tchoice" href="#">Basic settings</a>
+                                        {if $field.type.info.subitems}<a class="tchoice" href="#">Values</a>{/if}
+                                        {if $field.type.info.pricing && !$field.type.info.subitems}<a class="tchoice" href="#">Pricing</a>{/if}
+                                        {if $field.type.info.validation}<a class="tchoice" href="#">Validation</a>{/if}
+                                        <a class="tchoice" href="#">Advanced</a>
+                                        {foreach from=$field.type.templates item=tp key=tpname}
+                                            <a class="tchoice" href="#">{$tpname}</a>
+                                        {/foreach}
 
-                    {hbinput value=$field.tag_name  class="w250" name="name" style="margin:0px;"  wrapper="div"  wrapper_class="w250 left" wrapper_style="clear:right;margin: 2px 0 10px 10px;"}
-
-                    <div class="clear"></div><label for="check-required">Required field</label>
-                    <input id="check-required" type="checkbox" name="options[]" value="1" {if $field.options & 1}checked="checked"{/if}/>
-                    <div class="clear"></div><label >Description</label>
-                    {if $field.description!=''}
-                        {hbwysiwyg value=$field.tag_description style="margin:0px;width:250px" blockwysiwyg="true" class="w250"  name="description" wrapper_id="prod_desc_cx" wrapper="div"  wrapper_class="w250 left" wrapper_style="clear:right;margin: 2px 0 10px 10px;"}
-                    {else}
-                        <a href="#" onclick="$(this).hide();$('#prod_desc_cx').show();return false;" style="padding-left:10px;"><strong>{$lang.adddescription}</strong></a>
-                        {hbwysiwyg value=$field.tag_description style="margin:0px;width:250px" class="inp wysiw_editor"  name="description" blockwysiwyg="true" wrapper_id="prod_desc_cx" wrapper="div"  wrapper_class="w250 left" wrapper_style="display:none;clear:right;margin: 2px 0 10px 10px;"}
-                   {/if}
-               </div>
-              
-               {if $field.type.info.subitems}<div class="tabb" style="display:none">
-                <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Values</h3>
-			   
-			   <div id="subitems_editor">
-				{include file='ajax.configdrawsort.tpl'}
-			   </div>
-			   
-			   </div>
-
-			   {else}
-			   {/if}
-			   
-               {if $field.type.info.pricing && !$field.type.info.subitems}
-                   <div class="tabb" style="display:none">
-                        <h3>
-                            <img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> 
-                            {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Pricing
-                        </h3>
-                        
-                        <label >{$lang.enablepricing}</label>
-                        <input  type="checkbox" name="items[{$k}][pricing]" value="1" {if $field.items[0].pricing_enabled}checked="checked"{/if} onclick="$('.formbilling, .pricingtable','#facebox').toggle()"/> 
-                        <small>&nbsp;&nbsp;&nbsp;{$lang.chargeforvalue}</small>
-                        
-                        {foreach from=$field.items item=item key=k}
-                        <div class="formbilling formbilling-head" {if !$field.items[0].pricing_enabled}style="display: none"{/if}>
-                            <a href="#{$paytypeform}" {if !$item.paytype || $item.paytype == $paytypeform}class="active"{/if} onclick="formbilling(this); return false">Regular</a>
-                            {foreach from=$field.type.info.adformbilling item=formbilling}
-                                 <a href="#{$formbilling}" {if $item.paytype == $formbilling}class="active"{/if} onclick="formbilling(this); return false" >{if $lang[$formbilling]}{$lang[$formbilling]}{else}{$formbilling}{/if}</a>
-                            {/foreach}
-                        </div>
-                        <div class="clearfix formbilling" id="formbilling" {if !$field.items[0].pricing_enabled}style="display: none"{/if}>
-                            
-                            <input type="hidden" name="items[{$k}][id]" value="{$item.id}"/>
-                            <input class="formbilling-paytype" type="hidden" name="items[{$k}][paytype]" value="{$item.paytype}"/>
-                            <div id="formbilling_{$paytypeform}" {if $item.paytype && $item.paytype != $paytypeform}style="display: none"{/if}>
-                            {if $paytypeform}
-                                {include file="formbilling_`$paytypeform`.tpl"}
-                            {else}
-                                {include file='formbilling_Regular.tpl'}
-                            {/if}
-                            </div>
-                                
-                            {if $field.type.info.adformbilling}
-                                {foreach from=$field.type.info.adformbilling item=formbilling}
-                                    <div id="formbilling_{$formbilling}" {if $item.paytype != $formbilling}style="display: none"{/if}>
-                                        {include file="formbilling_`$formbilling`.tpl"}
                                     </div>
-                                {/foreach}
+                                </td>
+                                <td class="conv_content form"  valign="top">
+                                    <div class="tabb">
+                                        <h3 style="margin-bottom:0px;"><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  />  {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Basic settings</h3>
+                                        <div class="clear"><small>{$lang[$field.type.description]}</small></div>
+                                        <div style="padding:10px 3px;border:solid 2px red;background:#FFFED1;margin:5px 0px 15px;display:none;" class="clear" id="lengthwarning">Your php.ini setting <b>max_input_vars</b> is too low to properly save this form element. <a href="http://wiki.hostbillapp.com/index.php?title=Forms:_Fix_not_saving_forms_configuration" target="_blank">How to fix this.</a></div>
+                                        <div class="clear"></div><label class="nodescr">Field name</label>
+
+                                        {hbinput value=$field.tag_name  class="w250" name="name" style="margin:0px;"  wrapper="div"  wrapper_class="w250 left" wrapper_style="clear:right;margin: 2px 0 10px 10px;"}
+
+                                        <div class="clear"></div><label for="check-required">Required field</label>
+                                        <input id="check-required" type="checkbox" name="options[]" value="1" {if $field.options & 1}checked="checked"{/if}/>
+                                        <div class="clear"></div><label >Description</label>
+                                            {if $field.description!=''}
+                                                {hbwysiwyg value=$field.tag_description style="margin:0px;width:250px" blockwysiwyg="true" class="w250"  name="description" wrapper_id="prod_desc_cx" wrapper="div"  wrapper_class="w250 left" wrapper_style="clear:right;margin: 2px 0 10px 10px;"}
+                                            {else}
+                                            <a href="#" onclick="$(this).hide();$('#prod_desc_cx').show();return false;" style="padding-left:10px;"><strong>{$lang.adddescription}</strong></a>
+                                                    {hbwysiwyg value=$field.tag_description style="margin:0px;width:250px" class="inp wysiw_editor"  name="description" blockwysiwyg="true" wrapper_id="prod_desc_cx" wrapper="div"  wrapper_class="w250 left" wrapper_style="display:none;clear:right;margin: 2px 0 10px 10px;"}
+                                                {/if}
+                                    </div>
+
+                                    {if $field.type.info.subitems}<div class="tabb" style="display:none">
+                                            <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Values</h3>
+
+                                            <div id="subitems_editor">
+                                                {include file='ajax.configdrawsort.tpl'}
+                                            </div>
+
+                                        </div>
+
+                                    {else}
+                                    {/if}
+
+                                    {if $field.type.info.pricing && !$field.type.info.subitems}
+                                        <div class="tabb" style="display:none">
+                                            <h3>
+                                                <img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> 
+                                        {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Pricing
+                                    </h3>
+
+                                    <label >{$lang.enablepricing}</label>
+                                    <input  type="checkbox" name="items[{$k}][pricing]" value="1" {if $field.items[0].pricing_enabled}checked="checked"{/if} onclick="$('.formbilling, .pricingtable','#facebox').toggle()"/> 
+                                    <small>&nbsp;&nbsp;&nbsp;{$lang.chargeforvalue}</small>
+
+                                    {foreach from=$field.items item=item key=k}
+                                        <div class="formbilling formbilling-head" {if !$field.items[0].pricing_enabled}style="display: none"{/if}>
+                                            <a href="#{$paytypeform}" {if !$item.paytype || $item.paytype == $paytypeform}class="active"{/if} onclick="formbilling(this); return false">Regular</a>
+                                            {foreach from=$field.type.info.adformbilling item=formbilling}
+                                                <a href="#{$formbilling}" {if $item.paytype == $formbilling}class="active"{/if} onclick="formbilling(this); return false" >{if $lang[$formbilling]}{$lang[$formbilling]}{else}{$formbilling}{/if}</a>
+                                            {/foreach}
+                                        </div>
+                                        <div class="clearfix formbilling" id="formbilling" {if !$field.items[0].pricing_enabled}style="display: none"{/if}>
+
+                                            <input type="hidden" name="items[{$k}][id]" value="{$item.id}"/>
+                                            <input class="formbilling-paytype" type="hidden" name="items[{$k}][paytype]" value="{$item.paytype}"/>
+                                            <div id="formbilling_{$paytypeform}" {if $item.paytype && $item.paytype != $paytypeform}style="display: none"{/if}>
+                                                {if $paytypeform}
+                                                    {include file="formbilling_`$paytypeform`.tpl"}
+                                                {else}
+                                                    {include file='formbilling_Regular.tpl'}
+                                                {/if}
+                                            </div>
+
+                                            {if $field.type.info.adformbilling}
+                                                {foreach from=$field.type.info.adformbilling item=formbilling}
+                                                    <div id="formbilling_{$formbilling}" {if $item.paytype != $formbilling}style="display: none"{/if}>
+                                                        {include file="formbilling_`$formbilling`.tpl"}
+                                                    </div>
+                                                {/foreach}
+                                            {/if}
+                                        </div>
+                                    {/foreach}
+                                </div>
+                                <script type="text/javascript">updatePricingForms();</script>
                             {/if}
-                        </div>
-                        {/foreach}
-                    </div>
-                    <script type="text/javascript">updatePricingForms();</script>
-                {/if}
-                {if $field.type.info.validation}
-                    <div class="tabb" style="display:none">
-                        <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Validation</h3>
-                        <div class="clear"></div><label >Minimum value<small>must be greater than or equal to this value</small></label>
-                        <input type="text" size="2" name="config[minvalue]" id="configMinvalue" value="{$field.config.minvalue}" />
-                        <div class="clear"></div><label >Maximum value<small>Leave blank for no limit</small></label>
-                        <input type="text" size="2" name="config[maxvalue]" id="configMaxvalue" value="{$field.config.maxvalue}" />
-                    </div>
-                {/if}
-                <div class="tabb" style="display:none">
-                    <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Advanced settings</h3>
-                    <div class="clear"></div><label for="text-key">CSS Class<small>Field container will be displayed with this css class</small></label>
-                    <input id="text-key" type="text" class="w250" name="key" value="{$field.key|escape}" />
-                    <div class="clear"></div><label for="text-category">Group<small>Supported by some order pages to group options</small></label>
-                    <input id="text-category" type="text" class="w250" name="category" value="{$field.category|escape}" />
-                    <div class="clear"></div><label for="text-variable">Variable name<small>To use in emails, custom modules</small></label>
-                    <input id="text-variable" type="text" class="w250" name="variable" value="{$field.variable|escape}" />
+                            {if $field.type.info.validation}
+                                <div class="tabb" style="display:none">
+                                    <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Validation</h3>
+                                    <div class="clear"></div><label >Minimum value<small>must be greater than or equal to this value</small></label>
+                                    <input type="text" size="2" name="config[minvalue]" id="configMinvalue" value="{$field.config.minvalue}" />
+                                    <div class="clear"></div><label >Maximum value<small>Leave blank for no limit</small></label>
+                                    <input type="text" size="2" name="config[maxvalue]" id="configMaxvalue" value="{$field.config.maxvalue}" />
+                                </div>
+                            {/if}
+                            <div class="tabb" style="display:none">
+                                <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Advanced settings</h3>
+                                <div class="clear"></div><label for="text-key">CSS Class<small>Field container will be displayed with this css class</small></label>
+                                <input id="text-key" type="text" class="w250" name="key" value="{$field.key|escape}" />
+                                <div class="clear"></div><label for="text-category">Group<small>Supported by some order pages to group options</small></label>
+                                <input id="text-category" type="text" class="w250" name="category" value="{$field.category|escape}" />
+                                <div class="clear"></div><label for="text-variable">Variable name<small>To use in emails, custom modules</small></label>
+                                <input id="text-variable" type="text" class="w250" name="variable" value="{$field.variable|escape}" />
 
-                    <div class="clear"></div>
-
-                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
-                        <tr>
-                            <td width="40%">
-                                <label for="check-admin" >Admin only<small>Only admin can see this field</small></label>
-                                <input id="check-admin" type="checkbox" name="options[]" value="4" {if $field.options & 4}checked="checked"{/if} onclick="if($(this).is(':checked'))$('#check-show, #check-edit, #check-invoice, #check-upgrade, #check-down, #check-charge').removeAttr('checked').attr('disabled','disabled');else $('#check-show, #check-edit, #check-invoice, #check-upgrade, #check-down, #check-charge').removeAttr('disabled');"/>
                                 <div class="clear"></div>
-                            </td>
-                            <td>
-                                {if $field.type.info.upgrades}<label for="check-upgrade" >Allow Upgrades<small>Can client upgrade after order</small></label>
-                                    <input id="check-upgrade" type="checkbox" name="options[]" value="16" {if $field.options & 16 || ($field.options=='')}checked="checked"{/if}/>
-                                {/if}
-                            </td>
-                            <td>
-                                {if $field.type.info.upgrades}<label for="check-charge" >Upgrade setup fee<small>Charge setup fee on upgrades&nbsp;or&nbsp;downgrades</small></label>
-                                    <select id="check-charge" class="inp" name="options[]" style="padding: 0; width: 60px; margin-left: 5px;" >
-                                        <option value="" {if !($field.options & 64) && !($field.options & 128) }selected="selected"{/if}>No</option>
-                                        <option value="64" {if $field.options & 64 }selected="selected"{/if}>Price difference</option>
-                                        <option value="192" {if ($field.options & 192) == 192 }selected="selected"{/if}>Full</option>
-                                    </select>
-                                {/if}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="40%">
-                                <label for="check-show" >Show in cart<small>Display this option during order</small></label>
-                                <input id="check-show" type="checkbox" name="options[]" value="2" {if $field.options & 2 || ($field.options=='')}checked="checked"{/if}/>
-                                <div class="clear"></div> 
-                            </td>
-                            <td>
-                                <div class="clear"></div><label for="check-invoice" >Force show in Invoice<small>Include it in invoice even when&nbsp;it's&nbsp;empty or free</small></label>
-                                <input id="check-invoice" type="checkbox" name="options[]" value="256" {if $field.options & 256}checked="checked"{/if}/>
-                            </td>
-                            <td>
-                                {if $field.type.info.upgrades}
-                                    <div class="clear"></div><label for="check-down" >Allow Downgrades<small>Can client downgrade this field</small></label>
-                                    <input id="check-down" type="checkbox" name="options[]" value="32" {if $field.options & 32 || ($field.options=='')}checked="checked"{/if}/>
-                                {/if}
-                            </td>
-                        </tr>
-                    </table>
-               </div>
-			   
-			   {foreach from=$field.type.templates item=tp key=tpname}
-						<div class="tabb" style="display:none">
-                <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; {$tpname}</h3>
-                {include file=$tp}
-				</div>
-						{/foreach}
 
-            </td>
-        </tr>
-    </table>
-   {securitytoken}</form> </div>
-<script type="text/javascript">
-    {if $max_input_vars}
+                                <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                                    <tr>
+                                        <td width="40%">
+                                            <label for="check-admin" >Admin only<small>Only admin can see this field</small></label>
+                                            <input id="check-admin" type="checkbox" name="options[]" value="4" {if $field.options & 4}checked="checked"{/if} onclick="if($(this).is(':checked'))$('#check-show, #check-edit, #check-invoice, #check-upgrade, #check-down, #check-charge').removeAttr('checked').attr('disabled','disabled');else $('#check-show, #check-edit, #check-invoice, #check-upgrade, #check-down, #check-charge').removeAttr('disabled');"/>
+                                            <div class="clear"></div>
+                                        </td>
+                                        <td>
+                                            {if $field.type.info.upgrades}<label for="check-upgrade" >Allow Upgrades<small>Can client upgrade after order</small></label>
+                                                <input id="check-upgrade" type="checkbox" name="options[]" value="16" {if $field.options & 16 || ($field.options=='')}checked="checked"{/if}/>
+                                            {/if}
+                                        </td>
+                                        <td>
+                                            {if $field.type.info.upgrades}<label for="check-charge" >Upgrade setup fee<small>Charge setup fee on upgrades&nbsp;or&nbsp;downgrades</small></label>
+                                                <select id="check-charge" class="inp" name="options[]" style="padding: 0; width: 60px; margin-left: 5px;" >
+                                                    <option value="" {if !($field.options & 64) && !($field.options & 128) }selected="selected"{/if}>No</option>
+                                                    <option value="64" {if $field.options & 64 }selected="selected"{/if}>Price difference</option>
+                                                    <option value="192" {if ($field.options & 192) == 192 }selected="selected"{/if}>Full</option>
+                                                </select>
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="40%">
+                                            <label for="check-show" >Show in cart<small>Display this option during order</small></label>
+                                            <input id="check-show" type="checkbox" name="options[]" value="2" {if $field.options & 2 || ($field.options=='')}checked="checked"{/if}/>
+                                            <div class="clear"></div> 
+                                        </td>
+                                        <td>
+                                            <div class="clear"></div><label for="check-invoice" >Force show in Invoice<small>Include it in invoice even when&nbsp;it's&nbsp;empty or free</small></label>
+                                            <input id="check-invoice" type="checkbox" name="options[]" value="256" {if $field.options & 256}checked="checked"{/if}/>
+                                        </td>
+                                        <td>
+                                            {if $field.type.info.upgrades}
+                                                <div class="clear"></div><label for="check-down" >Allow Downgrades<small>Can client downgrade this field</small></label>
+                                                <input id="check-down" type="checkbox" name="options[]" value="32" {if $field.options & 32 || ($field.options=='')}checked="checked"{/if}/>
+                                            {/if}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            {foreach from=$field.type.templates item=tp key=tpname}
+                                <div class="tabb" style="display:none">
+                                    <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; {$tpname}</h3>
+                                        {include file=$tp}
+                                </div>
+                            {/foreach}
+
+                        </td>
+                    </tr>
+                </table>
+                {securitytoken}</form> </div>
+        <script type="text/javascript">
+            {if $max_input_vars}
     var inputvars={$max_input_vars};
     var inputs = $('input,select','#facebox').length;
     if(inputs>inputvars) 
         $('#lengthwarning').show();
-    {/if}
-{literal}$('#lefthandmenu').TabbedMenu({elem:'.tabb'{/literal}{if $picked_tab},picked:{$picked_tab}{/if}{literal}});{/literal}
-    </script>
-    <div class="dark_shelf dbottom">
-        <div class="left spinner"><img src="ajax-loading2.gif"></div>
-        <div class="right">
-            {if $field.id!='new'}<span class="bcontainer " ><a href="?cmd=configfields&product_id={$product_id}&action=previewfields&highlight={$field.id}" class="new_control" target="_blank"><span class="zoom">{$lang.Preview}</span></a></span>{/if}
-            <span class="bcontainer " ><a class="new_control greenbtn" href="#" onclick="saveChangesField(); return false"><span>{$lang.savechanges}</span></a></span>
-            <span >{$lang.Or}</span>
-            <span class="bcontainer"><a href="#" class="submiter menuitm" onclick="$(document).trigger('close.facebox');return false;"><span>{$lang.Close}</span></a></span>
+            {/if}
+            {literal}$('#lefthandmenu').TabbedMenu({elem:'.tabb'{/literal}{if $picked_tab},picked:{$picked_tab}{/if}{literal}});{/literal}
+        </script>
+        <div class="dark_shelf dbottom">
+            <div class="left spinner"><img src="ajax-loading2.gif"></div>
+            <div class="right">
+                {if $field.id!='new'}<span class="bcontainer " ><a href="?cmd=configfields&product_id={$product_id}&action=previewfields&highlight={$field.id}" class="new_control" target="_blank"><span class="zoom">{$lang.Preview}</span></a></span>{/if}
+                <span class="bcontainer " ><a class="new_control greenbtn" href="#" onclick="saveChangesField(); return false"><span>{$lang.savechanges}</span></a></span>
+                <span >{$lang.Or}</span>
+                <span class="bcontainer"><a href="#" class="submiter menuitm" onclick="$(document).trigger('close.facebox');return false;"><span>{$lang.Close}</span></a></span>
 
 
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="clear"></div>
-    </div>
 
 {elseif $action=='getduplicateform'}
 <div id="formloader">

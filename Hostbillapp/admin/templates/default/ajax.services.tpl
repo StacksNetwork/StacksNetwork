@@ -66,7 +66,7 @@
             <strong>{$lang.ordertemplate}</strong>
         </td>
         <td valign="top" style="padding-top:10px;font-size:13px">
-            <div class="shownice" style="padding:10px 0px;margin-bottom:5px"> <b> To buy latest templates visit: <a class="external" target="_blank" href="https://hostbillapp.com/clientarea/index.php?/cart/hostbill-orderpages/" >Here</a> </b></div>
+            <div class="shownice" style="padding:10px 0px;margin-bottom:5px"> <b> To buy latest templates visit: <a class="external" target="_blank" href="https://hostbillapp.com/apps/" >Here</a> </b></div>
                 Or choose existing: 
             <div id="wiz_options">
                 
@@ -454,7 +454,7 @@
             {securitytoken}
         </form>
 
-        <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+        <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
         {literal}
             <script type="text/javascript">
                 $("#grab-sorter").dragsort({ dragSelector: "a.sorter-handle", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
@@ -794,10 +794,10 @@
 
             </script>
         {/literal}
-        <script type="text/javascript" src="{$template_dir}js/gui.elements.js"></script>
+        <script type="text/javascript" src="{$template_dir}js/gui.elements.js?v={$hb_version}"></script>
         <link rel="stylesheet" href="{$template_dir}js/gui.elements.css" type="text/css" />
-        <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-        <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
+        <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js?v={$hb_version}"></script>
+        <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js?v={$hb_version}"></script>
 
         <div class="blu"> <a href="?cmd=services"  class="tload2"><strong>{$lang.orpages}</strong></a> &raquo; <a href="?cmd=services&action=category&id={$product.category_id}"  class="tload2"><strong>{foreach from=$categories item=c}{if $c.id==$product.category_id}{$c.name}{/if}{/foreach}</strong></a> &raquo; <strong>{if !$product.name}{$lang.addnewproduct}{else}{$product.name}{/if}</strong>
 
@@ -988,7 +988,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js"></script>
+                <script type="text/javascript" src="{$template_dir}js/jquery.dragsort-0.3.10.min.js?v={$hb_version}"></script>
                 {literal}
                     <script type="text/javascript">
                         $("#grab-sorter").dragsort({ dragSelector: "a.sorter-handle", dragBetween: true, dragEnd: saveOrder, placeHolderTemplate: "<li class='placeHolder'><div></div></li>" });
@@ -1244,9 +1244,9 @@
 {/if}
 
 {if $action=='default' || $action=='addcategory' || $action=='editcategory' || $action=='category'}
-    <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js"></script>
-    <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js"></script>
-    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js"></script>
+    <script type="text/javascript" src="{$template_dir}js/tinymce/tiny_mce.js?v={$hb_version}"></script>
+    <script type="text/javascript" src="{$template_dir}js/tinymce/jquery.tinymce.js?v={$hb_version}"></script>
+    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js?v={$hb_version}"></script>
     <link rel="stylesheet" href="{$template_dir}js/facebox/facebox.css" type="text/css" />
     {literal}
         <script type="text/javascript">

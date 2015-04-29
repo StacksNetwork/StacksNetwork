@@ -6,9 +6,9 @@ Disabled needing rewrite
 
   $id = $device['device_id'];
   $hostname = $device['hostname'];
-  $community = $device['community'];
-  $snmpver = $device['snmpver'];
-  $port = $device['port'];
+  $snmp_community = $device['snmp_community'];
+  $snmp_version = $device['snmp_version'];
+  $port = $device['snmp_port'];
 
     $oid_chassis = "1.3.6.1.4.1.2544.1.9.2.4.1.2.1.1.1";
     $descr_chassis = "chassis";
@@ -18,10 +18,10 @@ Disabled needing rewrite
     $descr_hss1 = "hss1";
     $oid_hss2 = "1.3.6.1.4.1.2544.1.9.2.4.1.5.1.1.14";
     $descr_hss2 = "hss2";
-    $temperature_chassis = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmpver -c $community $hostname:$port $oid_chassis"));
-    $temperature_stm16 = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmpver -c $community $hostname:$port $oid_stm16"));
-    $temperature_hss1 = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmpver -c $community $hostname:$port $oid_hss1"));
-    $temperature_hss2 = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmpver -c $community $hostname:$port $oid_hss2"));
+    $temperature_chassis = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmp_version -c $snmp_community $hostname:$port $oid_chassis"));
+    $temperature_stm16 = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmp_version -c $snmp_community $hostname:$port $oid_stm16"));
+    $temperature_hss1 = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmp_version -c $snmp_community $hostname:$port $oid_hss1"));
+    $temperature_hss2 = trim(shell_exec($config['snmpget'] . " -M " . $config['mibdir'] . " -O qv -$snmp_version -c $snmp_community $hostname:$port $oid_hss2"));
     echo("Adva Chassis ");
     if ($temperature_chassis != "0")
     {

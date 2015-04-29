@@ -49,12 +49,52 @@
         
         
 	</div>
-        
-        <br/><br/>
-        <div>
-            <strong>最新功能模块: </strong>
-            <iframe src="https://hostbillapp.com/latest_items.html" border="0" frameborder="0" width="179"></iframe>
+        {literal}
+        <style>
+             #whatsapp {
+                 margin-top:15px;
+                 width:181px;
+                min-height:50px;
+                border-radius: 4px;
+                color:red;
+                background: #FFFDCD;
+                font-family: Arial, sans-serif;
+                box-shadow: 0px 1px 1px 0px  rgba(1, 1, 1, 0.5);
+             }    
+             #whatsapp a {
+                color:red;
+             } 
+             #whatsapp a:hover {
+                color:rgb(255, 123, 123);
+                text-decoration:underline;
+             }
+             #whatsapp .wheader {
+                font-weight: bold;
+                font-size:11px;
+                border-radius: 4px 4px 0px 0px;
+                color:#fff;
+                padding-left:3px;
+                 background-image: -moz-linear-gradient(top, #E72626 0%, #CF1B1B 100%);
+                            background-image: -o-linear-gradient(top, #E72626 0%, #CF1B1B 100%);
+                            background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #E72626), color-stop(1, #CF1B1B));
+                            background-image: -webkit-linear-gradient(top, #E72626 0%, #CF1B1B 100%);
+                            background-image: linear-gradient(to bottom, #E72626 0%, #CF1B1B 100%);
+             }   
+        </style>
+        {/literal}
+          
+        {if $appwidget.promo}
+        <div class="internal">
+            <div id="whatsapp" >
+                <div class="wheader">Spotlight</div>
+                <div style="padding: 5px">
+                    <a href="{$appwidget.promo.link}" target="_blank">{$appwidget.promo.text}</a>
+                </div>
+            </div>
         </div>
+        {/if}
+        
+        
 	</td>
 	<td valign="top">
             {if $stats}
@@ -87,7 +127,7 @@
 	
 		<table border="0" cellpadding="0" cellspacing="0" width="100%">
                     {if $qc_features}
-                    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js"></script>
+                    <script type="text/javascript" src="{$template_dir}js/facebox/facebox.js?v={$hb_version}"></script>
                     <link rel="stylesheet" href="{$template_dir}js/facebox/facebox.css" type="text/css" />
                     <script type="text/javascript">
                          {literal}  function appendMe1() {
@@ -148,24 +188,24 @@
 				</div>
 				<div class="bborder_content">
 				<table cellspacing="0" cellpadding="3" border="0" width="100%" class="glike" style="">
-            <tbody>
-			<tr>
-                <th>{$lang.Domain}</th>
-                <th>{$lang.Action}</th>
-                <th>{$lang.Success}</th>
-                <th>{$lang.Date}</th>
-            </tr>
-			
-			
-			{foreach from=$activity.domains item=dom}
-				<tr>
-					<td width="30%"><a href="?cmd=domains&action=edit&id={$dom.domain_id}">{$dom.name}</a></td>
-                <td>{$dom.action}</td>
-                <td>{if $dom.result=='1'}{$lang.Yes}{else}<font color="red">{$lang.No}</font>{/if}</td>
-                <td>{$dom.date|dateformat:$date_format}</td>
-					
-				</tr>
-			{/foreach}
+                <tbody>
+                            <tr>
+                    <th>{$lang.Domain}</th>
+                    <th>{$lang.Action}</th>
+                    <th>{$lang.Success}</th>
+                    <th>{$lang.Date}</th>
+                </tr>
+
+
+                            {foreach from=$activity.domains item=dom}
+                                    <tr>
+                                            <td width="30%"><a href="?cmd=domains&action=edit&id={$dom.domain_id}">{$dom.name}</a></td>
+                    <td>{$dom.action}</td>
+                    <td>{if $dom.result=='1'}{$lang.Yes}{else}<font color="red">{$lang.No}</font>{/if}</td>
+                    <td>{$dom.date|dateformat:$date_format}</td>
+
+                                    </tr>
+                            {/foreach}
 			</tbody>
 				
 			</table>
