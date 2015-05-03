@@ -19,19 +19,19 @@
 		<td  valign="top"  class="bordered">
 			<div id="bodycont" style="">
 				<input type="text" id="pass_in" />
-				<button onclick="genPassword()">Generate Password</button><br />
-				<span>Advenced</span>
-				Lenght:<input type="text" id="pass_len" maxlength="3" size="3"/>
+				<button onclick="genPassword()">生成密码</button><br />
+				<span>高级</span>
+				长度:<input type="text" id="pass_len" maxlength="3" size="3"/>
 				<div id="pass_adv">
 					<div class="left">
-						<span class="clear">Aplha Characters</span><br />
-						<span>Lowercase (abc)</span><input type="checkbox" name="lower" value="1" checked="checked" /><br />
-						<span>Uppercase (ABC)</span><input type="checkbox" name="upper" value="1" checked="checked" />
+						<span class="clear">Aplha字符</span><br />
+						<span>小写 (abc)</span><input type="checkbox" name="lower" value="1" checked="checked" /><br />
+						<span>大写 (ABC)</span><input type="checkbox" name="upper" value="1" checked="checked" />
 					</div>
 					<div class="left">
-						<span>Non-Aplha Characters</span><br />
-						<span>Numbers ($%@)</span><input type="checkbox" name="numbers" value="1" checked="checked" /><br />
-						<span>Symbols (123)</span><input type="checkbox" name="symbols" value="1" checked="checked" />
+						<span>非Aplha字符</span><br />
+						<span>数字 ($%@)</span><input type="checkbox" name="numbers" value="1" checked="checked" /><br />
+						<span>符号 (123)</span><input type="checkbox" name="symbols" value="1" checked="checked" />
 					</div>
 					<div class="clear"></div>
 					{literal}

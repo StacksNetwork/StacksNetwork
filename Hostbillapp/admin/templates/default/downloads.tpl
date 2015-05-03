@@ -234,8 +234,8 @@
                     <table class="glike" width="100%" cellspacing="0" cellpadding="3" border="0">
                         {if $categories}
                             <tr>
-                                <th width="70%">Name</th>
-                                <th>Downloaded</th>
+                                <th width="70%">名称</th>
+                                <th>下载</th>
                                 <th></th>
                                 <th></th><th></th>
                             </tr>

@@ -15,10 +15,10 @@
   <b>错误:</b> {$errormsg}
 </p>
 {elseif !$ip}
-您提交的订单尚未被分配到服务器!
+您的订单中未包含服务器!
 {else}
 
-<form name="ajaxform" method="post" action="">
+<form name="ajaxform" method="post" action="" onsubmit="this.elements['performbutton'].disabled=true">
   <input type="hidden" name="nps_nonce" value="{$nonce}" />
 
   <table width="100%" cellpadding="10" cellspacing="10">
@@ -29,7 +29,7 @@
 
 		  {if $result}
 		  <tr>
-			<td width="150" class="fieldarea"><b>最后一次指令结果</b></td>
+			<td width="150" class="fieldarea"><b>最后一次操作内容</b></td>
 		    <td><font color="green">{$result|escape}</font></td>
 		  </tr>
 		  {/if}
@@ -41,7 +41,7 @@
 		  
 {if $ask_ipmi_password}
           <tr>
-            <td width="150" class="fieldarea">您服务器的IPMI密码</td>
+            <td width="150" class="fieldarea">您服务器的IPMI秘密</td>
             <td><input type="password" name="ipmipassword" style="width: 350px;"></td>
           </tr>
 {/if}
@@ -49,13 +49,13 @@
             <td width="150" class="fieldarea">电源操作</td>
             <td>
 {if $supportsOn}			  
-			  <input type="radio" name="poweraction" value="on"> Power ON<br>
+			  <input type="radio" name="poweraction" value="on"> 打开电源<br>
 {/if}{if $supportsOff}			  
-			  <input type="radio" name="poweraction" value="off"> Power OFF<br>
+			  <input type="radio" name="poweraction" value="off"> 关闭电源<br>
 {/if}{if $supportsReset}			  
 			  <input type="radio" name="poweraction" value="reset" checked="true"> 重启<br>
 {/if}{if $supportsCycle}			  
-			  <input type="radio" name="poweraction" value="cycle" {if !$supportsReset}checked="true"{/if}> Cycle power<br>
+			  <input type="radio" name="poweraction" value="cycle" {if !$supportsReset}checked="true"{/if}> 挂起<br>
 {/if}{if $supportsCtrlAltDel}
 			  <input type="radio" name="poweraction" value="ctrlaltdel"> 发送CTRL-ALT-DEL<br>
 {/if}
@@ -64,7 +64,7 @@
 
 		  <tr>
 			<td>&nbsp;
-			<td><input type="submit" name="performbutton" value="执行操作" onclick="this.disabled=true;return true;">
+			<td><input type="submit" name="performbutton" value="执行操作">
 		  </tr>
   </table>
 </form>

@@ -14,7 +14,7 @@
                 <div class="blu">
             <table width="100%" cellspacing="0" cellpadding="0" border="0">
             <tbody><tr><td></td><td align="right">
-                        <a class="editbtn" href="?cmd=reports&action=customize&id=0&security_token={$security_token}">Create new custom report</a>
+                        <a class="editbtn" href="?cmd=reports&action=customize&id=0&security_token={$security_token}">创建新的自定义报告</a>
                     </td></tr>
             </tbody></table>
             </div>
@@ -35,9 +35,9 @@
                                             <td><a href="?cmd=reports&action=get&id={$report.id}" >{$report.name}</a></td>
                                             {if !($report.options & 1)}
                                             <td width="60"></td>
-                                            <td width="20"><a href="?cmd=reports&action=delete&id={$report.id}&security_token={$security_token}" onclick="return confirm('Are you sure you wish to remove this report?');" class="delbtn">Delete</a></td>
+                                            <td width="20"><a href="?cmd=reports&action=delete&id={$report.id}&security_token={$security_token}" onclick="return confirm('您确定要移除该报告吗?');" class="delbtn">Delete</a></td>
                                             {else}
-                                            <td width="60"><a href="?cmd=reports&action=customize&id={$report.id}&security_token={$security_token}" class="editbtn editgray">Customize</a></td>
+                                            <td width="60"><a href="?cmd=reports&action=customize&id={$report.id}&security_token={$security_token}" class="editbtn editgray">自定义</a></td>
                                             <td width="20"></td>
                                             {/if}
                                         </tr>

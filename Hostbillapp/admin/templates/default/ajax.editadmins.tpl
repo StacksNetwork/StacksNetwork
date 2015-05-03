@@ -13,10 +13,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="right" style="width:20%"><strong>{$lang.firstname}</strong></td>
-                    <td style="width:1px"><input name="firstname" value="{$submit.firstname}" class="inp"/></td>
                     <td align="right" style="width:1px; white-space: nowrap"><strong>{$lang.lastname}</strong></td>
                     <td><input name="lastname" value="{$submit.lastname}" class="inp"/></td>		
+                    <td align="right" style="width:20%"><strong>{$lang.firstname}</strong></td>
+                    <td style="width:1px"><input name="firstname" value="{$submit.firstname}" class="inp"/></td>
 
                 </tr>
                 <tr>
@@ -113,15 +113,15 @@
                             <label><input  class="checker1" type="checkbox" name="emails[]" value="cronResults" {if $submit.emails && 'cronResults'|in_array:$submit.emails}checked="checked"{/if} /> {$lang.hbcronresults} </label>
                             <label><input  class="checker1" type="checkbox" name="emails[]" value="failedLogin" {if $submit.emails && 'failedLogin'|in_array:$submit.emails}checked="checked"{/if} /> {$lang.hbfailedlogin} </label>
                             <label><input  class="checker1" type="checkbox" name="emails[]" value="clientDetailsChanged" {if $submit.emails && 'clientDetailsChanged'|in_array:$submit.emails}checked="checked"{/if} /> {$lang.hbclientdetailschanged} </label>
-                            <label><input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $submit.emails && 'notesUpdated'|in_array:$submit.emails}checked="checked"{/if} /> Hostbill Admin Notes Changed </label>
+                            <label><input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $submit.emails && 'notesUpdated'|in_array:$submit.emails}checked="checked"{/if} /> 系统管理员备注已更改 </label>
 
                         </fieldset>
 
                         <fieldset>
                             <legend><label><input type="checkbox" /><a href="?cmd=notifications" target="_blank">{$lang.Notifications}</a></label></legend>
-                            <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewPayment" {if $submit.emails && 'mobileNewPayment'|in_array:$submit.emails}checked="checked"{/if} /> New transaction </label>
-                            <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewOrder" {if $submit.emails && 'mobileNewOrder'|in_array:$submit.emails}checked="checked"{/if} /> New Order </label>
-                            <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileFailedAutomation" {if $submit.emails && 'mobileFailedAutomation'|in_array:$submit.emails}checked="checked"{/if} /> Failed auto provisioning </label>
+                            <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewPayment" {if $submit.emails && 'mobileNewPayment'|in_array:$submit.emails}checked="checked"{/if} /> 新的付款 </label>
+                            <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewOrder" {if $submit.emails && 'mobileNewOrder'|in_array:$submit.emails}checked="checked"{/if} /> 新的订单 </label>
+                            <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileFailedAutomation" {if $submit.emails && 'mobileFailedAutomation'|in_array:$submit.emails}checked="checked"{/if} /> 错误的自动配置 </label>
 
                         </fieldset>
                     </td>
@@ -144,7 +144,7 @@
     <form name="" action="" method="post">
         <input name="make" value="editadministrator" type="hidden"/>
 
-        <div class="blu"> <a href="?cmd=editadmins"  ><strong>{$lang.Administrators}</strong></a> &raquo; <strong>{$details.firstname} {$details.lastname} - {$details.username}</strong>
+        <div class="blu"> <a href="?cmd=editadmins"  ><strong>{$lang.Administrators}</strong></a> &raquo; <strong>{$details.lastname} {$details.firstname} - {$details.username}</strong>
 
 
         </div>
@@ -156,10 +156,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="right" style="width:20%"><strong>{$lang.firstname}</strong></td>
-                    <td style="width:1px"><input name="firstname" value="{$details.firstname}" class="inp"/></td>
                     <td align="right" style="width:1px; white-space: nowrap"><strong>{$lang.lastname}</strong></td>
                     <td><input name="lastname" value="{$details.lastname}" class="inp"/></td>		
+                    <td align="right" style="width:20%"><strong>{$lang.firstname}</strong></td>
+                    <td style="width:1px"><input name="firstname" value="{$details.firstname}" class="inp"/></td>
 
                 </tr>
                 <tr>
@@ -264,14 +264,14 @@
                                 <label><input  class="checker1" type="checkbox" name="emails[]" value="cronResults" {if $details.emails && 'cronResults'|in_array:$details.emails}checked="checked"{/if} /> {$lang.hbcronresults} </label>
                                 <label><input  class="checker1" type="checkbox" name="emails[]" value="failedLogin" {if $details.emails && 'failedLogin'|in_array:$details.emails}checked="checked"{/if} /> {$lang.hbfailedlogin} </label>
                                 <label><input  class="checker1" type="checkbox" name="emails[]" value="clientDetailsChanged" {if $details.emails && 'clientDetailsChanged'|in_array:$details.emails}checked="checked"{/if} /> {$lang.hbclientdetailschanged} </label>
-                                <label><input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $details.emails && 'notesUpdated'|in_array:$details.emails}checked="checked"{/if} /> Hostbill Admin Notes Changed </label>
+                                <label><input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $details.emails && 'notesUpdated'|in_array:$details.emails}checked="checked"{/if} /> 系统管理员备注已更改 </label>
 
                             </fieldset>
                             <fieldset>
                                 <legend><label><input type="checkbox" /><a href="?cmd=notifications" target="_blank">{$lang.Notifications}</a></label></legend>
-                                <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewPayment" {if $details.emails && 'mobileNewPayment'|in_array:$details.emails}checked="checked"{/if} /> New transaction </label>
-                                <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewOrder" {if $details.emails && 'mobileNewOrder'|in_array:$details.emails}checked="checked"{/if} /> New Order </label>
-                                <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileFailedAutomation" {if $details.emails && 'mobileFailedAutomation'|in_array:$details.emails}checked="checked"{/if} /> Failed auto provisioning </label>
+                                <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewPayment" {if $details.emails && 'mobileNewPayment'|in_array:$details.emails}checked="checked"{/if} /> 新的付费 </label>
+                                <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileNewOrder" {if $details.emails && 'mobileNewOrder'|in_array:$details.emails}checked="checked"{/if} /> 新的订单 </label>
+                                <label><input  class="checker1" type="checkbox" name="emails[]" value="mobileFailedAutomation" {if $details.emails && 'mobileFailedAutomation'|in_array:$details.emails}checked="checked"{/if} /> 失败的自动配置 </label>
 
                             </fieldset>
                         </td>
@@ -316,7 +316,7 @@
                         <input  class="checker" type="checkbox" name="emails[]" value="cronResults" {if $submit.emails && 'cronResults'|in_array:$submit.emails}checked="checked"{/if} /> {$lang.hbcronresults} <br />
                         <input  class="checker" type="checkbox" name="emails[]" value="failedLogin" {if $submit.emails && 'failedLogin'|in_array:$submit.emails}checked="checked"{/if} /> {$lang.hbfailedlogin} <br />
                         <input  class="checker" type="checkbox" name="emails[]" value="clientDetailsChanged" {if $submit.emails && 'clientDetailsChanged'|in_array:$submit.emails}checked="checked"{/if} /> {$lang.hbclientdetailschanged}<br />
-                        <input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $submit.emails && 'notesUpdated'|in_array:$submit.emails}checked="checked"{/if} /> Hostbill Admin Notes Changed
+                        <input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $submit.emails && 'notesUpdated'|in_array:$submit.emails}checked="checked"{/if} /> 系统管理员备注已更改
 
                         <script type="text/javascript">
                             {literal}
@@ -395,7 +395,7 @@
                         <input  class="checker" type="checkbox" name="emails[]" value="cronResults" {if $details.emails && 'cronResults'|in_array:$details.emails}checked="checked"{/if} /> {$lang.hbcronresults} <br />
                         <input  class="checker" type="checkbox" name="emails[]" value="failedLogin" {if $details.emails && 'failedLogin'|in_array:$details.emails}checked="checked"{/if} /> {$lang.hbfailedlogin} <br />
                         <input  class="checker" type="checkbox" name="emails[]" value="clientDetailsChanged" {if $details.emails && 'clientDetailsChanged'|in_array:$details.emails}checked="checked"{/if} /> {$lang.hbclientdetailschanged}<br />
-                        <input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $details.emails && 'notesUpdated'|in_array:$details.emails}checked="checked"{/if} /> Hostbill Admin Notes Changed
+                        <input  class="checker1" type="checkbox" name="emails[]" value="notesUpdated" {if $details.emails && 'notesUpdated'|in_array:$details.emails}checked="checked"{/if} /> 系统管理员备注已更改
 
                         <script type="text/javascript">
                             {literal}
@@ -458,7 +458,7 @@
             <tr>
                 <td>{$gr.id}</td>
                 <td><a href="?cmd=editadmins&action=group&id={$gr.id}">{$gr.name}</a></td>
-                <td><a href="?cmd=editadmins&action=groups&make=deletegroup&id={$gr.id}&security_token={$security_token}" onclick="return confirm('{$lang.deletegroupconfirm}');" class="delbtn">Delete</a></td>
+                <td><a href="?cmd=editadmins&action=groups&make=deletegroup&id={$gr.id}&security_token={$security_token}" onclick="return confirm('{$lang.deletegroupconfirm}');" class="delbtn">删除</a></td>
             </tr>
 
 
@@ -482,11 +482,11 @@
         {foreach from=$admins item=ad}
 
             <tr class="product">
-                <td><a href="?cmd=editadmins&action=administrator&id={$ad.id}">{$ad.firstname} {$ad.lastname}</a></td>
+                <td><a href="?cmd=editadmins&action=administrator&id={$ad.id}">{$ad.lastname} {$ad.firstname}</a></td>
                 <td>{$ad.username}</td>
                 <td><a href="mailto:{$ad.email}">{$ad.email}</a></td>
                 <td>{$lang[$ad.status]}</td>
-                <td><a href="?cmd=editadmins&make=deleteadmin&id={$ad.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteadminconfirm}');" class="delbtn">Delete</a></td>
+                <td><a href="?cmd=editadmins&make=deleteadmin&id={$ad.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteadminconfirm}');" class="delbtn">删除</a></td>
             </tr>
 
         {/foreach}

@@ -6,7 +6,7 @@
     <tr>
         <td class="leftNav">
             <a href="?cmd=sendmessage"  class="tstyled {if $action == 'default'}selected{/if}">{$lang.SendMessage}</a>
-            <a href="?cmd=sendmessage&action=asticket"  class="tstyled {if $action == 'asticket'}selected{/if}">Create Tickets</a>
+            <a href="?cmd=sendmessage&action=asticket"  class="tstyled {if $action == 'asticket'}selected{/if}">创建工单</a>
         </td>
 
         <td  valign="top"  class="bordered">
@@ -48,9 +48,9 @@
                             {foreach from=$logs item=log}
                                 {if $action=='asticket'}
                                     {if $log.success}
-                                        Ticket created for
+                                        创建工单给
                                     {else}
-                                        Could not create ticket for
+                                        无法创建工单给
                                     {/if}
                                 {else}
                                     {if $log.success}
@@ -77,7 +77,7 @@
                         {/foreach}
                         <div class="blu">
                             {if $action=='asticket'}
-                                <input type="submit" name="tickets" value="Create Tickets" style="font-weight:bold" onclick="return send_email();"/>
+                                <input type="submit" name="tickets" value="创建工单" style="font-weight:bold" onclick="return send_email();"/>
                             {else}
                                 <input type="submit" name="send" value="{$lang.SendMessage}" style="font-weight:bold" onclick="return send_email();"/>
                             {/if}
@@ -85,7 +85,7 @@
                             {if $action=='asticket'}
                                 <a href="?cmd=sendmessage" onclick="$('#massform').append('<input type=\'hidden\' name=\'action\' value=\'default\' /><input type=\'hidden\' name=\'make\' value=\'migrate\' />').submit(); return false;">{$lang.SendMessage}</a>
                             {else}
-                                <a href="?cmd=sendmessage&action=asticket" onclick="$('#massform').append('<input type=\'hidden\' name=\'action\' value=\'asticket\' /><input type=\'hidden\' name=\'make\' value=\'migrate\' />').submit(); return false;">Create Tickets</a>
+                                <a href="?cmd=sendmessage&action=asticket" onclick="$('#massform').append('<input type=\'hidden\' name=\'action\' value=\'asticket\' /><input type=\'hidden\' name=\'make\' value=\'migrate\' />').submit(); return false;">创建工单</a>
                             {/if}
                         </div>
                         <div class="lighterblue"  style="padding:5px">
@@ -112,7 +112,7 @@
                                 </tr>
                                 {if $action=='asticket'}
                                     <tr>
-                                        <td align="right">Department:</td>
+                                        <td align="right">部门:</td>
                                         <td>
                                             <select name="dept_id" value="{$submit.subject}" class="inp"> 
                                                 {foreach from=$depatments item=dept}
@@ -133,7 +133,7 @@
                                         <td align="right">HTML</td>
                                         <td>
                                             <input type="checkbox" name="html" value="1" {if $submit.html}checked="checked"{/if} style="vertical-align: middle"/> 
-                                            <a href="#" class="vtip_description" title="With this option you can use html tags in your messages to clients" />
+                                            <a href="#" class="vtip_description" title="使用该选项您可以让用户在工单中使用HTML标签" />
                                         </td>
                                     </tr>
                                 {/if}
@@ -146,7 +146,7 @@
                         </div>
                         <div class="blu">
                             {if $action=='asticket'}
-                                <input type="submit" name="tickets" value="Create Tickets" style="font-weight:bold" onclick="return send_email();"/>
+                                <input type="submit" name="tickets" value="创建工单" style="font-weight:bold" onclick="return send_email();"/>
                             {else}
                                 <input type="submit" name="send" value="{$lang.SendMessage}" style="font-weight:bold" onclick="return send_email();"/>
                             {/if}
@@ -154,7 +154,7 @@
                             {if $action=='asticket'}
                                 <a href="?cmd=sendmessage" >{$lang.SendMessage}</a>
                             {else}
-                                <a href="?cmd=sendmessage&action=asticket" >Create Tickets</a>
+                                <a href="?cmd=sendmessage&action=asticket" >创建工单</a>
                             {/if}
                         </div>
                         {securitytoken}

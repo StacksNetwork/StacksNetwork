@@ -151,7 +151,7 @@
                             {foreach from=$accounts item=a}
                                 <tr>
                                     <td>
-                                        <a href="?cmd=clients&action=show&id={$a.client_id}" target="_blank">客户 #{$a.client_id} {$a.firstname} {$a.lastname}</a> - <a href="?cmd=accounts&action=edit&id={$a.id}" target="_blank">账号 #{$a.id}</a>
+                                        <a href="?cmd=clients&action=show&id={$a.client_id}" target="_blank">客户 #{$a.client_id} {$a.lastname} {$a.firstname}</a> - <a href="?cmd=accounts&action=edit&id={$a.id}" target="_blank">账号 #{$a.id}</a>
                                     </td>
                                 </tr>
                             {/foreach}

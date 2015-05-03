@@ -25,7 +25,7 @@
                             <tr id="privileges" >
                                 <td valign="top" class="sectionbody" colspan="4">
                                     <fieldset>
-                                        <legend><label><input type="checkbox" onclick="$('.checker').attr('checked',$(this).is(':checked'))"/>Enable all</label></legend>
+                                        <legend><label><input type="checkbox" onclick="$('.checker').attr('checked',$(this).is(':checked'))"/>启用所有</label></legend>
                                         {foreach from=$methods item=method key=name}
                                         <label><input type="checkbox" name="methods[{$name}]" value="{$name}"  class="checker" {if $api.acl.$name}checked="checked"{/if}/> <a href="http://api.hostbillapp.com/{$method.APIgroup}/{$name}/" target="_blank">{$name}</a></label>
 

@@ -1,0 +1,17 @@
+type: slider
+name: VPS Limit
+key: cf_limit
+variable: vpslimit
+description:
+category: server
+options: 50
+config:
+  minvalue: 1
+  maxvalue: 50
+  step: 1
+  initialval: 1
+items:
+  -
+    name:
+    m: 10.00
+    pricing: 1

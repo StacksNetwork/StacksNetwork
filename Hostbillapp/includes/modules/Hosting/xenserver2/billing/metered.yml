@@ -1,0 +1,8 @@
+---
+variables:
+  running_vm:
+    name: Running VM
+    unit_name: Hour
+    description: Total running time of a VM per usage record period. Enter cost of having VM working for 1H.
+ 
+  

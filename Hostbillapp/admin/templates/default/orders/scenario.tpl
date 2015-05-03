@@ -1,5 +1,5 @@
 {if $steps}
-<h1>Order lifecycle</h1>
+<h1>订单周期</h1>
 <div style="margin:10px 0px;" id="tabcontainer">
 
     <ul class="breadcrumb-nav mod" style="">
@@ -14,7 +14,7 @@
         <div id="{$step.name}" class="subtab" {if !$step.next}style="display:none"{/if}>
             {include file="orders/step_`$step.name`.tpl"}
             <div class="clear"></div>
-            <div class="right"><img src="templates/default/img/question-small-white.png" alt="" class="left"><a href="#" class="fs11" onclick="$('#description_{$step.name}').toggle();return false;">Learn more about {$lang[$step.name]}</a></div>
+            <div class="right"><img src="templates/default/img/question-small-white.png" alt="" class="left"><a href="#" class="fs11" onclick="$('#description_{$step.name}').toggle();return false;">学习更多关于 {$lang[$step.name]}</a></div>
             <div class="clear"></div>
             <div style="display: none" id="description_{$step.name}">{$step.description}</div>  
         </div>

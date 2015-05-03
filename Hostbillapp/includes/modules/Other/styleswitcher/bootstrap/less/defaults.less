@@ -1,0 +1,56 @@
+
+
+@navbarSearchBackground:          lighten(@navbarBackground, 25%);
+
+@navbarSearchBorder:              darken(@navbarSearchBackground, 30%);
+
+@btnWarningBackground:              lighten(@orange, 15%);
+
+@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
+
+@btnBackgroundHighlight:            darken(@white, 10%);
+
+// COMPONENT VARIABLES
+// --------------------------------------------------
+
+// Z-index master list
+// -------------------------
+// Used for a bird's eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+@zindexDropdown:          1000;
+@zindexPopover:           1010;
+@zindexTooltip:           1020;
+@zindexFixedNavbar:       1030;
+@zindexModalBackdrop:     1040;
+@zindexModal:             1050;
+
+
+// Sprite icons path
+// -------------------------
+@iconSpritePath:          "templates/nextgen/img/glyphicons-halflings.png";
+@iconWhiteSpritePath:     "templates/nextgen/img/glyphicons-halflings-white.png";
+
+
+// GRID
+// --------------------------------------------------
+
+// Default 940px grid
+// -------------------------
+@gridColumns:             12;
+@gridColumnWidth:         60px;
+@gridGutterWidth:         20px;
+@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+
+// Fluid grid
+// -------------------------
+@fluidGridColumnWidth:    6.382978723%;
+@fluidGridGutterWidth:    2.127659574%;
+
+
+
+@warningBorder:           darken(spin(@warningBackground, -10), 3%);
+@errorBorder:             darken(spin(@errorBackground, -10), 3%);
+
+@successBorder:           darken(spin(@successBackground, -10), 5%);
+
+@infoBorder:              darken(spin(@infoBackground, -10), 7%);

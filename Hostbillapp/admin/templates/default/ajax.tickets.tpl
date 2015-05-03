@@ -421,12 +421,12 @@
                             <option {if $currentfilter._tag=='all'}selected="selected"{/if} value="all">所有</option>
                         </select>{*}
                     </td>
-                    <td>Unread only</td>
+                    <td>仅限未读</td>
                     <td ><input type="checkbox" name="filter[admin_read]" {if $currentfilter.body=="0"}checked="checked"{/if} value="0" /></td>
 
                 </tr>
                 <tr>
-                    <td>Assigned to</td>
+                    <td>分配给</td>
                     <td >
                         <select name="filter[owner_id]" >
                             <option value=""> - </option>
@@ -837,7 +837,7 @@
                         <tr class="odd">
                             <td style="vertical-align: baseline; white-space: nowrap; padding: 5px">
                                 <script src="{$template_dir}js/fileupload/init.fileupload.js?v={$hb_version}"></script>
-                                <strong style="">{if $admindata.lastname!='' && $admindata.firstname!=''}{$admindata.firstname} {$admindata.lastname}{else}{$admindata.username}{/if}</strong>
+                                <strong style="">{if $admindata.lastname!='' && $admindata.firstname!=''}{$admindata.lastname} {$admindata.firstname}{else}{$admindata.username}{/if}</strong>
                             </td>
                             <td width="100%">
                                 <div class="admin-note-new">
@@ -1066,7 +1066,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Assigned to</td>
+                        <td>分配给</td>
                         <td>
                             <select name="owner_id" class="inp">
                                 <option value="0">{$lang.none}</option>
@@ -1077,7 +1077,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>CC</td>
+                        <td>抄送CC</td>
                         <td colspan="2">
                             <a href="#" onclick="$(this).hide();$('#addcc').show();return false;" {if $submit.cc}style="display:none"{/if} class="editbtn">{$lang.addcc}</a>
                             <div {if !$submit.cc}style="display:none"{/if} id="addcc">
@@ -1128,7 +1128,7 @@
                                     <tr class="odd">
                                         <td style="vertical-align: baseline; white-space: nowrap; padding: 5px; ">
                                             <strong style="">备注</strong><br>
-                                            ({if $admindata.lastname!='' && $admindata.firstname!=''}{$admindata.firstname} {$admindata.lastname}{else}{$admindata.username}{/if})
+                                            ({if $admindata.lastname!='' && $admindata.firstname!=''}{$admindata.lastname} {$admindata.firstname}{else}{$admindata.username}{/if})
                                         </td>
                                         <td style="padding-top:5px" width="100%" >
                                             <textarea class="notes_field notes_changed" id="ticketnotesarea"  style="width:40%; height:auto" name="notes" >{$submit.notes}</textarea>

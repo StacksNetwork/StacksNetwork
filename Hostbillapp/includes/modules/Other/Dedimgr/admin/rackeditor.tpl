@@ -108,7 +108,7 @@
                     <td>{$i.label}</td>
                     <td>{$i.units}U</td>
                     <td class="rack-list-ca">
-                        <em>客户: {if $i.client_id}<a href="?cmd=clients&action=show&id={$i.client_id}" >#{$i.client_id} {$i.firstname} {$i.lastname}</a>{else}无{/if}</em>
+                        <em>客户: {if $i.client_id}<a href="?cmd=clients&action=show&id={$i.client_id}" >#{$i.client_id} {$i.lastname} {$i.firstname}</a>{else}无{/if}</em>
                         <em>账号: {if $i.account_id}<a href="?cmd=accounts&action=edit&id={$i.account_id}" >#{$i.account_id} {$i.domain}</a>{else}无{/if}</em>
                     </td>
                     <td class="rack-list-act">
@@ -128,7 +128,7 @@
                         <td>{$i.label}</td>
                         <td>-</td>
                         <td class="rack-list-ca">
-                            <em>客户: {if $i.client_id}<a href="?cmd=clients&action=show&id={$i.client_id}" >#{$i.client_id} {$i.firstname} {$i.lastname}</a>{else}无{/if}</em>
+                            <em>客户: {if $i.client_id}<a href="?cmd=clients&action=show&id={$i.client_id}" >#{$i.client_id} {$i.lastname} {$i.firstname}</a>{else}无{/if}</em>
                             <em>账号: {if $i.account_id}<a href="?cmd=accounts&action=edit&id={$i.account_id}" >#{$i.account_id} {$i.domain}</a>{else}无{/if}</em>
                         </td>
                         <td class="rack-list-act">

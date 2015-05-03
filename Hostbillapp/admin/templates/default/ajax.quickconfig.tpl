@@ -5,8 +5,8 @@
         <form action="" method="post">
             <table cellspacing="0" cellpadding="3" border="0">
                 <tr><td colspan="2" align="center"><p style="font-weight: bold">{$lang.changeadminpass}</p></td></tr>
-                <tr><td>{$lang.Password}:</td><td><input type="password" name="password1" value="" /></td></tr>
-                <tr><td>{$lang.repeatpass}:</td><td><input type="password" name="password2" value="" /></td></tr>
+                <tr><td>{$lang.Password}:</td><td><input type="password" autocomplete="off" name="password1" value="" /></td></tr>
+                <tr><td>{$lang.repeatpass}:</td><td><input type="password" autocomplete="off" name="password2" value="" /></td></tr>
                 <tr><td colspan="2" align="center"><input type="button" id="change_pass" value="{$lang.changepassword}" style="width: 150px; font-weight: bold;" /></td></tr>
             </table>
         {securitytoken}</form>
@@ -60,7 +60,7 @@
                                         {if $conf.type=='input'}
                                                 <input name="option[{$k}]" value="{$conf.value}" />
                                         {elseif $conf.type=='password'}
-                                                <input type="password" name="option[{$k}]" value="{$conf.value}" />
+                                                <input type="password" autocomplete="off" name="option[{$k}]" value="{$conf.value}" />
                                         {elseif $conf.type=='check'}
                                                 <input name="option[{$k}]" type="checkbox" value="1" {if $conf.value == "1"}checked="checked"{/if} />
                                         {elseif $conf.type=='select'}
@@ -141,7 +141,7 @@
                                         {if $conf.type=='input'}
                                                 <input name="option[{$k}]" value="{$conf.value}" />
                                         {elseif $conf.type=='password'}
-                                                <input type="password" name="option[{$k}]" value="{$conf.value}" />
+                                                <input type="password" autocomplete="off" name="option[{$k}]" value="{$conf.value}" />
                                         {elseif $conf.type=='check'}
                                                 <input name="option[{$k}]" type="checkbox" value="1" {if $conf.value == "1"}checked="checked"{/if} />
                                         {elseif $conf.type=='select'}
@@ -225,7 +225,7 @@
                                 </tr>
                                 <tr>
                                     <td>{$lang.Username}:</td><td ><input  name="server[username]" size="20" class="inp" value="{$b.username}"/></td>
-                                    <td>{$lang.Password}:</td><td><input type="password"  name="server[password]" size="20" class="inp" value="{$b.password}"/> <a class="en_ah{$b.id}" onclick="{literal}$(this).hide(); $('.accesshash{/literal}{$b.id}{literal}').show(); return false;{/literal}" {if $b.default_module != $qc_features.servers.cpmod || $b.hash != ''}style="display: none"{/if}>{$lang.usehash}</a></td></tr></td>
+                                    <td>{$lang.Password}:</td><td><input type="password" autocomplete="off"  name="server[password]" size="20" class="inp" value="{$b.password}"/> <a class="en_ah{$b.id}" onclick="{literal}$(this).hide(); $('.accesshash{/literal}{$b.id}{literal}').show(); return false;{/literal}" {if $b.default_module != $qc_features.servers.cpmod || $b.hash != ''}style="display: none"{/if}>{$lang.usehash}</a></td></tr></td>
                                 </tr>
                                 <tr class="accesshash{$b.id}" {if  $qc_features.servers.cpmod == 0 || $b.default_module != $qc_features.servers.cpmod || $b.hash == ''}style="display: none"{/if}>
                                     <td style="vertical-align: top;">{$lang.accesshash}:</td><td colspan="3"><textarea rows="5" cols="30" name="server[hash]">{$b.hash}</textarea></td>

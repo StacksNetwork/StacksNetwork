@@ -1,169 +1,403 @@
-<?php //00863
-//  HostBill - Client Management, Billing & Support System for WebHosts
-//  Copyright (c) 2010-2015 KBKP Software S.C. All Rights Reserved.
-//  Version 2015-03-21
-//  2015-03-21
-// 
-//  This software is furnished under a license and may be used and copied
-//  only  in  accordance  with  the  terms  of such  license and with the
-//  inclusion of the above copyright notice.  This software  or any other
-//  copies thereof may not be provided or otherwise made available to any
-//  other person.  No title to and  ownership of the  software is  hereby
-//  transferred.
-// 
-//  You may not reverse  engineer, decompile, defeat  license  encryption
-//  mechanisms, or  disassemble this software product or software product
-//  license.  HostBill  may terminate this license if you don't comply with any
-//  of the terms and conditions set forth in our end user  license agreement
-//  (EULA).  In such event,  licensee  agrees to return licensor  or destroy
-//  all copies of software  upon termination of the  license.
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the website operator. If you are the website operator please use the <a href="http://www.ioncube.com/lw/">ionCube Loader Wizard</a> to assist with installation.');exit(199);
-?>
-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
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage CookieJar
+ * @version    $Id: CookieJar.php 17124 2009-07-26 09:46:42Z shahar $
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+
+/**
+ * @see Zend_Uri
+ */
+require_once "Zend/Uri.php";
+/**
+ * @see Zend_Http_Cookie
+ */
+require_once "Zend/Http/Cookie.php";
+/**
+ * @see Zend_Http_Response
+ */
+require_once "Zend/Http/Response.php";
+
+/**
+ * A Zend_Http_CookieJar object is designed to contain and maintain HTTP cookies, and should
+ * be used along with Zend_Http_Client in order to manage cookies across HTTP requests and
+ * responses.
+ *
+ * The class contains an array of Zend_Http_Cookie objects. Cookies can be added to the jar
+ * automatically from a request or manually. Then, the jar can find and return the cookies
+ * needed for a specific HTTP request.
+ *
+ * A special parameter can be passed to all methods of this class that return cookies: Cookies
+ * can be returned either in their native form (as Zend_Http_Cookie objects) or as strings -
+ * the later is suitable for sending as the value of the "Cookie" header in an HTTP request.
+ * You can also choose, when returning more than one cookie, whether to get an array of strings
+ * (by passing Zend_Http_CookieJar::COOKIE_STRING_ARRAY) or one unified string for all cookies
+ * (by passing Zend_Http_CookieJar::COOKIE_STRING_CONCAT).
+ *
+ * @link       http://wp.netscape.com/newsref/std/cookie_spec.html for some specs.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage CookieJar
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Http_CookieJar implements Countable, IteratorAggregate
+{
+    /**
+     * Return cookie(s) as a Zend_Http_Cookie object
+     *
+     */
+    const COOKIE_OBJECT = 0;
+
+    /**
+     * Return cookie(s) as a string (suitable for sending in an HTTP request)
+     *
+     */
+    const COOKIE_STRING_ARRAY = 1;
+
+    /**
+     * Return all cookies as one long string (suitable for sending in an HTTP request)
+     *
+     */
+    const COOKIE_STRING_CONCAT = 2;
+
+    /**
+     * Array storing cookies
+     *
+     * Cookies are stored according to domain and path:
+     * $cookies
+     *  + www.mydomain.com
+     *    + /
+     *      - cookie1
+     *      - cookie2
+     *    + /somepath
+     *      - othercookie
+     *  + www.otherdomain.net
+     *    + /
+     *      - alsocookie
+     *
+     * @var array
+     */
+    protected $cookies = array();
+
+    /**
+     * The Zend_Http_Cookie array
+     *
+     * @var array
+     */
+    protected $_rawCookies = array();
+
+    /**
+     * Construct a new CookieJar object
+     *
+     */
+    public function __construct()
+    { }
+
+    /**
+     * Add a cookie to the jar. Cookie should be passed either as a Zend_Http_Cookie object
+     * or as a string - in which case an object is created from the string.
+     *
+     * @param Zend_Http_Cookie|string $cookie
+     * @param Zend_Uri_Http|string    $ref_uri Optional reference URI (for domain, path, secure)
+     */
+    public function addCookie($cookie, $ref_uri = null)
+    {
+        if (is_string($cookie)) {
+            $cookie = Zend_Http_Cookie::fromString($cookie, $ref_uri);
+        }
+
+        if ($cookie instanceof Zend_Http_Cookie) {
+            $domain = $cookie->getDomain();
+            $path = $cookie->getPath();
+            if (! isset($this->cookies[$domain])) $this->cookies[$domain] = array();
+            if (! isset($this->cookies[$domain][$path])) $this->cookies[$domain][$path] = array();
+            $this->cookies[$domain][$path][$cookie->getName()] = $cookie;
+            $this->_rawCookies[] = $cookie;
+        } else {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception('Supplient argument is not a valid cookie string or object');
+        }
+    }
+
+    /**
+     * Parse an HTTP response, adding all the cookies set in that response
+     * to the cookie jar.
+     *
+     * @param Zend_Http_Response $response
+     * @param Zend_Uri_Http|string $ref_uri Requested URI
+     */
+    public function addCookiesFromResponse($response, $ref_uri)
+    {
+        if (! $response instanceof Zend_Http_Response) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception('$response is expected to be a Response object, ' .
+                gettype($response) . ' was passed');
+        }
+
+        $cookie_hdrs = $response->getHeader('Set-Cookie');
+
+        if (is_array($cookie_hdrs)) {
+            foreach ($cookie_hdrs as $cookie) {
+                $this->addCookie($cookie, $ref_uri);
+            }
+        } elseif (is_string($cookie_hdrs)) {
+            $this->addCookie($cookie_hdrs, $ref_uri);
+        }
+    }
+
+    /**
+     * Get all cookies in the cookie jar as an array
+     *
+     * @param int $ret_as Whether to return cookies as objects of Zend_Http_Cookie or as strings
+     * @return array|string
+     */
+    public function getAllCookies($ret_as = self::COOKIE_OBJECT)
+    {
+        $cookies = $this->_flattenCookiesArray($this->cookies, $ret_as);
+        return $cookies;
+    }
+
+    /**
+     * Return an array of all cookies matching a specific request according to the request URI,
+     * whether session cookies should be sent or not, and the time to consider as "now" when
+     * checking cookie expiry time.
+     *
+     * @param string|Zend_Uri_Http $uri URI to check against (secure, domain, path)
+     * @param boolean $matchSessionCookies Whether to send session cookies
+     * @param int $ret_as Whether to return cookies as objects of Zend_Http_Cookie or as strings
+     * @param int $now Override the current time when checking for expiry time
+     * @return array|string
+     */
+    public function getMatchingCookies($uri, $matchSessionCookies = true,
+        $ret_as = self::COOKIE_OBJECT, $now = null)
+    {
+        if (is_string($uri)) $uri = Zend_Uri::factory($uri);
+        if (! $uri instanceof Zend_Uri_Http) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception("Invalid URI string or object passed");
+        }
+
+        // First, reduce the array of cookies to only those matching domain and path
+        $cookies = $this->_matchDomain($uri->getHost());
+        $cookies = $this->_matchPath($cookies, $uri->getPath());
+        $cookies = $this->_flattenCookiesArray($cookies, self::COOKIE_OBJECT);
+
+        // Next, run Cookie->match on all cookies to check secure, time and session mathcing
+        $ret = array();
+        foreach ($cookies as $cookie)
+            if ($cookie->match($uri, $matchSessionCookies, $now))
+                $ret[] = $cookie;
+
+        // Now, use self::_flattenCookiesArray again - only to convert to the return format ;)
+        $ret = $this->_flattenCookiesArray($ret, $ret_as);
+
+        return $ret;
+    }
+
+    /**
+     * Get a specific cookie according to a URI and name
+     *
+     * @param Zend_Uri_Http|string $uri The uri (domain and path) to match
+     * @param string $cookie_name The cookie's name
+     * @param int $ret_as Whether to return cookies as objects of Zend_Http_Cookie or as strings
+     * @return Zend_Http_Cookie|string
+     */
+    public function getCookie($uri, $cookie_name, $ret_as = self::COOKIE_OBJECT)
+    {
+        if (is_string($uri)) {
+            $uri = Zend_Uri::factory($uri);
+        }
+
+        if (! $uri instanceof Zend_Uri_Http) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception('Invalid URI specified');
+        }
+
+        // Get correct cookie path
+        $path = $uri->getPath();
+        $path = substr($path, 0, strrpos($path, '/'));
+        if (! $path) $path = '/';
+
+        if (isset($this->cookies[$uri->getHost()][$path][$cookie_name])) {
+            $cookie = $this->cookies[$uri->getHost()][$path][$cookie_name];
+
+            switch ($ret_as) {
+                case self::COOKIE_OBJECT:
+                    return $cookie;
+                    break;
+
+                case self::COOKIE_STRING_ARRAY:
+                case self::COOKIE_STRING_CONCAT:
+                    return $cookie->__toString();
+                    break;
+
+                default:
+                    require_once 'Zend/Http/Exception.php';
+                    throw new Zend_Http_Exception("Invalid value passed for \$ret_as: {$ret_as}");
+                    break;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Helper function to recursivly flatten an array. Shoud be used when exporting the
+     * cookies array (or parts of it)
+     *
+     * @param Zend_Http_Cookie|array $ptr
+     * @param int $ret_as What value to return
+     * @return array|string
+     */
+    protected function _flattenCookiesArray($ptr, $ret_as = self::COOKIE_OBJECT) {
+        if (is_array($ptr)) {
+            $ret = ($ret_as == self::COOKIE_STRING_CONCAT ? '' : array());
+            foreach ($ptr as $item) {
+                if ($ret_as == self::COOKIE_STRING_CONCAT) {
+                    $ret .= $this->_flattenCookiesArray($item, $ret_as);
+                } else {
+                    $ret = array_merge($ret, $this->_flattenCookiesArray($item, $ret_as));
+                }
+            }
+            return $ret;
+        } elseif ($ptr instanceof Zend_Http_Cookie) {
+            switch ($ret_as) {
+                case self::COOKIE_STRING_ARRAY:
+                    return array($ptr->__toString());
+                    break;
+
+                case self::COOKIE_STRING_CONCAT:
+                    return $ptr->__toString();
+                    break;
+
+                case self::COOKIE_OBJECT:
+                default:
+                    return array($ptr);
+                    break;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Return a subset of the cookies array matching a specific domain
+     *
+     * @param string $domain
+     * @return array
+     */
+    protected function _matchDomain($domain)
+    {
+        $ret = array();
+
+        foreach (array_keys($this->cookies) as $cdom) {
+            if (Zend_Http_Cookie::matchCookieDomain($cdom, $domain)) {
+                $ret[$cdom] = $this->cookies[$cdom];
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Return a subset of a domain-matching cookies that also match a specified path
+     *
+     * @param array $dom_array
+     * @param string $path
+     * @return array
+     */
+    protected function _matchPath($domains, $path)
+    {
+        $ret = array();
+
+        foreach ($domains as $dom => $paths_array) {
+            foreach (array_keys($paths_array) as $cpath) {
+                if (Zend_Http_Cookie::matchCookiePath($cpath, $path)) {
+                    if (! isset($ret[$dom])) {
+                        $ret[$dom] = array();
+                    }
+
+                    $ret[$dom][$cpath] = $paths_array[$cpath];
+                }
+            }
+        }
+
+        return $ret;
+    }
+
+    /**
+     * Create a new CookieJar object and automatically load into it all the
+     * cookies set in an Http_Response object. If $uri is set, it will be
+     * considered as the requested URI for setting default domain and path
+     * of the cookie.
+     *
+     * @param Zend_Http_Response $response HTTP Response object
+     * @param Zend_Uri_Http|string $uri The requested URI
+     * @return Zend_Http_CookieJar
+     * @todo Add the $uri functionality.
+     */
+    public static function fromResponse(Zend_Http_Response $response, $ref_uri)
+    {
+        $jar = new self();
+        $jar->addCookiesFromResponse($response, $ref_uri);
+        return $jar;
+    }
+
+    /**
+     * Required by Countable interface
+     *
+     * @return int
+     */
+    public function count()
+    {
+        return count($this->_rawCookies);
+    }
+
+    /**
+     * Required by IteratorAggregate interface
+     *
+     * @return ArrayIterator
+     */
+    public function getIterator()
+    {
+        return new ArrayIterator($this->_rawCookies);
+    }
+
+    /**
+     * Tells if the jar is empty of any cookie
+     *
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return count($this) == 0;
+    }
+
+    /**
+     * Empties the cookieJar of any cookie
+     *
+     * @return Zend_Http_CookieJar
+     */
+    public function reset()
+    {
+        $this->cookies = $this->_rawCookies = array();
+        return $this;
+    }
+}

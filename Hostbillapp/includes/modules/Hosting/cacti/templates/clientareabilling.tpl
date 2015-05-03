@@ -7,13 +7,13 @@
 </td>
      </tr>
      <tr>
-         <td align="right" width="160">超额比率:</td>
-        <td >{$bandwidth.cost|price:$currency:1:1} / 1 {$bandwidth.overage_unit}</td>
+         <td align="right" width="160">超出率:</td>
+        <td >{$bandwidth.cost|price:$currency} / 1 {$bandwidth.overage_unit}</td>
      </tr>
 
      <tr>
-        <td align="right">当前超额费用:</td>
-        <td >{$bandwidth.charge|price:$currency:1:1}</td>
+        <td align="right">当前超额计费:</td>
+        <td >{$bandwidth.charge|price:$currency}</td>
      </tr>
      <tr>
         <td align="right">预计使用:</td>
@@ -25,8 +25,8 @@
         <td  style="color:red">{$bandwidth.projected_overage}</td>
      </tr>
       <tr>
-        <td align="right">预计超额费用:</td>
-        <td><b style="color:red">{$bandwidth.projected_charge|price:$currency:1:1}</b></td>
+        <td align="right">预计超额计费:</td>
+        <td><b style="color:red">{$bandwidth.projected_charge|price:$currency}</b></td>
      </tr>
      {/if}
 </table>

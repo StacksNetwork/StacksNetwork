@@ -19,7 +19,7 @@
 
             <div id="hider2" style="text-align:right">
                 <div class="filter-actions">
-                    <a class="left fTag" {if !$currentfilter.tag}style="display:none"{/if}>Tag: <em>{$currentfilter.tag}</em></a>
+                    <a class="left fTag" {if !$currentfilter.tag}style="display:none"{/if}>标签: <em>{$currentfilter.tag}</em></a>
                     
                     {if $tview}
                         <a href="?cmd={$cmd}&tview={$tview.id}&action=getadvanced" class="fadvanced">{$lang.filterdata}</a>
@@ -103,9 +103,9 @@
                 <a href="?cmd=ticketbans"  class="tstyled {if $cmd=='ticketbans'}selected{/if}">{$lang.ticketfilters|capitalize}</a>
                 <a href="?cmd=ticketshare"  class="tstyled {if $cmd=='ticketshare'}selected{/if}">{$lang.ticketshare|capitalize}</a>
                 <a href="?cmd=supportrating"  class="tstyled {if $cmd=='supportrating'}selected{/if}">工单评分</a>
-                <a href="?cmd=ticketviews"  class="tstyled {if $cmd=='ticketviews' && !$tview}selected{/if}">工单视图</a>
+                <a href="?cmd=ticketviews"  class="tstyled {if $cmd=='ticketviews' && !$tview}selected{/if}">工单显示元素</a>
                 {if $enableFeatures.supportext}
-                    <a href="?cmd=tickettimetracking"  class="tstyled {if $cmd=='tickettimetracking'}selected{/if}">收费服务</a>
+                    <a href="?cmd=tickettimetracking"  class="tstyled {if $cmd=='tickettimetracking'}selected{/if}">收费服务项目</a>
                 {/if}
             {/if}
             <br />

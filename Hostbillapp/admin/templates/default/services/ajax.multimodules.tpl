@@ -7,9 +7,9 @@
                 {foreach from=$modules item=mod}{if $mod.id!='-1'}
                 <option value="{$mod.id}" {if $module.module==$mod.id}selected="selected" {/if}>{$mod.module}</option>{/if}
                 {/foreach}
-                <option value="new" style="font-weight:bold">Show  non-activated modules</option>
+                <option value="new" style="font-weight:bold">显示未激活模块</option>
             </select>
-            <a onclick="return connectMoreApps(this);" class="new_control right" href="#"><span class="addsth">Connect more apps</span></a>
+            <a onclick="return connectMoreApps(this);" class="new_control right" href="#"><span class="addsth">连接更多Apps</span></a>
 
         </td>
     </tr>

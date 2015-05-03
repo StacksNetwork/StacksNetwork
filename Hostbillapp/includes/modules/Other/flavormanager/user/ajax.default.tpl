@@ -18,11 +18,11 @@
                 <h3>{$i.name}</h3>
                 <div class="text-center">
                     <p class="price-format"> 
-                        {$i.price_on|price:$currency:true:false:true:3}  <span class="price-cycle">/ 小时</span><br/>
-                        {$i.monthly|price:$currency}  <span class="price-cycle">/ 月</span><br/></p>
+                        {$i.price_on|price:$currency:true:false:true:3}  <span class="price-cycle">/ hourly</span><br/>
+                        {$i.monthly|price:$currency}  <span class="price-cycle">/ monthly</span><br/></p>
                 </div>
                 <div class="text-center">
-                    <a href="#" class="btn-select" data-value="{$i.id}">选择</a>
+                    <a href="#" class="btn-select" data-value="{$i.id}">Select</a>
                 </div>
             </div>
         </div>

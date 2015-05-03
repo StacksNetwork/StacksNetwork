@@ -1,4 +1,4 @@
-<h1>服务监控</h1> 
+<h1>设备监控</h1> 
 
 {foreach from=$monitors item=host key=hostk}
 <h3>{$hostk}</h3>
@@ -6,10 +6,10 @@
 <table border="0" cellspacing="0" cellpadding="0" width="730" class="statustable">
     <tr>
         <th>服务</th>
-        <th>状态</th>
-        <th>最近一次检查</th>
-        <th>持续时间</th>
-        <th>尝试</th>
+        <th>监测内容</th>
+        <th>最新状态</th>
+        <th>时间</th>
+        <th>轮询</th>
         <th>信息</th>
     </tr>
 

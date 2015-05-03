@@ -31,17 +31,17 @@
             var confirmation = false;
             var s = $('#' + state).text();
             if (s == 'ON') {
-                if (confirm('您确定要将该端口关闭吗?')) {
+                if (confirm('Are you sure you wish to power this port OFF?')) {
                     confirmation = 'off';
                 }
             } else if (s == 'OFF') {
-                if (confirm('您确定要将该端口打开吗?')) {
+                if (confirm('Are you sure you wish to power this port ON?')) {
                     confirmation = 'on';
                 }
             }
             if (confirmation) {
 
-                $('#' + state).removeClass('power_off').removeClass('power_on').html('<span class="fs11">加载状态...</span>').addClass('unknown');
+                $('#' + state).removeClass('power_off').removeClass('power_on').html('<span class="fs11">Loading status...</span>').addClass('unknown');
                 $.post('?cmd=pdu_snmp&action=cyclepower', {
                     account_id: $('#account_id').val(),
                     port_id: port_id,
@@ -76,7 +76,7 @@
             });
         }
         function unassignPort(item_id, port_id, id) {
-            if (!confirm('您确定要取消该端口的分配吗?'))
+            if (!confirm('Are you sure you want to unassign this port?'))
                 return false;
             $.post('?cmd=module&module=dedimgr&do=rmassignment', {
                 account_id: $('#account_id').val(),
@@ -96,9 +96,9 @@
     </style>
 {/literal}
 <div id="add_pdu" style="display:none" class="p6">
-    <div class="left" style="margin-right:10px;padding:4px"><b>分配新的PDU端口:</b></div>
+    <div class="left" style="margin-right:10px;padding:4px"><b>Assign new PDU port:</b></div>
     <select name="item_id" id="pdu_item_id" class="inp left" onchange="load_pdu_ports(this)" style="margin-right:10px;">
-        <option value="0">选择PDU进行分配n</option>
+        <option value="0">Select PDU to assign</option>
         {foreach from=$pdus item=pdu}
             <option value="{$pdu.id}">{$pdu.rackname} - {$pdu.name}{if $pdu.label} ({$pdu.label}){/if}</option>
         {/foreach}
@@ -118,36 +118,36 @@
                             <tr>
                                 <td width="80" valign="middle" align="center" id="state_{$itm.item_id}{$itm.port_id|replace:'.':''}" 
                                     class="{if $itm.port_status==='0'}power_off{elseif $itm.port_status==='1'}power_on{else}unknown{/if}">{*}
-                                    {*}{if $itm.port_status==='0'}OFF{elseif $itm.port_status=='1'}ON{else}<span class="fs11">加载状态...</span>{/if}{*}
+                                    {*}{if $itm.port_status==='0'}OFF{elseif $itm.port_status=='1'}ON{else}<span class="fs11">Loading status...</span>{/if}{*}
                                 {*}</td>
                                 <td width="120" valign="top">
                                     <div style="padding:10px 0px;">
                                         <a onclick="return cyclePower('{$itm.item_id}', '{$itm.port_id}', '{$itm.id}')" class="sorter-ha menuitm menuf" href="#"><span title="move" class="gear_small">On / Off</span></a><!--
-                                        --><a onclick="return unassignPort('{$itm.item_id}', '{$itm.port_id}', '{$itm.id}')" title="delete" class="menuitm menul" href="#"><span class="rmsth">取消分配</span></a>
+                                        --><a onclick="return unassignPort('{$itm.item_id}', '{$itm.port_id}', '{$itm.id}')" title="delete" class="menuitm menul" href="#"><span class="rmsth">Unassign</span></a>
                                     </div>
                                 </td>
                                 <td>
-                                    <strong>PDU端口:</strong><br />
-                                    机柜: <a href="?cmd=module&module=dedimgr&do=rack&rack_id={$itm.rack_id}" class="external" target="_blank">{$itm.rack_name}</a>
+                                    <strong>PDU Port:</strong><br />
+                                    Rack: <a href="?cmd=module&module=dedimgr&do=rack&rack_id={$itm.rack_id}" class="external" target="_blank">{$itm.rack_name}</a>
                                     , PDU:  <a href="?cmd=module&module=dedimgr&do=itemeditor&item_id={$itm.item_id}" class="external" 
                                                title="{$itm.item_name}"
                                                target="_blank">
                                         {if $itm.item_label}{$itm.item_label}{else}{$itm.item_name}{/if}
                                     </a>
-                                    , 端口: <b>{if $itm.port_name}{$itm.port_name}{elseif $itm.port_id}{$itm.port_id}{else}{$itm.number}{/if}</b>
+                                    , Port: <b>{if $itm.port_name}{$itm.port_name}{elseif $itm.port_id}{$itm.port_id}{else}{$itm.number}{/if}</b>
                                 </td>
                                 <td style="width: 40%"> 
-                                    <strong>连接到:</strong><br />
+                                    <strong>Connected to:</strong><br />
                                     {if $itm.connected_port_number}
-                                        机柜: <a href="?cmd=module&module=dedimgr&do=rack&rack_id={$itm.connected_rack_id}" class="external" target="_blank">{$itm.connected_rack_name}</a>
+                                        Rack: <a href="?cmd=module&module=dedimgr&do=rack&rack_id={$itm.connected_rack_id}" class="external" target="_blank">{$itm.connected_rack_name}</a>
                                         , PDU:  <a href="?cmd=module&module=dedimgr&do=itemeditor&item_id={$itm.connected_item_id}" class="external" 
                                                    title="{$itm.connected_item_name}"
                                                    target="_blank">
                                             {if $itm.connected_item_label}{$itm.connected_item_label}{else}{$itm.connected_item_name}{/if}
                                         </a>
-                                        , 端口: <b>{if $itm.connected_port_name}{$itm.connected_port_name}{elseif $itm.connected_port_id}{$itm.connected_port_id}{else}{$itm.connected_port_number}{/if}</b>
+                                        , Port: <b>{if $itm.connected_port_name}{$itm.connected_port_name}{elseif $itm.connected_port_id}{$itm.connected_port_id}{else}{$itm.connected_port_number}{/if}</b>
                                     {else}
-                                        未连接
+                                        Not connected
                                     {/if}
                                 </td>
                             </tr>
@@ -160,19 +160,19 @@
 
     <a onclick="$(this).hide();
             $('#add_pdu').show();
-            return false;" class="new_control" href="#"><span class="addsth"><strong>连接到该服务器的PDU端口</strong></span></a>
+            return false;" class="new_control" href="#"><span class="addsth"><strong>Connect PDU port to this server</strong></span></a>
 
 {else}
     {if $pdus}
         <div class="blank_state_smaller blank_forms" id="blank_pdu">
             <div class="blank_info">
-                <h3>连接到该服务器的PDU端口.</h3>
-                <span class="fs11">您可以启用该服务器所有的PDU控制功能, 包括通过远程控制PDU进行关机/开机/远程重启.</span>
+                <h3>Connect PDU ports with this server.</h3>
+                <span class="fs11">You can enable PDU control for this server owner, allowing for powering off/on/remote reboots trough PDU</span>
                 <div class="clear"></div>
                 <br>
                 <a onclick="$('#blank_pdu').hide();
             $('#add_pdu').show();
-            return false;" class="new_control" href="#"><span class="addsth"><strong>连接到该服务器的PDU端口</strong></span></a>
+            return false;" class="new_control" href="#"><span class="addsth"><strong>Connect PDU port to this server</strong></span></a>
                 <div class="clear"></div>
             </div>
         </div>
@@ -180,7 +180,7 @@
     {else}
         <div class="blank_state blank_news">
             <div class="blank_info">
-                <h1>无PDU连接设置</h1>
+                <h1>No PDU connection set</h1>
                 No PDU is defined in dedicated servers manager yet. To add PDU: <br/>
                 - go To Settings->Modules, locate PDU_snmp module and activate it <br/>
                 - under Settings->Apps create new App with PDU_snmp module, select most matching unit to one you're using <br/>

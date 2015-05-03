@@ -12,7 +12,7 @@
                 {if $action=='step3'}
 
                     <div class="blu" style="padding: 5px;">
-                        <a href="?cmd=importaccounts" ><strong>&laquo; Back to server selection</strong></a>
+                        <a href="?cmd=importaccounts" ><strong>&laquo; 返回已选服务器</strong></a>
                     </div>
                     <div class="lighterblue" style="padding:20px">
                         <strong>{$lang.importlog}:</strong> <br />
@@ -54,7 +54,7 @@
                         <input type="hidden" value="{$server_id}" name="server_id" />
                         <input type="hidden" name="action" value="step3" />
                         <div class="blu">
-                            <a href="?cmd=importaccounts" ><strong>&laquo; Back to server selection</strong></a>
+                            <a href="?cmd=importaccounts" ><strong>&laquo; 返回已选服务器</strong></a>
                             <input type="submit" name="submit" style="font-weight:bold" value="Import selected" />
 
                         </div>

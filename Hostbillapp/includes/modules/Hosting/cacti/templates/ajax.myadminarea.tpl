@@ -49,7 +49,7 @@ $('.lmonthly',target).append('<img src="'+imurl+'&type=monthly" />');
 return false;
   }
  function  unassignCactiPort(sw,p) {
-     if(!confirm('您确定要取消分配该端口? 这可能会改变计费总数')) {
+     if(!confirm('您确定要取消分配该端口? 这可能会改变计费总计')) {
          return false;
      }
      $.post('?cmd=cacti&action=rmassignment',{
@@ -90,7 +90,7 @@ var port_id = $('#cacti_port_id_'+switch_id.val());
 }
     </style>
 {/literal}<div id="add_cacti" style="display:none">
-    <div class="left" style="margin-right:10px;padding:4px"><b>为Cacti分配新的交换机与端口:</b></div>
+    <div class="left" style="margin-right:10px;padding:4px"><b>分配新的Cacti交换机&端口:</b></div>
 
     <div id="cacti_port_loader" class="left">加载数据...</div>
     <div class="clear"></div>
@@ -99,20 +99,20 @@ var port_id = $('#cacti_port_id_'+switch_id.val());
 
 <div class="blank_state_smaller blank_forms" id="blank_cacti">
         <div class="blank_info">
-            <h3>连接该帐户的Cacti流量图</h3>
+            <h3>连接该账号使用Cacti图形</h3>
             <span class="fs11">
-                使用本系统并通过Cacti您可以详细的监控带宽使用与超流情况, "接口 - 流量" 图. <br/>
-                同时在客户控制台界面可以到 产品->客户端功能中, 访问预先设置好的流量使用图.<br/>
+                使用Cacti您可以监控Hostbill带宽利用率/流量测定 "接口 - 流量" 图. <br/>
+                额外产品使用->您的客户在控制台客户端功能可以允许访问选定的图形.<br/>
 
             </span>
             <div class="clear"></div>
             <br>
-            <a onclick="$('#blank_cacti').hide();return loadCactiPorts();" class="new_control" href="#"><span class="addsth"><strong>选择交换机/端口进行连接</strong></span></a>
+            <a onclick="$('#blank_cacti').hide();return loadCactiPorts();" class="new_control" href="#"><span class="addsth"><strong>选择交换机/端口连接</strong></span></a>
             <div class="clear"></div>
         </div>
     </div>
 {else}
-<h3>分配Cacti设备</h3>
+<h3>已分配Cacti设备</h3>
 
     <ul style="border:solid 1px #ddd;border-bottom:none;margin-bottom:15px" id="grab-sorter">
 
@@ -120,9 +120,9 @@ var port_id = $('#cacti_port_id_'+switch_id.val());
 <li style="background:#ffffff" class="cacti_row" ><div style="border-bottom:solid 1px #ddd;">
 <table width="100%" cellspacing="0" cellpadding="5" border="0">
 <tbody><tr>
-<td width="200" valign="top"><div style="padding:10px 0px;">
-<a onclick="return unassignCactiPort('{$itm.c_switch_id}','{$itm.c_port_id}')" title="删除" class="menuitm menuf" href="#"><span class="rmsth">取消分配</span></a><!--
---><a onclick="return showCactiGraphs('{$itm.c_switch_id}','{$itm.c_port_id}',this)" title="删除" class="menuitm menul" href="#"><span class="graphst">流量使用图</span></a>
+<td width="120" valign="top"><div style="padding:10px 0px;">
+<a onclick="return unassignCactiPort('{$itm.c_switch_id}','{$itm.c_port_id}')" title="delete" class="menuitm menuf" href="#"><span class="rmsth">取消分配</span></a><!--
+--><a onclick="return showCactiGraphs('{$itm.c_switch_id}','{$itm.c_port_id}',this)" title="delete" class="menuitm menul" href="#"><span class="graphst">使用图表</span></a>
 </div></td>
 <td>
     {$itm.name}
@@ -141,7 +141,7 @@ var port_id = $('#cacti_port_id_'+switch_id.val());
 {/foreach}
 </ul>
 
-<a onclick="$(this).hide();return loadCactiPorts();" class="new_control" href="#"><span class="addsth"><strong>选择交换机/端口进行连接</strong></span></a>
+<a onclick="$(this).hide();return loadCactiPorts();" class="new_control" href="#"><span class="addsth"><strong>选择交换机/端口连接</strong></span></a>
 
 
 

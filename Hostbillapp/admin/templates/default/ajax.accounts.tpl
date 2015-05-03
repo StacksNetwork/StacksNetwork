@@ -27,12 +27,12 @@
             {/if}
         {if $q.log}{$q.log}{/if}
         {if $q.task=='nextinvoice'}- <a href="?cmd=accounts&account_id={$account_id}&action=generateinvoice{foreach from=$q.items item=i}&{$i.what}[]={$i.rel_id}{/foreach}&security_token={$security_token}" 
-             onclick="return confirm('Are you sure you want to generate invoice now?')">generate now</a>
+             onclick="return confirm('Are you sure you want to generate invoice now?')">立即生成账单</a>
         {/if}
         <br/>
     </span>
     {if ($q.status=='Pending' && $q.custom_id) || ($q.event && !$q.custom_id)}
-        <a href="#" class="rembtn left" style="margin-left:6px;" onclick="if (confirm('Are you sure you wish to cancel this task?'))
+        <a href="#" class="rembtn left" style="margin-left:6px;" onclick="if (confirm('您确定要取消该计划任务吗?'))
                     ajax_update('?cmd=accounts&action=getqueue&id={$account_id}&make=canceltask&task={$q.custom_id}&account_id={$account_id}&event={$q.event}', false, '#autoqueue', true);
                 return false;">{$lang.Remove}</a>
     {/if}
@@ -290,12 +290,12 @@ function loadTemplate(addon_id,fn)  {
         {$req.reason}
         </div>
         {/foreach}
-		<div style="text-align: right; padding: 0 4px 4px"><a href="?cmd=logs&action=cancelations">more</a></div>
+		<div style="text-align: right; padding: 0 4px 4px"><a href="?cmd=logs&action=cancelations">更多</a></div>
     </div>
     {/if}
 
 {elseif $action=='getstatus'}
-    <strong>{if $status}{$status}{else}Unknown{/if}</strong> <a href="" onclick="getStatus({$service_id}, this); return false;"><img src="{$template_dir}img/arrow_refresh_small.gif" alt="refresh" /></a>
+    <strong>{if $status}{$status}{else}未知{/if}</strong> <a href="" onclick="getStatus({$service_id}, this); return false;"><img src="{$template_dir}img/arrow_refresh_small.gif" alt="refresh" /></a>
 {elseif $action == 'log'}
 <table width="100%" cellspacing="0" cellpadding="3" border="0" class="glike hover">
         <tbody>

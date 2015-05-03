@@ -72,10 +72,10 @@
                         {if $premade.name}
                         {counter name=premades}
                         <div id="old_{$k}_{$premades}" style="display: none;"> 
-                            <label style="font-weight: normal">Name</label><input type="text" value="{$premade.name}" name="opconfig[{$k}][{$premades}][name]" class="w250" style="margin-bottom:5px"/>
-                            <label style="font-weight: normal">Description</label><textarea  name="opconfig[{$k}][{$premades}][description]"  class="w250" style="margin-bottom:5px">{$premade.description}</textarea>
-                            <label style="font-weight: normal">Target package</label><input  value="{$premade.package}" type="text" name="opconfig[{$k}][{$premades}][package]" class="w250" style="margin-bottom:5px"/>
-                            <div class="fs11" style="padding-left:170px;clear:both;margin-bottom:10px;color:#666">Package number, starting from one (eg. 2 will select second package<br /> when clicking on this pre-made configuration)</div>
+                            <label style="font-weight: normal">名称</label><input type="text" value="{$premade.name}" name="opconfig[{$k}][{$premades}][name]" class="w250" style="margin-bottom:5px"/>
+                            <label style="font-weight: normal">描述</label><textarea  name="opconfig[{$k}][{$premades}][description]"  class="w250" style="margin-bottom:5px">{$premade.description}</textarea>
+                            <label style="font-weight: normal">目标套餐</label><input  value="{$premade.package}" type="text" name="opconfig[{$k}][{$premades}][package]" class="w250" style="margin-bottom:5px"/>
+                            <div class="fs11" style="padding-left:170px;clear:both;margin-bottom:10px;color:#666">套餐编号, 从1开始 (eg. 2 将会选择第2个套餐<br /> 当点击在这里预先做好的配置)</div>
                             <label style="font-weight: normal">Icon</label>
                             <input type="hidden" name="opconfig[{$k}][{$premades}][icon]"  value="{$premade.icon}" rel="file_{$k}_{$premades}" />
                             <input type="file" id="file_{$k}_{$premades}" name="image" onchange="premade.update('{$k}', 'file_{$k}_{$premades}',true); return true;" style="margin-bottom:5px" />
@@ -85,10 +85,10 @@
                     
                     <div id="new_{$k}" style="display: none;">
                         {counter name=premades}
-                        <label style="font-weight: normal">Name</label><input type="text" name="opconfig[{$k}][{$premades}][name]" class="w250" style="margin-bottom:5px"/>
-                        <label style="font-weight: normal">Description</label><textarea  name="opconfig[{$k}][{$premades}][description]"  class="w250" style="margin-bottom:5px"></textarea>
-                        <label style="font-weight: normal">Target package</label><input type="text" name="opconfig[{$k}][{$premades}][package]" class="w250" style="margin-bottom:5px"/>
-                        <div class="fs11" style="padding-left:170px;clear:both;margin-bottom:10px;color:#666">Package number, starting from one (eg. 2 will select second package<br /> when clicking on this pre-made configuration)</div>
+                        <label style="font-weight: normal">名称</label><input type="text" name="opconfig[{$k}][{$premades}][name]" class="w250" style="margin-bottom:5px"/>
+                        <label style="font-weight: normal">描述</label><textarea  name="opconfig[{$k}][{$premades}][description]"  class="w250" style="margin-bottom:5px"></textarea>
+                        <label style="font-weight: normal">目标套餐</label><input type="text" name="opconfig[{$k}][{$premades}][package]" class="w250" style="margin-bottom:5px"/>
+                        <div class="fs11" style="padding-left:170px;clear:both;margin-bottom:10px;color:#666">套餐编号, 从1开始 (eg. 2 将会选择第2个套餐<br /> 当点击在这里预先做好的配置)</div>
                         <label style="font-weight: normal">Icon</label>
                         <input type="hidden" name="opconfig[{$k}][{$premades}][icon]" rel="file_{$k}_{$premades}" />
                         <input type="file" id="file_{$k}_{$premades}" name="image" onchange="premade.update('{$k}', 'file_{$k}_{$premades}',true);" style="margin-bottom:5px" />

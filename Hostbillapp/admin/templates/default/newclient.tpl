@@ -81,7 +81,7 @@
                                                     {if $field.field_type=='Input'}
                                                         <input type="text" value="{$submit[$k]}" style="width: 80%;" name="{$k}" class="styled"/>
                                                     {elseif $field.field_type=='Password'}
-                                                        <input type="password" value="" style="width: 80%;" name="{$k}" class="styled"/>
+                                                        <input type="password" autocomplete="off" value="" style="width: 80%;" name="{$k}" class="styled"/>
                                                     {elseif $field.field_type=='Select'}
                                                         <select name="{$k}" style="width: 80%;">
                                                             {foreach from=$field.default_value item=fa}
@@ -139,7 +139,7 @@
                                                 {if $field.field_type=='Input'}
                                                     <input type="text" value="{$submit[$k]}" style="width: 80%;" name="{$k}" class="styled"/>
                                                 {elseif $field.field_type=='Password'}
-                                                    <input type="password" value="" style="width: 80%;" name="{$k}" class="styled"/>
+                                                    <input type="password" autocomplete="off" value="" style="width: 80%;" name="{$k}" class="styled"/>
                                                 {elseif $field.field_type=='Select'}
                                                     <select name="{$k}" style="width: 80%;">
                                                         {foreach from=$field.default_value item=fa}
@@ -179,7 +179,7 @@
 
 
                 {if $groups}
-                    Group: <select name="group_id" id="group_id" >
+                    用户组: <select name="group_id" id="group_id" >
                         <option value="0" >{$lang.none}</option>
                         {foreach from=$groups item=group}
                             <option value="{$group.id}" style="color:{$group.color}" {if $submit.group_id==$group.id}selected="selected"{/if}>{$group.name}</option>

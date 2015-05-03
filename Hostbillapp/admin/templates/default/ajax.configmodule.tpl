@@ -1,5 +1,5 @@
 {if $cmd=='productaddons'}<tr>
-<td align="right" valign="top" width="160"><strong>Module</strong></td>
+<td align="right" valign="top" width="160"><strong>模块</strong></td>
 <td><strong style="font-size: 14px">{$addon.modulename}</strong><br />{$addon.moduledescription}</td>
 
 </tr>
@@ -63,7 +63,7 @@
                                                 <input name="options[{$k}][]" value="" /><br />
                                             {/if}
                                             </span>
-                                            <a href="" onclick="addmultifield(this, '{$k}');return false;" style="font-size:9px;" >Add next value</a>
+                                            <a href="" onclick="addmultifield(this, '{$k}');return false;" style="font-size:9px;" >添加下一个值</a>
                     {/if}
                 {elseif $conf.type=='check'}                        
                     <input type="checkbox" value="1" name="options[{$k}]" {if $default.$k=='1' || (!$default && $conf.default)}checked='checked'{/if}  {if $conf.reload}onchange=""{/if} />
@@ -149,7 +149,7 @@
                           </div>
                         {/if}
                         <div id="prod_serverform" {if (!$server_values.addserver && $servers) || !$server_fields}style="display: none"{/if}  class="sectionheadblue"> 
-                             <div style="font-size: 14px"><strong>New server</strong>
+                             <div style="font-size: 14px"><strong>新服务器</strong>
                                 {if $servers}<a style="font-size: 14px; font-weight: bold;" onclick="$('#prod_serverform').hide();$('#use_added_servers').show();$('input[name=addserver]').val('0'); return false;" class="editbtn" href="">{$lang.Cancel}</a>{/if}
                             </div>
                              <input name="addserver" value="{if $server_values.addserver || !$servers}1{else}0{/if}" type="hidden" />
@@ -203,7 +203,7 @@
                         <td>
                             <div {if empty($default)}class="active"{/if}  style="padding:4px;">
                                 <input type="radio" name="unchpremade" value="1" id="premadeuse1" {if empty($default)}checked="checked"{/if}  onclick="$('span.active').removeClass('active');$(this).parent().addClass('active');$('#configoptionstable').hide();$('#download_premade').show();"/> 
-                                <label for="premadeuse1">Use premade settings</label>
+                                <label for="premadeuse1">使用预设值</label>
                             </div>
                         </td>
                     </tr>
@@ -211,13 +211,13 @@
                         <td >
                             <div  class="shownice form" style="padding:10px;" >
                                 <div >
-                                    <label>Step 1. <small>Paste <a target="_blank" href="{$download_yml}">config url</a></small></label>
+                                    <label>Step 1. <small>粘贴 <a target="_blank" href="{$download_yml}">配置URL</a></small></label>
                                     <input type="text"  name="premadeurl" style="width:250px;margin:0px 0px 20px 10px;">
                                     <div class="clear"></div>
-                                    <label>Step 2. <small>Submit and verify setup</small></label>
+                                    <label>Step 2. <small>提交并验证设置</small></label>
                                     <div class="left" style="margin:2px 10px">
                                         <span class="bcontainer dhidden" style="">
-                                            <a class="new_control greenbtn" href="#" onclick="return saveProductFull()"><span>Submit config</span></a>
+                                            <a class="new_control greenbtn" href="#" onclick="return saveProductFull()"><span>提交配置</span></a>
                                         </span>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
                         <td colspan="2">
                             <div style="padding:4px;" {if !empty($default)}class="active"{/if}>
                                 <input type="radio" name="unchpremade" value="1" id="premadeuse12" {if !empty($default)}checked="checked"{/if} onclick="$('span.active').removeClass('active');$(this).parent().addClass('active');$('#configoptionstable').show();$('#download_premade').hide();"/> 
-                                <label for="premadeuse12">Manual settings setup</label>
+                                <label for="premadeuse12">手动设置安装</label>
                             </div>
                         </td>
                     </tr>
@@ -246,7 +246,7 @@
                             <div style="margin:20px;">
         {if $loadtemplates}
                                 <a onclick="return loadOStoConfig({if $product_id}{$product_id}{else}{$product.id}{/if})" class="new_control" href="#" id="loadostemplates" {if !$product.ospick}style="display:none"{/if}>
-                                    <span class="dwd">Load OS templates into Form field</span>
+                                    <span class="dwd">加载OS模板到表单字段</span>
                                 </a>
             {if $osconfig_id}
                                 <script type="text/javascript">

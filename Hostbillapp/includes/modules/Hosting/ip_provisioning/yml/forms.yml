@@ -1,0 +1,167 @@
+---
+- 
+  type: select
+  required: 0
+  name: IP v4 Subnet Size
+  key: 
+  variable: ip4size
+  description: 
+  category: 
+  product_id: 383
+  copy_of: 0
+  options: 18
+  config: 
+    conditionals: [ ]
+  sort_order: 1
+  ftype: select
+  premade: true
+  items: 
+    - 
+      id: 
+      category_id: 342
+      name: /32 (1)
+      variable_id: /32
+      sort_order: 0
+    - 
+      id: 4024
+      category_id: 342
+      name: /31 (2)
+      variable_id: /31
+      sort_order: 1
+    - 
+      id: 4025
+      category_id: 342
+      name: /30 (4)
+      variable_id: /30
+      sort_order: 2
+    - 
+      id: 4026
+      category_id: 342
+      name: /29 (8)
+      variable_id: /29
+      sort_order: 3
+    - 
+      id: 4027
+      category_id: 342
+      name: /28 (16)
+      variable_id: /28
+      sort_order: 4
+    - 
+      id: 4028
+      category_id: 342
+      name: /27 (32)
+      variable_id: /27
+      sort_order: 5
+    - 
+      id: 4029
+      category_id: 342
+      name: /26 (64)
+      variable_id: /26
+      sort_order: 6
+    - 
+      id: 4030
+      category_id: 342
+      name: /25 (128)
+      variable_id: /25
+      sort_order: 7
+    - 
+      id: 4031
+      category_id: 342
+      name: /24 (256)
+      variable_id: /24
+      sort_order: 8
+    - 
+      id: 4032
+      category_id: 342
+      name: /23 (512)
+      variable_id: /23
+      sort_order: 9
+    - 
+      id: 4033
+      category_id: 342
+      name: /22 (1024)
+      variable_id: /22
+      sort_order: 10
+- 
+  type: select
+  required: 0
+  name: IP v6 Subnet Size
+  key: 
+  variable: ip6size
+  description: 
+  category: 
+  product_id: 383
+  copy_of: 342
+  options: 18
+  config: 
+    conditionals: [ ]
+  sort_order: 2
+  ftype: select
+  premade: true
+  items: 
+    - 
+      id: 4045
+      category_id: 343
+      name: /128 (1)
+      variable_id: /128
+      sort_order: 0
+    - 
+      id: 4046
+      category_id: 343
+      name: /127 (2)
+      variable_id: /127
+      sort_order: 1
+    - 
+      id: 4047
+      category_id: 343
+      name: /126 (4)
+      variable_id: /126
+      sort_order: 2
+    - 
+      id: 4048
+      category_id: 343
+      name: /125 (8)
+      variable_id: /125
+      sort_order: 3
+    - 
+      id: 4049
+      category_id: 343
+      name: /124 (16)
+      variable_id: /124
+      sort_order: 4
+    - 
+      id: 4050
+      category_id: 343
+      name: /123 (32)
+      variable_id: /123
+      sort_order: 5
+    - 
+      id: 4051
+      category_id: 343
+      name: /122 (64)
+      variable_id: /122
+      sort_order: 6
+    - 
+      id: 4052
+      category_id: 343
+      name: /121 (128)
+      variable_id: /121
+      sort_order: 7
+    - 
+      id: 4053
+      category_id: 343
+      name: /120 (256)
+      variable_id: /120
+      sort_order: 8
+    - 
+      id: 4054
+      category_id: 343
+      name: /119 (512)
+      variable_id: /119
+      sort_order: 9
+    - 
+      id: 4055
+      category_id: 343
+      name: /118 (1024)
+      variable_id: /118
+      sort_order: 10

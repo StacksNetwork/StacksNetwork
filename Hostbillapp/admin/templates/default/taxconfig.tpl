@@ -31,7 +31,7 @@
                                 <li><a href="?cmd=configuration&picked_tab=5&picked_subtab=0"><span>{$lang.maincurrency}</span></a></li>
                                 <li><a href="?cmd=configuration&picked_tab=5&picked_subtab=1"><span>{$lang.addcurrencies}</span></a></li>
                                 <li class="picked"><a href="?cmd=taxconfig"><span>{$lang.taxes}</span></a></li>
-                                <li><a href="?cmd=currencytocountry"><span>Currency to country</span></a></li>
+                                <li><a href="?cmd=currencytocountry"><span>国家货币</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -96,21 +96,21 @@
                                     </tr>
                                     {/if}
                                     <tr  class="rest bordme"  {if !$enabletax}style="display:none"{/if}>
-                                         <td width="205" align="right"><strong>Tax after credit</strong></td>
+                                         <td width="205" align="right"><strong>信用消费税收</strong></td>
                                         <td>
                                             <input type="radio" name="TaxCredited" {if $taxcredited}checked="checked"{/if} value="on" /><strong>{$lang.yes}, </strong> 
-                                            calculate tax only from amount not covered by credit<br />
+                                            仅从支付金额计算纳税不包括信用<br />
                                             <input type="radio" name="TaxCredited" {if !$taxcredited}checked="checked"{/if} value="off" /><strong>{$lang.no}, </strong> 
-                                            calculate tax from net amount
+                                            以净值金额计算纳税
                                         </td>
                                     </tr>
                                     <tr  class="rest bordme"  {if !$enabletax}style="display:none"{/if}>
-                                         <td width="205" align="right"><strong>Calculate Negative tax</strong></td>
+                                         <td width="205" align="right"><strong>计算负值税收</strong></td>
                                         <td>
                                             <input type="radio" name="AllowNegativeTax" {if $AllowNegativeTax}checked="checked"{/if} value="on" /><strong>{$lang.yes}, </strong> 
-                                            calculate tax from items with negative ammount on all invoices<br />
+                                            计算所有负值账单中的税收<br />
                                             <input type="radio" name="AllowNegativeTax" {if !$AllowNegativeTax}checked="checked"{/if} value="off" /><strong>{$lang.no}, </strong> 
-                                            allow negative tax only on Credit note invoices
+                                            允许负值税收仅限于信用消费账单
                                         </td>
                                     </tr>
                                     <tr  class="rest bordme"  {if !$enabletax}style="display:none"{/if}>

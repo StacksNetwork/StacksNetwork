@@ -3,7 +3,7 @@
     <li {if $smarty.foreach.loop.first}class="first"{/if}>
         <div class="actions">
         <a class="menuitm menuf" href="?cmd=geolocation&action=edit&id={$rule.id}" title="edit" onclick="geolocation.copyform(this); return false;" ><span class="editsth"></span></a>
-        <a class="menuitm menul" title="delete" href="?cmd=geolocation&action=dell&id={$rule.id}" onclick="return confirm('您确定需要从您的列表中删除该内容吗?');"><span class="delsth"></span></a>
+        <a class="menuitm menul" title="delete" href="?cmd=geolocation&action=dell&id={$rule.id}" onclick="return confirm('Are you sure you wish to remove this from your list?');"><span class="delsth"></span></a>
         </div>
         <div class="name">
             {$countries[$rule.country]}
@@ -23,15 +23,15 @@
             {else}
                 <input type="hidden" name="gates[]" value="all" />
             {/if}
-            {if $rule.language}<span>语言: <b>{$rule.language.name|capitalize}</b></span>{/if}
-            {if $rule.currency}<span>货币: <b>{$rule.currency.code}</b></span>{/if}
-            {if $rule.gates_count || $rule.gates_count===0}<span>启用接口: <b>{$rule.gates_count}</b></span>{/if}
+            {if $rule.language}<span>Language: <b>{$rule.language.name|capitalize}</b></span>{/if}
+            {if $rule.currency}<span>Currency: <b>{$rule.currency.code}</b></span>{/if}
+            {if $rule.gates_count || $rule.gates_count===0}<span>Enabled gateways: <b>{$rule.gates_count}</b></span>{/if}
         </div>
         <div class="clear"></div>
         <div class="edit"></div>
     </li>
     {foreachelse}
-        <li>您的列表目前是空的</li>
+        <li>Your list is currently empty</li>
     {/foreach}
     <script type="text/javascript">
         geolocation.descr();

@@ -15,8 +15,8 @@
                         </option>
                     {/foreach}
                 </select>
-                {if $countinactive}<div class="fs11 tabb" >Note: There are <b>{$countinactive}</b> inactive order types, you can enable them by activating related
-                        <a href="?cmd=managemodules&action=hosting" target="_blank">hosting modules</a>
+                {if $countinactive}<div class="fs11 tabb" >注意: 这是 <b>{$countinactive}</b> 非活动状态类型的订单, 您可以通过相关操作激活它们
+                        <a href="?cmd=managemodules&action=hosting" target="_blank">主机模块</a>
                     </div>
                 {/if}
             </div>
@@ -51,12 +51,12 @@
     {if "config:EnableQuote:on"|checkcondition }
     <tr>
         <td width="160" align="right" valign="top" style="padding-top:12px;">
-            <strong>Order handler</strong>
+            <strong>订单句柄</strong>
         </td>
         <td valign="top">
             <select name="options[order_handler]" class="inp" >
-                <option value="0">Regular order (default)</option>
-                <option {if "config:EnabledQuote:`$category.id`"|checkcondition}selected="selected"{/if} value="2">Generate draft (hide prices)</option>
+                <option value="0">正常秩序 (默认)</option>
+                <option {if "config:EnabledQuote:`$category.id`"|checkcondition}selected="selected"{/if} value="2">生成草稿 (隐藏价格)</option>
             </select>
         </td>
     </tr>
@@ -66,8 +66,8 @@
             <strong>{$lang.ordertemplate}</strong>
         </td>
         <td valign="top" style="padding-top:10px;font-size:13px">
-            <div class="shownice" style="padding:10px 0px;margin-bottom:5px"> <b> To buy latest templates visit: <a class="external" target="_blank" href="https://hostbillapp.com/apps/" >Here</a> </b></div>
-                Or choose existing: 
+            <div class="shownice" style="padding:10px 0px;margin-bottom:5px"> <b> 采购最新模板访问: <a class="external" target="_blank" href="https://hostbillapp.com/apps/" >这里</a> </b></div>
+                或者选择现有模板: 
             <div id="wiz_options">
                 
                 <ul class="opage-list">
@@ -165,7 +165,7 @@
 
                                      <td ><input type="text" name="custom[{$k}]" value="{$server_values.custom.$k}" class="inp"/></td>
                             {elseif $conf.type=='password'}
-                                   <td ><input type="password" name="custom[{$k}]" value="{$server_values.custom.$k}"  class="inp"/></td>
+                                   <td ><input type="password" autocomplete="off" name="custom[{$k}]" value="{$server_values.custom.$k}"  class="inp"/></td>
                               {elseif $conf.type=='textarea'}
                                  <td >
  <span style="vertical-align:top"><textarea name="custom[{$k}]" rows="5" cols="60" style="margin:0px" >{$server_values.custom.$k}</textarea></span></td>
@@ -447,7 +447,7 @@
                     <tr>
                         <th width="30"></th>
                         <th width="100"><a class="editbtn" href="?cmd=services&action=product&id=new&cat_id={$category.id}">{$lang.addnewproduct}</a></th>
-                        <th ><a class="editbtn" href="?cmd=services&action=updateprices&cat_id={$category.id}">Bulk price update</a></th>
+                        <th ><a class="editbtn" href="?cmd=services&action=updateprices&cat_id={$category.id}">批量价格更新</a></th>
                     </tr>
                 </tbody>
             </table>
@@ -844,7 +844,7 @@
                                                 {/if}
                                             </option>
                                         {/foreach}
-                                    </select> {if $countinactive}<div class="fs11 tabb" >Note: There are <b>{$countinactive}</b> inactive order types, you can enable them by activating related <a href="?cmd=managemodules&action=hosting" target="_blank">hosting modules</a> </div>{/if}
+                                    </select> {if $countinactive}<div class="fs11 tabb" >注意: 这是 <b>{$countinactive}</b> 非活动状态类型的订单, 您可以通过激活相关的 <a href="?cmd=managemodules&action=hosting" target="_blank">主机模块</a> 启用它们</div>{/if}
                                 </div>
                                 <div id="wiz_options"></div>
                             </td>
@@ -1027,10 +1027,10 @@
         <div class="list-1">
             <ul>
                 <li class="active picked">
-                    <a href="#"><span class="ico money">Increase/reduce price</span></a>
+                    <a href="#"><span class="ico money">提高/降低价格</span></a>
                 </li>
                 <li class="last">
-                    <a href="#"><span class="ico plug">Set new prices</span></a>
+                    <a href="#"><span class="ico plug">设置新价格</span></a>
                 </li>
             </ul>
         </div>
@@ -1074,34 +1074,34 @@
             <table width="100%" cellspacing="0" cellpadding="6">
                 <tbody class="section">
                     <tr>
-                        <td width="60" align="right"><strong>Type</strong></td>
+                        <td width="60" align="right"><strong>类型</strong></td>
                         <td>
                             <select class="inp" name="multip">
-                                <option value="1">Increase</option>
-                                <option value="-1">Decrease</option>
+                                <option value="1">涨价</option>
+                                <option value="-1">降价</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td align="right"><strong>Amount</strong></td>
+                        <td align="right"><strong>金额</strong></td>
                         <td>
                             <input class="inp" type="text" size="5" name="amount"/> 
                             <select class="inp" name="type">
-                                <option value="1">Fixed</option>
-                                <option value="2">Percent</option>
+                                <option value="1">整数</option>
+                                <option value="2">百分比</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
-                        <td align="right">Apply to:</td>
+                        <td align="right">分配给:</td>
                         <td>
                             {if in_array('DomainRegular', $supported_billingmodels) }
-                                <label><input type="checkbox" name="include[]" checked="checked" value="register"/> Register</label>
-                                <label><input type="checkbox" name="include[]" checked="checked" value="transfer"/> Transfer</label>
-                                <label><input type="checkbox" name="include[]" checked="checked" value="renew"/> Renew</label>
+                                <label><input type="checkbox" name="include[]" checked="checked" value="register"/> 注册人</label>
+                                <label><input type="checkbox" name="include[]" checked="checked" value="transfer"/> 转入</label>
+                                <label><input type="checkbox" name="include[]" checked="checked" value="renew"/> 续费</label>
                             {else}
-                                <label><input type="checkbox" name="include[]" checked="checked" value="recurring"/> Recurring</label>
-                                <label><input type="checkbox" name="include[]" checked="checked" value="setup"/> Setup</label>
+                                <label><input type="checkbox" name="include[]" checked="checked" value="recurring"/> 周期</label>
+                                <label><input type="checkbox" name="include[]" checked="checked" value="setup"/> 设置</label>
                             {/if}
                         </td>
                     </tr>
@@ -1132,14 +1132,14 @@
                         <td align="right"></td>
                         <td>
                             <input type="checkbox" name="accountupdate" value="1"/> 
-                            Update recurring prices of related domains/accounts
+                            更新相关域名/账户的重复价格
                         </td>
                     </tr>
                 </tbody>
             </table>
              <div style="padding: 6px;">
                  <a class="new_dsave new_menu" href="#" onclick="return updatePrices();"  >
-                     <span>Update price</span>
+                     <span>更新价格</span>
                  </a>
                  <div class="clear"></div>
              </div>

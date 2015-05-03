@@ -260,7 +260,7 @@
         <div class="blank_services">
             <div class="blank_info" style="padding: 10px;">
                 <h1>付费工单 / 时间追踪</h1>
-                您没有任何的支持率尚未确定, 您将需要创建至少一个之前, 你将能够创建支持法案.
+                您没有任何的支持率尚未确定, 您将需要创建至少一个之前, 你将能够创建支持方案.
                 <div class="clear"></div>
                 {if !$forbidAccess.editSupportRates }
                 <a style="margin-top:10px" href="?cmd={$cmd}" class="new_add new_menu" onclick="track.newRate(); return false;">

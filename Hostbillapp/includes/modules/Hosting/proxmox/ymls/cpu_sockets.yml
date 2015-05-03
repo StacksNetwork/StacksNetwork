@@ -1,0 +1,17 @@
+type: slider
+name: CPU Sockets
+key: cf_cpu
+variable: cpu_sockets
+description:
+category: server
+options: 50
+config:
+  minvalue: 1
+  maxvalue: 10
+  step: 1
+  initialval: 1
+items:
+  -
+    name:
+    m: 1.00
+    pricing: 1

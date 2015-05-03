@@ -321,7 +321,7 @@
                 <td >{*
                     <label><input type="radio" {if !$reply.note}checked="checked"{/if} name="note" value="0" /> <b>回复</b></label><br />
                     <label><input type="radio" {if $reply.note}checked="checked"{/if} name="note" value="1" /> <b>备注</b></label>
-                    *}<b>回复</b>:
+                    *}<b>Reply</b>:
                 </td>
                 <td>
                     <textarea style="width:99%" rows="12"  name="reply">{$reply.reply}</textarea>
@@ -354,7 +354,7 @@
                         <select name="owner" class="inp">
                             <option value="">{$lang.nochange}</option>
                             {foreach from=$staff_members item=stfmbr}
-                                <option {if $reply.owner == $stfmbr.id}selected="selected"{/if} value="{$stfmbr.id}">{$stfmbr.firstname} {$stfmbr.lastname}</option>
+                                <option {if $reply.owner == $stfmbr.id}selected="selected"{/if} value="{$stfmbr.id}">{$stfmbr.lastname} {$stfmbr.firstname}</option>
                             {/foreach}
                         </select>
                     </label>
@@ -385,7 +385,7 @@
                         {/foreach}
                     </div>
 
-                    <div class="clear" style="padding-top:10px;">移除标签</div>
+                    <div class="clear" style="padding-top:10px;">删除标签</div>
                     <div id="tagsInput2" class="left ticketsTags" style="position:relative; width:400px;line-height: 14px; padding: 3px 0 0 5px; border: 1px solid #ddd; background: #fff; margin-right: 3px; overflow: visible">
                         {foreach from=$reply.tags_rem item=tag}
                             <span class="tag"><a>{$tag}</a> |<a class="cls">x</a></span>
@@ -408,7 +408,7 @@
                     <strong>通知</strong>
                 </td>
                 <td>
-                    <input type="checkbox" name="notify" value="1" {if $reply.notify}checked="checked"{/if}> 回复工单时发送电子邮件通知
+                    <input type="checkbox" name="notify" value="1" {if $reply.notify}checked="checked"{/if}> 相关的工单回复发送电子邮件通知
                 </td>
             </tr>
 
@@ -544,7 +544,7 @@
                             </li>
                         {/foreach}
                     {else}
-                        <li><div style="float:none; text-align: center">您的列表是空的</div></li>
+                        <li><div style="float:none; text-align: center">您的列表目前为空</div></li>
                     {/if}
                 </ul>
                 <br />

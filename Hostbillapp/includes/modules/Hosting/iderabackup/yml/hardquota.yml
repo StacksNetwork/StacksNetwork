@@ -1,0 +1,17 @@
+type: slider
+name: 'Quota [GB]'
+key: cf_hdd
+variable: hardquota
+description:
+category: server
+options: 50
+config:
+  minvalue: 5
+  maxvalue: 500
+  step: 5
+  initialval: 20
+items:
+  -
+    name:
+    m: 0.40
+    pricing: 1

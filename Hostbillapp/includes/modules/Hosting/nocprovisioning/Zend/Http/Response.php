@@ -1,220 +1,664 @@
-<?php //00863
-//  HostBill - Client Management, Billing & Support System for WebHosts
-//  Copyright (c) 2010-2015 KBKP Software S.C. All Rights Reserved.
-//  Version 2015-03-21
-//  2015-03-21
-// 
-//  This software is furnished under a license and may be used and copied
-//  only  in  accordance  with  the  terms  of such  license and with the
-//  inclusion of the above copyright notice.  This software  or any other
-//  copies thereof may not be provided or otherwise made available to any
-//  other person.  No title to and  ownership of the  software is  hereby
-//  transferred.
-// 
-//  You may not reverse  engineer, decompile, defeat  license  encryption
-//  mechanisms, or  disassemble this software product or software product
-//  license.  HostBill  may terminate this license if you don't comply with any
-//  of the terms and conditions set forth in our end user  license agreement
-//  (EULA).  In such event,  licensee  agrees to return licensor  or destroy
-//  all copies of software  upon termination of the  license.
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the website operator. If you are the website operator please use the <a href="http://www.ioncube.com/lw/">ionCube Loader Wizard</a> to assist with installation.');exit(199);
-?>
-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
+<?php
+
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Http
+ * @subpackage Response
+ * @version    $Id: Response.php 17124 2009-07-26 09:46:42Z shahar $
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+
+/**
+ * Zend_Http_Response represents an HTTP 1.0 / 1.1 response message. It
+ * includes easy access to all the response's different elemts, as well as some
+ * convenience methods for parsing and validating HTTP responses.
+ *
+ * @package    Zend_Http
+ * @subpackage Response
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Http_Response
+{
+    /**
+     * List of all known HTTP response codes - used by responseCodeAsText() to
+     * translate numeric codes to messages.
+     *
+     * @var array
+     */
+    protected static $messages = array(
+        // Informational 1xx
+        100 => 'Continue',
+        101 => 'Switching Protocols',
+
+        // Success 2xx
+        200 => 'OK',
+        201 => 'Created',
+        202 => 'Accepted',
+        203 => 'Non-Authoritative Information',
+        204 => 'No Content',
+        205 => 'Reset Content',
+        206 => 'Partial Content',
+
+        // Redirection 3xx
+        300 => 'Multiple Choices',
+        301 => 'Moved Permanently',
+        302 => 'Found',  // 1.1
+        303 => 'See Other',
+        304 => 'Not Modified',
+        305 => 'Use Proxy',
+        // 306 is deprecated but reserved
+        307 => 'Temporary Redirect',
+
+        // Client Error 4xx
+        400 => 'Bad Request',
+        401 => 'Unauthorized',
+        402 => 'Payment Required',
+        403 => 'Forbidden',
+        404 => 'Not Found',
+        405 => 'Method Not Allowed',
+        406 => 'Not Acceptable',
+        407 => 'Proxy Authentication Required',
+        408 => 'Request Timeout',
+        409 => 'Conflict',
+        410 => 'Gone',
+        411 => 'Length Required',
+        412 => 'Precondition Failed',
+        413 => 'Request Entity Too Large',
+        414 => 'Request-URI Too Long',
+        415 => 'Unsupported Media Type',
+        416 => 'Requested Range Not Satisfiable',
+        417 => 'Expectation Failed',
+
+        // Server Error 5xx
+        500 => 'Internal Server Error',
+        501 => 'Not Implemented',
+        502 => 'Bad Gateway',
+        503 => 'Service Unavailable',
+        504 => 'Gateway Timeout',
+        505 => 'HTTP Version Not Supported',
+        509 => 'Bandwidth Limit Exceeded'
+    );
+
+    /**
+     * The HTTP version (1.0, 1.1)
+     *
+     * @var string
+     */
+    protected $version;
+
+    /**
+     * The HTTP response code
+     *
+     * @var int
+     */
+    protected $code;
+
+    /**
+     * The HTTP response code as string
+     * (e.g. 'Not Found' for 404 or 'Internal Server Error' for 500)
+     *
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * The HTTP response headers array
+     *
+     * @var array
+     */
+    protected $headers = array();
+
+    /**
+     * The HTTP response body
+     *
+     * @var string
+     */
+    protected $body;
+
+    /**
+     * HTTP response constructor
+     *
+     * In most cases, you would use Zend_Http_Response::fromString to parse an HTTP
+     * response string and create a new Zend_Http_Response object.
+     *
+     * NOTE: The constructor no longer accepts nulls or empty values for the code and
+     * headers and will throw an exception if the passed values do not form a valid HTTP
+     * responses.
+     *
+     * If no message is passed, the message will be guessed according to the response code.
+     *
+     * @param int $code Response code (200, 404, ...)
+     * @param array $headers Headers array
+     * @param string $body Response body
+     * @param string $version HTTP version
+     * @param string $message Response code as text
+     * @throws Zend_Http_Exception
+     */
+    public function __construct($code, $headers, $body = null, $version = '1.1', $message = null)
+    {
+        // Make sure the response code is valid and set it
+        if (self::responseCodeAsText($code) === null) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception("{$code} is not a valid HTTP response code");
+        }
+
+        $this->code = $code;
+
+        // Make sure we got valid headers and set them
+        if (! is_array($headers)) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception('No valid headers were passed');
+    }
+
+        foreach ($headers as $name => $value) {
+            if (is_int($name))
+                list($name, $value) = explode(": ", $value, 1);
+
+            $this->headers[ucwords(strtolower($name))] = $value;
+        }
+
+        // Set the body
+        $this->body = $body;
+
+        // Set the HTTP version
+        if (! preg_match('|^\d\.\d$|', $version)) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception("Invalid HTTP response version: $version");
+        }
+
+        $this->version = $version;
+
+        // If we got the response message, set it. Else, set it according to
+        // the response code
+        if (is_string($message)) {
+            $this->message = $message;
+        } else {
+            $this->message = self::responseCodeAsText($code);
+        }
+    }
+
+    /**
+     * Check whether the response is an error
+     *
+     * @return boolean
+     */
+    public function isError()
+    {
+        $restype = floor($this->code / 100);
+        if ($restype == 4 || $restype == 5) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check whether the response in successful
+     *
+     * @return boolean
+     */
+    public function isSuccessful()
+    {
+        $restype = floor($this->code / 100);
+        if ($restype == 2 || $restype == 1) { // Shouldn't 3xx count as success as well ???
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Check whether the response is a redirection
+     *
+     * @return boolean
+     */
+    public function isRedirect()
+    {
+        $restype = floor($this->code / 100);
+        if ($restype == 3) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Get the response body as string
+     *
+     * This method returns the body of the HTTP response (the content), as it
+     * should be in it's readable version - that is, after decoding it (if it
+     * was decoded), deflating it (if it was gzip compressed), etc.
+     *
+     * If you want to get the raw body (as transfered on wire) use
+     * $this->getRawBody() instead.
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        $body = '';
+
+        // Decode the body if it was transfer-encoded
+        switch (strtolower($this->getHeader('transfer-encoding'))) {
+
+            // Handle chunked body
+            case 'chunked':
+                $body = self::decodeChunkedBody($this->body);
+                break;
+
+            // No transfer encoding, or unknown encoding extension:
+            // return body as is
+            default:
+                $body = $this->body;
+                break;
+        }
+
+        // Decode any content-encoding (gzip or deflate) if needed
+        switch (strtolower($this->getHeader('content-encoding'))) {
+
+            // Handle gzip encoding
+            case 'gzip':
+                $body = self::decodeGzip($body);
+                break;
+
+            // Handle deflate encoding
+            case 'deflate':
+                $body = self::decodeDeflate($body);
+                break;
+
+            default:
+                break;
+        }
+
+        return $body;
+    }
+
+    /**
+     * Get the raw response body (as transfered "on wire") as string
+     *
+     * If the body is encoded (with Transfer-Encoding, not content-encoding -
+     * IE "chunked" body), gzip compressed, etc. it will not be decoded.
+     *
+     * @return string
+     */
+    public function getRawBody()
+    {
+        return $this->body;
+    }
+
+    /**
+     * Get the HTTP version of the response
+     *
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * Get the HTTP response status code
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->code;
+    }
+
+    /**
+     * Return a message describing the HTTP response code
+     * (Eg. "OK", "Not Found", "Moved Permanently")
+     *
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * Get the response headers
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    /**
+     * Get a specific header as string, or null if it is not set
+     *
+     * @param string$header
+     * @return string|array|null
+     */
+    public function getHeader($header)
+    {
+        $header = ucwords(strtolower($header));
+        if (! is_string($header) || ! isset($this->headers[$header])) return null;
+
+        return $this->headers[$header];
+    }
+
+    /**
+     * Get all headers as string
+     *
+     * @param boolean $status_line Whether to return the first status line (IE "HTTP 200 OK")
+     * @param string $br Line breaks (eg. "\n", "\r\n", "<br />")
+     * @return string
+     */
+    public function getHeadersAsString($status_line = true, $br = "\n")
+    {
+        $str = '';
+
+        if ($status_line) {
+            $str = "HTTP/{$this->version} {$this->code} {$this->message}{$br}";
+        }
+
+        // Iterate over the headers and stringify them
+        foreach ($this->headers as $name => $value)
+        {
+            if (is_string($value))
+                $str .= "{$name}: {$value}{$br}";
+
+            elseif (is_array($value)) {
+                foreach ($value as $subval) {
+                    $str .= "{$name}: {$subval}{$br}";
+                }
+            }
+        }
+
+        return $str;
+    }
+
+    /**
+     * Get the entire response as string
+     *
+     * @param string $br Line breaks (eg. "\n", "\r\n", "<br />")
+     * @return string
+     */
+    public function asString($br = "\n")
+    {
+        return $this->getHeadersAsString(true, $br) . $br . $this->getRawBody();
+    }
+
+    /**
+     * Implements magic __toString()
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->asString();
+    }
+
+    /**
+     * A convenience function that returns a text representation of
+     * HTTP response codes. Returns 'Unknown' for unknown codes.
+     * Returns array of all codes, if $code is not specified.
+     *
+     * Conforms to HTTP/1.1 as defined in RFC 2616 (except for 'Unknown')
+     * See http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10 for reference
+     *
+     * @param int $code HTTP response code
+     * @param boolean $http11 Use HTTP version 1.1
+     * @return string
+     */
+    public static function responseCodeAsText($code = null, $http11 = true)
+    {
+        $messages = self::$messages;
+        if (! $http11) $messages[302] = 'Moved Temporarily';
+
+        if ($code === null) {
+            return $messages;
+        } elseif (isset($messages[$code])) {
+            return $messages[$code];
+        } else {
+            return 'Unknown';
+        }
+    }
+
+    /**
+     * Extract the response code from a response string
+     *
+     * @param string $response_str
+     * @return int
+     */
+    public static function extractCode($response_str)
+    {
+        preg_match("|^HTTP/[\d\.x]+ (\d+)|", $response_str, $m);
+
+        if (isset($m[1])) {
+            return (int) $m[1];
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Extract the HTTP message from a response
+     *
+     * @param string $response_str
+     * @return string
+     */
+    public static function extractMessage($response_str)
+    {
+        preg_match("|^HTTP/[\d\.x]+ \d+ ([^\r\n]+)|", $response_str, $m);
+
+        if (isset($m[1])) {
+            return $m[1];
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Extract the HTTP version from a response
+     *
+     * @param string $response_str
+     * @return string
+     */
+    public static function extractVersion($response_str)
+    {
+        preg_match("|^HTTP/([\d\.x]+) \d+|", $response_str, $m);
+
+        if (isset($m[1])) {
+            return $m[1];
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Extract the headers from a response string
+     *
+     * @param string $response_str
+     * @return array
+     */
+    public static function extractHeaders($response_str)
+    {
+        $headers = array();
+
+        // First, split body and headers
+        $parts = preg_split('|(?:\r?\n){2}|m', $response_str, 2);
+        if (! $parts[0]) return $headers;
+
+        // Split headers part to lines
+        $lines = explode("\n", $parts[0]);
+        unset($parts);
+        $last_header = null;
+
+        foreach($lines as $line) {
+            $line = trim($line, "\r\n");
+            if ($line == "") break;
+
+            if (preg_match("|^([\w-]+):\s+(.+)|", $line, $m)) {
+                unset($last_header);
+                $h_name = strtolower($m[1]);
+                $h_value = $m[2];
+
+                if (isset($headers[$h_name])) {
+                    if (! is_array($headers[$h_name])) {
+                        $headers[$h_name] = array($headers[$h_name]);
+                    }
+
+                    $headers[$h_name][] = $h_value;
+                } else {
+                    $headers[$h_name] = $h_value;
+                }
+                $last_header = $h_name;
+            } elseif (preg_match("|^\s+(.+)$|", $line, $m) && $last_header !== null) {
+                if (is_array($headers[$last_header])) {
+                    end($headers[$last_header]);
+                    $last_header_key = key($headers[$last_header]);
+                    $headers[$last_header][$last_header_key] .= $m[1];
+                } else {
+                    $headers[$last_header] .= $m[1];
+                }
+            }
+        }
+
+        return $headers;
+    }
+
+    /**
+     * Extract the body from a response string
+     *
+     * @param string $response_str
+     * @return string
+     */
+    public static function extractBody($response_str)
+    {
+        $parts = preg_split('|(?:\r?\n){2}|m', $response_str, 2);
+        if (isset($parts[1])) {
+            return $parts[1];
+        }
+        return '';
+    }
+
+    /**
+     * Decode a "chunked" transfer-encoded body and return the decoded text
+     *
+     * @param string $body
+     * @return string
+     */
+    public static function decodeChunkedBody($body)
+    {
+        $decBody = '';
+
+        // If mbstring overloads substr and strlen functions, we have to
+        // override it's internal encoding
+        if (function_exists('mb_internal_encoding') &&
+           ((int) ini_get('mbstring.func_overload')) & 2) {
+
+            $mbIntEnc = mb_internal_encoding();
+            mb_internal_encoding('ASCII');
+        }
+
+        while (trim($body)) {
+            if (! preg_match("/^([\da-fA-F]+)[^\r\n]*\r\n/sm", $body, $m)) {
+                require_once 'Zend/Http/Exception.php';
+                throw new Zend_Http_Exception("Error parsing body - doesn't seem to be a chunked message");
+            }
+
+            $length = hexdec(trim($m[1]));
+            $cut = strlen($m[0]);
+            $decBody .= substr($body, $cut, $length);
+            $body = substr($body, $cut + $length + 2);
+        }
+
+        if (isset($mbIntEnc)) {
+            mb_internal_encoding($mbIntEnc);
+        }
+
+        return $decBody;
+    }
+
+    /**
+     * Decode a gzip encoded message (when Content-encoding = gzip)
+     *
+     * Currently requires PHP with zlib support
+     *
+     * @param string $body
+     * @return string
+     */
+    public static function decodeGzip($body)
+    {
+        if (! function_exists('gzinflate')) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception(
+                'zlib extension is required in order to decode "gzip" encoding'
+            );
+        }
+
+        return gzinflate(substr($body, 10));
+    }
+
+    /**
+     * Decode a zlib deflated message (when Content-encoding = deflate)
+     *
+     * Currently requires PHP with zlib support
+     *
+     * @param string $body
+     * @return string
+     */
+    public static function decodeDeflate($body)
+    {
+        if (! function_exists('gzuncompress')) {
+            require_once 'Zend/Http/Exception.php';
+            throw new Zend_Http_Exception(
+                'zlib extension is required in order to decode "deflate" encoding'
+            );
+        }
+
+        /**
+         * Some servers (IIS ?) send a broken deflate response, without the
+         * RFC-required zlib header.
+         *
+         * We try to detect the zlib header, and if it does not exsit we
+         * teat the body is plain DEFLATE content.
+         *
+         * This method was adapted from PEAR HTTP_Request2 by (c) Alexey Borzov
+         *
+         * @link http://framework.zend.com/issues/browse/ZF-6040
+         */
+        $zlibHeader = unpack('n', substr($body, 0, 2));
+        if ($zlibHeader[1] % 31 == 0) {
+            return gzuncompress($body);
+        } else {
+            return gzinflate($body);
+        }
+    }
+
+    /**
+     * Create a new Zend_Http_Response object from a string
+     *
+     * @param string $response_str
+     * @return Zend_Http_Response
+     */
+    public static function fromString($response_str)
+    {
+        $code    = self::extractCode($response_str);
+        $headers = self::extractHeaders($response_str);
+        $body    = self::extractBody($response_str);
+        $version = self::extractVersion($response_str);
+        $message = self::extractMessage($response_str);
+
+        return new Zend_Http_Response($code, $headers, $body, $version, $message);
+    }
+}

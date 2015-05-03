@@ -66,66 +66,66 @@
 <table width="100%" cellspacing="0" cellpadding="0" border="0">
 <tr>
 	<td id="s_menu">
-		<div id="initial-desc"><strong>{if $lang.Name}{$lang.Name}{else}Name{/if}</strong>
-			<br><small>This field lets you specify a name for your new language. {if $boxtype == 'import'}If left empty, file name will be used.{/if}</small>
+		<div id="initial-desc"><strong>{if $lang.Name}{$lang.Name}{else}名称{/if}</strong>
+			<br><small>该字段为您的新的语言指定一个名称. {if $boxtype == 'import'}如果留空, 将使用文件名替代.{/if}</small>
 		</div><br>
-		<div id="initial-desc"><strong>{if $lang.lang_icon}{$lang.lang_target}{else}Language icon{/if}</strong>
-			<br><small>Icon that will be displayed in client aera next to your language. 
-				If you want to upload an icon use 16x11 pixel gif image.</small>
+		<div id="initial-desc"><strong>{if $lang.lang_icon}{$lang.lang_target}{else}语言图标{/if}</strong>
+			<br><small>图标将会显示在您设置语言的菜单边上. 
+				如果您需要上传图标请使用 16x11 像素的Gif文件.</small>
 		</div><br>
-		<div id="initial-desc"><strong>{if $lang.lang_target}{$lang.lang_target}{else}Target{/if}</strong>
-			<br><small>Target option specifies for whom you wish to add new language, as HostBill uses two kinds of translations, one dedicated for user sections, and another only for admin area.</small>
+		<div id="initial-desc"><strong>{if $lang.lang_target}{$lang.lang_target}{else}目标{/if}</strong>
+			<br><small>目标选项指定您要为其添加新的语言, 系统使用两种类型的翻译, 一种用于前台用户区域, 另一种仅用于后台管理区域.</small>
 		</div><br>
 		{if $boxtype == 'import'}
-		<div id="initial-desc"><strong>{if $lang.lang_copyfrom}{$lang.lang_copyfrom}{else}Copy from language{/if}</strong>
+		<div id="initial-desc"><strong>{if $lang.lang_copyfrom}{$lang.lang_copyfrom}{else}从语言包复制{/if}</strong>
 			<br><small>When importing new language, HostBill will copy all translation lines from this selected language to your new language, and will update it with translations from your file.</small></div>
 		{else}
-		<div id="initial-desc"><strong>{if $lang.lang_copyfrom}{$lang.lang_copyfrom}{else}Copy from language{/if}</strong>
+		<div id="initial-desc"><strong>{if $lang.lang_copyfrom}{$lang.lang_copyfrom}{else}从语言包复制{/if}</strong>
 			<br><small>When creating new language, HostBill will copy all translation lines from this selected language to your new language.</small></div>
 		{/if}
 	</td>
 	<td class="conv_content faceform">
 {if $boxtype == 'addlang'}
 		<h3 style="margin-bottom:0px;">
-		{if $lang.lang_newlang}{$lang.lang_newlang}{else}New language{/if}
+		{if $lang.lang_newlang}{$lang.lang_newlang}{else}新的语种{/if}
 		</h3>
 		<fieldset>
-			<legend>{if $lang.lang_name}{$lang.lang_name}{else}Language name{/if}</legend>
+			<legend>{if $lang.lang_name}{$lang.lang_name}{else}语种名称{/if}</legend>
 			<label>{if $lang.Name}{$lang.Name}{else}Name{/if}</label> <input type="text" name="name">
 		</fieldset>
 {elseif $boxtype == 'import'}
 		<h3 style="margin-bottom:0px;" >
-		{if $lang.lang_import}{$lang.lang_import}{else}Import language{/if}
+		{if $lang.lang_import}{$lang.lang_import}{else}导入语言包{/if}
 		</h3>
 		<div class="clear"></div>
 		<fieldset>
 			<legend>{if $lang.lang_importselect}{$lang.lang_importselect}{else}Select file to import{/if}</legend>
-			<label>{if $lang.lang_filename}{$lang.lang_filename}{else}File{/if}</label> <input type="file" name="langfile" size ="28">
+			<label>{if $lang.lang_filename}{$lang.lang_filename}{else}文件{/if}</label> <input type="file" name="langfile" size ="28">
 			<div class="clear"></div>
-			<label>{if $lang.Name}{$lang.Name}{else}Name{/if}</label> <input type="text" name="name">
+			<label>{if $lang.Name}{$lang.Name}{else}名称{/if}</label> <input type="text" name="name">
 			<div class="clear"></div>
 		</fieldset>
 {/if}
 		<fieldset>
-			<legend>{if $lang.lang_icon}{$lang.lang_icon}{else}Language Icon{/if}</legend>
+			<legend>{if $lang.lang_icon}{$lang.lang_icon}{else}语言图标{/if}</legend>
 			<div class="clear"></div>
-			<label>{if $lang.lang_iconfile}{$lang.lang_iconfile}{else}Icon file{/if}</label>
+			<label>{if $lang.lang_iconfile}{$lang.lang_iconfile}{else}图标名称{/if}</label>
 			<input type="file" name="iconfile" size ="28">
 
 			<div class="clear"></div>
 		</fieldset>
 		<fieldset>
-			<legend>{if $lang.lang_target}{$lang.lang_target}{else}Target{/if}</legend>
+			<legend>{if $lang.lang_target}{$lang.lang_target}{else}目标{/if}</legend>
 				<div class="radio">
-				<input type="radio" value="user" name="target"><label>User</label>
-				<input type="radio" value="admin" name="target"><label>Admin</label>
+				<input type="radio" value="user" name="target"><label>用户</label>
+				<input type="radio" value="admin" name="target"><label>管理员</label>
 				</div>
 		</fieldset>
 		<fieldset>
-			<legend>{if $lang.lang_copyfrom}{$lang.lang_copyfrom}{else}Copy from language{/if}</legend>
+			<legend>{if $lang.lang_copyfrom}{$lang.lang_copyfrom}{else}从语言包复制{/if}</legend>
 			<label>{if $lang.Language}{$lang.Language}{else}Language{/if}</label> <select name="parent">
-			{if $language_count.admin == 0}<option class="otype_admin" value="0">{if $lang.none}{$lang.none}{else}none{/if}</option>{/if}
-			{if $language_count.user == 0}<option class="otype_user" value="0">{if $lang.none}{$lang.none}{else}none{/if}</option>{/if}
+			{if $language_count.admin == 0}<option class="otype_admin" value="0">{if $lang.none}{$lang.none}{else}无{/if}</option>{/if}
+			{if $language_count.user == 0}<option class="otype_user" value="0">{if $lang.none}{$lang.none}{else}无{/if}</option>{/if}
 			{foreach from=$languagelist item=language} 
 				<option class="otype_{$language.target}" value="{$language.id}">{$language.name|capitalize}</option>
 			{/foreach} 
@@ -141,13 +141,13 @@
 		<div class="right">
 			<span class="bcontainer ">
 				<a class="new_control greenbtn" onclick="$('.spinner').show();$('#saveform').submit();return false;" href="#">
-					<span>{if $lang.savechanges}{$lang.savechanges}{else}Save changes{/if}</span>
+					<span>{if $lang.savechanges}{$lang.savechanges}{else}保存更改{/if}</span>
 				</a>
 			</span>
 		<span>&nbsp;</span>
 		<span class="bcontainer">
 			<a class="submiter menuitm" onclick="$(document).trigger('close.facebox');return false;" href="#">
-				<span>{if $lang.Close}{$lang.Close}{else}Close{/if}</span>
+				<span>{if $lang.Close}{$lang.Close}{else}关闭{/if}</span>
 			</a>
 		</span>
 	</div>
@@ -166,7 +166,7 @@
 			<li class="clear" onclick="go2page('{$tr.section}','{$tr.keyword}'); $('#search_prop').fadeOut('fast');" ><div class="left overflow">{$tr.keyword|truncate:16:".."} <span>{$tr.value|truncate:$tr.lenght:"..":true|regex_replace:"/[><]/":""}</span> </div><div title="{$lang.section}" class="right">in <b>{$tr.section}</b></div></li>
 		{/foreach}
 	{else}
-		<li class="clear"><div class="left"><span>{if $lang.lang_search_no}{$lang.lang_search_no}{else}Sorry, nothing was found.{/if}</span></li>
+		<li class="clear"><div class="left"><span>{if $lang.lang_search_no}{$lang.lang_search_no}{else}抱歉, 未找到结果.{/if}</span></li>
 	{/if}
 {/if}
 {* ----------------------
@@ -288,11 +288,11 @@
 		Globl.pagination = 'on';
         Globl.filtr = 0;
 		Globl.newi = 1;;
-        Globl.confirmline = '{/literal}{if $lang.lang_confirmtrans}{$lang.lang_confirmtrans}{else}Are you sure you want to delete those selected translations{/if}{literal}';
-        Globl.confirmline2 = '{/literal}{if $lang.lang_confirmpagination}{$lang.lang_confirmpagination}{else}Turning this option On may slow your browser, continue?{/if}{literal}';
-        Globl.off = '{/literal}{if $lang.Off}{$lang.Off}{else}Off{/if}{literal}';
-        Globl.on = '{/literal}{if $lang.On}{$lang.On}{else}On{/if}{literal}';
-        Globl.cancel = '{/literal}{if $lang.Cancel}{$lang.Cancel}{else}Cancel{/if}{literal}';
+        Globl.confirmline = '{/literal}{if $lang.lang_confirmtrans}{$lang.lang_confirmtrans}{else}您确定要删除这些选中的翻译内容吗{/if}{literal}';
+        Globl.confirmline2 = '{/literal}{if $lang.lang_confirmpagination}{$lang.lang_confirmpagination}{else}打开这个选项可能会减慢您的浏览器速度, 是否继续?{/if}{literal}';
+        Globl.off = '{/literal}{if $lang.Off}{$lang.Off}{else}关闭{/if}{literal}';
+        Globl.on = '{/literal}{if $lang.On}{$lang.On}{else}打开{/if}{literal}';
+        Globl.cancel = '{/literal}{if $lang.Cancel}{$lang.Cancel}{else}取消{/if}{literal}';
 	</script> 
 	{/literal}
 	<script type="text/javascript" src="{$template_dir}js/jquery.elastic.min.js?v={$hb_version}"></script>
@@ -305,24 +305,24 @@
             <input type="hidden" value="bulkupdate" name="make" />
         {/if}
 		<div class="blu">
-				<a class="tload2" href="?cmd=langedit"><span>{if $lang.lang_languages}{$lang.lang_languages}{else}Languages{/if}</span></a>
+				<a class="tload2" href="?cmd=langedit"><span>{if $lang.lang_languages}{$lang.lang_languages}{else}语言{/if}</span></a>
                 {if $action=='translate'}
 				 &raquo;  <strong>{$language_det.name|capitalize}</strong> »
-				 <span>{if $lang.lang_section}{$lang.lang_section}{else}Section{/if}</span> 
+				 <span>{if $lang.lang_section}{$lang.lang_section}{else}段落{/if}</span> 
 				 <select id="sectionselect" onchange="changeSection(this.value)">
-                     <option selected="selected" value="-1" style="font-weight: bold">All translations</option>
+                     <option selected="selected" value="-1" style="font-weight: bold">所有翻译</option>
 					{if $sections}
 					{foreach from=$sections item=section_name}
 					 <option {if $section_name == $section }selected="selected"{/if} value="{$section_name}" >{$section_name}</option>
 					 {/foreach}
-					 {else}<option selected="selected" value="global">global</option>
+					 {else}<option selected="selected" value="global">全局</option>
 					 {/if}
 				 </select>
 				<a class="new_control" onclick="return addSection();" href="#">
-					<span class="addsth"><strong>{if $lang.lang_customsection}{$lang.lang_customsection}{else}Custom section{/if}</strong></span>
+					<span class="addsth"><strong>{if $lang.lang_customsection}{$lang.lang_customsection}{else}自定义段落{/if}</strong></span>
 				</a>
                                  {elseif $action=='bulktranslate'}
-                                 &raquo; Tag: <strong>{$tag}</strong>
+                                 &raquo; 标签: <strong>{$tag}</strong>
                                  {/if}
 			
 		</div>
@@ -336,29 +336,29 @@
 				<span class="morbtn"></span>
 			</a>
             <ul class="filter-opt">
-                <li rel="2"><span class="on">On</span><span class="off">Off</span> Only blank lines</li>
+                <li rel="2"><span class="on">开</span><span class="off">关</span> 仅空行</li>
                 {if $language_det.parent_name}
-                    <li rel="4"><span class="on">On</span><span class="off">Off</span> Same value as parent</li>
+                    <li rel="4"><span class="on">开</span><span class="off">关</span> 与父值相同</li>
                 {/if}
             </ul>
 			<a class="menuitm menuf" href="#" onclick="return pagination_toggle()">
-				{if $lang.showall}{$lang.showall}{else}Show all{/if}
+				{if $lang.showall}{$lang.showall}{else}显示所有{/if}
 			</a><!--
 			--><a class="menuitm menul" href="#" onclick="return pagination_toggle()" >
-				{if $lang.Off}{$lang.Off}{else}Off{/if}
+				{if $lang.Off}{$lang.Off}{else}关{/if}
 			</a>
 			<!-- --><div class="clear"></div>
 		</div>{/if}
 		
 		<div style="padding:10px 5px 0 5px"> 
 			<a class="new_dsave new_menu" href="#" onclick="$('#transform').submit(); return false;">
-				<span>{if $lang.savechanges}{$lang.savechanges}{else}Save changes{/if}</span>
+				<span>{if $lang.savechanges}{$lang.savechanges}{else}保存更改{/if}</span>
 			</a>
 			{if $action=='translate'}<a class="new_add new_menu" href="#" onclick="return addTranslation();">
-				<span>{if $lang.lang_newtrans}{$lang.lang_newtrans}{else}New translation{/if}</span>
+				<span>{if $lang.lang_newtrans}{$lang.lang_newtrans}{else}新的语言包{/if}</span>
 			</a>
 			<div id="lang_search">
-                <input type="text" name="lang_search" autocomplete="off"><button onclick="$('#lang_search input').keyup(); return false;">{if $lang.Search}{$lang.Search}{else}Search{/if}</button>
+                <input type="text" name="lang_search" autocomplete="off"><button onclick="$('#lang_search input').keyup(); return false;">{if $lang.Search}{$lang.Search}{else}搜索{/if}</button>
 				<ul id="search_prop">
 				</ul>
 			</div>{/if}
@@ -376,7 +376,7 @@
 					<input type="hidden" value="{$totalpages}" name="totalpages2" id="totalpages"/>
 					<a href="?cmd=langedit&action=getsectionpage&lang={$language_det.id}&section={$section}{if $filtr}&filtr={$filtr}{/if}" id="currentlist" style="display:none" updater="#updater"></a>
 					<a class="menuitm menu" href="#" title="{if $lang.Manage}{$lang.Manage}{else}Manage{/if}" onclick="$('#more_btn').fadeToggle('slow')">
-						<small>{if $lang.Manage}{$lang.Manage}{else}Manage{/if}</small>
+						<small>{if $lang.Manage}{$lang.Manage}{else}管理{/if}</small>
 						<span style="padding:0 7px 0 2px" class="morbtn"></span>
 					</a>
 				<div id="more_btn">
@@ -395,7 +395,7 @@
 				</th>
 				<th style="width:20% ; min-width: 190px;">
 					<a href="?cmd=langedit&action=getsectionpage&lang={$language_det.id}&section={$section}&orderby=keyword|ASC" title="{$lang.lang_sort} {$lang.lang_keyword}" class="sortorder">
-					{if $lang.lang_keyword}{$lang.lang_keyword}{else}Keyword{/if}</a>
+					{if $lang.lang_keyword}{$lang.lang_keyword}{else}关键词{/if}</a>
 				</th>
 			<th>
 				<a href="?cmd=langedit&action=getsectionpage&lang={$language_det.id}&section={$section}&orderby=value|ASC" title="{$lang.lang_sort} {$lang.lang_value}" class="sortorder" >{if $lang.lang_value}{$lang.lang_value}{else}Value{/if}</a>
@@ -454,17 +454,17 @@
 			<div class="pagination"></div>
 			</div>
 			<a class="menuitm menuf" href="#" onclick="return pagination_toggle()">
-				{if $lang.showall}{$lang.showall}{else}Show all{/if}
+				{if $lang.showall}{$lang.showall}{else}显示所有{/if}
 			</a><!--
 			--><a class="menuitm menul" href="#" onclick="return pagination_toggle()" >
-				{if $lang.Off}{$lang.Off}{else}Off{/if}
+				{if $lang.Off}{$lang.Off}{else}关{/if}
 			</a>
 			<div class="clear"></div>
 		 </div>{/if}
 		
 		<div style="padding:10px 5px"> 
 			<a class="new_dsave new_menu" href="#" onclick="$('#transform').submit(); return false;">
-				<span>{if $lang.savechanges}{$lang.savechanges}{else}Save changes{/if}</span>
+				<span>{if $lang.savechanges}{$lang.savechanges}{else}保存更改{/if}</span>
 			</a>
 			<div class="clear"></div>
 		</div>
@@ -500,7 +500,7 @@
 			});
 		}
 		function delLanguage(id){
-			if(!confirm('{/literal}{if $lang.lang_confirmlang}{$lang.lang_confirmlang}{else}Are you sure you want to delete this language?{/if}{literal}')) 
+			if(!confirm('{/literal}{if $lang.lang_confirmlang}{$lang.lang_confirmlang}{else}您确定需要删除该语言包吗?{/if}{literal}')) 
 				return false;
 			ajax_update('?cmd=langedit',{action:'dellang',lang:id},function(){
 				refreshLang();
@@ -521,21 +521,21 @@
 		<div class="blu" style="padding:7px 5px 10px">
 			<a class="new_control" onclick="return displaybox('addlang');" href="#">
 				<span class="addsth">
-					<strong>{if $lang.lang_newlang}{$lang.lang_newlang}{else}New language{/if}</strong>
+					<strong>{if $lang.lang_newlang}{$lang.lang_newlang}{else}新的语言包{/if}</strong>
 				</span>
 			</a>&nbsp;
 			<a class="new_control" onclick="return displaybox('import');" href="#">
-				<span class="dwd">{if $lang.lang_import}{$lang.lang_import}{else}Import language{/if}</span>
+				<span class="dwd">{if $lang.lang_import}{$lang.lang_import}{else}导入语言包{/if}</span>
 			</a>
 		</div>
 		<div id="newshelfnav" class="newhorizontalnav">
 			<div class="list-1">
 				<ul>
 					<li class="active">
-						<a href="#"><span>{if $lang.lang_client}{$lang.lang_client}{else}Client languages{/if}</span></a>
+						<a href="#"><span>{if $lang.lang_client}{$lang.lang_client}{else}客户界面语言{/if}</span></a>
 					</li>
 					<li class="last">
-						<a href="#"><span>{if $lang.lang_admin}{$lang.lang_admin}{else}Admin languages{/if}</span></a>
+						<a href="#"><span>{if $lang.lang_admin}{$lang.lang_admin}{else}管理员界面语言{/if}</span></a>
 					</li>
 				</ul>
 			</div>
@@ -564,9 +564,9 @@
 				{if $language.target!='admin' || !in_array($language.id,$default_langs)}
 				<div style="padding:10px 5px; float:left">
 					<input onclick="enableLanguage({$language.id})" type="radio" {if $language.status == 1}checked="checked"{/if} value="1" name="widget[{$language.id}][enable]">
-					<label>{if $lang.Enable}{$lang.Enable}{else}Enable{/if}</label>
+					<label>{if $lang.Enable}{$lang.Enable}{else}启用{/if}</label>
 					<input onclick="disableLanguage({$language.id})" type="radio" {if $language.status == 0}checked="checked"{/if} value="0" name="widget[{$language.id}][enable]">
-					<label>{if $lang.Disable}{$lang.Disable}{else}Disable{/if}</label>
+					<label>{if $lang.Disable}{$lang.Disable}{else}禁用{/if}</label>
 				</div>
 				{/if}
 				<div class="clear"></div>
@@ -576,14 +576,14 @@
 		{if $language_count.user == 0}
 			<li class="target user"	style="{if 'user' != $type}display:none;{/if}border-bottom:solid 1px #ddd;padding:12px 10px;" >
 				<a class="new_control" onclick="return displaybox('addlang');" href="#">
-					<span class="addsth"><strong>{if $lang.lang_newlang}{$lang.lang_newlang}{else}New language{/if}</strong></span>
+					<span class="addsth"><strong>{if $lang.lang_newlang}{$lang.lang_newlang}{else}新的语言包{/if}</strong></span>
 				</a>
 			</li>
 		{/if}
 		{if $language_count.admin == 0}
 			<li class="target admin"	style="{if 'admin' != $type}display:none;{/if}border-bottom:solid 1px #ddd;padding:12px 10px;" >
 				<a class="new_control" onclick="return displaybox('addlang');" href="#">
-					<span class="addsth"><strong>{if $lang.lang_newlang}{$lang.lang_newlang}{else}New language{/if}</strong></span>
+					<span class="addsth"><strong>{if $lang.lang_newlang}{$lang.lang_newlang}{else}新的语言包{/if}</strong></span>
 				</a>
 			</li>
 		{/if}
@@ -591,7 +591,7 @@
 	{if $action=='default'}
 		</ul>
 		<div style="margin:2em 10px; padding:1em" class="shownice tabb"> 
-			<strong>You can download additinal languages for HostBill from <a href="http://cdn.hostbillapp.com/languages/" class="external" target="_blank">Here</a></strong><br>
-			<small>To learn how to import or add new languages to HostBill, check this how-to guide on our wiki <a href="http://wiki.hostbillapp.com/index.php?title=Add_new_languages" class="external" target="_blank">How To add new languages</a></small>
+			<strong>您可以从 <a href="http://cdn.hostbillapp.com/languages/" class="external" target="_blank">这里</a> 下载新的语言包</strong><br>
+			<small>学习如何导入和添加语言包, 阅读该Wiki <a href="http://wiki.hostbillapp.com/index.php?title=Add_new_languages" class="external" target="_blank">如何添加新的语言包</a></small>
 		</div>
 	{/if}

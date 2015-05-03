@@ -110,7 +110,7 @@
                     </select>
                 </td>	
                 
-                <td width="130" style="border:none;">显示位小数</td>
+                <td width="130" style="border:none;">显示小数点位置</td>
                 <td style="border:none;" colspan="3">
                     <input size="4" name="decimal" value="{$curr.decimal}"/>
                 </td>		
@@ -205,7 +205,7 @@
                     </li>
                     <li class="list-2elem"><a href="#"><span>{$lang.invmethod}</span></a></li>
                     <li class=""><a href="?cmd=configuration&action=invoicetemplates"><span>{$lang.invcustomize}</span></a></li>
-                    <li class=""><a href="?cmd=configuration&action=estimatetemplates"><span>统计自定义化</span></a></li>
+                    <li class=""><a href="?cmd=configuration&action=estimatetemplates"><span>自定义估值</span></a></li>
                     <li class="list-2elem"><a href="#"><span>{$lang.creditcards}</span></a></li>
                     <li class="list-2elem"><a href="#"><span>{$lang.clbalance}</span></a></li>
                     <li class="list-2elem"><a href="#"><span>Credit notes</span></a></li>
@@ -220,7 +220,7 @@
                     <li class="list-3elem"><a href="#"><span>{$lang.maincurrency}</span></a></li>
                     <li class="list-3elem"><a href="#"><span>{$lang.addcurrencies}</span></a></li>
                     <li><a href="?cmd=taxconfig"><span>{$lang.taxes}</span></a></li>
-                    <li><a href="?cmd=currencytocountry"><span>货币对国家</span></a></li>
+                    <li><a href="?cmd=currencytocountry"><span>国家货币</span></a></li>
                 </ul>
             </div>
             <div class="subm1" style="display:none"></div>
@@ -347,9 +347,9 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                     <tr class="bordme"><td width="205" align="right"><strong>{$lang.ApplyTermsURL}</strong></td><td><input type="checkbox" value="1" {if $configuration.ApplyTermsURL!=''}checked="checked"{/if} onclick="check_i(this)"/><input style="width:50%" name="ApplyTermsURL" value="{$configuration.ApplyTermsURL}" class="config_val inp" {if $configuration.ApplyTermsURL==''}disabled="disabled"{/if}/></td></tr>
 
                     <tr >
-                        <td width="205" align="right" valign="top"><strong>多物品购物车</strong></td><td>
-                            <input type="radio" name="ShopingCartMode" value="1" {if $configuration.ShopingCartMode=='1'} checked="checked"{/if}/> <strong>{$lang.Enable}</strong>, 允许多个服务购物车<br />
-                            <input type="radio" name="ShopingCartMode" value="0" {if $configuration.ShopingCartMode=='0'} checked="checked"{/if}/> <strong>{$lang.Disable}</strong>, 在购物车只有一种服务<br />
+                        <td width="205" align="right" valign="top"><strong>多产品购物车</strong></td><td>
+                            <input type="radio" name="ShopingCartMode" value="1" {if $configuration.ShopingCartMode=='1'} checked="checked"{/if}/> <strong>{$lang.Enable}</strong>, 允许购物车中超过1个服务产品<br />
+                            <input type="radio" name="ShopingCartMode" value="0" {if $configuration.ShopingCartMode=='0'} checked="checked"{/if}/> <strong>{$lang.Disable}</strong>, 购物车中仅允许1个服务产品<br />
                         </td>
                     </tr>
 
@@ -382,10 +382,10 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                     </tr>
                     
                     <tr>
-                        <td align="right"><strong>HTML在导入工单</strong> </td>
+                        <td align="right"><strong>导入工单支持HTML</strong> </td>
                         <td>
-                            <input name="TicketHTMLTags" type="radio" value="on" {if $configuration.TicketHTMLTags=='on'}checked="checked"{/if}  /> <strong>{$lang.yes}</strong>, HTML标签将显示在工单的信息 <br />
-                            <input name="TicketHTMLTags" type="radio" value="off" {if $configuration.TicketHTMLTags=='off' || !$configuration.TicketHTMLTags }checked="checked"{/if}  /> <strong>{$lang.no}</strong>, HTML标签会被完全从工单中删除
+                            <input name="TicketHTMLTags" type="radio" value="on" {if $configuration.TicketHTMLTags=='on'}checked="checked"{/if}  /> <strong>{$lang.yes}</strong>, 工单信息中允许显示HTML标签 <br />
+                            <input name="TicketHTMLTags" type="radio" value="off" {if $configuration.TicketHTMLTags=='off' || !$configuration.TicketHTMLTags }checked="checked"{/if}  /> <strong>{$lang.no}</strong>, 工单中将彻底删除HTML标签
                         </td>
                     </tr>
                 </table>
@@ -447,10 +447,10 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                         <td width="305">
 
                             <select class="inp" name="InvoiceNumerationFormat_list" id="InvoiceNumerationFormat_list" onchange="if($(this).val()=='0') $('#InvoiceNumerationFormat_custom').show(); else  $('#InvoiceNumerationFormat').val($(this).val());">
-                                <option value="{literal}{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="number"}selected="selected"{/if}>number</option>
-                                <option value="{literal}{$m}/{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="m/number"}selected="selected"{/if}>MM/number</option>
-                                <option value="{literal}{$y}/{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="y/number"}selected="selected"{/if}>YYYY/number</option>
-                                <option value="{literal}{$y}/{$m}/{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="y/m/number"}selected="selected"{/if}>YYYY/MM/number</option>
+                                <option value="{literal}{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="number"}selected="selected"{/if}>数字</option>
+                                <option value="{literal}{$m}/{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="m/number"}selected="selected"{/if}>MM/数字</option>
+                                <option value="{literal}{$y}/{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="y/number"}selected="selected"{/if}>YYYY/数字</option>
+                                <option value="{literal}{$y}/{$m}/{$number}{/literal}" {if $configuration.InvoiceNumerationFormatdc=="y/m/number"}selected="selected"{/if}>YYYY/MM/数字</option>
                                 <option value="0"  
                                         {if $configuration.InvoiceNumerationFormatdc!='number' && $configuration.InvoiceNumerationFormatdc!='m/number' && $configuration.InvoiceNumerationFormatdc!='y/number' && $configuration.InvoiceNumerationFormatdc!='y/m/number'}selected="selected"{/if}>{$lang.other}</option>
 
@@ -511,8 +511,8 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                     <tr class="bordme">
                         <td align="right"><strong>自动合并</strong></td>
                         <td colspan="3">
-                            <input name="GenerateSeparateInvoices" type="radio" value="off" {if $configuration.GenerateSeparateInvoices!='on'}checked="checked"{/if}  class="inp"/> <strong>{$lang.yes}, </strong> 自动合并所有与应有的生成到同一天<br />
-                            <input name="GenerateSeparateInvoices" type="radio" value="on" {if $configuration.GenerateSeparateInvoices=='on'}checked="checked"{/if}  class="inp"/>  <strong>{$lang.no}, </strong> 生成每个服务的单独的发票
+                            <input name="GenerateSeparateInvoices" type="radio" value="off" {if $configuration.GenerateSeparateInvoices!='on'}checked="checked"{/if}  class="inp"/> <strong>{$lang.yes}, </strong> Automaticaly merge genearated invoices with the same due date<br />
+                            <input name="GenerateSeparateInvoices" type="radio" value="on" {if $configuration.GenerateSeparateInvoices=='on'}checked="checked"{/if}  class="inp"/>  <strong>{$lang.no}, </strong> Generate separate invoice for each service
                         </td>
                     </tr>
 
@@ -579,8 +579,8 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                         <td colspan="3">
                             <input name="CancelInvoicesOnExpire" type="hidden"  value="off"/>
                             <input name="CancelInvoicesOnTerminate" type="hidden"  value="off"/>
-                            <input name="CancelInvoicesOnExpire" type="checkbox" value="on" {if $configuration.CancelInvoicesOnExpire=='on'}checked="checked"{/if}  /> 取消更新发票时, 相关的域名到期<br />
-                            <input name="CancelInvoicesOnTerminate" type="checkbox" value="on" {if $configuration.CancelInvoicesOnTerminate=='on'}checked="checked"{/if}  /> 删除过期的账单当相关帐户会终止<br />
+                            <input name="CancelInvoicesOnExpire" type="checkbox" value="on" {if $configuration.CancelInvoicesOnExpire=='on'}checked="checked"{/if}  /> 相关域名到期时取消续费账单<br />
+                            <input name="CancelInvoicesOnTerminate" type="checkbox" value="on" {if $configuration.CancelInvoicesOnTerminate=='on'}checked="checked"{/if}  /> 取消过期账单时相关账户会被终止<br />
                         </td>
                     </tr>
                 </table>
@@ -590,20 +590,20 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
 
 
                     <tr class="bordme" ><td align="right"><strong>{$lang.SupportedCC}</strong></td>
-                        <td colspan="3"><input class="inp" value="{$configuration.SupportedCC}" name="SupportedCC" style="width:260px" /><br/><small>提供的逗号分隔列表接受信用卡</small>
+                        <td colspan="3"><input class="inp" value="{$configuration.SupportedCC}" name="SupportedCC" style="width:260px" /><br/><small>信用卡提供接受逗号分隔列表</small>
                         </td></tr>
 
                     <tr class="bordme">
                         <td  align="right" valign="top"><strong>允许信用卡存储</strong></td>
                         <td colspan="3">
                             <input type="radio" name="CCAllowStorage" value="on" {if $configuration.CCAllowStorage=='on'}checked="checked"{/if} />
-                            <strong>是</strong>, 允许保存信用卡为以后的使用<br />
+                            <strong>是</strong>, 允许保存信用卡以备今后使用<br />
                                 
                             <input type="radio" name="CCAllowStorage" value="token" {if $configuration.CCAllowStorage=='token'}checked="checked"{/if} />
-                            <strong>是</strong>, 但是只有信用卡<strong>标记</strong> 通过支付网关<br />
+                            <strong>是</strong>, 仅当信用卡被支付接口 <strong>标记过</strong><br />
                                 
                             <input type="radio" name="CCAllowStorage" value="off" {if $configuration.CCAllowStorage=='off'}checked="checked"{/if} />
-                            <strong>否</strong>, 不保存信用卡信息在数据库中<br />
+                            <strong>否</strong>, 不要存储信用卡信息在数据库中<br />
                         </td>
                     </tr>
                     
@@ -645,8 +645,8 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                                 <input type="text" size="3" name="CCRetryForDays" value="{$configuration.CCRetryForDays}" /> {$lang.days}
                             </div>
                             <div class="chargefew" {if $configuration.CCChargeAuto!='on'}style="display:none"{/if}> <br />
-                                <input type="radio" name="CCForceAttempt" value="off" {if !$configuration.CCForceAttempt || $configuration.CCForceAttempt=='off'}checked="checked"{/if}/> <strong>{$lang.no}</strong>, 使用支付模块捕获支付相关的账单 <br />
-                                <input type="radio" name="CCForceAttempt" value="on" {if $configuration.CCForceAttempt=='on'}checked="checked"{/if}/> <strong>{$lang.Yes}</strong>,使用信用卡模块，如果卡是目前非信用卡网关相关的账单 
+                                <input type="radio" name="CCForceAttempt" value="off" {if !$configuration.CCForceAttempt || $configuration.CCForceAttempt=='off'}checked="checked"{/if}/> <strong>{$lang.no}</strong>, 账单使用相关的支付模块以捕获付款 <br />
+                                <input type="radio" name="CCForceAttempt" value="on" {if $configuration.CCForceAttempt=='on'}checked="checked"{/if}/> <strong>{$lang.Yes}</strong>, 如果信用卡存在并且无信用卡支付接口与相应账单关联时使用信用卡模块 
                             </div>
                         </td>
 
@@ -675,7 +675,7 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                 </table>
                 <table border="0" cellpadding="10" width="100%" cellspacing="0" class="sectioncontenttable" style="display:none">
                     <tr class="bordme">
-                        <td width="205" align="right"><strong>信用记录</strong></td>
+                        <td width="205" align="right"><strong>授信额度</strong></td>
                         <td >
                             <input type="radio" name="CnoteEnable" value="off" {if $configuration.CnoteEnable !='on'}checked="checked"{/if} onchange="c_note()" /> 禁用 <br />
                             <input type="radio" name="CnoteEnable" value="on" {if $configuration.CnoteEnable =='on'}checked="checked"{/if} onchange="c_note()"/> 启用
@@ -693,10 +693,10 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                         <td >
                             <select class="inp" name="CNoteNumerationFormat_list" id="CNoteNumerationFormat_list" 
                                     onchange="if($(this).val()=='0') $('#CNoteNumerationFormat_custom').show(); else  $('#CNoteNumerationFormat').val($(this).val());">
-                                <option value="{literal}{$number}{/literal}" {if $configuration.CNoteNumerationFormatdc=="number"}selected="selected"{/if}>number</option>
-                                <option value="{literal}{$number}/{$m}{/literal}" {if $configuration.CNoteNumerationFormatdc=="number/m"}selected="selected"{/if}>number/MM</option>
-                                <option value="{literal}{$number}/{$y}{/literal}" {if !$configuration.CNoteNumerationFormat || $configuration.CNoteNumerationFormatdc=="number/y"}selected="selected"{/if}>number/YYYY</option>
-                                <option value="{literal}{$number}/{$m}/{$y}{/literal}" {if $configuration.CNoteNumerationFormatdc=="number/m/y"}selected="selected"{/if}>number/MM/YYYY</option>
+                                <option value="{literal}{$number}{/literal}" {if $configuration.CNoteNumerationFormatdc=="number"}selected="selected"{/if}>数字</option>
+                                <option value="{literal}{$number}/{$m}{/literal}" {if $configuration.CNoteNumerationFormatdc=="number/m"}selected="selected"{/if}>数字/MM</option>
+                                <option value="{literal}{$number}/{$y}{/literal}" {if !$configuration.CNoteNumerationFormat || $configuration.CNoteNumerationFormatdc=="number/y"}selected="selected"{/if}>数字/YYYY</option>
+                                <option value="{literal}{$number}/{$m}/{$y}{/literal}" {if $configuration.CNoteNumerationFormatdc=="number/m/y"}selected="selected"{/if}>数字/MM/YYYY</option>
                                 <option value="0"  
                                 {if $configuration.CNoteNumerationFormatdc && $configuration.CNoteNumerationFormatdc!='number' && $configuration.CNoteNumerationFormatdc!='number/m' 
                                     && $configuration.CNoteNumerationFormatdc!='number/y' && $configuration.CNoteNumerationFormatdc!='number/m/y'}selected="selected"{/if}>{$lang.other}</option>
@@ -737,7 +737,7 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
 <a class="new_control" href="#"   onclick="$(this).hide();$('#testmailsuite').show();return false;"><span class="wizard">{$lang.sendtestmail}</span></a>
 <div id="testmailsuite" style="display:none">
 <span id="testmailsuite2">
-    输入邮箱地址: <input type="text" name="testmail" id="testmailaddress" /> <a class="new_control" href="#"   onclick="testConfiguration() ;return false;"><span ><b>{$lang.Send}</b></span></a>
+    Enter email address: <input type="text" name="testmail" id="testmailaddress" /> <a class="new_control" href="#"   onclick="testConfiguration() ;return false;"><span ><b>{$lang.Send}</b></span></a>
     </span><span  id="testing_result"></span>
 </div>
 
@@ -757,13 +757,13 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
 
                         <tr class="smtp" {if $configuration.MailUseSMTP=='off'}style="display:none"{/if}>
                             <td width="205" align="right">{$lang.MailSMTPPassword}</td>
-                            <td><input class="inp" name="MailSMTPPassword" value="{$configuration.MailSMTPPassword}" type="password" /> </td>				
+                            <td><input class="inp" name="MailSMTPPassword" value="{$configuration.MailSMTPPassword}" type="password" autocomplete="off" /> </td>				
                         </tr>
 
                 </table>
                 <table border="0" cellpadding="10" width="100%" cellspacing="0" class="sectioncontenttable4" style="display:none" >
                     <tr>
-                        <td width="205" align="right"><strong>用纯文本邮件</strong><br /> <small>(这将转换为HTML)</small> </td>
+                        <td width="205" align="right"><strong>包含纯文本电子邮件</strong><br /> <small>(这将使它们转换为HTML)</small> </td>
                         <td><input type="checkbox" name="ForceWraperOnPlaintext" value="on" {if $configuration.ForceWraperOnPlaintext=='on'}checked="checked"{/if} /> </td>
                     </tr>
                     <tr class="bordme">
@@ -783,7 +783,7 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                  <tr class="bordme">
                      <td width="205" align="right" valign="top"><strong>{$lang.EmailSignature}</strong></td><td>
                          <textarea  style="width:50%;height:55px;" name="EmailSignature" class="inp">{$configuration.EmailSignature}</textarea><br />
-                         <small>注意: HTML标签将从纯文本邮件签名删除连接</small>
+                         <small>注意: HTML标签将从附加到纯文本电子邮件签名中删除</small>
                      </td>
                  </tr>
 
@@ -867,9 +867,9 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                     <tbody>
                         <tr class="bordme">
                             <td align="right">
-                                <strong>储存小数点位置 <a href="#" class="vtip_description" title="Number of decimal places you can use to setup pricing in admin area."></a></strong>
+                                <strong>存储小数位数 <a href="#" class="vtip_description" title="您可以在管理员区域使用定价设置的小数位数."></a></strong>
                             </td>
-                            <td><span>{$configuration.DecimalPlaces} - <a class="editbtn" href="#" onclick="return confirm('Note: Decreasing Decimal Places value will result in truncating all prices to fit new format.') && $(this).parent().hide() && $('#DecimalPlaces').show();">edit</a></span>
+                            <td><span>{$configuration.DecimalPlaces} - <a class="editbtn" href="#" onclick="return confirm('注意: 以适应新的格式减少小数位将导致截去所有价格的小数位数值.') && $(this).parent().hide() && $('#DecimalPlaces').show();">编辑</a></span>
                                 {*}<select style="width:25%; display: none;" name="DecimalPlaces" id="DecimalPlaces" class="inp">
                                     <option value="0" {if $configuration.DecimalPlaces=="0"}selected="selected"{/if}>0</option>
                                     <option value="2" {if $configuration.DecimalPlaces=="2"}selected="selected"{/if}>2</option>
@@ -883,9 +883,9 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                         </tr>
                          <tr class="bordme">
                             <td align="right">
-                                <strong>显示位小数 <a href="#" class="vtip_description" title="Number of decimal places to display, prices will be rounded up to selected precision when ordering or generating invoices."></a></strong>
+                                <strong>显示小数位数 <a href="#" class="vtip_description" title="小数点后显示的位数, 订购或生成账单时, 价格将被四舍五入至选定的位数."></a></strong>
                             </td>
-                            <td><span>{$configuration.DisplayDecimalPlaces} - <a class="editbtn" href="#" onclick="return $(this).parent().hide() && $('#DisplayDecimalPlaces').show();">edit</a></span>
+                            <td><span>{$configuration.DisplayDecimalPlaces} - <a class="editbtn" href="#" onclick="return $(this).parent().hide() && $('#DisplayDecimalPlaces').show();">编辑</a></span>
                                 {*}<select style="width:25%; display: none;" name="DisplayDecimalPlaces" id="DisplayDecimalPlaces" class="inp">
                                     <option value="0" {if $configuration.DisplayDecimalPlaces=="0"}selected="selected"{/if}>0</option>
                                     <option value="2" {if $configuration.DisplayDecimalPlaces=="2"}selected="selected"{/if}>2</option>
@@ -1057,15 +1057,15 @@ $('a.colorbox').colorbox({width:"80%", height:"80%", iframe:true,opacity:0.5});
                             <strong>{$lang.SEOUrlMode}</strong>
                         </td>
                         <td>
-                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideUp();" value="index.php?/" {if $configuration.SEOUrlMode=='index.php?/'}checked="checked"{/if} class="left" id="seo_1" /> <label class="w150 left" for="seo_1">Default</label> <div class="code left">{$system_url}index.php?/cart/</div><br />
+                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideUp();" value="index.php?/" {if $configuration.SEOUrlMode=='index.php?/'}checked="checked"{/if} class="left" id="seo_1" /> <label class="w150 left" for="seo_1">默认</label> <div class="code left">{$system_url}index.php?/cart/</div><br />
                             <div class="clear"></div>
-                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideUp();" value="index.php/" {if $configuration.SEOUrlMode=='index.php/'}checked="checked"{/if} class="left" id="seo_2"  /> <label class="w150 left" for="seo_2">Basic</label> <div class="code left">{$system_url}index.php/cart/</div> <br />
+                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideUp();" value="index.php/" {if $configuration.SEOUrlMode=='index.php/'}checked="checked"{/if} class="left" id="seo_2"  /> <label class="w150 left" for="seo_2">基础</label> <div class="code left">{$system_url}index.php/cart/</div> <br />
                              <div class="clear"></div>
-                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideUp();" value="?/" {if $configuration.SEOUrlMode=='?/'}checked="checked"{/if}  class="left" id="seo_3"  /> <label class="w150 left" for="seo_3">Advanced</label> <div class="code left">{$system_url}?/cart/</div><br />
+                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideUp();" value="?/" {if $configuration.SEOUrlMode=='?/'}checked="checked"{/if}  class="left" id="seo_3"  /> <label class="w150 left" for="seo_3">高级</label> <div class="code left">{$system_url}?/cart/</div><br />
                             <div class="clear"></div>
-                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideDown();" value="" {if $configuration.SEOUrlMode==''}checked="checked"{/if} class="left" id="seo_4" /> <label class="w150 left" for="seo_4">Apache Mod Rewrite</label> <div class="code left">{$system_url}cart/</div><br />
+                            <input name="SEOUrlMode" type="radio" onclick="$('#htacode').slideDown();" value="" {if $configuration.SEOUrlMode==''}checked="checked"{/if} class="left" id="seo_4" /> <label class="w150 left" for="seo_4">Apache Rewrite 模块</label> <div class="code left">{$system_url}cart/</div><br />
                              <div class="clear"></div>
-                             <div id="htacode" class="code" style="{if $configuration.SEOUrlMode!=''} display:none;{/if}font-size:10px;width:500px;margin:5px 0px;-moz-box-shadow: inset 0 0 2px #888;-webkit-box-shadow: inset 0 0 2px #888;box-shadow: inner 0 0 2px #888;padding:10px;">## create .htaccess file in main HostBill directory with contents below<br>
+                             <div id="htacode" class="code" style="{if $configuration.SEOUrlMode!=''} display:none;{/if}font-size:10px;width:500px;margin:5px 0px;-moz-box-shadow: inset 0 0 2px #888;-webkit-box-shadow: inset 0 0 2px #888;box-shadow: inner 0 0 2px #888;padding:10px;">## 创建 .htaccess 文件内容在下面主要HostBill目录<br>
 &lt;IfModule mod_rewrite.c&gt;<br>
     RewriteEngine On <br>
     RewriteBase {$rewritebase}<br>

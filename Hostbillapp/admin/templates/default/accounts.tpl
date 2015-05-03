@@ -242,7 +242,7 @@
                                 *}<a class="menuitm setStatus" id="hd1" onclick="return false;"   href="#" ><span class="morbtn">{$lang.moreactions}</span></a>
                                 <ul id="hd1_m" class="ddmenu">
                                     <li><a href="#" onclick="return send_msg('accounts')">{$lang.SendMessage}</a></li>
-                                    <li><a href="#" onclick="return send_msg('accounts_ticket')">Create Tickets</a></li>
+                                    <li><a href="#" onclick="return send_msg('accounts_ticket')">创建工单</a></li>
                                     {if !$forbidAccess.deleteServices}<li><a href="Delete">{$lang.delete|ucfirst}</a></li>
                                         {/if}
                                 </ul>

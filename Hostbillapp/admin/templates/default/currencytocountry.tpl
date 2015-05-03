@@ -31,7 +31,7 @@
                                 <li><a href="?cmd=configuration&picked_tab=5&picked_subtab=0"><span>{$lang.maincurrency}</span></a></li>
                                 <li><a href="?cmd=configuration&picked_tab=5&picked_subtab=1"><span>{$lang.addcurrencies}</span></a></li>
                                 <li ><a href="?cmd=taxconfig"><span>{$lang.taxes}</span></a></li>
-                                <li class="picked"><a href="?cmd=currencytocountry"><span>货币汇率对国家</span></a></li>
+                                <li class="picked"><a href="?cmd=currencytocountry"><span>国家货币</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -44,8 +44,8 @@
                             {if !$a_currencies}
                             <div class="blank_state blank_news">
                                 <div class="blank_info">
-                                    <h1>你需要有额外的货币定义的第一</h1>
-                                    为了使用此功能, 请先定义额外的货币.
+                                    <h1>You need to have additional currencies defined first</h1>
+                                    In order to use this feature please define additional currencies first.
                                     <div class="clear"></div>
                                     <a class="new_add new_menu" href="?cmd=configuration&picked_tab=5&picked_subtab=1" style="margin-top:10px">
                                         <span>添加货币</span></a>
@@ -56,12 +56,12 @@
                              {elseif !$rules}
                                 <div class="blank_state blank_news">
                                     <div class="blank_info">
-                                        <h1>定义货币的国家规则</h1>
-                                        如果你需要迫使某些国家使用一种货币使用此功能来设置规则. <br/>
-                                        客户选择的货币就会自动变为一个定义在货币规则
+                                        <h1>定义货币国家的规则</h1>
+                                        If you need to force certain countries to use one currency use this feature to setup rules. <br/>
+                                        Customer-selected currency will be automatically changed to one defined in currency ruleset
                                         <div class="clear"></div>
                                         <a class="new_add new_menu" href="#" style="margin-top:10px" onclick="$('#addnewtax').toggle();return false">
-                                            <span>添加新的规则</span></a>
+                                            <span>添加新规则</span></a>
                                         <div class="clear"></div>
                                     </div>
                                 </div>
@@ -76,7 +76,7 @@
                             <div class="rest" style="">
                                 {if $rules}
 
-                                    <h3>当前货币的国家规则</h3>
+                                    <h3>当前国家货币的规则</h3>
                                     <table cellspacing="0" cellpadding="3" border="0" width="100%" class="glike hover">
                                         <tbody>
                                         <tr>
@@ -96,9 +96,9 @@
 
                                         <tr id="adtax_bt">
                                             <th colspan="6" align="left">
-                                                <a href="#" class="editbtn" onclick="$('#adtax_bt').hide();$('#addnewtax').show();return false;">添加新的规则</a>&nbsp;
-                                                <a href="?cmd=currencytocountry&make=addeur&security_token={$security_token}" class="editbtn" >欧元作为欧盟国家的默认设置</a>&nbsp;
-                                                <a href="?cmd=currencytocountry&make=rmallrules&security_token={$security_token}" class="editbtn" onclick="return confirm('您确定吗?');" >删除所有的规则</a>&nbsp;
+                                                <a href="#" class="editbtn" onclick="$('#adtax_bt').hide();$('#addnewtax').show();return false;">添加新规则</a>&nbsp;
+                                                <a href="?cmd=currencytocountry&make=addeur&security_token={$security_token}" class="editbtn" >设置欧元为欧盟国家的默认货币</a>&nbsp;
+                                                <a href="?cmd=currencytocountry&make=rmallrules&security_token={$security_token}" class="editbtn" onclick="return confirm('您确定吗?');" >移除所有规则</a>&nbsp;
                                             </th>
                                         </tr>
                                         </tbody>
@@ -129,9 +129,9 @@
                                             </tr>
                                         </table>
                                         <input type="hidden" value="addrule" name="make"/>
-                                        <center> <input type="submit" style="font-weight: bold;padding:10px;" value="添加新规则" class="submitme"/> <span class="orspace">{$lang.Or} <a href="#" charset=" editbtn" onclick="$('#adtax_bt').show();$('#addnewtax').hide();return false;">{$lang.Cancel}</a> </span>
+                                        <center> <input type="submit" style="font-weight: bold;padding:10px;" value="Add new rule" class="submitme"/> <span class="orspace">{$lang.Or} <a href="#" charset=" editbtn" onclick="$('#adtax_bt').show();$('#addnewtax').hide();return false;">{$lang.Cancel}</a> </span>
 
-                                             <span class="orspace">{$lang.Or} <a href="?cmd=currencytocountry&make=addeur&security_token={$security_token}" class="editbtn" >欧元作为欧盟国家的默认设置</a>&nbsp;</span>
+                                             <span class="orspace">{$lang.Or} <a href="?cmd=currencytocountry&make=addeur&security_token={$security_token}" class="editbtn" >设置欧元为欧盟国家的默认货币</a>&nbsp;</span>
                                         </center>
                                         {securitytoken}</form>
                                 </div>

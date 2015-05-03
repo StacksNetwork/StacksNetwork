@@ -122,7 +122,7 @@
             {foreach from=$logs item=email}
             <tr>
 
-                <td><a href="?cmd=clients&action=show&id={$email.client_id}">{$email.firstname} {$email.lastname}</a></td>
+                <td><a href="?cmd=clients&action=show&id={$email.client_id}">{$email.lastname} {$email.firstname}</a></td>
                 <td>{$email.date|dateformat:$date_format}</td>
                 <td>{$email.description}</td>
 
@@ -283,19 +283,19 @@
                 <td>{$email.to}</td>
                 <td><a href="?cmd=logs&action=getimportlog&id={$email.id}">{$email.subject}</a></td>
                 <td>
-                    {if $email.status == 0}<a class="vtip_description" title="Email was matched by one of your import filters"></a>&nbsp;Filtered&nbsp;Out
-                    {elseif $email.status == 1}<a class="vtip_description" title="Department does not allow unregistered clients"></a>&nbsp;Unregistered 
-                    {elseif $email.status == 2}Sucessful 
-                    {elseif $email.status == 3}<a class="vtip_description" title="None of receiver emails matches any of your support department"></a>&nbsp;Not&nbsp;Found 
-                    {elseif $email.status == 4}<a class="vtip_description" title="Sender email is the same as department email"></a>&nbsp;Skipping
-                    {elseif $email.status == 5}<a class="vtip_description" title="Error ocurred, could not create this ticket"></a>&nbsp;Error
-                    {elseif $email.status == 6}<a class="vtip_description" title="This message refers to a different department than related ticket"></a>&nbsp;Mismatch
-                    {elseif $email.status == 7}<a class="vtip_description" title="Sender email exists on Hostbill system email list"></a>&nbsp;System
-                    {elseif $email.status == 8}<a class="vtip_description" title="Email was identified as auto-submitted"></a>&nbsp;Auto-Submitted
-                    {elseif $email.status == 9}<a class="vtip_description" title="Time limit has been reached for ticket import task"></a>&nbsp;Time-Limit
-                    {elseif $email.status == 10}<a class="vtip_description" title="Ticket has been already closed and reply cannot be accepted"></a>&nbsp;Ticket Closed
-                    {elseif $email.status == 11}<a class="vtip_description" title="This ticket is the same as ticket imported few minutes ago"></a>&nbsp;Duplicate
-                    {else}<a class="vtip_description" title="Unexpeted error ocurred, could not create this ticket"></a>&nbsp;Unknown
+                    {if $email.status == 0}<a class="vtip_description" title="电子邮件与您导入的一个过滤器相匹配"></a>&nbsp;过滤&nbsp;出了
+                    {elseif $email.status == 1}<a class="vtip_description" title="部门不允许未注册客户"></a>&nbsp;未注册 
+                    {elseif $email.status == 2}成功 
+                    {elseif $email.status == 3}<a class="vtip_description" title="接收邮件不匹配任何您的支持部门"></a>&nbsp;未&nbsp;找到 
+                    {elseif $email.status == 4}<a class="vtip_description" title="发件人的电子邮件与部门电子邮件相同"></a>&nbsp;跳过
+                    {elseif $email.status == 5}<a class="vtip_description" title="错误,无法创建该工单"></a>&nbsp;错误
+                    {elseif $email.status == 6}<a class="vtip_description" title="消息指的是不同的部门不相关的工单"></a>&nbsp;不匹配
+                    {elseif $email.status == 7}<a class="vtip_description" title="发件人的邮箱在电子邮件系统中存在"></a>&nbsp;系统
+                    {elseif $email.status == 8}<a class="vtip_description" title="邮件被认定为自动提交"></a>&nbsp;自动提交
+                    {elseif $email.status == 9}<a class="vtip_description" title="时间已经达到该任务极限"></a>&nbsp;时间限制
+                    {elseif $email.status == 10}<a class="vtip_description" title="工单已关闭回复无法接受"></a>&nbsp;工单已关闭
+                    {elseif $email.status == 11}<a class="vtip_description" title="该工单与数分钟前导入的相同"></a>&nbsp;重复
+                    {else}<a class="vtip_description" title="意外错误,无法创建工单"></a>&nbsp;未知
                     {/if}
                 </td>
 
@@ -430,7 +430,7 @@
 {elseif $action=='getimportlog'}
 
 <div class="blu">
-    <a href="?cmd=logs&action=importlog"><strong>&laquo; 返回所有导入电子邮件</strong></a></div>
+    <a href="?cmd=logs&action=importlog"><strong>&laquo; 返回所有导入邮件</strong></a></div>
 <div class="lighterblue" style="padding:5px">
     <strong>{$lang.From}</strong> {$email.from}<br />
     <strong>{$lang.To}</strong> {$email.to}<br />
@@ -491,7 +491,7 @@
             <tr>
 
                 <td>{$email.date|dateformat:$date_format}</td>
-                <td><a href="?cmd=clients&action=show&id={$email.client_id}">{$email.firstname} {$email.lastname}</a></td>
+                <td><a href="?cmd=clients&action=show&id={$email.client_id}">{$email.lastname} {$email.firstname}</a></td>
                 <td><a href="?cmd=orders&action=edit&id={$email.order_id}&list=all">#{$email.order_id}</a></td>
                 <td><a href="?cmd=coupons&action=edit&id={$email.coupon_id}">#{$email.coupon_id}</a></td>
                 <td>{$email.discount|price:$currency}</td>
@@ -552,7 +552,7 @@
                     <th width="200">日期</th>
                     <th width="150">IP地址</th>
                     <th width="150">API ID</th>
-                    <th width="150">被调用的函数</th>
+                    <th width="150">调用函数</th>
                     <th >结果</th>
                 </tr>
             </tbody>
@@ -619,9 +619,9 @@
         <table cellspacing="0" cellpadding="3" border="0" width="100%" class="glike hover">
             <tbody>
                 <tr>
-                    <th width="200">日期</th>
-                    <th width="150">类型</th>
-                    <th >错误</th>
+                    <th width="200">Date</th>
+                    <th width="150">Type</th>
+                    <th >Error</th>
                 </tr>
             </tbody>
             <tbody id="updater">
@@ -713,10 +713,10 @@
             <tr>
                 <td><input type="checkbox" name="selected[]" {if $request.status == 'Cancelled' || $request.status == 'Terminated' || $request.status == 'Fraud'}disabled="disabled"{else} class="check"{/if} value="{$request.account_id}" /></td>
 				<td>{$request.date|dateformat:$date_format}</td>
-				<td>{if $request.client_id}<a href="?cmd=clients&action=show&id={$request.client_id}">{$request.firstname} {$request.lastname}</a>{else}-{/if}</td>
+				<td>{if $request.client_id}<a href="?cmd=clients&action=show&id={$request.client_id}">{$request.lastname} {$request.firstname}</a>{else}-{/if}</td>
 				<td>{if $request.domain}<a href="?cmd=accounts&action=edit&id={$request.account_id}">{$request.domain}</a>{else}-{/if}</td>
                 <td>
-                    <a href="?cmd=accounts&action=edit&id={$request.account_id}">{if $request.name}{$request.category} - {$request.name}{else}Account #{$request.account_id}{/if}</a>
+                    <a href="?cmd=accounts&action=edit&id={$request.account_id}">{if $request.name}{$request.category} - {$request.name}{else}账户 #{$request.account_id}{/if}</a>
                 </td>
                 <td><div class="fs11" style="max-height: 40px; overflow: auto;">{$request.reason}</div></td>
                 <td>{$request.type}</td>

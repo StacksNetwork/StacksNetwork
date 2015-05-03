@@ -1,0 +1,9 @@
+---
+variables:
+  powerdnspanel:
+    name: Domains
+    description: Total count of domains owned by customer on a particular date
+    scheme: volume
+    unit_name: domain(s)
+updateusage: Daily
+sendadminreport: Daily

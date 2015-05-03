@@ -31,13 +31,13 @@
                     <div class="list-1">
                         <ul>
                             <li class="active picked">
-                                <a href="#"><span class="ico money">Notification settings</span></a>
+                                <a href="#"><span class="ico money">通知设置</span></a>
                             </li>
                             <li class="">
-                                <a href="#"><span class="ico money">Client Notifications</span></a>
+                                <a href="#"><span class="ico money">客户通知</span></a>
                             </li>
                             <li class="last">
-                                <a href="#"><span class="ico plug">Admin Notifications</span></a>
+                                <a href="#"><span class="ico plug">管理员通知</span></a>
                             </li>
 
                         </ul>
@@ -52,7 +52,7 @@
                 about important events  - like escalated ticket or new order.
                 <div class="clear"></div>
                 <a style="margin-top:10px" href="#" class="new_add new_menu" onclick="$('#blank_state').hide();$('#config_form').show();return false">
-                <span>Enable mobile notifications</span></a>
+                <span>启用手机通知</span></a>
                 <div class="clear"></div>
             </div>
         </div>
@@ -68,7 +68,7 @@
                         <div id="notify_test" style="display:none">
                             Select admin to send test notification to: <select name="admin_id" id="admin_id" class="inp">{foreach from=$admins item=a}<option value="{$a.id}">{$a.firstname} {$a.lastname}</option>{/foreach}</select>
                                 <a class=" new_control greenbtn" href="#" onclick="return send_test();">
-                            <span>Send test notification</span>
+                            <span>发送测试通知</span>
                                 </a> <span id="test_result" style="padding:0px 10px"></span>
                         </div>
                         {literal}
@@ -92,25 +92,25 @@
                  <table border="0" cellpadding="6" cellspacing="0" >
                      <tbody> <tr>
                          <td width="20"><input onclick="$('#MobileNotificationsAdmin').toggle();" type="checkbox" name="config[MobileNotificationsAdmin]" value="on" {if $config.MobileNotificationsAdmin=='on'}checked="checked"{/if} /></td>
-                         <td>Enable notifications for staff members</td>
+                         <td>工作人员启用通知</td>
                      </tr></tbody>
                      <tbody {if $config.MobileNotificationsAdmin!='on'}style="display:none"{/if} id="MobileNotificationsAdmin">
 
                      <tr>
                          <td></td>
-                         <td>Send mobile notifications about tickets with Priority: <br/>
+                         <td>工单优先级发送手机通知: <br/>
                              <select  name="config[MobileNotificationsAPriority]" class="inp" style="width:200px">
-                                 <option value="" {if !$config.MobileNotificationsAPriority}selected="selected"{/if}>All priorities</option>
-                                 <option value="1" {if $config.MobileNotificationsAPriority=='1'}selected="selected"{/if}>Higher than Low</option>
-                                 <option value="2" {if $config.MobileNotificationsAPriority=='2'}selected="selected"{/if}>Higher than Medium</option>
+                                 <option value="" {if !$config.MobileNotificationsAPriority}selected="selected"{/if}>所有级别</option>
+                                 <option value="1" {if $config.MobileNotificationsAPriority=='1'}selected="selected"{/if}>高于Low</option>
+                                 <option value="2" {if $config.MobileNotificationsAPriority=='2'}selected="selected"{/if}>高于Medium</option>
                              </select></td>
                      </tr>
 
                       <tr>
                          <td></td>
-                         <td>Limit support notifications to departments below: <br/>
+                         <td>限制发送通知到下述部门: <br/>
                              <select multiple  name="config[MobileNotificationsDepts][]" class="inp" style="width:200px">
-                                 <option value="0" {if $config.adepts[0]=="0"}selected="selected"{/if}>All departments</option>
+                                 <option value="0" {if $config.adepts[0]=="0"}selected="selected"{/if}>所有部门</option>
                                  {foreach from=$config.departments item=mod}
                                  <option value="{$mod.id}" {if $config.adepts[$mod.id]}selected="selected"{/if}>{$mod.name}</option>
                                  {/foreach}
@@ -119,7 +119,7 @@
 
                          <tr>
                          <td></td>
-                         <td><input value="2"  onclick="$('.specify_admin').hide()" type="radio" name="config[MobileNotificationsModAAdmin]" {if $config.MobileNotificationsModAdmin=='all'}checked="checked"{/if} /> Using all active notification modules</td>
+                         <td><input value="2"  onclick="$('.specify_admin').hide()" type="radio" name="config[MobileNotificationsModAAdmin]" {if $config.MobileNotificationsModAdmin=='all'}checked="checked"{/if} /> 使用所有激活的通知模块</td>
                      </tr>
                      <tr>
                          <td></td>
@@ -139,15 +139,15 @@
 
                      <tbody><tr>
                          <td><input type="checkbox"  onclick="$('#MobileNotificationsClient').toggle();" name="config[MobileNotificationsClient]" value="on" {if $config.MobileNotificationsClient=='on'}checked="checked"{/if} /> </td>
-                         <td>Enable notifications for clients</td>
+                         <td>对客户启用通知</td>
                      </tr></tbody>
                      <tbody {if $config.MobileNotificationsClient!='on'}style="display:none"{/if} id="MobileNotificationsClient"><tr>
                          <td></td>
-                         <td><input value="2"  onclick="$('#specify_client').hide()" type="radio" name="config[MobileNotificationsModAClient]" {if $config.MobileNotificationsModClient=='all'}checked="checked"{/if} /> Using all active notification modules</td>
+                         <td><input value="2"  onclick="$('#specify_client').hide()" type="radio" name="config[MobileNotificationsModAClient]" {if $config.MobileNotificationsModClient=='all'}checked="checked"{/if} /> 使用所有激活的通知模块</td>
                      </tr>
                      <tr>
                          <td></td>
-                         <td><input value="1"  onclick="$('#specify_client').show()" type="radio" name="config[MobileNotificationsModAClient]" {if $config.MobileNotificationsModClient!='all'}checked="checked"{/if}/> Using specific modules</td>
+                         <td><input value="1"  onclick="$('#specify_client').show()" type="radio" name="config[MobileNotificationsModAClient]" {if $config.MobileNotificationsModClient!='all'}checked="checked"{/if}/> 使用特定模块</td>
                      </tr>
 
                       <tr id="specify_client" {if $config.MobileNotificationsModClient=='all'}style="display:none"{/if}>
@@ -202,7 +202,7 @@
 
                         </tbody></table>
                 {else}
-                <strong>No messages configured yet</strong>
+                <strong>尚无信息被配置</strong>
 
                 {/if}
 
@@ -233,7 +233,7 @@
 
                         </tbody></table>
                 {else}
-                <strong>No messages configured yet</strong> 
+                <strong>尚无信息被配置</strong> 
 
                 {/if}
 

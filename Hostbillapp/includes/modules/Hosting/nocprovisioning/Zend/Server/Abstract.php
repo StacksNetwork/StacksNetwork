@@ -1,121 +1,242 @@
-<?php //00863
-//  HostBill - Client Management, Billing & Support System for WebHosts
-//  Copyright (c) 2010-2015 KBKP Software S.C. All Rights Reserved.
-//  Version 2015-03-21
-//  2015-03-21
-// 
-//  This software is furnished under a license and may be used and copied
-//  only  in  accordance  with  the  terms  of such  license and with the
-//  inclusion of the above copyright notice.  This software  or any other
-//  copies thereof may not be provided or otherwise made available to any
-//  other person.  No title to and  ownership of the  software is  hereby
-//  transferred.
-// 
-//  You may not reverse  engineer, decompile, defeat  license  encryption
-//  mechanisms, or  disassemble this software product or software product
-//  license.  HostBill  may terminate this license if you don't comply with any
-//  of the terms and conditions set forth in our end user  license agreement
-//  (EULA).  In such event,  licensee  agrees to return licensor  or destroy
-//  all copies of software  upon termination of the  license.
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the website operator. If you are the website operator please use the <a href="http://www.ioncube.com/lw/">ionCube Loader Wizard</a> to assist with installation.');exit(199);
-?>
-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
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Server
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+
+/** Zend_Server_Interface */
+require_once 'Zend/Server/Interface.php';
+
+/**
+ * Zend_Server_Definition
+ */
+require_once 'Zend/Server/Definition.php';
+
+/**
+ * Zend_Server_Method_Definition
+ */
+require_once 'Zend/Server/Method/Definition.php';
+
+/**
+ * Zend_Server_Method_Callback
+ */
+require_once 'Zend/Server/Method/Callback.php';
+
+/**
+ * Zend_Server_Method_Prototype
+ */
+require_once 'Zend/Server/Method/Prototype.php';
+
+/**
+ * Zend_Server_Method_Parameter
+ */
+require_once 'Zend/Server/Method/Parameter.php';
+
+/**
+ * Zend_Server_Abstract
+ *
+ * @category   Zend
+ * @package    Zend_Server
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Abstract.php 16210 2009-06-21 19:22:17Z thomas $
+ */
+abstract class Zend_Server_Abstract implements Zend_Server_Interface
+{
+    /**
+     * @deprecated
+     * @var array List of PHP magic methods (lowercased)
+     */
+    protected static $magic_methods = array(
+        '__call',
+        '__clone',
+        '__construct',
+        '__destruct',
+        '__get',
+        '__isset',
+        '__set',
+        '__set_state',
+        '__sleep',
+        '__tostring',
+        '__unset',
+        '__wakeup',
+    );
+
+    /**
+     * @var bool Flag; whether or not overwriting existing methods is allowed
+     */
+    protected $_overwriteExistingMethods = false;
+
+    /**
+     * @var Zend_Server_Definition
+     */
+    protected $_table;
+
+    /**
+     * Constructor
+     *
+     * Setup server description
+     * 
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->_table = new Zend_Server_Definition();
+        $this->_table->setOverwriteExistingMethods($this->_overwriteExistingMethods);
+    }
+
+    /**
+     * Returns a list of registered methods
+     *
+     * Returns an array of method definitions.
+     *
+     * @return Zend_Server_Definition
+     */
+    public function getFunctions()
+    {
+        return $this->_table;
+    }
+
+    /**
+     * Lowercase a string
+     *
+     * Lowercase's a string by reference
+     * 
+     * @deprecated
+     * @param  string $string value
+     * @param  string $key
+     * @return string Lower cased string
+     */
+    public static function lowerCase(&$value, &$key)
+    {
+        trigger_error(__CLASS__ . '::' . __METHOD__ . '() is deprecated and will be removed in a future version', E_USER_NOTICE);
+        return $value = strtolower($value);
+    }
+
+    /**
+     * Build callback for method signature
+     * 
+     * @param  Zend_Server_Reflection_Function_Abstract $reflection 
+     * @return Zend_Server_Method_Callback
+     */
+    protected function _buildCallback(Zend_Server_Reflection_Function_Abstract $reflection)
+    {
+        $callback = new Zend_Server_Method_Callback();
+        if ($reflection instanceof Zend_Server_Reflection_Method) {
+            $callback->setType($reflection->isStatic() ? 'static' : 'instance')
+                     ->setClass($reflection->getDeclaringClass()->getName())
+                     ->setMethod($reflection->getName());
+        } elseif ($reflection instanceof Zend_Server_Reflection_Function) {
+            $callback->setType('function')
+                     ->setFunction($reflection->getName());
+        }
+        return $callback;
+    }
+
+    /**
+     * Build a method signature
+     * 
+     * @param  Zend_Server_Reflection_Function_Abstract $reflection 
+     * @param  null|string|object $class
+     * @return Zend_Server_Method_Definition
+     * @throws Zend_Server_Exception on duplicate entry
+     */
+    protected function _buildSignature(Zend_Server_Reflection_Function_Abstract $reflection, $class = null)
+    {
+        $ns         = $reflection->getNamespace();
+        $name       = $reflection->getName();
+        $method     = empty($ns) ? $name : $ns . '.' . $name;
+
+        if (!$this->_overwriteExistingMethods && $this->_table->hasMethod($method)) {
+            require_once 'Zend/Server/Exception.php';
+            throw new Zend_Server_Exception('Duplicate method registered: ' . $method);
+        }
+
+        $definition = new Zend_Server_Method_Definition();
+        $definition->setName($method)
+                   ->setCallback($this->_buildCallback($reflection))
+                   ->setMethodHelp($reflection->getDescription())
+                   ->setInvokeArguments($reflection->getInvokeArguments());
+
+        foreach ($reflection->getPrototypes() as $proto) {
+            $prototype = new Zend_Server_Method_Prototype();
+            $prototype->setReturnType($this->_fixType($proto->getReturnType()));
+            foreach ($proto->getParameters() as $parameter) {
+                $param = new Zend_Server_Method_Parameter(array(
+                    'type'     => $this->_fixType($parameter->getType()),
+                    'name'     => $parameter->getName(),
+                    'optional' => $parameter->isOptional(),
+                ));
+                if ($parameter->isDefaultValueAvailable()) {
+                    $param->setDefaultValue($parameter->getDefaultValue());
+                }
+                $prototype->addParameter($param);
+            }
+            $definition->addPrototype($prototype);
+        }
+        if (is_object($class)) {
+            $definition->setObject($class);
+        }
+        $this->_table->addMethod($definition);
+        return $definition;
+    }
+
+    /**
+     * Dispatch method
+     * 
+     * @param  Zend_Server_Method_Definition $invocable 
+     * @param  array $params 
+     * @return mixed
+     */
+    protected function _dispatch(Zend_Server_Method_Definition $invocable, array $params)
+    {
+        $callback = $invocable->getCallback();
+        $type     = $callback->getType();
+
+        if ('function' == $type) {
+            $function = $callback->getFunction();
+            return call_user_func_array($function, $params);
+        }
+
+        $class  = $callback->getClass();
+        $method = $callback->getMethod();
+
+        if ('static' == $type) {
+            return call_user_func_array(array($class, $method), $params);
+        }
+
+        $object = $invocable->getObject();
+        if (!is_object($object)) {
+            $invokeArgs = $invocable->getInvokeArguments();
+            if (!empty($invokeArgs)) {
+                $reflection = new ReflectionClass($class);
+                $object     = $reflection->newInstanceArgs($invokeArgs);
+            } else {
+                $object = new $class;
+            }
+        }
+        return call_user_func_array(array($object, $method), $params);
+    }
+
+    /**
+     * Map PHP type to protocol type
+     * 
+     * @param  string $type 
+     * @return string
+     */
+    abstract protected function _fixType($type);
+}

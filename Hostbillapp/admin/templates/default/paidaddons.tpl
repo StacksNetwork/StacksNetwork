@@ -102,13 +102,13 @@ border-right: 1px dotted #999;
   </tr>
   <tr>
     <td class="leftNav">
-        <h3>Paid Apps</h3>
+        <h3>付费Apps</h3>
          </td>
     <td  valign="top"  class="bordered"><div id="bodycont">
 	 <div class="newhorizontalnav" id="newshelfnav">
 <div class="list-1">
 <ul>
-  <li class="list-1elem active picked"><a href="#" onclick="return showhideitem('howhideitems',0);">Available Addons</a></li>
+  <li class="list-1elem active picked"><a href="#" onclick="return showhideitem('howhideitems',0);">可用扩展</a></li>
   </ul>
 </div>
 </div>
@@ -126,11 +126,11 @@ border-right: 1px dotted #999;
                     <div class="megamenu-row">
                         <div class="menuzord-tabs">
                             <ul class="menuzord-tabs-nav" id="appstab">
-                                <li class="active" data-submenu-id="0"><a>New Apps</a></li>
+                                <li class="active" data-submenu-id="0"><a>新的Apps</a></li>
                                 <li  data-submenu-id="1"><a>Apps</a></li>
-                                <li data-submenu-id="2"><a>Hosting Integrations</a></li>
-                                <li data-submenu-id="3"><a>Client Portals</a></li>
-                                <li data-submenu-id="4"><a>Order Pages</a></li>
+                                <li data-submenu-id="2"><a>主机集成</a></li>
+                                <li data-submenu-id="3"><a>客户门户</a></li>
+                                <li data-submenu-id="4"><a>订单页面</a></li>
                             </ul>
 
                             <div class="menuzord-tabs-content" style="display: block;">

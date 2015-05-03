@@ -1,0 +1,20 @@
+---
+- 
+  type: input
+  name: Username
+  variable: rd_username
+  description: 请提供要使用密码, 5到25个字符
+  options: 3
+  sort_order: 1
+  ftype: input
+  premade: true
+- 
+  type: input
+  name: Password
+  variable: rd_password
+  description: 请提供要使用密码, 5到25个字符
+  options: 3
+  config: [ ]
+  sort_order: 2
+  ftype: input
+  premade: true

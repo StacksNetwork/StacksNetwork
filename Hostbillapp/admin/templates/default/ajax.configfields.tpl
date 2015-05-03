@@ -37,14 +37,14 @@ margin:0px !important;
 <div class="clear"></div><label>{$lang.premade}<small>{$lang.premade_desc}</small></label>
                   <select name="premade" style="width:120;margin-right:10px;" id="premade_val" onchange="if($(this).val()=='1')$('#loadurl').show();else $('#loadurl').hide()">
 				  <option value="0">{$lang.none}</option>
-				 <option value="1" style="font-weight:bold">Load from URL</option>
+				 <option value="1" style="font-weight:bold">从URL加载</option>
 				 
 				 {foreach from=$fields item=f}
 					<option>{$f}</option>
 				  {/foreach}</select>
 				  
 				  <div style="padding: 2px " class="fs11"> 
-					<strong>You can also find dozen of premade &amp; easy to use fields here:</strong>
+					<strong>您也可以从这里选择定制化的字段 &amp; 进行便捷的调用:</strong>
 					<a href="http://hostbillapp.com/fastconfig/forms/" target="_blank" class="external">http://hostbillapp.com/fastconfig/forms/</a>
 				  </div>
                   <div class="clear"></div>
@@ -94,7 +94,7 @@ margin:0px !important;
 								</script>
 								{/if}
 							</td>
-							<td width="150" style="background:#F0F0F3;color:#767679;font-size:11px" valign="top">Field type: <strong>{if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} </strong></td>
+							<td width="150" style="background:#F0F0F3;color:#767679;font-size:11px" valign="top">字段类型: <strong>{if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} </strong></td>
 						</tr>
 						</table></div></li>
 						
@@ -182,8 +182,8 @@ function refreshConfigView(pid) {
 					{if $config}<div style="padding:10px 4px">
 					<a  href="#" class="new_control"  onclick="return addCustomFieldForm({$product_id});" id="addnew_conf_btn"><span class="addsth" ><strong>{$lang.assign_custom_opt}</strong></span></a>
 					<script type="text/javascript">$('#preview_forms_shelf').show();</script><a href="?cmd=configfields&product_id={$product_id}&action=previewfields" class="new_control" onclick="return previewCustomForm($(this).attr('href'))"><span class="zoom">{$lang.Preview}</span></a>
-                                        <a href="?cmd=configfields&action=export&id={$product_id}"  class="new_control" target="_blank"><span class="disk-export">Export</span></a>
-                                        <a href="#"  class="new_control" onclick="$('#importforms').show(); return false"><span class="disk-import">Import</span></a>
+                                        <a href="?cmd=configfields&action=export&id={$product_id}"  class="new_control" target="_blank"><span class="disk-export">导出</span></a>
+                                        <a href="#"  class="new_control" onclick="$('#importforms').show(); return false"><span class="disk-import">导入</span></a>
 					</div>
 					{/if}
 				</div>
@@ -236,11 +236,11 @@ function refreshConfigView(pid) {
                             <tr>
                                 <td width="140" id="s_menu" style="" valign="top">
                                     <div id="lefthandmenu">
-                                        <a class="tchoice" href="#">Basic settings</a>
-                                        {if $field.type.info.subitems}<a class="tchoice" href="#">Values</a>{/if}
-                                        {if $field.type.info.pricing && !$field.type.info.subitems}<a class="tchoice" href="#">Pricing</a>{/if}
-                                        {if $field.type.info.validation}<a class="tchoice" href="#">Validation</a>{/if}
-                                        <a class="tchoice" href="#">Advanced</a>
+                                        <a class="tchoice" href="#">基础设置</a>
+                                        {if $field.type.info.subitems}<a class="tchoice" href="#">值</a>{/if}
+                                        {if $field.type.info.pricing && !$field.type.info.subitems}<a class="tchoice" href="#">定价</a>{/if}
+                                        {if $field.type.info.validation}<a class="tchoice" href="#">校验</a>{/if}
+                                        <a class="tchoice" href="#">高级</a>
                                         {foreach from=$field.type.templates item=tp key=tpname}
                                             <a class="tchoice" href="#">{$tpname}</a>
                                         {/foreach}
@@ -249,14 +249,14 @@ function refreshConfigView(pid) {
                                 </td>
                                 <td class="conv_content form"  valign="top">
                                     <div class="tabb">
-                                        <h3 style="margin-bottom:0px;"><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  />  {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Basic settings</h3>
+                                        <h3 style="margin-bottom:0px;"><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  />  {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; 基础设置</h3>
                                         <div class="clear"><small>{$lang[$field.type.description]}</small></div>
-                                        <div style="padding:10px 3px;border:solid 2px red;background:#FFFED1;margin:5px 0px 15px;display:none;" class="clear" id="lengthwarning">Your php.ini setting <b>max_input_vars</b> is too low to properly save this form element. <a href="http://wiki.hostbillapp.com/index.php?title=Forms:_Fix_not_saving_forms_configuration" target="_blank">How to fix this.</a></div>
-                                        <div class="clear"></div><label class="nodescr">Field name</label>
+                                        <div style="padding:10px 3px;border:solid 2px red;background:#FFFED1;margin:5px 0px 15px;display:none;" class="clear" id="lengthwarning">您的php.ini设置<b>max_input_vars</b> 太低无法正确保存该表单元素. <a href="http://wiki.hostbillapp.com/index.php?title=Forms:_Fix_not_saving_forms_configuration" target="_blank">如何处理该问题.</a></div>
+                                        <div class="clear"></div><label class="nodescr">字段名称</label>
 
                                         {hbinput value=$field.tag_name  class="w250" name="name" style="margin:0px;"  wrapper="div"  wrapper_class="w250 left" wrapper_style="clear:right;margin: 2px 0 10px 10px;"}
 
-                                        <div class="clear"></div><label for="check-required">Required field</label>
+                                        <div class="clear"></div><label for="check-required">必填字段</label>
                                         <input id="check-required" type="checkbox" name="options[]" value="1" {if $field.options & 1}checked="checked"{/if}/>
                                         <div class="clear"></div><label >Description</label>
                                             {if $field.description!=''}
@@ -268,7 +268,7 @@ function refreshConfigView(pid) {
                                     </div>
 
                                     {if $field.type.info.subitems}<div class="tabb" style="display:none">
-                                            <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Values</h3>
+                                            <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; 值</h3>
 
                                             <div id="subitems_editor">
                                                 {include file='ajax.configdrawsort.tpl'}
@@ -283,7 +283,7 @@ function refreshConfigView(pid) {
                                         <div class="tabb" style="display:none">
                                             <h3>
                                                 <img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> 
-                                        {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Pricing
+                                        {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; 定价
                                     </h3>
 
                                     <label >{$lang.enablepricing}</label>
@@ -292,7 +292,7 @@ function refreshConfigView(pid) {
 
                                     {foreach from=$field.items item=item key=k}
                                         <div class="formbilling formbilling-head" {if !$field.items[0].pricing_enabled}style="display: none"{/if}>
-                                            <a href="#{$paytypeform}" {if !$item.paytype || $item.paytype == $paytypeform}class="active"{/if} onclick="formbilling(this); return false">Regular</a>
+                                            <a href="#{$paytypeform}" {if !$item.paytype || $item.paytype == $paytypeform}class="active"{/if} onclick="formbilling(this); return false">正则表达式</a>
                                             {foreach from=$field.type.info.adformbilling item=formbilling}
                                                 <a href="#{$formbilling}" {if $item.paytype == $formbilling}class="active"{/if} onclick="formbilling(this); return false" >{if $lang[$formbilling]}{$lang[$formbilling]}{else}{$formbilling}{/if}</a>
                                             {/foreach}
@@ -323,20 +323,20 @@ function refreshConfigView(pid) {
                             {/if}
                             {if $field.type.info.validation}
                                 <div class="tabb" style="display:none">
-                                    <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Validation</h3>
-                                    <div class="clear"></div><label >Minimum value<small>must be greater than or equal to this value</small></label>
+                                    <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; 校验</h3>
+                                    <div class="clear"></div><label >最小值<small>必须大于或等于该数值</small></label>
                                     <input type="text" size="2" name="config[minvalue]" id="configMinvalue" value="{$field.config.minvalue}" />
-                                    <div class="clear"></div><label >Maximum value<small>Leave blank for no limit</small></label>
+                                    <div class="clear"></div><label >最大值<small>留空表示无限制</small></label>
                                     <input type="text" size="2" name="config[maxvalue]" id="configMaxvalue" value="{$field.config.maxvalue}" />
                                 </div>
                             {/if}
                             <div class="tabb" style="display:none">
-                                <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; Advanced settings</h3>
-                                <div class="clear"></div><label for="text-key">CSS Class<small>Field container will be displayed with this css class</small></label>
+                                <h3><img src="../includes/libs/configoptions/{$field.type.type}/{$field.type.type}_thumb2.png" alt="" style="margin-right:5px" class="left"  /> {if $lang[$field.type.langid]}{$lang[$field.type.langid]}{else}{$field.type.type}{/if} &raquo; 高级设置</h3>
+                                <div class="clear"></div><label for="text-key">CSS类<small>字段容器会显示该CSS类</small></label>
                                 <input id="text-key" type="text" class="w250" name="key" value="{$field.key|escape}" />
-                                <div class="clear"></div><label for="text-category">Group<small>Supported by some order pages to group options</small></label>
+                                <div class="clear"></div><label for="text-category">群组<small>支持一些订单页面支持群组选项</small></label>
                                 <input id="text-category" type="text" class="w250" name="category" value="{$field.category|escape}" />
-                                <div class="clear"></div><label for="text-variable">Variable name<small>To use in emails, custom modules</small></label>
+                                <div class="clear"></div><label for="text-variable">变量名称<small>使用电子邮件, 自定义模块</small></label>
                                 <input id="text-variable" type="text" class="w250" name="variable" value="{$field.variable|escape}" />
 
                                 <div class="clear"></div>
@@ -344,38 +344,38 @@ function refreshConfigView(pid) {
                                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                                     <tr>
                                         <td width="40%">
-                                            <label for="check-admin" >Admin only<small>Only admin can see this field</small></label>
+                                            <label for="check-admin" >仅管理员可用<small>仅管理员可以看到该字段</small></label>
                                             <input id="check-admin" type="checkbox" name="options[]" value="4" {if $field.options & 4}checked="checked"{/if} onclick="if($(this).is(':checked'))$('#check-show, #check-edit, #check-invoice, #check-upgrade, #check-down, #check-charge').removeAttr('checked').attr('disabled','disabled');else $('#check-show, #check-edit, #check-invoice, #check-upgrade, #check-down, #check-charge').removeAttr('disabled');"/>
                                             <div class="clear"></div>
                                         </td>
                                         <td>
-                                            {if $field.type.info.upgrades}<label for="check-upgrade" >Allow Upgrades<small>Can client upgrade after order</small></label>
+                                            {if $field.type.info.upgrades}<label for="check-upgrade" >允许升级<small>允许客户在完成订单后升级服务</small></label>
                                                 <input id="check-upgrade" type="checkbox" name="options[]" value="16" {if $field.options & 16 || ($field.options=='')}checked="checked"{/if}/>
                                             {/if}
                                         </td>
                                         <td>
-                                            {if $field.type.info.upgrades}<label for="check-charge" >Upgrade setup fee<small>Charge setup fee on upgrades&nbsp;or&nbsp;downgrades</small></label>
+                                            {if $field.type.info.upgrades}<label for="check-charge" >升级初装费用<small>增加在升级&nbsp;或&nbsp;降级业务时的初装费</small></label>
                                                 <select id="check-charge" class="inp" name="options[]" style="padding: 0; width: 60px; margin-left: 5px;" >
-                                                    <option value="" {if !($field.options & 64) && !($field.options & 128) }selected="selected"{/if}>No</option>
-                                                    <option value="64" {if $field.options & 64 }selected="selected"{/if}>Price difference</option>
-                                                    <option value="192" {if ($field.options & 192) == 192 }selected="selected"{/if}>Full</option>
+                                                    <option value="" {if !($field.options & 64) && !($field.options & 128) }selected="selected"{/if}>否</option>
+                                                    <option value="64" {if $field.options & 64 }selected="selected"{/if}>价格差异</option>
+                                                    <option value="192" {if ($field.options & 192) == 192 }selected="selected"{/if}>完整</option>
                                                 </select>
                                             {/if}
                                         </td>
                                     </tr>
                                     <tr>
                                         <td width="40%">
-                                            <label for="check-show" >Show in cart<small>Display this option during order</small></label>
+                                            <label for="check-show" >在购物车中显示<small>在订单显示该选项</small></label>
                                             <input id="check-show" type="checkbox" name="options[]" value="2" {if $field.options & 2 || ($field.options=='')}checked="checked"{/if}/>
                                             <div class="clear"></div> 
                                         </td>
                                         <td>
-                                            <div class="clear"></div><label for="check-invoice" >Force show in Invoice<small>Include it in invoice even when&nbsp;it's&nbsp;empty or free</small></label>
+                                            <div class="clear"></div><label for="check-invoice" >显示在账单中<small>即使在&nbsp;该数值为&nbsp;空或免费时也显示于账单上</small></label>
                                             <input id="check-invoice" type="checkbox" name="options[]" value="256" {if $field.options & 256}checked="checked"{/if}/>
                                         </td>
                                         <td>
                                             {if $field.type.info.upgrades}
-                                                <div class="clear"></div><label for="check-down" >Allow Downgrades<small>Can client downgrade this field</small></label>
+                                                <div class="clear"></div><label for="check-down" >允许降级<small>允许客户降级该字段</small></label>
                                                 <input id="check-down" type="checkbox" name="options[]" value="32" {if $field.options & 32 || ($field.options=='')}checked="checked"{/if}/>
                                             {/if}
                                         </td>
@@ -421,18 +421,18 @@ function refreshConfigView(pid) {
     <table border="0" cellspacing="0" cellpadding="0" border="0" width="100%">
         <tr>
             <td width="180" id="s_menu" style="padding-top:40px;" valign="top">
-                <div id="initial-desc">To save time you can use one fields you've configured before</div>
+                <div id="initial-desc">为了节省时间, 您可以使用一个之前配置过的字段</div>
 
             </td>
             <td class="conv_content"  valign="top">
-                <h3>Duplicate existing field</h3>
+                <h3>复制现有的字段</h3>
                 {if $fields}
                  <div class="form"><form id="duplicatefield" action="" method="post">
 					<input type="hidden" name="product_id" value="{$product_id}"/>
 					<input type="hidden" name="action" value="duplicatefield"/>
 					<input type="hidden" name="cmd" value="configfields"/>
 					<input type="hidden" name="type" value="{$type}"/>
-                    <div class="clear"></div><label class="nodescr">Field to duplicate</label>
+                    <div class="clear"></div><label class="nodescr">复制字段</label>
                     <select name="id" class="w250">
                     {foreach from=$fields item=f}
                         <option value="{$f.id}">{$f.catname|escape} - {$f.pname|escape}: {$f.name|escape}</option>
@@ -445,7 +445,7 @@ function refreshConfigView(pid) {
         <input type="hidden" name="cmd" value="configfields"/>
         <input type="hidden" name="action" value="getaddform"/>
     {securitytoken}</form>
-                    <center>There is no field of this type added yet<br/><a href="#" onclick="return createField()">{$lang.createnewcfield}</a></center>
+                    <center>尚未添加过该类型的字段<br/><a href="#" onclick="return createField()">{$lang.createnewcfield}</a></center>
                 {/if}
                
 
@@ -487,7 +487,7 @@ function refreshConfigView(pid) {
     <table border="0" cellspacing="0" cellpadding="0" border="0" width="100%">
         <tr>
             <td width="180" id="s_menu" style="" valign="top">
-                <div id="initial-desc">Start by selecting field type, you will be able to configure it, add pricing, validation etc. in next steps.</div>
+                <div id="initial-desc">首先选择字段类型, 您可以配置它, 加上定价, 在下一个步的验证等.</div>
                 {foreach from=$fields item=f key=ft}{foreach from=$f item=field}
                     <div style="display:none" class="description" id="{$field.type}-description">{$lang[$field.description]}</div>
 {/foreach}{/foreach}
@@ -497,7 +497,7 @@ function refreshConfigView(pid) {
             </td>
             <td class="conv_content"  valign="top">
                 <h3>
-                    Select field type
+                    选择字段类型
                 </h3>
                 {foreach from=$fields item=f key=ft}
                 <fieldset>
@@ -520,7 +520,7 @@ function refreshConfigView(pid) {
         <div class="right">
 
             <span class="bcontainer dhidden" style="display:none"><a class="new_control greenbtn" href="#" onclick="return createField()"><span>{$lang.createnewcfield}</span></a></span>
-            <span class="bcontainer dhidden" style="display:none"><a href="#" class="submiter menuitm" onclick="return duplicateField()"><span>Duplicate existing field</span></a></span>
+            <span class="bcontainer dhidden" style="display:none"><a href="#" class="submiter menuitm" onclick="return duplicateField()"><span>复制现有字段</span></a></span>
             <span class="dhidden" style="display:none">{$lang.Or}</span>
             <span class="bcontainer"><a href="#" class="submiter menuitm" onclick="$(document).trigger('close.facebox');return false;"><span>{$lang.Close}</span></a></span>
 
@@ -544,7 +544,7 @@ function refreshConfigView(pid) {
                   <input type="hidden" name="config[conditional][new][targetname]" id="condition_field_targetname" value="{$fields[0].name|escape}" />
 
                   {else}
-                  Add other fields first.
+                  首先添加其它字段.
                   {/if}
                   {if $fields && $setval}
                   <div class="padding:5px 2px;float:left">To</div>

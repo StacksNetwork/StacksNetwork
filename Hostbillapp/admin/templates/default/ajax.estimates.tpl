@@ -46,13 +46,13 @@
     <tr>
       <td><input type="checkbox" class="check" value="{$estimate.id}" name="selected[]"/></td>
       <td><a href="?cmd=estimates&action=edit&id={$estimate.id}"   >{$estimate.id}</a></td>
-      <td><a href="?cmd=clients&action=show&id={$estimate.client_id}">{$estimate.firstname} {$estimate.lastname}</a></td>
+      <td><a href="?cmd=clients&action=show&id={$estimate.client_id}">{$estimate.lastname} {$estimate.firstname}</a></td>
 	  <td><a href="?cmd=estimates&action=edit&id={$estimate.id}" >{$estimate.subject}</a></td>
       <td>{$estimate.date_created|dateformat:$date_format}</td>
       <td>{$estimate.total|price:$estimate.currency_id}</td>
       <td><span class="{$estimate.status}">{$lang[$estimate.status]}</span></td>
       <td><a href="?cmd=estimates&action=edit&id={$estimate.id}" class="editbtn">{$lang.Edit}</a></td>
-      <td><a href="?cmd=estimates&action=menubutton&make=deleteestimate&id={$estimate.id}" class="deleteEstimate delbtn">delete</a></td>
+      <td><a href="?cmd=estimates&action=menubutton&make=deleteestimate&id={$estimate.id}" class="deleteEstimate delbtn">删除</a></td>
     </tr>
     {/foreach}
 	{else} 
@@ -100,7 +100,7 @@
 {if $clients}
 	{$lang.Client}: <select class="newinvoice_clientid" load="clients" style="width: 180px">
 		{*foreach from=$clients item=cl}
-			<option value="{$cl.id}">#{$cl.id} {if $cl.companyname!=''}{$lang.Company}: {$cl.companyname}{else}{$cl.firstname} {$cl.lastname}{/if}</option>
+			<option value="{$cl.id}">#{$cl.id} {if $cl.companyname!=''}{$lang.Company}: {$cl.companyname}{else}{$cl.lastname} {$cl.firstname}{/if}</option>
 		{/foreach*}
 	</select> 
 
@@ -603,7 +603,7 @@
 <input type="hidden" name="make" value="changeowner" />
 <select name="new_owner">
 	{foreach from=$clients item=client}
-		<option value="{$client.id}" {if $selected==$client.id}selected="selected"{/if}>#{$client.id} {if $client.companyname!=''}{$lang.Company}: {$client.companyname}{else}{$client.firstname} {$client.lastname}{/if}</option>
+		<option value="{$client.id}" {if $selected==$client.id}selected="selected"{/if}>#{$client.id} {if $client.companyname!=''}{$lang.Company}: {$client.companyname}{else}{$client.lastname} {$client.firstname}{/if}</option>
 	{/foreach}
 </select> <input type="submit" value="{$lang.Change}" style="font-size:11px;font-weight:bold;"/> &nbsp;&nbsp;<a href="#" onclick="$('#curr_det').show();$('#client_container').hide();return false;">{$lang.Cancel}</a>
 {securitytoken}</form>

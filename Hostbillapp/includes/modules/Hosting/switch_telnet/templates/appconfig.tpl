@@ -12,7 +12,7 @@
             {else}
             <input  name="field1" size="25" value="{$server.field1}" class="inp"/>
             {/if}
-            <a class="vtip_description" title="选择厂商或模式是最接近的进行连接. <br>您可以很容易地定义自己的驱动程序在 /includes/modules/Hosting/switch_snmp/devices"></a>
+            <a class="vtip_description" title="选择制造商或模型最相似的一个进行连接. <br>您可以轻松地定义您自己的驱动程序 /includes/modules/Hosting/switch_snmp/devices"></a>
         </td></tr>{/if}
 </table>
 <script>

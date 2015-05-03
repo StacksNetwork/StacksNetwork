@@ -113,19 +113,19 @@
             <td><b>To</b></td>
             <td>
                 {if $email.client_id}
-                <a href="?cmd=clients&action=show&id={$email.client_id}">{$email.firstname} {$email.lastname}</a>
+                <a href="?cmd=clients&action=show&id={$email.client_id}">{$email.lastname} {$email.firstname}</a>
                 {else}
                 {$email.email}
                 {/if}
             </td>
-            <td><b>Date</b></td>
+            <td><b>日期</b></td>
             <td>{$email.date|dateformat:$date_format}</td>
         </tr>
         <tr>
             <td><b>{$lang.Subject}</b></td>
             <td>{$email.subject}</td>
             <td><b>Status</b></td>
-            <td>{if $email.status}<span class="Successfull">Sent</span>{else}<span class="Failure">Failed</span>{/if}</td>
+            <td>{if $email.status}<span class="Successfull">已发送</span>{else}<span class="Failure">失败</span>{/if}</td>
         </tr>
     </table>
     <div class="lighterblue" style="padding:15px 10px 0">                 
@@ -180,13 +180,13 @@
                             <td class="subjectline"><div class="df1"><div class="df2"><div class="df3"><a href="?cmd=emails&action=show&id={$email.id}"  data-pjax>{if $email.subject == ''}<em>(empty subject)</em>{else}{$email.subject}{/if}</a></div></div></div></td>
                             <td>
                                 {if $email.client_id}
-                                <a href="?cmd=clients&action=show&id={$email.client_id}">{$email.firstname} {$email.lastname}</a>
+                                <a href="?cmd=clients&action=show&id={$email.client_id}">{$email.lastname} {$email.firstname}</a>
                                 {else}
                                     <span title="{$email.email}">{$email.email|truncate:20:'..':true:true}</span>
                                 {/if}
                             </td>
                             <td>{$email.date|dateformat:$date_format}</td>   
-                            <td>{if $email.status}<span class="Successfull">Sent</span>{else}<span class="Failure">Failed</span>{/if}</td>
+                            <td>{if $email.status}<span class="Successfull">已发送</span>{else}<span class="Failure">失败</span>{/if}</td>
                             <td><a href="javascript:void(0)" onclick="resent({$email.id})" class="editbtn">{$lang.resend}</a></td>
 
                         </tr>

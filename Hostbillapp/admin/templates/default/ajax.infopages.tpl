@@ -18,7 +18,7 @@
 
                             <td><a data-pjax href="?cmd=infopages&action=edit&id={$page.id}">{$page.title}</a></td>
                             <td><a target="blank" href="{$system_url}?/page/{$page.url}/">{$system_url}?/page/{$page.url}/</a></td>
-                            <td width="16"><a data-pjax href="?cmd=infopages&delete={$page.id}&security_token={$security_token}" onclick="return confirm('{$lang.deletepageconfirm}')" class="delbtn">delete</a></td>
+                            <td width="16"><a data-pjax href="?cmd=infopages&delete={$page.id}&security_token={$security_token}" onclick="return confirm('{$lang.deletepageconfirm}')" class="delbtn">删除</a></td>
 
 
                         </tr>

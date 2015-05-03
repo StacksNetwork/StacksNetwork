@@ -1,5 +1,5 @@
 {if !$switches}
-错误: 无法从Cacti应用中读取交换机
+错误: 无法从当前的 Cacti 应用中读取交换机
 {else}
 <select id="cacti_switch_id" class="inp" onchange="change_cacti_sw(this);">
     {foreach from=$switches item=sw}
@@ -7,7 +7,7 @@
     {/foreach}
 </select>
 
-Port:
+端口:
 {foreach from=$switches item=sw name=f}
 <select id="cacti_port_id_{$sw.id}" class="inp sw_cacti_port" {if !$smarty.foreach.f.first}style="display:none"{/if}>
         {foreach from=$sw.ports item=i key=k}

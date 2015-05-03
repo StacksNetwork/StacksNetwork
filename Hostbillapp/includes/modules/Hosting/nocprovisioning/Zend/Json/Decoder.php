@@ -1,236 +1,578 @@
-<?php //00863
-//  HostBill - Client Management, Billing & Support System for WebHosts
-//  Copyright (c) 2010-2015 KBKP Software S.C. All Rights Reserved.
-//  Version 2015-03-21
-//  2015-03-21
-// 
-//  This software is furnished under a license and may be used and copied
-//  only  in  accordance  with  the  terms  of such  license and with the
-//  inclusion of the above copyright notice.  This software  or any other
-//  copies thereof may not be provided or otherwise made available to any
-//  other person.  No title to and  ownership of the  software is  hereby
-//  transferred.
-// 
-//  You may not reverse  engineer, decompile, defeat  license  encryption
-//  mechanisms, or  disassemble this software product or software product
-//  license.  HostBill  may terminate this license if you don't comply with any
-//  of the terms and conditions set forth in our end user  license agreement
-//  (EULA).  In such event,  licensee  agrees to return licensor  or destroy
-//  all copies of software  upon termination of the  license.
-if(!extension_loaded('ionCube Loader')){$__oc=strtolower(substr(php_uname(),0,3));$__ln='ioncube_loader_'.$__oc.'_'.substr(phpversion(),0,3).(($__oc=='win')?'.dll':'.so');if(function_exists('dl')){@dl($__ln);}if(function_exists('_il_exec')){return _il_exec();}$__ln='/ioncube/'.$__ln;$__oid=$__id=realpath(ini_get('extension_dir'));$__here=dirname(__FILE__);if(strlen($__id)>1&&$__id[1]==':'){$__id=str_replace('\\','/',substr($__id,2));$__here=str_replace('\\','/',substr($__here,2));}$__rd=str_repeat('/..',substr_count($__id,'/')).$__here.'/';$__i=strlen($__rd);while($__i--){if($__rd[$__i]=='/'){$__lp=substr($__rd,0,$__i).$__ln;if(file_exists($__oid.$__lp)){$__ln=$__lp;break;}}}if(function_exists('dl')){@dl($__ln);}}else{die('The file '.__FILE__." is corrupted.\n");}if(function_exists('_il_exec')){return _il_exec();}echo('Site error: the file <b>'.__FILE__.'</b> requires the ionCube PHP Loader '.basename($__ln).' to be installed by the website operator. If you are the website operator please use the <a href="http://www.ioncube.com/lw/">ionCube Loader Wizard</a> to assist with installation.');exit(199);
-?>
-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
-dMVcKIJAryHoy5KdmeDPMQVQGPo5
+<?php
+/**
+ * Zend Framework
+ *
+ * LICENSE
+ *
+ * This source file is subject to the new BSD license that is bundled
+ * with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://framework.zend.com/license/new-bsd
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@zend.com so we can send you a copy immediately.
+ *
+ * @category   Zend
+ * @package    Zend_Json
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ * @version    $Id: Decoder.php 20096 2010-01-06 02:05:09Z bkarwin $
+ */
+
+/**
+ * @see Zend_Json
+ */
+require_once 'Zend/Json.php';
+
+/**
+ * Decode JSON encoded string to PHP variable constructs
+ *
+ * @category   Zend
+ * @package    Zend_Json
+ * @copyright  Copyright (c) 2005-2010 Zend Technologies USA Inc. (http://www.zend.com)
+ * @license    http://framework.zend.com/license/new-bsd     New BSD License
+ */
+class Zend_Json_Decoder
+{
+    /**
+     * Parse tokens used to decode the JSON object. These are not
+     * for public consumption, they are just used internally to the
+     * class.
+     */
+    const EOF         = 0;
+    const DATUM        = 1;
+    const LBRACE    = 2;
+    const LBRACKET    = 3;
+    const RBRACE     = 4;
+    const RBRACKET    = 5;
+    const COMMA       = 6;
+    const COLON        = 7;
+
+    /**
+     * Use to maintain a "pointer" to the source being decoded
+     *
+     * @var string
+     */
+    protected $_source;
+
+    /**
+     * Caches the source length
+     *
+     * @var int
+     */
+    protected $_sourceLength;
+
+    /**
+     * The offset within the souce being decoded
+     *
+     * @var int
+     *
+     */
+    protected $_offset;
+
+    /**
+     * The current token being considered in the parser cycle
+     *
+     * @var int
+     */
+    protected $_token;
+
+    /**
+     * Flag indicating how objects should be decoded
+     *
+     * @var int
+     * @access protected
+     */
+    protected $_decodeType;
+
+    /**
+     * Constructor
+     *
+     * @param string $source String source to decode
+     * @param int $decodeType How objects should be decoded -- see
+     * {@link Zend_Json::TYPE_ARRAY} and {@link Zend_Json::TYPE_OBJECT} for
+     * valid values
+     * @return void
+     */
+    protected function __construct($source, $decodeType)
+    {
+        // Set defaults
+        $this->_source       = self::decodeUnicodeString($source);
+        $this->_sourceLength = strlen($this->_source);
+        $this->_token        = self::EOF;
+        $this->_offset       = 0;
+
+        // Normalize and set $decodeType
+        if (!in_array($decodeType, array(Zend_Json::TYPE_ARRAY, Zend_Json::TYPE_OBJECT)))
+        {
+            $decodeType = Zend_Json::TYPE_ARRAY;
+        }
+        $this->_decodeType   = $decodeType;
+
+        // Set pointer at first token
+        $this->_getNextToken();
+    }
+
+    /**
+     * Decode a JSON source string
+     *
+     * Decodes a JSON encoded string. The value returned will be one of the
+     * following:
+     *        - integer
+     *        - float
+     *        - boolean
+     *        - null
+     *      - StdClass
+     *      - array
+     *         - array of one or more of the above types
+     *
+     * By default, decoded objects will be returned as associative arrays; to
+     * return a StdClass object instead, pass {@link Zend_Json::TYPE_OBJECT} to
+     * the $objectDecodeType parameter.
+     *
+     * Throws a Zend_Json_Exception if the source string is null.
+     *
+     * @static
+     * @access public
+     * @param string $source String to be decoded
+     * @param int $objectDecodeType How objects should be decoded; should be
+     * either or {@link Zend_Json::TYPE_ARRAY} or
+     * {@link Zend_Json::TYPE_OBJECT}; defaults to TYPE_ARRAY
+     * @return mixed
+     * @throws Zend_Json_Exception
+     */
+    public static function decode($source = null, $objectDecodeType = Zend_Json::TYPE_ARRAY)
+    {
+        if (null === $source) {
+            require_once 'Zend/Json/Exception.php';
+            throw new Zend_Json_Exception('Must specify JSON encoded source for decoding');
+        } elseif (!is_string($source)) {
+            require_once 'Zend/Json/Exception.php';
+            throw new Zend_Json_Exception('Can only decode JSON encoded strings');
+        }
+
+        $decoder = new self($source, $objectDecodeType);
+
+        return $decoder->_decodeValue();
+    }
+
+
+    /**
+     * Recursive driving rountine for supported toplevel tops
+     *
+     * @return mixed
+     */
+    protected function _decodeValue()
+    {
+        switch ($this->_token) {
+            case self::DATUM:
+                $result  = $this->_tokenValue;
+                $this->_getNextToken();
+                return($result);
+                break;
+            case self::LBRACE:
+                return($this->_decodeObject());
+                break;
+            case self::LBRACKET:
+                return($this->_decodeArray());
+                break;
+            default:
+                return null;
+                break;
+        }
+    }
+
+    /**
+     * Decodes an object of the form:
+     *  { "attribute: value, "attribute2" : value,...}
+     *
+     * If Zend_Json_Encoder was used to encode the original object then
+     * a special attribute called __className which specifies a class
+     * name that should wrap the data contained within the encoded source.
+     *
+     * Decodes to either an array or StdClass object, based on the value of
+     * {@link $_decodeType}. If invalid $_decodeType present, returns as an
+     * array.
+     *
+     * @return array|StdClass
+     */
+    protected function _decodeObject()
+    {
+        $members = array();
+        $tok = $this->_getNextToken();
+
+        while ($tok && $tok != self::RBRACE) {
+            if ($tok != self::DATUM || ! is_string($this->_tokenValue)) {
+                require_once 'Zend/Json/Exception.php';
+                throw new Zend_Json_Exception('Missing key in object encoding: ' . $this->_source);
+            }
+
+            $key = $this->_tokenValue;
+            $tok = $this->_getNextToken();
+
+            if ($tok != self::COLON) {
+                require_once 'Zend/Json/Exception.php';
+                throw new Zend_Json_Exception('Missing ":" in object encoding: ' . $this->_source);
+            }
+
+            $tok = $this->_getNextToken();
+            $members[$key] = $this->_decodeValue();
+            $tok = $this->_token;
+
+            if ($tok == self::RBRACE) {
+                break;
+            }
+
+            if ($tok != self::COMMA) {
+                require_once 'Zend/Json/Exception.php';
+                throw new Zend_Json_Exception('Missing "," in object encoding: ' . $this->_source);
+            }
+
+            $tok = $this->_getNextToken();
+        }
+
+        switch ($this->_decodeType) {
+            case Zend_Json::TYPE_OBJECT:
+                // Create new StdClass and populate with $members
+                $result = new StdClass();
+                foreach ($members as $key => $value) {
+                    $result->$key = $value;
+                }
+                break;
+            case Zend_Json::TYPE_ARRAY:
+            default:
+                $result = $members;
+                break;
+        }
+
+        $this->_getNextToken();
+        return $result;
+    }
+
+    /**
+     * Decodes a JSON array format:
+     *    [element, element2,...,elementN]
+     *
+     * @return array
+     */
+    protected function _decodeArray()
+    {
+        $result = array();
+        $starttok = $tok = $this->_getNextToken(); // Move past the '['
+        $index  = 0;
+
+        while ($tok && $tok != self::RBRACKET) {
+            $result[$index++] = $this->_decodeValue();
+
+            $tok = $this->_token;
+
+            if ($tok == self::RBRACKET || !$tok) {
+                break;
+            }
+
+            if ($tok != self::COMMA) {
+                require_once 'Zend/Json/Exception.php';
+                throw new Zend_Json_Exception('Missing "," in array encoding: ' . $this->_source);
+            }
+
+            $tok = $this->_getNextToken();
+        }
+
+        $this->_getNextToken();
+        return($result);
+    }
+
+
+    /**
+     * Removes whitepsace characters from the source input
+     */
+    protected function _eatWhitespace()
+    {
+        if (preg_match(
+                '/([\t\b\f\n\r ])*/s',
+                $this->_source,
+                $matches,
+                PREG_OFFSET_CAPTURE,
+                $this->_offset)
+            && $matches[0][1] == $this->_offset)
+        {
+            $this->_offset += strlen($matches[0][0]);
+        }
+    }
+
+
+    /**
+     * Retrieves the next token from the source stream
+     *
+     * @return int Token constant value specified in class definition
+     */
+    protected function _getNextToken()
+    {
+        $this->_token      = self::EOF;
+        $this->_tokenValue = null;
+        $this->_eatWhitespace();
+
+        if ($this->_offset >= $this->_sourceLength) {
+            return(self::EOF);
+        }
+
+        $str        = $this->_source;
+        $str_length = $this->_sourceLength;
+        $i          = $this->_offset;
+        $start      = $i;
+
+        switch ($str{$i}) {
+            case '{':
+               $this->_token = self::LBRACE;
+               break;
+            case '}':
+                $this->_token = self::RBRACE;
+                break;
+            case '[':
+                $this->_token = self::LBRACKET;
+                break;
+            case ']':
+                $this->_token = self::RBRACKET;
+                break;
+            case ',':
+                $this->_token = self::COMMA;
+                break;
+            case ':':
+                $this->_token = self::COLON;
+                break;
+            case  '"':
+                $result = '';
+                do {
+                    $i++;
+                    if ($i >= $str_length) {
+                        break;
+                    }
+
+                    $chr = $str{$i};
+
+                    if ($chr == '\\') {
+                        $i++;
+                        if ($i >= $str_length) {
+                            break;
+                        }
+                        $chr = $str{$i};
+                        switch ($chr) {
+                            case '"' :
+                                $result .= '"';
+                                break;
+                            case '\\':
+                                $result .= '\\';
+                                break;
+                            case '/' :
+                                $result .= '/';
+                                break;
+                            case 'b' :
+                                $result .= chr(8);
+                                break;
+                            case 'f' :
+                                $result .= chr(12);
+                                break;
+                            case 'n' :
+                                $result .= chr(10);
+                                break;
+                            case 'r' :
+                                $result .= chr(13);
+                                break;
+                            case 't' :
+                                $result .= chr(9);
+                                break;
+                            case '\'' :
+                                $result .= '\'';
+                                break;
+                            default:
+                                require_once 'Zend/Json/Exception.php';
+                                throw new Zend_Json_Exception("Illegal escape "
+                                    .  "sequence '" . $chr . "'");
+                        }
+                    } elseif($chr == '"') {
+                        break;
+                    } else {
+                        $result .= $chr;
+                    }
+                } while ($i < $str_length);
+
+                $this->_token = self::DATUM;
+                //$this->_tokenValue = substr($str, $start + 1, $i - $start - 1);
+                $this->_tokenValue = $result;
+                break;
+            case 't':
+                if (($i+ 3) < $str_length && substr($str, $start, 4) == "true") {
+                    $this->_token = self::DATUM;
+                }
+                $this->_tokenValue = true;
+                $i += 3;
+                break;
+            case 'f':
+                if (($i+ 4) < $str_length && substr($str, $start, 5) == "false") {
+                    $this->_token = self::DATUM;
+                }
+                $this->_tokenValue = false;
+                $i += 4;
+                break;
+            case 'n':
+                if (($i+ 3) < $str_length && substr($str, $start, 4) == "null") {
+                    $this->_token = self::DATUM;
+                }
+                $this->_tokenValue = NULL;
+                $i += 3;
+                break;
+        }
+
+        if ($this->_token != self::EOF) {
+            $this->_offset = $i + 1; // Consume the last token character
+            return($this->_token);
+        }
+
+        $chr = $str{$i};
+        if ($chr == '-' || $chr == '.' || ($chr >= '0' && $chr <= '9')) {
+            if (preg_match('/-?([0-9])*(\.[0-9]*)?((e|E)((-|\+)?)[0-9]+)?/s',
+                $str, $matches, PREG_OFFSET_CAPTURE, $start) && $matches[0][1] == $start) {
+
+                $datum = $matches[0][0];
+
+                if (is_numeric($datum)) {
+                    if (preg_match('/^0\d+$/', $datum)) {
+                        require_once 'Zend/Json/Exception.php';
+                        throw new Zend_Json_Exception("Octal notation not supported by JSON (value: $datum)");
+                    } else {
+                        $val  = intval($datum);
+                        $fVal = floatval($datum);
+                        $this->_tokenValue = ($val == $fVal ? $val : $fVal);
+                    }
+                } else {
+                    require_once 'Zend/Json/Exception.php';
+                    throw new Zend_Json_Exception("Illegal number format: $datum");
+                }
+
+                $this->_token = self::DATUM;
+                $this->_offset = $start + strlen($datum);
+            }
+        } else {
+            require_once 'Zend/Json/Exception.php';
+            throw new Zend_Json_Exception('Illegal Token');
+        }
+
+        return($this->_token);
+    }
+
+    /**
+     * Decode Unicode Characters from \u0000 ASCII syntax.
+     *
+     * This algorithm was originally developed for the
+     * Solar Framework by Paul M. Jones
+     *
+     * @link   http://solarphp.com/
+     * @link   http://svn.solarphp.com/core/trunk/Solar/Json.php
+     * @param  string $value
+     * @return string
+     */
+    public static function decodeUnicodeString($chrs)
+    {
+        $delim       = substr($chrs, 0, 1);
+        $utf8        = '';
+        $strlen_chrs = strlen($chrs);
+
+        for($i = 0; $i < $strlen_chrs; $i++) {
+
+            $substr_chrs_c_2 = substr($chrs, $i, 2);
+            $ord_chrs_c = ord($chrs[$i]);
+
+            switch (true) {
+                case preg_match('/\\\u[0-9A-F]{4}/i', substr($chrs, $i, 6)):
+                    // single, escaped unicode character
+                    $utf16 = chr(hexdec(substr($chrs, ($i + 2), 2)))
+                           . chr(hexdec(substr($chrs, ($i + 4), 2)));
+                    $utf8 .= self::_utf162utf8($utf16);
+                    $i += 5;
+                    break;
+                case ($ord_chrs_c >= 0x20) && ($ord_chrs_c <= 0x7F):
+                    $utf8 .= $chrs{$i};
+                    break;
+                case ($ord_chrs_c & 0xE0) == 0xC0:
+                    // characters U-00000080 - U-000007FF, mask 110XXXXX
+                    //see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                    $utf8 .= substr($chrs, $i, 2);
+                    ++$i;
+                    break;
+                case ($ord_chrs_c & 0xF0) == 0xE0:
+                    // characters U-00000800 - U-0000FFFF, mask 1110XXXX
+                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                    $utf8 .= substr($chrs, $i, 3);
+                    $i += 2;
+                    break;
+                case ($ord_chrs_c & 0xF8) == 0xF0:
+                    // characters U-00010000 - U-001FFFFF, mask 11110XXX
+                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                    $utf8 .= substr($chrs, $i, 4);
+                    $i += 3;
+                    break;
+                case ($ord_chrs_c & 0xFC) == 0xF8:
+                    // characters U-00200000 - U-03FFFFFF, mask 111110XX
+                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                    $utf8 .= substr($chrs, $i, 5);
+                    $i += 4;
+                    break;
+                case ($ord_chrs_c & 0xFE) == 0xFC:
+                    // characters U-04000000 - U-7FFFFFFF, mask 1111110X
+                    // see http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                    $utf8 .= substr($chrs, $i, 6);
+                    $i += 5;
+                    break;
+            }
+        }
+
+        return $utf8;
+    }
+
+    /**
+     * Convert a string from one UTF-16 char to one UTF-8 char.
+     *
+     * Normally should be handled by mb_convert_encoding, but
+     * provides a slower PHP-only method for installations
+     * that lack the multibye string extension.
+     *
+     * This method is from the Solar Framework by Paul M. Jones
+     *
+     * @link   http://solarphp.com
+     * @param  string $utf16 UTF-16 character
+     * @return string UTF-8 character
+     */
+    protected static function _utf162utf8($utf16)
+    {
+        // Check for mb extension otherwise do by hand.
+        if( function_exists('mb_convert_encoding') ) {
+            return mb_convert_encoding($utf16, 'UTF-8', 'UTF-16');
+        }
+
+        $bytes = (ord($utf16{0}) << 8) | ord($utf16{1});
+
+        switch (true) {
+            case ((0x7F & $bytes) == $bytes):
+                // this case should never be reached, because we are in ASCII range
+                // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                return chr(0x7F & $bytes);
+
+            case (0x07FF & $bytes) == $bytes:
+                // return a 2-byte UTF-8 character
+                // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                return chr(0xC0 | (($bytes >> 6) & 0x1F))
+                     . chr(0x80 | ($bytes & 0x3F));
+
+            case (0xFFFF & $bytes) == $bytes:
+                // return a 3-byte UTF-8 character
+                // see: http://www.cl.cam.ac.uk/~mgk25/unicode.html#utf-8
+                return chr(0xE0 | (($bytes >> 12) & 0x0F))
+                     . chr(0x80 | (($bytes >> 6) & 0x3F))
+                     . chr(0x80 | ($bytes & 0x3F));
+        }
+
+        // ignoring UTF-32 for now, sorry
+        return '';
+    }
+}
+

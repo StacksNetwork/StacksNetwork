@@ -14,7 +14,7 @@
 <div class="wbox"><div class="wbox_header">配置状态</div><div class="wbox_content">
 
 <p>
-您服务器目前正在的配置...请注意, 这可能需要10分钟才能完成...
+您的服务器目前正在配置中... 注意, 这可能需要10分钟才能完成...
 </p>
 
 <form name="prov" method="post" action="">
@@ -37,12 +37,12 @@
           </tr>
 
           <tr>
-            <td width="150" class="fieldarea">安装配置</td>
+            <td width="150" class="fieldarea">安装配置文件</td>
             <td>{$status.profilename|escape}</td>
           </tr>
 
           <tr>
-            <td width="150" class="fieldarea">最后一个状态信息</td>
+            <td width="150" class="fieldarea">最新状态信息</td>
             <td id="statusmsg">{$status.statusmsg|escape}</td>
           </tr>
 
@@ -52,7 +52,7 @@
 		  </tr>
 		  
 		  <tr>
-			<td colspan=2 align="center"><br><br>配置采用NOC-PS</td>
+			<td colspan=2 align="center"><br><br>NOC-PS配置工具</td>
 		  </td>
   </table>
 </form>
@@ -118,9 +118,9 @@ function onProfileChange()
 	  tags = [];
   }
   
-  var packages    = [['','Standard']];
-  var disklayouts = [['','Standard']];
-  var extras	  = [['','None']];
+  var packages    = [['','标准']];
+  var disklayouts = [['','标准']];
+  var extras	  = [['','无']];
   var totalAddons = a.length;
   
   for (var i=0; i <totalAddons; i++)
@@ -183,7 +183,7 @@ function array2options(sel, arr)
 <div class="wbox"><div class="wbox_header">{$lang.Provision}</div><div class="wbox_content">
 
 {if !$ip && !$error}
-您的订单尚未分配到任意一台服务器!
+您的订单中未包含服务器
 </div></div></div>
 {/if}
 
@@ -197,7 +197,7 @@ function array2options(sel, arr)
 <form name="prov" method="post" action="" onsubmit="provbutton.disabled=true; return true;">
   <input type="hidden" name="nps_nonce" value="{$nonce}" />
 
-  <table width="100%" cellspacing="10" cellpadding="10">
+  <table width="100%" cellspacing="5" cellpadding="5">
           <tr>
             <td width="150" class="fieldarea">MAC地址</td>
             <td>{$mac}</td>
@@ -221,7 +221,7 @@ function array2options(sel, arr)
           </tr>
 
           <tr>
-            <td width="150" class="fieldarea">安装配置</td>
+            <td width="150" class="fieldarea">安装配置文件</td>
             <td><select name="profile" style="width: 350px;" onchange="onProfileChange();">
 				{foreach item=profile from=$profiles}
 			      <option value="{$profile.id}"{if $defaultProfile == $profile.id} selected{/if}>{$profile.name|escape}</option>
@@ -230,7 +230,7 @@ function array2options(sel, arr)
           </tr>
 
           <tr>
-            <td width="150" class="fieldarea">磁盘部署</td>
+            <td width="150" class="fieldarea">磁盘分区</td>
             <td><select name="disklayout" style="width: 350px;">
 			</select></td>
           </tr>
@@ -260,7 +260,7 @@ function array2options(sel, arr)
           </tr>
 
           <tr>
-            <td width="150" class="fieldarea">一般用户名(可选)</td>
+            <td width="150" class="fieldarea">普通用户名(可选)</td>
             <td><input type="text" name="adminuser" value="charlie" style="width: 350px;"></td>
           </tr>
 		  
@@ -276,7 +276,7 @@ function array2options(sel, arr)
 		  
 		  <tr>
 			<td>&nbsp;
-			<td><input type="submit" name="provbutton" value="设置服务器(警告: 覆盖磁盘上的数据)" onclick="return confirm('这将删除磁盘上所有现有的数据, 您是否确定?');">
+			<td><input type="submit" name="provbutton" value="配置服务器(警告:重写磁盘数据)" onclick="return confirm('这将删除磁盘上的所有现有数据. 您是否确定?');">
 		  </tr>
   </table>
 </form>

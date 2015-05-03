@@ -2,13 +2,13 @@
     <div class="list-1">
         <ul>
             <li class="{if $action == 'default'}active{/if}">
-                <a {if $action != 'default'} href="?cmd={$modulename}"{/if}><span>弹性VM列表</span></a>
+                <a {if $action != 'default'} href="?cmd={$modulename}"{/if}><span>VM Flavor List</span></a>
             </li>
             <li class="{if $action == 'storage'}active{/if}">
-                <a {if $action != 'storage'} href="?cmd={$modulename}&action=storage"{/if}><span>弹性存储列表</span></a>
+                <a {if $action != 'storage'} href="?cmd={$modulename}&action=storage"{/if}><span>Storage Flavor List</span></a>
             </li>
             <li class="{if $action == 'add'}active{/if} last">
-                <a {if $action != 'add'}href="?cmd={$modulename}&action=add"{/if}><span>新建弹性资源</span></a>
+                <a {if $action != 'add'}href="?cmd={$modulename}&action=add"{/if}><span>New Flavor</span></a>
             </li>
         </ul>
     </div>
@@ -26,16 +26,16 @@
                             <tbody> <tr class="havecontrols">
                                         <td width="90" >
                                             <div style="padding:10px 5px;">
-                                                <a class="sorter-ha menuitm menuf" style="width:14px;margin-left:4px;" onclick="return false" href="#"><span title="移动" class="movesth">&nbsp;</span></a><!--
-                                                --><a class="menuitm menuc" style="width:14px;" href="?cmd=flavormanager&action=edit&id={$field.id}"  title="编辑"  ><span class="editsth"></span></a><!--
-                                                --><a class="menuitm menul" title="删除" href="?cmd=flavormanager&action=delete&id={$field.id}&security_token={$security_token}" onclick="return confirm('您确定需要删除该弹性资源?');"><span class="delsth"></span></a>
+                                                <a class="sorter-ha menuitm menuf" style="width:14px;margin-left:4px;" onclick="return false" href="#"><span title="move" class="movesth">&nbsp;</span></a><!--
+                                                --><a class="menuitm menuc" style="width:14px;" href="?cmd=flavormanager&action=edit&id={$field.id}"  title="edit"  ><span class="editsth"></span></a><!--
+                                                --><a class="menuitm menul" title="delete" href="?cmd=flavormanager&action=delete&id={$field.id}&security_token={$security_token}" onclick="return confirm('Are you sure you wish to delete this flavor?');"><span class="delsth"></span></a>
                                             </div>
                                         </td>
                                         <td   >
                                             <input type="hidden" name="sort[]" value="{$field.id}" />
                                             {if $field.enabled=='0'}<em>{/if}{$field.name} {if !$entry.enabled}</em>{/if}
                                             </td>
-                                        <td align='right'>  {$field.price_on|price:$currency:true:false:true:10} / 小时 </td>
+                                        <td align='right'>  {$field.price_on|price:$currency:true:false:true:10} / hour </td>
                                         <td width='100'>   </td>
                                 </tr></tbody>
                         </table>
@@ -47,11 +47,11 @@
 {else}
     <div class="blank_state blank_kb">
         <div class="blank_info">
-            <h1>弹性资源管理</h1>
-            您可以在这里创建给您用户使用的弹性资源
+            <h1>Flavor Manager</h1>
+            You can create flavors to be used by clients here
             <div class="clear"></div>
             <a style="margin-top:10px" href="?cmd=flavormanager&action=add" class="new_add new_menu">
-                <span>添加新的弹性资源</span></a>
+                <span>Add new Flavor</span></a>
             <div class="clear"></div>
         </div>
     </div>

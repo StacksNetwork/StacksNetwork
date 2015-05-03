@@ -1,5 +1,5 @@
 {if !$switches}
-错误: 无法从Observium应用中读取交换机
+错误: 无法从相关Observium应用中读取接口
 {else}
 <select id="observium_switch_id" class="inp" onchange="change_observium_sw(this);">
     {foreach from=$switches item=sw}
@@ -7,7 +7,7 @@
     {/foreach}
 </select>
 
-Port:
+端口:
 {foreach from=$switches item=sw name=f}
 <select id="observium_port_id_{$sw.device_id}" class="inp sw_observium_port" {if !$smarty.foreach.f.first}style="display:none"{/if}>
         {foreach from=$sw.ports item=i key=k}

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>HostBill - {$business_name} </title>
+<title>{$business_name} </title>
 <link href="{$template_dir}_style.css" rel="stylesheet" media="all" />
 <script type="text/javascript" src="{$template_dir}js/jquery-1.3.2.min.js?v={$hb_version}"></script>
 <style>{literal}
@@ -142,7 +142,7 @@ html, body {
 					<td colspan="2">{$lang.Password}:</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="padding-bottom:10px;"><input name="password"  class="foc2" type="password"/> </td>
+					<td colspan="2" style="padding-bottom:10px;"><input name="password"  class="foc2" type="password" autocomplete="off"/> </td>
 				</tr>
 				
 				<tr>
@@ -179,7 +179,7 @@ html, body {
 		</div>
 		
 	</div>
-	<div style="text-align:right;"><small>Powered by <a href="http://hostbillapp.com" target="_blank" >HostBill</a></small></div>
+	<div style="text-align:right;"><small>Powered by <a href="http://www.stacksnet.com" target="_blank" >STACKS® NETWORK</a></small></div>
 </div>
 </div>
 

@@ -17,15 +17,15 @@
                     <div class="list-1">
                         <ul>
                             <li>
-                                <a href="#"><span class="ico money">General</span></a>
+                                <a href="#"><span class="ico money">主要</span></a>
                             </li>
                             {if $addon.module!=''}
                             <li >
-                                <a href="#"><span class="ico plug">Connect with App</span></a>
+                                <a href="#"><span class="ico plug">连接到App</span></a>
                             </li>
                             {/if}
                             <li >
-                                <a href="#"><span class="ico gear">Automation</span></a>
+                                <a href="#"><span class="ico gear">自动化</span></a>
                             </li>
                             <li class="last">
                                 <a href="#"><span class="ico gear">{$lang.Emails}</span></a>

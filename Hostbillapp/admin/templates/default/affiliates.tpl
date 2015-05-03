@@ -233,7 +233,7 @@
                             <tr>
                                 <td >{$lang.affiliateurl}</td>
                                 <td><input value="{$system_url}?affid={$affiliate.id}" readonly="readonly" style="width:300px"/></td>
-                                <td rowspan="2">Available Commission plans</td>
+                                <td rowspan="2">酬金适用</td>
                                 <td rowspan="2">
                                     <select name="commision_plans[]" multiple="multiple" size=3 style="min-width:200px">
                                         <option value="all" {if !$affiliate.commision_plans}selected="selected"{/if}>All Commission plans</option>

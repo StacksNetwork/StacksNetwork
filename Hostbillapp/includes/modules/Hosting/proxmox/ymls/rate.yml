@@ -1,0 +1,25 @@
+type: select
+name: 'Port Speed [Mbps]'
+key: cf_bandwidth
+variable: rate
+description:
+category: network
+options: 2
+premade: 1
+items:
+  -
+    name: 10
+    variable_id: 10
+    pricing: 0
+  -
+    name: 100
+    variable_id: 100
+    m: 0.20
+    pricing: 1
+    paytype: Regular
+  -
+    name: 1000
+    variable_id: 1000
+    m: 1.00
+    pricing: 1
+    paytype: Regular

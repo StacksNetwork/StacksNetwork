@@ -19,7 +19,7 @@
         <font color="red">{$lang.critical}</font>  {$lang.cronnotwork}<a href="?cmd=configuration&action=cron">{$lang.doitnow}.</a><br />
 					{/if}
 					{if $todo.crontaskblock}
-        <font color="red">{$lang.crontaskdisabled}</font> <a href="?cmd=configuration&action=cron">{$lang.Learnmore}.</a> <a href="?cmd=logs&action=errorlog"> Error Log</a><br />
+        <font color="red">{$lang.crontaskdisabled}</font> <a href="?cmd=configuration&action=cron">{$lang.Learnmore}.</a> <a href="?cmd=logs&action=errorlog"> 错误日志</a><br />
 					{/if}
 					{if $todo.chmodcron}
 						{$lang.chmodcron}<br />

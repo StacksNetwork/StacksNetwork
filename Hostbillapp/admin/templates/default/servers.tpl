@@ -35,7 +35,7 @@
                                                         <option value="{$mod.id}" {if $setmodule==$mod.id}selected="selected"{/if}>{$mod.module}</option>
                                                     {/if}
                                                 {/foreach}
-                                                <option value="new" style="font-weight:bold">Show non-activated modules</option>
+                                                <option value="new" style="font-weight:bold">显示未激活模块</option>
                                             </select>
                                         </td>
                                     {/if}
@@ -63,7 +63,7 @@
 
                         <div class="lighterblue" style="padding:10px;">
                             <center>
-                                <input type="submit" class="submitme" value="{$lang.addnewapp}"/> <span class="orspace">Or <a href="?cmd=servers" class="editbtn">{$lang.Cancel}</a></span>
+                                <input type="submit" class="submitme" value="{$lang.addnewapp}"/> <span class="orspace">或 <a href="?cmd=servers" class="editbtn">{$lang.Cancel}</a></span>
                             </center>
                         </div>
                         {securitytoken}
@@ -226,7 +226,7 @@
                                 <span class="editor-line">
                                     <input name="name" style="height: 15px;width:150px;background:#ffffff;" value="{$group.name}" class="inp"/>
                                     <a href="#" class="savebtn" onclick="$('#editgr').submit();
-                                            return false;"  style="top:0px;right:6px;">Save Changes</a>
+                                            return false;"  style="top:0px;right:6px;">保存更改</a>
                                 </span>
                                 <a href="#" class="editbtn" onclick="$('#orgline').show();
                                         $('#editline').hide();

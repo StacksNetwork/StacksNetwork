@@ -1,16 +1,16 @@
 <div style="padding:10px">
     {if !$transactions}
-        There are no transactions available to refund for this invoice. <a href="#"  onclick="$('#refunds').hide();
+        没有可退还该账单的交易. <a href="#"  onclick="$('#refunds').hide();
                 return false;">{$lang.Cancel}</a>
     {else}
         <form action="?cmd=invoices&action=edit&id={$invoice_id}&list={$currentlist}" method="post" onsubmit="$('#bodycont').addLoader();" >
             <table cellspacing="1" cellpadding="3" border="0" style="width:100%" class="whitetable" >
                 <tr>
-                    <th colspan="6">Refund invoice</th>
+                    <th colspan="6">退单账单</th>
                 </tr>
                 <tr>
                     <td style="text-align: right; width:180px">
-                        <label>Refund type</label>
+                        <label>退单类型</label>
                     </td>
                     <td>
                         <select name="refund_type" id="refundtype">
@@ -22,7 +22,7 @@
                         </select>
                     </td>
                     <td style="text-align: right; width:180px">
-                        <label class="credit_transaction">Transaction to refund</label>
+                        <label class="credit_transaction">交易退款</label>
                     </td>
                     <td>
                         <select name="target_transaction_id" class="credit_transaction">
@@ -32,7 +32,7 @@
                         </select>
                     </td>
                     <td style="text-align: right; width:180px">
-                        {if "config:CnoteEnable:on"|checkcondition }<label>Create Credit Note</label>
+                        {if "config:CnoteEnable:on"|checkcondition }<label>新建信用记录</label>
                         {/if}
                     </td>
                     <td>
@@ -45,7 +45,7 @@
                 <thead>
                     <tr>
                         <th colspan="2">Description</th>
-                        <th>Amount to refund</th>
+                        <th>退款金额</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -61,28 +61,28 @@
             <table cellspacing="1" cellpadding="3" border="0" style="width:100%" class="whitetable" >
                 <tr>
                     <td style="text-align: right; width:180px">
-                        <label>Amount to refund</label>
+                        <label>退款金额</label>
                     </td>
                     <td>
                         <input id="refundamount" name="amount" type="text" value="{$maxref}" style="font-weight: bold; font-size: 12px"/>
-                        / <span id="maxrefund">{$maxref|price:$currency}</span> <a href="#" class="vtip_description" title="If you want to use automatic gateway refund, maximum refund amount will be capped to selected transaction amount"></a>
+                        / <span id="maxrefund">{$maxref|price:$currency}</span> <a href="#" class="vtip_description" title="如果你想使用自动支付接口退款, 最高退款金额将封顶为所选交易金额"></a>
 
                     </td>
                     <td style="text-align: right; width:180px">
-                        <label>Post action</label>
+                        <label>提交操作</label>
                     </td>
                     <td>
                         <select name="post_action">
-                            <option value="nothing">Return to invoice</option>
-                            <option value="terminate">Terminate related account</option>
-                            <option value="close">Close client profile</option>
-                            <option value="close_ban">Close client profile, ban client IP</option>
-                            <option value="delete">Delete client account</option>
-                            <option value="suspend">Suspend client account</option>
+                            <option value="nothing">回到帐单</option>
+                            <option value="terminate">终止相关账户</option>
+                            <option value="close">关闭客户配置文件</option>
+                            <option value="close_ban">关闭客户配置文件, 拉黑客户IP</option>
+                            <option value="delete">删除客户账户</option>
+                            <option value="suspend">暂停客户帐户</option>
                         </select>
                     </td>
                     <td style="text-align: right; width:180px">
-                        <label>Notify customer</label>
+                        <label>通知客户</label>
                     </td>
                     <td><input type="checkbox" value="1" name="notify" /></td>
                 </tr>

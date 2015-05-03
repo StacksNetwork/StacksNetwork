@@ -160,7 +160,7 @@
         </script>            {/literal}
 
 
-        <h1>Order items</h1>
+        <h1>订单内容</h1>
 
         <table width="100%" class="ordertable" cellpadding="3" cellspacing="0" border="0" style="border:solid 1px #ddd;border-bottom: none;">
             <tbody>
@@ -281,7 +281,7 @@
                 <tr  class="havecontrols">
                     {if $details.status=='Pending'}<td><input type="checkbox" name="domainregister[{$domain.id}]" value="1" checked="checked" value="1"  rel="domainrow{$domain.id}" class="provision domain"/></td>{/if}
 
-                    <td ><a href="?cmd=domains&action=edit&id={$domain.id}"><b>Domain:</b> {$domain.type} - {$domain.name}</a></td>
+                    <td ><a href="?cmd=domains&action=edit&id={$domain.id}"><b>域名:</b> {$domain.type} - {$domain.name}</a></td>
                     <td align="center">{$domain.period} {$lang.yearslash}</td>
                     <td align="center">{$domain.firstpayment|price:$details.currency_id}</td>
                     <td align="center"><span class="{$domain.status}">{$lang[$domain.status]}</span></td>
@@ -305,19 +305,19 @@
                         </select></td>
                             </tr>
                             <tr>
-                                <td width="160">Nameserver 1</td>
+                                <td width="160">域名服务器 1</td>
                                 <td><input name="nameservers[{$domain.id}][0]" value="{$domain.nameservers[0]}" /></td>
                             </tr>
                             <tr>
-                                <td width="160">Nameserver 2</td>
+                                <td width="160">域名服务器 2</td>
                                 <td><input name="nameservers[{$domain.id}][1]" value="{$domain.nameservers[1]}" /></td>
                             </tr>
                             <tr>
-                                <td width="160">Nameserver 3</td>
+                                <td width="160">域名服务器 3</td>
                                 <td><input name="nameservers[{$domain.id}][2]" value="{$domain.nameservers[2]}" /></td>
                             </tr>
                             <tr>
-                                <td width="160">Nameserver 4</td>
+                                <td width="160">域名服务器 4</td>
                                 <td><input name="nameservers[{$domain.id}][3]" value="{$domain.nameservers[3]}" /></td>
                             </tr>
                         </table>

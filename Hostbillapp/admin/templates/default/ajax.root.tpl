@@ -1,11 +1,11 @@
 {if $action=='initialconfig'}
-<h2 style="margin-top:0px;">Welcome in <span style="color:#484740;font-family:Calibri,Arial,Helvetica;font-size:21px">Host</span><span style="color:#6694e3;font-family:Calibri,Arial,Helvetica;font-size:21px">Bill</span></h2>
-Thank you for choosing HostBill as your new billing application. For quick start use one of pre-configured settings below.
+<h2 style="margin-top:0px;">欢迎来到 <span style="color:#484740;font-family:Calibri,Arial,Helvetica;font-size:21px">STACKS® NETWORK</span><span style="color:#6694e3;font-family:Calibri,Arial,Helvetica;font-size:21px">管理后台</span></h2>
+感谢您选择HostBill作为新的结算程序. 对于快速启动使用以下预设的设置之一.
 
 <div style="margin: 20px 0px"><form action="" method="post">
         <input type="hidden" name="action" value="saveprofile"/>
 {if $qc_features}
-    <strong>Profile:</strong> <select class="inp" name="profile" onchange="ppp(this)">
+    <strong>配置文件:</strong> <select class="inp" name="profile" onchange="ppp(this)">
         {foreach from=$qc_features item=q}
         <option value="{$q.file}">{$q.name}</option>
         {/foreach}

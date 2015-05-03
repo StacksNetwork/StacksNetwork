@@ -117,7 +117,7 @@ $(function() {
     $('#bodycont').on('click', '.removeLine', function() {
         var el = $(this);
         $(this).parent().parent().addClass('yellow_bg');
-        var answer = confirm("Do you really want to delete this line?");
+        var answer = confirm("您确定需要删除该行?");
         if (answer) {
             $('#main-invoice').addLoader();
             $.post($(this).attr('href'), {empty1mc: 'param'}, function(data) {

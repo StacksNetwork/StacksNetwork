@@ -1,0 +1,88 @@
+#plugin_body{
+    padding: 10px 0;
+}
+#plugin_body tablle{
+    width: 100%;
+}
+#plugin_body td:first-child{
+    width: 160px;
+    text-align: right;
+    vertical-align: top
+}
+#plugin_body input{
+    min-width: 350px;
+}
+#plugin_body input[type=radio],#plugin_body input[type=checkbox]{
+    min-width: 0;
+}
+#plugin_body textarea{
+    min-width: 350px;
+}
+#plugin_body .clearfix{
+    padding: 0 10px;
+}
+
+.my-toggle-class {
+    color: #888;
+    cursor: pointer;
+    font-size: 0.75em;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    text-transform: uppercase;
+    z-index: 3;
+}
+.img-bg-tp{
+    padding: 5px;
+}
+.havecontrols td{
+    line-height: 22px;
+}
+.btn_{
+    display: inline-block;
+    padding: 8px 9px;
+    background-position: center center;
+    background-repeat: no-repeat;
+    opacity: 0.3
+}
+.btn_:hover{
+    opacity: 0.8
+}
+.btn_:active{
+    opacity: 1
+}
+.btn_delete{
+    background-image: url('icons/Bin.png') 
+}
+.btn_view{
+    background-image: url('icons/Eye.png') 
+}
+.btn_edit{
+    background-image: url('icons/Pencil.png') 
+}
+#authorize{
+    background: white;
+    padding: 10px;
+}
+
+#authorize h3{
+    margin-top: 0;
+}
+#authorize h4{
+    margin-bottom: 0;
+}
+
+.pm-table th, .pm-table td {
+    line-height: 2em;
+    padding-left: 5px;
+    text-align: left;
+}
+.pm-table th {
+    background: none repeat scroll 0 0 #F0F0F0;
+    border: 1px solid #DDDDDD;
+}
+.ajax{
+    background: url('icons/ajax.gif') no-repeat center center;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+}

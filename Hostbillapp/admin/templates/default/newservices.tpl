@@ -24,7 +24,7 @@
                             <a href="#"><span class="ico gear">{$lang.Emails}</span></a>
                         </li>
                         <li id="components_tab">
-                            <a href="#"><span class="ico globe">Components</span></a>
+                            <a href="#"><span class="ico globe">组件</span></a>
                         </li>
                         <li>
                             <a href="#"><span class="ico formn">{$lang.widgets_tab}</span></a>
@@ -49,7 +49,7 @@
                             <li ><a href="#" onclick="$('#prorated_ctrl').show();$('#prorata_on').click();$(this).hide();return false"><span >{$lang.new_EnableProRata}</span></a></li>
                         {/if}
                         {if $product.timevalidation=='1' && !($product.valid_to && $product.valid_to!='0000-00-00') && !($product.valid_from && $product.valid_from!='0000-00-00')}
-                            <li ><a href="#" onclick="$(this).hide();$('.timecontrol').ShowNicely(); return false;"><span >Enable time based validation</span></a></li>
+                            <li ><a href="#" onclick="$(this).hide();$('.timecontrol').ShowNicely(); return false;"><span >启用基于时间的验证</span></a></li>
 						{/if}
                         </ul>
                         <div class="right" style="color:#999999;padding-top:5px">
@@ -217,10 +217,10 @@
     <tr id="module_tab_switcher" {if !$product.modules}style="display:none"{/if}>
         <td width="160" style="border-bottom:1px solid #CCCCCC"></td>
         <td style="border-bottom:1px solid #CCCCCC" id="module_tab_pick_container">
-            <a class="module_tab_pick picked" href="">Main product App</a>
+            <a class="module_tab_pick picked" href="">核心产品App</a>
             {if $product.modules}
                 {foreach from=$product.modules item=module key=kl}
-                    <a class="module_tab_pick" href="">Additional App: {$module.modname}</a>
+                    <a class="module_tab_pick" href="">增值产品App: {$module.modname}</a>
                 {/foreach}
             {/if}
         </td>
@@ -236,9 +236,9 @@
                             {foreach from=$modules item=mod}{if $mod.id!='-1'}
                             <option value="{$mod.id}" {if $product.module==$mod.id}selected="selected" {/if}>{$mod.module}</option>{/if}
                             {/foreach}
-                            <option value="new" style="font-weight:bold">Show  non-activated modules</option>
+                            <option value="new" style="font-weight:bold">显示未激活模块</option>
                         </select>
-                       {if $showmultimodules} <a onclick="connectMoreApps(this);return false;" class="new_control right" href="#"><span class="addsth">Connect more apps</span></a> {/if}
+                       {if $showmultimodules} <a onclick="connectMoreApps(this);return false;" class="new_control right" href="#"><span class="addsth">连接更多Apps</span></a> {/if}
 
                     </td>
                 </tr>
@@ -276,7 +276,7 @@
                             <table cellspacing="0" cellpadding="3" style="margin-bottom:5px;">
                                 <tbody><tr>
                                         <td>
-                                            Copy from: <select name="copy_from" class="submitme">
+                                            复制于: <select name="copy_from" class="submitme">
                                                 {foreach from=$otherproducts item=oth}
                                                 <option value="{$oth.id}">{$oth.catname} - {$oth.name}</option>
                                                 {/foreach}
@@ -320,7 +320,7 @@
                 </tr>
                 
                 <tr>
-                    <td width="200" valign="top" align="right"><strong>Automatic Upgrades</strong></td>
+                    <td width="200" valign="top" align="right"><strong>自动化升级</strong></td>
                     <td>
                         <input type="radio" {if $configuration.EnableAutoUpgrades == 'off'}checked="checked"{/if} 
                                name="config[EnableAutoUpgrades]" value="off" 
@@ -333,7 +333,7 @@
                                id="upgrades_on"/>
                         <label  for="upgrades_on"><b>{$lang.yes}</b></label>
                         <div class="p5" id="upgrades_options" style="{if $configuration.EnableAutoUpgrades == 'off'}display:none;{/if}margin-top:10px;border:#ccc 1px solid;" >
-                            Upgrade account automatically after receiving payment 
+                            收到转账付款后自动升级账户 
                         </div>
                     </td>
                 </tr>
@@ -430,9 +430,9 @@
                         <div id="cancelation_options" style="{if $configuration.AutoProcessCancellations == 'off'}display:none;{/if}margin-top:10px;" class="p5">
                              {$lang.new_AutoProcessCancellations1} <br/>
 
-                             <input type="radio" {if $configuration.AutoCancelUnpaidInvoices == 'off'}checked="checked"{/if} name="config[AutoCancelUnpaidInvoices]" value="off" /> <b>No</b>
-                             <input type="radio" value="on" name="config[AutoCancelUnpaidInvoices]" {if $configuration.AutoCancelUnpaidInvoices == 'on'}checked="checked"{/if} /> <b>Yes</b>
-                             Automatically cancel related unpaid invoices
+                             <input type="radio" {if $configuration.AutoCancelUnpaidInvoices == 'off'}checked="checked"{/if} name="config[AutoCancelUnpaidInvoices]" value="off" /> <b>否</b>
+                             <input type="radio" value="on" name="config[AutoCancelUnpaidInvoices]" {if $configuration.AutoCancelUnpaidInvoices == 'on'}checked="checked"{/if} /> <b>是</b>
+                             自动取消相关的未付账单
 
                         </div>
                     </td>
@@ -696,7 +696,7 @@
                         <td colspan="2">
                             <div class="blank_state_smaller blank_domains">
                                 <div class="blank_info">
-                                    <h3>You can offer domain registration, transfer, subdomains with this product.</h3>
+                                    <h3>可以提供域名注册, 转移, 子域给该产品.</h3>
                                     <div class="clear"></div>
                                     <br/>
                                     <a  href="#" class="new_control"  onclick="$('#domain_options_container').show();$('#domain_options').eq(0).click();$(this).hide();return false;return false" ><span class="addsth" ><strong>{$lang.offerdomains}</strong></span></a>
@@ -721,7 +721,7 @@
                             <table  cellpadding="6" cellspacing="0" class="editor-container" width="100%">
 
                                 <tr>
-                                    <td colspan="2"> <strong>Offer following domain registration/transfer options:</strong></td>
+                                    <td colspan="2"> <strong>下面提供域名注册/转移选项:</strong></td>
 
                                 </tr>
                                 <tr>
@@ -729,11 +729,11 @@
                                         {if !$domain_order}
                                         <div class="blank_state_smaller blank_domains" style="padding:10px 0px;">
                                             <div class="blank_info">
-                                                <h3>You dont have any domain order pages set-up yet.</h3>
-                                                <span class="fs11">With HostBill you can configure various orderpages for domains and offer them with your packages as sub-product.</span>
+                                                <h3>您目前尚无任何域名订购页面.</h3>
+                                                <span class="fs11">您可以配置各种订单页面的字段, 并可作为您套餐产品中的子产品.</span>
                                                 <div class="clear"></div>
                                                 <br/>
-                                                <a  href="?cmd=services&action=addcategory" class="new_control"  target="_blank" ><span class="addsth" ><strong>Create new domain orderpage</strong></span></a>
+                                                <a  href="?cmd=services&action=addcategory" class="new_control"  target="_blank" ><span class="addsth" ><strong>创建新的域名订单页面</strong></span></a>
                                                 <div class="clear"></div>
 
                                             </div>
@@ -822,10 +822,10 @@
                         <td colspan="2">
                             <div class="blank_state_smaller blank_domains">
                                 <div class="blank_info">
-                                    <h3>Offer other packages to be purchased and automated with this product, all in one order.</h3>
+                                    <h3>对该产品提供其它套餐购买与自动化开通. All in One 订单</h3>
                                     <div class="clear"></div>
                                     <br/>
-                                    <a  href="#" class="new_control"  onclick="$('#subproducts_options_container').show();$('#subprod_options_blank_state').hide();return false;return false" ><span class="addsth" ><strong>Enable Sub-products</strong></span></a>
+                                    <a  href="#" class="new_control"  onclick="$('#subproducts_options_container').show();$('#subprod_options_blank_state').hide();return false;return false" ><span class="addsth" ><strong>启用子产品</strong></span></a>
                                     <div class="clear"></div>
 
                                 </div>
@@ -881,12 +881,12 @@
 
 <tbody style="display:none"  class="sectioncontent">
  <tr>
-                    <td width="200" valign="top" align="right"><strong>Limit Per Customer</strong></td>
+                    <td width="200" valign="top" align="right"><strong>每用户限制</strong></td>
                     <td>
                         <input type="radio" {if $product.client_limit == '0'}checked="checked"{/if} name="product_limit_customer" value="off" onclick="$('#limit_options').hide();$('#client_limit_val').val(0)" /><label  ><b>{$lang.no}</b></label>
                         <input type="radio" {if   $product.client_limit != '0'}checked="checked"{/if} name="product_limit_customer" value="on" onclick="$('#limit_options').ShowNicely()" /><label  ><b>{$lang.yes}</b></label>
                         <div class="p5" id="limit_options" style="{if $product.client_limit == '0'}display:none;{/if}margin-top:10px;border:#ccc 1px solid;" >
-	One customer is allowed to order <input type="text" size="3" value="{$product.client_limit}"  name="client_limit" id="client_limit_val" class="inp config_val" /> products of this type
+	每个用户被允许购买 <input type="text" size="3" value="{$product.client_limit}"  name="client_limit" id="client_limit_val" class="inp config_val" /> 个该类型的产品
 
                         </div>
 

@@ -3,7 +3,7 @@
 /* * **************************************************************************
  *
  * HostBill-Cacti API file.
- * Copyright (c) 2015 - KBKP Software S.C. All Rights Reserved.
+ * Copyright (c) 2012 - KBKP Software S.C. All Rights Reserved.
  *
  *  This software is furnished under a license and may be used and copied
  * only  in  accordance  with  the  terms  of such  license and with the
@@ -21,8 +21,6 @@
  * ***************************************************************************
  */
 
-//csrf hack for 0.8.8.c
-$_SERVER['REQUEST_METHOD']='GET';
 
 /**
  * General Cacti functions and declarations:

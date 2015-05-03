@@ -38,7 +38,7 @@
                                     <select name="client_id"  style="width: 180px" name="client_id" load="clients" default="{$transaction.client_id}">
 
                                         {*foreach from=$clients item=client}
-                                        <option value="{$client.id}"  {if $transaction.client_id==$client.id}selected="selected"{/if}>#{$client.id} {if $client.companyname!=''}{$lang.Company}: {$client.companyname}{else}{$client.firstname} {$client.lastname}{/if}</option>
+                                        <option value="{$client.id}"  {if $transaction.client_id==$client.id}selected="selected"{/if}>#{$client.id} {if $client.companyname!=''}{$lang.Company}: {$client.companyname}{else}{$client.lastname} {$client.firstname}{/if}</option>
                                         {/foreach*}
                                     </select></td>
                             </tr>

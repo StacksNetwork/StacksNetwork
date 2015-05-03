@@ -85,7 +85,7 @@
         <form>
             <input type="hidden" value="{$totalpages}" name="totalpages2" id="totalpages"/>
             <div class="blu">
-                <strong>Ticket Views</strong> 
+                <strong>工单视图</strong> 
                 <div class="right"><div class="pagination"></div></div>
                 <div class="clear"></div>
             </div>   
@@ -94,9 +94,9 @@
         <table cellspacing="0" cellpadding="7" border="0" width="100%" class="glike hover">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Owner</th>
-                    <th>Type</th>
+                    <th>名称</th>
+                    <th>所有人</th>
+                    <th>类型</th>
                     <th width="50"></th>
                 </tr>
             </thead>
@@ -108,7 +108,7 @@
                         <td>{if $view.username}{$view.username}{else}--{/if}</td>
                         <td>{if $view.options & 1}Public{else}Private{/if}</td>
                         <td>
-                            <a onclick="return confirm('Are you sure you want to delete this view?');" class="delbtn" href="?cmd=ticketviews&action=delete&id={$view.id}&security_token={$security_token}">Delete</a>
+                            <a onclick="return confirm('Are you sure you want to delete this view?');" class="delbtn" href="?cmd=ticketviews&action=delete&id={$view.id}&security_token={$security_token}">删除</a>
                         </td>
                     </tr>
                 {/foreach}
@@ -125,7 +125,7 @@
         <div class="blu" style="line-height: 20px;" >
             <a href="?cmd={$cmd}&action=add" class="new_control">
                 <span class="addsth">
-                    <strong>Create view</strong>
+                    <strong>创建视图</strong>
                 </span>
             </a>
         </div>
@@ -133,11 +133,11 @@
     {else}
         <div class="blank_state blank_services">
             <div class="blank_info">
-                <h1>Custom ticket views</h1>
-                Select whitch ticket should be listed and how you want them to be presented to you!
+                <h1>自定义工单视图</h1>
+                选择您希望作为前台显示的工单内容!
                 <div class="clear"></div>
                 <a style="margin-top:10px" href="?cmd={$cmd}&action=add" class="new_add new_menu">
-                    <span>Create view</span>
+                    <span>创建视图</span>
                 </a>
                 <div class="clear"></div>
             </div>
@@ -230,13 +230,13 @@
             </div>
             {if !($view.options & 4)}
             <div class="view-option">
-                <b>Audience</b>
-                <input {if !($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="0"/> Private
-                <input {if ($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="1"/> Public
+                <b>访问者</b>
+                <input {if !($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="0"/> 私有
+                <input {if ($view.options & 1) }checked="checked"{/if} type="radio" name="audience" value="1"/> 公共
             </div>
             {/if}
             <div class="view-option">
-                <b>Departments</b>
+                <b>部门</b>
                 {foreach from=$departments item=option key=value}
                     <label><input class="inp_m_checkbox" type="checkbox" value="{$option.id}"  name="view_filter[1048576][{$option.id}]" 
                                   {if !$option.my}disabled="disabled"{/if}
@@ -339,7 +339,7 @@
         <div class="blu">	
             <table border="0" cellpadding="2" cellspacing="0" >
                 <tr>
-                    <td><a href="?cmd={$cmd}"><strong>&laquo; {$lang.backto} Ticket views</strong></a>&nbsp;</td>
+                    <td><a href="?cmd={$cmd}"><strong>&laquo; {$lang.backto} 工单视图</strong></a>&nbsp;</td>
                     <td><input type="submit" name="save" value="{$lang.Save}" style="font-weight:bold;"/></td>                            
                 </tr>
             </table>

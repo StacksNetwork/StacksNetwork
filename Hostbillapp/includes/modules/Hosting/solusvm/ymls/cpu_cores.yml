@@ -1,0 +1,17 @@
+type: slider
+name: CPU Cores
+key: cf_cpu
+variable: cpu_cores
+description:
+category: server
+options: 50
+config:
+  minvalue: 1
+  maxvalue: 12
+  step: 1
+  initialval: 1
+items:
+  -
+    name:
+    m: 15.00
+    pricing: 1

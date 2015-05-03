@@ -2,16 +2,16 @@
     <div class="list-1">
         <ul>
             <li class="{if $action == 'default'}active{/if}">
-                <a {if $action != 'default'} href="?cmd={$modulename}"{/if}><span>弹性资源列表</span></a>
+                <a {if $action != 'default'} href="?cmd={$modulename}"{/if}><span>Flavor List</span></a>
             </li>
             <li class="{if $action == 'storage'}active{/if}">
-                <a {if $action != 'storage'} href="?cmd={$modulename}&action=storage"{/if}><span>弹性存储列表</span></a>
+                <a {if $action != 'storage'} href="?cmd={$modulename}&action=storage"{/if}><span>Storage Flavor List</span></a>
             </li>
             <li class="{if $action == 'add' || $action == 'edit'}active{/if} last">
                 <a {if $action != 'add' && $action == 'edit'}href="?cmd={$modulename}&action=add"{/if}>
                     <span>
-                        {if $action == 'edit'}{$entry.name|truncate} - {if $entry.type == 0}弹性VM{else}弹性存储{/if}
-                        {else}新建弹性资源
+                        {if $action == 'edit'}{$entry.name|truncate} - {if $entry.type == 0}VM Flavor{else}Storage Flavor{/if}
+                        {else}New Flavor
                         {/if}
                     </span>
                 </a>
@@ -22,8 +22,8 @@
         <div class="list-2">
             <div class="subm1 haveitems">
                 <ul id="typepick">
-                    <li class="picked"><a href="#VM"><span>弹性VM</span></a></li>
-                    <li ><a href="#STORAGE"><span>弹性存储</span></a></li>
+                    <li class="picked"><a href="#VM"><span>VM Flavor</span></a></li>
+                    <li ><a href="#STORAGE"><span>Storage Flavor</span></a></li>
                 </ul>
             </div>
         </div>
@@ -39,34 +39,34 @@
     <table cellpadding="5" style="width: 100%">
         <tr>
             <td style="width: 140px; text-align: right">
-                <label><b>名称</b></label>
-                <a class="vtip_description" title="客户将可以看到该弹性资源"></a>
+                <label><b>Name</b></label>
+                <a class="vtip_description" title="Customer will see this flavor name"></a>
             </td>
             <td><input type="text" value="{$entry.name}" name="name" class="inp" /></td>
         </tr>
         <tr>
             <td style="width: 140px; text-align: right">
                 <label>
-                    <b class="tabs VM">按小时计费</b>
-                    <b class="tabs STORAGE">按每1GB/小时计费</b>
+                    <b class="tabs VM">Price per hour</b>
+                    <b class="tabs STORAGE">Price for 1GB/hour</b>
                 </label>
-                <a class="vtip_description" title="基于这个设置每月费用会自动计算"></a></td>
+                <a class="vtip_description" title="Monthly charge will be automatically calculated based on this setting"></a></td>
             <td><input type="text" value="{$entry.price_on}" name="price" class="inp" /></td>
         </tr>
         <tr>
-            <td style="width: 140px; text-align: right"><label><b>启用 </b> </label><a class="vtip_description" title="勾选使客户能够看到该弹性资源"></a></td>
+            <td style="width: 140px; text-align: right"><label><b>Enable </b> </label><a class="vtip_description" title="Tick for clients to see this flavor"></a></td>
             <td><input type="checkbox" value="1" name="enabled" {if $entry.enabled}checked="checked"{/if} /></td>
         </tr>
         <tr>
-            <td style="width: 140px; text-align: right"><label><b>说明</b></label><a class="vtip_description" title="客户会看到该说明, 使用这个弹性值作为客户将不会看到变量值低于描述"></a></td>
+            <td style="width: 140px; text-align: right"><label><b>Description</b></label><a class="vtip_description" title="Clients will see this description, use this to describe flavor values as clients will not see variable values below"></a></td>
             <td><textarea name="description" style="width:500px;height:100px;">{$entry.description}</textarea></td>
         </tr>
 
         <tr >
-            <td style="width: 140px; text-align: right"><label>显示模块的配置:</label></td>
+            <td style="width: 140px; text-align: right"><label>Show settings for module:</label></td>
             <td>
                 <select id="module" name="module">
-                    <option value="0">-- 所有 --</option>
+                    <option value="0">-- All --</option>
                     {foreach from=$modules item=modulename key=moduleid}
                         <option value="{$moduleid}" {if $entry.limits.$key}selected="selected"{/if}>{$modulename}</option> 
                     {/foreach}
@@ -113,7 +113,7 @@
 </table>
 <div class="clearfix" style="padding: 0 10px;">
     <a class="new_dsave new_menu" href="#" onclick="$('#status_plugin').submit(); return false;">
-        <span>保存更改</span>
+        <span>Save Changes</span>
     </a>
 </div>
 {securitytoken}

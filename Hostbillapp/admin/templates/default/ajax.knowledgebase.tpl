@@ -72,7 +72,7 @@
 {elseif $action=='default'}
     <h4>
         {if !$categories.parent_cat && $categories.parent_cat != '0'}
-            Top Category
+            顶级分类
         {else}
             <a class="loadsubact" href="?cmd=knowledgebase">Top Category</a>
         {/if}
@@ -120,8 +120,8 @@
                     </div>
                     <div class="name">{$rep.title}</div>
                     <div class="lastitm-art fs11">
-                        Views: {if $rep.views}{$rep.views}{else}0{/if}<br>
-                        Article: {$rep.body}
+                        阅读: {if $rep.views}{$rep.views}{else}0{/if}<br>
+                        文章: {$rep.body}
                     </div>
                 </li>
             {/foreach}

@@ -1,0 +1,17 @@
+type: slider
+name: 'Disk Size [GB]'
+key: cf_hdd
+variable: disk_size
+description:
+category: server
+options: 50
+config:
+  minvalue: 6
+  maxvalue: 500
+  step: 5
+  initialval: 20
+items:
+  -
+    name:
+    m: 0.40
+    pricing: 1

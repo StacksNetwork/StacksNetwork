@@ -129,7 +129,7 @@
         </script>
         {/literal}
         <div style="padding:10px;background:#fff;" class="form conv_content">
-            <h3>{$modconfig.module} 配置</h3>
+            <h3>{$modconfig.module} Configuration</h3>
             <form action="" method="post" onsubmit="return submit_externalc(this);" >
                 <input type="hidden" name="filename" value="{$modconfig.filename}" />
                 <input type="hidden" name="id" value="{$modconfig.id}" />
@@ -145,7 +145,7 @@
                                 <td width="170" align="right">{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</td>   
                                 <td ><input type="text" name="option[{$k}]" value="{$conf.value}" style="margin:0px" /></td>
                                 {elseif $conf.type=='password'}
-                                <td width="170" align="right">{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</td>   <td ><input type="password" name="option[{$k}]" value="{$conf.value}" style="margin:0px" /></td>
+                                <td width="170" align="right">{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</td>   <td ><input type="password" autocomplete="off" name="option[{$k}]" value="{$conf.value}" style="margin:0px" /></td>
                                 {elseif $conf.type=='check'}
                                 <td width="170" align="right">{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</td>  <td ><input name="option[{$k}]" type="checkbox" value="1" {if $conf.value == "1"}checked="checked"{/if} style="margin:0px"  /></td>
                                 {elseif $conf.type=='select'}
@@ -193,7 +193,7 @@
                                         </td>
                                         <td width="60" align="right"> 
                                             <a href="#" class="new_control greenbtn" onclick="return perform_search();">
-                                                <span>搜索</span>
+                                                <span>Search</span>
                                             </a>
                                         </td>
                                     </tr>
@@ -215,7 +215,7 @@
                     </div>
                     <div class="mmfeatured">
                         <div class="mmfeatured-inner">
-                            <h2>流行模块</h2>
+                            <h2>热门模块</h2>
                             {foreach from=$featured item=module key=k name=floop} 
                                 <div class="addon_module"  {if $smarty.foreach.floop.last}style="border:none"{/if}>
                                     <div class="left">
@@ -235,7 +235,7 @@
 
                 <td  valign="top"><div class="mmfeatured" id="latest_additions">
                         <div class="mmfeatured-inner">
-                            <h2>新添加的</h2>
+                            <h2>最新增加</h2>
                             <div id="loadme">
                                 <div style="text-align:center;
                                              padding:80px;">
@@ -446,10 +446,10 @@
                                                                     <td width="170" style="vertical-align: top; text-align: right">{$lang.allowedtouse} </td>
                                                                     <td class="fs11">
                                                                         <label>
-                                                                            <input type="radio" value="1" name="admins_all" {if !$b.admins}checked="checked"{/if} />所有员工
+                                                                            <input type="radio" value="1" name="admins_all" {if !$b.admins}checked="checked"{/if} />所有工作人员
                                                                         </label>
                                                                         <label>
-                                                                            <input type="radio" value="0"  name="admins_all" {if $b.admins}checked="checked"{/if}/>选择员工
+                                                                            <input type="radio" value="0"  name="admins_all" {if $b.admins}checked="checked"{/if}/>选定工作人员
                                                                         </label>
                                                                         
                                                                         <div {if !$b.admins}style="display: none"{/if}>
@@ -477,7 +477,7 @@
                                                                                 <td >{if $conf.description}<a style="padding: 0 12px 0 10px; background-position: center center;" class="vtip_description" title="{$conf.description}"></a>{/if} <input name="option[{$k}]" value="{$conf.value}" /></td>
                                                                                 {elseif $conf.type=='password'}
                                                                                 <td width="170" align="right">{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</td>   
-                                                                                <td >{if $conf.description}<a style="padding: 0 12px 0 10px; background-position: center center;" class="vtip_description" title="{$conf.description}"></a>{/if} <input type="password" name="option[{$k}]" value="{$conf.value}" /></td>
+                                                                                <td >{if $conf.description}<a style="padding: 0 12px 0 10px; background-position: center center;" class="vtip_description" title="{$conf.description}"></a>{/if} <input type="password" autocomplete="off" name="option[{$k}]" value="{$conf.value}" /></td>
                                                                                 {elseif $conf.type=='check'}
                                                                                 <td width="170" align="right">{if $lang.$baz}{$lang.$baz}{elseif $lang.$name}{$lang.$name}{else}{$name}{/if}:</td>  
                                                                                 <td >{if $conf.description}<a style="padding: 5px 12px 0 10px; background-position: center center;" class="vtip_description" title="{$conf.description}"></a>{/if} <input name="option[{$k}]" type="checkbox" value="1" {if $conf.value == "1"}checked="checked"{/if} /></td>

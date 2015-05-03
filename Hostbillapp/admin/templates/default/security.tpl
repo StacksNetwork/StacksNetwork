@@ -128,7 +128,7 @@
                         <div class="list-2">
                             <div class="haveitems">
                                 <ul>
-                                    <li><a href="index.php?cmd=logs&action=adminactivity">Admin activity log</a></li>
+                                    <li><a href="index.php?cmd=logs&action=adminactivity">管理员活动日志</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -141,8 +141,8 @@
                         <div class="list-2">
                             <div class="haveitems">
                                 <ul>
-                                    <li><a href="index.php?cmd=logs&action=apilog">API Usage log</a></li>
-                                    <li><a href="http://api.hostbillapp.com/info/gettingStarted/" target="_blank">API Documentation</a></li>
+                                    <li><a href="index.php?cmd=logs&action=apilog">API使用日志</a></li>
+                                    <li><a href="http://api.hostbillapp.com/info/gettingStarted/" target="_blank">API文档</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                                     <input type="submit" value="{$lang.savechanges}" class="styled" onclick="return changespass()"  />
                                     <br><br>
                                     <span style="font-size:11px" >
-									Note: HostBill will use settings above to generate random passwords for services
+									注意: 系统将使用上面的设置来生成随机密码的服务
                                         </small>
                                 </div>
                             </div>
@@ -230,7 +230,7 @@
                         <tr>
                             <th width="15%">{$lang.rule}</th>
                             <th>{$lang.action}</th>
-                            <th width="440">Ban on failed login attempts <a href="" class="vtip_description" title="Automaticaly ban user that fail to provide corect admin area credentials multiple times. Enabled by default."></a></th>
+                            <th width="440">由于登录尝试失败被拉黑 <a href="" class="vtip_description" title="在管理员后台多次登录失败后自动拉黑对象. 默认开启."></a></th>
                             <th width="20"></th>
                         </tr>
                     </thead>
@@ -262,7 +262,7 @@
                         <tr>
                             <th width="200">IP</th>
                             <th width="200">API ID</th>
-                            <th width="200">API Key</th>
+                            <th width="200">API 密钥</th>
                             <th >ACL</th>
                             <th></th>
                             <th align="right"></th>
@@ -276,52 +276,52 @@
                     </tbody>
                 </table>
                 <div style="min-height:1em;padding:10px" class="sectionfoot nicerblu">
-                    <h3 id="legend" style="margin:5px 0 2px;cursor:pointer">Legend<img src="{$template_dir}img/question-small-white.png" /></h3>
+                    <h3 id="legend" style="margin:5px 0 2px;cursor:pointer">图例<img src="{$template_dir}img/question-small-white.png" /></h3>
                     <ul style="list-style:inside;padding:0">
-				Rule formats:
-                        <li> <strong>all</strong> - keyword matching all IPs</li>
-                        <li> <strong>xxx.xxx.xxx.xxx</strong> - Single IP</li>
-                        <li> <strong>xxx.xxx.xxx.xxx/M</strong> - IP with Mask in CIDR format</li>
-                        <li> <strong>xxx.xxx.xxx.xxx/mmm.mmm.mmm.mmm</strong> - IP with Mask in dotted quad format</li>
+				规则格式:
+                        <li> <strong>所有</strong> - 关键词匹配所有IPs</li>
+                        <li> <strong>xxx.xxx.xxx.xxx</strong> - 单个IP</li>
+                        <li> <strong>xxx.xxx.xxx.xxx/M</strong> - IP掩码为CIDR格式</li>
+                        <li> <strong>xxx.xxx.xxx.xxx/mmm.mmm.mmm.mmm</strong> - IP掩码为段落格式</li>
                     </ul>
                     <ul style="list-style:inside;padding:0">
-				Example rules:
-                        <li><strong>120.123.123.57/28</strong> matches IP from 120.123.123.48 to 120.123.123.63 </li>
-                        <li><strong>120.123.123.57/24</strong> matches IP from 120.123.123.0 to 120.123.123.255 </li>
-                        <li><strong>120.123.123.57/16</strong> matches IP from 120.123.0.0 to 120.123.255.255</li>
-                        <li><strong>120.123.123.57/8</strong> matches IP from 120.0.0.0 to 120.255.255.255</li>
+				示例规则:
+                        <li><strong>120.123.123.57/28</strong> 匹配IP从 120.123.123.48 到 120.123.123.63 </li>
+                        <li><strong>120.123.123.57/24</strong> 匹配IP从 120.123.123.0 到 120.123.123.255 </li>
+                        <li><strong>120.123.123.57/16</strong> 匹配IP从 120.123.0.0 到 120.123.255.255</li>
+                        <li><strong>120.123.123.57/8</strong> 匹配IP从 120.0.0.0 到 120.255.255.255</li>
                     </ul>
-                    <p style="margin:5px 0 2px"><strong>Secenario #1</strong> Block access from 120.123.123.12 and 120.123.123.57</p>
+                    <p style="margin:5px 0 2px"><strong>场景 #1</strong> 阻止来自 120.123.123.12 与 120.123.123.57 的连接</p>
                     <table class="glike hover" cellspacing="0" cellpadding="3" border="0" width="400" >
                         <tr><th>{$lang.rule}</th><th>{$lang.action}</th></tr>
                         <tr><td>120.123.123.57</td><td>{$lang.deny}</td></tr>
                         <tr><td>120.123.123.12</td><td>{$lang.deny}</td></tr>
                     </table >
-                    <p style="margin:2em 0 2px">Hostbill allways checks '{$lang.deny}' rules first<br /><strong>Secenario #2</strong> Allow access only from 120.123.123.xxx</p>
+                    <p style="margin:2em 0 2px">系统惯例首先检测 '{$lang.deny}' 规则<br /><strong>场景 #2</strong> 仅允许来自 120.123.123.xxx 进行连接</p>
                     <table  class="glike hover" cellspacing="0" cellpadding="3" border="0" width="400">
                         <tr><th>{$lang.rule}</th><th>{$lang.action}</th></tr>
                         <tr><td>120.123.123.1/24</td><td>{$lang.allow}</td></tr>
-                        <tr><td>all</td><td>{$lang.deny}</td></tr>
+                        <tr><td>所有</td><td>{$lang.deny}</td></tr>
                     </table>
                 </div>
                 <div style="display:none" class="sectionfoot"></div>
                 <div style="display:none" class="sectionfoot"></div>
                 <div style="display:none" class="sectionfoot"></div>
                 <div style="min-height:1em;padding:10px;display:none" class="sectionfoot nicerblu">
-                    <h3  style="margin:5px 0 2px;cursor:pointer;" onclick="$('#sh1x').toggle();">Legend<img src="{$template_dir}img/question-small-white.png" /></h3>
+                    <h3  style="margin:5px 0 2px;cursor:pointer;" onclick="$('#sh1x').toggle();">图例<img src="{$template_dir}img/question-small-white.png" /></h3>
                     <div id="sh1x" style="display:none"><ul style="list-style:inside;padding:0">
-				IP Address/Subnet format:
-                            <li> <strong>all</strong> - keyword matching all IPs</li>
-                            <li> <strong>xxx.xxx.xxx.xxx</strong> - Single IP</li>
-                            <li> <strong>xxx.xxx.xxx.xxx/M</strong> - IP with Mask in CIDR format</li>
-                            <li> <strong>xxx.xxx.xxx.xxx/mmm.mmm.mmm.mmm</strong> - IP with Mask in dotted quad format</li>
+				IP地址/子网格式:
+                            <li> <strong>所有</strong> - 关键词匹配所有IPs</li>
+                            <li> <strong>xxx.xxx.xxx.xxx</strong> - 单个IP</li>
+                            <li> <strong>xxx.xxx.xxx.xxx/M</strong> - IP掩码为CIDR格式</li>
+                            <li> <strong>xxx.xxx.xxx.xxx/mmm.mmm.mmm.mmm</strong> - IP掩码为段落格式</li>
                         </ul>
                         <ul style="list-style:inside;padding:0">
-				Example entries:
-                            <li><strong>120.123.123.57/28</strong> matches IP from 120.123.123.48 to 120.123.123.63 </li>
-                            <li><strong>120.123.123.57/24</strong> matches IP from 120.123.123.0 to 120.123.123.255 </li>
-                            <li><strong>120.123.123.57/16</strong> matches IP from 120.123.0.0 to 120.123.255.255</li>
-                            <li><strong>120.123.123.57/8</strong> matches IP from 120.0.0.0 to 120.255.255.255</li>
+				示例项:
+                            <li><strong>120.123.123.57/28</strong> 匹配IP从 120.123.123.48 到 120.123.123.63 </li>
+                            <li><strong>120.123.123.57/24</strong> 匹配IP从 120.123.123.0 到 120.123.123.255 </li>
+                            <li><strong>120.123.123.57/16</strong> 匹配IP从 120.123.0.0 到 120.123.255.255</li>
+                            <li><strong>120.123.123.57/8</strong> 匹配IP从 120.0.0.0 到 120.255.255.255</li>
                         </ul>
                     </div>
                 </div>
@@ -378,7 +378,7 @@
                     }
                     function toggle_rule(elm) {
                         var self = $(elm);
-                        if(self.data('enabled')!=true && !confirm('Are you sure? Disabling this option for not trusted ip address wil increase security risk.')){
+                        if(self.data('enabled')!=true && !confirm('您确定吗? 禁用不可信IP地址将增加安全风险.')){
                             return false;
                         }   
                         updatepage(self.attr('href'));

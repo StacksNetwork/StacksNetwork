@@ -17,9 +17,9 @@
     {/if}
 {else}
     {if $step.status=='Failed'}
-        <span class="info-failed">Step was marked as Failed, which means order is probably fraudulent.</span> <br/>
-        If automated fraud verification was wrong you can change it as complete using button below.<br/><br/>
-        <a class="menuitm " href="?cmd=orders&action=executestep&step=FraudCheck&order_id={$details.id}&security_token={$security_token}&skip=true" onclick="return confirm('Are you sure?');"><span>Mark Fraud Prevention as Complete (not fraud)</span></a>
+        <span class="info-failed">步骤被标记为失败, 这意味着订单可能是欺诈.</span> <br/>
+        如果欺诈行为的自动验证是错误的您可以改变它为完成的使用下面的按钮.<br/><br/>
+        <a class="menuitm " href="?cmd=orders&action=executestep&step=FraudCheck&order_id={$details.id}&security_token={$security_token}&skip=true" onclick="return confirm('您确定吗?');"><span>标记防止欺诈行为完成 (未欺诈)</span></a>
         <br/><br/>
 
 
@@ -36,8 +36,8 @@
                         {if $details.fraudout[$fro.module].riskScore}
                             {$lang.fraudscore}: <span style="color:#{if $smarty.foreach.loop.last}FF00{else}00CC{/if}00">{$details.fraudout[$fro.module].riskScore}%</span>
                         {else}
-                            {if $smarty.foreach.loop.last}<span style="color:#FF0000">Failed</span>
-                            {else}<span style="color:#00CC00">Pass</span>
+                            {if $smarty.foreach.loop.last}<span style="color:#FF0000">失败</span>
+                            {else}<span style="color:#00CC00">通过</span>
                             {/if}
                         {/if}
                         </strong>
@@ -57,7 +57,7 @@
                         {if $details.fraudout[$fro.module].riskScore}
                             {$lang.fraudscore}: <span style="color:#00CC00">{$details.fraudout[$fro.module].riskScore}%</span>
                         {else}
-                            <span style="color:#00CC00">Pass</span>
+                            <span style="color:#00CC00">通过</span>
                         {/if}
                         </strong>
                         <a href="#" onclick="$('#frauddetails{$fro.module}').show();
@@ -71,7 +71,7 @@
                 {if $step.output}
                     <span class="info-success">{$step.output}</span>
                 {else}
-                    <div class="bigger" style="margin-bottom:10px;"><strong>No fraud prevention module is active</strong></div>
+                    <div class="bigger" style="margin-bottom:10px;"><strong>没有防欺诈模块被激活</strong></div>
                 {/if}
             {/if}
         {/foreach}

@@ -1,0 +1,8 @@
+type: input
+name: Organization
+variable: organization
+description: Please provide your organization name to use in vCloud
+options: 3
+items:
+  -
+    name:

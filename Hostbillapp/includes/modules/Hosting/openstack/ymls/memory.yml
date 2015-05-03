@@ -1,0 +1,17 @@
+type: slider
+name: 'RAM [MB]'
+key: cf_memory
+variable: memory
+description:
+category: server
+options: 50
+config:
+  minvalue: 512
+  maxvalue: 16384
+  step: 256
+  initialval: 1024
+items:
+  -
+    name:
+    m: 0.01
+    pricing: 1

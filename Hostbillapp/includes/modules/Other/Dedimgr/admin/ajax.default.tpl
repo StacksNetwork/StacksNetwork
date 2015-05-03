@@ -2,9 +2,9 @@
 {include file='ajax.additem.tpl'}
 {elseif $do=='inventory' && $subdo=='category'}
 
-<label class="nodescr">Item to add:</label>
+<label class="nodescr">添加物品至:</label>
 <select name="type_id" class="w250" onchange="loadItemEditor(this)" >
-    <option value="0">Select item from {$category.name}</option>
+    <option value="0">选择物品来自分类 {$category.name}</option>
     {foreach from=$items item=c}
     <option value="{$c.id}">{$c.name}</option>
     {/foreach}

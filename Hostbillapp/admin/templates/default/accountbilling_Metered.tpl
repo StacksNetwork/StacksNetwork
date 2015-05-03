@@ -4,14 +4,14 @@
                                                          
                 <!--metered billing start-->
                 {if !$metered_enable}
-                    Metered billing is disabled for this package, <a href="?cmd=services&action=product&id={$details.product_id}" target="_blank">click here to manage metered billing pricing.</a>
+                    该套餐不适用流量计费, <a href="?cmd=services&action=product&id={$details.product_id}" target="_blank">点击这里管理流量计费价格.</a>
                 {else}
                 <table class="whitetable" width="100%" cellspacing="0" cellpadding="3">
                      {if $details.metered_type!='PrePay'}<tr class="odd">
-                        <td width="16%" align="right"><b>Billing period</b></td>
+                        <td width="16%" align="right"><b>计费周期</b></td>
                         <td width="16%">{$details.previous_invoice|dateformat:$date_format} - {$details.next_invoice|dateformat:$date_format}</td>
                    
-                        <td width="16%" align="right"><b>Next invoice total</b></td>
+                        <td width="16%" align="right"><b>下一次账单总额</b></td>
                         <td width="16%"><b>{$details.metered_total|price:$details.currency}</b></td>
                     
                         <td width="16%" align="right"></td>
@@ -21,7 +21,7 @@
                     {/if}
                      <tr class="odd">
                         <td colspan="6">
-                           {if $details.metered_type!='PrePay'} <b>Next invoice details</b> <span class="fs11">updated hourly</span><br/>{/if}
+                           {if $details.metered_type!='PrePay'} <b>下一次账单详情</b> <span class="fs11">每小时更新</span><br/>{/if}
                             <div class="report">
                               {if $details.total>0}
                                <div class="button">
@@ -42,12 +42,12 @@
                     <tr class="even">
                         <td colspan="4"></td>
                         <td colspan="2" style="text-align:right">
-                            Interval: <select name="metered_interval" id="metered_interval" onchange="metteredBillinghistory()">
-                                <option value="1h">1 Hour</option>
-                                <option value="1d">1 Day</option>
+                            时间间隔: <select name="metered_interval" id="metered_interval" onchange="metteredBillinghistory()">
+                                <option value="1h">1 小时</option>
+                                <option value="1d">1 天</option>
 
                             </select>
-                            Month (yyyy-mm): <select name="metered_period" id="metered_period" onchange="metteredBillinghistory()">
+                            月 (yyyy-mm): <select name="metered_period" id="metered_period" onchange="metteredBillinghistory()">
                                 {foreach from=$metered_periods item=p}
                                     <option value="{$p}">{$p}</option>
                                 {/foreach}
@@ -59,7 +59,7 @@
 
                 </div>
                 <div class="clear"></div>
-                <br/><b>Legend</b>
+                <br/><b>图例</b>
                 <table class="whitetable fs11" width="100%" cellspacing="0" cellpadding="3">
                     {foreach from=$metered_usage_log.variables item=vr}
                         <tr class="even">
@@ -73,7 +73,7 @@
                 {else}
                 <table class="whitetable" width="100%" cellspacing="0" cellpadding="3">
                     <tr class="odd havecontrols">
-                        <td align="center"><b>No data reported yet</b></td>
+                        <td align="center"><b>尚无数据报告</b></td>
                     </tr>
 
                 </table>

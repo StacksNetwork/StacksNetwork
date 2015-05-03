@@ -24,7 +24,7 @@
                     <tr style="display:none" id="fvar_{$k}">
                         <td></td>
                         <td colspan="2">
-                            <label class="nodescr">Value passed to App:</label> <input type="text" value="{$item.variable_id|escape}" style="margin:0px 0px 0px 10px;width:80px;" name="items[{$k}][variable_id]">
+                            <label class="nodescr">值传递到应用程序:</label> <input type="text" value="{$item.variable_id|escape}" style="margin:0px 0px 0px 10px;width:80px;" name="items[{$k}][variable_id]">
                         </td>
                     </tr>
                     {if $field.type.info.pricing}<tr style="display:none" id="fpricing_{$k}">
@@ -70,7 +70,7 @@
 {if $premade}
 <div class="right  shownice" style="padding:5px ">
     <select name="premadeid" id="premadeid" style="margin:0px">
-        <option value="0">Use pre-made values</option>
+        <option value="0">使用预设值</option>
         {foreach from=$premade item=p}
         <option>{$p}</option>
         {/foreach}

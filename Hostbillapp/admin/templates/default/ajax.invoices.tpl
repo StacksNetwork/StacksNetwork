@@ -100,7 +100,7 @@
                 <td><a href="?cmd=invoices&action=edit&id={$invoice.id}&list={$currentlist}" class="tload2 editbtn" rel="{$invoice.id}">{$lang.Edit}</a></td>
                 <td>
                     {if !$forbidAccess.deleteInvoices}
-                    <a href="?cmd=invoices&action=menubutton&make=deleteinvoice&id={$invoice.id}" class="deleteInvoice delbtn">delete</a>
+                    <a href="?cmd=invoices&action=menubutton&make=deleteinvoice&id={$invoice.id}" class="deleteInvoice delbtn">删除</a>
                     {/if}
                 </td>
             </tr>
@@ -285,8 +285,8 @@
         {if $invoice.status=='Recurring'}
         <a class="menuitm" name="send"   href="?action=download&invoice={$invoice.id}" ><span >{$lang.previewinvoice}</span></a>{*
              *}{if $invoice.recurring.recstatus!='Finished'} {$lang.generatenewinvoices}{*
-                 *}<a class="menuitm menuf {if $invoice.recurring.recstatus!='Stopped'}activated{/if} recstatus recon" href="#" ><span >On</span></a>{*
-                 *}<a class="menuitm menul {if $invoice.recurring.recstatus=='Stopped'}activated{/if} recstatus recoff" href="#" ><span >Off</span></a>
+                 *}<a class="menuitm menuf {if $invoice.recurring.recstatus!='Stopped'}activated{/if} recstatus recon" href="#" ><span >开</span></a>{*
+                 *}<a class="menuitm menul {if $invoice.recurring.recstatus=='Stopped'}activated{/if} recstatus recoff" href="#" ><span >关</span></a>
             {/if}
         {/if}
 
@@ -308,11 +308,11 @@
             <li ><a href="CreateInvoice">{$lang.createnewinvoice}</a></li>
             <li><a href="SendMessage">{$lang.SendMessage}</a></li>
             <li class="act_unpaid act_cancelled {if $invoice.status!='Paid'}disabled{/if}"><a href="EditNumber">{$lang.editnumber}</a></li>
-            <li class="{if $invoice.status!='Unpaid'}disabled{/if}"><a href="{if $invoice.locked}UnlockInvoice{else}LockInvoice{/if}">{if $invoice.locked}Unlock{else}Lock{/if} invoice</a></li>
+            <li class="{if $invoice.status!='Unpaid'}disabled{/if}"><a href="{if $invoice.locked}UnlockInvoice{else}LockInvoice{/if}">{if $invoice.locked}解锁{else}锁定{/if} 账单</a></li>
         </ul>
 
     </div></div>
-{if $pdfstored}<div  style="padding:5px;" class="lighterblue fs11">Note: PDF for this invoice is already stored locally, changes made here wont take effect on PDF, unless its deleted first. <a href="?cmd=invoices&action=deletepdf&id={$invoice.id}&security_token={$security_token}" class="editbtn">Delete PDF</a></div>{/if}
+{if $pdfstored}<div  style="padding:5px;" class="lighterblue fs11">注意: 该账单的PDF文件已经存储在本地, 这里所作的更改不会影响PDF效果, 除非先将其删除. <a href="?cmd=invoices&action=deletepdf&id={$invoice.id}&security_token={$security_token}" class="editbtn">删除PDF</a></div>{/if}
 {if count($currencies)>1}<div id="chcurr" style="display:none;padding:5px;" class="lighterblue">
     <form action="?cmd=invoices&action=edit&id={$invoice.id}&list={$currentlist}" method="post" >
         <input type="hidden" name="make" value="currchange" />
@@ -441,7 +441,7 @@
                     <h1><span class="{$invoice.status}" id="invoice_status">{if $lang[$invoice.status]}{$lang[$invoice.status]}{else}{$invoice.status}{/if}</span></h1>
                 </td>
             {/if}
-            {if $invoice.locked}<td><a href="?cmd=invoices&action=menubutton&make=unlock&id={$invoice.id}" title="This invoice is currently hidden in client area, click to unlock" class="invoiceUnlock padlock" style="margin: -4px 0 0 5px;"></a></td>{/if}
+            {if $invoice.locked}<td><a href="?cmd=invoices&action=menubutton&make=unlock&id={$invoice.id}" title="该账单目前对客户不可见, 点击解锁" class="invoiceUnlock padlock" style="margin: -4px 0 0 5px;"></a></td>{/if}
         </tr>
     </table>
 
@@ -625,7 +625,7 @@
 				{/if}
                             <tr>
 
-                                <td class="summary aright" colspan="2" ><strong class="bigger">{$lang.Total}</strong> {if ($invoice.taxrate!=0 || $invoice.taxrate2!=0) && $invoice.taxexempt}<a href="#" class="vtip_description" title="Tax exemptiont is enabled for this invoice"></a>{/if}</td>
+                                <td class="summary aright" colspan="2" ><strong class="bigger">{$lang.Total}</strong> {if ($invoice.taxrate!=0 || $invoice.taxrate2!=0) && $invoice.taxexempt}<a href="#" class="vtip_description" title="该账单启用Tax exemptiont"></a>{/if}</td>
                                 <td class="summary aright" colspan="2" ><strong class="bigger">{$invoice.total|price:$currency}</strong></td>
                                 <td class="summary"></td>
                             </tr>
@@ -698,8 +698,8 @@
         {if $invoice.status=='Recurring'}
         <a class="menuitm" name="send"   href="?action=download&invoice={$invoice.id}" ><span >{$lang.previewinvoice}</span></a>{*
              *}{if $invoice.recurring.recstatus!='Finished'} {$lang.generatenewinvoices}{*
-                 *}<a class="menuitm menuf {if $invoice.recurring.recstatus!='Stopped'}activated{/if} recstatus recon" href="#" ><span >On</span></a>{*
-                 *}<a class="menuitm menul {if $invoice.recurring.recstatus=='Stopped'}activated{/if} recstatus recoff" href="#" ><span >Off</span></a>
+                 *}<a class="menuitm menuf {if $invoice.recurring.recstatus!='Stopped'}activated{/if} recstatus recon" href="#" ><span >开</span></a>{*
+                 *}<a class="menuitm menul {if $invoice.recurring.recstatus=='Stopped'}activated{/if} recstatus recoff" href="#" ><span >关</span></a>
             {/if}
         {/if}
     </div>
@@ -922,7 +922,7 @@
                         <td width="200" align="left"><span class="livemode">{$invoice.taxrate} %</span></td>
                         
                         {if $invoice.status!='Recurring'}
-                            <td width="100" align="right" class="light">{if "config:Invoice2ndcurrency:1"|checkcondition }1st currency rate{else}Currency rate{/if}:</td>
+                            <td width="100" align="right" class="light">{if "config:Invoice2ndcurrency:1"|checkcondition }第一货币汇率{else}当前汇率{/if}:</td>
                             <td width="200">
                                 <span class="livemode">{$invoice.rate}</span> 
                             </td>
@@ -938,7 +938,7 @@
                         <td width="200" align="left"><span class="livemode">{$invoice.taxrate2} %</span></td>
 
                         {if $invoice.status!='Recurring' && "config:Invoice2ndcurrency:1"|checkcondition }
-                            <td width="100" align="right" class="light">2nd currency rate:</td>
+                            <td width="100" align="right" class="light">第二货币汇率:</td>
                             <td width="200">
                                 <span class="livemode">{$invoice.rate2}</span> 
                             </td>
@@ -1065,14 +1065,14 @@
                             <td width="200" align="left"><input name="invoice[taxrate]" size="7" value="{$invoice.taxrate}" /> %</td>
                             
                             {if $invoice.status!='Recurring'}
-                            <td width="100" align="right" class="light">{if "config:Invoice2ndcurrency:1"|checkcondition }1st currency rate{else}Currency rate{/if}:</td>
+                            <td width="100" align="right" class="light">{if "config:Invoice2ndcurrency:1"|checkcondition }第一货币汇率{else}当前汇率{/if}:</td>
                             <td width="200"><input name="invoice[rate]" size="7" value="{$invoice.rate}" /></td>
                             {/if}
 
                         </tr>
                         <tr>
                             {if $invoice.status!='Recurring'  && $invoice.status!='Creditnote'}   
-                                <td width="100" align="right"  class="light">Pay Before:</td>
+                                <td width="100" align="right"  class="light">在该日期前支付:</td>
                                 <td width="200" align="left"><input name="invoice[paybefore]" value="{$invoice.paybefore|dateformat:$date_format}" class="haspicker"/></td>
                                 {/if}
  
@@ -1080,7 +1080,7 @@
                             <td width="200" align="left" ><input name="invoice[taxrate2]" size="7" value="{$invoice.taxrate2}" /> %</td>
 
                             {if $invoice.status!='Recurring' && "config:Invoice2ndcurrency:1"|checkcondition }
-                                <td width="100" align="right" class="light">2nd currency rate:</td>
+                                <td width="100" align="right" class="light">第二货币汇率:</td>
                                 <td width="200"><input name="invoice[rate2]" size="7" value="{$invoice.rate2}" /></td>
                                 {/if}
                         

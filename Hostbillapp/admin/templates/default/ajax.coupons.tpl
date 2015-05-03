@@ -3,7 +3,7 @@
     <select name="client_id" class="inp" load="clients" default="{$draft.client_id}" style="width: 180px">
         <option value="0" >{$lang.All}</option>
         {*foreach from=$clients item=cl}
-        <option value="{$cl.id}">#{$cl.id} {if $cl.companyname!=''}{$lang.Company}: {$cl.companyname}{else}{$cl.firstname} {$cl.lastname}{/if}</option>
+        <option value="{$cl.id}">#{$cl.id} {if $cl.companyname!=''}{$lang.Company}: {$cl.companyname}{else}{$cl.lastname} {$cl.firstname}{/if}</option>
         {/foreach*}
     </select>
     <script type="text/javascript">Chosen.find();</script>
@@ -103,12 +103,12 @@
                                 </td>		
                             </tr>
                             <tr>
-                                <td width="160" align="right"><strong>Apply to</strong></td>
+                                <td width="160" align="right"><strong>分配给</strong></td>
                                 <td>
                                     <select class="inp" name="applyto" onchange="recurring_check(this.value);" id="apply_code">
-                                        <option value="price"  {if $coupon.applyto=='price'}selected="selected"{/if}>Recurring price</option>
-                                        <option value="setupfee" {if $coupon.applyto=='setupfee'}selected="selected"{/if}>Setup fee</option>
-                                        <option value="both" {if $coupon.applyto=='both'}selected="selected"{/if}>Total price</option>
+                                        <option value="price"  {if $coupon.applyto=='price'}selected="selected"{/if}>周期性价格</option>
+                                        <option value="setupfee" {if $coupon.applyto=='setupfee'}selected="selected"{/if}>初装费</option>
+                                        <option value="both" {if $coupon.applyto=='both'}selected="selected"{/if}>合计价格</option>
                                     </select>
                                 </td>		
                             </tr>

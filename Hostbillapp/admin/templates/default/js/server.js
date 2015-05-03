@@ -1,7 +1,7 @@
 function testConnectionList(data, el) {
     var sid = typeof data == 'object' ? '' : data,
         target = $('#testing_result' + sid),
-        generalmsg = 'Test did not compleate, check your error logs for more information. ',
+        generalmsg = '测试未完成, 需要了解更多信息请查阅错误日志. ',
         gif = el ? '<img src="templates/default/img/ajax-loader3.gif" />' : '<img style="height: 16px" src="ajax-loading.gif" />',
         throwError = function(msg) {
             target.html($('<span></span>').css({fontWeight: 'bold', color: ' #990000'}).text(msg))

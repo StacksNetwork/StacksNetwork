@@ -1,0 +1,32 @@
+#status_calendar{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.jCalMo .hasEvent{
+    background: #B94A48;
+    color: white;
+}
+.jCalMo .day div{
+    text-align: left
+}
+.jCalMo .day div span{
+    border-radius: 4px;
+    display: inline-block;
+    height: 8px;
+    line-height: 0;
+    padding: 0 2px;
+    width: 8px; 
+}
+.status-updates{
+    margin: 20px 0 ;
+}
+.status-line{
+    color: #757575;
+    padding: 0 10px 0 0 ;
+}
+.separator-line {
+    background: #E5E5E5;
+    height: 1px;
+    margin: 30px 0 25px;
+    width: 100%;
+}

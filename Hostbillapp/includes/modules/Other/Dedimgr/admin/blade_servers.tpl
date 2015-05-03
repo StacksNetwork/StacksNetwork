@@ -1,5 +1,5 @@
 <div class="tabb tabb-big" data-tab="1">
-                <h3><i class="fa fa-tasks"></i> 刀片服务器/模块化交换机</h3>
+                <h3><i class="fa fa-tasks"></i> 刀片服务器/箱式交换机</h3>
                 {if $item.bladeitems}
                     <div>
                         <table width="100%" cellspacing="0" cellpadding="3" border="0" class="whitetable" style="border:solid 1px #ddd;">
@@ -26,7 +26,7 @@
                 {/if}
                 <br/>
                 <div class="form-group">
-                    <label class="nodescr">新的刀片服务器/箱式交换机分类:</label>
+                    <label class="nodescr">刀片服务器/箱式交换机分类:</label>
                     <select id="blade_cat_id"  onchange="loadSubitems(this)" class="w250">>
                         <option value="0">选择分类添加物品</option>
                         {foreach from=$categories item=c}

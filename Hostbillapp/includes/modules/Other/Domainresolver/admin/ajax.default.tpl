@@ -1,0 +1,1 @@
+{if $resolve.match=='1'}<img src="{$template_dir}img/bullet_green.gif" alt="ok"/> {$resolve.ip}{else}<img src="{$template_dir}img/bullet_red.gif" alt="other-ip"/> {$resolve.ip}{/if}

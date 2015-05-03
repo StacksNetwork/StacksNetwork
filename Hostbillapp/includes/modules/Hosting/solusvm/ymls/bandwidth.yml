@@ -1,0 +1,18 @@
+type: slider
+name: 'Bandwidth [GB]'
+key: cf_bandwidth
+variable: bandwidth
+description:
+category: network
+options: 2
+premade: 1
+config:
+  minvalue: 1
+  maxvalue: 100
+  step: 1
+  initialval: 10
+items:
+  -
+    name:
+    m: 0.01
+    pricing: 1

@@ -61,10 +61,10 @@
                     <div class="list-1">
                         <ul>
                             <li class="active picked">
-                                <a href="#"><span class="ico money">Client Emails</span></a>
+                                <a href="#"><span class="ico money">客户Emails</span></a>
                             </li>
                             <li class="last">
-                                <a href="#"><span class="ico plug">Admin Emails</span></a>
+                                <a href="#"><span class="ico plug">管理员Emails</span></a>
                             </li>
                             
                         </ul>

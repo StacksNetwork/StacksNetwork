@@ -21,7 +21,7 @@
                     <input type="hidden" class="fold" name="domain[{$did}][fold]" value="{$fold.domain.$did}" />
                 </td>
                 <td >
-                    <strong>Domain</strong>
+                    <strong>域名</strong>
                 </td>
                 <td>
                     <strong>{$lang[$domain.action]}: </strong>
@@ -35,8 +35,8 @@
                 <td>
                     {if $domain.product.periods}
                         <select class="inp" name="domain[{$did}][action]">
-                            <option {if $domain.action=='Register'} selected="selected"{/if} value="Register">Register</option>
-                            <option {if $domain.action=='Transfer'} selected="selected"{/if} value="Transfer">Transfer</option>
+                            <option {if $domain.action=='Register'} selected="selected"{/if} value="Register">注册</option>
+                            <option {if $domain.action=='Transfer'} selected="selected"{/if} value="Transfer">转账</option>
                         </select>
                         <select class="inp" name="domain[{$did}][period]">
                             {foreach from=$domain.product.periods item=tld}
@@ -60,7 +60,7 @@
                         {/foreach}
                     {/foreach}
                     {if $custompricemod || $domain.org_price }{assign value=true var=pricemod}{/if}
-                    <span {if !$fold.domain.$did}style="display:none"{/if} class="total_price foldable {if $pricemod}pricemod{/if}" {if $pricemod}title="This price was modified"{/if}>
+                    <span {if !$fold.domain.$did}style="display:none"{/if} class="total_price foldable {if $pricemod}pricemod{/if}" {if $pricemod}title="该价格被修改"{/if}>
                         {$domain.total.total|price:$draft.currency}
                     </span>
                     <input style="display:none; width: 98px"  class="custom_product_price" type="text" 
@@ -117,7 +117,7 @@
                 <td>
                     {if $service.account_id}
                         <a href="?cmd=accounts&action=edit&id={$service.account_id}" target="_blank">
-                            <strong>{$service.product.name}</strong> - Account #{$service.account_id}
+                            <strong>{$service.product.name}</strong> - 账户 #{$service.account_id}
                         </a>
                     {else}
                         <strong>{$service.product.name}</strong>
@@ -138,7 +138,7 @@
                                         {/foreach}
                                         {if $service.domain && !$seleteddom} <option selected="selected">{$service.domain}</option>
                                         {/if}
-                                        <option value="0">Use other domain</option>
+                                        <option value="0">使用其它域名</option>
                                     </select>
                                 {/if}
                                 <input class="inp" {if $draft.domains}style="display:none"{/if} name="service[{$sid}][host]" value="{$service.domain|escape}"  />
@@ -154,7 +154,7 @@
                     {include file='_common/billing_select.tpl' product=$service.product format=$draft.currency cycle=$service.cycle name="service[`$sid`][cycle]" }
                 </td>
                 <td class="editbtn_flash">
-                    <span {if $fold.service.$sid}style="display:none"{/if} class="product_price foldable {if $service.org_price}pricemod{/if}" {if $service.org_price}title="This price was modified"{/if}>
+                    <span {if $fold.service.$sid}style="display:none"{/if} class="product_price foldable {if $service.org_price}pricemod{/if}" {if $service.org_price}title="该价格被修改"{/if}>
                         {$service.price|price:$draft.currency} 
                     </span>
                     {assign value=false var=pricemod}{assign value=false var=addonpricemod}{assign value=false var=custompricemod}
@@ -171,7 +171,7 @@
                         {/if}
                     {/foreach}
                     {if $custompricemod || $addonpricemod || $service.org_price}{assign value=true var=pricemod}{/if}
-                    <span {if !$fold.service.$sid}style="display:none"{/if} class="total_price foldable {if $pricemod}pricemod{/if}" {if $pricemod}title="This price was modified"{/if}>
+                    <span {if !$fold.service.$sid}style="display:none"{/if} class="total_price foldable {if $pricemod}pricemod{/if}" {if $pricemod}title="该价格被修改"{/if}>
                         {$service.total.total|price:$draft.currency}
                     </span>
                     <input style="display:none; width: 98px"  class="custom_product_price" type="text" 
@@ -191,7 +191,7 @@
                             {include file='_common/billing_select.tpl' product=$addon format=$draft.currency cycle=$addon.recurring name="service[`$sid`][addons][`$addon.id`][cycle]" }
                         </td>
                         <td class="editbtn_flash">
-                            <span {if $addon.org_price}class="pricemod" title="This price was modified"{/if}>{$addon.price|price:$draft.currency}</span>
+                            <span {if $addon.org_price}class="pricemod" title="该价格被修改"{/if}>{$addon.price|price:$draft.currency}</span>
                             <input style="display:none; width: 98px"  class="custom_product_price" type="text" 
                                 name="service[{$sid}][addons][{$addon.id}][billing][price]" value="{if $addon.org_price}{$addon.price}{/if}" 
                                 placeholder="{if $addon.org_price}{$addon.org_price|price:$draft.currency}{else}{$addon.price|price:$draft.currency}{/if}" />
@@ -205,7 +205,7 @@
                     {if $c.items}
                         <tr style="vertical-align: top; {if $fold.service.$sid}display:none{/if}" class="foldable havecontrols service_{$sid} {if $alter%2==0}even{/if}">
                             <td></td>
-                            <td>Custom field</td>
+                            <td>自定义字段</td>
                             <td>{$c.name} </td>
                             <td class="service_{$sid}_custom_{$kk}">
                                 {include file=$c.configtemplates.accounts currency=$draft.currency forcerecalc=true}
@@ -263,7 +263,7 @@
                     {/foreach}
                     <option value="new" style="font-weight: bold">{$lang.newservice}</option>
                 </select>
-                <a class="external" href="#" style="display:none;" target="_blank">Inspect product configuration</a>
+                <a class="external" href="#" style="display:none;" target="_blank">检查产品配置</a>
             </td>
         </tr>
         <tr>
@@ -277,8 +277,8 @@
                 <strong>{$lang.Action}</strong>
             </td>
             <td>
-                <label><input class="inp" {if !$submit.domain_action || $submit.action == "Register"}checked="checked"{/if} type="radio" name="domain_action" value="Register" onclick="$('#eppcode').parent().parent().hide();" /> {$lang.Register}</label>
-                <label><input class="inp" {if $submit.domain_action == "Transfer"}checked="checked"{/if} type="radio" name="domain_action" value="Transfer" onclick="$('#eppcode').parent().parent().show();" /> {$lang.Transfer}</label>
+                <label><input class="inp" {if !$submit.domain_action || $submit.action == "Register"}checked="checked"{/if} type="radio" name="domain_action" value="注册" onclick="$('#eppcode').parent().parent().hide();" /> {$lang.Register}</label>
+                <label><input class="inp" {if $submit.domain_action == "Transfer"}checked="checked"{/if} type="radio" name="domain_action" value="转账" onclick="$('#eppcode').parent().parent().show();" /> {$lang.Transfer}</label>
             </td>
         </tr>
         <tr>
@@ -299,7 +299,7 @@
                         {/if}
                     {/foreach}
                 </select>
-                <a class="external" href="#" style="display:none;" target="_blank">Inspect TLD configuration</a>
+                <a class="external" href="#" style="display:none;" target="_blank">TLD配置检查</a>
             </td>
         </tr>
         <tr style="display:none">
@@ -372,7 +372,7 @@
                             {foreach from=$draft.domains item=domain}
                                 <option>{$domain.name}</option>
                             {/foreach}
-                            <option value="0">Use other domain</option>
+                            <option value="0">使用其它域名</option>
                         </select>
                     {/if}
                     <input class="inp"  {if $draft.domains}style="display:none"{/if} name="host" value="{$submit.host|escape}"  />
@@ -413,9 +413,9 @@
             <div style="padding-top: 8px;">&nbsp;
                 <a class="menuitm " href="#" onclick="$(this).parents('form').submit(); return false;">
                     {if $submit.service}
-                        <span>Upgrade Service</span>
+                        <span>升级服务</span>
                     {else}
-                        <span>Add Product</span>
+                        <span>添加产品</span>
                     {/if}
                     
                 </a>
@@ -450,7 +450,7 @@
         <div class="like-table-row">
             <div style="padding-top: 8px;">
                 <input class="inp" type="hidden" name="prod_type" value="domain" />
-                &nbsp;<a class="menuitm " href="#" onclick="$(this).parents('form').submit(); return false;"><span>Add Domain</span></a>
+                &nbsp;<a class="menuitm " href="#" onclick="$(this).parents('form').submit(); return false;"><span>添加域名</span></a>
             </div>
         </div>
     {else}
@@ -531,7 +531,7 @@
                                             {foreach from=$coupons item=coupon}
                                                 <option {if $couponid == $coupon.id}selected="selected"{/if} value="{$coupon.id}">{$coupon.code} (-{if $coupon.type == 'percent'}{$coupon.value}%{else}{$coupon.value|price:$draft.currency}{/if})</option>
                                             {/foreach}
-                                            <option value="0">Custom discount</option>
+                                            <option value="0">自定义折扣</option>
                                         </select>
                                     {/if}
                                     <span {if $coupons}style="display:none" {/if}>
@@ -540,8 +540,8 @@
                                         {/if}
                                         <input class="inp" name="discount_value" type="text" size="3" value="{$discount.value}" />
                                         <select class="inp" name="discount_type">
-                                            <option {if $discount.type == 'fixed'}selected="selected"{/if} value="fixed">Fixed amount</option>
-                                            <option {if $discount.type == 'percent'}selected="selected"{/if} value="percent">Percent</option>
+                                            <option {if $discount.type == 'fixed'}selected="selected"{/if} value="fixed">定额</option>
+                                            <option {if $discount.type == 'percent'}selected="selected"{/if} value="percent">百分比</option>
                                         </select>
                                     </span>
                                     <button class="saved" onclick="order.save_details(); return false;">{$lang.Add}</button>
@@ -638,7 +638,7 @@
                         
                         <tr>
                             {if !$scenarios}
-                            <td style="vertical-align: top">Order Scenario</td>
+                            <td style="vertical-align: top">订单场景</td>
                             <td style="vertical-align: top">
                                 <span class="editbtn_flash">
                                     {if $draft.scenario_id}
@@ -647,14 +647,14 @@
                                         {/foreach}
                                     </a>
                                     {else}
-                                        <a href="#"><em>None, use category/client default</em></a>
+                                        <a href="#"><em>无, 使用分类/客户默认</em></a>
                                         {/if}
                                    <a href="#" class="editbtn" onclick="$(this).parent().hide().next().show();return false;">{$lang.Edit}</a>
                                    
                                 </span>
                                 <span style="display:none" class="editbtn_flash">
                                     <select class="inp" name="scenario_id" >
-                                            <option value="0" {if !$draft.scenario_id}selected="selected"{/if}>None, use category/client default</option>
+                                            <option value="0" {if !$draft.scenario_id}selected="selected"{/if}>无, 使用分类/客户默认</option>
                                        {foreach from=$scenarios item=scenario name=scloop}
                                             <option value="{$scenario.id}"  {if $draft.scenario_id==$scenario.id}selected="selected"{/if}>{$scenario.name}</option>
                                         {/foreach}

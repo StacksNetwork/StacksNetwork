@@ -30,7 +30,7 @@
                     {elseif $conf.type=='check'}
                         <input type="checkbox" name="custom[{$k}]" value="1" {if $server.custom.$k==1}checked="checked"{/if}/>
                     {elseif $conf.type=='password'}
-                       <input type="password" name="custom[{$k}]" value="{$server.custom.$k}"  class="inp"/>
+                       <input type="password" autocomplete="off" name="custom[{$k}]" value="{$server.custom.$k}"  class="inp"/>
                     {elseif $conf.type=='textarea'}
                         <span style="vertical-align:top"><textarea name="custom[{$k}]" rows="5" cols="60" style="margin:0px" >{$server.custom.$k}</textarea></span>
                     {elseif $conf.type=='select'}
@@ -62,7 +62,7 @@
 
                     <td ><input type="text" name="option[{$k}]" value="{$conf.value}" class="inp"/></td>
                     {elseif $conf.type=='password'}
-                    <td ><input type="password" name="option[{$k}]" value="{$conf.value}"  class="inp"/></td>
+                    <td ><input type="password" autocomplete="off" name="option[{$k}]" value="{$conf.value}"  class="inp"/></td>
                     {elseif $conf.type=='check'}
                     <td ><input name="option[{$k}]" type="checkbox" value="1" {if $conf.value == "1"}checked="checked"{/if} style="margin:0px"  /></td>
                     {elseif $conf.type=='select'}
@@ -144,7 +144,7 @@
             <td class="fs11" id="testing_result{$serv.id}"></td>
             <td><a href="#" class="editbtn editgray" onclick="return testConnectionList('{$serv.id}', this);">{$lang.test_configuration}</a></td>
             <td><a href="?cmd=servers&action=edit&id={$serv.id}" class="editbtn">{$lang.Edit}</a></td>
-            <td><a href="?cmd=servers&make=delete&action=group&group={$group.id}&id={$serv.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteserverconfirm}')" class="delbtn">Delete</a></td>
+            <td><a href="?cmd=servers&make=delete&action=group&group={$group.id}&id={$serv.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteserverconfirm}')" class="delbtn">删除</a></td>
         </tr>
     {/foreach}
 {else}

@@ -74,14 +74,14 @@
                             {foreach from=$coupons item=coupon}
                                 <option {if $couponid == $coupon.id}selected="selected"{/if} value="{$coupon.id}">{$coupon.code} (-{if $coupon.type == 'percent'}{$coupon.value}%{else}{$coupon.value|price:$draft.currency}{/if})</option>
                             {/foreach}
-                            <option value="0">Custom discount</option>
+                            <option value="0">自定义折扣</option>
                         </select>
                     {/if}
                     <span {if $coupons}style="display:none" {/if}>
                         <input class="inp" name="discount_value" type="text" size="3" value="{$discount.value}" />
                         <select class="inp" name="discount_type">
-                            <option {if $discount.type == 'fixed'}selected="selected"{/if} value="fixed">Fixed amount</option>
-                            <option {if $discount.type == 'percent'}selected="selected"{/if} value="percent">Percent</option>
+                            <option {if $discount.type == 'fixed'}selected="selected"{/if} value="fixed">定额</option>
+                            <option {if $discount.type == 'percent'}selected="selected"{/if} value="percent">百分比</option>
                         </select>
                     </span>
                     <button onclick="bundle_discount(); return false;">{$lang.Add}</button>
@@ -145,7 +145,7 @@
                     <div class="like-table-row">
                         <label class="right">
                             <input class="form-disabler" {if $submit.bundle_custom[$bundleid][$c.id]}checked="checked"{/if} type="checkbox" value="1" name="bundle_custom[{$bundleid}][{$c.id}]" onchange="bundle_optionalconfig(this);" >
-                            Display in cart
+                            在购物车显示
                         </label>
                         <div style="width: 160px"><span>{$c.name} </span></div>
                         <div class="details_cf_{$kk}" default="{$c.config.initialval}">
@@ -158,9 +158,9 @@
 
         {*foreach from=$draft.services item=service key=scycle}
             <div class="like-table-row">
-                <div style="width: 160px">{$lang.$scycle} cycle</div>
+                <div style="width: 160px">{$lang.$scycle} 循环</div>
                 <div>
-                    Total: {$service.total.total|price:$currency} 
+                    合计: {$service.total.total|price:$currency} 
                     {foreach from=$service.total.recurring item=price key=cycle}
                         <br />
                         {$price|price:$currency} {$lang.$cycle}

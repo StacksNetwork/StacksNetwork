@@ -1,0 +1,30 @@
+---
+variables:
+  running_vm:
+    name: Running VM
+    unit_name: Hour
+    description: Total running time of a VM per usage record period. Enter cost of having 1VM working for 1H.
+  allocated_vm:
+    name: Allocated VM
+    unit_name: Hour
+    description: Total allocated time of a VM per usage record period. Enter cost of having 1VM allocated for 1H.
+  ip_address:
+    name: Public IP address
+    unit_name: Hour
+    description: Public IP address. Enter cost of having 1public IP for 1hour.
+  traffic:
+    name: Traffic
+    unit_name: GB
+    description: Total number of GB received+sent.  Enter cost of 1GB traffic.
+  volume:
+    name: Volume
+    unit_name: Hour
+    description: Total disk volume used per hour. Enter cost of 1GB used per 1Hour.
+  template:
+    name: Template
+    unit_name: Hour
+    description: Total templates size used per hour. Enter cost of 1GB used per 1Hour.
+  snapshot:
+    name: Snapshot
+    unit_name: Hour
+    description: Total snapshot size used per hour. Enter cost of 1GB used per 1Hour.

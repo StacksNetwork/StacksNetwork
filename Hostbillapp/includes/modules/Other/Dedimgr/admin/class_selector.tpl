@@ -5,5 +5,5 @@
             <option {if $item.css==$img}selected="selected"{/if}>{$img}</option>
         {/if}
     {/foreach}
-</select> 或者
+</select> 或
 <input type="file" name="files" class="fileupload"/>

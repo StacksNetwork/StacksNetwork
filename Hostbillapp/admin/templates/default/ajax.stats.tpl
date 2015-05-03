@@ -101,7 +101,7 @@
                 <div class="list-1">
                     <ul>
                         <li>
-                            <a href="#"><span class="ico money">{if $action=='default'}Yearly Income{elseif $lang[$action]}{$lang[$action]}{else}Statistics{/if}</span></a>
+                            <a href="#"><span class="ico money">{if $action=='default'}年度营收{elseif $lang[$action]}{$lang[$action]}{else}状态{/if}</span></a>
                         </li>
                         <li class="datetab last">
                             <a href="#"><span>{$dateFrom|dateformat:$date_format} - {$dateTo|dateformat:$date_format}</span><span class="picker"></span></a>
@@ -167,10 +167,10 @@
 {elseif $action=="report"}
     <table style="width: 100%" cellspacing="0" cellpadding="5" class="glike hover">
         <tr>
-            <th>Type</th>
-            <th>Item</th>
-            <th>Period</th>
-            <th>Start Date</th>
+            <th>类型</th>
+            <th>内容</th>
+            <th>周期</th>
+            <th>开始日期</th>
                 {foreach from=$data.timeline item=items key=period}
                 <th>{$period}</th>
                 {/foreach}
@@ -247,7 +247,7 @@
                 </table>
             {else}
                 <div class="blank_state" style="text-align: center">
-                    <h1>No Data to display</h1>
+                    <h1>无数据可显示</h1>
                 </div>
             {/if}
             {if $total}

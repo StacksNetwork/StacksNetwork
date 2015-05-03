@@ -88,7 +88,7 @@
                                 <table width="100%" cellspacing="0" cellpadding="3" border="0" style="border:solid 1px #ddd;" class="whitetable" >
                                     <tbody>
                                         <tr>
-                                            <th align="left" colspan="2"><b>Current ticket statuses</b></th>
+                                            <th align="left" colspan="2"><b>当前工单状态</b></th>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -102,11 +102,11 @@
                                                 <table width="100%" cellspacing="0" cellpadding="3" border="0" style="border:solid 1px #ddd; border-top:none;" class="whitetable">
                                                     <tr >
                                                         <td><span {if !($status.options & 1)}style="color:#{$status.color}"{/if} class="{if !($status.options & 1)}ticket-status-{/if}{$status.status}">{$status.status}</span></td>
-                                                        <td width="20"><a class="sorter-handle">move</a><input type="hidden" value="{$status.status}" name="sort[]"></td>
+                                                        <td width="20"><a class="sorter-handle">移动</a><input type="hidden" value="{$status.status}" name="sort[]"></td>
                                                         <td width="30" class="lastitm">
                                                             {if !($status.options & 1)}
-                                                                <a onclick="return editTStatus('{$status.status}', '{$status.color}', {$status.options})" class="editbtn-ico left" style="margin-right: 8px;"  href="#">Edit</a>
-                                                                <a onclick="return confirm('Do you really want to delete this status?')" class="delbtn" href="?cmd=configuration&action=ticketstatuses&make=delete&security_token={$security_token}&status={$status.status}">Delete</a>
+                                                                <a onclick="return editTStatus('{$status.status}', '{$status.color}', {$status.options})" class="editbtn-ico left" style="margin-right: 8px;"  href="#">编辑</a>
+                                                                <a onclick="return confirm('您确定要删除该状态吗?')" class="delbtn" href="?cmd=configuration&action=ticketstatuses&make=delete&security_token={$security_token}&status={$status.status}">删除</a>
                                                             {/if}
                                                         </td>
                                                     </tr>
@@ -119,15 +119,15 @@
                                 </form>
                                 <br/>
                                 <div>
-                                    <a href="#" onclick="newTStatus(); return false" class=" new_control greenbtn"><span>Create custom status</span></a>
+                                    <a href="#" onclick="newTStatus(); return false" class=" new_control greenbtn"><span>创建自定义状态</span></a>
                                 </div>
 
                             </td>
                             <td valign="top">
                                 <div class="blank_state blank_news" id="blank_state" style="padding:0px 0px">
                                     <div class="blank_info">
-                                        <h1>Add custom ticket statuses</h1>
-                                        With HostBill you can create custom ticket statuses and re-arrange current ones - to best suit your company's support workflow.
+                                        <h1>添加自定义工单状态</h1>
+                                        可以创建自定义工单状态和重新安排现有的-最适合贵公司的支持工作流.
                                         <div class="clear"></div>
                                     </div>
                                 </div>
@@ -138,18 +138,18 @@
                                         <table width="60%" cellspacing="0" cellpadding="6" border="0">
                                             <tbody>
                                                 <tr >
-                                                    <td  align="right" width="150"><strong>Status</strong></td>
+                                                    <td  align="right" width="150"><strong>状态</strong></td>
                                                     <td><input class="inp" id="ticketstatus" value="" name="status" /></td>
                                                 </tr>
                                                 <tr >
-                                                    <td  align="right" width="150"><strong>Auto-close</strong></td>
+                                                    <td  align="right" width="150"><strong>自动关闭</strong></td>
                                                     <td>
                                                         <input type="checkbox" value="2" name="options[]" checked="checked"/>   
-                                                        <a class="vtip_description" title="Tickets with auto-close enabled can be automatically closed by cron if non replied, depending on department settings"></a>
+                                                        <a class="vtip_description" title="工单的自动关闭功能可自动关闭未回复工单，根据部门设置"></a>
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                     <td  align="right" width="150">Status color</td>
+                                                     <td  align="right" width="150">状态色彩</td>
                                                     <td>
                                                         <input id="colorSelector_i" type="hidden" class="w250" size="7" name="color" value="000000" style="margin-bottom:5px"/>
                                                         <div id="colorSelector" style="border: 2px solid #ddd; cursor: pointer; float: left; height: 15px;margin: 6px 0 5px 8px;position:relative; width: 40px; background: #000000;" onclick="$('#colorSelector_i').click()">
@@ -160,8 +160,8 @@
                                                 <tr>
                                                     <td  align="right" width="150"></td>
                                                     <td>
-                                                        <input type="submit" class="submitme add" style="font-weight:bold" value="Add new ticket status">
-                                                        <input type="submit" class="submitme edit" style="font-weight:bold" value="Update ticket status">
+                                                        <input type="submit" class="submitme add" style="font-weight:bold" value="添加新的工单状态">
+                                                        <input type="submit" class="submitme edit" style="font-weight:bold" value="更新工单状态">
                                                     </td>
                                                 </tr>
                                             </tbody>

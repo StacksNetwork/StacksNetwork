@@ -82,18 +82,6 @@
              }   
         </style>
         {/literal}
-          
-        {if $appwidget.promo}
-        <div class="internal">
-            <div id="whatsapp" >
-                <div class="wheader">Spotlight</div>
-                <div style="padding: 5px">
-                    <a href="{$appwidget.promo.link}" target="_blank">{$appwidget.promo.text}</a>
-                </div>
-            </div>
-        </div>
-        {/if}
-        
         
 	</td>
 	<td valign="top">

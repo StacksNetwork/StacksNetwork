@@ -224,13 +224,13 @@
                 <td>{if $order.currency_id}{$order.total|price:$order.currency_id}{else}{$order.total|price:$currency}{/if}</td>
                 <td>{if $order.module}{$order.module}{else}-{/if}</td>
                 <td><span class="{$order.status}">{$lang[$order.status]}</span></td>
-                <td><a href="?cmd={$cmd}&action={$action}&make=delete&id={$order.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteorderconfirm}');" class="delbtn">Delete</a></td>
+                <td><a href="?cmd={$cmd}&action={$action}&make=delete&id={$order.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteorderconfirm}');" class="delbtn">删除</a></td>
             </tr>
         {/foreach}
     {elseif $action=="createdraft"}
         {include file='orders/add.tpl'}
     {else}
-        <tr><td colspan="11"><p align="center" >{$lang.Click} <a href="?cmd=orders&action=createdraft" >{$lang.here}</a> to create new draft.</p></td></tr>
+        <tr><td colspan="11"><p align="center" >{$lang.Click} <a href="?cmd=orders&action=createdraft" >{$lang.here}</a> 新建草稿.</p></td></tr>
     {/if}
 {else}
     {if $orders}
@@ -247,7 +247,7 @@
           <td><span class="{$order.status}">{$lang[$order.status]}</span></td>
           <td>
               {if !$forbidAccess.deleteOrders}
-                <a href="?cmd=orders&make=delete&id={$order.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteorderconfirm}');" class="delbtn">Delete</a>
+                <a href="?cmd=orders&make=delete&id={$order.id}&security_token={$security_token}" onclick="return confirm('{$lang.deleteorderconfirm}');" class="delbtn">删除</a>
               {/if}
           </td>
         </tr>

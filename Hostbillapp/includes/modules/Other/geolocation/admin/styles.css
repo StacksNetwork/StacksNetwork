@@ -1,0 +1,94 @@
+.geo-new-rule{
+    padding: 10px;
+    margin: 0 10px 10px;
+    border: solid 1px #ddd;
+    border-top:none;
+}
+#geo-list ul{
+    margin: 10px 10px 0;
+    border: solid 1px #ddd;
+}
+#geo-list li{
+    border-top: 1px solid #DFDFDF;
+    padding: 0 0 0 10px;
+    clear:both
+}
+#geo-list li.first{
+    border-top: none;
+}
+#geo-list div.actions,
+#geo-list div.name,
+#geo-list div.description{
+    display: block;
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    min-width: 100px;
+}
+#geo-list div.description{
+    float: right;
+    background: none repeat scroll 0 0 #F0F0F3;
+    color: #767679;
+    height: 29px;
+    padding: 3px 5px;
+    font-size: 11px;
+}
+#geo-list div.description span{
+    display: inline-block;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+#geo-list div.edit{
+    clear:both;
+}
+#geo-list div.edit form{
+    padding: 0 5px 10px;
+}
+#addnew_btn{
+    display: inline-block;
+    margin: 10px 0 10px 10px;
+}
+.geo-loc{
+    float:left;
+    width: 350px;
+}
+.geo-loc > label,
+.geo-actions > label,
+.geo-label-lkie{
+    display: block;
+    line-height: 35px
+}
+.geo-label-lkie input {
+    vertical-align: middle;
+}
+.geo-loc span, 
+.geo-actions span{
+    display: inline-block;
+    width: 100px;
+}
+.geo-actions span{
+    display: inline-block;
+    width: 160px;
+}
+.geo-loc select{
+    width: 220px;
+}
+.geo-actions select{
+    min-width: 220px;
+}
+input.new_control{
+    font-size: 14px;
+    color: #444;
+    margin-top: 10px;
+    display: inline-block;
+    background: linear-gradient(#F7F7F7, #E0E0E0) repeat scroll 0 0 #E3E3E3;
+    border: 1px solid #B0B0B0;
+    border-radius: 2px 2px 2px 2px;
+    padding: 2px 4px;
+    text-shadow: 0 1px 0 #FFFFFF;
+    cursor:pinter;
+}
+input.new_control:hover{
+    background: #fff;
+    border-color: #909090;
+}

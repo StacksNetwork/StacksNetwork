@@ -1,15 +1,15 @@
 {if $action=='beginsimpletest'}
 <div style="background:#fff;padding:10px;">
-    <h3 style="margin-top:0px;">Testing App configuration for {$pname}</h3>
+    <h3 style="margin-top:0px;">测试App配置 {$pname}</h3>
     
     <div id="testcontainer" style="display:none">
         <div id="testcontent">
-            <em>Test started {$nowdate|dateformat:$date_format} ...</em><br/>
+            <em>测试开始 {$nowdate|dateformat:$date_format} ...</em><br/>
         </div>
     </div>
     <div  style="padding:10px 0px;">
         <div class="lxa spinner left" style="display:none;"><img src="ajax-loading2.gif"></div>
-<a href="#" class="new_control" onclick="return  HBTestingSuite.runSimpleTest();"><span class="gear_small">Test again</span></a>
+<a href="#" class="new_control" onclick="return  HBTestingSuite.runSimpleTest();"><span class="gear_small">再次测试</span></a>
     </div>
 </div>
 <div class="dark_shelf dbottom">
@@ -83,13 +83,13 @@ HBTestingSuite.runSelfHealing=function(test_id,indicat){
 {elseif $action=='runsimpletest'}
     {if $output}
         {foreach from=$output item=line}
-             <span style="line-height:19px;{if $line.type=='error'}color:#FF9900;{elseif $line.type=='bold'}font-weight:bold{/if}">{$line.text} </span> {if !$line.type && !$line.offerfix}<span style="color:#35ee20">OK</span>{elseif $line.type=='error'}<span style="color:#FF9900;font-weight:bold">ERROR</span>{/if}<br/>
+             <span style="line-height:19px;{if $line.type=='error'}color:#FF9900;{elseif $line.type=='bold'}font-weight:bold{/if}">{$line.text} </span> {if !$line.type && !$line.offerfix}<span style="color:#35ee20">OK</span>{elseif $line.type=='error'}<span style="color:#FF9900;font-weight:bold">错误</span>{/if}<br/>
              {if $line.offerfix}<div style="padding:8px;">
-                 <a href="#" class="new_control" onclick="HBTestingSuite.runSelfHealing('{$line.test}',this);return false"><span class="wizard"><strong>Auto-Fix: {if $line.fixname}{$line.fixname}{else}found problems{/if}</strong></span></a></div>{/if}
+                 <a href="#" class="new_control" onclick="HBTestingSuite.runSelfHealing('{$line.test}',this);return false"><span class="wizard"><strong>自动修正: {if $line.fixname}{$line.fixname}{else}找到程序{/if}</strong></span></a></div>{/if}
         {/foreach}
     {/if}
     {if $stoptime}
-    <em>...Test finished {$stoptime|dateformat:$date_format}<br/></em>
+    <em>...测试结束 {$stoptime|dateformat:$date_format}<br/></em>
     {/if}
 
 
@@ -97,10 +97,10 @@ HBTestingSuite.runSelfHealing=function(test_id,indicat){
 {if $output}
         {foreach from=$output item=line}
              <span style="line-height:19px;{if $line.type=='error'}color:#FF9900;{elseif $line.type=='bold'}font-weight:bold{/if}">{$line.text}</span><br/>
-             {if $line.offerfix}<div style="padding:8px;"><a href="#" class="new_control" onclick="HBTestingSuite.runSelfHealing('{$line.test}',this);return false"><span class="wizard"><strong>Auto-Fix {if $line.fixname}{$line.fixname}{else}found problems{/if}</strong></span></a></div>{/if}
+             {if $line.offerfix}<div style="padding:8px;"><a href="#" class="new_control" onclick="HBTestingSuite.runSelfHealing('{$line.test}',this);return false"><span class="wizard"><strong>自动修正 {if $line.fixname}{$line.fixname}{else}找到程序{/if}</strong></span></a></div>{/if}
         {/foreach}
     {/if}
     {if $stoptime}
-     <em>...Patching finished {$stoptime|dateformat:$date_format}<br/></em>
+     <em>...修正完成 {$stoptime|dateformat:$date_format}<br/></em>
     {/if}
 {/if}

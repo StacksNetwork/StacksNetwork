@@ -1,0 +1,38 @@
+#status_plugin{
+    padding: 10px 0;
+}
+#status_plugin > tablle{
+    width: 100%;
+}
+#status_plugin > table > tbody >  tr > td:first-child{
+    width: 160px;
+    text-align: right;
+    vertical-align: top
+}
+#status_plugin input[type=text],
+#status_plugin textarea{
+    min-width: 350px;
+}
+#status_plugin select{
+    min-width: 355px;
+}
+#status_plugin .datepickers input{
+    width: 160px;
+    min-width: 160px;
+}
+#status_plugin select[multiple]{
+    min-height: 100px;
+}
+#status_plugin .clearfix{
+    padding: 0 10px;
+}
+#status_plugin .ticketsTags{
+    width: 350px;
+}
+#status_plugin .update-row div{
+    line-height: 24px;
+    padding: 6px 0;
+}
+#status_plugin .status-del{
+    float:left;
+}

@@ -498,7 +498,7 @@ td.rack_2u {
     display:block;
 }
 .rack-front .ui-sortable-placeholder::after {
-    content: "Drop to update item position";
+    content: "拖拽改变设备位置";
     visibility: visible !important;
     color: #2A5DB0;
     font-size: 10px;

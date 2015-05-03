@@ -269,7 +269,7 @@ HBWidget.createWidget = function() {
         <tr>
             <td width="140" id="s_menu" style="" valign="top">
                 <div id="lefthandmenu">
-                        <a class="tchoice" href="#">Appearance</a>
+                        <a class="tchoice" href="#">架构</a>
 						{foreach from=$widget.info.templates item=tp key=tpname}
 						<a class="tchoice" href="#">{$tpname}</a>
 						{/foreach}
@@ -279,26 +279,26 @@ HBWidget.createWidget = function() {
             </td>
             <td class="conv_content pw-form"  valign="top">
                <div class="tabb">
-                   <h3 style="margin-bottom:0px;"><img src="../{$widget.config.smallimg}" alt="" style="margin-right:5px" class="left"  />  Function &raquo; {$widget.info.fullname} &raquo; Appereance</h3>
+                   <h3 style="margin-bottom:0px;"><img src="../{$widget.config.smallimg}" alt="" style="margin-right:5px" class="left"  />  函数 &raquo; {$widget.info.fullname} &raquo; 结构</h3>
                    <div class="clear"></div>
                    
-                    <div class="clear"></div><label class="nodescr">Display as</label>
+                    <div class="clear"></div><label class="nodescr">显示为</label>
                     <input type="text" class="w250" name="name" value="{$widget.name|escape}" />
                     <div class="clear"></div>
 
-                     <label class="nodescr">Display in</label>
+                     <label class="nodescr">显示于</label>
                     <select class="winput w250" name="group">
-                        <option value="sidemenu" {if $widget.group=='sidemenu'}selected="selected"{/if}>Service sidemenu</option>
-                        <option value="apps" {if $widget.group=='apps'}selected="selected"{/if}>Service "apps" menu</option>
+                        <option value="sidemenu" {if $widget.group=='sidemenu'}selected="selected"{/if}>服务菜单</option>
+                        <option value="apps" {if $widget.group=='apps'}selected="selected"{/if}>服务 "apps" 菜单</option>
                     </select>
                     <div class="clear"></div>
 
-                    <label>Small icon <small>Use 16x16px png image</small></label>
+                    <label>小图标 <small>使用 16x16px png 图片</small></label>
                         <div class="winput">
 
                              <input type="text" class="w250" name="config[smallimg]" value="{$widget.config.smallimg}" style="margin:0px 5px 5px 0px;" />
                             <div class="clear"></div>
-                             <div class="left fs11" style="padding:5px 5px 5px 0px;">Upload new</div><input type="file" name="smallimgnew" style="margin:0px 5px 5px 0px;" />
+                             <div class="left fs11" style="padding:5px 5px 5px 0px;">上传新的</div><input type="file" name="smallimgnew" style="margin:0px 5px 5px 0px;" />
                         </div>
                     <div class="left">
                      <img src="../{$widget.config.smallimg}" alt="" style="margin:5px 10px;"   />
@@ -306,11 +306,11 @@ HBWidget.createWidget = function() {
 
                     <div class="clear"></div>
 
-                    <label>Large icon <small>Use 48x48px png image</small></label>
+                    <label>大图标 <small>使用 48x48px png 图片</small></label>
                     <div class="winput">
                              <input type="text" class="w250" name="config[bigimg]" value="{$widget.config.bigimg}" style="margin:0px 5px 5px 0px;"  />
                              <div class="clear"></div>
-                             <div class="left fs11" style="padding:5px 5px 5px 0px;">Upload new</div><input type="file" name="bigimgnew" style="margin:0px 5px 5px 0px;" />
+                             <div class="left fs11" style="padding:5px 5px 5px 0px;">上传新的</div><input type="file" name="bigimgnew" style="margin:0px 5px 5px 0px;" />
                         </div>
 
                     <div class="left">
@@ -325,7 +325,7 @@ HBWidget.createWidget = function() {
 
 			   {foreach from=$widget.info.templates item=tp key=tpname}
 						<div class="tabb" style="display:none">
-                <h3><img src="../{$widget.config.smallimg}" alt="" style="margin-right:5px" class="left"  />  Function &raquo; {$widget.info.fullname} &raquo; {$tpname}</h3>
+                <h3><img src="../{$widget.config.smallimg}" alt="" style="margin-right:5px" class="left"  />  函数 &raquo; {$widget.info.fullname} &raquo; {$tpname}</h3>
                 {include file=$tp}
 				</div>
 						{/foreach}

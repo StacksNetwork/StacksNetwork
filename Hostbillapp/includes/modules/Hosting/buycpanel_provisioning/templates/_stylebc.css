@@ -1,0 +1,176 @@
+imgtable.datatable {
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+
+table.datatable th {
+
+    background-color: #1A4D80;
+
+    font-weight: bold;
+
+    text-align: center;
+
+    -moz-border-radius: 3px;
+
+    -webkit-border-radius: 3px;
+
+    -o-border-radius: 3px;
+
+    border-radius: 3px;
+
+}
+
+table.datatable td {
+
+    background-color: #FFF;
+
+    border-bottom: 1px solid #EBEBEB;
+
+    font-size: 12px;
+
+}
+
+table.datatable tr.rowhighlight td {
+
+    background-color: #E0E8F3;
+
+}
+
+table.datatable tr:hover td {
+
+    background-color: #EFF2F9;
+
+}
+
+table.datatable th, table.datatable th a, table.datatable th a:visited {
+
+    color: #FFF;
+
+    text-decoration: none;
+
+}
+
+table.datatable th a:hover {
+
+    color: #FFF;
+
+    text-decoration: underline;
+
+}
+
+table.datatable tr:hover td {
+
+    background-color: #F3F3F3;
+
+}
+
+
+table.datatablefrm {
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+
+table.datatablefrm th {
+
+    background-color: #1A4D80;
+
+    font-weight: bold;
+
+    -moz-border-radius: 3px;
+
+    -webkit-border-radius: 3px;
+
+    -o-border-radius: 3px;
+
+    border-radius: 3px;
+
+}
+
+table.datatablefrm td {
+
+    background-color: #FFF;
+
+    font-size: 12px;
+
+}
+
+table.datatablefrm tr.rowhighlight td {
+
+    background-color: #E0E8F3;
+
+}
+
+table.datatablefrm tr:hover td {
+
+    background-color: #EFF2F9;
+
+}
+
+table.datatablefrm th, table.datatablefrm th a, table.datatablefrm th a:visited {
+
+    color: #FFF;
+
+    text-decoration: none;
+
+}
+
+table.datatablefrm th a:hover {
+
+    color: #FFF;
+
+    text-decoration: underline;
+
+}
+
+table.datatablefrm tr:hover td {
+
+    background-color: #F3F3F3;
+
+}
+
+.padabove {
+    clear:right;
+    height:2px;
+}
+
+.infobox {
+
+
+    background-repeat: no-repeat;
+
+    background-position: 5px;
+
+    margin: 10px 5px 10px 5px;
+
+    padding: 6px 5px 6px 45px;
+
+    min-height: 28px;
+
+    background-color: #FCF9D2;
+
+    border: 1px solid #F9D43E;
+
+    color: #000;
+
+    text-align: left;
+
+    -moz-border-radius: 5px;
+
+    -webkit-border-radius: 5px;
+
+    -o-border-radius: 5px;
+
+    border-radius: 5px;
+
+    clear:right;
+
+}

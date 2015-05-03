@@ -218,7 +218,7 @@ position:relative;" id="search_form_container" class="search_form_container">
                                             <ul class="subbmenu">
                                                 <li ><a href="?cmd=invoices&amp;list=paid&amp;showall=true">已付账单</a></li>
                                                 <li ><a href="?cmd=invoices&amp;list=unpaid&amp;showall=true">未付账单</a></li>
-                                                <li ><a href="?cmd=invoices&amp;list=refunded&amp;showall=true">退款s</a></li>
+                                                <li ><a href="?cmd=invoices&amp;list=refunded&amp;showall=true">退款</a></li>
 
                                             </ul>
                                         </div></li>

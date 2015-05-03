@@ -77,9 +77,9 @@
                         </td>
                         <td >
                             <select name="sendas[{$lgid}]" class="inp form-sendas" >
-                                <option {if $send_as == 'plain'}selected="selected"{/if} value="plain">Plain text</option>
+                                <option {if $send_as == 'plain'}selected="selected"{/if} value="plain">纯文本</option>
                                 <option {if $send_as == 'html'}selected="selected"{/if} value="html">HTML</option>
-                                <option {if $send_as == 'both'}selected="selected"{/if} value="both">HTML + Plain text (Alternative content)</option>
+                                <option {if $send_as == 'both'}selected="selected"{/if} value="both">HTML + 纯文本 (替换内容)</option>
                             </select>
                         </td>
                     </tr>

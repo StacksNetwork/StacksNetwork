@@ -45,7 +45,7 @@
                             {/foreach}
                         </select>
                         <a class="new_control greenbtn" href="#" onclick="$('#rateform').submit();
-                                return false;"><span>提交</span></a> 
+                                return false;"><span>Submit</span></a> 
                     </form>
                     {literal}
                         <script type="text/javascript">
@@ -123,7 +123,7 @@
                                         {if $action=='departments'}
                                             <a href="?cmd={$cmd}&action={$action}&orderby=name|ASC"  class="sortorder">部门</a>
                                         {else}
-                                            <a href="?cmd={$cmd}&action={$action}&orderby=name|ASC"  class="sortorder">员工</a>
+                                            <a href="?cmd={$cmd}&action={$action}&orderby=name|ASC"  class="sortorder">工作人员</a>
                                         {/if} 
                                     </th>
                                 {/if}
@@ -135,7 +135,7 @@
                                 <th><a href="?cmd={$cmd}&action={$action}&type={$type}&id={$id}&orderby=rating|ASC"  class="sortorder">{$lang.rated}</a></th>
                                 <th>
                                     {if $action=='departments'}
-                                        <a href="?cmd={$cmd}&action={$action}&type={$type}&id={$id}&orderby=name|ASC"  class="sortorder">员工</a>
+                                        <a href="?cmd={$cmd}&action={$action}&type={$type}&id={$id}&orderby=name|ASC"  class="sortorder">工作人员</a>
                                     {else}
                                         <a href="?cmd={$cmd}&action={$action}&type={$type}&id={$id}&orderby=name|ASC"  class="sortorder">部门</a>
                                     {/if} 
@@ -143,7 +143,7 @@
                                 <th>回复</th>
                                 <th style="width:130px">工单</th>
                                 <th style="width:130px"><a href="?cmd={$cmd}&action={$action}&type={$type}&id={$id}&orderby=date|ASC"  class="sortorder">回复日期</a></th>
-                                <th style="width:130px"><a href="?cmd={$cmd}&action={$action}&type={$type}&id={$id}&orderby=rdate|ASC"  class="sortorder">评级日期</a></th>
+                                <th style="width:130px"><a href="?cmd={$cmd}&action={$action}&type={$type}&id={$id}&orderby=rdate|ASC"  class="sortorder">评价日期</a></th>
                                 {/if}
                         </tr>
                     </thead>

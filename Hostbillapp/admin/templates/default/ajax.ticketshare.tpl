@@ -80,21 +80,21 @@
     </table>
     <div class="nicerblu">
         <div class="shownice tabb" style="margin:2em 10px; padding:1em"> 
-        <strong>Sharing url:</strong>
+        <strong>共享URL:</strong>
         <input type="text" value="{$sharing_url}" readonly="readonly" style="background:none;border:none; width:50%" onclick="this.select();"></br>
-        <small>Your server has to have mod_rewrite enabled for you to receive any invites or be able to respond to accepted agreements <a target="_blank" class="external" href="http://wiki.hostbillapp.com/index.php?title=Ticket_Sharing_requirements">Ticket sharing requirements</a></small>
+        <small>您的服务器必须启用mod_rewrite, 为您收到任何邀请或能够对所接受的协议作出回应 <a target="_blank" class="external" href="http://wiki.hostbillapp.com/index.php?title=Ticket_Sharing_requirements">工单共享需求</a></small>
         </div>
     </div>  
     {* <strong>{$lang.nothingtodisplay}</strong> *}
 {else}
     <div class="blank_state blank_services">
         <div class="blank_info">
-            <h1>Connect multiple brands & help desks</h1>
-            You can connect multiple HostBill ticketing systems to colaborate on tickets with partner/sub-companies easly.<br />
-            If you want to be invited your helpdesk sharing url is {$sharing_url}
+            <h1>连接各种品牌 & HelpDesks</h1>
+            您可以连接多个HostBill工单系统, 更便捷的与合作伙伴/分公司进行协作.<br />
+            如果你想邀请HelpDesk进行共享, 请使用URL {$sharing_url}
             <div class="clear"></div>
             <a style="margin-top:10px" href="?cmd={$cmd}&action=invite" class="new_add new_menu">
-                <span>Invite other help desks</span>
+                <span>邀请其他HelpDesks</span>
             </a>
             <div class="clear"></div>
         </div>

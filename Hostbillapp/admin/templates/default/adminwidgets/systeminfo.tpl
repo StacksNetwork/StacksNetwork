@@ -57,7 +57,7 @@
         </table>
     </div>
     <div style="text-align:right; margin:0 4px 4px"><a target="_blank" class="fs11  external
-                                                       " href="?action=phpinfo">More details</a></div>
+                                                       " href="?action=phpinfo">更多详情</a></div>
 </div>
 <script type="text/javascript">
     {literal}

@@ -1,0 +1,17 @@
+type: slider
+name: CPU Allocation [Mhz]
+key: cf_cpu
+variable: cpu
+description:
+category: server
+options: 50
+config:
+  minvalue: 200
+  maxvalue: 12200
+  step: 100
+  initialval: 500
+items:
+  -
+    name:
+    m: 0.10
+    pricing: 1

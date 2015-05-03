@@ -1,0 +1,146 @@
+#facebox .body{padding:0!important;background:#484848!important}
+.content .fleft{background: #6B6B6B; border-radius: 5px 0 0 0; color: #FFFFFF; padding: 40px 0; vertical-align: top;  width: 180px;}
+.content .fright{background: #FFF; border-radius: 0 5px 0 0; padding: 5px 5px 25px 10px;vertical-align:top;}
+.content .greenbtn{padding:3px 5px; border:none;  border-radius: 2px}
+.content .bcontainer{text-align:center}
+.content .fleft > div{ padding: 10px 5px; text-align: right;}
+.content .fleft div:hover{background: #777; cursor:pointer}
+.content .fleft div.actv{background: #6687FF;}
+.form_container{min-height:150px}
+.form_container label{clear: left; display: block; float: left; font-size: 12px; font-weight: bold; margin: 0; text-align: right; width: 160px; padding-top: 7px}
+.form_container form > input, .form_container > input, .form_container select, input.w250, textarea.w250 { border: 1px solid #CCCCCC; border-radius: 3px; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) inset; font: 13px/16px Arial,sans-serif !important;  padding: 4px 6px; width: 250px; clear: right; float: left;  margin: 2px 0 20px 10px;}
+.form_container form > input[type="checkbox"], .form_container > input[type="checkbox"] {width:auto;margin:6px 20px 20px;}
+.testcon{display:block; clear:both; margin-top:1em;}
+
+.chzn-container {
+    font-size:11px !important;    margin: 0 0 20px 10px;
+}
+.chzn-container .chzn-results li  {
+    padding:2px 5px !important;
+}
+#bodycont > .blu {float:left; cursor:pointer; padding-right:10px;}
+#bodycont > .blu:hover{background:#d0dCFF;}
+#bodycont > .blu.actv{background:#d0dCFF;}
+.pagecont {min-height:140px}
+ul.tree, .tree ul{list-style: none outside none; margin:0; padding:0;}
+
+.tree .extendable > span.extb{height: 13px; display: block; position: absolute; left: 5px;  width: 6px; text-decoration:none; color:#000; padding:2px 0 2px 18px; background: url('img/folder.png') no-repeat right bottom ;}
+.tree .open.extendable > span.extb{background: url('img/folder.png') no-repeat right top;}
+.tree span {cursor:pointer;}
+.tree span.extt {padding-left:15px}
+.tree span:hover{color:#696;}
+.tree li{padding:4px 0 0 16px;background: url('img/bulet.png') no-repeat scroll 0px 3px transparent; position:relative}
+.tree .open{background: url('img/buleta.png') no-repeat scroll 0px 3px transparent;}
+.tree .extendable > ul{display:none}
+.tree .open.extendable > ul{display:block}
+.tree li.nothing {font-style:italic; color:#777; background:none; }
+.tree li.nothing li{font-size:11px}
+.ipam-left{margin:0 0 10px 10px; width:150px ;float:left;}
+.ipam-right {overflow:hidden;margin:10px 0}
+
+.ipam-search input{height:20px;width:125px;border:solid 1px #bbe;border-right:none; padding:0;margin:0;}
+.ipam-search button{vertical-align:bmpmiddle;border:solid 1px #bbe; padding: 0 0 2px 0;margin:0; background: url('img/bbcg.png') repeat-x scroll left top ; width: 19px; height: 22px; vertical-align: bottom;}
+
+.ipam-search button:hover{background-image: url('img/bbcgh.png')}
+.ipam-right table{width:100%}
+.ipam-right .clear th { background: #f0f0f0;border:solid 1px #ddd }
+.ipam-right .clear td {border:solid 1px #eee; vertical-align:top}
+.ipam-right .clear td.ownercol {line-height:1em;vertical-align: middle}
+.ipam-right .clear td div{float:left;}
+.ipam-right .clear td span.editbtn{ visibility:hidden; font-size:8pt; display:block; float:right;}
+.ipam-right .clear td:hover span.editbtn{color:red; cursor:pointer; visibility:visible;}
+.ipam-right .clear th,.ipam-right .clear td{line-height:2em;  text-align:left; padding-left:5px}
+
+.ipam-right form input, .ipam-right textarea{height: 1.5em; font-size: 12px; border:1px solid #CCC;padding:0; margin:0; width:75%; border:none; border-bottom:1px dashed #888}
+.ipam-right form textarea{width:85%;resize: none}
+
+.ipam-filters {position:absolute; width:130px; background:#eee; border:solid 1px #aaa; border-top:none; padding:6px; display:none; z-index: 1000;}
+.ipam-filters input{float:right; clear:right}
+.ipam-filters label{float:left; clear:left; height: 20px;}
+
+.ipamnav, .ipamnav2 {height:21px; padding:4px 5px 0 5px; border:solid 1px #99bbe8; }
+.ipamnav { background:#eff url('img/tabbg.png') repeat-x top left; border-bottom:none}
+.ipamnav2 { background:#eff url('img/tabbg2.png') repeat-x top left;}
+.ipamnav2 span, .ipamnav span{ font-weight:bold;}
+.flagpole , .flagpole.active:hover{ background: url('img/flag.png') no-repeat bottom left transparent; padding: 14px 14px 0 0; cursor:pointer}
+.flagpole:hover,.flagpole.active, th .flagpole{ background-position: top left;}
+a.sortorder.flagpole{ padding: 0px 14px 0 0;}
+.listdescr {
+    border: 1px solid #99BBE8;
+    border-bottom:none;
+    font-size:11px;
+    padding: 4px 5px;
+}
+
+.ipamnav a{padding-right:10px; color:black; font-weight:bold; cursor:pointer}
+.ipamnav a:hover{color:#34b;}
+.iport{float:left; padding:10px 0 0 20px; margin:0}
+.iport{float:left; padding:10px 0 0 20px; margin:0}
+.iport_box{padding:10px 0 10px 10px}
+
+#facebox .body{padding:0!important;background:#484848!important}
+
+.pagecont .usage{
+    display: inline-block;
+    width: 85px;
+    height: 20px;
+    line-height: 20px;
+    border: solid 1px #777;
+    text-align: center;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: 1px;
+}
+.pagecont .usage div{
+    background: #5af;
+    height: 20px;
+    box-shadow: 1px 1px white inset, -1px -1px white inset;
+    position: absolute;
+    overflow: hidden;
+}
+.pagecont .usage.green div{
+    background-color: #60d736
+}
+.pagecont .usage.yelow div{
+    background-color: #d8b205
+}
+.pagecont .usage.red div{
+    background-color: #f54010
+}
+.pagecont .usage span.inverted{
+    color: white;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.47);
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 85px;
+}
+.pagecont a.editsth{
+    background: url("../../../../../admin/templates/default/img/manuedit.gif") no-repeat scroll -5px center transparent;
+    height: 11px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 10px;
+    padding-right: 9px; 
+}
+.pagecont a.editsth,
+.pagecont a.delbtn{
+    display: inline-block;
+}
+
+.join_type div {
+    position: relative;
+    top: 18px;
+    height: 1px;
+    overflow: visible
+}
+.join_type img {
+    padding: 0 5px 0 0;
+    vertical-align: sub;
+}
+
+.ipam-linebrs{
+    vertical-align: top;
+    line-height: 25px;
+}

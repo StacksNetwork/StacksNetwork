@@ -38,9 +38,9 @@
     <li>
         <table border="0" cellpadding="1" class="left pricingtableR" cellspacing="0" id="{$k}_table" >
             <tr>
-                <td width="100" class="fs11">Starting QTY</td>
-                <td width="100" class="fs11">Ending QTY</td>
-                <td width="150" class="fs11">Unit price</td>
+                <td width="100" class="fs11">起始QTY</td>
+                <td width="100" class="fs11">结束QTY</td>
+                <td width="150" class="fs11">单价</td>
                 <td></td>
             </tr>
             {if !$item.prices}
@@ -64,7 +64,7 @@
                             <label class="_pricing {$cycle}pricing"><input type="text" class="inp" size="3" value="{$p.$cycle|price:$currency:false}"  name="items[{$k}][prices][{$kx}][{$cycle}]" /><span> / {$lang.$cycle} </span></label>
                         {/foreach}
                     </td>
-                    <td><a class="fs11" href="#" onclick="return removeFormRow(this)">Remove</a></td>
+                    <td><a class="fs11" href="#" onclick="return removeFormRow(this)">移除</a></td>
                 </tr>
             {/foreach}
         </table>
@@ -73,15 +73,15 @@
                               <b>Tiered scheme</b><br/>Every unit charge is calculated with each measurement based on its own tier.<br/>i.e.: <i>1-2: $1, 3-4: $2, qtys are: 1,3; charge: 1*$1 + 3*$2</i> <br/><br/>
                               <b>Stairstep scheme</b><br/>Total cost is calculated based on price bracket, charge is for entire bracket not certain units<br/>i.e.: <i>1-5: $1, 6-10: $2, total qty: 7, charge: $2</i>"> </a> &nbsp;&nbsp;
             <select class="inp" name="items[{$k}][scheme]">
-                <option {if $item.scheme=='tiered'}selected="selected"{/if} value="tiered">Tiered</option>
-                <option {if $item.scheme=='volume'}selected="selected"{/if} value="volume">Volume</option>
-                <option {if $item.scheme=='stairstep'}selected="selected"{/if} value="stairstep">Stairstep</option>
+                <option {if $item.scheme=='tiered'}selected="selected"{/if} value="tiered">分级</option>
+                <option {if $item.scheme=='volume'}selected="selected"{/if} value="volume">卷标</option>
+                <option {if $item.scheme=='stairstep'}selected="selected"{/if} value="stairstep">阶梯</option>
             </select>
             
         </div>
         <div class="clear"></div>
         <div style="padding:15px 0px 10px;">
-            <a onclick="return addFormBracket('{$k}');" class="prices menuitm " href="#"><span  class="addsth">Add price bracket</span></a>
+            <a onclick="return addFormBracket('{$k}');" class="prices menuitm " href="#"><span  class="addsth">添加价格区间</span></a>
         </div>
     </li>
 </ul>
@@ -141,7 +141,7 @@
             ,'<td><input type="text" class="inp _qty _qty_start" size="3" value="',br,'"  name="items[',v,'][prices][',i,'][qty]" /></td>'
             ,'<td><input type="text" class="inp _qty _qty_end" size="3" value=""   name="items[',v,'][prices][',i,'][qty_max]" /></td>'
             ,'<td>',labels.join(''),'</td>'
-            ,'<td><a class="fs11" href="#"  onclick="return removeFormRow(this)">Remove</a></td>'
+            ,'<td><a class="fs11" href="#"  onclick="return removeFormRow(this)">移除</a></td>'
             ,'</tr>'];
         t.append(ht.join(''));
         updatePricingForms();

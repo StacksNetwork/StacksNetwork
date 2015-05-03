@@ -1,0 +1,1 @@
+{if $newitemtype=='client_id'}{if $newitem!='0'}<a href="?cmd=clients&action=show&id={$newitem}" target="_blank">#{$newitem}</a>{else}-{/if}{else}{$newitem}{/if}

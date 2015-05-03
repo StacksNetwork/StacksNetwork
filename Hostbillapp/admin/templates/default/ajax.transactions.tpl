@@ -33,7 +33,7 @@
     {foreach from=$transactions item=transaction}
 <tr>
 <td><a href="?cmd=transactions&action=edit&id={$transaction.id}" data-pjax>{$transaction.trans_id}</a></td>
-  <td><a href="?cmd=clients&action=show&id={$transaction.client_id}">{$transaction.firstname} {$transaction.lastname}</a></td>
+  <td><a href="?cmd=clients&action=show&id={$transaction.client_id}">{$transaction.lastname} {$transaction.firstname}</a></td>
   <td  class="acenter">{$transaction.date|dateformat:$date_format}</td>
   <td>{$transaction.module}</td>
   <td>{$transaction.description}</td>
@@ -43,7 +43,7 @@
   <td><a href="?cmd=transactions&action=edit&id={$transaction.id}" class="editbtn">{$lang.Edit}</a></td>
   <td>
       {if !$forbidAccess.deleteTransactions}
-      <a href="?cmd=transactions&make=delete&id={$transaction.id}&security_token={$security_token}" onclick="return confirm('{$lang.deletetransconfirm}');" class="delbtn">delete</a>
+      <a href="?cmd=transactions&make=delete&id={$transaction.id}&security_token={$security_token}" onclick="return confirm('{$lang.deletetransconfirm}');" class="delbtn">删除</a>
       {/if}
   </td>
 </tr>

@@ -763,7 +763,7 @@
                                                                             <td style="padding-left:5px" valign="top">
                                                                                 <div class="blu" >
                                                                                     {$lang.SendMessage}: <select name="mail_id" id="mail_id">
-                                                                                        <option value="1">Details:Signup</option>
+                                                                                        <option value="1">详细资料: 注册</option>
                                                                                         {foreach from=$client_emails item=send_email}
                                                                                             <option value="{$send_email.id}">{$send_email.tplname}</option>
                                                                                         {/foreach}
